@@ -6,7 +6,7 @@ defaults:
     working-directory: doc
 
 env:
-  doc_name: vodml-lite-mapping
+  doc_name: vodml-instance-vot
 
 on:
   push:
