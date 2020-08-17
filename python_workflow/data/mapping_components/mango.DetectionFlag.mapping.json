@@ -1,0 +1,37 @@
+{
+  "VODML": {
+    "GLOBALS": null,
+    "MODELS": {
+      "MODEL": [
+        {
+          "NAME": "ivoa",
+          "URL": "http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml"
+        },
+        {
+          "NAME": "coords",
+          "URL": "https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml"
+        },
+        {
+          "NAME": "meas",
+          "URL": "http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml"
+        }
+      ]
+    },
+    "TEMPLATES": {
+      "@table_ref": "Results",
+      "INSTANCE": {
+        "@dmrole": "root",
+        "@dmtype": "mango:stcextend.Flag",
+        "INSTANCE": {
+          "@dmrole": "mango:stcextend.Flag.coord",
+          "@dmtype": "mango:stcextend.FlagCoord",
+          "ATTRIBUTE": {
+            "@dmrole": "mango:stcextend.FlagCoord.coord",
+            "@dmtype": "ivoa:integer",
+            "@ref": "@@@@@@"
+          }
+        }
+      }
+    }
+  }
+}

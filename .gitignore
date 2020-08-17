@@ -1,0 +1,55 @@
+#
+# Project specific excludes
+#
+
+
+#
+# Default excludes
+#
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.log
+*.aux
+*.out
+*.toc
+*.bbl
+*.blg
+*.class
+*.validation-report.txt 
+*.cmap
+*.svrlt
+*.gvd
+*.fdb_latexmk
+*.fls
+*.gz
+vodml*.pdf
+*.pyc
+draft-background.*
+# Maven 
+target/
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# OS
+.DS_Store
+
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
+

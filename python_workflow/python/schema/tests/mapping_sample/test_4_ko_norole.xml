@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VODML>
+	<MODELS>
+		<MODEL>
+			<NAME>meas</NAME>
+			<URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+	</MODELS>
+	<GLOBALS />
+	<TEMPLATES table_ref="fgdgfddf">
+		<COLLECTION dmrole="">
+			<INSTANCE dmref="dmref" dmrole="dmrole">
+				<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"
+					value="dmvalue" />
+			</INSTANCE>
+		</COLLECTION>
+	</TEMPLATES>
+</VODML>

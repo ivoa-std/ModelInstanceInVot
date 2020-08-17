@@ -1,0 +1,82 @@
+<VODML>
+  <MODELS>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+  </MODELS>
+  <GLOBALS>
+    <INSTANCE ID="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
+      <INSTANCE dmrole="coords:SpaceFrame.refPosition" dmtype="coords:StdRefLocation">
+        <ATTRIBUTE dmrole="coords:StdRefLocation.position" dmtype="ivoa:string" value="NoSet"/>
+      </INSTANCE>
+      <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" value="ICRS"/>
+      <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="coords:Epoch" value="NoSet"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_EB1" dmrole="" dmtype="mango:stcextend.PhotFilter">
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="XMM EB1"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="XMM"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="0.35"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="0.3"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_EB2" dmrole="" dmtype="mango:stcextend.PhotFilter">
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="XMM EB2"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="XMM"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="1.25"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="1.5"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_HR1" dmrole="" dmtype="mango:stcextend.HRFrame">
+      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB1"/>
+      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB2"/>
+    </INSTANCE>
+    <INSTANCE ID="StatusFrame_DETFLAG" dmrole="" dmtype="cab_msd:STCStatusSys">
+      <COLLECTION size="5" dmrole="cab_msd:STCStatusSys.statusLabel">
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="0"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="good"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="1"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="source parameters may be affected"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="2"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="possibly spurious"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="3"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="located in a area where spurious detection may occur"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="4"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="located in a area where spurious detection may occur and possibly spurious"/>
+        </INSTANCE>
+      </COLLECTION>
+    </INSTANCE>
+  </GLOBALS>
+  <TEMPLATES table_ref="Results">
+    <COLLECTION dmrole="root">
+      <TABLE_ROW_TEMPLATE>
+        <INSTANCE dmrole="root" dmtype="mango:Source">
+          <ATTRIBUTE dmrole="mango:Source.identifier" dmtype="ivoa:string" ref="namesaada"/>
+          <COLLECTION size="-1" dmrole="mango:Source.associatedData"/>
+          <COLLECTION size="-1" dmrole="mango:Source.parameters"/>
+        </INSTANCE>
+      </TABLE_ROW_TEMPLATE>
+    </COLLECTION>
+  </TEMPLATES>
+</VODML>

@@ -1,0 +1,33 @@
+<VODML>
+	<MODELS>
+		<MODEL>
+			<NAME>ivoa</NAME>
+			<URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>coords</NAME>
+			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>meas</NAME>
+			<URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+	</MODELS>
+	<GLOBALS />
+	<TEMPLATES  table_ref='Results'>
+		<INSTANCE dmrole="root" dmtype="meas:GenericMeasure">
+			<INSTANCE dmrole="meas:GenericMeasure.coord"
+				dmtype="coords:PhysicalCoordinate">
+				<INSTANCE dmrole="coords:PhysicalCoordinate.cval"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real"
+						ref="@@@@@@" />
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.unit" dmtype="ivoa:Unit"
+						ref="@@@@@@" />
+				</INSTANCE>
+			</INSTANCE>
+		</INSTANCE>
+	</TEMPLATES>
+</VODML>
