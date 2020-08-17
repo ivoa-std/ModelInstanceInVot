@@ -10,8 +10,8 @@ from mapping_factory.launchers import data_dir
 base_path = os.path.dirname(os.path.realpath(__file__)) 
 
 
-validator = Validator(os.path.join(data_dir
-                                   , "schemas"
+validator = Validator(os.path.join(project_dir
+                                   , "schema"
                                    , "vodml_lite.xsd"))
 
 

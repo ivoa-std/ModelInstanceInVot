@@ -8,6 +8,8 @@ if file_path not in sys.path:
     sys.path.append(file_path + "/../../")
 
 data_dir = os.path.join(file_path, "../../..", "data")
+project_dir = os.path.join(file_path, "../../../..")
+
 print(data_dir)
 logger = LoggerSetup.get_logger()
 LoggerSetup.set_debug_level()

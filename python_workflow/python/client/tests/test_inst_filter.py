@@ -5,6 +5,11 @@ Created on 22 juin 2020
 '''
 import unittest
 import os
+import sys
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
+
 from client.inst_builder.table_mapper import TableMapper
 from utils.dict_utils import DictUtils
 

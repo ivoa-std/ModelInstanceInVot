@@ -6,6 +6,9 @@ Created on 30 juin 2020
 import unittest
 import os
 import sys
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
 from astropy.io.votable import parse
 from client.inst_builder.join_iterator import JoinIterator
 from client.inst_builder.vodml_instance import VodmlInstance
@@ -24,9 +27,7 @@ class Test(unittest.TestCase):
             self.populated = True
         table_mapper = self.vodml_instance.table_mappers["Results"]
         full_dict = table_mapper.get_full_instance()
-        print(DictUtils.get_pretty_json(full_dict))
-        sys.exit(1)
-
+        #print(DictUtils.get_pretty_json(full_dict))
 
                                               
     def setUp(self):

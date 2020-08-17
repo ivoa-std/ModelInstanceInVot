@@ -6,7 +6,11 @@ Created on 31 mars 2020
 @author: laurentmichel
 '''
 
-import os
+import os, sys
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
+
 from utils.dict_utils import DictUtils
 from client.inst_builder.vodml_instance import VodmlInstance
 

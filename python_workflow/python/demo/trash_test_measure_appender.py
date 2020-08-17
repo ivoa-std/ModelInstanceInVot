@@ -6,9 +6,12 @@ Created on 15 avr. 2020
 '''
 import os, sys
 import json
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
 
-from tests import data_dir
-from tests import logger  
+from demo import data_dir
+from demo import logger  
 
 from product_annoter.mapper.position_appender import PositionAppender  
 from product_annoter.mapper.status_appender import StatusAppender  
@@ -31,8 +34,7 @@ if __name__ == '__main__':
             "cab_msd.mapping.xml")  
         position_path = os.path.join(
             data_dir, 
-            "mapping_components", 
-            "position.mapping.xml")
+            "mapping_components")
         status_path = os.path.join(
             data_dir, 
             "mapping_components", 

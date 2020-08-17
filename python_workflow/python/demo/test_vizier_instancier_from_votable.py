@@ -7,11 +7,17 @@ Created on 31 mars 2020
 '''
 
 import os, json, sys
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
+
+from demo import data_dir
+from demo import logger  
+
 from utils.json_encoder import MyEncoder
 from utils.dict_utils import DictUtils
 
-from client.launchers.instance_from_votable import InstanceFromVotable
-from tests import data_dir
+from client.inst_builder.vodml_instance import VodmlInstance
 
 if __name__ == '__main__':
     base_path = os.path.dirname(os.path.realpath(__file__)) 
@@ -19,8 +25,12 @@ if __name__ == '__main__':
                                 "annotated_data",
                                 "vizier_vodml.xml"
                                 )
-    instance_from_votable = InstanceFromVotable(votable_path)
-    instance = instance_from_votable.build_instance(resolve_refs=True)
+    vodml_instance = VodmlInstance(votable_path)
+    vodml_instance.populate_templates()
+    vodml_instance.connect_join_iterators()
+
+    instance = vodml_instance.get_root_element("mango:Source")
+
     
     print("=== Mapping of the columns")
     print(instance.get_flatten_data_head())

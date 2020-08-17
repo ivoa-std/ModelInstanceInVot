@@ -8,7 +8,7 @@ import xmltodict
 
 from schema.validator.validator import Validator
 from client.translator.json_mapping_builder import JsonMappingBuilder
-from client.translator import logger, data_dir
+from client.translator import logger, data_dir, project_dir
 from utils.dict_utils import DictUtils
 
 class InstanceFromVotable:
@@ -43,8 +43,8 @@ class InstanceFromVotable:
         Validates the VODML block against the mapping schema
         Raise an exception in case of failure
         '''
-        validator = Validator(os.path.join(data_dir
-                                   , "schemas"
+        validator = Validator(os.path.join(project_dir
+                                   , "schema"
                                    , "vodml_lite.xsd"))
         if validator.validate_string(self.vodml_block, verbose=True) is True:
             logger.info("VODML block is valid")

@@ -4,12 +4,12 @@ Created on 17 juin 2020
 @author: laurentmichel
 '''
 import os
-from schema.validator import logger, data_dir
+from schema.validator import logger, data_dir, project_dir
 from schema.validator.validator import Validator
 
 class TestRunner:
-    validator = Validator(os.path.join(data_dir
-                                   , "schemas"
+    validator = Validator(os.path.join(project_dir
+                                   , "schema"
                                    , "vodml_lite.xsd"))
     
     @staticmethod

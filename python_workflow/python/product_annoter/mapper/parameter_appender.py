@@ -4,7 +4,7 @@ Created on 15 avr. 2020
 @author: laurentmichel
 '''
 from lxml import etree
-from tests import logger
+from product_annoter.mapper import logger
 from copy import deepcopy
 from product_annoter.mapper.constants import ATTRIBUTE_DEFAULT
 class ParameterAppender:
@@ -88,21 +88,21 @@ class ParameterAppender:
     def add_param_parameter(self):
         if not self.param_tree:
             return
-        parameters_block = self._get_unique_element(
-            self.mango_tree.xpath("//COLLECTION[@dmrole='mango:Source.parameters']")
-            )
+        #parameters_block = self._get_unique_element(
+        #    self.mango_tree.xpath("//COLLECTION[@dmrole='mango:Source.parameters']")
+        #    )
         param_block = self._get_unique_element(
             self.param_tree.xpath("//INSTANCE[@dmrole='root']")
             )
         
-        logger.info("Adding parameter dmtype=%s", param_block.attrib["dmtype"])
+        #logger.info("Adding parameter dmtype=%s", param_block.attrib["dmtype"])
         new_param = etree.fromstring(
             self.param_template
             )
         param_block = deepcopy(param_block)
         param_block.attrib["dmrole"] = "mango:Parameter.measure"
         new_param.append(param_block)
-        parameters_block.append(new_param)
+        #parameters_block.append(new_param)
 
     def set_ref_or_value(self, host_role, value_role, value_or_ref):
         if value_or_ref.startswith("@") is True:

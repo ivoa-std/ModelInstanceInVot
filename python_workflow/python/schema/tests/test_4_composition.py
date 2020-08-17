@@ -3,7 +3,12 @@ Created on 16 juin 2020
 
 @author: laurentmichel
 '''
-import unittest
+import os, sys, unittest
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
+from schema.tests import logger
+
 from schema.validator.test_runner import TestRunner
 
 mapping_sample = "./mapping_sample"
