@@ -4,15 +4,6 @@
       "INSTANCE": {
         "@ID": "SpaceCoordFrame",
         "@dmrole": "",
-        "INSTANCE": {
-          "@dmrole": "coords:SpaceFrame.refPosition",
-          "@dmtype": "coords:StdRefLocation",
-          "ATTRIBUTE": {
-            "@dmrole": "coords:StdRefLocation.position",
-            "@dmtype": "ivoa:string",
-            "@ref": "@@@@@@"
-          }
-        },
         "ATTRIBUTE": [
           {
             "@dmrole": "coords:SpaceFrame.spaceRefFrame",
@@ -24,7 +15,16 @@
             "@dmtype": "coords:Epoch",
             "@ref": "@@@@@@"
           }
-        ]
+        ],
+        "INSTANCE": {
+          "@dmrole": "coords:SpaceFrame.refPosition",
+          "@dmtype": "coords:StdRefLocation",
+          "ATTRIBUTE": {
+            "@dmrole": "coords:StdRefLocation.position",
+            "@dmtype": "ivoa:string",
+            "@ref": "@@@@@@"
+          }
+        }
       }
     },
     "MODELS": {
@@ -44,6 +44,7 @@
       ]
     },
     "TEMPLATES": {
+      "@table_ref": "Results",
       "INSTANCE": {
         "@dmrole": "root",
         "@dmtype": "cab_msd:STCSphericalSkyPosition",

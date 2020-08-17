@@ -1,11 +1,15 @@
-import os
-import sys
+
+import os, json, sys
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
+
 import traceback
 import json
 import xmltodict
 
 from schema.validator.validator import Validator
-from mapping_factory.launchers import data_dir
+from mapping_factory.launchers import data_dir, project_dir
 
 base_path = os.path.dirname(os.path.realpath(__file__)) 
 

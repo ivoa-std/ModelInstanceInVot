@@ -18,11 +18,17 @@
       ]
     },
     "TEMPLATES": {
+      "@table_ref": "Results",
       "TABLE_ROW_TEMPLATE": {
         "@dmrole": "root",
         "INSTANCE": {
           "@dmrole": "root",
           "@dmtype": "cab_msd:Source",
+          "ATTRIBUTE": {
+            "@dmrole": "cab_msd:Source.identifier",
+            "@dmtype": "ivoa:string",
+            "@ref": "@@@@@@"
+          },
           "COLLECTION": [
             {
               "@dmrole": "cab_msd:Source.associatedData",
@@ -32,12 +38,7 @@
               "@dmrole": "cab_msd:Source.parameters",
               "@size": "-1"
             }
-          ],
-          "ATTRIBUTE": {
-            "@dmrole": "cab_msd:Source.identifier",
-            "@dmtype": "ivoa:string",
-            "@ref": "@@@@@@"
-          }
+          ]
         }
       }
     }
