@@ -13,32 +13,23 @@
         },
         {
           "NAME": "meas",
-          "URL": "https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml"
+          "URL": "http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml"
         }
       ]
     },
     "TEMPLATES": {
       "@table_ref": "Results",
-      "TABLE_ROW_TEMPLATE": {
+      "INSTANCE": {
         "@dmrole": "root",
+        "@dmtype": "mango:stcextend.Flag",
         "INSTANCE": {
-          "@dmrole": "root",
-          "@dmtype": "cab_msd:Source",
+          "@dmrole": "mango:stcextend.Flag.coord",
+          "@dmtype": "mango:stcextend.FlagCoord",
           "ATTRIBUTE": {
-            "@dmrole": "cab_msd:Source.identifier",
-            "@dmtype": "ivoa:string",
+            "@dmrole": "mango:stcextend.FlagCoord.coord",
+            "@dmtype": "ivoa:integer",
             "@ref": "@@@@@@"
-          },
-          "COLLECTION": [
-            {
-              "@dmrole": "cab_msd:Source.associatedData",
-              "@size": "-1"
-            },
-            {
-              "@dmrole": "cab_msd:Source.parameters",
-              "@size": "-1"
-            }
-          ]
+          }
         }
       }
     }

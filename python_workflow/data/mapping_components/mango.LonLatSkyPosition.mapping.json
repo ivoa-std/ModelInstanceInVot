@@ -1,32 +1,6 @@
 {
   "VODML": {
-    "GLOBALS": {
-      "INSTANCE": {
-        "@ID": "SpaceCoordFrame",
-        "@dmrole": "",
-        "ATTRIBUTE": [
-          {
-            "@dmrole": "coords:SpaceFrame.spaceRefFrame",
-            "@dmtype": "ivoa:string",
-            "@ref": "@@@@@@"
-          },
-          {
-            "@dmrole": "coords:SpaceFrame.equinox",
-            "@dmtype": "coords:Epoch",
-            "@ref": "@@@@@@"
-          }
-        ],
-        "INSTANCE": {
-          "@dmrole": "coords:SpaceFrame.refPosition",
-          "@dmtype": "coords:StdRefLocation",
-          "ATTRIBUTE": {
-            "@dmrole": "coords:StdRefLocation.position",
-            "@dmtype": "ivoa:string",
-            "@ref": "@@@@@@"
-          }
-        }
-      }
-    },
+    "GLOBALS": null,
     "MODELS": {
       "MODEL": [
         {
@@ -47,53 +21,27 @@
       "@table_ref": "Results",
       "INSTANCE": {
         "@dmrole": "root",
-        "@dmtype": "cab_msd:STCSphericalSkyPosition",
+        "@dmtype": "mango:stcextend.LonLatSkyPosition",
         "INSTANCE": [
           {
-            "@dmrole": "cab_msd:STCSphericalSkyPosition.coord",
-            "@dmtype": "cab_msd:STCSphericalPoint",
-            "INSTANCE": [
+            "@dmrole": "mango:stcextend.LonLatSkyPosition.coord",
+            "@dmtype": "mango:stcextend.LonLatPoint",
+            "ATTRIBUTE": [
               {
-                "@dmrole": "cab_msd:STCSphericalPoint.longitude",
-                "@dmtype": "ivoa:RealQuantity",
-                "ATTRIBUTE": [
-                  {
-                    "@dmrole": "ivoa:RealQuantity.value",
-                    "@dmtype": "ivoa:real",
-                    "@ref": "@@@@@@"
-                  },
-                  {
-                    "@dmrole": "ivoa:Quantity.unit",
-                    "@dmtype": "ivoa:Unit",
-                    "@ref": "@@@@@@"
-                  }
-                ]
+                "@dmrole": "mango:stcextend.LonLatPoint.longitude",
+                "@dmtype": "ivoa:real",
+                "@ref": "@@@@@@"
               },
               {
-                "@dmrole": "cab_msd:STCSphericalPoint.latitude",
-                "@dmtype": "ivoa:RealQuantity",
-                "ATTRIBUTE": [
-                  {
-                    "@dmrole": "ivoa:RealQuantity.value",
-                    "@dmtype": "ivoa:real",
-                    "@ref": "@@@@@@"
-                  },
-                  {
-                    "@dmrole": "ivoa:Quantity.unit",
-                    "@dmtype": "ivoa:Unit",
-                    "@ref": "@@@@@@"
-                  }
-                ]
-              },
-              {
-                "@dmrole": "coords:Coordinate.coordSys",
-                "@dmtype": "coords:SpaceSys",
-                "INSTANCE": {
-                  "@dmrole": "coords:PhysicalCoordSys.frame",
-                  "@ref": "SpaceCoordFrame"
-                }
+                "@dmrole": "mango:stcextend.LonLatPoint.latitude",
+                "@dmtype": "ivoa:real",
+                "@ref": "@@@@@@"
               }
-            ]
+            ],
+            "INSTANCE": {
+              "@dmref": "@@@@@@",
+              "@dmrole": "coords:Coordinate.coordSys"
+            }
           },
           {
             "@dmrole": "meas:Measure.error",

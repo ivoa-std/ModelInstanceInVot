@@ -9,7 +9,11 @@ Created on 15 avr. 2020
 @author: laurentmichel
 '''
 
-import sys
+import os, json, sys
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
+if file_path not in sys.path:
+    sys.path.append(file_path )
+
 from lxml import etree
 
 from mapping_factory.factory.maping_generator import  MappingGenerator
