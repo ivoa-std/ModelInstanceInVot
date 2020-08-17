@@ -1,0 +1,147 @@
+{
+  "VODML": {
+    "GLOBALS": {
+      "INSTANCE": {
+        "@ID": "SpaceCoordFrame",
+        "@dmrole": "",
+        "INSTANCE": {
+          "@dmrole": "coords:SpaceFrame.refPosition",
+          "@dmtype": "coords:StdRefLocation",
+          "ATTRIBUTE": {
+            "@dmrole": "coords:StdRefLocation.position",
+            "@dmtype": "ivoa:string",
+            "@ref": "@@@@@@"
+          }
+        },
+        "ATTRIBUTE": [
+          {
+            "@dmrole": "coords:SpaceFrame.spaceRefFrame",
+            "@dmtype": "ivoa:string",
+            "@ref": "@@@@@@"
+          },
+          {
+            "@dmrole": "coords:SpaceFrame.equinox",
+            "@dmtype": "coords:Epoch",
+            "@ref": "@@@@@@"
+          }
+        ]
+      }
+    },
+    "MODELS": {
+      "MODEL": [
+        {
+          "NAME": "ivoa",
+          "URL": "http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml"
+        },
+        {
+          "NAME": "coords",
+          "URL": "https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml"
+        },
+        {
+          "NAME": "meas",
+          "URL": "https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml"
+        }
+      ]
+    },
+    "TEMPLATES": {
+      "INSTANCE": {
+        "@dmrole": "root",
+        "@dmtype": "cab_msd:STCSphericalSkyPosition",
+        "INSTANCE": [
+          {
+            "@dmrole": "cab_msd:STCSphericalSkyPosition.coord",
+            "@dmtype": "cab_msd:STCSphericalPoint",
+            "INSTANCE": [
+              {
+                "@dmrole": "cab_msd:STCSphericalPoint.longitude",
+                "@dmtype": "ivoa:RealQuantity",
+                "ATTRIBUTE": [
+                  {
+                    "@dmrole": "ivoa:RealQuantity.value",
+                    "@dmtype": "ivoa:real",
+                    "@ref": "@@@@@@"
+                  },
+                  {
+                    "@dmrole": "ivoa:Quantity.unit",
+                    "@dmtype": "ivoa:Unit",
+                    "@ref": "@@@@@@"
+                  }
+                ]
+              },
+              {
+                "@dmrole": "cab_msd:STCSphericalPoint.latitude",
+                "@dmtype": "ivoa:RealQuantity",
+                "ATTRIBUTE": [
+                  {
+                    "@dmrole": "ivoa:RealQuantity.value",
+                    "@dmtype": "ivoa:real",
+                    "@ref": "@@@@@@"
+                  },
+                  {
+                    "@dmrole": "ivoa:Quantity.unit",
+                    "@dmtype": "ivoa:Unit",
+                    "@ref": "@@@@@@"
+                  }
+                ]
+              },
+              {
+                "@dmrole": "coords:Coordinate.coordSys",
+                "@dmtype": "coords:SpaceSys",
+                "INSTANCE": {
+                  "@dmrole": "coords:PhysicalCoordSys.frame",
+                  "@ref": "SpaceCoordFrame"
+                }
+              }
+            ]
+          },
+          {
+            "@dmrole": "meas:Measure.error",
+            "@dmtype": "meas:Error",
+            "INSTANCE": [
+              {
+                "@dmrole": "meas:Error.statError",
+                "@dmtype": "meas:Symmetrical",
+                "INSTANCE": {
+                  "@dmrole": "meas:Symmetrical.radius",
+                  "@dmtype": "ivoa:RealQuantity",
+                  "ATTRIBUTE": [
+                    {
+                      "@dmrole": "ivoa:RealQuantity.value",
+                      "@dmtype": "ivoa:real",
+                      "@ref": "@@@@@@"
+                    },
+                    {
+                      "@dmrole": "ivoa:Quantity.unit",
+                      "@dmtype": "ivoa:Unit",
+                      "@ref": "@@@@@@"
+                    }
+                  ]
+                }
+              },
+              {
+                "@dmrole": "meas:Error.sysError",
+                "@dmtype": "meas:Symmetrical",
+                "INSTANCE": {
+                  "@dmrole": "meas:Symmetrical.radius",
+                  "@dmtype": "ivoa:RealQuantity",
+                  "ATTRIBUTE": [
+                    {
+                      "@dmrole": "ivoa:RealQuantity.value",
+                      "@dmtype": "ivoa:real",
+                      "@ref": "@@@@@@"
+                    },
+                    {
+                      "@dmrole": "ivoa:Quantity.unit",
+                      "@dmtype": "ivoa:Unit",
+                      "@ref": "@@@@@@"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

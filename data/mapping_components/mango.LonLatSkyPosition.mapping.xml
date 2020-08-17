@@ -1,0 +1,44 @@
+<VODML>
+	<MODELS>
+		<MODEL>
+			<NAME>ivoa</NAME>
+			<URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>coords</NAME>
+			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>meas</NAME>
+			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+	</MODELS>
+	<GLOBALS>
+	</GLOBALS>
+
+	<TEMPLATES  table_ref='Results'>
+    <INSTANCE dmrole="root" dmtype="mango:stcextend.LonLatSkyPosition">
+      <INSTANCE dmrole="mango:stcextend.LonLatSkyPosition.coord" dmtype="mango:stcextend.LonLatPoint">
+        <ATTRIBUTE dmrole="mango:stcextend.LonLatPoint.longitude" dmtype="ivoa:real" ref="@@@@@@"/>
+        <ATTRIBUTE dmrole="mango:stcextend.LonLatPoint.latitude" dmtype="ivoa:real" ref="@@@@@@"/>
+        <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="@@@@@@"/>
+      </INSTANCE>
+      <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+        <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+          <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+          </INSTANCE>
+        </INSTANCE>
+        <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
+          <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+          </INSTANCE>
+        </INSTANCE>
+      </INSTANCE>
+    </INSTANCE>
+	</TEMPLATES>
+</VODML>

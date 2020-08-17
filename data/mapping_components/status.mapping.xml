@@ -1,0 +1,74 @@
+<VODML>
+	<MODELS>
+		<MODEL>
+			<NAME>ivoa</NAME>
+			<URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>coords</NAME>
+			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>meas</NAME>
+			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+	</MODELS>
+	<GLOBALS>
+		<INSTANCE ID="StatusSys" dmrole=""
+			dmtype="cab_msd:STCStatusSys">
+			<COLLECTION size="5"
+				dmrole="cab_msd:STCStatusSys.statusLabel">
+				<INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel"
+					dmtype="cab_msd:StatusLabel">
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.value"
+						dmtype="ivoa:integer" value="0" />
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.label"
+						dmtype="ivoa:string" value="good" />
+				</INSTANCE>
+				<INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel"
+					dmtype="cab_msd:StatusLabel">
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.value"
+						dmtype="ivoa:integer" value="1" />
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.label"
+						dmtype="ivoa:string" value="source parameters may be affected" />
+				</INSTANCE>
+				<INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel"
+					dmtype="cab_msd:StatusLabel">
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.value"
+						dmtype="ivoa:integer" value="2" />
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.label"
+						dmtype="ivoa:string" value="possibly spurious" />
+				</INSTANCE>
+				<INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel"
+					dmtype="cab_msd:StatusLabel">
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.value"
+						dmtype="ivoa:integer" value="3" />
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.label"
+						dmtype="ivoa:string"
+						value="located in a area where spurious detection may occur" />
+				</INSTANCE>
+				<INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel"
+					dmtype="cab_msd:StatusLabel">
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.value"
+						dmtype="ivoa:integer" value="4" />
+					<ATTRIBUTE dmrole="cab_msd:StatusLabel.label"
+						dmtype="ivoa:string"
+						value="located in a area where spurious detection may occur and possibly spurious" />
+				</INSTANCE>
+			</COLLECTION>
+		</INSTANCE>
+	</GLOBALS>
+	<TEMPLATES  table_ref='Results'>
+		<INSTANCE dmrole="root" dmtype="cab_msd:STCStatus">
+			<INSTANCE dmrole="cab_msd:STCStatus.coord"
+				dmtype="cab_msd:STCStatusState">
+				<ATTRIBUTE dmrole="cab_msd:STCStatusState.status"
+					dmtype="ivoa:integer" ref="@@@@@@" />
+				<INSTANCE ref="StatusSys"
+					dmrole="coords:Coordinate.coordSys" />
+			</INSTANCE>
+		</INSTANCE>
+	</TEMPLATES>
+</VODML>

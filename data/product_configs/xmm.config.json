@@ -1,0 +1,41 @@
+{
+	"parameters": [
+		{
+			"measure": "position",
+			"ucd": "pos;meta.main",
+			"semantic": "corrected",
+			"identifier": "namesaada",
+			"frame": {
+				"frame": "ICRS",
+				"equinox": null
+			},
+			"position": {
+				"longitude": "_ra_146",
+				"latitude": "_dec_147",
+				"unit": "deg"
+			},
+			"errors": {
+				"systematic": {
+					"value": "_syserrcc_152",
+					"unit": "arcsec"
+				},
+				"random": {
+					"value": "_poserr_148",
+					"unit": "arcsec"
+				}
+			}
+		},
+		{
+			"measure": "status",
+			"ucd": "meta.code.error",
+			"semantic": "computed",
+			"identifier": "namesaada",
+			"status": {
+				"value": "_sum_flag_394"
+			}
+		}
+	],
+	"associatedData": {
+		
+	}
+}
