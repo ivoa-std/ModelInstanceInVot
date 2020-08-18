@@ -30,8 +30,8 @@ An PDF [Preview](https://github.com/ivoa-std/vodml-mapping/releases/download/aut
 - `python_workflow`: code sample for exercising the mapping syntax
     - Mapping component builder 
     - Example of automatic annotation processor
-    - Validating annotations
-    - Reading annotated table
+    - Annotation validation
+    - Annotated table processing
 
 # Licence
 
