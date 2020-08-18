@@ -10,4 +10,9 @@ The process is as follow:
 
 3. Replace the tag names with the matching roles
 
-4. Uses the so created object instance as index to browse the VOTable data
+4. Uses the so created object instance as index to browse the VOTable data.
+
+```shell
+% cd demo
+% python3 *****.py
+```
