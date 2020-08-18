@@ -418,28 +418,6 @@ class MappingGenerator:
                     else:
                         logger.info("Constraint multiple found in data type " + obj.vodmlid + " " + attribute.vodmlid + "==>" + vodml_constraint.subsets)
 
-    '''
-         for obj in  self.subsets.values():
-            print("===================================")
-            print(obj)
-            for attribute in obj.attributes.values():
-                if attribute.vodmlid in obj.vodml_constraints.keys():
-                    if attribute.vodmlid == "coords:Coordinate.frame" :
-                        print("on y est")
-                    vodml_constraint = obj.vodml_constraints.constraints[attribute.vodmlid]
-                    if vodml_constraint.is_single :
-                        new_type = vodml_constraint.subsets[0]
-                        if new_type in self.subsets.keys():
-                            attribute.dmtype = self.subsets[new_type].vodmlid
-                            print("====================2 " + str(self.subsets[new_type].vodmlid))
-                        elif new_type in self.object_types.keys():
-                            attribute.dmtype = self.object_types[new_type].vodmlid
-                            print("====================1 " + str(self.object_types[new_type].vodmlid))
-                        logger.info("resolve_constaints", "Constraint found in datatype " + obj.vodmlid + " " + attribute.vodmlid + "==>" + new_type)
-                    else:
-                        logger.info("resolve_constaints", "Constraint multiple found in data type " + obj.vodmlid + " " + attribute.vodmlid + "==>" + vodml_constraint.subsets)
-                   
-    '''               
     def resolve_inheritance(self):
         for obj in  self.data_types.values():
             superclass = obj.superclass
