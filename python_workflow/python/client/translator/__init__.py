@@ -14,4 +14,4 @@ LoggerSetup.set_debug_level()
 # make sure to know where we are to avoid issue with relative paths
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
-logger.info("translator package intialized")
+logger.info("client.translator package intialized")

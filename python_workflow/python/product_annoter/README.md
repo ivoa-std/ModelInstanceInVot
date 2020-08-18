@@ -6,4 +6,4 @@ This file is specific to a particular catalog since it contains the FIELD ids an
 
 All the rest of the stuff is catalog independent
 
-The demo program is in the `tests` folder
+The demo program is in the `demo` folder
