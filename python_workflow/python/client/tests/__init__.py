@@ -15,4 +15,4 @@ LoggerSetup.set_debug_level()
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 #Config.__read_config__(config_file)
-logger.info("test package intialized")
+logger.info("client.tests package intialized")

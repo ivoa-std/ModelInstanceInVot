@@ -10,3 +10,5 @@ project_dir = os.path.join(file_path, "../../../..")
 
 logger = LoggerSetup.get_logger()
 LoggerSetup.set_info_level()
+
+logger.info("schema.validator package intialized")

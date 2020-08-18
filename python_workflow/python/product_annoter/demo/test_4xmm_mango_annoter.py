@@ -6,7 +6,7 @@ Created on 15 avr. 2020
 '''
 import os, sys
 import json
-file_path = os.path.dirname(os.path.realpath(__file__)) + "/../"
+file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
 if file_path not in sys.path:
     sys.path.append(file_path )
 
