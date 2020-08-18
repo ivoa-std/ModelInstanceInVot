@@ -15,7 +15,7 @@ if file_path not in sys.path:
     sys.path.append(file_path )
 from lxml import etree
 
-from mapping_factory.factory.maping_generator import  MappingGenerator
+from mapping_factory.factory.mapping_generator import  MappingGenerator
 from mapping_factory.launchers import data_dir
 
             

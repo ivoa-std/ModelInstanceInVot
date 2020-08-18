@@ -1,4 +1,11 @@
-
+"""
+  Validates all mapping components located in data/mapping_components
+  against the mapping schema.
+  
+  Valid files are converted in JSON and stored that can be used by the product annoter.
+  
+  LM 08/2020
+"""
 import os, json, sys
 file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
 if file_path not in sys.path:
@@ -38,6 +45,8 @@ for file in dirs:
             with open(sample_file.replace(".xml", ".json"), 'w') as jsonfile:
                 jsonfile.write(json.dumps(xmltodict.parse(my_xml)
                                           , indent=2, sort_keys=True))
+                print(" Stored as JSON")
+
     except :
         print(file + ' is not Valid')
         traceback.print_exc()    

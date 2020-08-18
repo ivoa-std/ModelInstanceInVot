@@ -15,7 +15,7 @@ if file_path not in sys.path:
     sys.path.append(file_path )
 from lxml import etree
 
-from mapping_factory.factory.maping_generator import  MappingGenerator
+from mapping_factory.factory.mapping_generator import  MappingGenerator
 from mapping_factory.launchers import data_dir
 
             
@@ -47,8 +47,6 @@ def main():
     }
 
  
-    #mapping_generator.concrete_classes = {}
-    #mapping_generator.concrete_types={}
     mapping_generator.generate_mapping()
     
     for ac in mapping_generator.mapped_abstract_classes :
@@ -66,10 +64,6 @@ def main():
         print("Abstract type mapped " + ac)
         for sc in mapping_generator.get_sub_types(ac):
             print("   " + sc)
-    #parse_vodml_file(filename="/home/michel/workspace/vo-datamodels/provenance/vo-dml/xml/ProvenanceDM.vo-dml.xml", model='provenance')
-    #root_object_id = 'provenance:provenance.Entity'
-    #print(root_object_id)
-    #generate_mapping()
 
     root = etree.fromstring(mapping_generator.xml_string + "\n")
     print((etree.tostring(root, pretty_print=True)).decode("utf-8") )
