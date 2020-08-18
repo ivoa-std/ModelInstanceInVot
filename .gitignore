@@ -33,7 +33,7 @@
 *.fdb_latexmk
 *.fls
 *.gz
-*.pdf
+vodml*.pdf
 *.pyc
 draft-background.*
 # Maven 
