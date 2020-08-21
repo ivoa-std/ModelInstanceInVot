@@ -264,8 +264,8 @@ class JsonMappingBuilder():
         new_key = ''
         if "@dmrole" in element.keys():
             new_key = element["@dmrole"]
-        if "@table_ref" in element.keys():
-            new_key = element["@table_ref"]
+        if "@tableref" in element.keys():
+            new_key = element["@tableref"]
         if new_key == '' and "@ID" in element.keys():
             new_key = element["@ID"]
         if new_key == '' and "NAME" in element.keys():

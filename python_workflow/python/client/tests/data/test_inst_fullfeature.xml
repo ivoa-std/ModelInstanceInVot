@@ -31,7 +31,7 @@
 					dmtype="coords:Epoch" value="NoSet" />
 			</INSTANCE>
 		</GLOBALS>
-		<TEMPLATES table_ref="Results">
+		<TEMPLATES tableref="Results">
 			<INSTANCE dmrole="root" dmtype="test.model">
 				<INSTANCE dmrole="test.header" dmtype="test.Header">
 					<INSTANCE dmrole="test.frame" dmref="SpaceFrame_ICRS" />

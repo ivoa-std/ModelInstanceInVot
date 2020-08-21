@@ -17,7 +17,7 @@
 	</MODELS>
 	<GLOBALS>
 	</GLOBALS>
-	<TEMPLATES table_ref="Results">
+	<TEMPLATES tableref="Results">
 		<INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
 			<INSTANCE dmrole="meas:Error.statError"
 				dmtype="meas:Symmetrical">

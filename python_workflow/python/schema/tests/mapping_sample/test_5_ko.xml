@@ -13,8 +13,8 @@
 			<ATTRIBUTE ref="ref" dmrole="role" dmtype="type" value="dmvalue" />
 		</INSTANCE>
 	</GLOBALS>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 	</TEMPLATES>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 	</TEMPLATES>
 </VODML>

@@ -18,7 +18,7 @@
       ]
     },
     "TEMPLATES": {
-      "@table_ref": "Results",
+      "@tableref": "Results",
       "COLLECTION": {
         "@dmrole": "root",
         "TABLE_ROW_TEMPLATE": {

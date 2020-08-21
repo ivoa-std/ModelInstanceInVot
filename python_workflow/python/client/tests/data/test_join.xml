@@ -20,9 +20,9 @@
 		</MODELS>
 		<GLOBALS>
 		</GLOBALS>
-		<TEMPLATES table_ref="Results">
+		<TEMPLATES tableref="Results">
 			<COLLECTION dmrole="meas:Measure.errors" size="2">
-				<JOIN table_ref="OtherResults" primary="_poserr_148" foreign="_foreign">
+				<JOIN tableref="OtherResults" primary="_poserr_148" foreign="_foreign">
 					<INSTANCE dmrole="meas:Error.statError"
 						dmtype="meas:Symmetrical">
 						<INSTANCE dmrole="meas:Symmetrical.radius"
@@ -36,7 +36,7 @@
 				</JOIN>
 			</COLLECTION>
 		</TEMPLATES>
-		<TEMPLATES table_ref="OtherResults">
+		<TEMPLATES tableref="OtherResults">
 			<COLLECTION dmrole="meas:Measure.errors" size="2">
 				<TABLE_ROW_TEMPLATE>
 					<INSTANCE dmrole="meas:Error.statError"

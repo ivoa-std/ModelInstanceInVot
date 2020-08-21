@@ -39,7 +39,7 @@
     },
     "TEMPLATES": {
       "OtherResults": {
-        "@table_ref": "OtherResults",
+        "@tableref": "OtherResults",
         "test:detections": [
           {
             "TABLE_ROW_TEMPLATE": {
@@ -61,7 +61,7 @@
         ]
       },
       "Results": {
-        "@table_ref": "Results",
+        "@tableref": "Results",
         "root": {
           "@dmtype": "test.model",
           "test.header": {
@@ -95,7 +95,7 @@
                         "JOIN": {
                           "@foreign": "_foreign",
                           "@primary": "_poserr_148",
-                          "@table_ref": "OtherResults",
+                          "@tableref": "OtherResults",
                           "test:detection": {
                             "@dmtype": "test:Detection",
                             "test:detection.id": {

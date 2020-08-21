@@ -8,7 +8,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<INSTANCE dmref="dmref" dmrole="dmrole">
 			<COLLECTION dmrole="dmrole">
 				<TABLE_ROW_TEMPLATE>

@@ -14,7 +14,7 @@
     </MODEL>
   </MODELS>
   <GLOBALS/>
-  <TEMPLATES table_ref='Results'>
+  <TEMPLATES tableref='Results'>
     <INSTANCE dmrole="root" dmtype="mango:stcextend.Flag">
       <INSTANCE dmrole="mango:stcextend.Flag.coord" dmtype="mango:stcextend.FlagCoord">
       	<ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord" dmtype="ivoa:integer" ref="@@@@@@"/>

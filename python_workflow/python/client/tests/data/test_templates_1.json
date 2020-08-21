@@ -19,7 +19,7 @@
     },
     "TEMPLATES": {
       "OtherResults": {
-        "@table_ref": "OtherResults",
+        "@tableref": "OtherResults",
         "meas:Measure.errors": [
           {
             "TABLE_ROW_TEMPLATE": {
@@ -47,7 +47,7 @@
         ]
       },
       "Results": {
-        "@table_ref": "Results",
+        "@tableref": "Results",
         "meas:Measure.errors": [
           {
             "TABLE_ROW_TEMPLATE": {

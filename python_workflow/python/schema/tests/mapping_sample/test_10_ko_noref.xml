@@ -9,7 +9,7 @@
 	</MODELS>
 	<GLOBALS />
 
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<GROUPBY >
 			<INSTANCE dmref="dmref" dmrole="dmrole">
 				<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"

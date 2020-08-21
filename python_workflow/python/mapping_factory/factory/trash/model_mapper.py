@@ -319,7 +319,7 @@ class ModelMapper:
         self._append_xml("</MODELS>")
         self._append_xml("<GLOBALS>")
         self._append_xml("</GLOBALS>")
-        self._append_xml("<TEMPLATES table_ref='Results' >")
+        self._append_xml("<TEMPLATES tableref='Results' >")
         self.generate_object_mapping("root", vodml_root_type)
         self._append_xml("</TEMPLATES>")
         self._append_xml("</VODML>")

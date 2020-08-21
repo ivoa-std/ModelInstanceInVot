@@ -110,7 +110,7 @@
       ]
     },
     "TEMPLATES": {
-      "@table_ref": "Results",
+      "@tableref": "Results",
       "INSTANCE": {
         "@dmrole": "root",
         "@dmtype": "cab_msd:STCStatus",

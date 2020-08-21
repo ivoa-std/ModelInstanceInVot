@@ -110,7 +110,7 @@ class TableMapper(object):
                     pass
                 elif k == 'JOIN':
                     self.join = v 
-                    iterator_key = self.join["@table_ref"]
+                    iterator_key = self.join["@tableref"]
                     logger.info("Set join iterator with table=%s", iterator_key)
                     for ro in self.join.keys():
                         self.join_iterators[iterator_key] = JoinIterator(
