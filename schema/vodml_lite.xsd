@@ -116,6 +116,7 @@
 		<xs:complexType>
 			<xs:choice minOccurs="0" maxOccurs="1">
 				<xs:element ref="INSTANCE" maxOccurs="unbounded" />
+				<xs:element ref="COLLECTION" maxOccurs="unbounded" />
 				<xs:element ref="TABLE_ROW_TEMPLATE" minOccurs="0"
 					maxOccurs="unbounded" />
 				<xs:element ref="JOIN" minOccurs="0"
@@ -125,7 +126,7 @@
 			<xs:attribute type="xs:string" name="size" />
 			<xs:assert test="@dmrole != '' " />
 			<xs:assert
-				test="(count(./TABLE_ROW_TEMPLATE) lt 2 and count(./JOIN) eq 0 and count(./INSTANCE) eq 0 ) or (count(./TABLE_ROW_TEMPLATE) eq 0 and count(./JOIN) lt 2  and count(./INSTANCE) eq 0) or (count(./TABLE_ROW_TEMPLATE) eq 0 and count(./JOIN) eq 0)" />
+				test="(count(./TABLE_ROW_TEMPLATE) lt 2 and count(./JOIN) eq 0 and count(./INSTANCE) eq 0  and count(./COLLECTION) eq 0) or (count(./TABLE_ROW_TEMPLATE) eq 0 and count(./JOIN) lt 2  and count(./INSTANCE) eq 0 and count(./COLLECTION) eq 0) or (count(./TABLE_ROW_TEMPLATE) eq 0 and count(./JOIN) eq 0)" />
 		</xs:complexType>
 	</xs:element>
 
