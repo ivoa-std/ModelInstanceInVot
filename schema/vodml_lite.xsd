@@ -89,6 +89,8 @@
 				test="if (@dmref) then ( @dmref != '') else true()  " />
 			<xs:assert
 				test="if (@dmtype) then ( @dmtype != '') else true()  " />
+			<xs:assert
+				test="if (@ID) then ( @ID != '') else true()  " />
 			<xs:assert test="if (@ID) then (@ID != '') else true()  " />
 		</xs:complexType>
 	</xs:element>
