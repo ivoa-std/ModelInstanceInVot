@@ -38,9 +38,9 @@
 					<xs:element ref="INSTANCE" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:choice>
-			<xs:attribute type="xs:string" name="table_ref"
+			<xs:attribute type="xs:string" name="tableref"
 				use="required" />
-			<xs:assert test="@table_ref != ''" />
+			<xs:assert test="@tableref != ''" />
 		</xs:complexType>
 	</xs:element>
 
@@ -183,10 +183,10 @@
 						maxOccurs="1" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute type="xs:string" name="table_ref" />
+			<xs:attribute type="xs:string" name="tableref" />
 			<xs:attribute type="xs:string" name="primary" />
 			<xs:attribute type="xs:string" name="foreign" />
-			<xs:assert test="(./@table_ref and @table_ref != '' )" />
+			<xs:assert test="(./@tableref and @tableref != '' )" />
 			<xs:assert test="(./@primary and @primary != '' )" />
 			<xs:assert test="(./@foreign and @foreign != '' )" />
 		</xs:complexType>

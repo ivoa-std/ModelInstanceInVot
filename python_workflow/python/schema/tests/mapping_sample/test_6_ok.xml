@@ -8,7 +8,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<COLLECTION dmrole="dmrole">
 			<INSTANCE dmref="dmref" dmrole="dmrole">
 				<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"
@@ -16,7 +16,7 @@
 			</INSTANCE>
 		</COLLECTION>
 	</TEMPLATES>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<INSTANCE dmref="dmref" dmrole="dmrole">
 			<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"
 				value="dmvalue" />
@@ -26,7 +26,7 @@
 				value="dmvalue" />
 		</INSTANCE>
 	</TEMPLATES>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<GROUPBY ref="ref">
 			<INSTANCE dmref="dmref" dmrole="dmrole">
 				<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"

@@ -7,7 +7,7 @@
     </MODEL>
   </MODELS>
   <GLOBALS/>
-  <TEMPLATES table_ref="fgdgfddf">
+  <TEMPLATES tableref="fgdgfddf">
   	<INSTANCE  ID="id"  dmrole="role">
   	  	<ATTRIBUTE  ref="ref" dmtype="type" dmrole="dmrole" />
   	</INSTANCE>

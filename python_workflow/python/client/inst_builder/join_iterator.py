@@ -51,7 +51,7 @@ class JoinIterator(object):
                     "GLOBALS":{},
                     "TEMPLATES": {
                         self.foreign_table: {
-                            "@table_ref": self.foreign_table,
+                            "@tableref": self.foreign_table,
                             "root": [
                                     {
                                     "TABLE_ROW_TEMPLATE": {

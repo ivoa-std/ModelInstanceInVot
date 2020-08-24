@@ -476,7 +476,7 @@ class MappingGenerator:
         self.append_xml("</MODELS>")
         self.append_xml("<GLOBALS>")
         self.append_xml("</GLOBALS>")
-        self.append_xml("<TEMPLATES  table_ref='Results'>")
+        self.append_xml("<TEMPLATES  tableref='Results'>")
         self.generate_object_mapping(root_object_type, 'root')
         self.append_xml("</TEMPLATES>")
         self.append_xml("</VODML>")

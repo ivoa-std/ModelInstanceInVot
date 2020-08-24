@@ -8,7 +8,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<GROUPBY ref="ref">
 			<COLLECTION dmrole="dmrole">
 				<INSTANCE dmref="dmref" dmrole="dmrole">

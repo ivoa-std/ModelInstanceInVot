@@ -8,7 +8,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 
 		<INSTANCE ID="dmtype" dmrole="" dmtype="dmtype">
 			<SC_REALQUANTITY dmrole="dmrole" value="value" />

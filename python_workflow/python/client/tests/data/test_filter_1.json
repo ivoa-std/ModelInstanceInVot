@@ -19,7 +19,7 @@
     },
     "TEMPLATES": {
       "Results": {
-        "@table_ref": "Results",
+        "@tableref": "Results",
         "meas:Measure.errors": [
           {
             "TABLE_ROW_TEMPLATE": {

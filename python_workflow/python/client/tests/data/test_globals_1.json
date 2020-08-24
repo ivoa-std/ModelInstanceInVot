@@ -79,7 +79,7 @@
 		},
 		"TEMPLATES": {
 			"Results": {
-				"@table_ref": "Results",
+				"@tableref": "Results",
 				"my:other.role": {
 					"@dmref": "TestParamRef"
 				},

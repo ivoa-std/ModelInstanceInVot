@@ -1,5 +1,5 @@
 {
-  "@table_ref": "OtherResults",
+  "@tableref": "OtherResults",
   "test:detections": [
     {
       "@dmtype": "test:Detection",

@@ -20,7 +20,7 @@
 		</MODELS>
 		<GLOBALS>
 		</GLOBALS>
-		<TEMPLATES table_ref="Results">
+		<TEMPLATES tableref="Results">
 			<COLLECTION dmrole="meas:Measure.errors" size="2">
 				<TABLE_ROW_TEMPLATE>
 					<FILTER ref="_poserr_148" value="2"/>

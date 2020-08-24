@@ -8,12 +8,12 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<COLLECTION dmrole="dmrole">
-			<JOIN table_ref="table_ref" primary="primary" foreign="foreign">
+			<JOIN tableref="tableref" primary="primary" foreign="foreign">
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
 			</JOIN>
-			<JOIN table_ref="table_ref" primary="primary" foreign="foreign">
+			<JOIN tableref="tableref" primary="primary" foreign="foreign">
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
 			</JOIN>
 		</COLLECTION>

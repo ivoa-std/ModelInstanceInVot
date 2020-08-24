@@ -79,7 +79,7 @@
 
 		<!-- position: RAJ2000, e_RAJ20000, DEJ2000, e_DEJ2000 pmRA, e_pmRA, PMdec, 
 			e_PMdec, Ep plx, e_plx, -->
-		<TEMPLATES table_ref="J_A_A_565_A21_cat_fors">
+		<TEMPLATES tableref="J_A_A_565_A21_cat_fors">
 			<COLLECTION dmrole="root">
 				<TABLE_ROW_TEMPLATE>
 					<INSTANCE dmrole="root" dmtype="mango:Source">

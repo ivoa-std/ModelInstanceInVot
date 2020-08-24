@@ -19,7 +19,7 @@
     },
     "TEMPLATES": {
       "OtherResults": {
-        "@table_ref": "OtherResults",
+        "@tableref": "OtherResults",
         "meas:Measure.errors": [
           {
             "TABLE_ROW_TEMPLATE": {
@@ -43,13 +43,13 @@
         ]
       },
       "Results": {
-        "@table_ref": "Results",
+        "@tableref": "Results",
         "meas:Measure.errors": [
           {
             "JOIN": {
               "@foreign": "_foreign",
               "@primary": "_poserr_148",
-              "@table_ref": "OtherResults",
+              "@tableref": "OtherResults",
               "meas:Error.statError": {
                 "@dmtype": "meas:Symmetrical",
                 "meas:Symmetrical.radius": {

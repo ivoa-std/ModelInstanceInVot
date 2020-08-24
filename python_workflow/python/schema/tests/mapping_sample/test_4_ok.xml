@@ -8,7 +8,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<COLLECTION dmrole="dmrole">
 			<INSTANCE dmref="dmref" dmrole="dmrole">
 				<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"
@@ -16,7 +16,7 @@
 			</INSTANCE>
 		</COLLECTION>
 	</TEMPLATES>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<INSTANCE dmref="dmref" dmrole="dmrole">
 			<COLLECTION dmrole="dmrole">
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
@@ -29,7 +29,7 @@
 
 		</INSTANCE>
 	</TEMPLATES>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<INSTANCE dmref="dmref" dmrole="dmrole">
 			<COLLECTION dmrole="dmrole">
 				<TABLE_ROW_TEMPLATE>
@@ -41,9 +41,9 @@
 
 		</INSTANCE>
 	</TEMPLATES>
-	<TEMPLATES table_ref="fgdgfddf">
+	<TEMPLATES tableref="fgdgfddf">
 		<COLLECTION dmrole="dmrole">
-			<JOIN table_ref="table_ref" primary="primary" foreign="foreign">
+			<JOIN tableref="tableref" primary="primary" foreign="foreign">
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
 			</JOIN>
 		</COLLECTION>

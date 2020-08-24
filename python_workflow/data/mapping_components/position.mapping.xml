@@ -30,7 +30,7 @@
 
 	</GLOBALS>
 
-	<TEMPLATES  table_ref='Results'>
+	<TEMPLATES  tableref='Results'>
 		<INSTANCE dmrole="root"
 			dmtype="cab_msd:STCSphericalSkyPosition">
 			<INSTANCE dmrole="cab_msd:STCSphericalSkyPosition.coord"

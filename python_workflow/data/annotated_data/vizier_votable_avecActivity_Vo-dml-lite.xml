@@ -64,7 +64,7 @@
 		</MODELS>
 		<GLOBALS>
 		</GLOBALS>
-		<TEMPLATES table_ref="B_xmm_xmmlog">
+		<TEMPLATES tableref="B_xmm_xmmlog">
 			<INSTANCE dmrole="root" dmtype="voprov:Entity">
 				<!-- VizieRcatalog entity with attributed agent and activity which generated 
 					it -->

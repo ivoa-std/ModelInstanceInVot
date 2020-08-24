@@ -52,7 +52,7 @@
 			</INSTANCE>
 
 		</GLOBALS>
-		<TEMPLATES table_ref="Results">
+		<TEMPLATES tableref="Results">
 			<INSTANCE dmref="PhotFrame_EB1" dmrole="my:role" />
 			<INSTANCE dmref="TestParamRef" dmrole="my:other.role" />
 		</TEMPLATES>

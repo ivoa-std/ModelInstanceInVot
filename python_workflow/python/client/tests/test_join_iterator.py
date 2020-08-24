@@ -119,7 +119,7 @@ class Test(unittest.TestCase):
                     {
                         "@foreign": "_foreign",
                         "@primary": "_poserr_148",
-                        "@table_ref": "OtherResults",
+                        "@tableref": "OtherResults",
                         "test:detection": {
                             "@dmtype": "test:Detection",
                             "test:detection.id": {

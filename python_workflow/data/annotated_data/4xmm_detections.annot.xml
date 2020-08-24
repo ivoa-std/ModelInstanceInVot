@@ -70,7 +70,7 @@
       </COLLECTION>
     </INSTANCE>
   </GLOBALS>
-  <TEMPLATES table_ref="Results">
+  <TEMPLATES tableref="Results">
     <COLLECTION dmrole="root">
       <TABLE_ROW_TEMPLATE>
         <INSTANCE dmrole="root" dmtype="mango:Source">

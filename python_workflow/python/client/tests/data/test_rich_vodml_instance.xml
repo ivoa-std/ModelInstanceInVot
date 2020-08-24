@@ -31,7 +31,7 @@
 					dmtype="coords:Epoch" value="NoSet" />
 			</INSTANCE>
 		</GLOBALS>
-		<TEMPLATES table_ref="Results">
+		<TEMPLATES tableref="Results">
 			<INSTANCE dmrole="root" dmtype="test.model">
 				<INSTANCE dmrole="test.header" dmtype="test.Header">
 					<INSTANCE dmrole="test.frame" dmref="SpaceFrame_ICRS" />
@@ -48,7 +48,7 @@
 								<ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
 									ref="_poserr_148" />
 								<COLLECTION dmrole="test.detections">
-									<JOIN table_ref="OtherResults" primary="_poserr_148"
+									<JOIN tableref="OtherResults" primary="_poserr_148"
 										foreign="_foreign">
 										<INSTANCE dmrole="test:detection"
 											dmtype="test:Detection">
@@ -60,7 +60,7 @@
 									</JOIN>
 								</COLLECTION>
 								<COLLECTION dmrole="test.spectra">
-									<JOIN table_ref="Spectra" primary="_poserr_148"
+									<JOIN tableref="Spectra" primary="_poserr_148"
 										foreign="_foreign">
 										<INSTANCE dmrole="test:detection"
 											dmtype="test:Detection">
@@ -77,7 +77,7 @@
 				</INSTANCE>
 			</INSTANCE>
 		</TEMPLATES>
-		<TEMPLATES table_ref="OtherResults">
+		<TEMPLATES tableref="OtherResults">
 			<COLLECTION dmrole="test:detections">
 				<TABLE_ROW_TEMPLATE>
 					<INSTANCE dmrole="test:detection" dmtype="test:Detection">
@@ -90,7 +90,7 @@
 				</TABLE_ROW_TEMPLATE>
 			</COLLECTION>
 		</TEMPLATES>
-		<TEMPLATES table_ref="Spectra">
+		<TEMPLATES tableref="Spectra">
 			<COLLECTION dmrole="test:spectra">
 				<TABLE_ROW_TEMPLATE>
 					<INSTANCE dmrole="test:spectrum" dmtype="test:Spectrum">

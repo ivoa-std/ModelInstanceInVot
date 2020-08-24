@@ -18,7 +18,7 @@
       ]
     },
     "TEMPLATES": {
-      "@table_ref": "Results",
+      "@tableref": "Results",
       "INSTANCE": {
         "@dmrole": "root",
         "@dmtype": "mango:stcextend.Photometry",
