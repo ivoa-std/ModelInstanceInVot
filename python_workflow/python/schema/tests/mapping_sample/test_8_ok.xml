@@ -15,7 +15,6 @@
 					<INSTANCE dmref="dmref" dmrole="dmrole" />
 				</COLLECTION>
 			</JOIN>
-
 		</COLLECTION>
 	</TEMPLATES>
 	<TEMPLATES tableref="fgdgfddf">
