@@ -2,6 +2,10 @@
 \input tthdefs
 
 \usepackage{array}
+\usepackage{tabulary}  % for nicer tables
+\usepackage{calc}
+\setlength\extrarowheight{2pt}
+
 \newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
 
 \title{Vodml-instance-vot}
@@ -55,6 +59,11 @@
   identifierstyle=\color{darkblue},
   keywordstyle=\color{maroon},
   morekeywords={ref,utype,dmrole, dmtype, value}% list your attributes here
+}
+
+\lstdefinestyle{XML}{
+    captionpos=b,
+    basicstyle=\small\ttfamily
 }
 \author{François Bonnarel}
 \author{Gilles Landais}
@@ -301,7 +310,7 @@ In the follwoing examples, attribute values do not refer toi any particular mode
 
 The mapping block is outside of the data tables. Its scope is the whole VOTable. Its stucture is given below.
 
-\begin{lstlisting}[caption={INSTANCE bloc example},captionpos=b]
+\begin{lstlisting}[caption={INSTANCE bloc example},style=XML]
  <VODML>
     <MODELS>   ...  </MODELS>
     <GLOBALS>   ...  </GLOBALS>
@@ -322,6 +331,10 @@ The mapping construction rules are the same whatever the model or the data layou
     \item There is one \texttt{<GLOBALS>} block containing data shared by the whole mapping.
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% MODELS
+%
 \subsection{MODELS}
 
 The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. It can be left empty.
@@ -332,7 +345,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
     \item It is to be noted that the mapping syntax allows to reconstruct the model structure without parsing any VODML model serialization.
 \end{itemize}
 
-\begin{lstlisting}[caption={GLOBALS block example},captionpos=b]
+\begin{lstlisting}[caption={GLOBALS block example},style=XML]
 <MODELS>
     <MODEL>
         <NAME>ivoa</NAME>
@@ -341,12 +354,12 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
     </MODEL>
     <MODEL>
         <NAME>coords</NAME>
-        <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+        <URL>http://www.ivoa.net/xml/STC_coords-v1.0.vo-dml.xml
     </URL>
     </MODEL>
     <MODEL>
         <NAME>meas</NAME>
-        <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+        <URL>http://www.ivoa.net/xml/STC_meas-v1.0.vo-dml.xml
         </URL>
     </MODEL>
 </MODELS>
@@ -355,6 +368,10 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
  \texttt{MODELS},  {MODEL},  {NAME} and {URL}  have no attributes. 
  
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% GLOBALS
+%
 \subsection{GLOBALS}
  Contains  \texttt{INSTANCE}s  that can be used everywhere in the \texttt{VODML}.
 \begin{itemize}
@@ -365,18 +382,18 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
     \item \texttt{GLOBALS} has no attributes. 
 \end{itemize}
 
-\begin{lstlisting}[caption={GLOBALS block example},captionpos=b]
+\begin{lstlisting}[caption={GLOBALS block example},style=XML]
   <GLOBALS>
     <INSTANCE ID="SpaceCoordFrame" dmrole="">
       <INSTANCE dmrole="coords:SpaceFrame.refPosition" 
-                           dmtype="coords:StdRefLocation">
-        <ATTRIBUTE dmrole="coords:StdRefLocation.position" 
-                          dmtype="ivoa:string" value="NoSet"/>
+                 dmtype="coords:StdRefLocation">
+          <ATTRIBUTE dmrole="coords:StdRefLocation.position" 
+                      dmtype="ivoa:string" value="NoSet"/>
       </INSTANCE>
       <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" 
-                         dmtype="ivoa:string" value="ICRS"/>
+                  dmtype="ivoa:string" value="ICRS"/>
       <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" 
-                         dmtype="coords:Epoch"   value="NoSet"/>
+                  dmtype="coords:Epoch"   value="NoSet"/>
     </INSTANCE>
  </GLOBALS>
 \end{lstlisting}
@@ -384,17 +401,27 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 
 
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{3cm}|p{7cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    &  Model instances with a scope covering the whole VOTable . \\       
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
        \hline 
-     \end{tabular}
+           \textbf{Child} &  
+           \textbf{Role}\\
+       \hline         \hline  
+            \texttt{INSTANCE}    &  
+            Model instances with a scope covering the whole VOTable . \\       
+       \hline 
+     \end{tabulary}
      \caption{Allowed  \texttt{GLOBALS} children} 
      \label{tbl:globals-children}
  \end{table}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TEMPLATES
+%
 \subsection{TEMPLATES}
 
 \texttt{TEMPLATE} blocks contain the mapping statements of the data contained in one \texttt{TABLE} .
@@ -405,15 +432,15 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
     \item  There is \texttt{TEMPLATE} reference ( @\texttt{tableref} ) must be first resolved against the \texttt{TABLE} identifier (  @\texttt{ID} ).
 \end{itemize}
 
-\begin{lstlisting}[caption={GLOBALS block example},captionpos=b]
+\begin{lstlisting}[caption={GLOBALS block example},style=XML]
 <TEMPLATES tableref="OtherResults">
     <COLLECTION dmrole="test:detections">
         <TABLE_ROW_TEMPLATE>
             <INSTANCE dmrole="test:detection" dmtype="test:Detection">
                <ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
-                                ref="_num_148" />
+                           ref="_num_148" />
                <ATTRIBUTE dmrole="test:detection.id" dmtype="ivoa:real"
-                               ref="_foreign" />
+                           ref="_foreign" />
            </INSTANCE>
         </TABLE_ROW_TEMPLATE>
     </COLLECTION>
@@ -421,36 +448,72 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 \end{lstlisting}
 
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{4cm}|p{8cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    & The table data are mapped on these instances.  \\              
-       \hline  \texttt{TABLE\_ROW\_TEMPLATE}    &  There is one instance per table row. The structure of those instance is given by the TABLE\_ROW\_TEMPLATE children \\              
-       \hline  \texttt{COLLECTION}    &  The table data are mapped on an instance list\\       
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
        \hline 
-     \end{tabular}
+           \textbf{Child} &  
+           \textbf{Role}\\
+       \hline         \hline  
+           \texttt{INSTANCE}    & 
+           The table data are mapped on these instances.  \\              
+       \hline  
+            \texttt{TABLE\_ROW\_TEMPLATE}    &  
+            There is one instance per table row. 
+             \newline The structure of those instance is given by the TABLE\_ROW\_TEMPLATE children \\              
+       \hline  
+             \texttt{COLLECTION}    &  
+             The table data are mapped on an instance list \\       
+       \hline 
+     \end{tabulary}
      \caption{Allowed  \texttt{TEMPLATES} children} 
      \label{tbl:templ-children}
  \end{table}
 
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{2cm}|p{3cm}|p{7.5cm}|}
-       \hline Attribute & Requ. level & Role\\
-       \hline  @tableref  & Mandatory & The @ID or the @name of the mapped table  \\
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
        \hline 
-     \end{tabular}
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @tableref  & 
+            The @ID or the @name of the mapped table  \\
+       \hline 
+     \end{tabulary}
      \caption{\texttt{TEMPLATES} attributes} 
      \label{tbl:templ-att}
  \end{table}
 
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|c|J|}
+    \hline 
+        \textbf{@tableref} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &   
+        Always mandatory\\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{TEMPLATES}} 
+     \label{tbl:templ-pattern}
+ \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% INSTANCE
+%
 \subsection{INSTANCE}
 
 Mapping for either object types or a datatype instances.
 
 
-\begin{lstlisting}[caption={INSTANCE bloc example},captionpos=b]
+\begin{lstlisting}[caption={INSTANCE block example},style=XML]
 <INSTANCE dmrole="ds:Dataset.dataID" dmtype="ds:DataID" ID="_ds_">
     <ATTRIBUTE dmrole="ds:DataID.title" value="Gaia TS Mapping Test" />
     <ATTRIBUTE dmrole="ds:DataID.datasetID" value="ivoa://gaia/ts/12345" />
@@ -467,44 +530,91 @@ Mapping for either object types or a datatype instances.
 \end{lstlisting}
 
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{5cm}|p{9cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    & Another embedded instance . \\       
-       \hline  \texttt{ATTRIBUTE}    & Primitive attribute . \\       
-       \hline  \texttt{COLLECTION}    & Set of items\\      
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
        \hline 
-     \end{tabular}
+           \textbf{Child} &  
+           \textbf{Role} \\
+       \hline         \hline  
+           \texttt{INSTANCE}    & 
+           Another embedded instance . \\       
+       \hline  
+           \texttt{ATTRIBUTE}    & 
+           Primitive attribute . \\       
+       \hline  
+            \texttt{COLLECTION}    & 
+           Set of items\\      
+       \hline 
+     \end{tabulary}
      \caption{Supported  \texttt{INSTANCE} children} 
      \label{tbl:inst-chilrdren}
 \end{table}
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{1.5cm}|p{10.5cm}|}
-       \hline Attribute &  Role\\
-       \hline  @dmrole    & VODML role of the instance.  \\
-       \hline  @dmtype & VODML type of the instance.  Must never be empty \\
-       \hline  @dmref  & reference to another instance in the mapping block.  Must never be empty\\          
-       \hline  @ID  & Unique identifier of the instance. Must never be empty\\
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
        \hline 
-     \end{tabular}
-     \caption{Supported attributes for  \texttt{INSTANCE}} 
+            \textbf{Attribute} &  
+            \textbf{Role}\\
+       \hline  
+            @dmrole    & 
+            VODML role of the instance.  \\
+       \hline  
+            @dmtype & 
+            VODML type of the instance.  \newline Must never be empty \\
+       \hline  
+            @dmref  & 
+            Reference to another instance in the mapping block. 
+            \newline  Must never be empty\\          
+       \hline  
+            @ID  & 
+            Unique identifier of the instance. 
+            \newline  Must never be empty\\
+       \hline 
+     \end{tabulary}
+     \caption{\texttt{INSTANCE} attributes} 
      \label{tbl:inst-att}
  \end{table}
 
-\begin{table}[!htbp]
-\begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1cm}|p{5cm}|}
-\hline @dmrole & @dmref &  @dmtype &  @ID &  use case\\
-\hline  MAND &  & MAND & OPT & Instance of a certain type playing a certain role. The role may be left empty  for child instances of 
-                                      \texttt{GLOBALS} \\
-\hline  MAND  & MAND  &  &  & Reference to another instance. No allowed children in this case.  \\
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|c|J|}
+    \hline 
+        \textbf{@dmrole} & 
+        \textbf{@dmref} &  
+        \textbf{@dmtype} &  
+        \textbf{@ID} &  
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &   
+       & 
+       MAND & 
+       OPT & 
+       Instance of a certain type playing a certain role. 
+         \newline The role may be left empty  for child instances of 
+          \texttt{GLOBALS} \\
+    \hline  
+       MAND  & 
+       MAND  &  
+       &  
+       & 
+       Reference to another instance. 
+        \newline  No allowed children in this case.  \\
 
 \hline 
-\end{tabular}
+\end{tabulary}
      \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
      \label{tbl:inst-pattern}
  \end{table}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ATTRIBUTE
+%
 \subsection{ATTRIBUTE}
 
 Mapping statement for primitive attributes.
@@ -514,52 +624,84 @@ Mapping statement for primitive attributes.
     \item \texttt{ATTRIBUTE}s have no children.
 \end{itemize}
 
-\begin{lstlisting}[caption={ATTRIBUTE examples},captionpos=b]
+\begin{lstlisting}[caption={ATTRIBUTE examples},style=XML]
 <INSTANCE dmrole="model:value.example" dmtype="model:value.Example">
     <ATTRIBUTE dmrole="model:preset.value" value="Preset Value" />    
     <ATTRIBUTE dmrole="model:ref.value" ref="fieldID" />    
     <ATTRIBUTE dmrole="model:refofpreset.value" 
-                         value="Preset Value" ref="fieldID" />
+                value="Preset Value" ref="fieldID" />
 </INSTANCE>
 \end{lstlisting}
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{1.5cm}|p{10.5cm}|}
-       \hline Attribute & Role\\
-       \hline  
-      @dmrole    & VODML role of the instance attribute.\\       
+
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}
        \hline 
-      @dmtype    & VODML type of the instance attribute.\\
+          \textbf{Attribute} & 
+          \textbf{Role}\\
+       \hline         \hline  
+          @dmrole    & 
+           VODML role of the instance attribute.\\       
+       \hline 
+          @dmtype    & 
+          VODML type of the instance attribute.\\
        \hline  
-      @value   & Literal value of the instance attribute. 
+          @value   &
+          Literal value of the instance attribute. 
                      \newline If  \texttt{ATTRIBUTE} has also a \texttt{@ref}, \texttt{@ref} MUST be resolved first.
                      \texttt{ATTRIBUTE}  MUST be taken when \texttt{@ref} cannot be resolved \\
         \hline
-       @ref & Reference of the data element (\texttt{FIELD} or \texttt{PARAM}).  
+           @ref & 
+            Reference of the data element (\texttt{FIELD} or \texttt{PARAM}).  
                     \newline MUST refer to an element of the \texttt{TABLE}  referenced by the current     
                     \texttt{TEMPLATE}                    
                     \newline The client MUST first look for a \texttt{FIELD} matching \texttt{@ref}. 
                     \newline In case of failure, it MUST look for a \texttt{PARAM}
                     \\
        \hline 
-     \end{tabular}
-     \caption{Supported attributes for  \texttt{ATTRIBUTE}} 
+     \end{tabulary}
+     \caption{\texttt{ATTRIBUTE} attributes} 
      \label{tbl:att-att}
  \end{table}
 
-\begin{table}[!htbp]
-  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{1.5cm}|p{6cm}|}
-    \hline @dmrole  &  @dmtype &  @ref &  @value &  Role\\
-    \hline  MAND & MAND &  MAND &  OPT & The instance attribute must take the value pointed by \texttt{@ref}. 
-              If the reference cannot be resolved, the attribute takes the value of \texttt{@val} if present. It is considered as not set otherwise.   \\
-    \hline  MAND & MAND &   &  MAND & The attribute takes the value of \texttt{@val}.   \\
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{1.0\linewidth}{|c|c|c|c|J|}
+
+    \hline    
+          \textbf{@dmrole}  &  
+          \textbf{@dmtype} &  
+          \textbf{@ref} &  
+          \textbf{@value} &  
+          \textbf{Pattern}\\
+    \hline   \hline 
+          MAND & 
+          MAND &  
+          MAND &  
+          OPT & 
+          The instance attribute must take the value pointed by \texttt{@ref}. 
+           \newline If the reference cannot be resolved, the attribute takes the value of \texttt{@val} if present.\newline  It is considered as not set otherwise.   \\
+     \hline  
+          MAND & 
+          MAND &   
+          &  
+          MAND & 
+          The attribute takes the value of \texttt{@val}.   \\
      \hline 
-  \end{tabular}
+  \end{tabulary}
   \caption{Valid attribute patterns for  \texttt{ATTRIBUTE}} 
   \label{tbl:att-pattern}
  \end{table}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% COLLECTION
+%
 \subsection{COLLECTION}
 Mapping statement fort sets of instances or collections.
 
@@ -570,7 +712,7 @@ Mapping statement fort sets of instances or collections.
  \end{itemize}
 
 
-\begin{lstlisting}[caption={COLLECTION example},captionpos=b]
+\begin{lstlisting}[caption={COLLECTION example},style=XML]
 <TEMPLATES tableref="Results">
     <COLLECTION dmrole="meas:Measure.errors" size="2">
          <INSTANCE dmref="globald=s_stat_error" />         
@@ -579,75 +721,122 @@ Mapping statement fort sets of instances or collections.
 </TEMPLATES>
 \end{lstlisting}
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{1.5cm}|p{10.5cm}|}
-       \hline Attribute & Role\\
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+       \hline 
+           \textbf{Child} &
+           \textbf{Role}\\
        \hline  
-      @dmrole    & VODML role of the collection.\\       
+           \texttt{INSTANCE}    & 
+           Collection item. A collection can contain multiple instances \\              
+       \hline  
+           \texttt{COLLECTION}    & 
+          Collection item. A collection can contain multiple instances \\       
+       \hline  
+           \texttt{TABLE\_ROW\_TEMPLATE}    & 
+          The collection is populated with with one instance per row of the current table. This element must be only child. \\       
+       \hline  
+          \texttt{JOIN}    & 
+         The collection is populated with data read in another table. The primary join key must be one of the host instance attributes.This element must be only child. \\      
        \hline 
-     \end{tabular}
-     \caption{Supported attributes for  \texttt{COLLECTION}} 
-     \label{tbl:att-att}
- \end{table}
-
-\begin{table}[!htbp]
-     \begin{tabular}{|p{4cm}|p{9cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    & Collection item. A collection can contain multiple instances \\              
-       \hline  \texttt{COLLECTION}    & Collection item. A collection can contain multiple instances \\       
-       \hline  \texttt{TABLE\_ROW\_TEMPLATE}    & The collection is populated with with one instance per row of the current table. This element must be only child. \\       
-       \hline  \texttt{JOIN}    & The collection is populated with data read in another table. The primary join key must be one of the host instance attributes.This element must be only child. \\      
-       \hline 
-     \end{tabular}
-     \caption{Supported  \texttt{COLLECTION} children} 
-     \label{tbl:coll-children}
+\end{tabulary}
+\caption{Supported  \texttt{COLLECTION} children} 
+\label{tbl:coll-children}
 \end{table}
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{1.5cm}|p{10.5cm}|}
-       \hline Attribute & Role\\
-       \hline  
-      @dmrole    & VODML role of the collection.\\       
-       \hline  
-      @size    & Collection size.\\       
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
        \hline 
-     \end{tabular}
-     \caption{Supported attributes for  \texttt{COLLECTION}} 
-     \label{tbl:att-att}
+           \textbf{Attribute} & 
+           \textbf{Role}\\
+       \hline  
+          @dmrole    & 
+           VODML role of the collection.\\       
+       \hline  
+          @size    & 
+          Collection size.\\       
+       \hline 
+ \end{tabulary}
+ \caption{Supported attributes for  \texttt{COLLECTION}} 
+ \label{tbl:att-att}
  \end{table}
 
 
-\begin{table}[!htbp]
-  \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{6cm}|}
-    \hline @dmrole   & @size   &  Role\\
-    \hline  MAND & OPT & Role played by the collection (VODML relation name usually). Cannot be empty \\    
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|L|J|}
     \hline 
-  \end{tabular}
+        @dmrole   & 
+        @size   &  
+        Role\\
+    \hline  
+       MAND & 
+       OPT & 
+       Role played by the collection (VODML relation name usually). Cannot be empty \\    
+    \hline 
+  \end{tabulary}
   \caption{Valid attribute patterns for  \texttt{COLLECTION}} 
   \label{tbl:coll-pattern}
  \end{table}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TABLE_ROW_TEMPLATE
+%
 \subsection{TABLE\_ROW\_TEMPLATE}
+This element indicates that one element must be added to the host COLLECTION for each table row.
 
-\begin{lstlisting}[caption={TABLE\_ROW\_TEMPLATE examples},captionpos=b]
+\begin{itemize}
+    \item The mapping if the row data is given by the child INSTANCE
+    \item We assume that we have one INSTANCE per row. 
+             This makes senses since a collection element cannot be made with more than one instance
+\end{itemize}
+
+\begin{lstlisting}[caption={TABLE\_ROW\_TEMPLATE examples},style=XML]
 <TEMPLATES tableref="OtherResults">
     <COLLECTION dmrole="test:detections">
         <TABLE_ROW_TEMPLATE>
             <INSTANCE dmtype="test:Detection">
                 <ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
-                                       ref="_num_148" />
+                            ref="_num_148" />
                 <ATTRIBUTE dmrole="test:detection.id" dmtype="ivoa:real"
-                                     ref="_foreign" />
+                            ref="_foreign" />
            </INSTANCE>
         </TABLE_ROW_TEMPLATE>
     </COLLECTION>
 </TEMPLATES>
 \end{lstlisting}
 
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+       \hline  
+          \textbf{Child} &  
+          \textbf{Role}\\
+       \hline  
+          \texttt{INSTANCE}    & 
+          Mapping to be applied to table row \\       
+       \hline 
+     \end{tabulary}
+     \caption{Supported  \texttt{TABLE\_ROW\_TEMPLATE} children} 
+     \label{trt:row-children}
+\end{table}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% FILTER
+%
 \subsection{FILTER}
 
-\begin{lstlisting}[caption={FILTER examples},captionpos=b]
+\begin{lstlisting}[caption={FILTER examples},style=XML]
 <COLLECTION dmrole="collection_dmrole">
     <TABLE_ROW_TEMPLATE>
         <FILTER ref="column_name" value="matching_column_value"/>
@@ -656,105 +845,230 @@ Mapping statement fort sets of instances or collections.
 </COLLECTION>
 \end{lstlisting}
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{4cm}|p{9cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    & Mapping to be applied to table rows matching the filter \\       
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+       \hline  
+          \textbf{Child} &  
+          \textbf{Role}\\
+       \hline  
+          \texttt{INSTANCE}    & 
+          Mapping to be applied to table rows matching the filter \\       
        \hline 
-     \end{tabular}
+     \end{tabulary}
      \caption{Supported  \texttt{FILTER} children} 
      \label{tbl:filter-children}
 \end{table}
 
 
-\subsection{GROUP\_BY  TBD}
 
-\begin{lstlisting}[caption={GROUP\_BY examples},captionpos=b]
-<TEMPLATES tableref="tableref">
-    <GROUPBY ref="column_name">
-        <INSTANCE dmref="instance_dmref" dmrole="instance_role" />
-    </GROUPBY>
-</TEMPLATES>
-\end{lstlisting}
-
-\begin{table}[!htbp]
-     \begin{tabular}{|p{4cm}|p{9cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    & Mapping to be applied to grouped table rows \\       
-       \hline 
-     \end{tabular}
-     \caption{Supported  \texttt{FILTER} children} 
-     \label{tbl:group-children}
-\end{table}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% JOIN
+%
 \subsection{JOIN}
-Join operator
+This element populates the host collection with data taken out from a foreign table and matching the join criteria.
 
-\begin{lstlisting}[caption={JOIN example},captionpos=b]
+\begin{itemize}
+    \item Each matching row of the foreign table is mapped as one instance mapped by the child INSTANCE.
+    \item Self-joins  on the local table are allowed.
+    \item The join criteria is based on the equality of the column values. 
+             The mapping does not specify the way to deal with data types.
+\end{itemize}
+
+\begin{lstlisting}[caption={JOIN example},style=XML]
 <TABLE_ROW_TEMPLATE>
     <INSTANCE dmrole="primary:point" dmtype="Point">
         <ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
-                              ref="_poserr_148" />
+                    ref="_poserr_148" />
         <COLLECTION dmrole="test.detections">
             <JOIN tableref="OtherResults" primary="_poserr_148"
-                       foreign="_foreign">
-                <INSTANCE dmrole="test:detection"
-                                    dmtype="test:Detection">
-                    <ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
-                                          ref="_num_148" />
-                   <ATTRIBUTE dmrole="test:detection.id" dmtype="ivoa:real"
-                                         ref="_foreign" />
+                   foreign="_foreign">
+                <INSTANCE dmrole="test:detection"  dmtype="test:Detection">
+                    <ATTRIBUTE dmrole="test:detection.num" 
+                                dmtype="ivoa:real"  ref="_num_148" />
+                   <ATTRIBUTE dmrole="test:detection.id" 
+                                dmtype="ivoa:real"  ref="_foreign" />
                 </INSTANCE>
             </JOIN>
         </COLLECTION>
     </INSTANCE>
 </TABLE_ROW_TEMPLATE>
-
 \end{lstlisting}
 
-\begin{table}[!htbp]
-     \begin{tabular}{|p{4cm}|p{9cm}|}
-       \hline Child &  Role\\
-       \hline  \texttt{INSTANCE}    & Mapping to be applied to joint foreign table rows matching  \\       
-       \hline 
-     \end{tabular}
+
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+\hline
+    \textbf{Child} &
+    \textbf{Role} \\
+\hline
+     \texttt{INSTANCE}    &
+     Mapping to be applied to the matching rows.  \\       
+\hline
+\end{tabulary}
      \caption{Supported  \texttt{JOIN} children} 
-     \label{tbl:filter-children}
+     \label{tbl:join-children}
 \end{table}
 
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+       \hline
+           \textbf{Attribute} &  
+           \textbf{Role} \\
+       \hline  
+           \texttt{@primary}    & 
+           Column name of the primary table used  by the join \\       
+       \hline  
+           \texttt{@foreign}    & 
+           Column name of the foreign table used  by the join \\       
+      \hline  
+           \texttt{@tableref}    & 
+           ID or name of the foreign table \\       
+       \hline 
+\end{tabulary}
+\caption{\texttt{JOIN} attributes} 
+\label{tbl:join-att}
+\end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|C|C|C|J|}
+       \hline
+           \textbf{@primary} &  
+           \textbf{@foreign} &                     
+           \textbf{@tableref} &          
+           \textbf{Role} \\
+       \hline  
+           MAND    &            
+           MAND    &            
+           MAND    & 
+           All attributes must be set in any case \\       
+       \hline 
+\end{tabulary}
+\caption{Valid \texttt{JOIN} attribute pattern} 
+\label{tbl:join-patterns}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% GROUPBY
+%
+\subsection{GROUPBY}
+This element aggrates grouped data in the host collection =.
+
+\begin{itemize}
+    \item Each matching row  is mapped as one instance mapped by the child INSTANCE.
+\end{itemize}
+
+In the example below:
+
+\begin{itemize}
+    \item The collection with @dmrole=test.lightcurves will be populated with a set of collections
+    \item Each of these sub-collections is populated with set of instances mapped by  INSTANCE.
+    \item All INSTANCEs are built from rows having all the same values for the column source\_name
+\end{itemize}
+
+\begin{lstlisting}[caption={GROUPBY examples},style=XML]
+<COLLECTION dmrole="test.lightcurves">
+    <GROUPBY ref="source_name">
+        <INSTANCE dmref="phit_point_dmref" dmrole="photometric point" />
+    </GROUPBY>
+</COLLECTION>
+\end{lstlisting}
+
+\begin{table}[hbtp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+\hline
+    \textbf{Child} &
+    \textbf{Role} \\
+\hline
+     \texttt{INSTANCE}    &
+     Mapping to be applied to the matching rows.  \\       
+\hline
+\end{tabulary}
+     \caption{Supported  \texttt{GROUPBY} children} 
+     \label{tbl:group-children}
+\end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+       \hline
+           \textbf{Attribute} &  
+           \textbf{Role} \\
+       \hline  
+           \texttt{@ref}    & 
+           Identifier of the column used for he grouping \\       
+        \hline 
+\end{tabulary}
+\caption{\texttt{GROUPBY} attributes} 
+\label{tbl:group-att}
+\end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|C|J|}
+       \hline
+           \textbf{@ref} &  
+           \textbf{Role} \\
+        \hline  
+           MAND    &            
+           All attributes must be set in any case \\       
+       \hline 
+\end{tabulary}
+\caption{Valid \texttt{GROUPBY} attribute pattern} 
+\label{tbl:group-patterns}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% SHORTCUTS
+%
 \subsection{Shortcuts}
 VODML encourgages people to use the ivoa model for the primitive types. 
 Some of these types have a complex structures that associate the unit with the value. 
 This is the case for the types derived from ivoa:Quantity (ivoa:RealQuantity and ivoa:IntegerQuantity ).
 The XML snipper below show the regular mapping for the realQuantity.
 
-\begin{lstlisting}[caption={ivoa:RealQuantity example},captionpos=b]
+\begin{lstlisting}[caption={ivoa:RealQuantity example},style=XML]
 <INSTANCE dmrole="coords:PhysicalCoordinate.cval"
 dmtype="ivoa:RealQuantity">
     <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real"
                      ref="col_id" />
     <ATTRIBUTE dmrole="ivoa:RealQuantity.unit" dmtype="ivoa:Unit"
-                         value="m/sec" />
+                     value="m/sec" />
 </INSTANCE>
 \end{lstlisting}
 
 
 
-AS this blocks map struture that are part of the VODML standards, we can pack them in compacter for named shorcut.
-Shortcuts can used at the same place and with the same rules as for INSTANCE
+A this block maps a structure that is part of the VODML standards, we can pack it in a compacter form named shorcut.
 
 \subsubsection{SC\_REALQUANTITY}
 Shortcut for ivoa:RealQuantity.
 
 \begin{itemize}
-    \item Using shorcuts requite units to be literals.    
+    \item Can only be used within an INSTANCE.        
+    \item Using shorcuts requires units to be literals.    
     \item Both @ref and @value attribute work the same as with ATTRIBUTE.
-    \item there is no @dmtype, it is set to   ivoa:RealQuantity
+    \item No @dmtype,  set as ivoa:RealQuantity by construiction
+ \end{itemize}
 
-  \end{itemize}
 
-
-\begin{lstlisting}[caption={ivoa:RealQuantity example},captionpos=b]
+\begin{lstlisting}[caption={ivoa:RealQuantity example},style=XML]
 <SC_REALQUANTITY dmrole="coords:PhysicalCoordinate.cval"
             ref="col_id" value="0.0"  unit="m/sec" />
 \end{lstlisting}
@@ -763,13 +1077,15 @@ Shortcut for ivoa:RealQuantity.
 Shortcut for ivoa:IntegerQuantity.
 
 \begin{itemize}
-    \item Using shorcuts requite units to be literals.    
+    \item Can only be used within an INSTANCE.        
+    \item Using shorcuts requires units to be literals.    
     \item Both @ref and @value attribute work the same as with ATTRIBUTE.
-    \item there is no @dmtype, it is set to   ivoa:RealQuantity
+    \item No @dmtype,  set as ivoa:RealInteger by construction
  \end{itemize}
 
 
-\begin{lstlisting}[caption={ivoa:IntegerQuantity example},captionpos=b]
+\begin{lstlisting}[caption={ivoa:IntegerQuantity example},style=XML,basicstyle=\small]
+
 <SC_INTQUANTITY dmrole="coords:PhysicalCoordinate.cval"
             ref="col_id" value="0"  unit="m/sec" />
 \end{lstlisting}
