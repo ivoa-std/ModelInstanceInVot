@@ -6,7 +6,7 @@ defaults:
     working-directory: doc
 
 env:
-  doc_name: vodml-instance-vot
+  doc_name: model-instance-in-vot
 
 on:
   push:
