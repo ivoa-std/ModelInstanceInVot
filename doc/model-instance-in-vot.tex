@@ -8,7 +8,7 @@
 
 \newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
 
-\title{Vodml-instance-vot}
+\title{Model Instances in Votables}
 
 % see ivoatexDoc for what group names to use here
 \ivoagroup{DM}
@@ -335,6 +335,7 @@ The mapping construction rules are the same whatever the model or the data layou
 %
 % MODELS
 %
+\clearpage
 \subsection{MODELS}
 
 The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. It can be left empty.
@@ -372,6 +373,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 %
 % GLOBALS
 %
+\clearpage
 \subsection{GLOBALS}
  Contains  \texttt{INSTANCE}s  that can be used everywhere in the \texttt{VODML}.
 \begin{itemize}
@@ -384,7 +386,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 
 \begin{lstlisting}[caption={GLOBALS block example},style=XML]
   <GLOBALS>
-    <INSTANCE ID="SpaceCoordFrame" dmrole="">
+    <INSTANCE ID="SpaceCoordFrame" >
       <INSTANCE dmrole="coords:SpaceFrame.refPosition" 
                  dmtype="coords:StdRefLocation">
           <ATTRIBUTE dmrole="coords:StdRefLocation.position" 
@@ -422,6 +424,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 %
 % TEMPLATES
 %
+\clearpage
 \subsection{TEMPLATES}
 
 \texttt{TEMPLATE} blocks contain the mapping statements of the data contained in one \texttt{TABLE} .
@@ -508,6 +511,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 %
 % INSTANCE
 %
+\clearpage
 \subsection{INSTANCE}
 
 Mapping for either object types or a datatype instances.
@@ -615,6 +619,7 @@ Mapping for either object types or a datatype instances.
 %
 % ATTRIBUTE
 %
+\clearpage
 \subsection{ATTRIBUTE}
 
 Mapping statement for primitive attributes.
@@ -702,17 +707,22 @@ Mapping statement for primitive attributes.
 %
 % COLLECTION
 %
+\clearpage
 \subsection{COLLECTION}
-Mapping statement fort sets of instances or collections.
+Mapping statement fort sets of either instances or collections.
 
 \begin{itemize}
-    \item A \texttt{COLLECTION} can contain a fixed set of instances or collections, each one being mapped individually.  
+    \item A \texttt{COLLECTION} can contain a fixed set of instances or collections. 
+            In this case, each element must be mapped individually.  
+            Element can be either \texttt{INSTANCE}s or \texttt{COLLECTION}s.
     \item A \texttt{COLLECTION} can contain an unbounded set of instances, one per selected table row. 
-            In this case, all items have tyhe same mapping. They can come from the local table or from a joint table.
+            In this case, all items have the same type and thus mapping. 
+           They can come from the local table or from a joint table.
  \end{itemize}
 
+The example below show up a a fixed length \texttt{COLLECTION}.
 
-\begin{lstlisting}[caption={COLLECTION example},style=XML]
+\begin{lstlisting}[caption={\texttt{COLLECTION} example},style=XML]
 <TEMPLATES tableref="Results">
     <COLLECTION dmrole="meas:Measure.errors" size="2">
          <INSTANCE dmref="globald=s_stat_error" />         
@@ -721,52 +731,52 @@ Mapping statement fort sets of instances or collections.
 </TEMPLATES>
 \end{lstlisting}
 
-\begin{table}[hbtp]
+\begin{table}[!hbtp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
        \hline 
            \textbf{Child} &
            \textbf{Role}\\
-       \hline  
+       \hline  \hline
            \texttt{INSTANCE}    & 
-           Collection item. A collection can contain multiple instances \\              
+           Mapping of one collection item. A collection can embed multiple \texttt{INSTANCE}s \\              
        \hline  
            \texttt{COLLECTION}    & 
-          Collection item. A collection can contain multiple instances \\       
+           Mapping of one collection item. A collection can embed multiple \texttt{COLLECTION}s \\              
        \hline  
            \texttt{TABLE\_ROW\_TEMPLATE}    & 
-          The collection is populated with with one instance per row of the current table. This element must be only child. \\       
+          The collection is populated with with one instance per row of the current table. When present, this element must be the only child. \\       
        \hline  
           \texttt{JOIN}    & 
-         The collection is populated with data read in another table. The primary join key must be one of the host instance attributes.This element must be only child. \\      
+         The collection is populated with data read in another table. When present, this element must be the only child.\\      
        \hline 
 \end{tabulary}
-\caption{Supported  \texttt{COLLECTION} children} 
+\caption{Valid  \texttt{COLLECTION} children} 
 \label{tbl:coll-children}
 \end{table}
 
-\begin{table}[hbtp]
+\begin{table}[!hbtp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
        \hline 
            \textbf{Attribute} & 
            \textbf{Role}\\
-       \hline  
+       \hline  \hline
           @dmrole    & 
-           VODML role of the collection.\\       
+           Role played by the collection (VODML relation name usually). Cannot be empty.\\       
        \hline  
           @size    & 
-          Collection size.\\       
+          Collection size. This attribute is not necessary to parse the mapping block.\\       
        \hline 
  \end{tabulary}
- \caption{Supported attributes for  \texttt{COLLECTION}} 
+ \caption{Valid attributes for  \texttt{COLLECTION}} 
  \label{tbl:att-att}
  \end{table}
 
 
-\begin{table}[hbtp]
+\begin{table}[!t]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|L|J|}
@@ -774,7 +784,7 @@ Mapping statement fort sets of instances or collections.
         @dmrole   & 
         @size   &  
         Role\\
-    \hline  
+    \hline  \hline
        MAND & 
        OPT & 
        Role played by the collection (VODML relation name usually). Cannot be empty \\    
@@ -788,24 +798,26 @@ Mapping statement fort sets of instances or collections.
 %
 % TABLE_ROW_TEMPLATE
 %
+\clearpage
 \subsection{TABLE\_ROW\_TEMPLATE}
-This element indicates that one element must be added to the host COLLECTION for each table row.
+This element indicates that one element must be added to the host \texttt{COLLECTION} for each table row.
 
 \begin{itemize}
-    \item The mapping if the row data is given by the child INSTANCE
-    \item We assume that we have one INSTANCE per row. 
-             This makes senses since a collection element cannot be made with more than one instance
+    \item The mapping of the row is given by the \texttt{INSTANCE} child.
+    \item We must map one and only one \texttt{INSTANCE} per row. 
+             This makes senses since collection elements cannot be made with more than one instance.
+   \item \texttt{TABLE\_ROW\_TEMPLATE}  has no attributes.
 \end{itemize}
 
 \begin{lstlisting}[caption={TABLE\_ROW\_TEMPLATE examples},style=XML]
-<TEMPLATES tableref="OtherResults">
+<TEMPLATES tableref="Results">
     <COLLECTION dmrole="test:detections">
         <TABLE_ROW_TEMPLATE>
             <INSTANCE dmtype="test:Detection">
                 <ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
                             ref="_num_148" />
                 <ATTRIBUTE dmrole="test:detection.id" dmtype="ivoa:real"
-                            ref="_foreign" />
+                            ref="_num_149" />
            </INSTANCE>
         </TABLE_ROW_TEMPLATE>
     </COLLECTION>
@@ -834,13 +846,33 @@ This element indicates that one element must be added to the host COLLECTION for
 %
 % FILTER
 %
+\clearpage
 \subsection{FILTER}
+This element filters the table rows that are to mapped. 
+
+\begin{itemize}
+   \item The filtering condition is based on the equality of a column value with the filter value.
+   \item The mapping specification does not specify the way to deal with data types.
+\end{itemize}
+
+In the example below::
+
+\begin{itemize}
+   \item The light curve will be populated with table rows mapped by the \texttt{INSTANCE} of type \texttt{test:photometric.point}
+   \item Each of these rows must have the value of the column \texttt{phot\_filter\_name} equals to \texttt{G}.
+\end{itemize}
 
 \begin{lstlisting}[caption={FILTER examples},style=XML]
-<COLLECTION dmrole="collection_dmrole">
+<COLLECTION dmrole="test.lightcurve">
     <TABLE_ROW_TEMPLATE>
-        <FILTER ref="column_name" value="matching_column_value"/>
-            <INSTANCE dmref="instance_dmref" dmrole="instance_role" />
+        <FILTER ref="phot_filter_name" value="G"/>
+            <INSTANCE dmtype="test:photometric.point">
+                   <ATTRIBUTE dmrole="test:photometric.point.time" 
+                                dmtype="ivoa:real"  ref="_num_148" />
+                   <ATTRIBUTE dmrole="test:photometric.point.mag" 
+                                dmtype="ivoa:real"  ref="_num_149" />
+            </INSTANCE>            
+       </FILTER>
     </TABLE_ROW_TEMPLATE>
 </COLLECTION>
 \end{lstlisting}
@@ -852,29 +884,68 @@ This element indicates that one element must be added to the host COLLECTION for
        \hline  
           \textbf{Child} &  
           \textbf{Role}\\
-       \hline  
+       \hline  \hline
           \texttt{INSTANCE}    & 
           Mapping to be applied to table rows matching the filter \\       
        \hline 
      \end{tabulary}
-     \caption{Supported  \texttt{FILTER} children} 
+     \caption{Valid  \texttt{FILTER} children} 
      \label{tbl:filter-children}
 \end{table}
 
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|L|J|}
+       \hline
+           \textbf{Attribute} &  
+           \textbf{Role} \\
+       \hline  \hline
+           \texttt{@ref}    & 
+           Identifier of the column on which the filtering criteria must be applied \\       
+        \hline 
+           \texttt{@value}    & 
+           Literal value that is used as filtering criteria \\       
+        \hline 
+\end{tabulary}
+\caption{\texttt{FILTER} attribute} 
+\label{tbl:filter-att}
+\end{table}
+
+\begin{table}[!t]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|C|CJ|}
+       \hline
+           \textbf{@ref} &  
+           \textbf{@value} &                     
+
+           \textbf{Role} \\
+       \hline   \hline
+           MAND    &            
+
+           MAND    & 
+           All attributes must be set in any case \\       
+       \hline 
+\end{tabulary}
+\caption{Valid \texttt{FILTER} attribute pattern} 
+\label{tbl:filter-patterns}
+\end{table}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % JOIN
 %
+\clearpage
 \subsection{JOIN}
 This element populates the host collection with data taken out from a foreign table and matching the join criteria.
 
 \begin{itemize}
-    \item Each matching row of the foreign table is mapped as one instance mapped by the child INSTANCE.
+    \item Each matching row of the foreign table is mapped as  one \texttt{INSTANCE} of type \texttt{test:Detection} .
     \item Self-joins  on the local table are allowed.
     \item The join criteria is based on the equality of the column values. 
-             The mapping does not specify the way to deal with data types.
+             The mapping specification does not specify the way to deal with data types.
 \end{itemize}
 
 \begin{lstlisting}[caption={JOIN example},style=XML]
@@ -885,7 +956,7 @@ This element populates the host collection with data taken out from a foreign ta
         <COLLECTION dmrole="test.detections">
             <JOIN tableref="OtherResults" primary="_poserr_148"
                    foreign="_foreign">
-                <INSTANCE dmrole="test:detection"  dmtype="test:Detection">
+                <INSTANCE  dmtype="test:Detection">
                     <ATTRIBUTE dmrole="test:detection.num" 
                                 dmtype="ivoa:real"  ref="_num_148" />
                    <ATTRIBUTE dmrole="test:detection.id" 
@@ -905,7 +976,7 @@ This element populates the host collection with data taken out from a foreign ta
 \hline
     \textbf{Child} &
     \textbf{Role} \\
-\hline
+\hline \hline
      \texttt{INSTANCE}    &
      Mapping to be applied to the matching rows.  \\       
 \hline
@@ -921,7 +992,7 @@ This element populates the host collection with data taken out from a foreign ta
        \hline
            \textbf{Attribute} &  
            \textbf{Role} \\
-       \hline  
+       \hline  \hline
            \texttt{@primary}    & 
            Column name of the primary table used  by the join \\       
        \hline  
@@ -940,7 +1011,7 @@ This element populates the host collection with data taken out from a foreign ta
 \small
 \centering
 \begin{tabulary}{\linewidth}{|C|C|C|J|}
-       \hline
+       \hline \hline
            \textbf{@primary} &  
            \textbf{@foreign} &                     
            \textbf{@tableref} &          
@@ -961,25 +1032,30 @@ This element populates the host collection with data taken out from a foreign ta
 %
 % GROUPBY
 %
+\clearpage
 \subsection{GROUPBY}
-This element aggrates grouped data in the host collection =.
+This element aggregates host table rows  in groups which elements have all the same value for a given column.
 
 \begin{itemize}
-    \item Each matching row  is mapped as one instance mapped by the child INSTANCE.
+    \item Each matching row  is mapped as one instance of the \texttt{INSTANCE} child.
 \end{itemize}
 
 In the example below:
 
 \begin{itemize}
-    \item The collection with @dmrole=test.lightcurves will be populated with a set of collections
-    \item Each of these sub-collections is populated with set of instances mapped by  INSTANCE.
-    \item All INSTANCEs are built from rows having all the same values for the column source\_name
+    \item The collection with \texttt{@dmrole=test.lightcurves} will be populated with a set of collections.
+    \item Each of these sub-collections is populated with set of instances mapped by the \texttt{INSTANCE} of \texttt{test:photometric.point} type.
+    \item All INSTANCEs are built wiith rows having all the same values for the column \texttt{source\_name}
 \end{itemize}
 
 \begin{lstlisting}[caption={GROUPBY examples},style=XML]
 <COLLECTION dmrole="test.lightcurves">
-    <GROUPBY ref="source_name">
-        <INSTANCE dmref="phit_point_dmref" dmrole="photometric point" />
+    <GROUPBY ref="filter_name" dmrole="test.lightcurve">
+        <INSTANCE  dmtype="test:photometric.point">
+                   <ATTRIBUTE dmrole="test:photometric.point.time" 
+                                dmtype="ivoa:real"  ref="_num_148" />
+                   <ATTRIBUTE dmrole="test:photometric.point.mag" 
+                                dmtype="ivoa:real"  ref="_num_149" />
     </GROUPBY>
 </COLLECTION>
 \end{lstlisting}
@@ -991,12 +1067,12 @@ In the example below:
 \hline
     \textbf{Child} &
     \textbf{Role} \\
-\hline
+\hline \hline
      \texttt{INSTANCE}    &
      Mapping to be applied to the matching rows.  \\       
 \hline
 \end{tabulary}
-     \caption{Supported  \texttt{GROUPBY} children} 
+     \caption{Valid  \texttt{GROUPBY} children} 
      \label{tbl:group-children}
 \end{table}
 
@@ -1007,9 +1083,12 @@ In the example below:
        \hline
            \textbf{Attribute} &  
            \textbf{Role} \\
-       \hline  
+       \hline  \hline
            \texttt{@ref}    & 
-           Identifier of the column used for he grouping \\       
+           Identifier of the column used for the grouping \\       
+        \hline 
+           \texttt{@dmrole}    & 
+           Role of the grouped sub-collections\\       
         \hline 
 \end{tabulary}
 \caption{\texttt{GROUPBY} attributes} 
@@ -1019,13 +1098,15 @@ In the example below:
 \begin{table}[!htbp]
 \small
 \centering
-\begin{tabulary}{\linewidth}{|C|J|}
+\begin{tabulary}{\linewidth}{|C|C|J|}
        \hline
-           \textbf{@ref} &  
+           \textbf{@ref} & 
+           \textbf{@dmrole} &  
            \textbf{Role} \\
-        \hline  
+        \hline   \hline
+           MAND    &                       
            MAND    &            
-           All attributes must be set in any case \\       
+           Must be set with non empty values \\       
        \hline 
 \end{tabulary}
 \caption{Valid \texttt{GROUPBY} attribute pattern} 
@@ -1037,11 +1118,12 @@ In the example below:
 %
 % SHORTCUTS
 %
+\clearpage
 \subsection{Shortcuts}
-VODML encourgages people to use the ivoa model for the primitive types. 
-Some of these types have a complex structures that associate the unit with the value. 
-This is the case for the types derived from ivoa:Quantity (ivoa:RealQuantity and ivoa:IntegerQuantity ).
-The XML snipper below show the regular mapping for the realQuantity.
+VODML encourgages people to use the \texttt{ivoa} model for the primitive types. 
+Some of these types have a complex structures that associate units with values. 
+This is the case for the types derived from \texttt{ivoa:Quantity} (\texttt{ivoa:RealQuantity} and \texttt{ivoa:IntegerQuantity} ).
+The XML snippet below shows the regular mapping for a real quantity..
 
 \begin{lstlisting}[caption={ivoa:RealQuantity example},style=XML]
 <INSTANCE dmrole="coords:PhysicalCoordinate.cval"
@@ -1055,42 +1137,44 @@ dmtype="ivoa:RealQuantity">
 
 
 
-A this block maps a structure that is part of the VODML standards, we can pack it in a compacter form named shorcut.
+This block maps a structure that is part of the VODML standards, therefore we can alias it with a compact element.
 
 \subsubsection{SC\_REALQUANTITY}
-Shortcut for ivoa:RealQuantity.
+Shortcut for \texttt{ivoa:RealQuantity} class.
 
 \begin{itemize}
-    \item Can only be used within an INSTANCE.        
-    \item Using shorcuts requires units to be literals.    
-    \item Both @ref and @value attribute work the same as with ATTRIBUTE.
-    \item No @dmtype,  set as ivoa:RealQuantity by construiction
+    \item Can only be used within an INSTANCE      
+    \item Using shorcuts requires units to be literals   
+    \item Both \texttt{@ref} and \texttt{@value} attribute work the same way as with \texttt{ATTRIBUTE}
+    \item No \texttt{@dmtype},  it is set as ivoa:RealInteger by construction
  \end{itemize}
 
 
-\begin{lstlisting}[caption={ivoa:RealQuantity example},style=XML]
+\begin{lstlisting}[caption={\texttt{ivoa:RealQuantity} example},style=XML]
 <SC_REALQUANTITY dmrole="coords:PhysicalCoordinate.cval"
             ref="col_id" value="0.0"  unit="m/sec" />
 \end{lstlisting}
 
 \subsubsection{SC\_INTQUANTITY}
-Shortcut for ivoa:IntegerQuantity.
+Shortcut for \texttt{ivoa:IntegerQuantity} class.
 
 \begin{itemize}
-    \item Can only be used within an INSTANCE.        
-    \item Using shorcuts requires units to be literals.    
-    \item Both @ref and @value attribute work the same as with ATTRIBUTE.
-    \item No @dmtype,  set as ivoa:RealInteger by construction
+    \item Can only be used within an INSTANCE        
+    \item Using shorcuts requires units to be literals    
+    \item Both \texttt{@ref} and \texttt{@value} attribute work the same way as with \texttt{ATTRIBUTE}.
+    \item No \texttt{@dmtype},  it is set as ivoa:RealInteger by construction
  \end{itemize}
 
 
-\begin{lstlisting}[caption={ivoa:IntegerQuantity example},style=XML,basicstyle=\small]
+\begin{lstlisting}[caption={\texttt{ivoa:IntegerQuantity} example},style=XML,basicstyle=\small]
 
 <SC_INTQUANTITY dmrole="coords:PhysicalCoordinate.cval"
             ref="col_id" value="0"  unit="m/sec" />
 \end{lstlisting}
 
+\clearpage
 \appendix
+
 \section{Changes from Previous Versions}
 
 No previous versions yet.  
