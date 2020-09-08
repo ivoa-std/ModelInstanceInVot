@@ -1,5 +1,5 @@
 {
-  "VODML": {
+  "MODEL_INSTANCE": {
     "GLOBALS": {
       "INSTANCE": {
         "@ID": "StatusSys",
@@ -109,7 +109,7 @@
         }
       ]
     },
-    "TEMPLATES": {
+    "TABLE_MAPPING": {
       "@tableref": "Results",
       "INSTANCE": {
         "@dmrole": "root",

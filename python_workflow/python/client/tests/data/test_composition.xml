@@ -1,4 +1,4 @@
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>ivoa</NAME>
@@ -17,7 +17,7 @@
 	</MODELS>
 	<GLOBALS>
 	</GLOBALS>
-	<TEMPLATES tableref="Results">
+	<TABLE_MAPPING tableref="Results">
 		<COLLECTION dmrole="meas:Measure.errors" size="2">
 			<INSTANCE dmrole="meas:Error.statError"
 				dmtype="meas:Symmetrical">
@@ -40,5 +40,5 @@
 				</INSTANCE>
 			</INSTANCE>
 		</COLLECTION>
-	</TEMPLATES>
-</VODML>
+	</TABLE_MAPPING>
+</MODEL_INSTANCE>

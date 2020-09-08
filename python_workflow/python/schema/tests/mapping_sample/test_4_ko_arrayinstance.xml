@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>meas</NAME>
@@ -8,7 +8,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES tableref="fgdgfddf">
+	<TABLE_MAPPING tableref="fgdgfddf">
 		<COLLECTION dmrole="">
 			<TABLE_ROW_TEMPLATE />
 			<INSTANCE dmref="dmref" dmrole="dmrole">
@@ -16,5 +16,5 @@
 					value="dmvalue" />
 			</INSTANCE>
 		</COLLECTION>
-	</TEMPLATES>
-</VODML>
+	</TABLE_MAPPING>
+</MODEL_INSTANCE>

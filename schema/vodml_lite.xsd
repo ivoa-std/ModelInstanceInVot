@@ -4,7 +4,7 @@
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- Top level structure of the mapping block -->
-	<xs:element name="VODML">
+	<xs:element name="MODEL_INSTANCE">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="MODELS">
@@ -16,14 +16,14 @@
 					</xs:complexType>
 				</xs:element>
 				<xs:element ref="GLOBALS" minOccurs="1" maxOccurs="1" />
-				<xs:element ref="TEMPLATES" minOccurs="0"
+				<xs:element ref="TABLE_MAPPING" minOccurs="0"
 					maxOccurs="unbounded" />
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 
 	<!-- Mapping of the data contained in a particular table -->
-	<xs:element name="TEMPLATES">
+	<xs:element name="TABLE_MAPPING">
 		<xs:complexType>
 			<xs:choice>
 				<xs:sequence>

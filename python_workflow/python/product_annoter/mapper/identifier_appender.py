@@ -4,7 +4,7 @@ Created on 15 avr. 2020
 @author: laurentmichel
 '''
 
-from product_annoter.mapper.constants import PARAM_TEMPLATES
+from product_annoter.mapper.constants import PARAM_TABLE_MAPPING
 from product_annoter.mapper.parameter_appender import ParameterAppender
 class IdentifierAppender:
     '''
@@ -18,7 +18,7 @@ class IdentifierAppender:
         self.mango_path = mango_path        
         
         self.appender = ParameterAppender(
-            PARAM_TEMPLATES.POSITION,
+            PARAM_TABLE_MAPPING.POSITION,
             self.mango_path,
             ""
             )

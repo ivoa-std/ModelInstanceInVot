@@ -177,14 +177,14 @@ This is satisfactory in many cases but with some limitations however:\begin{enum
    \item The GROUPs, as they are currently used, do not reflect the complete model structure. The are mostly used to group columns with a loose coupling with the model hierarchy. This prevents the restore complex data structures.
    \item The identification of the GROUP elements is based on Utypes which are not clearly connected with the underlying model. Utypes are actually used to represent simple structures. In the current implementations, the client knows the data structures (e.g. coordinate system) and pick values within the group to fill them..
 \end{enumerate}
-These limitations were unavoidable while we had no common way to represent  models. It is indeed difficult to imagine a consistant model mapping mechanism if there is no standard serialization schema for those models. The situation changed with the usage of VODML. VODML proposes a robust way to make models machine-readable. With VODML, we can consider a mapping syntax directly derived from the model serialization. There are 2 approaches that might be complementary. 
+These limitations were unavoidable while we had no common way to represent  models. It is indeed difficult to imagine a consistant model mapping mechanism if there is no standard serialization schema for those models. The situation changed with the usage of MODEL_INSTANCE. MODEL_INSTANCE proposes a robust way to make models machine-readable. With MODEL_INSTANCE, we can consider a mapping syntax directly derived from the model serialization. There are 2 approaches that might be complementary. 
 \begin{enumerate}
    \item The first option is to hide the model complexity by flattenning its representation. This is the way GROUPs do work. This approach has the advantage of being compact but it has some strong limitations such as the impossibility of having different elements playing the same role (e.g. 2 position columns in the same table)
    \item The second option consists in keeping the model structure even if this leads to more complex annotations.
 \end{enumerate}
 
 
-Vodml-instance-vot is based on the second option with a particular concern for the process of archival data annotation. The purpose of the VODML mapping in VOTables is to provide a bridge between the data and the model it refers to. The goal of the mapping processing is to make possible to build instances set with values taken out the data tables. In theory, a perfecly faith mapping should be capable of rendering any model feature. In our opinion this ambitious goal led to a mapping syntax difficult to manage.
+Vodml-instance-vot is based on the second option with a particular concern for the process of archival data annotation. The purpose of the MODEL_INSTANCE mapping in VOTables is to provide a bridge between the data and the model it refers to. The goal of the mapping processing is to make possible to build instances set with values taken out the data tables. In theory, a perfecly faith mapping should be capable of rendering any model feature. In our opinion this ambitious goal led to a mapping syntax difficult to manage.
 We prefer to discard this round-trip requirement and to keep focused on both client needs and easiness of the annotation process.
 
 Our main use case is the annotation  of pre-existing data. This  means the annotation process must succeed whatever the way data are arranged even if they do not contain all quantities requested by the model.  
@@ -209,7 +209,7 @@ These ideas that led to this proposal were first tested in the framework of the 
 %The existing mapping based on GROUP works fine with the simplest cases. It has the disadvantage of being based on Utypes which are not clearly connected with the underlying model. Utypes are actually used to represent simple structures. In the current implementations, the client knows the data structures (e.g. coordinate system) and pick values within the group to fill them.
 
  %For now, mone discover or reconstruct a classe hierarchy from groups either. 
-%The purpose of the VODML mapping in VOTables is to provide a bridge between the model it refers to and the data. The mapping processing is meant to deliver a model instance set with values taken out the data table. In theory, a perfecly faith mapping should be capable of rendering any model feature. In our opinion this ambitious goal led to a mapping syntax difficult to manage.
+%The purpose of the MODEL_INSTANCE mapping in VOTables is to provide a bridge between the model it refers to and the data. The mapping processing is meant to deliver a model instance set with values taken out the data table. In theory, a perfecly faith mapping should be capable of rendering any model feature. In our opinion this ambitious goal led to a mapping syntax difficult to manage.
 %We prefer to discard this round-trip requirement and to keep focused on the client needs and the easiness of the VOTable annotation process.
 
 %ur main use case is the annotation  of pre-existing data. This  means the annotation process must succeed whatever the way data are arranged even if they do not contain all quantities requested by the model.  We consider that the client just needs to reconstruct the data hierarchy and to get a full description of the used coordinate systems. For most of the usages (display, plot, match, computation),  complex data hierarchies can be wrapped in 3 data types, the simple values, the tuples and the lists. The mango mapping has been built upon these 3 types with a few others annotations guiding the work of the parser.
@@ -301,49 +301,54 @@ The goal of this version of the specification is to support requirements 1) and 
 \section{Syntax}
 
 
-The syntax specified in this standard gives rules to build consistent annotations for any model. However, it do not prevent to do foolish things, in the same way that a programming language grammar does not protect people against writing irrelevant software.
-In the follwoing examples, attribute values do not refer toi any particular model or VOTable. They have been to help reader to figure out their meanings.
+The syntax rules specified in this standard allow to build consistent annotations for any model. However, they do not prevent to do foolish things in the same way that a programming language grammar does not protect people against writing irrelevant software.
+In the following annotation snippets, the values of the XML elements attribute do not refer toi any particular model or VOTable. They have been choosen to help readers to figure out their meanings.
 
 \subsection{Mapping Block Structure}
 
-\textit{The rules below must be updated accordingly to the XML schema .. in progress....}
-
-The mapping block is outside of the data tables. Its scope is the whole VOTable. Its stucture is given below.
+The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the whole VOTable. Its stucture is given below.
 
 \begin{lstlisting}[caption={INSTANCE bloc example},style=XML]
- <VODML>
-    <MODELS>   ...  </MODELS>
-    <GLOBALS>   ...  </GLOBALS>
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            version="1.4">
+   <MODEL_INSTANCE>
+     <MODELS>   ...  </MODELS>
+     <GLOBALS>   ...  </GLOBALS>
 
-    <TEMPLATES tableref=...>  ... </TEMPLATES tableref=...>
-    <TEMPLATES tableref=...> ...  </TEMPLATES tableref=...>
+      <TABLE\_MAPPING tableref=...>  ... </TABLE\_MAPPING tableref=...>
+      <TABLE\_MAPPING tableref=...> ...  </TABLE\_MAPPING tableref=...>
     ...
- </VODML>
+   </MODEL_INSTANCE>
+   ..
+</VOTABLE>
 \end{lstlisting}
 
-The mapping construction rules are the same whatever the model or the data layout are.
+The mapping construction rules are the same whatever either model or data layout are.
 
 \begin{itemize}
-    \item The mapping is located in a \texttt{<VODML>} block, child of \texttt{<VOTABLE>}.
-    \item The mapping elements reflect the model structure.
-    \item The \texttt{<VODML>} block starts with a list of implemented models.
-    \item There is one \texttt{<TEMPLATES>} per mapped \texttt{<TABLE>}.
-    \item There is one \texttt{<GLOBALS>} block containing data shared by the whole mapping.
+    \item The mapping is located in a \texttt{<MODEL\_INSTANCE>} block, child of \texttt{<VOTABLE>}.
+    \item The mapping elements denote the model structure.
+    \item The \texttt{<MODEL\_INSTANCE>} block starts with the list of implemented models.
+    \item The model list is followed the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
+    \item The \texttt{<GLOBALS>} block is followed a sequence of \texttt{<TABLE\_MAPPING>}.
+    \item There is one \texttt{<TABLE\_MAPPING>} per mapped \texttt{<TABLE>}.
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % MODELS
 %
-\clearpage
+
 \subsection{MODELS}
 
-The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. It can be left empty.
+The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. 
 
 
 \begin{itemize}
-    \item Models referenced in \texttt{MODELS} are not necessary VO standards, but they must be accessible by a VODML URI.
-    \item It is to be noted that the mapping syntax allows to reconstruct the model structure without parsing any VODML model serialization.
+    \item The model list is informative, it is not requested to achieve the parsing.
+    \item The model list can be left empty.
+    \item Models referenced in \texttt{MODELS} are not necessary VO standards, but they must be accessible by a VODML URI
 \end{itemize}
 
 \begin{lstlisting}[caption={GLOBALS block example},style=XML]
@@ -373,12 +378,13 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 %
 % GLOBALS
 %
-\clearpage
+
 \subsection{GLOBALS}
- Contains  \texttt{INSTANCE}s  that can be used everywhere in the \texttt{VODML}.
+ Contains  \texttt{INSTANCE}s  that can be used everywhere in the \texttt{MODEL\_INSTANCE}.
+
 \begin{itemize}
     \item \texttt{INSTANCE}s children of \texttt{GLOBALS} should have an  \texttt{@ID} attribute so that they can be referenced from other instances.
-    \item The role of the \texttt{GLOBALS}s children (\texttt{INSTANCE} by construction) must be ignored although being mandatory.
+    \item The role of the \texttt{GLOBALS}s children, (\texttt{INSTANCE}s by construction), must be ignored although being mandatory.
     \item References within \texttt{GLOBALS}s  sub-elements to VOTable data (\texttt{FIELD} ot \texttt{PARAM}) must be searched in all tables. 
             They must be resolved by the first occurence matching the reference found.
     \item \texttt{GLOBALS} has no attributes. 
@@ -403,7 +409,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 
 
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -422,24 +428,25 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% TEMPLATES
+% TABLE\MAPPING
 %
-\clearpage
-\subsection{TEMPLATES}
 
-\texttt{TEMPLATE} blocks contain the mapping statements of the data contained in one \texttt{TABLE} .
+\subsection{TABLE\_MAPPING}
+
+\texttt{TABLE\_MAPPING} blocks contain the mapping statements of the data contained in one \texttt{TABLE} .
 
 \begin{itemize}
-    \item There is one \texttt{TEMPLATE} block for each mapped \texttt{TABLE}  in the VOTAble    
-    \item A \texttt{TABLE} cannot be referenced by more than one \texttt{TEMPLATE}.
-    \item  There is \texttt{TEMPLATE} reference ( @\texttt{tableref} ) must be first resolved against the \texttt{TABLE} identifier (  @\texttt{ID} ).
+    \item There is one \texttt{TABLE\_MAPPING} block for each mapped \texttt{TABLE}  in the VOTAble.    
+    \item A \texttt{TABLE} cannot be referenced by more than one \texttt{TABLE\_MAPPING} element.
+    \item The table related to a \texttt{TABLE\_MAPPING} is identified by the @\texttt{tableref} attribute. 
+            It must be first resolved against the \texttt{TABLE} identifier ( @\texttt{ID} ) and then against the table name.
 \end{itemize}
 
-\begin{lstlisting}[caption={GLOBALS block example},style=XML]
-<TEMPLATES tableref="OtherResults">
+\begin{lstlisting}[caption={TABLE\_MAPPING block example},style=XML]
+<TABLE_MAPPING tableref="OtherResults">
     <COLLECTION dmrole="test:detections">
         <TABLE_ROW_TEMPLATE>
-            <INSTANCE dmrole="test:detection" dmtype="test:Detection">
+            <INSTANCE dmrole="" dmtype="test:Detection">
                <ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real"
                            ref="_num_148" />
                <ATTRIBUTE dmrole="test:detection.id" dmtype="ivoa:real"
@@ -447,11 +454,11 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
            </INSTANCE>
         </TABLE_ROW_TEMPLATE>
     </COLLECTION>
-</TEMPLATES>
+</TABLE_MAPPING>
 \end{lstlisting}
 
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -460,22 +467,22 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
            \textbf{Role}\\
        \hline         \hline  
            \texttt{INSTANCE}    & 
-           The table data are mapped on these instances.  \\              
+           Mapping of an object or a data type.  \\              
        \hline  
             \texttt{TABLE\_ROW\_TEMPLATE}    &  
-            There is one instance per table row. 
-             \newline The structure of those instance is given by the TABLE\_ROW\_TEMPLATE children \\              
+            One instance must be built for each table row. 
+             \newline The structure of those instances is given by the TABLE\_ROW\_TEMPLATE children \\              
        \hline  
              \texttt{COLLECTION}    &  
-             The table data are mapped on an instance list \\       
+             Mapping of an object collection \\       
        \hline 
      \end{tabulary}
-     \caption{Allowed  \texttt{TEMPLATES} children} 
+     \caption{Valid \texttt{TABLE\_MAPPING} children} 
      \label{tbl:templ-children}
  \end{table}
 
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -487,11 +494,11 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
             The @ID or the @name of the mapped table  \\
        \hline 
      \end{tabulary}
-     \caption{\texttt{TEMPLATES} attributes} 
+     \caption{\texttt{TABLE\_MAPPING} attributes} 
      \label{tbl:templ-att}
  \end{table}
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|c|c|c|J|}
@@ -503,7 +510,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
         Always mandatory\\
    \hline 
 \end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{TEMPLATES}} 
+     \caption{Valid attribute patterns for  \texttt{TABLE\_MAPPING}} 
      \label{tbl:templ-pattern}
  \end{table}
 
@@ -511,14 +518,15 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 %
 % INSTANCE
 %
-\clearpage
+
 \subsection{INSTANCE}
 
 Mapping for either object types or a datatype instances.
 
+\TODO{ put a better rexample}
 
 \begin{lstlisting}[caption={INSTANCE block example},style=XML]
-<INSTANCE dmrole="ds:Dataset.dataID" dmtype="ds:DataID" ID="_ds_">
+<INSTANCE dmrole="ds:Dataset.dataID" dmtype="ds:DataID">
     <ATTRIBUTE dmrole="ds:DataID.title" value="Gaia TS Mapping Test" />
     <ATTRIBUTE dmrole="ds:DataID.datasetID" value="ivoa://gaia/ts/12345" />
     <ATTRIBUTE dmrole="ds:DataID.creatorDID" value="ivoa://esa/gaia/" />
@@ -527,14 +535,14 @@ Mapping for either object types or a datatype instances.
     <ATTRIBUTE dmrole="ds:DataID.creationType" value="LiteMappingTest" />
     <INSTANCE dmrole="ds:DataID.creator" dmtype="ds:Creator">
         <INSTANCE dmrole="ds:Role.party" dmtype="ds:party.Individual">
-            <ATTRIBUTE dmrole="ds:Party.name" value="VODML-Team" />
+            <ATTRIBUTE dmrole="ds:Party.name" value="MODEL_INSTANCE-Team" />
        </INSTANCE>
     </INSTANCE>
 </INSTANCE>
 \end{lstlisting}
 
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -552,11 +560,11 @@ Mapping for either object types or a datatype instances.
            Set of items\\      
        \hline 
      \end{tabulary}
-     \caption{Supported  \texttt{INSTANCE} children} 
+     \caption{Valid  \texttt{INSTANCE} children} 
      \label{tbl:inst-chilrdren}
 \end{table}
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -565,7 +573,7 @@ Mapping for either object types or a datatype instances.
             \textbf{Role}\\
        \hline  
             @dmrole    & 
-            VODML role of the instance.  \\
+            VODML role.  \newline Can be empty if located in GLOBALS or in TABLE\_ROW\_INSTANCE \\
        \hline  
             @dmtype & 
             VODML type of the instance.  \newline Must never be empty \\
@@ -583,7 +591,7 @@ Mapping for either object types or a datatype instances.
      \label{tbl:inst-att}
  \end{table}
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|c|c|c|J|}
@@ -598,9 +606,7 @@ Mapping for either object types or a datatype instances.
        & 
        MAND & 
        OPT & 
-       Instance of a certain type playing a certain role. 
-         \newline The role may be left empty  for child instances of 
-          \texttt{GLOBALS} \\
+       Instance of a certain type playing a certain role. \\
     \hline  
        MAND  & 
        MAND  &  
@@ -608,8 +614,7 @@ Mapping for either object types or a datatype instances.
        & 
        Reference to another instance. 
         \newline  No allowed children in this case.  \\
-
-\hline 
+      \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
      \label{tbl:inst-pattern}
@@ -619,13 +624,14 @@ Mapping for either object types or a datatype instances.
 %
 % ATTRIBUTE
 %
-\clearpage
+
 \subsection{ATTRIBUTE}
 
 Mapping statement for primitive attributes.
 
 \begin{itemize}
-    \item \texttt{ATTRIBUTE}s  are the model leaves that point onto real data or are set with literals
+    \item \texttt{ATTRIBUTE}s  are the model leaves.     
+    \item \texttt{ATTRIBUTE}  values can either be set by reference on tabke data or by literal values. 
     \item \texttt{ATTRIBUTE}s have no children.
 \end{itemize}
 
@@ -633,13 +639,13 @@ Mapping statement for primitive attributes.
 <INSTANCE dmrole="model:value.example" dmtype="model:value.Example">
     <ATTRIBUTE dmrole="model:preset.value" value="Preset Value" />    
     <ATTRIBUTE dmrole="model:ref.value" ref="fieldID" />    
-    <ATTRIBUTE dmrole="model:refofpreset.value" 
+    <ATTRIBUTE dmrole="model:reforpreset.value" 
                 value="Preset Value" ref="fieldID" />
 </INSTANCE>
 \end{lstlisting}
 
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}
@@ -648,22 +654,24 @@ Mapping statement for primitive attributes.
           \textbf{Role}\\
        \hline         \hline  
           @dmrole    & 
-           VODML role of the instance attribute.\\       
+           VODML role of the attribute. 
+           \newline  Must never be empty\\       
        \hline 
           @dmtype    & 
-          VODML type of the instance attribute.\\
+          VODML type of the instance attribute.
+           \newline  Must never be empty\\
        \hline  
           @value   &
           Literal value of the instance attribute. 
                      \newline If  \texttt{ATTRIBUTE} has also a \texttt{@ref}, \texttt{@ref} MUST be resolved first.
-                     \texttt{ATTRIBUTE}  MUST be taken when \texttt{@ref} cannot be resolved \\
+                     \texttt{ATTRIBUTE}  \texttt{@val} must be taken when \texttt{@ref} cannot be resolved \\
         \hline
            @ref & 
             Reference of the data element (\texttt{FIELD} or \texttt{PARAM}).  
-                    \newline MUST refer to an element of the \texttt{TABLE}  referenced by the current     
-                    \texttt{TEMPLATE}                    
+                    \newline Must refer to an element of the \texttt{TABLE}  referenced by the current     
+                    \texttt{TABLE\_MAPPING}                    
                     \newline The client MUST first look for a \texttt{FIELD} matching \texttt{@ref}. 
-                    \newline In case of failure, it MUST look for a \texttt{PARAM}
+                    \newline If no \texttt{FIELD}  is found, it must look for a \texttt{PARAM}
                     \\
        \hline 
      \end{tabulary}
@@ -671,7 +679,7 @@ Mapping statement for primitive attributes.
      \label{tbl:att-att}
  \end{table}
 
-\begin{table}[hbtp]
+\begin{table}[!t]
 \small
 \centering
 \begin{tabulary}{1.0\linewidth}{|c|c|c|c|J|}
@@ -707,31 +715,32 @@ Mapping statement for primitive attributes.
 %
 % COLLECTION
 %
-\clearpage
+
 \subsection{COLLECTION}
+
 Mapping statement fort sets of either instances or collections.
 
 \begin{itemize}
     \item A \texttt{COLLECTION} can contain a fixed set of instances or collections. 
             In this case, each element must be mapped individually.  
-            Element can be either \texttt{INSTANCE}s or \texttt{COLLECTION}s.
+            Elements can be either \texttt{INSTANCE}s or \texttt{COLLECTION}s.
     \item A \texttt{COLLECTION} can contain an unbounded set of instances, one per selected table row. 
-            In this case, all items have the same type and thus mapping. 
-           They can come from the local table or from a joint table.
+            In this case, all items have the same type and thus the same mapping. 
+           They can be set with local table  data or with data from a joint table.
  \end{itemize}
 
 The example below show up a a fixed length \texttt{COLLECTION}.
 
 \begin{lstlisting}[caption={\texttt{COLLECTION} example},style=XML]
-<TEMPLATES tableref="Results">
+<TABLE\_MAPPING tableref="Results">
     <COLLECTION dmrole="meas:Measure.errors" size="2">
-         <INSTANCE dmref="globald=s_stat_error" />         
-         <INSTANCE dmref="globald=s_sys_error" />
+         <INSTANCE dmref="globals_stat_error" />         
+         <INSTANCE dmref="globals_sys_error" />
     </COLLECTION>
-</TEMPLATES>
+</TABLE\_MAPPING>
 \end{lstlisting}
 
-\begin{table}[!hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
@@ -749,14 +758,14 @@ The example below show up a a fixed length \texttt{COLLECTION}.
           The collection is populated with with one instance per row of the current table. When present, this element must be the only child. \\       
        \hline  
           \texttt{JOIN}    & 
-         The collection is populated with data read in another table. When present, this element must be the only child.\\      
+         The collection is populated with data read from another table. When present, this element must be the only child.\\      
        \hline 
 \end{tabulary}
 \caption{Valid  \texttt{COLLECTION} children} 
 \label{tbl:coll-children}
 \end{table}
 
-\begin{table}[!hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
@@ -798,19 +807,19 @@ The example below show up a a fixed length \texttt{COLLECTION}.
 %
 % TABLE_ROW_TEMPLATE
 %
-\clearpage
+
 \subsection{TABLE\_ROW\_TEMPLATE}
 This element indicates that one element must be added to the host \texttt{COLLECTION} for each table row.
 
 \begin{itemize}
-    \item The mapping of the row is given by the \texttt{INSTANCE} child.
-    \item We must map one and only one \texttt{INSTANCE} per row. 
+    \item The row mapping is given by the \texttt{INSTANCE} child.
+    \item One and only one \texttt{INSTANCE} can be mapped per row. 
              This makes senses since collection elements cannot be made with more than one instance.
    \item \texttt{TABLE\_ROW\_TEMPLATE}  has no attributes.
 \end{itemize}
 
 \begin{lstlisting}[caption={TABLE\_ROW\_TEMPLATE examples},style=XML]
-<TEMPLATES tableref="Results">
+<TABLE\_MAPPING tableref="Results">
     <COLLECTION dmrole="test:detections">
         <TABLE_ROW_TEMPLATE>
             <INSTANCE dmtype="test:Detection">
@@ -821,10 +830,10 @@ This element indicates that one element must be added to the host \texttt{COLLEC
            </INSTANCE>
         </TABLE_ROW_TEMPLATE>
     </COLLECTION>
-</TEMPLATES>
+</TABLE\_MAPPING>
 \end{lstlisting}
 
-\begin{table}[hbtp]
+\begin{table}[!h]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
@@ -846,7 +855,7 @@ This element indicates that one element must be added to the host \texttt{COLLEC
 %
 % FILTER
 %
-\clearpage
+
 \subsection{FILTER}
 This element filters the table rows that are to mapped. 
 
@@ -937,7 +946,7 @@ In the example below::
 %
 % JOIN
 %
-\clearpage
+
 \subsection{JOIN}
 This element populates the host collection with data taken out from a foreign table and matching the join criteria.
 
@@ -994,10 +1003,10 @@ This element populates the host collection with data taken out from a foreign ta
            \textbf{Role} \\
        \hline  \hline
            \texttt{@primary}    & 
-           Column name of the primary table used  by the join \\       
+           Column identifier of the primary table used  by the join \\       
        \hline  
            \texttt{@foreign}    & 
-           Column name of the foreign table used  by the join \\       
+           Column identifier of the foreign table used  by the join \\       
       \hline  
            \texttt{@tableref}    & 
            ID or name of the foreign table \\       
@@ -1032,7 +1041,7 @@ This element populates the host collection with data taken out from a foreign ta
 %
 % GROUPBY
 %
-\clearpage
+
 \subsection{GROUPBY}
 This element aggregates host table rows  in groups which elements have all the same value for a given column.
 
@@ -1118,7 +1127,7 @@ In the example below:
 %
 % SHORTCUTS
 %
-\clearpage
+
 \subsection{Shortcuts}
 VODML encourgages people to use the \texttt{ivoa} model for the primitive types. 
 Some of these types have a complex structures that associate units with values. 
@@ -1172,7 +1181,7 @@ Shortcut for \texttt{ivoa:IntegerQuantity} class.
             ref="col_id" value="0"  unit="m/sec" />
 \end{lstlisting}
 
-\clearpage
+
 \appendix
 
 \section{Changes from Previous Versions}

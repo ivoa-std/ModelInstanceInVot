@@ -28,26 +28,26 @@ class JsonMappingBuilder():
       
     
     def revert_templates(self):  
-        logger.info("reverting templates - {TEMPLATES:[{ref_table ...} ] -> 'ref_table':{...}")
+        logger.info("reverting templates - {TABLE_MAPPING:[{ref_table ...} ] -> 'ref_table':{...}")
         
-        self.revert_elements("TEMPLATES")
-        root_element = self.json['VODML']
+        self.revert_elements("TABLE_MAPPING")
+        root_element = self.json['MODEL_INSTANCE']
         templates = {}
         keys = []
         for k, v in  root_element.items():
             if k not in ['MODELS', 'GLOBALS']:
                 templates[k] = v
                 keys.append(k)
-        logger.info("Put all TEMPLATES{} in a global TEMPLATES[]")
+        logger.info("Put all TABLE_MAPPING{} in a global TABLE_MAPPING[]")
        
         for  k in keys:
             root_element.pop(k)
         
-        root_element["TEMPLATES"] = templates
+        root_element["TABLE_MAPPING"] = templates
 
     def revert_elements(self, name, dmrole=None, dmtype=None):
         logger.info("reverting elements %s - ('%s':{role ...} -> 'role':{})", name, name)
-        root_element = self.json['VODML']
+        root_element = self.json['MODEL_INSTANCE']
         while True:
             self.retour = None
             self._revert_subelement(root_element, name, dmrole, dmtype)
@@ -62,7 +62,7 @@ class JsonMappingBuilder():
     def revert_compositions(self, name, dmrole=None, dmtype=None):
         logger.info("reverting compositions %s - ('%s':[{role ...} ...] -> 'role':[...])", name, name)
 
-        root_element = self.json['VODML']
+        root_element = self.json['MODEL_INSTANCE']
         while True:
             self.retour = None
             self._revert_composition(root_element, name, dmrole, dmtype)
@@ -81,7 +81,7 @@ class JsonMappingBuilder():
             
     def revert_sets_xxxx(self, name, default_key=None):
         logger.info("reverting sets %s", name)
-        root_element = self.json['VODML']
+        root_element = self.json['MODEL_INSTANCE']
         while True:
             self.retour = None
             self._revert_set(root_element, name, default_key)
@@ -95,7 +95,7 @@ class JsonMappingBuilder():
     def revert_array_2bethrown(self):
         # Give TABLE_ROW_TEMPLATEs the same role as its container
         logger.info("reverting TABLE_ROW_TEMPLATEs")
-        root_element = self.json['VODML']
+        root_element = self.json['MODEL_INSTANCE']
         while True:
             self.retour = None
 

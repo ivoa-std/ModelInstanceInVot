@@ -1,4 +1,4 @@
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>ivoa</NAME>
@@ -30,7 +30,7 @@
 
 	</GLOBALS>
 
-	<TEMPLATES  tableref='Results'>
+	<TABLE_MAPPING  tableref='Results'>
 		<INSTANCE dmrole="root"
 			dmtype="cab_msd:STCSphericalSkyPosition">
 			<INSTANCE dmrole="cab_msd:STCSphericalSkyPosition.coord"
@@ -77,5 +77,5 @@
 				</INSTANCE>
 			</INSTANCE>
 		</INSTANCE>
-	</TEMPLATES>
-</VODML>
+	</TABLE_MAPPING>
+</MODEL_INSTANCE>

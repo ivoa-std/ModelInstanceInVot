@@ -31,8 +31,8 @@ class TestInstance(unittest.TestCase):
         builder = JsonMappingBuilder(json_dict=instanceFromVotable.json_block)
         builder.revert_elements("INSTANCE")
         builder.revert_elements("ATTRIBUTE")
-        #print(DictUtils.get_pretty_json(builder.json["VODML"]["TEMPLATES"]))
-        self.assertDictEqual(builder.json["VODML"]["TEMPLATES"], DictUtils.read_dict_from_file(json_ref_path), "=======")
+        #print(DictUtils.get_pretty_json(builder.json["MODEL_INSTANCE"]["TABLE_MAPPING"]))
+        self.assertDictEqual(builder.json["MODEL_INSTANCE"]["TABLE_MAPPING"], DictUtils.read_dict_from_file(json_ref_path), "=======")
 
 
 if __name__ == "__main__":

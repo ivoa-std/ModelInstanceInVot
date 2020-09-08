@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>meas</NAME>
@@ -8,15 +8,15 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES tableref="fgdgfddf">
+	<TABLE_MAPPING tableref="fgdgfddf">
 		<COLLECTION dmrole="dmrole">
 			<INSTANCE dmref="dmref" dmrole="dmrole">
 				<ATTRIBUTE ref="ref" dmrole="dmrole" dmtype="dmtype"
 					value="dmvalue" />
 			</INSTANCE>
 		</COLLECTION>
-	</TEMPLATES>
-	<TEMPLATES tableref="fgdgfddf">
+	</TABLE_MAPPING>
+	<TABLE_MAPPING tableref="fgdgfddf">
 		<INSTANCE dmref="dmref" dmrole="dmrole">
 			<COLLECTION dmrole="dmrole">
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
@@ -28,8 +28,8 @@
 				value="dmvalue" />
 
 		</INSTANCE>
-	</TEMPLATES>
-	<TEMPLATES tableref="fgdgfddf">
+	</TABLE_MAPPING>
+	<TABLE_MAPPING tableref="fgdgfddf">
 		<INSTANCE dmref="dmref" dmrole="dmrole">
 			<COLLECTION dmrole="dmrole">
 				<TABLE_ROW_TEMPLATE>
@@ -40,14 +40,14 @@
 				value="dmvalue" />
 
 		</INSTANCE>
-	</TEMPLATES>
-	<TEMPLATES tableref="fgdgfddf">
+	</TABLE_MAPPING>
+	<TABLE_MAPPING tableref="fgdgfddf">
 		<COLLECTION dmrole="dmrole">
 			<JOIN tableref="tableref" primary="primary" foreign="foreign">
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
 			</JOIN>
 		</COLLECTION>
 
-	</TEMPLATES>
+	</TABLE_MAPPING>
 		
-</VODML>
+</MODEL_INSTANCE>

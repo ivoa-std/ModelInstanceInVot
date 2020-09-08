@@ -1,5 +1,5 @@
 <VOTABLE>
-	<VODML>
+	<MODEL_INSTANCE>
 		<MODELS>
 			<MODEL>
 				<NAME>ivoa</NAME>
@@ -52,11 +52,11 @@
 			</INSTANCE>
 
 		</GLOBALS>
-		<TEMPLATES tableref="Results">
+		<TABLE_MAPPING tableref="Results">
 			<INSTANCE dmref="PhotFrame_EB1" dmrole="my:role" />
 			<INSTANCE dmref="TestParamRef" dmrole="my:other.role" />
-		</TEMPLATES>
-	</VODML>
+		</TABLE_MAPPING>
+	</MODEL_INSTANCE>
 	<RESOURCE type="results">
 		<TABLE name="Results">
 			<PARAM ID="param_ref" name="testParam" value="param_value" />

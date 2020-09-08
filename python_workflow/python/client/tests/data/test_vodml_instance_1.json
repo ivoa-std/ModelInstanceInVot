@@ -1,5 +1,5 @@
 {
-  "VODML": {
+  "MODEL_INSTANCE": {
     "GLOBALS": {
       "SpaceFrame_ICRS": {
         "@ID": "SpaceFrame_ICRS",
@@ -37,7 +37,7 @@
         }
       ]
     },
-    "TEMPLATES": {
+    "TABLE_MAPPING": {
       "OtherResults": {
         "@tableref": "OtherResults",
         "test:detections": [

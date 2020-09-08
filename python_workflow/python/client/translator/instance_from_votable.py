@@ -27,42 +27,42 @@ class InstanceFromVotable:
 
     def _extract_vodml_block(self):
         '''
-        Stores in an intern field the VODML block as a string
+        Stores in an intern field the MODEL_INSTANCE block as a string
         Raise an exception in case of failure
         '''
         logger.info("extract vodml block from %s", self.votable_path)
         with open(self.votable_path) as xml_file:
-            self.vodml_block =re.search(r'<VODML>((.|\n)*?)</VODML>', xml_file.read()).group() 
+            self.vodml_block =re.search(r'<MODEL_INSTANCE>((.|\n)*?)</MODEL_INSTANCE>', xml_file.read()).group() 
         
         if self.vodml_block is None :
             raise Exception("No vodml block found")
-        logger.info("VODML found")
+        logger.info("MODEL_INSTANCE found")
         
     def _validate_vodml_block(self):
         '''
-        Validates the VODML block against the mapping schema
+        Validates the MODEL_INSTANCE block against the mapping schema
         Raise an exception in case of failure
         '''
         validator = Validator(os.path.join(project_dir
                                    , "schema"
                                    , "vodml_lite.xsd"))
         if validator.validate_string(self.vodml_block, verbose=True) is True:
-            logger.info("VODML block is valid")
+            logger.info("MODEL_INSTANCE block is valid")
             self.json_block = xmltodict.parse(self.vodml_block)
         else:
-            logger.error("VODML block is not valid")
-            raise Exception("VODML block is not valid")
+            logger.error("MODEL_INSTANCE block is not valid")
+            raise Exception("MODEL_INSTANCE block is not valid")
         
     def _build_instance(self):
         '''
-        Translate the VODML block into dict
+        Translate the MODEL_INSTANCE block into dict
         '''
         builder = JsonMappingBuilder(json_dict=self.json_block)
 
         builder.revert_sets("GLOBALS",
                                          default_key='globals')
         #self.builder.revert_compositions("COLLECTION")
-        builder.revert_sets("TEMPLATES",
+        builder.revert_sets("TABLE_MAPPING",
                                          default_key='root')
         builder.revert_array()
         builder.revert_compositions("COLLECTION")
@@ -72,7 +72,7 @@ class InstanceFromVotable:
 
         self.json_vodml_block = builder.json
         print(DictUtils.get_pretty_json(self.json_vodml_block))
-        logger.info("JSON VODML block built")
+        logger.info("JSON MODEL_INSTANCE block built")
         
     """
     def _populate_instance(self, resolve_refs=False):
@@ -88,7 +88,7 @@ class InstanceFromVotable:
         self._table_mapper.set_element_values(resolve_refs=resolve_refs)
         self._table_mapper.set_array_values()
         self._table_mapper.map_columns()
-        logger.info("VODML instance created")
+        logger.info("MODEL_INSTANCE instance created")
 
     def build_instance(self, resolve_refs=False):
         '''

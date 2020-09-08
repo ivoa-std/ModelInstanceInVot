@@ -217,7 +217,7 @@ class MappingGenerator:
             name = node.find('name').text
             url = node.find('url').text
             if not name in self.imports:
-                # Let's take the import name as VODML prefix
+                # Let's take the import name as MODEL_INSTANCE prefix
                 model_name = name
                 logger.info ("PARSE IMPORT " + name)
                 self.parse_vodml_file(filename=url, model=model_name)
@@ -466,7 +466,7 @@ class MappingGenerator:
     def generate_mapping(self):
         logger.info("root object is " + self.root_object_id)
         root_object_type = self.object_types[self.root_object_id]
-        self.append_xml("<VODML>")
+        self.append_xml("<MODEL_INSTANCE>")
         self.append_xml("<MODELS>")
         for k,v in self.imports.items():
             self.append_xml("<MODEL>")
@@ -476,7 +476,7 @@ class MappingGenerator:
         self.append_xml("</MODELS>")
         self.append_xml("<GLOBALS>")
         self.append_xml("</GLOBALS>")
-        self.append_xml("<TEMPLATES  tableref='Results'>")
+        self.append_xml("<TABLE_MAPPING  tableref='Results'>")
         self.generate_object_mapping(root_object_type, 'root')
-        self.append_xml("</TEMPLATES>")
-        self.append_xml("</VODML>")
+        self.append_xml("</TABLE_MAPPING>")
+        self.append_xml("</MODEL_INSTANCE>")

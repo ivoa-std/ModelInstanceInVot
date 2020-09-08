@@ -267,7 +267,7 @@ class TableMapper(object):
             return {}
 
     def resolve_refs_and_values(self, resolve_refs=False):
-        root_element = self.json['VODML']['TEMPLATES'][self.table_name]
+        root_element = self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name]
         if resolve_refs is True:
             logger.info("Replace object references with referenced object copies")
             self.resolve_object_references()
@@ -300,7 +300,7 @@ class TableMapper(object):
         if resolve_refs is True:
             logger.info("Replace object references with referenced object copies")
             self.resolve_object_references()
-        retour =  deepcopy(self.json['VODML']['TEMPLATES'][self.table_name])
+        retour =  deepcopy(self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name])
 
         json_block_extractor = JsonBlockExtractor(retour)
         json_block_extractor.search_array_container()
@@ -330,7 +330,7 @@ class TableMapper(object):
         if root_element is not None:
             root = root_element
         else:
-            root = self.json['VODML']
+            root = self.json['MODEL_INSTANCE']
             
         json_block_extractor = JsonBlockExtractor(root)
         return json_block_extractor.search_subelement_by_role(searched_role)
@@ -359,7 +359,7 @@ class TableMapper(object):
         if root_element is not None:
             root = root_element
         else:
-            root = self.json['VODML']
+            root = self.json['MODEL_INSTANCE']
         json_block_extractor = JsonBlockExtractor(root)
         return json_block_extractor.search_subelement_by_id(searched_id)
     

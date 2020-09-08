@@ -23,13 +23,13 @@ class VodmlInstance(object):
     '''
     def __init__(self, votable_path):
         #
-        # One table_mapper per TEMPLATES
+        # One table_mapper per TABLE_MAPPING
         # table name taken as keys
         #
         self.table_mappers = {}
         self.votable_path = votable_path   
         #
-        # Dict translation of the <VODML> block
+        # Dict translation of the <MODEL_INSTANCE> block
         #
         self.json_view = {}       
         # Convert the XML mapping block in a dictionary
@@ -41,10 +41,10 @@ class VodmlInstance(object):
 
         
     def build_json_view(self):
-        logger.info("Extracting the VODML block")
+        logger.info("Extracting the MODEL_INSTANCE block")
         instanceFromVotable = InstanceFromVotable(self.votable_path)
         instanceFromVotable._extract_vodml_block()
-        logger.info("Validating the VODML block")
+        logger.info("Validating the MODEL_INSTANCE block")
         instanceFromVotable._validate_vodml_block()
         logger.info("Extracting the raw JSON block")        
         self.json_view = instanceFromVotable.json_block     
@@ -59,10 +59,10 @@ class VodmlInstance(object):
         self.json_view = builder.json
 
     def build_table_mapper_map(self):
-        logger.info("Looking for tables matching TEMPLATES ")
+        logger.info("Looking for tables matching TABLE_MAPPING ")
         votable = parse(self.votable_path)
-        for template_key in self.json_view["VODML"]["TEMPLATES"].keys():
-            logger.info("Looking for a table matching TEMPLATES %s", template_key)
+        for template_key in self.json_view["MODEL_INSTANCE"]["TABLE_MAPPING"].keys():
+            logger.info("Looking for a table matching TABLE_MAPPING %s", template_key)
 
             name = None
             parsed_table = None

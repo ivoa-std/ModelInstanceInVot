@@ -1,4 +1,4 @@
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>ivoa</NAME>
@@ -60,7 +60,7 @@
 			</COLLECTION>
 		</INSTANCE>
 	</GLOBALS>
-	<TEMPLATES  tableref='Results'>
+	<TABLE_MAPPING  tableref='Results'>
 		<INSTANCE dmrole="root" dmtype="cab_msd:STCStatus">
 			<INSTANCE dmrole="cab_msd:STCStatus.coord"
 				dmtype="cab_msd:STCStatusState">
@@ -70,5 +70,5 @@
 					dmrole="coords:Coordinate.coordSys" />
 			</INSTANCE>
 		</INSTANCE>
-	</TEMPLATES>
-</VODML>
+	</TABLE_MAPPING>
+</MODEL_INSTANCE>

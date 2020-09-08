@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
-	<VODML>
+	<MODEL_INSTANCE>
 		<MODELS>
 			<MODEL>
 				<NAME>ivoa</NAME>
@@ -20,7 +20,7 @@
 		</MODELS>
 		<GLOBALS>
 		</GLOBALS>
-		<TEMPLATES tableref="Results">
+		<TABLE_MAPPING tableref="Results">
 			<COLLECTION dmrole="meas:Measure.errors" size="2">
 				<TABLE_ROW_TEMPLATE>
 					<INSTANCE dmrole="meas:Error.statError"
@@ -35,8 +35,8 @@
 					</INSTANCE>
 				</TABLE_ROW_TEMPLATE>
 			</COLLECTION>
-		</TEMPLATES>
-	</VODML>
+		</TABLE_MAPPING>
+	</MODEL_INSTANCE>
 	<RESOURCE type="results">
 		<TABLE name="Results">
 			<FIELD ID="_poserr_148" name="oidsaada" datatype="long" ucd="meta.id;meta.main"/>

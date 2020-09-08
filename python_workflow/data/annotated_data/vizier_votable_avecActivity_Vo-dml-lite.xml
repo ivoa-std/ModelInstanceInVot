@@ -51,7 +51,7 @@
 -out=FITS
 -out=XSAlink
 </INFO>
-	<VODML>
+	<MODEL_INSTANCE>
 		<MODELS>
 			<MODEL>
 				<NAME>ivoa</NAME>
@@ -64,7 +64,7 @@
 		</MODELS>
 		<GLOBALS>
 		</GLOBALS>
-		<TEMPLATES tableref="B_xmm_xmmlog">
+		<TABLE_MAPPING tableref="B_xmm_xmmlog">
 			<INSTANCE dmrole="root" dmtype="voprov:Entity">
 				<!-- VizieRcatalog entity with attributed agent and activity which generated 
 					it -->
@@ -190,8 +190,8 @@
 					</INSTANCE>
 				</COLLECTION>
 			</INSTANCE>
-		</TEMPLATES>
-	</VODML>
+		</TABLE_MAPPING>
+	</MODEL_INSTANCE>
 
 	<RESOURCE ID="yCat_102009" name="B/xmm">
 		<DESCRIPTION>XMM-Newton Observation Log (XMM-Newton Science Operation
