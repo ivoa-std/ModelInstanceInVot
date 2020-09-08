@@ -109,33 +109,33 @@ This documentary role facilitates the communication between the stack-holders an
 
 At data level, interoperability consists in arranging searched data in a way that a client can understand them without taking care of their origin. So that, the same code can process and compare data coming from different sources.  That way to arrange data is given by the model.
 
-This is not done by default with VOtables because VOTables are containers. The VOTable schema cannot say how data are mapped on a given model or whether they match any model at all. This is not an issue for simple protocol responses (ref) because the VOTable structure is defined by the protocol itself but this is however a big issue for VOTables containing native data such as Vizier  or TAP query responses.
+This is not done by default with VOtables because VOTables are containers. The VOTable schema cannot say how data are mapped on a given model or whether they match any model at all. This is not an issue for simple protocol responses (ref) because the VOTable structure is defined by the protocol itself. This is however a big issue for VOTables containing native data such as Vizier  or TAP query responses.
 
 The challenge here is to bind native data with a given model in a way that a model aware software can see them as model instances while maintaining the possibility to access them in their original forms.
 
-This is partially done with UTypes which may connect FIELDs or PARAMs with model leaves in the case of simple tree-views of the model. Unfortunately, there is no more unique  way to build and parse UTypes in the context of more complex the models. This occurs when e.g the same class is used in different location of the model or when the model contains loops. It is also not possible to refer data from different tables with  UTypes.
+This is partially done with UTypes which may connect FIELDs or PARAMs with model leaves in the case of simple tree-views of the model. Unfortunately, there is nos unique  way to build and parse UTypes in the context of complex models. This occurs when e.g the same class is used in different location of the model or when the model contains loops. It is also not possible to refer data from different tables with  UTypes.
 
 %Fb : "This is just because UTypes have been invented at a period when there was no standard way to formally describe  models." Actually it's more complex than that. As long as the model instances are flat or simple trees (charcaterisation) utypes may work. When you have some loops (like in complex Provenace queries) utypes are not enough to map the structure of instances (corrected LM)
 
-The landscape has dramatically changed in 2016 when VODML (ref) became a recommendation. VODML is a meta-model that gives a standard way to design VO models and to make them machine-readable.
+The landscape has dramatically changed in 2016 when VODML (ref) became a recommendation. VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
 %FB: if we have the reference we don't need "which is a rec since é016" (fixed LM)
 In VODML, model leaves are no longer identified by a simple string like UTypes do but by a certain role played in a given location in the model hierarchy.
-The consequence is that any annotation mechanism based on VODML must preserve the model hierarchy to save the role played by any components. In this context, it might be easy to re-construct model instances from the annotations. 
+The consequence is that any annotation mechanism based on VODML will preserve the model hierarchy to save the role played by any components. In this context, it might be easy to re-construct model instances from the annotations. 
 %FB: see above the actual difference between utype strategy and vodml lite mapping (fixed LM)
 %FB : I don't understand at all following sentence "This is very interesting because a copy that model hierarchy with leaves set with real data is nothing else that a model instance which is exactly what we need to be interoperable." (fixed LM)
 
-The main concept of VODML mapping is to insert on  top of the VOTable an XML block following the model structure and containing references to the actual data.
-In such a way that in order to build a model instance, a model-aware client only has to make a copy of that structure and to resolve the references. More generic model-unaware clients can just ignore the mapping block. This approach, has been proposed by (GL and OL). 
+The main concept of this standard is to insert on the  top of the VOTable an XML block compliying with the model structures and containing references to the actual data.
+In such a way that a model-aware client only has to make a copy of that structure and to resolve the references  to build an instance. More generic model-unaware clients can just ignore the mapping block. This approach, has been proposed by (GL and OL). 
 
 We have tested the syntax originally proposed and it turned out that it was not well suited for archival data or for TAP responses where the annotation process must be automated as much as possible (entirely for TAP). 
 
-Vodml-instance-vot is based on the same principles as the original proposal but with a particular attention given to the annotation of archival data by keeping focused on both client needs and easiness of the annotation process.
+The \\texttt{ModelInstanceInVotable} syntax is based on the same principles as the original proposal but with a particular attention given to the annotation of archival data by keeping focused on both client needs and easiness of the annotation process.
 This requires the syntax to be as simple as possible and as flexible as possible to be usable with a wide range of data sets.
 % LM does not undertsand this sentence: We must emphasize that we are actually mapping on the data a representation of a peculiar set of instances of the model and not the general model itself.
-With Vodml-instance-vot, the model hierarchy is built upon attributes, tuples and arrays (ATTRIBUTE, INSTANCE and COLLECTIONS). Some other elements have been added to guide the parser (FILTER, TABLE\_ROW\_TEMPLATE ...)
+With this syntax, the model hierarchy is built upon attributes, tuples and arrays (ATTRIBUTE, INSTANCE and COLLECTIONS). Some other elements have been added to guide the parser (FILTER, TABLE\_ROW\_TEMPLATE ...)
 
 %FB : I don't understand why they are the basic elements (simple values,  tuples and  lists, like JSON) Is that VALUE, ARRAY?COMPOSITION ?  
-The connections with the data are setup by XML element attributes, so that the mapping structure just depends on the model but not on the mapped data.
+The connection with  data is setup by XML element attributes, so that the mapping structure mainly depends on the model but not on the mapped data.
 %FB : Actually only "ref" attribute ? (ref, tableref, dm_ref, value)
 
 These ideas were first tested in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI. 
@@ -243,14 +243,15 @@ IVOA architecture \citep{note:VOARCH}.
 
 \subsubsection{Client Side}
 
-The mapping is self consistent. The role of the mapping is to give the client all information it needs to reconstruct a datastructure similar to a set of instances of the the model. 
-A model-aware client must be able to do this without implementing any code specific to any particular model.  The mapping syntax is independant of the model. The structure of the mapped model is given by the arrangement of the mapping elements, not by the elements themselves
+The mapping is self consistent. Its role is to give the client all information it needs to reconstruct a datastructure compliant with the model. 
+A model-aware client must be able to do this without implementing model-specific  code.  
+%The mapping syntax is independant of the model. The structure of the mapped model is given by the arrangement of the mapping elements, not by the elements themselves
 
-\textbf{Identifying the nature of the content of a VOTable}: A client can get it by a quick look at the annotation block.
+\textbf{Identifying the nature of the content of a VOTable}:  A client can check the annotation block of a VOTable to decide how to process it. For instance, it can detect that the VOTable contains a Provenance instance  and then invoke a specific viewer. 
 
-\textbf{Measurement discovery}: A client wants to discover whether a VOTable contains some peculiar measurements (position, velocity...). The annotation block allows it to get an answer by a quick parsing of the annotation block.
+\textbf{Measurement discovery}: A client wants to discover whether a VOTable contains some peculiar measurements (position, velocity...). This can be done with a quick parsing of the annotation block.
 
-\textbf{Data set comparison}: A client wants to compare different data set (Xmatch, plot). The annotation provides a homogeneous data representation of these data that allows to put them together in a consistent way. 
+\textbf{Data set comparison}: A client wants to compare different data set s (e.g. Xmatch, plot). The annotation provides a homogeneous data representation that allows to put them together in a consistent way. 
 
 \textbf{Data set export}: A client wants to export (e.g. with SAMP) a model instance in a convenient format (e.g. json). The JSON model instance can be buit from the annotation block and exported to a another party.
 
@@ -259,12 +260,15 @@ The server use cases are to make possible the realization of those of the client
 
 3 server types that could annotate data have been identified:
 \begin{enumerate}
-   \item Mission data provider: the data annotation can be set once forever for each data product at the design phase.
-   \item Archival data provider: The data annotation must be done for each archived datat set. The curator has a little control, on the data format and he/she has to do his best to match data with the model(s) 
-   \item  TAP data provider: In case of TAP services, the annotation process is in charge of the TAP server that must dynamically  match the queried data with the model quantities for each specific query.
+   \item \textbf{Mission data provider}: the data annotation can be set once forever for each data product at the design phase.
+   \item \textbf{Archival data provider}: The data annotation must be done for each archived datat set. 
+           The curator has a little control, on the data format and he/she has to do his best to match data with the model(s).
+           In this case, it must be possible limit the annotation on a subset of data.
+   \item \textbf{TAP data provider}: In case of TAP services, the annotation process is in charge of the TAP server that must dynamically match queried data with model quantities, and this for each specific query.
 \end{enumerate}
 
-The goal of this version of the specification is to support requirements 1) and 2) with a special attention to make 2) easier. Support of requirement 3) is still an experimental feature at the time this specification is written.
+The goal of this version of the specification is to support requirements 1) and 2) with a special attention to make 2) easier. 
+Support of requirement 3) is still an experimental feature at the time this specification is written.
 
 
 \subsection{Requirements}
@@ -291,8 +295,8 @@ The goal of this version of the specification is to support requirements 1) and 
 
 \item Complex Data Mapping 
 \begin{itemize}
-   \item The mapping syntax must support to retrieve data spread over several tables.
-   \item The mapping syntax must be able to filter data rows which are part of a specific instance.
+   \item The mapping syntax must able to annotate data spread over several tables.
+   \item The mapping syntax must be able to filter data rows that have to be instanciated.
    \item The mapping syntax must be able to group data rows in an set of instances.
 \end{itemize}
 \end{itemize}
