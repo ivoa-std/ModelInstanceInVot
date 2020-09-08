@@ -309,7 +309,7 @@ class ModelMapper:
     def generate_mapping(self, vodml_root_type):
         self.xml_string = ""
         logger.info("Generate mapping fotr " + vodml_root_type.vodml_type)
-        self._append_xml("<VODML>")
+        self._append_xml("<MODEL_INSTANCE>")
         self._append_xml("<MODELS>")
         for k,v in self.imports.items():
             self._append_xml("<MODEL>")
@@ -319,10 +319,10 @@ class ModelMapper:
         self._append_xml("</MODELS>")
         self._append_xml("<GLOBALS>")
         self._append_xml("</GLOBALS>")
-        self._append_xml("<TEMPLATES tableref='Results' >")
+        self._append_xml("<TABLE_MAPPING tableref='Results' >")
         self.generate_object_mapping("root", vodml_root_type)
-        self._append_xml("</TEMPLATES>")
-        self._append_xml("</VODML>")
+        self._append_xml("</TABLE_MAPPING>")
+        self._append_xml("</MODEL_INSTANCE>")
         
     def generate_object_mapping(self, vodml_role,vodml_object_type):
         

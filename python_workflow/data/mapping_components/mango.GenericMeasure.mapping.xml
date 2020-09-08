@@ -1,4 +1,4 @@
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>ivoa</NAME>
@@ -16,7 +16,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES  tableref='Results'>
+	<TABLE_MAPPING  tableref='Results'>
 		<INSTANCE dmrole="root" dmtype="meas:GenericMeasure">
 			<INSTANCE dmrole="meas:GenericMeasure.coord"
 				dmtype="coords:PhysicalCoordinate">
@@ -29,5 +29,5 @@
 				</INSTANCE>
 			</INSTANCE>
 		</INSTANCE>
-	</TEMPLATES>
-</VODML>
+	</TABLE_MAPPING>
+</MODEL_INSTANCE>

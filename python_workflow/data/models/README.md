@@ -1,3 +1,3 @@
 ###  Models
 
-VODML files of the models used in this example
+MODEL_INSTANCE files of the models used in this example

@@ -1,6 +1,6 @@
 # Mapping Factory
 
-This package contains tools able to extract model components from VODML files.
+This package contains tools able to extract model components from MODEL_INSTANCE files.
 
 . Concrete class and types can be specified from specific role (*)
 

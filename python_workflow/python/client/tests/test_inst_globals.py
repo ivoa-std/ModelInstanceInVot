@@ -26,8 +26,8 @@ class TestInstance(unittest.TestCase):
                              , json_inst_dict=DictUtils.read_dict_from_file(json_ref_path))
         table_mapper.resolve_refs_and_values(resolve_refs=True)
 
-        #print(DictUtils.get_pretty_json(table_mapper.json["VODML"]["TEMPLATES"]["my:other.role"]))
-        self.assertDictEqual(table_mapper.json["VODML"]["TEMPLATES"]["Results"]["my:other.role"]
+        #print(DictUtils.get_pretty_json(table_mapper.json["MODEL_INSTANCE"]["TABLE_MAPPING"]["my:other.role"]))
+        self.assertDictEqual(table_mapper.json["MODEL_INSTANCE"]["TABLE_MAPPING"]["Results"]["my:other.role"]
                              ,{
                               "@ID": "TestParamRef",
                               "@dmtype": "Whatever",

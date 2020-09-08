@@ -46,10 +46,10 @@ class JoinIterator(object):
             None,
             parsed_table=self.parsed_table,
             json_inst_dict={
-                "VODML": {
+                "MODEL_INSTANCE": {
                     "MODELS":{},
                     "GLOBALS":{},
-                    "TEMPLATES": {
+                    "TABLE_MAPPING": {
                         self.foreign_table: {
                             "@tableref": self.foreign_table,
                             "root": [

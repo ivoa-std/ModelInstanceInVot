@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<VODML>
+<MODEL_INSTANCE>
   <MODELS>
   </MODELS>
   <GLOBALS/>
-  <TEMPLATES tableref="fgdgfddf">
-  </TEMPLATES>
-  <TEMPLATES tableref="fgdgfddf">
-  </TEMPLATES>
-</VODML>
+  <TABLE_MAPPING tableref="fgdgfddf">
+  </TABLE_MAPPING>
+  <TABLE_MAPPING tableref="fgdgfddf">
+  </TABLE_MAPPING>
+</MODEL_INSTANCE>

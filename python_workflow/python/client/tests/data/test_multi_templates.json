@@ -1,5 +1,5 @@
 {
-  "VODML": {
+  "MODEL_INSTANCE": {
     "GLOBALS": null,
     "MODELS": {
       "MODEL": [
@@ -17,7 +17,7 @@
         }
       ]
     },
-    "TEMPLATES": {
+    "TABLE_MAPPING": {
       "LastResults": {
         "@tableref": "LastResults",
         "meas:Measure.errors": [

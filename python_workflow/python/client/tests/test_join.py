@@ -36,8 +36,8 @@ class TestInstance(unittest.TestCase):
         builder.revert_elements("ATTRIBUTE")
         
         #print(DictUtils.get_pretty_json(builder.json))
-        self.assertDictEqual(builder.json["VODML"]
-                             , DictUtils.read_dict_from_file(json_ref_path)["VODML"]
+        self.assertDictEqual(builder.json["MODEL_INSTANCE"]
+                             , DictUtils.read_dict_from_file(json_ref_path)["MODEL_INSTANCE"]
                              , "=======")
 
 

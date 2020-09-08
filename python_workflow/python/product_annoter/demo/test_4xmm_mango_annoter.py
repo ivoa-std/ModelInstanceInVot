@@ -10,8 +10,8 @@ file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
 if file_path not in sys.path:
     sys.path.append(file_path )
 
-from demo import data_dir
-from demo import logger  
+from product_annoter.demo import data_dir
+from product_annoter.demo import logger  
 
 from product_annoter.mapper.position_appender import PositionAppender  
 from product_annoter.mapper.status_appender import StatusAppender  

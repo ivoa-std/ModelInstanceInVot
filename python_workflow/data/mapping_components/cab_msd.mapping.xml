@@ -1,4 +1,4 @@
-<VODML>
+<MODEL_INSTANCE>
 	<MODELS>
 		<MODEL>
 			<NAME>ivoa</NAME>
@@ -16,7 +16,7 @@
 		</MODEL>
 	</MODELS>
 	<GLOBALS />
-	<TEMPLATES tableref='Results'>
+	<TABLE_MAPPING tableref='Results'>
 		<TABLE_ROW_TEMPLATE dmrole="root">
 			<INSTANCE dmrole="root" dmtype="cab_msd:Source">
 				<ATTRIBUTE dmrole="cab_msd:Source.identifier" dmtype="ivoa:string" ref="@@@@@@" />
@@ -28,5 +28,5 @@
 				</COLLECTION>
 			</INSTANCE>
 		</TABLE_ROW_TEMPLATE>
-	</TEMPLATES>
-</VODML>
+	</TABLE_MAPPING>
+</MODEL_INSTANCE>

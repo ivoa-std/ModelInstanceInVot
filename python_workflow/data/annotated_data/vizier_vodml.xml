@@ -21,7 +21,7 @@
 
 	<!-- Data model Dataset: provenance .. http://www.ivoa.net/documents/DatasetDM/index.html 
 		mango-STC: position and error mango: Proper motion -->
-	<VODML>
+	<MODEL_INSTANCE>
 		<MODELS>
 			<MODEL>
 				<NAME>ivoa</NAME>
@@ -79,7 +79,7 @@
 
 		<!-- position: RAJ2000, e_RAJ20000, DEJ2000, e_DEJ2000 pmRA, e_pmRA, PMdec, 
 			e_PMdec, Ep plx, e_plx, -->
-		<TEMPLATES tableref="J_A_A_565_A21_cat_fors">
+		<TABLE_MAPPING tableref="J_A_A_565_A21_cat_fors">
 			<COLLECTION dmrole="root">
 				<TABLE_ROW_TEMPLATE>
 					<INSTANCE dmrole="root" dmtype="mango:Source">
@@ -142,8 +142,8 @@
 					</INSTANCE>
 				</TABLE_ROW_TEMPLATE>
 			</COLLECTION>
-		</TEMPLATES>
-	</VODML>
+		</TABLE_MAPPING>
+	</MODEL_INSTANCE>
 
 	<RESOURCE ID="yCat_35650021" name="J/A+A/565/A21">
 		<DESCRIPTION>Astrometric catalog around ultracool dwarfs (Lazorenko+,

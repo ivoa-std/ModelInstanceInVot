@@ -4,7 +4,7 @@ This package show how to consume an annotated VOTABLE.
 
 The process is as follow:
 
-1. Extracting the VODML block out of the VOTable
+1. Extracting the MODEL_INSTANCE block out of the VOTable
 
 2. Convert it in JSON (xmltojson package)
 

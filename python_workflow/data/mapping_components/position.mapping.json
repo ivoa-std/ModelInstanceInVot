@@ -1,5 +1,5 @@
 {
-  "VODML": {
+  "MODEL_INSTANCE": {
     "GLOBALS": {
       "INSTANCE": {
         "@ID": "SpaceCoordFrame",
@@ -43,7 +43,7 @@
         }
       ]
     },
-    "TEMPLATES": {
+    "TABLE_MAPPING": {
       "@tableref": "Results",
       "INSTANCE": {
         "@dmrole": "root",

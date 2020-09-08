@@ -4,7 +4,7 @@ Created on 15 avr. 2020
 @author: laurentmichel
 '''
 import os
-from product_annoter.mapper.constants import PARAM_TEMPLATES
+from product_annoter.mapper.constants import PARAM_TABLE_MAPPING
 from product_annoter.mapper.parameter_appender import ParameterAppender
 
 class GenericAppender:
@@ -21,7 +21,7 @@ class GenericAppender:
         self.position_path = os.path.join(component_path, 
                                           "mango.GenericMeasure.mapping.xml")
         self.appender = ParameterAppender(
-            PARAM_TEMPLATES.POSITION,
+            PARAM_TABLE_MAPPING.POSITION,
             self.mango_path,
             self.position_path
             )
