@@ -25,35 +25,47 @@ from product_annoter.mapper.detectionflag_appender import DetectionFlagAppender
 if __name__ == '__main__':
         base_path = os.path.dirname(os.path.realpath(__file__)) 
 
+        # path of the initial VOTable
         raw_votable_path = os.path.join(
             data_dir, 
             "raw_data", 
             "xmm_detections.xml")  
+        # path of the annotated VOTable
         annot_votable_path = os.path.join(
             data_dir, 
             "annotated_data", 
             "4xmm_detections.annot.xml")
-        mango_path = os.path.join(
-            data_dir, 
-            "mapping_components", 
-            "mango.mapping.xml")  
+        # Directory with all the mapping components
         component_path = os.path.join(
             data_dir, 
             "mapping_components")
+        # Path of the empty MANGO mapping block
+        # This mapping block will host all parameters
+        # to be mapped for this VOTable
+        mango_path = os.path.join(
+            component_path, 
+            "mango.mapping.xml")  
+        # Output file with just the mapping block
         output_mapping_path = os.path.join(
             data_dir, 
             "annotated_data", 
             "4xmm_detections.mapping.xml")
         
-        with open(data_dir + '/product_configs/4xmm.mango.config.json') as json_file:
-            data = json.load(json_file)
-           
+        # Read the mapping configuration for this VOTable.
+        # This configuration lists a  parameters to be mapped 
+        # with the column references or the literal values
+        with open(os.path.join(data_dir, 'product_configs', '4xmm.mango.config.json')) as json_file:
+            mapping_config = json.load(json_file)
+        
+        # set the source identifier mapping
+        # This is the only mandatory source parameter  
         appender = IdentifierAppender(mango_path)
-            
-        appender.append_measure(data)
+        appender.append_measure(mapping_config)
         appender.save(output_mapping_path)
  
-        for measure in data["parameters"]:
+        # Iterate upon all the parameters to be instanciated
+        # The is one appender class for each parameter class
+        for measure in mapping_config["parameters"]:
             appender = None
             
             if measure["measure"] == "LonLatSkyPosition":
@@ -76,10 +88,11 @@ if __name__ == '__main__':
                 appender = DetectionFlagAppender(output_mapping_path, component_path)
                 
             if appender is not None:
+                # Build the mapping block for the current measure
                 appender.append_measure(measure)
-                #print(appender.tostring())
+                # Save the file with just the mapping block
                 appender.save(output_mapping_path)
 
-       
+        # Insert the mapping block in the head of the VOTable
         merger = VOTableMerger(raw_votable_path, output_mapping_path, annot_votable_path)
         merger.insert_mapping()

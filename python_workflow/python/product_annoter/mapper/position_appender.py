@@ -13,46 +13,64 @@ class PositionAppender:
     classdocs
     '''
     
-    def __init__(self, mango_path, component_path):           
+    def __init__(self, output_mapping_path, component_path):           
         '''
         Constructor
+        :param output_mapping_path: Output file with just the mapping block
+        :type output_mapping_path: string
+        :param component_path: Directory with all the mapping components
+        :type component_path: string
         '''
-        self.mango_path = mango_path    
+        self.output_mapping_path = output_mapping_path    
         self.component_path = component_path  
+        # get the mapping component attached to this appender
         self.position_path = os.path.join(component_path, 
                                           "mango.LonLatSkyPosition.mapping.xml")
         logger.info("read  component %s", self.position_path)
 
+        # Build the appender instance
+        # The appender is in charge of all operations modifying the mapping component
+        # to build an XML block ready to be inserted to the mapping
         self.appender = ParameterAppender(
             PARAM_TABLE_MAPPING.POSITION,
-            self.mango_path,
+            self.output_mapping_path,
             self.position_path
             )
 
         #self.appender.add_globals()
+        # insert the new Parameter block into the current mapping block
         self.appender.add_param_parameter()
     
-    def append_measure(self, measure_descriptor):  
-        self.set_param_semantic(measure_descriptor["ucd"], 
-                                measure_descriptor["semantic"],
-                                measure_descriptor["description"]
+    def append_measure(self, json_measure_descriptor):  
+        """
+        push the values and refs read in the config into the new mapping block
+        :param json_measure_descriptor: description of the position measure
+        :type json_measure_descriptor: dict
+        """
+        self.set_param_semantic(json_measure_descriptor["ucd"], 
+                                json_measure_descriptor["semantic"],
+                                json_measure_descriptor["description"]
                                 )
         
-        self.set_spaceframe(measure_descriptor["frame"]["frame"],
-                            measure_descriptor["frame"]["equinox"])
-        self.set_position(measure_descriptor["position"]["longitude"], 
-                          measure_descriptor["position"]["latitude"]
+        self.set_spaceframe(json_measure_descriptor["frame"]["frame"],
+                            json_measure_descriptor["frame"]["equinox"])
+        self.set_position(json_measure_descriptor["position"]["longitude"], 
+                          json_measure_descriptor["position"]["latitude"]
                           ) 
-        self.set_errors(measure_descriptor["errors"]["random"]["value"], 
-                        measure_descriptor["errors"]["random"]["unit"], 
-                        measure_descriptor["errors"]["systematic"]["value"], 
-                        measure_descriptor["errors"]["systematic"]["unit"] 
+        self.set_errors(json_measure_descriptor["errors"]["random"]["value"], 
+                        json_measure_descriptor["errors"]["random"]["unit"], 
+                        json_measure_descriptor["errors"]["systematic"]["value"], 
+                        json_measure_descriptor["errors"]["systematic"]["unit"] 
                         ) 
         self.set_notset_value()
         
-    def set_spaceframe(self, frame, equinox):   
+    def set_spaceframe(self, frame, equinox): 
+        #
+        # set space frame instance
+        #  
         with open(os.path.join(self.component_path, "mango.frame." + frame + ".xml")) as xml_file:
             data = xml_file.read()
+            # Put the frame in the globals if it is not there 
             self.appender.add_globals_xx(data)
             self.appender.set_dmref("coords:Coordinate.coordSys", "SpaceFrame_" + frame)
         return
@@ -94,6 +112,9 @@ class PositionAppender:
         return self.appender.tostring()
         
     def save(self, output_path):
+        """
+        Just for the developper to have a snapshot
+        """
         self.appender.save(output_path)
 
         
