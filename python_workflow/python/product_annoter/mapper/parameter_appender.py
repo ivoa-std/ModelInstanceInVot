@@ -12,7 +12,7 @@ class ParameterAppender:
     classdocs
     '''
     
-    def __init__(self, param_template, mango_path, param_path):
+    def __init__(self, param_template, mango_path, component_path):
         '''
         Constructor
         '''
@@ -22,10 +22,10 @@ class ParameterAppender:
         logger.info("parse %s", self.mango_path)
         self.mango_tree = etree.parse(self.mango_path)
         
-        self.param_path = param_path
-        if self.param_path:
-            logger.info("parse %s", self.param_path)
-            self.param_tree = etree.parse(self.param_path)
+        self.component_path = component_path
+        if self.component_path:
+            logger.info("parse %s", self.component_path)
+            self.param_tree = etree.parse(self.component_path)
         else:
             self.param_tree = None
 
@@ -33,12 +33,18 @@ class ParameterAppender:
         self.mango_clean_tree = None
     
     def _get_unique_element(self, elements):
+        """
+        raise an exception if the cardinality of elements is != 1
+        This method is a macro used everywhere an XML element must be unique
+        """
         if len(elements) == 1:
             return elements[0]
         raise Exception("elements must have one item not {}".format(len(elements)))
     
-    def _is_element_unique  (self, elements):
-        return (len(elements) == 1)
+    #def _is_element_unique  (self, elements):
+    #    """
+    #    """
+    #    return (len(elements) == 1)
      
     def _clean_tree(self):
         tree_string = etree.tostring(
@@ -112,6 +118,15 @@ class ParameterAppender:
 
 
     def set_ref(self, host_role, value_role, value_ref):
+        """
+        Set the @ref attribute of all ATTRIBUTEs having value_role as role and hosted by 
+        an INSTANCE having host_role as role
+        :param host_role: Role of the host INSTANCE of the ATTRIBUTE which @ref must be set
+        :type host_role: String
+        :param value_role: Role of the ATTRIBUTE which @ref must be set
+        :type value_role: String
+        :param value_ref: value to be set for the @ref of the selected attributes
+        """
         blocks = self.mango_tree.xpath("//INSTANCE[@dmrole='" + host_role + "']")
 
         value_block = None
@@ -135,6 +150,15 @@ class ParameterAppender:
         
  
     def set_value(self, host_role, value_role, value_value):
+        """
+        Set the @value attributes of all ATTRIBUTEs having value_role as role and hosted by 
+        an INSTANCE having host_role as role
+        :param host_role: Role of the host INSTANCE of the ATTRIBUTE which @value must be set
+        :type host_role: String
+        :param value_role: Role of the ATTRIBUTE which @value must be set
+        :type value_value: String
+        :param value_value: value to be set for the @value of the selected attributes
+        """
         blocks = self.mango_tree.xpath("//INSTANCE[@dmrole='" + host_role + "']")
 
         value_block = None
@@ -180,6 +204,10 @@ class ParameterAppender:
             logger.info("Cannot find instance with @role={} to set the dmref={}".format(host_role, dm_ref))
  
     def set_notset_value(self):
+        """
+        Set the @value attributes of ATTRIBUTE a @ref still to be set with ATTRIBUTE_DEFAULT.NOT_SET
+        and remove the @ref attribute from the ATTRIBUTE element
+        """
         notset_values = self.mango_tree.xpath("//ATTRIBUTE[@ref='" + ATTRIBUTE_DEFAULT.TO_BE_SET + "']")
         for notset_value  in notset_values:        
             logger.info("Set value of tag %s as NotSet", notset_value.attrib["dmrole"])
