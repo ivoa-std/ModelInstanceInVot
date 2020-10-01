@@ -9,7 +9,7 @@ from collections import namedtuple
 ParamTemplates = namedtuple('ParamTemplates', ['POSITION'])
 PARAM_TABLE_MAPPING = ParamTemplates(
     """
-    <INSTANCE dmrole="mango:Source.parameters" dmtype="mango:Parameter">
+    <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
     <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="@@@@@@"/>
     <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="@@@@@@"/>
     <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="@@@@@@"/>

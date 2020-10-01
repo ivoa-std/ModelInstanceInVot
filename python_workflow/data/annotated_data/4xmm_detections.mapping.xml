@@ -43,15 +43,48 @@
       <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB1"/>
       <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB2"/>
     </INSTANCE>
+    <INSTANCE ID="TimeFrame_BARYCENTER" dmrole="" dmtype="coords:TimeFrame">
+      <INSTANCE dmrole="coords:TimeFrame.refPosition" dmtype="coords:StdRefLocation">
+        <ATTRIBUTE dmrole="coords:StdRefLocation.position" dmtype="ivoa:string" value="BARYCENTER"/>
+      </INSTANCE>
+      <INSTANCE dmrole="coords:TimeFrame.refLocation" dmtype="coords:StdRefLocation">
+        <ATTRIBUTE dmrole="coords:StdRefLocation.position" dmtype="ivoa:string" value="GEOCENTRIC"/>
+      </INSTANCE>
+      <ATTRIBUTE dmrole="coords:TimeFrame.timescale" dmtype="ivoa:string" value="TCB"/>
+    </INSTANCE>
+    <INSTANCE ID="StatusFrame_DETFLAG" dmrole="" dmtype="cab_msd:STCStatusSys">
+      <COLLECTION size="5" dmrole="cab_msd:STCStatusSys.statusLabel">
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="0"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="good"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="1"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="source parameters may be affected"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="2"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="possibly spurious"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="3"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="located in a area where spurious detection may occur"/>
+        </INSTANCE>
+        <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.value" dmtype="ivoa:integer" value="4"/>
+          <ATTRIBUTE dmrole="cab_msd:StatusLabel.label" dmtype="ivoa:string" value="located in a area where spurious detection may occur and possibly spurious"/>
+        </INSTANCE>
+      </COLLECTION>
+    </INSTANCE>
   </GLOBALS>
   <TABLE_MAPPING tableref="Results">
     <COLLECTION dmrole="root">
       <TABLE_ROW_TEMPLATE>
-        <INSTANCE dmrole="root" dmtype="mango:Source">
-          <ATTRIBUTE dmrole="mango:Source.identifier" dmtype="ivoa:string" ref="namesaada"/>
-          <COLLECTION size="-1" dmrole="mango:Source.associatedData"/>
-          <COLLECTION size="-1" dmrole="mango:Source.parameters">
-            <INSTANCE dmrole="mango:Source.parameters" dmtype="mango:Parameter">
+        <INSTANCE dmrole="root" dmtype="mango:MangoObject">
+          <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="namesaada"/>
+          <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
+          <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
+            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Corrected position"/>
@@ -77,7 +110,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-            <INSTANCE dmrole="mango:Source.parameters" dmtype="mango:Parameter">
+            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="Flux in Energy band 1 0.2-0.5KeV (cameras merged)"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="#corrected"/>
@@ -96,7 +129,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-            <INSTANCE dmrole="mango:Source.parameters" dmtype="mango:Parameter">
+            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ration in Energy band 1 0.2-0.5KeV (cameras merged)"/>
@@ -112,6 +145,54 @@
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#obs-parameter"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="time.duration;obs.exposure"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="PN exposure time in Energy band 1 0.2-0.5KeV"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:GenericMeasure">
+                <INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
+                  <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
+                    <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_pn_1_exp_334"/>
+                    <ATTRIBUTE dmrole="ivoa:RealQuantity.unit" dmtype="ivoa:Unit" value="sec"/>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#obs-start"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="time;obs.start"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Observation time"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:Time">
+                <INSTANCE dmrole="meas:Time.coord" dmtype="coords:MJD">
+                  <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" ref="_mjd_start_137"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="TimeFrame_BARYCENTER"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="NotSet"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="NotSet"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#computed"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.code.qual"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Summary quality flag"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Flag">
+                <INSTANCE dmrole="mango:stcextend.Flag.coord" dmtype="mango:stcextend.FlagCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord" dmtype="ivoa:integer" ref="_sum_flag_394"/>
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>

@@ -1,0 +1,89 @@
+{
+  "MODEL_INSTANCE": {
+    "GLOBALS": null,
+    "MODELS": {
+      "MODEL": [
+        {
+          "NAME": "ivoa",
+          "URL": "http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml"
+        },
+        {
+          "NAME": "coords",
+          "URL": "https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml"
+        },
+        {
+          "NAME": "meas",
+          "URL": "http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml"
+        }
+      ]
+    },
+    "TABLE_MAPPING": {
+      "@tableref": "Results",
+      "INSTANCE": {
+        "@dmrole": "root",
+        "@dmtype": "meas:Time",
+        "INSTANCE": [
+          {
+            "@dmrole": "meas:Time.coord",
+            "@dmtype": "coords:MJD",
+            "ATTRIBUTE": {
+              "@dmrole": "coords:MJD.date",
+              "@dmtype": "ivoa:real",
+              "@ref": "@@@@@@"
+            },
+            "INSTANCE": {
+              "@dmref": "@@@@@@",
+              "@dmrole": "coords:Coordinate.coordSys"
+            }
+          },
+          {
+            "@dmrole": "meas:Measure.error",
+            "@dmtype": "meas:Error",
+            "INSTANCE": [
+              {
+                "@dmrole": "meas:Error.statError",
+                "@dmtype": "meas:Symmetrical",
+                "INSTANCE": {
+                  "@dmrole": "meas:Symmetrical.radius",
+                  "@dmtype": "ivoa:RealQuantity",
+                  "ATTRIBUTE": [
+                    {
+                      "@dmrole": "ivoa:RealQuantity.value",
+                      "@dmtype": "ivoa:real",
+                      "@ref": "@@@@@@"
+                    },
+                    {
+                      "@dmrole": "ivoa:Quantity.unit",
+                      "@dmtype": "ivoa:Unit",
+                      "@ref": "@@@@@@"
+                    }
+                  ]
+                }
+              },
+              {
+                "@dmrole": "meas:Error.sysError",
+                "@dmtype": "meas:Symmetrical",
+                "INSTANCE": {
+                  "@dmrole": "meas:Symmetrical.radius",
+                  "@dmtype": "ivoa:RealQuantity",
+                  "ATTRIBUTE": [
+                    {
+                      "@dmrole": "ivoa:RealQuantity.value",
+                      "@dmtype": "ivoa:real",
+                      "@ref": "@@@@@@"
+                    },
+                    {
+                      "@dmrole": "ivoa:Quantity.unit",
+                      "@dmtype": "ivoa:Unit",
+                      "@ref": "@@@@@@"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

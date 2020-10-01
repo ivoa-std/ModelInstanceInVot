@@ -3,19 +3,12 @@ Created on 31 mars 2020
 
 @author: laurentmichel
 '''
-import json
 from astropy.io.votable import parse
-from client.inst_builder.column_mapping import ColumnMapping
-from client.inst_builder.table_iterator import TableIterator
-from client.inst_builder.row_filter import RowFilter
 from client.inst_builder import logger, table_mapper
 from client.translator.instance_from_votable import InstanceFromVotable
 from client.translator.json_mapping_builder import JsonMappingBuilder
 from client.inst_builder.table_mapper import TableMapper
 from client.inst_builder.json_block_extractor import JsonBlockExtractor
-from copy import deepcopy
-from utils.dict_utils import DictUtils
-from astropy.table._column_mixins import sys
 
 class VodmlInstance(object):
     '''
@@ -119,5 +112,3 @@ class VodmlInstance(object):
                     logger.info("found with role=%s", role)
                     return table_mapper
         return None
-    
- 

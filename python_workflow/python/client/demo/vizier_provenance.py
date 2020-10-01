@@ -11,26 +11,26 @@ file_path = os.path.dirname(os.path.realpath(__file__)) + "/../../"
 if file_path not in sys.path:
     sys.path.append(file_path )
 
+from client.demo import data_dir
+
 from utils.dict_utils import DictUtils
+
 from client.inst_builder.vodml_instance import VodmlInstance
 
-from demo import data_dir
 
 if __name__ == '__main__':
     base_path = os.path.dirname(os.path.realpath(__file__)) 
     votable_path = os.path.join(data_dir, 
                                 "annotated_data",
-                                "4xmm_detections.annot.xml"
+                                "vizier_votable_avecActivity_Vo-dml-lite.xml"
                                 )
     vodml_instance = VodmlInstance(votable_path)
     vodml_instance.populate_templates()
     vodml_instance.connect_join_iterators()
 
-    instance = vodml_instance.get_root_element("mango:Source")
-    if instance is None:
-        raise Exception("No root element found")
+    instance = vodml_instance.get_root_element("voprov:Entity")
     
-    
+    print(DictUtils.get_pretty_json(instance.json))
     print("=== Mapping of the columns")
     print(instance.get_flatten_data_head())
     #print(instance.get_data_subset_keys())

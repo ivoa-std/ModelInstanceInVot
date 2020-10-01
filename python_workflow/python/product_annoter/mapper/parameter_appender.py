@@ -95,7 +95,7 @@ class ParameterAppender:
         if not self.param_tree:
             return
         parameters_block = self._get_unique_element(
-            self.mango_tree.xpath("//COLLECTION[@dmrole='mango:Source.parameters']")
+            self.mango_tree.xpath("//COLLECTION[@dmrole='mango:MangoObject.parameters']")
             )
         param_block = self._get_unique_element(
             self.param_tree.xpath("//INSTANCE[@dmrole='root']")
@@ -197,7 +197,7 @@ class ParameterAppender:
         for block in blocks:
             if "dmref" in block.attrib.keys():
                 if block.attrib["dmref"] == ATTRIBUTE_DEFAULT.TO_BE_SET:
-                    logger.info("instance with @role={} to set the dmref={} found".format(host_role, dm_ref))
+                    logger.info("instance with @role={} to be set with dmref={} found".format(host_role, dm_ref))
                     block.attrib["dmref"] = dm_ref
                     found = True
         if found is False:
@@ -217,9 +217,9 @@ class ParameterAppender:
                 
     def set_param_semantic(self, ucd, semantic, description):
         logger.info("set ucd=%s and semantic=%s", ucd, semantic)
-        self.set_value("mango:Source.parameters", "mango:Parameter.ucd", ucd)
-        self.set_value("mango:Source.parameters", "mango:Parameter.semantic", semantic)
-        self.set_value("mango:Source.parameters", "mango:Parameter.description", description)
+        self.set_value("mango:MangoObject.parameters", "mango:Parameter.ucd", ucd)
+        self.set_value("mango:MangoObject.parameters", "mango:Parameter.semantic", semantic)
+        self.set_value("mango:MangoObject.parameters", "mango:Parameter.description", description)
         
     def save(self, filepath):
         logger.info("save mapping bloc in %s", filepath)
