@@ -334,6 +334,19 @@ class TableMapper(object):
             
         json_block_extractor = JsonBlockExtractor(root)
         return json_block_extractor.search_subelement_by_role(searched_role)
+    
+    def search_instance_by_type(self, searched_type, root_element=None):
+        """
+        returns a list of element having dmtype = searched_type
+        """
+        self.searched_elements = []
+        if root_element is not None:
+            root = root_element
+        else:
+            root = self.json['MODEL_INSTANCE']
+            
+        json_block_extractor = JsonBlockExtractor(root)
+        return json_block_extractor.search_subelement_by_type(searched_type)
 
     def resolve_object_references(self):
         #

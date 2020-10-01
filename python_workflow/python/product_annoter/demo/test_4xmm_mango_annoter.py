@@ -21,6 +21,7 @@ from product_annoter.mapper.photometry_appender import PhotometryAppender
 from product_annoter.mapper.genericmeasure_appender  import GenericAppender
 from product_annoter.mapper.hardnessratio_appender  import HardnessRatioAppender
 from product_annoter.mapper.detectionflag_appender import DetectionFlagAppender
+from product_annoter.mapper.mjd_appender import MJDAppender
       
 if __name__ == '__main__':
         base_path = os.path.dirname(os.path.realpath(__file__)) 
@@ -86,6 +87,9 @@ if __name__ == '__main__':
             elif measure["measure"] == "DetectionFlag":
                 logger.info("DetectionFlag found")
                 appender = DetectionFlagAppender(output_mapping_path, component_path)
+            elif measure["measure"] == "MJD":
+                logger.info("MJD found")
+                appender = MJDAppender(output_mapping_path, component_path)
                 
             if appender is not None:
                 # Build the mapping block for the current measure

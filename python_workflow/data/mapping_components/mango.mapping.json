@@ -24,19 +24,19 @@
         "TABLE_ROW_TEMPLATE": {
           "INSTANCE": {
             "@dmrole": "root",
-            "@dmtype": "mango:Source",
+            "@dmtype": "mango:MangoObject",
             "ATTRIBUTE": {
-              "@dmrole": "mango:Source.identifier",
+              "@dmrole": "mango:MangoObject.identifier",
               "@dmtype": "ivoa:string",
               "@ref": "@@@@@@"
             },
             "COLLECTION": [
               {
-                "@dmrole": "mango:Source.associatedData",
+                "@dmrole": "mango:MangoObject.associatedData",
                 "@size": "-1"
               },
               {
-                "@dmrole": "mango:Source.parameters",
+                "@dmrole": "mango:MangoObject.parameters",
                 "@size": "-1"
               }
             ]

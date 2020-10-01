@@ -4,13 +4,13 @@
 	<TABLE_MAPPING tableref="Results">
 		<COLLECTION dmrole="root">
 			<TABLE_ROW_TEMPLATE>
-				<INSTANCE dmrole="root" dmtype="mango:Source">
-					<ATTRIBUTE dmrole="mango:Source.identifier"
+				<INSTANCE dmrole="root" dmtype="mango:MangoObject">
+					<ATTRIBUTE dmrole="mango:MangoObject.identifier"
 						dmtype="ivoa:string" ref="namesaada" />
 					<COLLECTION size="-1"
-						dmrole="mango:Source.associatedData" />
-					<COLLECTION size="-1" dmrole="mango:Source.parameters">
-						<INSTANCE dmrole="mango:Source.parameters"
+						dmrole="mango:MangoObject.associatedData" />
+					<COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
+						<INSTANCE dmrole="mango:MangoObject.parameters"
 							dmtype="mango:Parameter">
 							<ATTRIBUTE dmrole="mango:Parameter.semantic"
 								dmtype="ivoa:string" value="@@@@@@" />

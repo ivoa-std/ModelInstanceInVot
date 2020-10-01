@@ -17,7 +17,7 @@
   <TABLE_MAPPING tableref='Results'>
     <INSTANCE dmrole="root" dmtype="mango:stcextend.Flag">
       <INSTANCE dmrole="mango:stcextend.Flag.coord" dmtype="mango:stcextend.FlagCoord">
-      	<ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord" dmtype="ivoa:integer" ref="@@@@@@"/>
+      	<ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord" dmtype="ivoa:integer" ref="@@@@@@"/>      	
       </INSTANCE>
     </INSTANCE>
   </TABLE_MAPPING>

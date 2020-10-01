@@ -34,7 +34,7 @@ class IdentifierAppender:
 
     def set_identifier(self, identifier_ref):
         self.appender.set_ref("root", 
-                              "mango:Source.identifier", 
+                              "mango:MangoObject.identifier", 
                               identifier_ref)
 
     def set_notset_value(self):

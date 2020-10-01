@@ -73,6 +73,19 @@
 			}
 		},
 		{
+			"measure": "MJD",
+			"ucd": "time;obs.start",
+			"description": "Observation time",
+			"semantic": "#obs-start",
+			"coordinate": {
+				"value": "@_mjd_start_137",
+				"unit": "d"
+			},
+			"frame": {
+				"frame": "BARYCENTER"
+			}
+		},
+		{
 			"measure": "DetectionFlag",
 			"ucd": "meta.code.qual",
 			"semantic": "#computed",
