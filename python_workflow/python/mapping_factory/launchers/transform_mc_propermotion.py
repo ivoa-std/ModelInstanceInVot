@@ -39,10 +39,9 @@ def main():
         "coords:Point.axis1": "ivoa:RealQuantity",
         "coords:Point.axis2": "ivoa:RealQuantity",
         "coords:Point.axis3": "ivoa:RealQuantity",
-        "coords:ContinuousAxis.domainMin": "ivoa:RealQuantity",
-        "coords:ContinuousAxis.domainMax": "ivoa:RealQuantity",
-        "meas:Error.statError": "meas:Symmetrical",
-        "meas:Error.sysError": "meas:Symmetrical",
+        "coords:PhysicalCoordinate.cval": "ivoa:RealQuantity",
+        "meas:Error.statError": "meas:Ellipse",
+        "meas:Error.sysError": "meas:Ellipse",
         "coords:SpaceFrame.refPosition": "coords:StdRefLocation"
     }
 

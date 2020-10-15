@@ -4,7 +4,7 @@
 		{
 			"measure": "Position",
 			"ucd": "pos.eq;meta.main",
-			"semantic": "#computed",
+			"semantic": "#position",
 			"description": "computed",
 			"frame": {
 				"frame": "ICRS",
@@ -17,8 +17,27 @@
 			},
 			"errors": {
 				"random": {
-					"value": "@e_RAs",
+					"longitude": "@e_RAs",
+					"latitude": "@e_DEs",
 					"unit": "arcsec"
+				}
+			}
+		},
+		{
+			"measure": "ProperMotion",
+			"ucd": "pos.pm",
+			"semantic": "#propermotion",
+			"description": "calibrated",
+			"position": {
+				"longitude": "@pmRA",
+				"latitude": "@pmDE",
+				"unit": "s/y"
+			},
+			"errors": {
+				"random": {
+					"longitude": "@e_pmRA",
+					"latitude": "@e_pmDE",
+					"unit": "mas/y"
 				}
 			}
 		}
