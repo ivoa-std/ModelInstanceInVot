@@ -27,12 +27,10 @@
 		<xs:complexType>
 			<xs:choice>
 				<xs:sequence>
-					<xs:element ref="COLLECTION" minOccurs="0"
-						maxOccurs="1" />
+					<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="1" />
 				</xs:sequence>
 				<xs:sequence>
-					<xs:element ref="GROUPBY" minOccurs="0"
-						maxOccurs="1" />
+					<xs:element ref="GROUPBY" minOccurs="0" maxOccurs="1" />
 				</xs:sequence>
 				<xs:sequence>
 					<xs:element ref="INSTANCE" maxOccurs="unbounded" />
@@ -62,7 +60,41 @@
 			<xs:all>
 				<xs:element ref="INSTANCE" minOccurs="0"
 					maxOccurs="unbounded" />
+				<xs:element ref="DATATYPE" minOccurs="0"
+					maxOccurs="unbounded" />
 			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Mapping of primitive data types: Must be in globals, only ENUM supported 
+		yet -->
+	<xs:element name="DATATYPE">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="ENUM" minOccurs="1" maxOccurs="1" />
+			</xs:all>
+			<xs:attribute type="xs:string" name="dmtype" />
+			<xs:assert test="(./@dmtype  and @dmtype != '')" />
+		</xs:complexType>
+	</xs:element>
+
+	<!-- enum of literals, used by DATATYPE -->
+	<xs:element name="ENUM">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="LITERAL" minOccurs="1"
+					maxOccurs="unbounded" />
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- literal , used by ENUM -->
+	<xs:element name="LITERAL">
+		<xs:complexType>
+			<xs:attribute type="xs:string" name="dmrole" />
+			<xs:attribute type="xs:string" name="name" />
+			<xs:assert test="(./@dmrole  and @dmrole != '')" />
+			<xs:assert test="(./@name  and @name != '')" />
 		</xs:complexType>
 	</xs:element>
 
@@ -91,8 +123,7 @@
 				test="if (@dmref) then ( @dmref != '') else true()  " />
 			<xs:assert
 				test="if (@dmtype) then ( @dmtype != '') else true()  " />
-			<xs:assert
-				test="if (@ID) then ( @ID != '') else true()  " />
+			<xs:assert test="if (@ID) then ( @ID != '') else true()  " />
 			<xs:assert test="if (@ID) then (@ID != '') else true()  " />
 		</xs:complexType>
 	</xs:element>
@@ -141,8 +172,7 @@
 				</xs:choice>
 				<xs:choice>
 					<xs:element ref="INSTANCE" minOccurs="1" maxOccurs="1" />
-					<xs:element ref="COLLECTION" minOccurs="1"
-						maxOccurs="1" />
+					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
 				</xs:choice>
 			</xs:sequence>
 		</xs:complexType>
@@ -167,8 +197,7 @@
 				</xs:choice>
 				<xs:choice>
 					<xs:element ref="INSTANCE" minOccurs="1" maxOccurs="1" />
-					<xs:element ref="COLLECTION" minOccurs="1"
-						maxOccurs="1" />
+					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute type="xs:string" name="ref" />
@@ -184,8 +213,7 @@
 			<xs:sequence>
 				<xs:choice>
 					<xs:element ref="INSTANCE" minOccurs="1" maxOccurs="1" />
-					<xs:element ref="COLLECTION" minOccurs="1"
-						maxOccurs="1" />
+					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
 				</xs:choice>
 			</xs:sequence>
 			<xs:attribute type="xs:string" name="tableref" />

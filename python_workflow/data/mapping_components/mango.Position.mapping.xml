@@ -1,0 +1,47 @@
+<MODEL_INSTANCE>
+  <MODELS>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>http://www.ivoa.net/xml/VODML/20180519/IVOA-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+  </MODELS>
+  <GLOBALS>
+  </GLOBALS>
+  <TABLE_MAPPING tableref="Results">
+    <INSTANCE dmrole="root" dmtype="meas:Position">
+      <INSTANCE dmrole="meas:Position.coord" dmtype="coords:Point">
+        <INSTANCE dmrole="coords:Point.axis1" dmtype="ivoa:RealQuantity">
+          <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+          <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+        </INSTANCE>
+        <INSTANCE dmrole="coords:Point.axis2" dmtype="ivoa:RealQuantity">
+          <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+          <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+        </INSTANCE>
+        <INSTANCE dmrole="coords:Point.axis3" dmtype="ivoa:RealQuantity">
+          <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+          <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+        </INSTANCE>
+        <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="@@@@@@"/>
+      </INSTANCE>
+      <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+        <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+          <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+          </INSTANCE>
+        </INSTANCE>
+        <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
+          <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@"/>
+            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@"/>
+          </INSTANCE>
+        </INSTANCE>
+      </INSTANCE>
+    </INSTANCE>
+  </TABLE_MAPPING>
+</MODEL_INSTANCE>

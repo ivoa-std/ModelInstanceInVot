@@ -8,7 +8,7 @@ from product_annoter.mapper import logger
 from product_annoter.mapper.constants import PARAM_TABLE_MAPPING
 from product_annoter.mapper.parameter_appender import ParameterAppender
 
-class PositionAppender:
+class LonLatPositionAppender:
     '''
     classdocs
     '''
