@@ -43,7 +43,7 @@
     <COLLECTION dmrole="root">
       <TABLE_ROW_TEMPLATE>
         <INSTANCE dmrole="root" dmtype="mango:MangoObject">
-          <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="namesaada"/>
+          <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="PPM"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
@@ -64,7 +64,7 @@
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Ellipse">
-                    <COLLECTION size="2">
+                    <COLLECTION size="2" dmrole="meas:Ellipse.semiAxis">
                       <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
                         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_RAs"/>
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="arcsec"/>
@@ -101,7 +101,7 @@
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="Ellipse">
-                    <COLLECTION size="2">
+                    <COLLECTION size="2" dmrole="meas:Ellipse.semiAxis">
                       <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
                         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_pmRA"/>
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mas/y"/>

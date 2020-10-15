@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
+
 <MODEL_INSTANCE>
   <MODELS>
     <MODEL>
@@ -41,11 +44,11 @@
       </INSTANCE>
     </INSTANCE>
   </GLOBALS>
-  <TABLE_MAPPING tableref="Results">
+  <TABLE_MAPPING tableref="I_146_ppm1">
     <COLLECTION dmrole="root">
       <TABLE_ROW_TEMPLATE>
         <INSTANCE dmrole="root" dmtype="mango:MangoObject">
-          <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="namesaada"/>
+          <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="PPM"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
@@ -66,7 +69,7 @@
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Ellipse">
-                    <COLLECTION size="2">
+                    <COLLECTION size="2" dmrole="meas:Ellipse.semiAxis">
                       <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
                         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_RAs"/>
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="arcsec"/>
@@ -103,7 +106,7 @@
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="Ellipse">
-                    <COLLECTION size="2">
+                    <COLLECTION size="2" dmrole="meas:Ellipse.semiAxis">
                       <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
                         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_pmRA"/>
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mas/y"/>
@@ -127,8 +130,6 @@
     </COLLECTION>
   </TABLE_MAPPING>
 </MODEL_INSTANCE>
-  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
-  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
  <DESCRIPTION>
    VizieR Astronomical Server vizier.u-strasbg.fr
     Date: 2020-10-15T11:22:37 [V1.99+ (14-Oct-2013)]
