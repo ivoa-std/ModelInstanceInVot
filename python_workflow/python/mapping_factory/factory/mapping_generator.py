@@ -77,15 +77,29 @@ class MappingGenerator:
         superclass = ''
         ref = ''
         attributes = dict()
+        literals = dict()
         constraints = VodmlConstraintDict()
         abstract = False
         if datatype_tag.get("abstract") == "true":
             abstract = True
+            
         for datatype_tag_child in datatype_tag.findall('*'):
             if datatype_tag_child.tag == "vodml-id":
                 vodmlid = model_name + ":" + datatype_tag_child.text
                 logger.info("READING DATA TYPE " + vodmlid)
 
+            elif datatype_tag_child.tag == "literal":
+                description = ""
+                name = ""
+                vodml_id = None
+                for literal_child in datatype_tag_child.findall('*'):
+                    if literal_child.tag == "name":
+                        name =  literal_child.text
+                    elif literal_child.tag == "vodml-id":
+                        vodml_id = literal_child.text
+                    elif literal_child.tag == "description":
+                        description = literal_child.text
+                    literals[vodml_id] = {"name": name, "description": description}
             elif datatype_tag_child.tag == "name":
                 name = datatype_tag_child.text
             elif datatype_tag_child.tag == "vodml-ref":
@@ -104,8 +118,11 @@ class MappingGenerator:
             elif datatype_tag_child.tag == "reference":
                 att = self.read_reference(model_name,datatype_tag_child)
                 attributes[att.vodmlid] = att
-       
-        retour = VodmlDataType(vodmlid, name, ref, superclass, attributes, abstract,constraints)
+        retour = VodmlDataType(vodmlid, name, ref, superclass, 
+                               attributes, 
+                               abstract=abstract,
+                               vodml_constraints=constraints,
+                               literals=literals)
 
         return retour
 
@@ -334,6 +351,16 @@ class MappingGenerator:
                 pass
                 #print( "SKIPPP " + attribute.vodmlid )
         self.append_xml( "</INSTANCE>")
+        
+    def generate_enumtypes_mapping(self):  
+        for type_id, data_type in self.primitive_types.items() :
+            if len(data_type.literals) > 0 :
+                self.append_xml("<DATATYPE dmtype='" + type_id + "'>")
+                self.append_xml("<ENUM>")
+                for lit_id, literal in data_type.literals.items():
+                    self.append_xml("<LITERAL dmrole='" + lit_id + "' " + "name='"  + literal["name"] + "'/>")
+                self.append_xml("</ENUM>")
+                self.append_xml("</DATATYPE>")
 
             
     def generate_object_mapping(self, vodml_object_type, vodml_id):
@@ -475,6 +502,8 @@ class MappingGenerator:
             self.append_xml("</MODEL>")
         self.append_xml("</MODELS>")
         self.append_xml("<GLOBALS>")
+        self.generate_enumtypes_mapping()
+
         self.append_xml("</GLOBALS>")
         self.append_xml("<TABLE_MAPPING  tableref='Results'>")
         self.generate_object_mapping(root_object_type, 'root')

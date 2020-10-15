@@ -1,0 +1,29 @@
+{
+    "identifier": "namesaada",
+	"parameters": [
+		{
+			"measure": "Position",
+			"ucd": "pos.eq;meta.main",
+			"semantic": "#computed",
+			"description": "computed",
+			"frame": {
+				"frame": "ICRS",
+				"equinox": null
+			},
+			"position": {
+				"longitude": "@RAJ2000",
+				"latitude": "@DEJ2000",
+				"unit": "deg"
+			},
+			"errors": {
+				"random": {
+					"value": "@e_RAs",
+					"unit": "arcsec"
+				}
+			}
+		}
+	],
+	"associatedData": {
+		
+	}
+}

@@ -7,7 +7,9 @@ Created on 20 avr. 2020
 from mapping_factory.factory.vodml_constraint_dict import VodmlConstraintDict
 
 class VodmlDataType:
-    def __init__(self, vodmlid, name, ref, superclass, attributes, abstract=False,vodml_constraints=VodmlConstraintDict() ):
+    def __init__(self, vodmlid, name, ref, superclass, attributes, 
+                 abstract=False,vodml_constraints=VodmlConstraintDict(), 
+                 literals={} ):
         '''
         :param vodmlid:
         :type vodmlid:
@@ -23,6 +25,8 @@ class VodmlDataType:
         :type abstract:
         :param vodml_constraints:
         :type vodml_constraints: VodmlConstraintDict
+        :param literals:
+        :type literals: {vodml-id:{name, description}}
         '''
         self.vodmlid = vodmlid
         self.ref = ref
@@ -31,6 +35,8 @@ class VodmlDataType:
         self.attributes = attributes
         self.abstract = abstract
         self.vodml_constraints = vodml_constraints 
+        self.literals = literals 
+        print("@@@@@@@@ " + self.vodmlid + " "+ str(len(self.literals)))
         
     def __str__(self):
         return self.__repr__()
@@ -42,3 +48,4 @@ class VodmlDataType:
         retour += "\n    ATTRIBUTES " + self.attributes.__repr__()
         retour += "\n    " + self.vodml_constraints.__repr__()
         return retour
+    

@@ -1,0 +1,97 @@
+
+<INSTANCE ID="SpaceSys_ICRS_Spherical"
+	dmtype="coords:SpaceSys">
+	<INSTANCE dmrole="coords:PhysicalCoordSys.coordSpace"
+		dmtype="coords:SphericalCoordSpace">
+		<COLLECTION size="-1" dmrole="coords:CoordSpace.axis">
+			<INSTANCE dmrole="coords:CoordSpace.axis"
+				dmtype="coords:ContinuousAxis">
+				<INSTANCE dmrole="coords:ContinuousAxis.domainMin"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value"
+						dmtype="ivoa:real" value="0.0" />
+					<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit"
+						value="deg" />
+				</INSTANCE>
+				<INSTANCE dmrole="coords:ContinuousAxis.domainMax"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value"
+						dmtype="ivoa:real" value="360.0" />
+					<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit"
+						value="deg" />
+				</INSTANCE>
+				<ATTRIBUTE dmrole="coords:ContinuousAxis.cyclic"
+					dmtype="ivoa:boolean" value="true" />
+				<ATTRIBUTE dmrole="coords:Axis.name" dmtype="ivoa:string"
+					value="ra" />
+			</INSTANCE>
+			<INSTANCE dmrole="coords:CoordSpace.axis"
+				dmtype="coords:ContinuousAxis">
+				<INSTANCE dmrole="coords:ContinuousAxis.domainMin"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value"
+						dmtype="ivoa:real" value="-900.0" />
+					<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit"
+						value="deg" />
+				</INSTANCE>
+				<INSTANCE dmrole="coords:ContinuousAxis.domainMax"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value"
+						dmtype="ivoa:real" value="90.0" />
+					<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit"
+						value="deg" />
+				</INSTANCE>
+				<ATTRIBUTE dmrole="coords:ContinuousAxis.cyclic"
+					dmtype="ivoa:boolean" value="true" />
+				<ATTRIBUTE dmrole="coords:Axis.name" dmtype="ivoa:string"
+					value="dec" />
+			</INSTANCE>
+			<INSTANCE dmrole="coords:CoordSpace.axis"
+				dmtype="coords:ContinuousAxis">
+				<INSTANCE dmrole="coords:ContinuousAxis.domainMin"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value"
+						dmtype="ivoa:real" value="0.0" />
+					<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit"
+						value="parsec" />
+				</INSTANCE>
+				<INSTANCE dmrole="coords:ContinuousAxis.domainMax"
+					dmtype="ivoa:RealQuantity">
+					<ATTRIBUTE dmrole="ivoa:RealQuantity.value"
+						dmtype="ivoa:real" value="unbounded" />
+					<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit"
+						value="parsec" />
+				</INSTANCE>
+				<ATTRIBUTE dmrole="coords:ContinuousAxis.cyclic"
+					dmtype="ivoa:boolean" value="false" />
+				<ATTRIBUTE dmrole="coords:Axis.name" dmtype="ivoa:string"
+					value="r" />
+			</INSTANCE>
+		</COLLECTION>
+	</INSTANCE>
+	<INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:SpaceFrame">
+		<INSTANCE dmrole="coords:SpaceFrame.refPosition"
+			dmtype="coords:StdRefLocation">
+			<ATTRIBUTE dmrole="coords:StdRefLocation.position"
+				dmtype="ivoa:string" value="NoSet" />
+		</INSTANCE>
+		<ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame"
+			dmtype="ivoa:string" value="ICRS" />
+		<ATTRIBUTE dmrole="coords:SpaceFrame.equinox"
+			dmtype="coords:Epoch" value="NoSet" />
+	</INSTANCE>
+	<INSTANCE dmrole="coords:PhysicalCoordSys.frame"
+		dmtype="coords:SpaceFrame">
+		<INSTANCE dmrole="coords:SpaceFrame.refPosition"
+			dmtype="coords:StdRefLocation">
+			<ATTRIBUTE dmrole="coords:StdRefLocation.position"
+				dmtype="ivoa:string" ref="@@@@@@" />
+		</INSTANCE>
+		<ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame"
+			dmtype="ivoa:string" ref="@@@@@@" />
+		<ATTRIBUTE dmrole="coords:SpaceFrame.equinox"
+			dmtype="coords:Epoch" ref="@@@@@@" />
+		<ATTRIBUTE dmrole="coords:SpaceFrame.planetaryEphem"
+			dmtype="ivoa:string" ref="@@@@@@" />
+	</INSTANCE>
+</INSTANCE>

@@ -13,7 +13,7 @@ if file_path not in sys.path:
 from product_annoter.demo import data_dir
 from product_annoter.demo import logger  
 
-from product_annoter.mapper.lonlat_position_appender import LonLatPositionAppender  
+from product_annoter.mapper.position_appender import PositionAppender  
 from product_annoter.mapper.status_appender import StatusAppender  
 from product_annoter.mapper.votable_merger import VOTableMerger
 from product_annoter.mapper.identifier_appender import IdentifierAppender
@@ -55,7 +55,7 @@ if __name__ == '__main__':
         # Read the mapping configuration for this VOTable.
         # This configuration lists a  parameters to be mapped 
         # with the column references or the literal values
-        with open(os.path.join(data_dir, 'product_configs', '4xmm.mango.config.json')) as json_file:
+        with open(os.path.join(data_dir, 'product_configs', 'vizier_propermotion.mango.config.json')) as json_file:
             mapping_config = json.load(json_file)
         
         # set the source identifier mapping
@@ -71,7 +71,7 @@ if __name__ == '__main__':
             
             if measure["measure"] == "LonLatSkyPosition":
                 logger.info("Position found")
-                appender = LonLatPositionAppender(output_mapping_path, component_path)
+                appender = PositionAppender(output_mapping_path, component_path)
             elif measure["measure"] == "status":
                 logger.info("Status found")
                 appender = StatusAppender(output_mapping_path, component_path)

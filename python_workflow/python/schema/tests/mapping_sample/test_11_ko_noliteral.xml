@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MODEL_INSTANCE>
+  <MODELS>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>http://www.ivoa.net/xml/VODML/20180519/IVOA-v1.0.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml</URL>
+    </MODEL>
+  </MODELS>
+  <GLOBALS>
+    <DATATYPE dmtype="coords:Handedness">
+      <ENUM>
+      </ENUM>
+    </DATATYPE>
+   </GLOBALS>
+  <TABLE_MAPPING tableref="Results">
+    <INSTANCE dmrole="root" dmtype="meas:Polarization">
+      <INSTANCE dmrole="meas:Polarization.coord" dmtype="coords:PolState">
+        <ATTRIBUTE dmrole="coords:PolState.cval" dmtype="coords:PolStateEnum" ref="@@@@@@"/>
+      </INSTANCE>
+    </INSTANCE>
+  </TABLE_MAPPING>
+</MODEL_INSTANCE>
