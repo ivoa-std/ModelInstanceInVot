@@ -23,7 +23,7 @@ class VOTableMerger(object):
             return mapping.read()
            
     def insert_mapping(self):
-        logger.info("save annotatedVOTable in %s", self.output_path)
+        logger.info("save annotated VOTable in %s", self.output_path)
         with open(self.output_path, 'w') as output_votable:            
             with open(self.raw_votable_path, 'r') as raw_votable:
                 for line in raw_votable:
