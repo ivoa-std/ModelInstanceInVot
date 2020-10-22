@@ -56,7 +56,57 @@
                 ]
               },
               {
-                "@dmrole": "coords:Point.axis3",
+                "@dmref": "@@@@@@",
+                "@dmrole": "coords:Coordinate.coordSys"
+              }
+            ]
+          },
+          {
+            "@dmrole": "meas:Measure.error",
+            "@dmtype": "meas:Error",
+            "INSTANCE": {
+              "@dmrole": "meas:Error.statError",
+              "@dmtype": "meas:Ellipse",
+              "COLLECTION": {
+                "@dmrole": "meas:Ellipse.semiAxis",
+                "@size": "2",
+                "INSTANCE": [
+                  {
+                    "@dmrole": "meas:Ellipse.semiAxis",
+                    "@dmtype": "ivoa:RealQuantity",
+                    "ATTRIBUTE": [
+                      {
+                        "@dmrole": "ivoa:RealQuantity.value",
+                        "@dmtype": "ivoa:real",
+                        "@ref": "@@@@@@"
+                      },
+                      {
+                        "@dmrole": "ivoa:Quantity.unit",
+                        "@dmtype": "ivoa:Unit",
+                        "@ref": "@@@@@@"
+                      }
+                    ]
+                  },
+                  {
+                    "@dmrole": "meas:Ellipse.semiAxis",
+                    "@dmtype": "ivoa:RealQuantity",
+                    "ATTRIBUTE": [
+                      {
+                        "@dmrole": "ivoa:RealQuantity.value",
+                        "@dmtype": "ivoa:real",
+                        "@ref": "@@@@@@"
+                      },
+                      {
+                        "@dmrole": "ivoa:Quantity.unit",
+                        "@dmtype": "ivoa:Unit",
+                        "@ref": "@@@@@@"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "INSTANCE": {
+                "@dmrole": "meas:Ellipse.posAngle",
                 "@dmtype": "ivoa:RealQuantity",
                 "ATTRIBUTE": [
                   {
@@ -70,58 +120,8 @@
                     "@ref": "@@@@@@"
                   }
                 ]
-              },
-              {
-                "@dmref": "@@@@@@",
-                "@dmrole": "coords:Coordinate.coordSys"
               }
-            ]
-          },
-          {
-            "@dmrole": "meas:Measure.error",
-            "@dmtype": "meas:Error",
-            "INSTANCE": [
-              {
-                "@dmrole": "meas:Error.statError",
-                "@dmtype": "meas:Symmetrical",
-                "INSTANCE": {
-                  "@dmrole": "meas:Symmetrical.radius",
-                  "@dmtype": "ivoa:RealQuantity",
-                  "ATTRIBUTE": [
-                    {
-                      "@dmrole": "ivoa:RealQuantity.value",
-                      "@dmtype": "ivoa:real",
-                      "@ref": "@@@@@@"
-                    },
-                    {
-                      "@dmrole": "ivoa:Quantity.unit",
-                      "@dmtype": "ivoa:Unit",
-                      "@ref": "@@@@@@"
-                    }
-                  ]
-                }
-              },
-              {
-                "@dmrole": "meas:Error.sysError",
-                "@dmtype": "meas:Symmetrical",
-                "INSTANCE": {
-                  "@dmrole": "meas:Symmetrical.radius",
-                  "@dmtype": "ivoa:RealQuantity",
-                  "ATTRIBUTE": [
-                    {
-                      "@dmrole": "ivoa:RealQuantity.value",
-                      "@dmtype": "ivoa:real",
-                      "@ref": "@@@@@@"
-                    },
-                    {
-                      "@dmrole": "ivoa:Quantity.unit",
-                      "@dmtype": "ivoa:Unit",
-                      "@ref": "@@@@@@"
-                    }
-                  ]
-                }
-              }
-            ]
+            }
           }
         ]
       }

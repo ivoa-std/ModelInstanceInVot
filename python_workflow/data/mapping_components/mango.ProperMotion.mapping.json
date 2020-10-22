@@ -1,91 +1,6 @@
 {
   "MODEL_INSTANCE": {
-    "GLOBALS": {
-      "DATATYPE": [
-        {
-          "@dmtype": "coords:Handedness",
-          "ENUM": {
-            "LITERAL": [
-              {
-                "@dmrole": "Handedness.left",
-                "@name": "left"
-              },
-              {
-                "@dmrole": "Handedness.right",
-                "@name": "right"
-              }
-            ]
-          }
-        },
-        {
-          "@dmtype": "coords:PolStateEnum",
-          "ENUM": {
-            "LITERAL": [
-              {
-                "@dmrole": "PolStateEnum.I",
-                "@name": "I"
-              },
-              {
-                "@dmrole": "PolStateEnum.Q",
-                "@name": "Q"
-              },
-              {
-                "@dmrole": "PolStateEnum.U",
-                "@name": "U"
-              },
-              {
-                "@dmrole": "PolStateEnum.V",
-                "@name": "V"
-              },
-              {
-                "@dmrole": "PolStateEnum.RR",
-                "@name": "RR"
-              },
-              {
-                "@dmrole": "PolStateEnum.LL",
-                "@name": "LL"
-              },
-              {
-                "@dmrole": "PolStateEnum.RL",
-                "@name": "RL"
-              },
-              {
-                "@dmrole": "PolStateEnum.LR",
-                "@name": "LR"
-              },
-              {
-                "@dmrole": "PolStateEnum.XX",
-                "@name": "XX"
-              },
-              {
-                "@dmrole": "PolStateEnum.YY",
-                "@name": "YY"
-              },
-              {
-                "@dmrole": "PolStateEnum.XY",
-                "@name": "XY"
-              },
-              {
-                "@dmrole": "PolStateEnum.YX",
-                "@name": "YX"
-              },
-              {
-                "@dmrole": "PolStateEnum.PF",
-                "@name": "PF"
-              },
-              {
-                "@dmrole": "PolStateEnum.PP",
-                "@name": "PP"
-              },
-              {
-                "@dmrole": "PolStateEnum.PA",
-                "@name": "PA"
-              }
-            ]
-          }
-        }
-      ]
-    },
+    "GLOBALS": null,
     "MODELS": {
       "MODEL": [
         {
@@ -107,88 +22,104 @@
           {
             "@dmrole": "meas:ProperMotion.lon",
             "@dmtype": "coords:PhysicalCoordinate",
-            "INSTANCE": [
-              {
-                "@abstract": "true",
-                "@dmrole": "coords:PhysicalCoordinate.cval",
-                "@dmtype": "ivoa:Quantity",
-                "ATTRIBUTE": {
+            "INSTANCE": {
+              "@dmrole": "coords:PhysicalCoordinate.cval",
+              "@dmtype": "ivoa:RealQuantity",
+              "ATTRIBUTE": [
+                {
+                  "@dmrole": "ivoa:RealQuantity.value",
+                  "@dmtype": "ivoa:real",
+                  "@ref": "@@@@@@"
+                },
+                {
                   "@dmrole": "ivoa:Quantity.unit",
                   "@dmtype": "ivoa:Unit",
                   "@ref": "@@@@@@"
                 }
-              },
-              {
-                "@dmref": "@@@@@@",
-                "@dmrole": "coords:Coordinate.coordSys"
-              }
-            ]
+              ]
+            }
           },
           {
             "@dmrole": "meas:ProperMotion.lat",
             "@dmtype": "coords:PhysicalCoordinate",
-            "INSTANCE": [
-              {
-                "@abstract": "true",
-                "@dmrole": "coords:PhysicalCoordinate.cval",
-                "@dmtype": "ivoa:Quantity",
-                "ATTRIBUTE": {
+            "INSTANCE": {
+              "@dmrole": "coords:PhysicalCoordinate.cval",
+              "@dmtype": "ivoa:RealQuantity",
+              "ATTRIBUTE": [
+                {
+                  "@dmrole": "ivoa:RealQuantity.value",
+                  "@dmtype": "ivoa:real",
+                  "@ref": "@@@@@@"
+                },
+                {
                   "@dmrole": "ivoa:Quantity.unit",
                   "@dmtype": "ivoa:Unit",
                   "@ref": "@@@@@@"
                 }
-              },
-              {
-                "@dmref": "@@@@@@",
-                "@dmrole": "coords:Coordinate.coordSys"
-              }
-            ]
+              ]
+            }
           },
           {
             "@dmrole": "meas:Measure.error",
             "@dmtype": "meas:Error",
-            "INSTANCE": [
-              {
-                "@dmrole": "meas:Error.statError",
-                "@dmtype": "meas:Symmetrical",
-                "INSTANCE": {
-                  "@dmrole": "meas:Symmetrical.radius",
-                  "@dmtype": "ivoa:RealQuantity",
-                  "ATTRIBUTE": [
-                    {
-                      "@dmrole": "ivoa:RealQuantity.value",
-                      "@dmtype": "ivoa:real",
-                      "@ref": "@@@@@@"
-                    },
-                    {
-                      "@dmrole": "ivoa:Quantity.unit",
-                      "@dmtype": "ivoa:Unit",
-                      "@ref": "@@@@@@"
-                    }
-                  ]
-                }
+            "INSTANCE": {
+              "@dmrole": "meas:Error.statError",
+              "@dmtype": "Ellipse",
+              "COLLECTION": {
+                "@dmrole": "meas:Ellipse.semiAxis",
+                "@size": "2",
+                "INSTANCE": [
+                  {
+                    "@dmrole": "meas:Ellipse.semiAxis",
+                    "@dmtype": "ivoa:RealQuantity",
+                    "ATTRIBUTE": [
+                      {
+                        "@dmrole": "ivoa:RealQuantity.value",
+                        "@dmtype": "ivoa:real",
+                        "@ref": "@@@@@@"
+                      },
+                      {
+                        "@dmrole": "ivoa:Quantity.unit",
+                        "@dmtype": "ivoa:Unit",
+                        "@ref": "@@@@@@"
+                      }
+                    ]
+                  },
+                  {
+                    "@dmrole": "meas:Ellipse.semiAxis",
+                    "@dmtype": "ivoa:RealQuantity",
+                    "ATTRIBUTE": [
+                      {
+                        "@dmrole": "ivoa:RealQuantity.value",
+                        "@dmtype": "ivoa:real",
+                        "@ref": "@@@@@@"
+                      },
+                      {
+                        "@dmrole": "ivoa:Quantity.unit",
+                        "@dmtype": "ivoa:Unit",
+                        "@ref": "@@@@@@"
+                      }
+                    ]
+                  }
+                ]
               },
-              {
-                "@dmrole": "meas:Error.sysError",
-                "@dmtype": "meas:Symmetrical",
-                "INSTANCE": {
-                  "@dmrole": "meas:Symmetrical.radius",
-                  "@dmtype": "ivoa:RealQuantity",
-                  "ATTRIBUTE": [
-                    {
-                      "@dmrole": "ivoa:RealQuantity.value",
-                      "@dmtype": "ivoa:real",
-                      "@ref": "@@@@@@"
-                    },
-                    {
-                      "@dmrole": "ivoa:Quantity.unit",
-                      "@dmtype": "ivoa:Unit",
-                      "@ref": "@@@@@@"
-                    }
-                  ]
-                }
+              "INSTANCE": {
+                "@dmrole": "meas:Ellipse.posAngle",
+                "@dmtype": "ivoa:RealQuantity",
+                "ATTRIBUTE": [
+                  {
+                    "@dmrole": "ivoa:RealQuantity.value",
+                    "@dmtype": "ivoa:real",
+                    "@ref": "@@@@@@"
+                  },
+                  {
+                    "@dmrole": "ivoa:Quantity.unit",
+                    "@dmtype": "ivoa:Unit",
+                    "@ref": "@@@@@@"
+                  }
+                ]
               }
-            ]
+            }
           }
         ]
       }
