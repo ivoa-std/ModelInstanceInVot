@@ -4,6 +4,7 @@
 \usepackage{array}
 \usepackage{tabulary}  % for nicer tables
 \usepackage{calc}
+\usepackage{placeins}
 \setlength\extrarowheight{2pt}
 
 \newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
@@ -125,94 +126,16 @@ The consequence is that any annotation mechanism based on VODML will preserve th
 %FB : I don't understand at all following sentence "This is very interesting because a copy that model hierarchy with leaves set with real data is nothing else that a model instance which is exactly what we need to be interoperable." (fixed LM)
 
 The main concept of this standard is to insert on the  top of the VOTable an XML block compliying with the model structures and containing references to the actual data.
-In such a way that a model-aware client only has to make a copy of that structure and to resolve the references  to build an instance. More generic model-unaware clients can just ignore the mapping block. This approach, has been proposed by (GL and OL). 
+In such a way that a model-aware client only has to make a copy of that structure and to resolve the references  to build an instance. More generic model-unaware clients can just ignore the mapping block. 
+This approach, proposed by (GL and OL), allows a perfect restitution of the model from the annotation, a round-trip validation. It follows a real ORM schema actually.
+Our approach is a bit different. From our use case perspective (see below), clients do not need  to care about the difference between data types and object types or between relations and compositions or some other finesses. They need to be able to reconstruct a browable data hierarchy. The can be done by assembling key/vakues pairs, tuples and arrays. This way to serialize complex data is used with a great success by most of the Web applications working with JSON/YAML messages. 
+Our bet is that the loss of certain features of the model will allow significant gain in readability, and thus in reliability, while facilitating the work of annotation. 
+The proposed syntax renders the data hierarchy with three elements sibling to the JSON concepts (ATTRIBUTE as key/vakue pair, INSANCE as tuple and COLLECTIONS as arrays). In addition to this, some other elements have been added to guide the parse. 
+The connection with the data is made with element attributes in order to keep the structure of the XML elements independant from the data layout.
 
-We have tested the syntax originally proposed and it turned out that it was not well suited for archival data or for TAP responses where the annotation process must be automated as much as possible (entirely for TAP). 
-
-The \\texttt{ModelInstanceInVotable} syntax is based on the same principles as the original proposal but with a particular attention given to the annotation of archival data by keeping focused on both client needs and easiness of the annotation process.
-This requires the syntax to be as simple as possible and as flexible as possible to be usable with a wide range of data sets.
-% LM does not undertsand this sentence: We must emphasize that we are actually mapping on the data a representation of a peculiar set of instances of the model and not the general model itself.
-With this syntax, the model hierarchy is built upon attributes, tuples and arrays (ATTRIBUTE, INSTANCE and COLLECTIONS). Some other elements have been added to guide the parser (FILTER, TABLE\_ROW\_TEMPLATE ...)
-
-%FB : I don't understand why they are the basic elements (simple values,  tuples and  lists, like JSON) Is that VALUE, ARRAY?COMPOSITION ?  
-The connection with  data is setup by XML element attributes, so that the mapping structure mainly depends on the model but not on the mapped data.
-%FB : Actually only "ref" attribute ? (ref, tableref, dm_ref, value)
-
-These ideas were first tested in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI. 
+These ideas were first tested first in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI. 
 Then, the syntax has been refined to be used to validate the Mango model on real data.
 
-\iffalse
- The annotation process 
-
-we though it was woth, has been tested on various data. We reached the conclusion that the annotations was not well suited for archival data.
-
- 
-
- UTypes have been replaced with short identifiers which role depends on 
-
-
-This is legacy from a period 
-This is why the Utype based data annotation has been withdrawn
-
-This is partially done with GROUPs that allow to gather FIELDs and PARAMs into hierarchical structures. Unfortunately, the model elements, in the current VOTable spec (ref) are identfied by Utypes. There is no standard way to construct UTypes and this to parse them. In other, client software has to manage UType list. IN fact 
-
-If  
-
-
-This can be achieved at protolol level by having a 1-1 association between protocol and  model. With this approach, used for all VO simple protocols (ref), the query responses have a fixed format to which the data must conform. The VOTable FIELDs and PARAMs are defined by the protocol.
-
-
-associating one model with
-The model can also be used by the data provider to expose data in a view
-This scope can be extended if we make the model machine readable.
-
-
-There is no VO standard specifying how to map real data on a model. 
-This shortcoming is a bottleneck for interoperability since there is no clean way to compare the same quantities but from differents datasets. 
-
-
-The model mapping currently used is based on GROUPs. GROUP is a VOTable feature that allows to gather FIELDs and PARAMs into hierarchical structures. In theory, this could be used to map models. Unfortunately, in VOTables, GROUPS haven been used long time before we a standard  
-
-This is satisfactory in many cases but with some limitations however:\begin{enumerate}
-   \item The GROUPs, as they are currently used, do not reflect the complete model structure. The are mostly used to group columns with a loose coupling with the model hierarchy. This prevents the restore complex data structures.
-   \item The identification of the GROUP elements is based on Utypes which are not clearly connected with the underlying model. Utypes are actually used to represent simple structures. In the current implementations, the client knows the data structures (e.g. coordinate system) and pick values within the group to fill them..
-\end{enumerate}
-These limitations were unavoidable while we had no common way to represent  models. It is indeed difficult to imagine a consistant model mapping mechanism if there is no standard serialization schema for those models. The situation changed with the usage of MODEL_INSTANCE. MODEL_INSTANCE proposes a robust way to make models machine-readable. With MODEL_INSTANCE, we can consider a mapping syntax directly derived from the model serialization. There are 2 approaches that might be complementary. 
-\begin{enumerate}
-   \item The first option is to hide the model complexity by flattenning its representation. This is the way GROUPs do work. This approach has the advantage of being compact but it has some strong limitations such as the impossibility of having different elements playing the same role (e.g. 2 position columns in the same table)
-   \item The second option consists in keeping the model structure even if this leads to more complex annotations.
-\end{enumerate}
-
-
-Vodml-instance-vot is based on the second option with a particular concern for the process of archival data annotation. The purpose of the MODEL_INSTANCE mapping in VOTables is to provide a bridge between the data and the model it refers to. The goal of the mapping processing is to make possible to build instances set with values taken out the data tables. In theory, a perfecly faith mapping should be capable of rendering any model feature. In our opinion this ambitious goal led to a mapping syntax difficult to manage.
-We prefer to discard this round-trip requirement and to keep focused on both client needs and easiness of the annotation process.
-
-Our main use case is the annotation  of pre-existing data. This  means the annotation process must succeed whatever the way data are arranged even if they do not contain all quantities requested by the model.  
-We consider that we have to provide clients with both a data hierarchy view as simple as possibel and an accurate description of the used coordinate systems. 
-
-For most of the usages (display, plot, match, computation),  complex data hierarchies can be wrapped in 3 basic types, the simple values,  tuples and  lists. Vodml-instance-vot  has been built upon these 3 types with a few others annotations guiding the parser.
-
-These ideas that led to this proposal were first tested in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI. Then the syntax has been refined to be used to validate the Mango model on real data.
-
-\fi
-%The identification of the GROUP elements is based on Utypes which are not clearly connected with the underlying model. Utypes are actually used to represent simple structures. In the current implementations, the client knows the data structures (e.g. coordinate system) and pick values within the group to fill them..
-
-
-
-%The current proposal 
-
-
-
-%This standard comes after many discussions in the VO about the syntax to be used to annotate VOTable. 
-%The ideas that led to this proposal were first tested in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI. Then the syntax has been refined to be used to validate the Mango model on real data.
-
-%The existing mapping based on GROUP works fine with the simplest cases. It has the disadvantage of being based on Utypes which are not clearly connected with the underlying model. Utypes are actually used to represent simple structures. In the current implementations, the client knows the data structures (e.g. coordinate system) and pick values within the group to fill them.
-
- %For now, mone discover or reconstruct a classe hierarchy from groups either. 
-%The purpose of the MODEL_INSTANCE mapping in VOTables is to provide a bridge between the model it refers to and the data. The mapping processing is meant to deliver a model instance set with values taken out the data table. In theory, a perfecly faith mapping should be capable of rendering any model feature. In our opinion this ambitious goal led to a mapping syntax difficult to manage.
-%We prefer to discard this round-trip requirement and to keep focused on the client needs and the easiness of the VOTable annotation process.
-
-%ur main use case is the annotation  of pre-existing data. This  means the annotation process must succeed whatever the way data are arranged even if they do not contain all quantities requested by the model.  We consider that the client just needs to reconstruct the data hierarchy and to get a full description of the used coordinate systems. For most of the usages (display, plot, match, computation),  complex data hierarchies can be wrapped in 3 data types, the simple values, the tuples and the lists. The mango mapping has been built upon these 3 types with a few others annotations guiding the work of the parser.
 
 \lstset{language=XML}
 
@@ -338,13 +261,21 @@ The mapping construction rules are the same whatever either model or data layout
     \item The \texttt{<GLOBALS>} block is followed a sequence of \texttt{<TABLE\_MAPPING>}.
     \item There is one \texttt{<TABLE\_MAPPING>} per mapped \texttt{<TABLE>}.
 \end{itemize}
+\FloatBarrier
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TOP LEVEL STRUCTURE
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Mapping Top Level Structure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % MODELS
 %
 
-\subsection{MODELS}
+\subsubsection{MODELS}
 
 The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. 
 
@@ -376,14 +307,14 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 \end{lstlisting}
 
  \texttt{MODELS},  {MODEL},  {NAME} and {URL}  have no attributes. 
- 
+ \FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % GLOBALS
 %
 
-\subsection{GLOBALS}
+\subsubsection{GLOBALS}
  Contains  \texttt{INSTANCE}s  that can be used everywhere in the \texttt{MODEL\_INSTANCE}.
 
 \begin{itemize}
@@ -413,7 +344,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 
 
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -429,13 +360,13 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
      \label{tbl:globals-children}
  \end{table}
 
-
+\FloatBarrier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % TABLE\MAPPING
 %
 
-\subsection{TABLE\_MAPPING}
+\subsubsection{TABLE\_MAPPING}
 
 \texttt{TABLE\_MAPPING} blocks contain the mapping statements of the data contained in one \texttt{TABLE} .
 
@@ -462,7 +393,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
 \end{lstlisting}
 
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -486,7 +417,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
  \end{table}
 
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -502,7 +433,7 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
      \label{tbl:templ-att}
  \end{table}
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|c|c|c|J|}
@@ -517,13 +448,20 @@ The  \texttt{MODELS}  blocks contains the list of the models mapped in the block
      \caption{Valid attribute patterns for  \texttt{TABLE\_MAPPING}} 
      \label{tbl:templ-pattern}
  \end{table}
+\FloatBarrier
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% DATA HIERARCHY
+%
+\subsection{Data Hierarchy}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % INSTANCE
 %
 
-\subsection{INSTANCE}
+\subsubsection{INSTANCE}
 
 Mapping for either object types or a datatype instances.
 
@@ -546,7 +484,7 @@ Mapping for either object types or a datatype instances.
 \end{lstlisting}
 
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -568,7 +506,7 @@ Mapping for either object types or a datatype instances.
      \label{tbl:inst-chilrdren}
 \end{table}
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}       
@@ -595,7 +533,7 @@ Mapping for either object types or a datatype instances.
      \label{tbl:inst-att}
  \end{table}
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|c|c|c|J|}
@@ -623,13 +561,13 @@ Mapping for either object types or a datatype instances.
      \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
      \label{tbl:inst-pattern}
  \end{table}
-
+\FloatBarrier
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % ATTRIBUTE
 %
 
-\subsection{ATTRIBUTE}
+\subsubsection{ATTRIBUTE}
 
 Mapping statement for primitive attributes.
 
@@ -649,7 +587,7 @@ Mapping statement for primitive attributes.
 \end{lstlisting}
 
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|c|J|}
@@ -712,7 +650,7 @@ Mapping statement for primitive attributes.
   \caption{Valid attribute patterns for  \texttt{ATTRIBUTE}} 
   \label{tbl:att-pattern}
  \end{table}
-
+\FloatBarrier
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -720,7 +658,7 @@ Mapping statement for primitive attributes.
 % COLLECTION
 %
 
-\subsection{COLLECTION}
+\subsubsection{COLLECTION}
 
 Mapping statement fort sets of either instances or collections.
 
@@ -744,7 +682,7 @@ The example below show up a a fixed length \texttt{COLLECTION}.
 </TABLE\_MAPPING>
 \end{lstlisting}
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
@@ -769,7 +707,7 @@ The example below show up a a fixed length \texttt{COLLECTION}.
 \label{tbl:coll-children}
 \end{table}
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
@@ -805,14 +743,22 @@ The example below show up a a fixed length \texttt{COLLECTION}.
   \end{tabulary}
   \caption{Valid attribute patterns for  \texttt{COLLECTION}} 
   \label{tbl:coll-pattern}
- \end{table}
+ \end{table}`
+\FloatBarrier
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% PARSING STATEMENTS
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Parsing Statement}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % TABLE_ROW_TEMPLATE
 %
 
-\subsection{TABLE\_ROW\_TEMPLATE}
+\subsubsection{TABLE\_ROW\_TEMPLATE}
 This element indicates that one element must be added to the host \texttt{COLLECTION} for each table row.
 
 \begin{itemize}
@@ -837,7 +783,7 @@ This element indicates that one element must be added to the host \texttt{COLLEC
 </TABLE\_MAPPING>
 \end{lstlisting}
 
-\begin{table}[!h]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|L|J|}
@@ -852,7 +798,7 @@ This element indicates that one element must be added to the host \texttt{COLLEC
      \caption{Supported  \texttt{TABLE\_ROW\_TEMPLATE} children} 
      \label{trt:row-children}
 \end{table}
-
+\FloatBarrier
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -860,7 +806,7 @@ This element indicates that one element must be added to the host \texttt{COLLEC
 % FILTER
 %
 
-\subsection{FILTER}
+\subsubsection{FILTER}
 This element filters the table rows that are to mapped. 
 
 \begin{itemize}
@@ -925,7 +871,7 @@ In the example below::
 \label{tbl:filter-att}
 \end{table}
 
-\begin{table}[!t]
+\begin{table}[!htbp]
 \small
 \centering
 \begin{tabulary}{\linewidth}{|C|CJ|}
@@ -950,8 +896,8 @@ In the example below::
 %
 % JOIN
 %
-
-\subsection{JOIN}
+\FloatBarrier
+\subsubsection{JOIN}
 This element populates the host collection with data taken out from a foreign table and matching the join criteria.
 
 \begin{itemize}
@@ -1039,14 +985,14 @@ This element populates the host collection with data taken out from a foreign ta
 \caption{Valid \texttt{JOIN} attribute pattern} 
 \label{tbl:join-patterns}
 \end{table}
-
+\FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % GROUPBY
 %
 
-\subsection{GROUPBY}
+\subsubsection{GROUPBY}
 This element aggregates host table rows  in groups which elements have all the same value for a given column.
 
 \begin{itemize}
@@ -1125,12 +1071,13 @@ In the example below:
 \caption{Valid \texttt{GROUPBY} attribute pattern} 
 \label{tbl:group-patterns}
 \end{table}
-
+\FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % SHORTCUTS
 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Shortcuts}
 VODML encourgages people to use the \texttt{ivoa} model for the primitive types. 
@@ -1167,6 +1114,7 @@ Shortcut for \texttt{ivoa:RealQuantity} class.
 <SC_REALQUANTITY dmrole="coords:PhysicalCoordinate.cval"
             ref="col_id" value="0.0"  unit="m/sec" />
 \end{lstlisting}
+
 
 \subsubsection{SC\_INTQUANTITY}
 Shortcut for \texttt{ivoa:IntegerQuantity} class.
