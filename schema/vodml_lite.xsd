@@ -118,7 +118,7 @@
 			<xs:attribute type="xs:string" name="dmtype" />
 			<xs:attribute type="xs:string" name="ID" />
 			<xs:assert
-				test="(./@dmref and ./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole and not (./@dmref) and not (./@ID)) or (./@dmtype and ./@ID and not (./@dmrole))" />
+				test="(./@dmref and ./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole and not (./@dmref) and not (./@ID)) or (./@dmtype and ./@ID )" />
 			<xs:assert
 				test="if (@dmref) then ( @dmref != '') else true()  " />
 			<xs:assert
