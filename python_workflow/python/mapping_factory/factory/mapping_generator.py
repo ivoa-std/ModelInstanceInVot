@@ -7,7 +7,7 @@ Created on 20 avr. 2020
 '''
 
 import sys, traceback
-import urllib.request
+import ssl, urllib.request
 from lxml import etree
 
 from mapping_factory.factory import logger
@@ -217,7 +217,7 @@ class MappingGenerator:
         logger.info("Reading FILE " + filename + " for model " + model)
     
         if filename.startswith("http://") or filename.startswith("https://") :
-            tree = etree.ElementTree(file=urllib.request.urlopen(filename))
+            tree = etree.ElementTree(file=urllib.request.urlopen(filename, context=ssl._create_unverified_context()))
         else :
             tree = etree.parse(filename)
         

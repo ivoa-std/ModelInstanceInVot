@@ -1,5 +1,5 @@
 from lxml import etree
-import sys
+import sys, ssl
 import xml.dom.minidom
 from mapping_factory.factory.model_constraints import *
 from mapping_factory.factory.model_components import *
@@ -36,7 +36,7 @@ class ModelMapper:
 
     def _parse_imports(self, filename):
         if filename.startswith("http://") or filename.startswith("https://") :
-            tree = etree.ElementTree(file=urllib.request.urlopen(filename))
+            tree = etree.ElementTree(file=urllib.request.urlopen(filename, context=ssl._create_unverified_context()))
         else :
             tree = etree.parse(filename)
                 
@@ -60,7 +60,7 @@ class ModelMapper:
     def _parse_vodml_file(self, filename):
     
         if self.filename.startswith("http://") or self.filename.startswith("https://") :
-            tree = etree.ElementTree(file=urllib.request.urlopen(filename))
+            tree = etree.ElementTree(file=urllib.request.urlopen(filename, context=ssl._create_unverified_context()))
         else :
             tree = etree.parse(filename)
 

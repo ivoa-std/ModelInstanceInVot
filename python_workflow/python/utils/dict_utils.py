@@ -7,6 +7,7 @@ Created on 29 mai 2019
 import json
 import re
 import urllib
+import ssl
 from utils import logger
 from utils.json_encoder import MyEncoder
 
@@ -137,7 +138,7 @@ class DictUtils():
         """
         try:
             logger.debug("Reading json from %s", url)
-            open_url = urllib.request.urlopen(url)
+            open_url = urllib.request.urlopen(url), context=ssl._create_unverified_context()
             if open_url.getcode() == 200:
                 return  json.loads(open_url.read().decode('utf-8'))
             raise Exception("{} return code {}".format(url, open_url.getcode()))
