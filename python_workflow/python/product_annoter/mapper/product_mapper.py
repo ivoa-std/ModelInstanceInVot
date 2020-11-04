@@ -76,31 +76,35 @@ class ProductMapper(object):
            
             if measure["measure"] == "LonLatSkyPosition":
                 logger.info("Position found")
-                appender = LonLatPositionAppender(self.output_mapping_path, self.component_path)
+                #appender = LonLatPositionAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "Position":
                 logger.info("Status found")
+                #FAIT 
                 appender = PositionAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "ProperMotion":
                 logger.info("Status found")
+                #FAIT 
                 appender = ProperMotionAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "status":
                 logger.info("Status found")
-                appender = StatusAppender(self.output_mapping_path, self.component_path)
+                #appender = StatusAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "Photometry":
                 logger.info("Photometry found")
+                #FAIT 
                 appender = PhotometryAppender(self.output_mapping_path, self.component_path)               
             elif measure["measure"] == "GenericMeasure":
                 logger.info("GenericMeasure found")
+                #FAIT 
                 appender = GenericAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "HardnessRatio":
                 logger.info("GenericMeasure found")
-                appender = HardnessRatioAppender(self.output_mapping_path, self.component_path)
+                #appender = HardnessRatioAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "DetectionFlag":
                 logger.info("DetectionFlag found")
-                appender = DetectionFlagAppender(self.output_mapping_path, self.component_path)
+                #appender = DetectionFlagAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "MJD":
                 logger.info("MJD found")
-                appender = MJDAppender(self.output_mapping_path, self.component_path)
+                #appender = MJDAppender(self.output_mapping_path, self.component_path)
                
             if appender is not None:
                 # Build the mapping block for the current measure

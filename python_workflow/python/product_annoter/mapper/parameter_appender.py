@@ -26,10 +26,14 @@ class ParameterAppender:
         if self.component_path:
             logger.info("parse %s", self.component_path)
             self.param_tree = etree.parse(self.component_path)
+            self.block_xyz = self._get_unique_element(
+                self.param_tree.xpath("//INSTANCE[@dmrole='mango:MangoObject.parameters']")
+                )
         else:
             self.param_tree = None
-
-        
+            # If no component specified, the mapping block is processed as a whole
+            self.block_xyz = self.mango_tree
+ 
         self.mango_clean_tree = None
     
     def _get_unique_element(self, elements):
@@ -59,10 +63,10 @@ class ParameterAppender:
             )
         
         
-    def add_globals_xx(self, xml_instance):
+    def add_instance_to_globals(self, xml_instance):
         """
         Add the instances serialized in  xml_instance the GLOBALS blocks
-        The level 0 instances of  xml_instance having the samne ID as one of the child 
+        The level 0 instances of  xml_instance having the same ID as one of the child 
         instances of GLOBALS are ignored (logged)
         Deeper instances are not supposed to have an ID
                 
@@ -90,34 +94,52 @@ class ParameterAppender:
         for global_ele in self._get_unique_element(param_globals).getchildren():
             logger.info("Adding globals ID=%s", global_ele.attrib["ID"])
             self._get_unique_element(mango_globals).append( global_ele )
-            
-    def add_param_parameter(self):
+       
+              
+    def insert_parameter_block(self):
         if not self.param_tree:
             return
+        print (etree.tostring(
+            self.block_xyz,
+            pretty_print=True).decode("utf-8") )   
+
         parameters_block = self._get_unique_element(
             self.mango_tree.xpath("//COLLECTION[@dmrole='mango:MangoObject.parameters']")
             )
-        param_block = self._get_unique_element(
-            self.param_tree.xpath("//INSTANCE[@dmrole='root']")
-            )
+        #param_block = self._get_unique_element(
+        #    self.param_tree.xpath("//INSTANCE[@dmrole='root']")
+        #    )
         
-        logger.info("Adding parameter dmtype=%s", param_block.attrib["dmtype"])
-        new_param = etree.fromstring(
-            self.param_template
-            )
-        param_block = deepcopy(param_block)
+        logger.info("Adding parameter dmtype=%s", self.block_xyz.attrib["dmtype"])
+        param_block = deepcopy(self.block_xyz)
         param_block.attrib["dmrole"] = "mango:Parameter.measure"
-        new_param.append(param_block)
-        parameters_block.append(new_param)
+        parameters_block.append(param_block)
 
-    def set_ref_or_value(self, host_role, value_role, value_or_ref):
+    def set_ref_or_value(self, host_role, value_role, value_or_ref, rank=None):
+        """
+        Set either @ref or @value attribute of all ATTRIBUTEs having value_role as role and hosted by 
+        an INSTANCE having host_role as role
+        :param host_role: Role of the host INSTANCE of the ATTRIBUTE which @ref must be set
+        :type host_role: String
+        :param value_role: Role of the ATTRIBUTE which @ref must be set
+        :type value_role: String
+        :param value_ref: value to be set for the @ref of the selected attributes
+        :type value_ref: String
+        :param value_or_ref: value to be set for the @ref if starts with '@' or for @value of the selected attributes
+        :type value_or_ref: String
+        :param rank: Rank to instance to be set. All if None. This is used
+                     instances are in collections to refer to a particular position
+        :param int
+        """
+        print("@@@@@@@@@  set_ref_or_value " + str(rank) + " " + value_or_ref)
+
         if value_or_ref.startswith("@") is True:
-            self.set_ref(host_role, value_role, value_or_ref.replace("@", ""))
+            self.set_ref(host_role, value_role, value_or_ref.replace("@", ""), rank=rank)
         else :
             self.set_value(host_role, value_role, value_or_ref)
 
 
-    def set_ref(self, host_role, value_role, value_ref):
+    def set_ref(self, host_role, value_role, value_ref, rank=None):
         """
         Set the @ref attribute of all ATTRIBUTEs having value_role as role and hosted by 
         an INSTANCE having host_role as role
@@ -126,30 +148,48 @@ class ParameterAppender:
         :param value_role: Role of the ATTRIBUTE which @ref must be set
         :type value_role: String
         :param value_ref: value to be set for the @ref of the selected attributes
+        :type value_ref: String
+        :param rank: Rank to instance to be set. All if None. This is used
+                     instances are in collections to refer to a particular position
+        :param int
         """
-        blocks = self.mango_tree.xpath("//INSTANCE[@dmrole='" + host_role + "']")
+        blocks = self.block_xyz.xpath("//INSTANCE[@dmrole='" + host_role + "']")
+  
+        print('--------------- set_ref ' )
 
         value_block = None
-        found = False
+        att_found = False
+        ele_found = False
+        cpt = 0;
+        
         for block in blocks:
+            ele_found = True
             if "ref" in block.attrib.keys():
                 block = self._get_global_instance(block.attrib["ref"])
 
             subblocks = block.xpath(".//ATTRIBUTE[@dmrole='" + value_role + "']")
+            print('--------------- set_ref')
             for subblock in subblocks:
-                if "ref" not in subblock.keys() or subblock.attrib["ref"].startswith("@@@"):
+                print("@@@@@@@@@ set_ref " + value_ref + " " + str(cpt) + " " + str(rank))
+                if ((rank is None or rank == cpt) 
+                    and ("ref" not in subblock.keys() or subblock.attrib["ref"].startswith("@@@"))):
                     value_block = subblock
                     value_block.attrib["ref"] = value_ref
                     logger.info("Set ref of %s[%s] = %s",host_role, value_role, value_ref)
                     if "value" in value_block.attrib.keys():
                         logger.info("Remove @value from %s[%s]",host_role, value_role)
                         value_block.attrib.pop("value")
-                        found = True
-        if found is False:     
-            logger.info("All %s>%s already set", host_role, value_role)
+                    att_found = True
+            cpt += 1
+        
+        if ele_found is False:
+            logger.warning("No instance matching %s[%s] found (requested rank=%s)", host_role, value_role, rank)
+            return
+        if att_found is False:     
+            logger.warning("%s[%s] already set (requested rank=%s)", host_role, value_role, rank)
         
  
-    def set_value(self, host_role, value_role, value_value):
+    def set_value(self, host_role, value_role, value_value, rank=None):
         """
         Set the @value attributes of all ATTRIBUTEs having value_role as role and hosted by 
         an INSTANCE having host_role as role
@@ -158,30 +198,43 @@ class ParameterAppender:
         :param value_role: Role of the ATTRIBUTE which @value must be set
         :type value_value: String
         :param value_value: value to be set for the @value of the selected attributes
+        :param rank: Rank to instance to be set. All if None. This is used
+                     instances are in collections to refer to a particular position
+        :param int
         """
-        blocks = self.mango_tree.xpath("//INSTANCE[@dmrole='" + host_role + "']")
+        blocks = self.block_xyz.xpath("//INSTANCE[@dmrole='" + host_role + "']")
 
         value_block = None
-        found = False
+        att_found = False
+        ele_found = False
+        cpt = 0;
+
         for block in blocks:
+            print('--------------- set_val ' + host_role)
+            ele_found = True
             if "dmref" in block.attrib.keys():
                 block = self._get_global_instance(block.attrib["dmref"])
 
             subblocks = block.xpath(".//ATTRIBUTE[@dmrole='" + value_role + "']")
             for subblock in subblocks:
-                if "value" not in subblock.keys() or subblock.attrib["value"].startswith("@@@"):
+                print("@@@@@@@@@ set_val " + value_value + " " + str(cpt) + " " + str(rank))
+                if ((rank is None or rank == cpt) 
+                    and ("value" not in subblock.keys() or subblock.attrib["value"].startswith("@@@"))):
                     value_block = subblock
                     value_block.attrib["value"] = value_value
                     logger.info("Set value of %s[%s] = %s",host_role, value_role, value_value)
                     if "ref" in value_block.attrib.keys():
                         logger.info("Remove @ref from %s[%s]",host_role, value_role)
                         value_block.attrib.pop("ref")
-                        found = True
+                    att_found = True
+            cpt += 1
                         
-        if found is False:     
-            logger.info("All %s>%s already set", host_role, value_role)
+        if ele_found is False:
+            logger.warning("No instance matching %s[%s] found (requested rank=%s)", host_role, value_role, rank)
+            return
+        if att_found is False:     
+            logger.warning("%s[%s] already set (requested rank=%s)", host_role, value_role, rank)
 
-                    #return
 
     def set_dmref(self, host_role, dm_ref):
         """
@@ -192,7 +245,7 @@ class ParameterAppender:
         :param dm_ref: dm reference 
         :type dm_ref: string
         """
-        blocks = self.mango_tree.xpath("//INSTANCE[@dmrole='" + host_role + "']")
+        blocks = self.block_xyz.xpath("//INSTANCE[@dmrole='" + host_role + "']")
         found = False
         for block in blocks:
             if "dmref" in block.attrib.keys():
@@ -208,7 +261,7 @@ class ParameterAppender:
         Set the @value attributes of ATTRIBUTE a @ref still to be set with ATTRIBUTE_DEFAULT.NOT_SET
         and remove the @ref attribute from the ATTRIBUTE element
         """
-        notset_values = self.mango_tree.xpath("//ATTRIBUTE[@ref='" + ATTRIBUTE_DEFAULT.TO_BE_SET + "']")
+        notset_values = self.block_xyz.xpath("//ATTRIBUTE[@ref='" + ATTRIBUTE_DEFAULT.TO_BE_SET + "']")
         for notset_value  in notset_values:        
             logger.info("Set value of tag %s as NotSet", notset_value.attrib["dmrole"])
             notset_value.attrib["value"] = ATTRIBUTE_DEFAULT.NOT_SET

@@ -37,10 +37,7 @@ class PositionAppender:
             self.position_path
             )
 
-        #self.appender.add_globals()
-        # insert the new Parameter block into the current mapping block
-        self.appender.add_param_parameter()
-    
+     
     def append_measure(self, json_measure_descriptor):  
         """
         push the values and refs read in the config into the new mapping block
@@ -52,8 +49,8 @@ class PositionAppender:
                                 json_measure_descriptor["description"]
                                 )
         
-        self.set_spaceframe(json_measure_descriptor["frame"]["frame"],
-                            json_measure_descriptor["frame"]["equinox"])
+        self.connect_spaceframe(json_measure_descriptor["frame"]["frame"],
+                                json_measure_descriptor["frame"]["equinox"])
         self.set_position(json_measure_descriptor["position"]["longitude"], 
                           json_measure_descriptor["position"]["latitude"]
                           ) 
@@ -75,6 +72,10 @@ class PositionAppender:
                             ) 
             
         self.set_notset_value()
+        self.appender.insert_parameter_block()
+        self.set_spaceframe(json_measure_descriptor["frame"]["frame"],
+                            json_measure_descriptor["frame"]["equinox"])
+
         
     def set_spaceframe(self, frame, equinox): 
         #
@@ -83,8 +84,11 @@ class PositionAppender:
         with open(os.path.join(self.component_path, "mango.frame." + frame + "Spherical.xml")) as xml_file:
             data = xml_file.read()
             # Put the frame in the globals if it is not there 
-            self.appender.add_globals_xx(data)
-            self.appender.set_dmref("coords:Coordinate.coordSys", "SpaceFrame_" + frame + "Spherical")
+            self.appender.add_instance_to_globals(data)
+        return
+    
+    def connect_spaceframe(self, frame, equinox): 
+        self.appender.set_dmref("coords:Coordinate.coordSys", "SpaceFrame_" + frame + "Spherical")
         return
              
     def set_position(self, ra_ref, dec_ref):
@@ -108,7 +112,8 @@ class PositionAppender:
         self.appender.set_ref_or_value("meas:Ellipse.posAngle", 
                                     "ivoa:RealQuantity.value", 
                                     "0.0")
-        self.appender.set_ref_or_value("meas:Ellipse.posAngles", 
+
+        self.appender.set_ref_or_value("meas:Ellipse.posAngle", 
                                     "ivoa:Quantity.unit", 
                                     "deg")
 
@@ -116,11 +121,13 @@ class PositionAppender:
             
             self.appender.set_ref_or_value("meas:Ellipse.semiAxis", 
                                   "ivoa:RealQuantity.value", 
-                                  err_ref_ra)
+                                  err_ref_ra,
+                                  rank=0)
         
             self.appender.set_ref_or_value("meas:Ellipse.semiAxis", 
                                     "ivoa:RealQuantity.value", 
-                                    err_ref_dec)
+                                    err_ref_dec,
+                                    rank=1)
             self.appender.set_ref_or_value("meas:Ellipse.semiAxis", 
                                     "ivoa:Quantity.unit", 
                                     err_unit)

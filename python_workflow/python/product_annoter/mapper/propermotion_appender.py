@@ -36,10 +36,6 @@ class ProperMotionAppender:
             self.output_mapping_path,
             self.position_path
             )
-
-        #self.appender.add_globals()
-        # insert the new Parameter block into the current mapping block
-        self.appender.add_param_parameter()
     
     def append_measure(self, json_measure_descriptor):  
         """
@@ -61,6 +57,7 @@ class ProperMotionAppender:
                         json_measure_descriptor["errors"]["random"]["unit"])
             
         self.set_notset_value()
+        self.appender.insert_parameter_block()
         
              
     def set_position(self, ra_ref, dec_ref, unit):
@@ -72,7 +69,7 @@ class ProperMotionAppender:
                                unit)
         self.appender.set_ref_or_value("meas:ProperMotion.lat", 
                                "ivoa:RealQuantity.value", 
-                               ra_ref)
+                               dec_ref)
         self.appender.set_ref_or_value("meas:ProperMotion.lat", 
                                "ivoa:Quantity.unit", 
                                unit)
@@ -91,11 +88,11 @@ class ProperMotionAppender:
             
             self.appender.set_ref_or_value("meas:Ellipse.semiAxis", 
                                   "ivoa:RealQuantity.value", 
-                                  err_ref_ra)
+                                  err_ref_ra, rank=0)
         
             self.appender.set_ref_or_value("meas:Ellipse.semiAxis", 
                                     "ivoa:RealQuantity.value", 
-                                    err_ref_dec)
+                                    err_ref_dec, rank=1)
             self.appender.set_ref_or_value("meas:Ellipse.semiAxis", 
                                     "ivoa:Quantity.unit", 
                                     err_unit)
