@@ -25,9 +25,6 @@ class GenericAppender:
             self.mango_path,
             self.position_path
             )
-
-        #self.appender.add_globals()
-        self.appender.add_param_parameter()
     
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
@@ -39,8 +36,12 @@ class GenericAppender:
                           measure_descriptor["coordinate"]["unit"]
                           ) 
  
+        self.set_errors(measure_descriptor["errors"]["random"]["value"], 
+                        measure_descriptor["errors"]["random"]["unit"]
+                        )
         self.set_notset_value()
-        
+        self.appender.insert_parameter_block()
+
              
     def set_position(self, value, unit):
         self.appender.set_ref_or_value("coords:PhysicalCoordinate.cval", 
@@ -49,7 +50,17 @@ class GenericAppender:
         self.appender.set_ref_or_value("coords:PhysicalCoordinate.cval", 
                               "ivoa:RealQuantity.unit", 
                               unit)
-                                      
+        
+    def set_errors(self, err_ref , err_unit):
+        if err_ref is not None:
+            self.appender.set_ref_or_value("meas:Error.statError", 
+                                  "ivoa:RealQuantity.value", 
+                                  err_ref)
+        
+            self.appender.set_ref_or_value("meas:Error.statError", 
+                                    "ivoa:Quantity.unit", 
+                                    err_unit)
+                                  
             
     def set_param_semantic(self, ucd, semantic, description):
         self.appender.set_param_semantic(ucd, semantic, description) 
