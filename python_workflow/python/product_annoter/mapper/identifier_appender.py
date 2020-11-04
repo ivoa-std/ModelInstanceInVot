@@ -24,7 +24,7 @@ class IdentifierAppender:
             )
 
         self.appender.add_globals()
-        self.appender.add_param_parameter()
+        self.appender.insert_parameter_block()
     
     def append_measure(self, source_descriptor):  
         self.set_identifier(source_descriptor["identifier"])
