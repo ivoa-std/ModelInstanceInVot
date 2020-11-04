@@ -60,14 +60,25 @@
 			</COLLECTION>
 		</INSTANCE>
 	</GLOBALS>
-	<TABLE_MAPPING  tableref='Results'>
-		<INSTANCE dmrole="root" dmtype="cab_msd:STCStatus">
-			<INSTANCE dmrole="cab_msd:STCStatus.coord"
-				dmtype="cab_msd:STCStatusState">
-				<ATTRIBUTE dmrole="cab_msd:STCStatusState.status"
-					dmtype="ivoa:integer" ref="@@@@@@" />
-				<INSTANCE ref="StatusSys"
-					dmrole="coords:Coordinate.coordSys" />
+	<TABLE_MAPPING tableref='Results'>
+		<INSTANCE dmrole="mango:MangoObject.parameters"
+			dmtype="mango:Parameter">
+			<ATTRIBUTE dmrole="mango:Parameter.semantic"
+				dmtype="ivoa:string" value="#propermotion" />
+			<ATTRIBUTE dmrole="mango:Parameter.ucd"
+				dmtype="ivoa:string" value="pos.pm" />
+			<ATTRIBUTE dmrole="mango:Parameter.description"
+				dmtype="ivoa:string" value="calibrated" />
+
+			<INSTANCE dmrole="mango:Parameter.measure"
+				dmtype="cab_msd:STCStatus">
+				<INSTANCE dmrole="cab_msd:STCStatus.coord"
+					dmtype="cab_msd:STCStatusState">
+					<ATTRIBUTE dmrole="cab_msd:STCStatusState.status"
+						dmtype="ivoa:integer" ref="@@@@@@" />
+					<INSTANCE ref="StatusSys"
+						dmrole="coords:Coordinate.coordSys" />
+				</INSTANCE>
 			</INSTANCE>
 		</INSTANCE>
 	</TABLE_MAPPING>
