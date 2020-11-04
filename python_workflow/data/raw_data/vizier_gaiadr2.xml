@@ -14,51 +14,6 @@
 <INFO ID="VERSION" name="votable-version" value="1.99+ (14-Oct-2013)"/>
 <INFO ID="Ref" name="-ref" value="VIZ5f91a9ea661a"/>
 <INFO ID="MaxTuples" name="-out.max" value="50"/>
-<INFO name="queryParameters" value="43">
--oc.form=dec
--out.max=50
--order=I
--out.src=I/345/gaia2
--nav=cat:I/345&amp;tab:{I/345/gaia2}&amp;key:source=I/345/gaia2&amp;HTTPPRM:&amp;&amp;-ref=VIZ5f91a9ea661a&amp;-out.max=50&amp;-out.form=HTML Table&amp;-oc.form=sexa&amp;-c.eq=J2000&amp;-c.r=  2&amp;-c.u=arcmin&amp;-c.geom=r&amp;-order=I&amp;-out.orig=standard&amp;-out=RA_ICRS&amp;-out=e_RA_ICRS&amp;-out=DE_ICRS&amp;-out=e_DE_ICRS&amp;-out=Source&amp;-out=Plx&amp;-out=e_Plx&amp;-out=pmRA&amp;-out=e_pmRA&amp;-out=pmDE&amp;-out=e_pmDE&amp;-out=Dup&amp;-out=FG&amp;-out=e_FG&amp;-out=Gmag&amp;-out=e_Gmag&amp;-out=FBP&amp;-out=e_FBP&amp;-out=BPmag&amp;-out=e_BPmag&amp;-out=FRP&amp;-out=e_FRP&amp;-out=RPmag&amp;-out=e_RPmag&amp;-out=BP-RP&amp;-out=RV&amp;-out=e_RV&amp;-out=Teff&amp;-out=AG&amp;-out=E(BP-RP)&amp;-out=Rad&amp;-out=Lum&amp;-file=.&amp;-meta.ucd=2&amp;-meta=1&amp;-meta.foot=1&amp;-usenav=1&amp;-bmark=POST&amp;-out.src=I/345/gaia2
--c.eq=J2000
--c.r=  2
--c.u=arcmin
--c.geom=r
--source=I/345/gaia2
--out.orig=standard
--out=RA_ICRS
--out=e_RA_ICRS
--out=DE_ICRS
--out=e_DE_ICRS
--out=Source
--out=Plx
--out=e_Plx
--out=pmRA
--out=e_pmRA
--out=pmDE
--out=e_pmDE
--out=Dup
--out=FG
--out=e_FG
--out=Gmag
--out=e_Gmag
--out=FBP
--out=e_FBP
--out=BPmag
--out=e_BPmag
--out=FRP
--out=e_FRP
--out=RPmag
--out=e_RPmag
--out=BP-RP
--out=RV
--out=e_RV
--out=Teff
--out=AG
--out=E(BP-RP)
--out=Rad
--out=Lum
-</INFO>
 
 <!--
 Execution Reports
@@ -67,7 +22,7 @@ Execution Reports
 <RESOURCE ID="yCat_1345" name="I/345">
   <DESCRIPTION>Gaia DR2 (Gaia Collaboration, 2018)</DESCRIPTION>
   <COOSYS ID="H_2015.500" system="ICRS" epoch="2015.500"/>
-  <TABLE ID="I_345_gaia2" name="I/345/gaia2">
+  <TABLE ID="Results" name="I/345/gaia2">
     <DESCRIPTION>GaiaSource DR2 data</DESCRIPTION>
 <!-- Gaia data release 2 (Gaia DR2). \inputViz{gaiadr2.intro.htx} (\originalcolumnnames) -->
 
