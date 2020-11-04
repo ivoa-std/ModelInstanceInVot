@@ -26,16 +26,13 @@ class PhotometryAppender:
             self.position_path
             )
 
-        #self.appender.add_globals()
-        self.appender.add_param_parameter()
-    
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
                                 measure_descriptor["description"],
                                 measure_descriptor["semantic"]
                                 )
         
-        self.set_spaceframe(measure_descriptor["frame"]["frame"])
+        self.connect_spaceframe(measure_descriptor["frame"]["frame"])
         self.set_position(measure_descriptor["luminosity"]["luminosity"]
                           ) 
         self.set_errors(measure_descriptor["errors"]["random"]["value"], 
@@ -43,12 +40,17 @@ class PhotometryAppender:
                         
                         ) 
         self.set_notset_value()
+        self.appender.insert_parameter_block()
+        self.set_spaceframe(measure_descriptor["frame"]["frame"])
         
+    def connect_spaceframe(self, frame):   
+        self.appender.set_dmref("coords:Coordinate.coordSys", "PhotFrame_" + frame)
+        return
+    
     def set_spaceframe(self, frame):   
         with open(os.path.join(self.component_path, "mango.frame." + frame + ".xml")) as xml_file:
             data = xml_file.read()
-            self.appender.add_globals_xx(data)
-            self.appender.set_dmref("coords:Coordinate.coordSys", "PhotFrame_" + frame)
+            self.appender.add_instance_to_globals(data)
         return
              
     def set_position(self, luminosity):

@@ -36,7 +36,10 @@ def main():
         }
     # set the concrete data types
     mapping_generator.concrete_types={
-        "coords:PhysicalCoordinate.cval": "ivoa:RealQuantity"}
+        "coords:PhysicalCoordinate.cval": "ivoa:RealQuantity",
+        "meas:Error.statError": "meas:Symmetrical",
+        "meas:Error.sysError": "meas:Symmetrical",
+}
 
  
     #mapping_generator.concrete_classes = {}
