@@ -66,7 +66,7 @@
 			"semantic": "#corrected",
 			"description": "Magnitude in BP band",
 			"frame": {
-				"frame": "gaiaG"
+				"frame": "gaiaBP"
 			},
 			"luminosity": {
 				"luminosity": "@BPmag",
@@ -85,7 +85,7 @@
 			"semantic": "#corrected",
 			"description": "Magnitude in RP band",
 			"frame": {
-				"frame": "gaiaG"
+				"frame": "gaiaRP"
 			},
 			"luminosity": {
 				"luminosity": "@RPmag",
