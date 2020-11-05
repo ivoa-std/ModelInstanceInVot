@@ -1,13 +1,13 @@
 {
   "INSTANCE": {
-    "@ID": "PhotFrame_EB1",
+    "@ID": "PhotFrame_gaiaG",
     "@dmrole": "",
     "@dmtype": "mango:stcextend.PhotFilter",
     "ATTRIBUTE": [
       {
         "@dmrole": "mango:stcextend.PhotFilter.name",
         "@dmtype": "ivoa:string",
-        "@value": "GAIA/GAIA2r.Gbp"
+        "@value": "GAIA/GAIA2r.G"
       },
       {
         "@dmrole": "mango:stcextend.PhotFilter.zeroPointFlux",

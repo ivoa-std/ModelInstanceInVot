@@ -1,7 +1,7 @@
    <!--
    Pseudo filter for the XMM EB1 (0.2 0.5 KeV) 
     -->
-    <INSTANCE ID="PhotFrame_EB1" dmrole="" dmtype="mango:stcextend.PhotFilter" >
+    <INSTANCE ID="PhotFrame_gaiaBP" dmrole="" dmtype="mango:stcextend.PhotFilter" >
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="4.03528e-9"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Vega"/>
