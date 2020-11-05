@@ -99,9 +99,9 @@ class ParameterAppender:
     def insert_parameter_block(self):
         if not self.param_tree:
             return
-        print (etree.tostring(
-            self.block_xyz,
-            pretty_print=True).decode("utf-8") )   
+        #print (etree.tostring(
+        #    self.block_xyz,
+        #    pretty_print=True).decode("utf-8") )   
 
         parameters_block = self._get_unique_element(
             self.mango_tree.xpath("//COLLECTION[@dmrole='mango:MangoObject.parameters']")
@@ -131,8 +131,6 @@ class ParameterAppender:
                      instances are in collections to refer to a particular position
         :param int
         """
-        print("@@@@@@@@@  set_ref_or_value " + str(rank) + " " + value_or_ref)
-
         if value_or_ref.startswith("@") is True:
             self.set_ref(host_role, value_role, value_or_ref.replace("@", ""), rank=rank)
         else :
@@ -155,8 +153,6 @@ class ParameterAppender:
         """
         blocks = self.block_xyz.xpath("//INSTANCE[@dmrole='" + host_role + "']")
   
-        print('--------------- set_ref ' )
-
         value_block = None
         att_found = False
         ele_found = False
@@ -168,9 +164,7 @@ class ParameterAppender:
                 block = self._get_global_instance(block.attrib["ref"])
 
             subblocks = block.xpath(".//ATTRIBUTE[@dmrole='" + value_role + "']")
-            print('--------------- set_ref')
             for subblock in subblocks:
-                print("@@@@@@@@@ set_ref " + value_ref + " " + str(cpt) + " " + str(rank))
                 if ((rank is None or rank == cpt) 
                     and ("ref" not in subblock.keys() or subblock.attrib["ref"].startswith("@@@"))):
                     value_block = subblock
@@ -210,14 +204,12 @@ class ParameterAppender:
         cpt = 0;
 
         for block in blocks:
-            print('--------------- set_val ' + host_role)
             ele_found = True
             if "dmref" in block.attrib.keys():
                 block = self._get_global_instance(block.attrib["dmref"])
 
             subblocks = block.xpath(".//ATTRIBUTE[@dmrole='" + value_role + "']")
             for subblock in subblocks:
-                print("@@@@@@@@@ set_val " + value_value + " " + str(cpt) + " " + str(rank))
                 if ((rank is None or rank == cpt) 
                     and ("value" not in subblock.keys() or subblock.attrib["value"].startswith("@@@"))):
                     value_block = subblock
