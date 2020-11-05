@@ -2,7 +2,6 @@
 <VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
   xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
-
 <MODEL_INSTANCE>
   <MODELS>
     <MODEL>
@@ -43,13 +42,29 @@
         <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="coords:Epoch" value="NoSet"/>
       </INSTANCE>
     </INSTANCE>
-    <INSTANCE ID="PhotFrame_EB1" dmrole="" dmtype="mango:stcextend.PhotFilter">
+    <INSTANCE ID="PhotFrame_gaiaG" dmrole="" dmtype="mango:stcextend.PhotFilter">
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="2.49524e-9"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Vega"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="6246.77"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="Angstrom"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="4578.32"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_gaiaBP" dmrole="" dmtype="mango:stcextend.PhotFilter">
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="4.03528e-9"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Vega"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="5278.58"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="Angstrom"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="2279.45"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_gaiaRP" dmrole="" dmtype="mango:stcextend.PhotFilter">
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="1.29363e-9"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Vega"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="7740.87"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="Angstrom"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="2943.72"/>
     </INSTANCE>
   </GLOBALS>
   <TABLE_MAPPING tableref="Results">
@@ -156,7 +171,7 @@
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="BPmag"/>
-                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_gaiaG"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_gaiaBP"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
@@ -175,7 +190,7 @@
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="RPmag"/>
-                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_gaiaG"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_gaiaRP"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
@@ -226,51 +241,6 @@
 <INFO ID="VERSION" name="votable-version" value="1.99+ (14-Oct-2013)"/>
 <INFO ID="Ref" name="-ref" value="VIZ5f91a9ea661a"/>
 <INFO ID="MaxTuples" name="-out.max" value="50"/>
-<INFO name="queryParameters" value="43">
--oc.form=dec
--out.max=50
--order=I
--out.src=I/345/gaia2
--nav=cat:I/345&amp;tab:{I/345/gaia2}&amp;key:source=I/345/gaia2&amp;HTTPPRM:&amp;&amp;-ref=VIZ5f91a9ea661a&amp;-out.max=50&amp;-out.form=HTML Table&amp;-oc.form=sexa&amp;-c.eq=J2000&amp;-c.r=  2&amp;-c.u=arcmin&amp;-c.geom=r&amp;-order=I&amp;-out.orig=standard&amp;-out=RA_ICRS&amp;-out=e_RA_ICRS&amp;-out=DE_ICRS&amp;-out=e_DE_ICRS&amp;-out=Source&amp;-out=Plx&amp;-out=e_Plx&amp;-out=pmRA&amp;-out=e_pmRA&amp;-out=pmDE&amp;-out=e_pmDE&amp;-out=Dup&amp;-out=FG&amp;-out=e_FG&amp;-out=Gmag&amp;-out=e_Gmag&amp;-out=FBP&amp;-out=e_FBP&amp;-out=BPmag&amp;-out=e_BPmag&amp;-out=FRP&amp;-out=e_FRP&amp;-out=RPmag&amp;-out=e_RPmag&amp;-out=BP-RP&amp;-out=RV&amp;-out=e_RV&amp;-out=Teff&amp;-out=AG&amp;-out=E(BP-RP)&amp;-out=Rad&amp;-out=Lum&amp;-file=.&amp;-meta.ucd=2&amp;-meta=1&amp;-meta.foot=1&amp;-usenav=1&amp;-bmark=POST&amp;-out.src=I/345/gaia2
--c.eq=J2000
--c.r=  2
--c.u=arcmin
--c.geom=r
--source=I/345/gaia2
--out.orig=standard
--out=RA_ICRS
--out=e_RA_ICRS
--out=DE_ICRS
--out=e_DE_ICRS
--out=Source
--out=Plx
--out=e_Plx
--out=pmRA
--out=e_pmRA
--out=pmDE
--out=e_pmDE
--out=Dup
--out=FG
--out=e_FG
--out=Gmag
--out=e_Gmag
--out=FBP
--out=e_FBP
--out=BPmag
--out=e_BPmag
--out=FRP
--out=e_FRP
--out=RPmag
--out=e_RPmag
--out=BP-RP
--out=RV
--out=e_RV
--out=Teff
--out=AG
--out=E(BP-RP)
--out=Rad
--out=Lum
-</INFO>
 
 <!--
 Execution Reports
