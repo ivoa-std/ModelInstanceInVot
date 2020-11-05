@@ -26,8 +26,12 @@ class VOTableMerger(object):
         logger.info("save annotated VOTable in %s", self.output_path)
         with open(self.output_path, 'w') as output_votable:            
             with open(self.raw_votable_path, 'r') as raw_votable:
+                prelude = False
                 for line in raw_votable:
                     output_votable.write(line)
                     if line.startswith("<VOTABLE") is True:
+                        prelude = True
+                    if prelude is True and ">" in line:
                         output_votable.write(self._get_mapping())
+                        prelude = False
 
