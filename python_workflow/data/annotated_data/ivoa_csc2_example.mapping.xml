@@ -1,0 +1,59 @@
+<MODEL_INSTANCE>
+  <MODELS>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+  </MODELS>
+  <GLOBALS>
+    <INSTANCE ID="PhotFrame_ACISBroad" dmrole="" dmtype="mango:stcextend.PhotFilter">
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="ACIS Broad"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Chandra"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="0.5"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="7.0"/>
+    </INSTANCE>
+  </GLOBALS>
+  <TABLE_MAPPING tableref="Results">
+    <COLLECTION dmrole="root">
+      <TABLE_ROW_TEMPLATE>
+        <INSTANCE dmrole="root" dmtype="mango:MangoObject">
+          <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="col0"/>
+          <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
+          <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#propermotion"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos.pm"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="calibrated"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
+                <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="col15"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_ACISBroad"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="NotSet"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+          </COLLECTION>
+        </INSTANCE>
+      </TABLE_ROW_TEMPLATE>
+    </COLLECTION>
+  </TABLE_MAPPING>
+</MODEL_INSTANCE>
