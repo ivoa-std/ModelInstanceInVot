@@ -1,0 +1,78 @@
+{
+    "identifier": "col0",
+	"parameters": [
+		{
+			"measure": "LonLatSkyPosition",
+			"ucd": "pos",
+			"semantic": "#corrected",
+			"description": "Corrected position",
+			"frame": {
+				"frame": "Galactic",
+				"equinox": "J2000",
+				"epoch": "J2000"
+			},
+			"position": {
+				"longitude": "@col9",
+				"latitude": "@col10",
+				"unit": "deg"
+			},
+			"errors": {}
+		},
+		{
+			"measure": "Photometry",
+			"ucd": "phot.flux",
+			"semantic": "#corrected",
+			"description": "Aperture-corrected detection net energy flux inferred from the source region aperture, calculated by counting X-ray events; ACIS broad (0.5-7.0 keV) energy band",
+			"frame": {
+				"frame": "ACISBroad"
+			},
+			"luminosity": {
+				"luminosity": "@col15",
+				"unit": "erg/cm2/sec"
+			},
+			"errors": {}
+		},
+		{
+			"measure": "HardnessRatio",
+			"description": "ACIS hard - soft energy band hardness ratio",
+			"ucd": "phot.flux",
+			"semantic": "#computed",
+			"frame": {
+				"frame": ["ASICSoft", "ASICHard", "ASICHRSoftHard"]
+			},
+			"coordinate": {
+				"value": "@col16"
+			},
+			"errors": {}
+		},
+		{
+			"measure": "HardnessRatio",
+			"description": "ACIS medium - soft energy band hardness ratio",
+			"ucd": "phot.flux",
+			"semantic": "#computed",
+			"frame": {
+				"frame": ["ASICSoft", "ASICMedium", "ASICHRSoftMedium"]
+			},
+			"coordinate": {
+				"value": "@col19"
+			},
+			"errors": {}
+		},
+		{
+			"measure": "HardnessRatio",
+			"description": "ACIS medium - soft energy band hardness ratio",
+			"ucd": "phot.flux",
+			"semantic": "#computed",
+			"frame": {
+				"frame": ["ASICHard", "ASICMedium", "ASICHRMediumHard"]
+			},
+			"coordinate": {
+				"value": "@col22"
+			},
+			"errors": {}
+		}
+	],
+	"associatedData": {
+		
+	}
+}
