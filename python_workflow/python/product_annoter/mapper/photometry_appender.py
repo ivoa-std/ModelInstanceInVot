@@ -35,10 +35,8 @@ class PhotometryAppender:
         self.connect_spaceframe(measure_descriptor["frame"]["frame"])
         self.set_position(measure_descriptor["luminosity"]["luminosity"]
                           ) 
-        self.set_errors(measure_descriptor["errors"]["random"]["value"], 
-                        measure_descriptor["errors"]["random"]["unit"]
-                        
-                        ) 
+        
+        self.set_errors(measure_descriptor["errors"]) 
         self.set_notset_value()
         self.appender.insert_parameter_block()
         self.set_spaceframe(measure_descriptor["frame"]["frame"])
@@ -58,15 +56,18 @@ class PhotometryAppender:
                               "mango:stcextend.PhotometryCoord.luminosity",
                               luminosity)
                                      
-    def set_errors(self, err_ref , err_unit):
-        if err_ref is not None:
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                  "ivoa:RealQuantity.value", 
-                                  err_ref)
+    def set_errors(self, error_object):
         
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                    "ivoa:Quantity.unit", 
-                                    err_unit)
+        if "random" in error_object.keys():
+            rand = error_object["random"]
+            if "value" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.value", 
+                     rand["value"])
+            if "unit" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.unit", 
+                     rand["unit"])
             
     def set_param_semantic(self, ucd, semantic, description):
         self.appender.set_param_semantic(ucd, semantic, description) 

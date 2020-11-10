@@ -76,7 +76,7 @@ class ProductMapper(object):
            
             if measure["measure"] == "LonLatSkyPosition":
                 logger.info("Position found")
-                #appender = LonLatPositionAppender(self.output_mapping_path, self.component_path)
+                appender = LonLatPositionAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "Position":
                 logger.info("Status found")
                 #FAIT 
@@ -98,7 +98,8 @@ class ProductMapper(object):
                 appender = GenericAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "HardnessRatio":
                 logger.info("GenericMeasure found")
-                #appender = HardnessRatioAppender(self.output_mapping_path, self.component_path)
+                # FAIT
+                appender = HardnessRatioAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "DetectionFlag":
                 logger.info("DetectionFlag found")
                 #appender = DetectionFlagAppender(self.output_mapping_path, self.component_path)

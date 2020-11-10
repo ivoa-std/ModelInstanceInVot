@@ -25,47 +25,62 @@ class HardnessRatioAppender:
             self.mango_path,
             self.position_path
             )
-
-        #self.appender.add_globals()
-        self.appender.add_param_parameter()
     
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
                                 measure_descriptor["semantic"],
                                 measure_descriptor["description"]
                                 )
-        
-        frames = measure_descriptor["frame"]["frame"]
-        if type(frames) is list: 
-            for frame in frames:
-                self.set_spaceframe(frame)
-        else:
-            self.set_spaceframe(frames)
+        self.connect_spaceframe(measure_descriptor["frame"]["frame"])
 
         self.set_position(measure_descriptor["coordinate"]["value"]
                           ) 
-        self.set_errors(measure_descriptor["errors"]["random"]["value"]                        
-                        ) 
+        self.set_errors(measure_descriptor["errors"]) 
+
         self.set_notset_value()
+        self.appender.insert_parameter_block()
         
-    def set_spaceframe(self, frame):   
-        with open(os.path.join(self.component_path, "mango.frame." + frame + ".xml")) as xml_file:
-            data = xml_file.read()
-            self.appender.add_globals_xx(data)
-            self.appender.set_dmref("coords:Coordinate.coordSys", "PhotFrame_" + frame)
+        frames = measure_descriptor["frame"]["frame"]
+        self.set_spaceframe(frames)
+
+    
+    def connect_spaceframe(self, frame):   
+        # frame array should starts with components and ends with the wanted frame
+        if isinstance(frame, list) is True:
+            sframe = frame[len(frame) - 1] 
+        else :
+            sframe = frame
+        self.appender.set_dmref("coords:Coordinate.coordSys", "PhotFrame_" + sframe)
         return
-             
+    
+    def set_spaceframe(self, frame):   
+        # frame array should starts with components and ends with the wanted frame
+        if isinstance(frame, list) is True:
+            for sframe in frame:
+                with open(os.path.join(self.component_path, "mango.frame." + sframe + ".xml")) as xml_file:
+                    data = xml_file.read()
+                    self.appender.add_instance_to_globals(data)            
+        else :
+            with open(os.path.join(self.component_path, "mango.frame." + frame + ".xml")) as xml_file:
+                data = xml_file.read()
+                self.appender.add_instance_to_globals(data)
+        return
+                 
     def set_position(self, luminosity):
-        self.appender.set_ref_or_value("mango:stcextend.Photometry.coord",
-                              "mango:stcextend.PhotometryCoord.luminosity",
+        self.appender.set_ref_or_value("mango:stcextend.HardnessRatio.coord",
+                              "mango:stcextend.HardnessRatioCoord.hardnessRatio",
                               luminosity)
                                      
-    def set_errors(self, err_ref ):
-        if err_ref is not None:
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                  "ivoa:RealQuantity.value", 
-                                  err_ref)
+
+    def set_errors(self, error_object):
         
+        if "random" in error_object.keys():
+            rand = error_object["random"]
+            if "value" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.value", 
+                     rand["value"])
+         
              
     def set_param_semantic(self, ucd, semantic, descripton):
         self.appender.set_param_semantic(ucd, semantic, descripton) 
