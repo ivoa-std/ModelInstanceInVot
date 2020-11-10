@@ -37,9 +37,6 @@ class LonLatPositionAppender:
             self.position_path
             )
 
-        #self.appender.add_globals()
-        # insert the new Parameter block into the current mapping block
-        self.appender.add_param_parameter()
     
     def append_measure(self, json_measure_descriptor):  
         """
@@ -51,19 +48,18 @@ class LonLatPositionAppender:
                                 json_measure_descriptor["semantic"],
                                 json_measure_descriptor["description"]
                                 )
-        
-        self.set_spaceframe(json_measure_descriptor["frame"]["frame"],
-                            json_measure_descriptor["frame"]["equinox"])
+        self.connect_spaceframe(json_measure_descriptor["frame"]["frame"],
+                                json_measure_descriptor["frame"]["equinox"])
+
         self.set_position(json_measure_descriptor["position"]["longitude"], 
                           json_measure_descriptor["position"]["latitude"]
                           ) 
-        self.set_errors(json_measure_descriptor["errors"]["random"]["value"], 
-                        json_measure_descriptor["errors"]["random"]["unit"], 
-                        json_measure_descriptor["errors"]["systematic"]["value"], 
-                        json_measure_descriptor["errors"]["systematic"]["unit"] 
-                        ) 
+        self.set_errors(json_measure_descriptor["errors"]) 
         self.set_notset_value()
-        
+        self.appender.insert_parameter_block()
+        self.set_spaceframe(json_measure_descriptor["frame"]["frame"],
+                            json_measure_descriptor["frame"]["equinox"])
+
     def set_spaceframe(self, frame, equinox): 
         #
         # set space frame instance
@@ -71,8 +67,11 @@ class LonLatPositionAppender:
         with open(os.path.join(self.component_path, "mango.frame." + frame + ".xml")) as xml_file:
             data = xml_file.read()
             # Put the frame in the globals if it is not there 
-            self.appender.add_globals_xx(data)
-            self.appender.set_dmref("coords:Coordinate.coordSys", "SpaceFrame_" + frame)
+            self.appender.add_instance_to_globals(data)
+        return
+    
+    def connect_spaceframe(self, frame, equinox): 
+        self.appender.set_dmref("coords:Coordinate.coordSys", "SpaceFrame_" + frame)
         return
              
     def set_position(self, ra_ref, dec_ref):
@@ -83,23 +82,30 @@ class LonLatPositionAppender:
                               "mango:stcextend.LonLatPoint.latitude", 
                               dec_ref)
                                      
-    def set_errors(self, err_ref , err_unit, sys_err_ref, sys_err_unit):
-        if err_ref is not None:
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                  "ivoa:RealQuantity.value", 
-                                  err_ref)
+
+    def set_errors(self, error_object):
         
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                    "ivoa:Quantity.unit", 
-                                    err_unit)
-        if sys_err_ref is not None:
-            self.appender.set_ref_or_value("meas:Error.sysError", 
-                                  "ivoa:RealQuantity.value", 
-                                  sys_err_ref)
-        
-            self.appender.set_ref_or_value("meas:Error.sysError", 
-                                   "ivoa:Quantity.unit", 
-                                sys_err_unit)
+        if "random" in error_object.keys():
+            rand = error_object["random"]
+            if "value" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.value", 
+                     rand["value"])
+            if "unit" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.unit", 
+                     rand["unit"])
+                
+        if "systematic" in error_object.keys():
+            rand = error_object["random"]
+            if "value" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.sysError", 
+                    "ivoa:RealQuantity.value", 
+                     rand["value"])
+            if "unit" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.sysError", 
+                    "ivoa:RealQuantity.unit", 
+                     rand["unit"])
             
     def set_param_semantic(self, ucd, semantic, description):
         self.appender.set_param_semantic(ucd, semantic, description) 
