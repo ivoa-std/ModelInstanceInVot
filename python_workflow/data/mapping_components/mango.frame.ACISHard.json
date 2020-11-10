@@ -1,13 +1,13 @@
 {
   "INSTANCE": {
-    "@ID": "PhotFrame_ACISHard",
+    "@ID": "PhotFrame_ACISBroad",
     "@dmrole": "",
     "@dmtype": "mango:stcextend.PhotFilter",
     "ATTRIBUTE": [
       {
         "@dmrole": "mango:stcextend.PhotFilter.name",
         "@dmtype": "ivoa:string",
-        "@value": "ACIS Hard"
+        "@value": "ACIS Broad"
       },
       {
         "@dmrole": "mango:stcextend.PhotFilter.zeroPointFlux",

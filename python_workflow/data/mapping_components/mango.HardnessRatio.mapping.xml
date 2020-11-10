@@ -20,11 +20,11 @@
 		<INSTANCE dmrole="mango:MangoObject.parameters"
 			dmtype="mango:Parameter">
 			<ATTRIBUTE dmrole="mango:Parameter.semantic"
-				dmtype="ivoa:string" value="#propermotion" />
+				dmtype="ivoa:string" value="@@@@@@" />
 			<ATTRIBUTE dmrole="mango:Parameter.ucd"
-				dmtype="ivoa:string" value="pos.pm" />
+				dmtype="ivoa:string" value="@@@@@@" />
 			<ATTRIBUTE dmrole="mango:Parameter.description"
-				dmtype="ivoa:string" value="calibrated" />
+				dmtype="ivoa:string" value="@@@@@@" />
 
 			<INSTANCE dmrole="mango:Parameter.measure"
 				dmtype="mango:stcextend.HardnessRatio">
