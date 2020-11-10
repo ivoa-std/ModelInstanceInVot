@@ -6,7 +6,7 @@
  !  at 2020-11-05T12:19:46
  !-->
 <RESOURCE>
-<TABLE name="cscresults.126.vot" nrows="1000">
+<TABLE name="Results" nrows="1000">
 <FIELD ID="col0" arraysize="*" datatype="char" name="name" width="22">
 <DESCRIPTION>Source name in the format '2CXO Jhhmmss.s{+|-}ddmmss[X]'</DESCRIPTION>
 </FIELD>
