@@ -38,7 +38,7 @@
 			"ucd": "phot.flux",
 			"semantic": "#computed",
 			"frame": {
-				"frame": ["ASICSoft", "ASICHard", "ASICHRSoftHard"]
+				"frame": ["ACISSoft", "ACISHard", "ACISHRSoftHard"]
 			},
 			"coordinate": {
 				"value": "@col16"
@@ -51,7 +51,7 @@
 			"ucd": "phot.flux",
 			"semantic": "#computed",
 			"frame": {
-				"frame": ["ASICSoft", "ASICMedium", "ASICHRSoftMedium"]
+				"frame": ["ACISSoft", "ACISMedium", "ACISHRSoftMedium"]
 			},
 			"coordinate": {
 				"value": "@col19"
@@ -64,7 +64,7 @@
 			"ucd": "phot.flux",
 			"semantic": "#computed",
 			"frame": {
-				"frame": ["ASICHard", "ASICMedium", "ASICHRMediumHard"]
+				"frame": ["ACISHard", "ACISMedium", "ACISHRMediumHard"]
 			},
 			"coordinate": {
 				"value": "@col22"

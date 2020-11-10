@@ -107,17 +107,17 @@
           {
             "@dmrole": "mango:Parameter.semantic",
             "@dmtype": "ivoa:string",
-            "@value": "#propermotion"
+            "@value": "@@@@@@"
           },
           {
             "@dmrole": "mango:Parameter.ucd",
             "@dmtype": "ivoa:string",
-            "@value": "pos.pm"
+            "@value": "@@@@@@"
           },
           {
             "@dmrole": "mango:Parameter.description",
             "@dmtype": "ivoa:string",
-            "@value": "calibrated"
+            "@value": "@@@@@@"
           }
         ],
         "INSTANCE": {
