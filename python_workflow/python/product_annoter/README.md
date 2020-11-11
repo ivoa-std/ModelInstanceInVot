@@ -23,6 +23,6 @@ The demo program is in the `demo` folder
 ```
 - The output (as long as no error) is stored in `/python_workflow/data/annotated_data`. 
 - 2 files are generated
-  - `my_votable.mapping.xml` This file just contains the mapping block. Is is quiote liter than the whole VOTable which can bee too heavy for text editors.
+  - `my_votable.mapping.xml` This file just contains the mapping block. Is is quite liter than the whole VOTable which can bee too heavy for text editors.
   - `my_votable.annot.xml` This file contains the whole annotated VOTable.
 
