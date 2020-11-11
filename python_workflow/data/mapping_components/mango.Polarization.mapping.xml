@@ -41,6 +41,8 @@
 				dmtype="ivoa:string" value="@@@@@@" />
 			<ATTRIBUTE dmrole="mango:Parameter.description"
 				dmtype="ivoa:string" value="@@@@@@" />
+			<ATTRIBUTE dmrole="mango:Parameter.reductionStatus"
+				dmtype="ivoa:string" value="@@@@@@" />
 
 			<INSTANCE dmrole="mango:Parameter.measure"
 				dmtype="meas:Polarization">

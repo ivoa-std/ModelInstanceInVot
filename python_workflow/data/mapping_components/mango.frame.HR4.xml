@@ -1,10 +1,10 @@
 
 
-<INSTANCE ID="PhotFrame_HR1" dmrole=""
+<INSTANCE ID="PhotFrame_HR4" dmrole=""
 	dmtype="mango:stcextend.HRFrame">
 	<INSTANCE dmrole="mango:stcextend.HRFrame.low" 
-		dmref="PhotFrame_EB1" />
+		dmref="PhotFrame_EB4" />
 	<INSTANCE dmrole="mango:stcextend.HRFrame.high" 
-		dmref="PhotFrame_EB2" />
+		dmref="PhotFrame_EB5" />
 </INSTANCE>
     

@@ -29,7 +29,8 @@ class HardnessRatioAppender:
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
                                 measure_descriptor["semantic"],
-                                measure_descriptor["description"]
+                                measure_descriptor["description"],
+                                measure_descriptor["reductionStatus"]
                                 )
         self.connect_spaceframe(measure_descriptor["frame"]["frame"])
 
@@ -82,8 +83,8 @@ class HardnessRatioAppender:
                      rand["value"])
          
              
-    def set_param_semantic(self, ucd, semantic, descripton):
-        self.appender.set_param_semantic(ucd, semantic, descripton) 
+    def set_param_semantic(self, ucd, semantic, descripton, reduction_status):
+        self.appender.set_param_semantic(ucd, semantic, descripton, reduction_status) 
 
 
     def set_notset_value(self):

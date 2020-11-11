@@ -4,8 +4,9 @@
 		{
 			"measure": "LonLatSkyPosition",
 			"ucd": "pos",
-			"semantic": "#corrected",
+			"semantic": "#postion.corrected",
 			"description": "Corrected position",
+			"reductionStatus": "Corrected",
 			"frame": {
 				"frame": "ICRS",
 				"equinox": null
@@ -29,8 +30,9 @@
 		{
 			"measure": "Photometry",
 			"ucd": "phot.flux",
-			"semantic": "#corrected",
+			"semantic": "#flux.corrected",
 			"description": "Flux in Energy band 1 0.2-0.5KeV (cameras merged)",
+			"reductionStatus": "Corrected",
 			"frame": {
 				"frame": "EB1"
 			},
@@ -47,9 +49,10 @@
 		},
 		{
 			"measure": "HardnessRatio",
-			"description": "Hardness Ration in Energy band 1 0.2-0.5KeV (cameras merged)",
+			"description": "Hardness Ration in Energy band 1 and 2 (cameras merged)",
 			"ucd": "phot.flux",
-			"semantic": "#computed",
+			"semantic": "#hardness_ration.computed",
+			"reductionStatus": "computed",
 			"frame": {
 				"frame": ["EB1", "EB2", "HR1"]
 			},
@@ -63,10 +66,66 @@
 			}
 		},
 		{
+			"measure": "HardnessRatio",
+			"description": "Hardness Ration in Energy band 2 and 3 (cameras merged)",
+			"ucd": "phot.flux",
+			"semantic": "#hardness_ration.computed",
+			"reductionStatus": "computed",
+			"frame": {
+				"frame": ["EB2", "EB3", "HR2"]
+			},
+			"coordinate": {
+				"value": "@_ep_hr1_304"
+			},
+			"errors": {
+				"random": {
+					"value": "@_ep_hr1_err_305"
+				}
+			}
+		},
+		{
+			"measure": "HardnessRatio",
+			"description": "Hardness Ration in Energy band 3 and 4 (cameras merged)",
+			"ucd": "phot.flux",
+			"semantic": "#hardness_ration.computed",
+			"reductionStatus": "computed",
+			"frame": {
+				"frame": ["EB3", "EB4", "HR3"]
+			},
+			"coordinate": {
+				"value": "@_ep_hr1_306"
+			},
+			"errors": {
+				"random": {
+					"value": "@_ep_hr1_err_307"
+				}
+			}
+		},
+		{
+			"measure": "HardnessRatio",
+			"description": "Hardness Ration in Energy band 4 and 5 (cameras merged)",
+			"ucd": "phot.flux",
+			"semantic": "#hardness_ration.computed",
+			"reductionStatus": "computed",
+			"frame": {
+				"frame": ["EB4", "EB5", "HR4"]
+			},
+			"coordinate": {
+				"value": "@_ep_hr1_308"
+			},
+			"errors": {
+				"random": {
+					"value": "@_ep_hr1_err_309"
+				}
+			}
+		},
+
+		{
 			"measure": "GenericMeasure",
 			"ucd": "time.duration;obs.exposure",
 			"description": "PN exposure time in Energy band 1 0.2-0.5KeV",
-			"semantic": "#obs-parameter",
+			"semantic": "#observation.duration",
+			"reductionStatus": "calibrated",
 			"coordinate": {
 				"value": "@_pn_1_exp_334",
 				"unit": "sec"
@@ -76,7 +135,8 @@
 			"measure": "MJD",
 			"ucd": "time;obs.start",
 			"description": "Observation time",
-			"semantic": "#obs-start",
+			"semantic": "#observation.starttime",
+			"reductionStatus": "calibrated",
 			"coordinate": {
 				"value": "@_mjd_start_137",
 				"unit": "d"
@@ -88,8 +148,9 @@
 		{
 			"measure": "DetectionFlag",
 			"ucd": "meta.code.qual",
-			"semantic": "#computed",
+			"semantic": "#quality_flag",
 			"description": "Summary quality flag",
+			"reductionStatus": "computed",
 			"frame": {
 				"frame": "DETFLAG"
 			},

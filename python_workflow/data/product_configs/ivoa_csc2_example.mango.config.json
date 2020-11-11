@@ -4,8 +4,9 @@
 		{
 			"measure": "LonLatSkyPosition",
 			"ucd": "pos",
-			"semantic": "#corrected",
+			"semantic": "#position.corrected",
 			"description": "Corrected position",
+			"reductionStatus": "Corrected",
 			"frame": {
 				"frame": "Galactic",
 				"equinox": "J2000",
@@ -21,8 +22,9 @@
 		{
 			"measure": "Photometry",
 			"ucd": "phot.flux",
-			"semantic": "#corrected",
+			"semantic": "#flux.corrected",
 			"description": "Aperture-corrected detection net energy flux inferred from the source region aperture, calculated by counting X-ray events; ACIS broad (0.5-7.0 keV) energy band",
+			"reductionStatus": "Corrected",
 			"frame": {
 				"frame": "ACISBroad"
 			},
@@ -36,7 +38,8 @@
 			"measure": "HardnessRatio",
 			"description": "ACIS hard - soft energy band hardness ratio",
 			"ucd": "phot.flux",
-			"semantic": "#computed",
+			"semantic": "#hardnessratio.computed",
+			"reductionStatus": "Computed",
 			"frame": {
 				"frame": ["ACISSoft", "ACISHard", "ACISHRSoftHard"]
 			},
@@ -49,7 +52,8 @@
 			"measure": "HardnessRatio",
 			"description": "ACIS medium - soft energy band hardness ratio",
 			"ucd": "phot.flux",
-			"semantic": "#computed",
+			"semantic": "#hardnessratio.computed",
+			"reductionStatus": "Computed",
 			"frame": {
 				"frame": ["ACISSoft", "ACISMedium", "ACISHRSoftMedium"]
 			},
@@ -62,7 +66,8 @@
 			"measure": "HardnessRatio",
 			"description": "ACIS medium - soft energy band hardness ratio",
 			"ucd": "phot.flux",
-			"semantic": "#computed",
+			"semantic": "#hardnessratio.computed",
+			"reductionStatus": "Computed",
 			"frame": {
 				"frame": ["ACISHard", "ACISMedium", "ACISHRMediumHard"]
 			},

@@ -45,7 +45,8 @@ class ProperMotionAppender:
         """
         self.set_param_semantic(json_measure_descriptor["ucd"], 
                                 json_measure_descriptor["semantic"],
-                                json_measure_descriptor["description"]
+                                json_measure_descriptor["description"],
+                                json_measure_descriptor["reductionStatus"]
                                 )
         
         self.set_position(json_measure_descriptor["position"]["longitude"], 
@@ -98,8 +99,8 @@ class ProperMotionAppender:
                                     err_unit)
  
              
-    def set_param_semantic(self, ucd, semantic, description):
-        self.appender.set_param_semantic(ucd, semantic, description) 
+    def set_param_semantic(self, ucd, semantic, description, reduction_status):
+        self.appender.set_param_semantic(ucd, semantic, description, reduction_status) 
 
 
     def set_notset_value(self):
