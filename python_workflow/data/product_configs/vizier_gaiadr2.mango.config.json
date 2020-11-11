@@ -4,8 +4,9 @@
 		{
 			"measure": "Position",
 			"ucd": "pos.eq;meta.main",
-			"semantic": "#position",
-			"description": "calibrated",
+			"semantic": "#position.calibrated",
+			"description": "calibrated position",
+			"reductionStatus": "Calibrated",
 			"frame": {
 				"frame": "ICRS",
 				"equinox": null
@@ -28,6 +29,7 @@
 			"ucd": "pos.pm",
 			"semantic": "#propermotion",
 			"description": "Proper Motion",
+   			"reductionStatus": "Calibrated",
 			"position": {
 				"longitude": "@pmRA",
 				"latitude": "@pmDE",
@@ -44,8 +46,9 @@
 		{
 			"measure": "Photometry",
 			"ucd": "phot.mag;stat.mean;em.opt",
-			"semantic": "#corrected",
+			"semantic": "#magnitude",
 			"description": "Magnitude in G band",
+   			"reductionStatus": "Calibrated",
 			"frame": {
 				"frame": "gaiaG"
 			},
@@ -63,8 +66,9 @@
 		{
 			"measure": "Photometry",
 			"ucd": "phot.mag;stat.mean;em.opt",
-			"semantic": "#corrected",
+			"semantic": "#magnitude",
 			"description": "Magnitude in BP band",
+   			"reductionStatus": "Calibrated",
 			"frame": {
 				"frame": "gaiaBP"
 			},
@@ -82,8 +86,9 @@
 		{
 			"measure": "Photometry",
 			"ucd": "phot.mag;stat.mean;em.opt",
-			"semantic": "#corrected",
+			"semantic": "#magnitude",
 			"description": "Magnitude in RP band",
+   			"reductionStatus": "Calibrated",
 			"frame": {
 				"frame": "gaiaRP"
 			},
@@ -101,8 +106,9 @@
 		{
 			"measure": "GenericMeasure",
 			"ucd": "pos.parallax",
-			"semantic": "#corrected",
+			"semantic": "#parallax",
 			"description": "Parallax",
+   			"reductionStatus": "Computed",
 			"coordinate": {
 				"value": "@Plx",
 				"unit": "mas"

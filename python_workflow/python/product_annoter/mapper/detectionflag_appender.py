@@ -25,27 +25,28 @@ class DetectionFlagAppender:
             self.mango_path,
             self.position_path
             )
-
-        #self.appender.add_globals()
-        self.appender.add_param_parameter()
     
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
                                 measure_descriptor["semantic"],
-                                measure_descriptor["description"]
+                                measure_descriptor["description"],
+                                measure_descriptor["reductionStatus"]
                                 )
         
+        self.connect_spaceframe(measure_descriptor["frame"]["frame"])
         self.set_position(measure_descriptor["coordinate"]["value"]
                           ) 
         self.set_spaceframe(measure_descriptor["frame"]["frame"])
-
         self.set_notset_value()
         
+    def connect_spaceframe(self, frame):   
+        self.appender.set_dmref("coords:Coordinate.coordSys", "StatusFrame_" + frame)
+        return
+    
     def set_spaceframe(self, frame):   
         with open(os.path.join(self.component_path, "mango.frame." + frame + ".xml")) as xml_file:
             data = xml_file.read()
-            self.appender.add_globals_xx(data)
-            self.appender.set_dmref("coords:Coordinate.coordSys", "StatusFrame_" + frame)
+            self.appender.add_instance_to_globals(data)
         return
 
              
@@ -54,8 +55,8 @@ class DetectionFlagAppender:
                               "mango:stcextend.FlagCoord.coord", 
                               value)
             
-    def set_param_semantic(self, ucd, semantic, description):
-        self.appender.set_param_semantic(ucd, semantic, description) 
+    def set_param_semantic(self, ucd, semantic, description, reduction_status):
+        self.appender.set_param_semantic(ucd, semantic, description, reduction_status) 
 
 
     def set_notset_value(self):

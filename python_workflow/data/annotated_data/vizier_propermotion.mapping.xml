@@ -46,46 +46,46 @@
           <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="PPM"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
-            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#position"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos.eq;meta.main"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="computed"/>
-              <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:Position">
-                <INSTANCE dmrole="meas:Position.coord" dmtype="coords:Point">
-                  <INSTANCE dmrole="coords:Point.axis1" dmtype="ivoa:RealQuantity">
-                    <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="RAJ2000"/>
-                    <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="deg"/>
-                  </INSTANCE>
-                  <INSTANCE dmrole="coords:Point.axis2" dmtype="ivoa:RealQuantity">
-                    <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="DEJ2000"/>
-                    <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="deg"/>
-                  </INSTANCE>
-                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="SpaceFrame_ICRSSpherical"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="position"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Computed"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="coords:Point">
+                <INSTANCE dmrole="coords:Point.axis1" dmtype="ivoa:RealQuantity">
+                  <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="RAJ2000"/>
+                  <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="deg"/>
                 </INSTANCE>
-                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
-                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Ellipse">
-                    <COLLECTION size="2" dmrole="meas:Ellipse.semiAxis">
-                      <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
-                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_RAs"/>
-                        <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="arcsec"/>
-                      </INSTANCE>
-                      <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
-                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_RAs"/>
-                        <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="arcsec"/>
-                      </INSTANCE>
-                    </COLLECTION>
-                    <INSTANCE dmrole="meas:Ellipse.posAngle" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="0.0"/>
-                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                <INSTANCE dmrole="coords:Point.axis2" dmtype="ivoa:RealQuantity">
+                  <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="DEJ2000"/>
+                  <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="deg"/>
+                </INSTANCE>
+                <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="SpaceFrame_ICRSSpherical"/>
+              </INSTANCE>
+              <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Ellipse">
+                  <COLLECTION size="2" dmrole="meas:Ellipse.semiAxis">
+                    <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_RAs"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="arcsec"/>
                     </INSTANCE>
+                    <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_DEs"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="arcsec"/>
+                    </INSTANCE>
+                  </COLLECTION>
+                  <INSTANCE dmrole="meas:Ellipse.posAngle" dmtype="ivoa:RealQuantity">
+                    <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="0.0"/>
+                    <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="deg"/>
                   </INSTANCE>
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-            <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#propermotion"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos.pm"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="calibrated"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Proper Motion"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Calibrated"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:ProperMotion">
                 <INSTANCE dmrole="meas:ProperMotion.lon" dmtype="coords:PhysicalCoordinate">
                   <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
@@ -95,7 +95,7 @@
                 </INSTANCE>
                 <INSTANCE dmrole="meas:ProperMotion.lat" dmtype="coords:PhysicalCoordinate">
                   <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
-                    <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="pmRA"/>
+                    <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="pmDE"/>
                     <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="s/y"/>
                   </INSTANCE>
                 </INSTANCE>
@@ -107,7 +107,7 @@
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mas/y"/>
                       </INSTANCE>
                       <INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
-                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_pmRA"/>
+                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="e_pmDE"/>
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mas/y"/>
                       </INSTANCE>
                     </COLLECTION>

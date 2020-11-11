@@ -5,7 +5,8 @@
 			"measure": "Position",
 			"ucd": "pos.eq;meta.main",
 			"semantic": "#position",
-			"description": "computed",
+			"description": "position",
+			"reductionStatus": "Computed",
 			"frame": {
 				"frame": "ICRS",
 				"equinox": null
@@ -27,7 +28,8 @@
 			"measure": "ProperMotion",
 			"ucd": "pos.pm",
 			"semantic": "#propermotion",
-			"description": "calibrated",
+			"description": "Proper Motion",
+			"reductionStatus": "Calibrated",
 			"position": {
 				"longitude": "@pmRA",
 				"latitude": "@pmDE",

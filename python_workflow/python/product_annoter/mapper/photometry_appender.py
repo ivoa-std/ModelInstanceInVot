@@ -28,9 +28,10 @@ class PhotometryAppender:
 
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
+                                measure_descriptor["semantic"],
                                 measure_descriptor["description"],
-                                measure_descriptor["semantic"]
-                                )
+                                measure_descriptor["reductionStatus"]
+                               )
         
         self.connect_spaceframe(measure_descriptor["frame"]["frame"])
         self.set_position(measure_descriptor["luminosity"]["luminosity"]
@@ -69,8 +70,8 @@ class PhotometryAppender:
                     "ivoa:RealQuantity.unit", 
                      rand["unit"])
             
-    def set_param_semantic(self, ucd, semantic, description):
-        self.appender.set_param_semantic(ucd, semantic, description) 
+    def set_param_semantic(self, ucd, semantic, description, reduction_status):
+        self.appender.set_param_semantic(ucd, semantic, description, reduction_status) 
 
 
     def set_notset_value(self):

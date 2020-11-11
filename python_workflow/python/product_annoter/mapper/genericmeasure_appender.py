@@ -29,16 +29,17 @@ class GenericAppender:
     def append_measure(self, measure_descriptor):  
         self.set_param_semantic(measure_descriptor["ucd"], 
                                 measure_descriptor["semantic"],
-                                measure_descriptor["description"]
+                                measure_descriptor["description"],
+                                measure_descriptor["reductionStatus"]
                                 )
         
         self.set_position(measure_descriptor["coordinate"]["value"], 
                           measure_descriptor["coordinate"]["unit"]
                           ) 
  
-        self.set_errors(measure_descriptor["errors"]["random"]["value"], 
-                        measure_descriptor["errors"]["random"]["unit"]
-                        )
+        if "randomerrors" in measure_descriptor.keys():
+            self.set_errors(measure_descriptor["errors"]) 
+
         self.set_notset_value()
         self.appender.insert_parameter_block()
 
@@ -51,19 +52,21 @@ class GenericAppender:
                               "ivoa:RealQuantity.unit", 
                               unit)
         
-    def set_errors(self, err_ref , err_unit):
-        if err_ref is not None:
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                  "ivoa:RealQuantity.value", 
-                                  err_ref)
+    def set_errors(self, error_object):
         
-            self.appender.set_ref_or_value("meas:Error.statError", 
-                                    "ivoa:Quantity.unit", 
-                                    err_unit)
-                                  
+        if "random" in error_object.keys():
+            rand = error_object["random"]
+            if "value" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.value", 
+                     rand["value"])
+            if "unit" in rand.keys() is not None:
+                self.appender.set_ref_or_value("meas:Error.statError", 
+                    "ivoa:RealQuantity.unit", 
+                     rand["unit"])
             
-    def set_param_semantic(self, ucd, semantic, description):
-        self.appender.set_param_semantic(ucd, semantic, description) 
+    def set_param_semantic(self, ucd, semantic, description, reduction_status):
+        self.appender.set_param_semantic(ucd, semantic, description, reduction_status) 
 
 
     def set_notset_value(self):

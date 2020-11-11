@@ -36,6 +36,11 @@
               "@dmrole": "mango:Parameter.description",
               "@dmtype": "ivoa:string",
               "@ref": "@@@@@@"
+            },
+            {
+              "@dmrole": "mango:Parameter.reductionStatus",
+              "@dmtype": "ivoa:string",
+              "@value": "@@@@@@"
             }
           ],
           "INSTANCE": [

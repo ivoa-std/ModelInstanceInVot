@@ -71,9 +71,10 @@
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
-              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#corrected"/>
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#position.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Corrected position"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.LonLatSkyPosition">
                 <INSTANCE dmrole="mango:stcextend.LonLatSkyPosition.coord" dmtype="mango:stcextend.LonLatPoint">
                   <ATTRIBUTE dmrole="mango:stcextend.LonLatPoint.longitude" dmtype="ivoa:real" ref="col9"/>
@@ -97,9 +98,10 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
-              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="Aperture-corrected detection net energy flux inferred from the source region aperture, calculated by counting X-ray events; ACIS broad (0.5-7.0 keV) energy band"/>
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="#corrected"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Aperture-corrected detection net energy flux inferred from the source region aperture, calculated by counting X-ray events; ACIS broad (0.5-7.0 keV) energy band"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="col15"/>
@@ -116,9 +118,10 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
-              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#computed"/>
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardnessratio.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="ACIS hard - soft energy band hardness ratio"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="col16"/>
@@ -135,9 +138,10 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
-              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#computed"/>
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardnessratio.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="ACIS medium - soft energy band hardness ratio"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="col19"/>
@@ -154,9 +158,10 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
-              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#computed"/>
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardnessratio.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="ACIS medium - soft energy band hardness ratio"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="col22"/>
