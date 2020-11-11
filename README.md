@@ -4,6 +4,8 @@ This proposal has been designed in parallel with the development of MANGO, the m
  
 The objective is to provide a standard that allows to map VOTable data on any VO-DML compliant model. 
 
+The mapping syntax can be used with any other model serialized in VO-DML
+
 ### Doc Preview
 
 An PDF [Preview](https://github.com/ivoa-std/ModelInstanceInVot/releases/download/auto-pdf-preview/vodml-instance-vot-draft.pdf "preview")
@@ -19,7 +21,7 @@ An PDF [Preview](https://github.com/ivoa-std/ModelInstanceInVot/releases/downloa
 
 - The mapping is gathered in one block global for the VOTable
 - The structure of the block is as follow
-    - A list of the VODML models that are used
+    - A reference to the mapped VODML
     - A set of globals instances that can be referenced by any other components
     - A Set of table mapping blocks: one per table 
 
