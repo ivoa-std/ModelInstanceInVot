@@ -12,9 +12,9 @@ The demo program is in the `demo` folder
 
 - The VOTable to be annotated is located in  `/python_workflow/data/raw_data`
   - Let's assume it is called `my_votable.xml`
-  - Rename the `<TABLE>` to be annotated as `Results`. This is the name sed by the mapper. It is not configurable for now.
+  - Rename the `<TABLE>` to be annotated as `Results`. This is the name is set by the mapper. It is not configurable for now.
 - The mapping configuration is located in `/python_workflow/data/product_config`. It must be named `my_votable.json`
-  - This file contains the list of the Mango parameters (measures) tha hav to be mapped and how the mapping has to tuned.
+  - This file contains the list of the Mango parameters (measures) that have to be mapped and how the mapping has to be tuned.
 - Write a Python script based on those you can find in `demo` and run it.
 ```python
 % cd demo
