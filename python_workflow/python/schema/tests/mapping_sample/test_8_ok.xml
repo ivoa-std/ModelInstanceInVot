@@ -23,6 +23,5 @@
 				<INSTANCE dmref="dmref" dmrole="dmrole" />
 			</JOIN>
 		</COLLECTION>
-
 	</TABLE_MAPPING>
 </MODEL_INSTANCE>
