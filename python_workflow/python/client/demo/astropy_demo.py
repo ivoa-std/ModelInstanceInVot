@@ -41,12 +41,19 @@ if __name__ == '__main__':
         inst = table_row_instances._get_next_row_instance()
         if inst != None:
             print(DictUtils.get_pretty_json(inst))
-        break
+        break   
+
     wrapper = AstropyWrapper(vodml_instance, mapper_name)
-    print("Astropy space frame: {}".format(wrapper.get_space_frame(inst)))
-    print("Astropy time frame: {}".format(wrapper.get_time_frame(inst)))
-
-
+    
+    print(f"Astropy space frame: {wrapper.get_space_frame(inst)}")
+    print(f"Astropy time frame: {wrapper.get_time_frame(inst)}")
+    
+    '''
+    # output
+    
+    Astropy space frame: <ICRS Frame>
+    Astropy time frame: ('tcb', <EarthLocation (0., 0., 0.) m>, 'mjd')
+    '''
 
 
     
