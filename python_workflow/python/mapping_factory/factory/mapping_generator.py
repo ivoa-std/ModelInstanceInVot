@@ -140,22 +140,24 @@ class MappingGenerator:
             elif attribute_tag_child.tag == "datatype" or attribute_tag_child.tag == 'reference':
                 for vodml_ref_tag_child in attribute_tag_child.findall('vodml-ref'):
                     dmtype = vodml_ref_tag_child.text                
- 
         return VodmlAttribute(vodmlid, name, dmtype, array_size, False)
-         
-         
      
     def read_reference(self, model_name,reference_tag):
+        array_size = 1
+
         for reference_tag_child in reference_tag.findall('*'):
             if reference_tag_child.tag == "vodml-id":
                 vodmlid = model_name + ":" + reference_tag_child.text
             elif reference_tag_child.tag == "name":
                 name = reference_tag_child.text
+            elif reference_tag_child.tag == "multiplicity":
+                for multiplicity_tag_child in reference_tag_child.findall('maxOccurs'):
+                    array_size = int(multiplicity_tag_child.text)
             elif reference_tag_child.tag == "datatype":
                 for vodml_ref_tag_child in reference_tag_child.findall('vodml-ref'):
                     dmtype = vodml_ref_tag_child.text                
                 
-        return VodmlAttribute(vodmlid, name, dmtype, 1, True)
+        return VodmlAttribute(vodmlid, name, dmtype, array_size, True)
 
     def read_constraint(self, model_name,constraint_tag):  
         role=""
@@ -282,7 +284,7 @@ class MappingGenerator:
             self.log_error("type " + ref + " of attribute [" + attribute.__repr__() + "] not found")
             
     def generate_attribute_mapping(self, attribute):
- 
+
         if attribute.array_size == 0 :
             return
         elif attribute.array_size == 1:
@@ -342,11 +344,24 @@ class MappingGenerator:
 
         for attribute in vodml_object_type.attributes.values():
             if  attribute.vodmlid not in read_attributes:
-                if (in_loop == True and attribute.dmtype in self.object_types)  or attribute.is_reference == True:
+                if (in_loop == True and attribute.dmtype in self.object_types)  :
+                    attribute.already_mapped = True
                     self.generate_object_mapping(self.object_types[attribute.dmtype], attribute.vodmlid)
+                    '''
+                    TODO references should be better processed to avoi INSTACNE duplication
+                    We should browse all object and put in id on those that are referencesd
+                    '''
+                elif attribute.already_mapped is False and attribute.is_reference == True:
+                    attribute.already_mapped = True
+                    if attribute.array_size == -1:
+                        self.append_xml( "<COLLECTION  size='-1' dmrole='" + attribute.vodmlid + "'>")    
+                    self.generate_object_mapping(self.object_types[attribute.dmtype], attribute.vodmlid)
+                    if attribute.array_size == -1:
+                        self.append_xml( "</COLLECTION>")                      
                 else :
-                    self.generate_attribute_mapping(attribute)
-                    read_attributes.append(attribute.vodmlid)
+                    if attribute.already_mapped is False:
+                        self.generate_attribute_mapping(attribute)
+                        read_attributes.append(attribute.vodmlid)
             else:
                 pass
                 #print( "SKIPPP " + attribute.vodmlid )
@@ -366,14 +381,14 @@ class MappingGenerator:
     def generate_object_mapping(self, vodml_object_type, vodml_id):
         am = ""
         sc_flag = "";
-        type = ""
+        dmtype = ""
             
         if vodml_id in self.concrete_classes.keys():
             if  isinstance(self.concrete_classes[vodml_id], list):
                 for class_id in self.concrete_classes[vodml_id]:
                     sc_flag = "(" + CONST.TSUBTYPE  + " " + vodml_object_type.vodmlid + ")" if  CONST.TSUBTYPE != "" else ""
                     vodml_object_type = self.object_types[class_id]
-                    type = " dmtype='" + sc_flag + vodml_object_type.vodmlid + "'"
+                    dmtype = " dmtype='" + sc_flag + vodml_object_type.vodmlid + "'"
                     self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)   
 
                     if vodml_object_type.abstract == True:
@@ -381,7 +396,7 @@ class MappingGenerator:
             else:
                 vodml_object_type = self.object_types[self.concrete_classes[vodml_id]]
                 sc_flag = "(" + CONST.SUBCLASS  + " " + vodml_object_type.vodmlid + ")" if  CONST.SUBCLASS != "" else ""
-                type = " dmtype='" + sc_flag + vodml_object_type.vodmlid + "'"
+                dmtype = " dmtype='" + sc_flag + vodml_object_type.vodmlid + "'"
                 if vodml_object_type.abstract == False:
                     pass
                     #am = ""
@@ -390,8 +405,8 @@ class MappingGenerator:
                     self.mapped_abstract_classes.append(vodml_object_type.vodmlid)
                 self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)     
         else :
-            type = " dmtype='"  + vodml_object_type.vodmlid + "'" if CONST.WITH_TYPES else ""
-            self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)     
+            dmtype = " dmtype='"  + vodml_object_type.vodmlid + "'" if CONST.WITH_TYPES else ""
+            self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)     
     
     def get_sub_classes(self, super_class_id):
         retour = [];
