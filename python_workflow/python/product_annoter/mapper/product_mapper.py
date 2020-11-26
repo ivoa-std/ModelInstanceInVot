@@ -103,10 +103,11 @@ class ProductMapper(object):
                 appender = HardnessRatioAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "DetectionFlag":
                 logger.info("DetectionFlag found")
+                # FAIT
                 appender = DetectionFlagAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "MJD":
                 logger.info("MJD found")
-                #appender = MJDAppender(self.output_mapping_path, self.component_path)
+                appender = MJDAppender(self.output_mapping_path, self.component_path)
                
             if appender is not None:
                 # Build the mapping block for the current measure
