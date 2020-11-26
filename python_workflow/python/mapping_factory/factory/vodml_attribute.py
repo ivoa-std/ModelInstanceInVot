@@ -12,6 +12,7 @@ class VodmlAttribute:
         self.dmtype = dmtype
         self.array_size = array_size
         self.is_reference = is_reference
+        self.already_parsed = False
         if dmtype == "":
             logger.info(name + " " + vodmlid + " has not dmtype" )
 
