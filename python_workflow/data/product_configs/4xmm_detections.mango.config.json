@@ -75,11 +75,11 @@
 				"frame": ["EB2", "EB3", "HR2"]
 			},
 			"coordinate": {
-				"value": "@_ep_hr1_304"
+				"value": "@_ep_hr2_304"
 			},
 			"errors": {
 				"random": {
-					"value": "@_ep_hr1_err_305"
+					"value": "@_ep_hr2_err_305"
 				}
 			}
 		},
@@ -93,11 +93,11 @@
 				"frame": ["EB3", "EB4", "HR3"]
 			},
 			"coordinate": {
-				"value": "@_ep_hr1_306"
+				"value": "@_ep_hr3_306"
 			},
 			"errors": {
 				"random": {
-					"value": "@_ep_hr1_err_307"
+					"value": "@_ep_hr3_err_307"
 				}
 			}
 		},
@@ -111,11 +111,11 @@
 				"frame": ["EB4", "EB5", "HR4"]
 			},
 			"coordinate": {
-				"value": "@_ep_hr1_308"
+				"value": "@_ep_hr4_308"
 			},
 			"errors": {
 				"random": {
-					"value": "@_ep_hr1_err_309"
+					"value": "@_ep_hr4_err_309"
 				}
 			}
 		},

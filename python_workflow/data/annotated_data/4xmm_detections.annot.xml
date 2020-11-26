@@ -81,6 +81,15 @@
       <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB4"/>
       <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB5"/>
     </INSTANCE>
+    <INSTANCE ID="TimeFrame_BARYCENTER" dmrole="" dmtype="coords:TimeFrame">
+      <INSTANCE dmrole="coords:TimeFrame.refPosition" dmtype="coords:StdRefLocation">
+        <ATTRIBUTE dmrole="coords:StdRefLocation.position" dmtype="ivoa:string" value="BARYCENTER"/>
+      </INSTANCE>
+      <INSTANCE dmrole="coords:TimeFrame.refLocation" dmtype="coords:StdRefLocation">
+        <ATTRIBUTE dmrole="coords:StdRefLocation.position" dmtype="ivoa:string" value="GEOCENTRIC"/>
+      </INSTANCE>
+      <ATTRIBUTE dmrole="coords:TimeFrame.timescale" dmtype="ivoa:string" value="TCB"/>
+    </INSTANCE>
     <INSTANCE ID="StatusFrame_DETFLAG" dmrole="" dmtype="cab_msd:STCStatusSys">
       <COLLECTION size="5" dmrole="cab_msd:STCStatusSys.statusLabel">
         <INSTANCE dmrole="cab_msd:STCStatusSys.statusLabel" dmtype="cab_msd:StatusLabel">
@@ -187,13 +196,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="_ep_hr1_304"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="_ep_hr2_304"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_HR2"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_hr1_err_305"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_hr2_err_305"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
@@ -207,13 +216,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="_ep_hr1_306"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="_ep_hr3_306"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_HR3"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_hr1_err_307"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_hr3_err_307"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
@@ -227,13 +236,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="_ep_hr1_308"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.HardnessRatioCoord.hardnessRatio" dmtype="ivoa:real" ref="_ep_hr4_308"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_HR4"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_hr1_err_309"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_hr4_err_309"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
@@ -257,6 +266,32 @@
                         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="NotSet"/>
                         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                       </INSTANCE>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#observation.starttime"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="time;obs.start"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Observation time"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="calibrated"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:Time">
+                <INSTANCE dmrole="meas:Time.coord" dmtype="coords:MJD">
+                  <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" ref="_mjd_start_137"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="TimeFrame_BARYCENTER"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="NotSet"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" value="NotSet"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
                 </INSTANCE>
