@@ -36,8 +36,9 @@ class DetectionFlagAppender:
         self.connect_spaceframe(measure_descriptor["frame"]["frame"])
         self.set_position(measure_descriptor["coordinate"]["value"]
                           ) 
-        self.set_spaceframe(measure_descriptor["frame"]["frame"])
+        self.appender.insert_parameter_block()
         self.set_notset_value()
+        self.set_spaceframe(measure_descriptor["frame"]["frame"])
         
     def connect_spaceframe(self, frame):   
         self.appender.set_dmref("coords:Coordinate.coordSys", "StatusFrame_" + frame)
