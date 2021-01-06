@@ -22,7 +22,7 @@
       {
         "@dmrole": "mango:stcextend.PhotFilter.effectiveWavlength",
         "@dmtype": "ivoa:real",
-        "@value": "1.25"
+        "@value": "0.75"
       },
       {
         "@dmrole": "mango:stcextend.PhotFilter.unit",
@@ -32,7 +32,7 @@
       {
         "@dmrole": "mango:stcextend.PhotFilter.bandWidth",
         "@dmtype": "ivoa:real",
-        "@value": "1.5"
+        "@value": "0.5"
       }
     ]
   }
