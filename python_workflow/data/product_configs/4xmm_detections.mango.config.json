@@ -27,29 +27,109 @@
 				}
 			}
 		},
-		{
-			"measure": "Photometry",
-			"ucd": "phot.flux",
-			"semantic": "#flux.corrected",
-			"description": "Flux in Energy band 1 0.2-0.5KeV (cameras merged)",
-			"reductionStatus": "Corrected",
-			"frame": {
-				"frame": "EB1"
-			},
-			"luminosity": {
-				"luminosity": "@_ep_1_flux_166",
-				"unit": "erg/cm2/sec"
-			},
-			"errors": {
-				"random": {
-					"value": "@_ep_1_flux_err_167",
-				"unit": "erg/cm2/sec"
-				}
-			}
-		},
+        {
+            "measure": "Photometry",
+            "ucd": "phot.flux",
+            "semantic": "#flux.corrected",
+            "description": "Flux in Energy band 1 0.2-0.5KeV (cameras merged)",
+            "reductionStatus": "Corrected",
+            "frame": {
+                "frame": "EB1"
+            },
+            "luminosity": {
+                "luminosity": "@_ep_1_flux_166",
+                "unit": "erg/cm2/sec"
+            },
+            "errors": {
+                "random": {
+                    "value": "@_ep_1_flux_err_167",
+                "unit": "erg/cm2/sec"
+                }
+            }
+        },
+        {
+            "measure": "Photometry",
+            "ucd": "phot.flux",
+            "semantic": "#flux.corrected",
+            "description": "Flux in Energy band 2 0.5-1KeV (cameras merged)",
+            "reductionStatus": "Corrected",
+            "frame": {
+                "frame": "EB2"
+            },
+            "luminosity": {
+                "luminosity": "@_ep_1_flux_168",
+                "unit": "erg/cm2/sec"
+            },
+            "errors": {
+                "random": {
+                    "value": "@_ep_1_flux_err_169",
+                "unit": "erg/cm2/sec"
+                }
+            }
+        },
+        {
+            "measure": "Photometry",
+            "ucd": "phot.flux",
+            "semantic": "#flux.corrected",
+            "description": "Flux in Energy band 2 1-2KeV (cameras merged)",
+            "reductionStatus": "Corrected",
+            "frame": {
+                "frame": "EB3"
+            },
+            "luminosity": {
+                "luminosity": "@_ep_1_flux_170",
+                "unit": "erg/cm2/sec"
+            },
+            "errors": {
+                "random": {
+                    "value": "@_ep_1_flux_err_171",
+                "unit": "erg/cm2/sec"
+                }
+            }
+        },
+        {
+            "measure": "Photometry",
+            "ucd": "phot.flux",
+            "semantic": "#flux.corrected",
+            "description": "Flux in Energy band 2 2-4.5KeV (cameras merged)",
+            "reductionStatus": "Corrected",
+            "frame": {
+                "frame": "EB4"
+            },
+            "luminosity": {
+                "luminosity": "@_ep_1_flux_172",
+                "unit": "erg/cm2/sec"
+            },
+            "errors": {
+                "random": {
+                    "value": "@_ep_1_flux_err_173",
+                "unit": "erg/cm2/sec"
+                }
+            }
+        },
+        {
+            "measure": "Photometry",
+            "ucd": "phot.flux",
+            "semantic": "#flux.corrected",
+            "description": "Flux in Energy band 2 4.5-12KeV (cameras merged)",
+            "reductionStatus": "Corrected",
+            "frame": {
+                "frame": "EB5"
+            },
+            "luminosity": {
+                "luminosity": "@_ep_1_flux_174",
+                "unit": "erg/cm2/sec"
+            },
+            "errors": {
+                "random": {
+                    "value": "@_ep_1_flux_err_175",
+                "unit": "erg/cm2/sec"
+                }
+            }
+        },
 		{
 			"measure": "HardnessRatio",
-			"description": "Hardness Ration in Energy band 1 and 2 (cameras merged)",
+			"description": "Hardness Ratio in Energy band 1 and 2 (cameras merged)",
 			"ucd": "phot.flux",
 			"semantic": "#hardness_ration.computed",
 			"reductionStatus": "computed",
@@ -67,7 +147,7 @@
 		},
 		{
 			"measure": "HardnessRatio",
-			"description": "Hardness Ration in Energy band 2 and 3 (cameras merged)",
+			"description": "Hardness Ratio in Energy band 2 and 3 (cameras merged)",
 			"ucd": "phot.flux",
 			"semantic": "#hardness_ration.computed",
 			"reductionStatus": "computed",
@@ -85,7 +165,7 @@
 		},
 		{
 			"measure": "HardnessRatio",
-			"description": "Hardness Ration in Energy band 3 and 4 (cameras merged)",
+			"description": "Hardness Ratio in Energy band 3 and 4 (cameras merged)",
 			"ucd": "phot.flux",
 			"semantic": "#hardness_ration.computed",
 			"reductionStatus": "computed",
@@ -103,7 +183,7 @@
 		},
 		{
 			"measure": "HardnessRatio",
-			"description": "Hardness Ration in Energy band 4 and 5 (cameras merged)",
+			"description": "Hardness Ratio in Energy band 4 and 5 (cameras merged)",
 			"ucd": "phot.flux",
 			"semantic": "#hardness_ration.computed",
 			"reductionStatus": "computed",
