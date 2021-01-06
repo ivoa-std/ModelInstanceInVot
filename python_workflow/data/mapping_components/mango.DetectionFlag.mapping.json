@@ -52,6 +52,10 @@
                 "@dmrole": "mango:stcextend.FlagCoord.coord",
                 "@dmtype": "ivoa:integer",
                 "@ref": "@@@@@@"
+              },
+              "INSTANCE": {
+                "@dmref": "@@@@@@",
+                "@dmrole": "coords:Coordinate.coordSys"
               }
             }
           }

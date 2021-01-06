@@ -33,6 +33,8 @@
 						dmtype="mango:stcextend.FlagCoord">
 						<ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord"
 							dmtype="ivoa:integer" ref="@@@@@@" />
+				        <INSTANCE dmrole="coords:Coordinate.coordSys" 
+                            dmref="@@@@@@" />
 					</INSTANCE>
 				</INSTANCE>
 			</INSTANCE>
