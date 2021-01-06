@@ -35,45 +35,45 @@
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="XMM EB2"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="XMM"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="1.25"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="0.75"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="1.5"/>
-    </INSTANCE>
-    <INSTANCE ID="PhotFrame_HR1" dmrole="" dmtype="mango:stcextend.HRFrame">
-      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB1"/>
-      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB2"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="0.5"/>
     </INSTANCE>
     <INSTANCE ID="PhotFrame_EB3" dmrole="" dmtype="mango:stcextend.PhotFilter">
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="XMM EB3"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="XMM"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="3.75"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="1"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="1.5"/>
-    </INSTANCE>
-    <INSTANCE ID="PhotFrame_HR2" dmrole="" dmtype="mango:stcextend.HRFrame">
-      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB2"/>
-      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB3"/>
     </INSTANCE>
     <INSTANCE ID="PhotFrame_EB4" dmrole="" dmtype="mango:stcextend.PhotFilter">
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="XMM EB4"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="XMM"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="6.0"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="3.25"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="3.0"/>
-    </INSTANCE>
-    <INSTANCE ID="PhotFrame_HR3" dmrole="" dmtype="mango:stcextend.HRFrame">
-      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB3"/>
-      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB4"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="3.5"/>
     </INSTANCE>
     <INSTANCE ID="PhotFrame_EB5" dmrole="" dmtype="mango:stcextend.PhotFilter">
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="XMM EB5"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="NoSet"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="XMM"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="9.75"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.effectiveWavlength" dmtype="ivoa:real" value="8.25"/>
       <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.unit" dmtype="ivoa:string" value="KeV"/>
-      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="4.5"/>
+      <ATTRIBUTE dmrole="mango:stcextend.PhotFilter.bandWidth" dmtype="ivoa:real" value="5.5"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_HR1" dmrole="" dmtype="mango:stcextend.HRFrame">
+      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB1"/>
+      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB2"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_HR2" dmrole="" dmtype="mango:stcextend.HRFrame">
+      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB2"/>
+      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB3"/>
+    </INSTANCE>
+    <INSTANCE ID="PhotFrame_HR3" dmrole="" dmtype="mango:stcextend.HRFrame">
+      <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB3"/>
+      <INSTANCE dmrole="mango:stcextend.HRFrame.high" dmref="PhotFrame_EB4"/>
     </INSTANCE>
     <INSTANCE ID="PhotFrame_HR4" dmrole="" dmtype="mango:stcextend.HRFrame">
       <INSTANCE dmrole="mango:stcextend.HRFrame.low" dmref="PhotFrame_EB4"/>
@@ -168,9 +168,89 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 0.5-1KeV (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
+                <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_168"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB2"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_169"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 1-2KeV (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
+                <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_170"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB3"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_171"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 2-4.5KeV (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
+                <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_172"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB4"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_173"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 4.5-12KeV (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
+                <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_174"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB5"/>
+                </INSTANCE>
+                <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                  <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                    <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_175"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ration in Energy band 1 and 2 (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 1 and 2 (cameras merged)"/>
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
@@ -190,7 +270,7 @@
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ration in Energy band 2 and 3 (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 2 and 3 (cameras merged)"/>
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
@@ -210,7 +290,7 @@
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ration in Energy band 3 and 4 (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 3 and 4 (cameras merged)"/>
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
@@ -230,7 +310,7 @@
             <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ration in Energy band 4 and 5 (cameras merged)"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 4 and 5 (cameras merged)"/>
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="computed"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.HardnessRatio">
                 <INSTANCE dmrole="mango:stcextend.HardnessRatio.coord" dmtype="mango:stcextend.HardnessRatioCoord">
@@ -292,6 +372,17 @@
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#quality_flag"/>
+              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.code.qual"/>
+              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Summary quality flag"/>
+              <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:GenericMeasure">
+                <INSTANCE dmrole="mango:stcextend.Flag.coord" dmtype="mango:stcextend.FlagCoord">
+                  <ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord" dmtype="ivoa:integer" ref="_sum_flag_394"/>
+                  <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="StatusFrame_DETFLAG"/>
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
