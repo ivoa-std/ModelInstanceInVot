@@ -174,13 +174,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_168"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_2_flux_168"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB2"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_169"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_2_flux_err_169"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
@@ -194,13 +194,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_170"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_3_flux_170"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB3"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_171"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_3_flux_err_171"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
@@ -214,13 +214,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_172"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_4_flux_172"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB4"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_173"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_4_flux_err_173"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
@@ -234,13 +234,13 @@
               <ATTRIBUTE dmrole="mango:Parameter.reductionStatus" dmtype="ivoa:string" value="Corrected"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Photometry">
                 <INSTANCE dmrole="mango:stcextend.Photometry.coord" dmtype="mango:stcextend.PhotometryCoord">
-                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_1_flux_174"/>
+                  <ATTRIBUTE dmrole="mango:stcextend.PhotometryCoord.luminosity" dmtype="ivoa:real" ref="_ep_5_flux_174"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="PhotFrame_EB5"/>
                 </INSTANCE>
                 <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                   <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
                     <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_1_flux_err_175"/>
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="_ep_5_flux_err_175"/>
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="NotSet"/>
                     </INSTANCE>
                   </INSTANCE>
