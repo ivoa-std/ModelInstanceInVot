@@ -212,7 +212,12 @@ class TableMapper(object):
                 if param.ID ==  element["@ref"]:
                     logger.info("set element %s with value=%s of PARAM(ID=%s)"
                                 , str(element), param.value, element["@ref"])
-                    element["@value"] = param.value.decode("utf-8") 
+                    #element["@value"] = param.value.decode("utf-8") 
+                    try:
+                        element["@value"] = param.value.decode("utf-8") 
+                    except (UnicodeDecodeError, AttributeError):
+                        element["@value"] = param.value
+
                 elif param.name  ==  element["@ref"] :
                     logger.info("set element%s with value=%s of PARAM(name=%s)"
                                 , str(element), param.value, element["@ref"])

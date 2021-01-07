@@ -271,7 +271,7 @@ class JsonMappingBuilder():
         if new_key == '' and "NAME" in element.keys():
             new_key = element["NAME"]
         if new_key == '':
-            raise Exception("Cannot compute new key")
+            raise Exception("Cannot compute new key (from dmrole, tableref, ID or NAME) for element " + DictUtils.get_pretty_json(element))
         return new_key
    
     def save_instance(self):     
