@@ -57,12 +57,12 @@
                 "frame": "EB2"
             },
             "luminosity": {
-                "luminosity": "@_ep_1_flux_168",
+                "luminosity": "@_ep_2_flux_168",
                 "unit": "erg/cm2/sec"
             },
             "errors": {
                 "random": {
-                    "value": "@_ep_1_flux_err_169",
+                    "value": "@_ep_2_flux_err_169",
                 "unit": "erg/cm2/sec"
                 }
             }
@@ -77,12 +77,12 @@
                 "frame": "EB3"
             },
             "luminosity": {
-                "luminosity": "@_ep_1_flux_170",
+                "luminosity": "@_ep_3_flux_170",
                 "unit": "erg/cm2/sec"
             },
             "errors": {
                 "random": {
-                    "value": "@_ep_1_flux_err_171",
+                    "value": "@_ep_3_flux_err_171",
                 "unit": "erg/cm2/sec"
                 }
             }
@@ -97,12 +97,12 @@
                 "frame": "EB4"
             },
             "luminosity": {
-                "luminosity": "@_ep_1_flux_172",
+                "luminosity": "@_ep_4_flux_172",
                 "unit": "erg/cm2/sec"
             },
             "errors": {
                 "random": {
-                    "value": "@_ep_1_flux_err_173",
+                    "value": "@_ep_4_flux_err_173",
                 "unit": "erg/cm2/sec"
                 }
             }
@@ -117,12 +117,12 @@
                 "frame": "EB5"
             },
             "luminosity": {
-                "luminosity": "@_ep_1_flux_174",
+                "luminosity": "@_ep_5_flux_174",
                 "unit": "erg/cm2/sec"
             },
             "errors": {
                 "random": {
-                    "value": "@_ep_1_flux_err_175",
+                    "value": "@_ep_5_flux_err_175",
                 "unit": "erg/cm2/sec"
                 }
             }
