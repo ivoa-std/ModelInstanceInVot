@@ -28,7 +28,7 @@
 					dmtype="ivoa:string" value="@@@@@@" />
 
 				<INSTANCE dmrole="mango:Parameter.measure"
-					dmtype="meas:GenericMeasure">
+					dmtype="mango:stcextend.Flag">
 					<INSTANCE dmrole="mango:stcextend.Flag.coord"
 						dmtype="mango:stcextend.FlagCoord">
 						<ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord"
