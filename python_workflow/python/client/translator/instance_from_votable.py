@@ -33,7 +33,7 @@ class InstanceFromVotable:
         logger.info("extract vodml block from %s", self.votable_path)
         with open(self.votable_path) as xml_file:
             self.vodml_block =re.search(r'<MODEL_INSTANCE>((.|\n)*?)</MODEL_INSTANCE>', xml_file.read()).group() 
-        
+    
         if self.vodml_block is None :
             raise Exception("No vodml block found")
         logger.info("MODEL_INSTANCE found")
@@ -49,6 +49,7 @@ class InstanceFromVotable:
         if validator.validate_string(self.vodml_block, verbose=True) is True:
             logger.info("MODEL_INSTANCE block is valid")
             self.json_block = xmltodict.parse(self.vodml_block)
+            
         else:
             logger.error("MODEL_INSTANCE block is not valid")
             raise Exception("MODEL_INSTANCE block is not valid")

@@ -9,6 +9,7 @@ from client.translator.instance_from_votable import InstanceFromVotable
 from client.translator.json_mapping_builder import JsonMappingBuilder
 from client.inst_builder.table_mapper import TableMapper
 from client.inst_builder.json_block_extractor import JsonBlockExtractor
+from utils.dict_utils import DictUtils
 
 class VodmlInstance(object):
     '''
@@ -89,6 +90,7 @@ class VodmlInstance(object):
             v.map_columns()        
  
     def connect_join_iterators(self):
+        logger.info("connect join iterators")
         parse_tables = {}
         for template,table_mapper in self.table_mappers.items():
             parse_tables[template] = table_mapper.parsed_table
