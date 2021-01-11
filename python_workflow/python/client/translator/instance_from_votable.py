@@ -8,8 +8,7 @@ import xmltodict
 
 from schema.validator.validator import Validator
 from client.translator.json_mapping_builder import JsonMappingBuilder
-from client.translator import logger, data_dir, project_dir
-from utils.dict_utils import DictUtils
+from client.translator import logger, project_dir
 
 class InstanceFromVotable:
     '''
@@ -48,8 +47,7 @@ class InstanceFromVotable:
                                    , "vodml_lite.xsd"))
         if validator.validate_string(self.vodml_block, verbose=True) is True:
             logger.info("MODEL_INSTANCE block is valid")
-            self.json_block = xmltodict.parse(self.vodml_block)
-            
+            self.json_block = xmltodict.parse(self.vodml_block)            
         else:
             logger.error("MODEL_INSTANCE block is not valid")
             raise Exception("MODEL_INSTANCE block is not valid")
@@ -72,7 +70,6 @@ class InstanceFromVotable:
         builder.revert_elements("MODEL")
 
         self.json_vodml_block = builder.json
-        print(DictUtils.get_pretty_json(self.json_vodml_block))
         logger.info("JSON MODEL_INSTANCE block built")
         
     """

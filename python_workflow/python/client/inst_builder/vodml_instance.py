@@ -49,6 +49,10 @@ class VodmlInstance(object):
         builder.revert_compositions("COLLECTION")
         builder.revert_templates()
         builder.revert_elements("INSTANCE")
+        print(DictUtils.get_pretty_json(self.json_view))
+        import sys
+        print("------------- EXIT ")
+        #sys.exit()
         builder.revert_elements("ATTRIBUTE")
         self.json_view = builder.json
 
