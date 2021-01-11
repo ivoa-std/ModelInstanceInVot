@@ -21,7 +21,7 @@ Execution Reports
 <RESOURCE ID="yCat_1146" name="I/146">
   <DESCRIPTION>Positions and Proper Motions - North (Roeser+, 1988)</DESCRIPTION>
   <COOSYS ID="J2000_2000.000" system="eq_FK5" equinox="J2000" epoch="2000.000"/>
-  <TABLE ID="I_146_ppm1" name="I/146/ppm1">
+  <TABLE ID="Results" name="I/146/ppm1">
     <DESCRIPTION>Catalogue PPM-North</DESCRIPTION>
     <!-- RowName: ${PPM} -->
     <!-- Definitions of GROUPs and FIELDs -->
