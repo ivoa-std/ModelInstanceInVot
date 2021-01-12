@@ -389,7 +389,7 @@ class MappingGenerator:
                     sc_flag = "(" + CONST.TSUBTYPE  + " " + vodml_object_type.vodmlid + ")" if  CONST.TSUBTYPE != "" else ""
                     vodml_object_type = self.object_types[class_id]
                     dmtype = " dmtype='" + sc_flag + vodml_object_type.vodmlid + "'"
-                    self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)   
+                    self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)   
 
                     if vodml_object_type.abstract == True:
                         self.mapped_abstract_classes.append(vodml_object_type.vodmlid)
@@ -403,7 +403,7 @@ class MappingGenerator:
                     #type = ""
                 else:
                     self.mapped_abstract_classes.append(vodml_object_type.vodmlid)
-                self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)     
+                self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)     
         else :
             dmtype = " dmtype='"  + vodml_object_type.vodmlid + "'" if CONST.WITH_TYPES else ""
             self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)     
