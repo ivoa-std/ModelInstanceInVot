@@ -33,7 +33,7 @@
 				</INSTANCE>
 				<INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
 					<INSTANCE dmrole="meas:Error.statError" dmtype="meas:Ellipse">
-						<COLLECTION size="2">
+						<COLLECTION size="2" dmrole="meas:Ellipse.semiAxes">
 							<INSTANCE dmrole="meas:Ellipse.semiAxis" dmtype="ivoa:RealQuantity">
 								<ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@@" />
 								<ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@@" />
