@@ -68,47 +68,47 @@
 								</INSTANCE>
 
 								<INSTANCE dmrole="meas:Measure.error" dmtype="mango:CorrelatedError">
-									<INSTANCE dmrole="mango:CorrelatedError.error" dmtype="mango:CovError2D">
-										<ATTRIBUTE dmrole="mango:CovError2D.confidenceLevel" dmtype="ivoa:real" value="1" />
-										<ATTRIBUTE dmrole="mango:CovError2D.sigma1" dmtype="ivoa:real" ref="pos_RA_err" />
-										<ATTRIBUTE dmrole="mango:CovError2D.sigma2" dmtype="ivoa:real" ref="pos_DEC_err" />
-										<ATTRIBUTE dmrole="mango:CovError2D.covariance" dmtype="ivoa:real" ref="pos_RADEC_corr" />
+									<INSTANCE dmrole="mango:CorrelatedError.error" dmtype="mango:CorrError2D">
+										<ATTRIBUTE dmrole="mango:CorrError2D.confidenceLevel" dmtype="ivoa:real" value="1" />
+										<ATTRIBUTE dmrole="mango:CorrError2D.sigma1" dmtype="ivoa:real" ref="pos_RA_err" />
+										<ATTRIBUTE dmrole="mango:CorrError2D.sigma2" dmtype="ivoa:real" ref="pos_DEC_err" />
+										<ATTRIBUTE dmrole="mango:CorrError2D.correlation" dmtype="ivoa:real" ref="pos_RADEC_corr" />
 									</INSTANCE>
 									<COLLECTION dmrole="mango:CorrelatedError.coupledErrors">
 
 										<INSTANCE dmrole="mango:CorrelatedError.coupledErrors" dmtype="mango:CorrelatedError2D">
 											<ATTRIBUTE dmrole="mango:CorrelatedError2D.ucd" dmtype="ivoa:string" value="pos.pm" />
-											<INSTANCE dmrole="mango:CorrelatedError2D.correlations11" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations11.value" dmtype="real" ref="pm_RA_pos_RA_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError2D.correlations1_1" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations1_1.value" dmtype="real" ref="pm_RA_pos_RA_corr" />
 											</INSTANCE>
-											<INSTANCE dmrole="mango:CorrelatedError2D.correlations12" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations12.value" dmtype="real" ref="pm_RA_pos_DEC_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError2D.correlations1_2" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations1_2.value" dmtype="real" ref="pm_RA_pos_DEC_corr" />
 											</INSTANCE>
-											<INSTANCE dmrole="mango:CorrelatedError2D.correlations21" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations21.value" dmtype="real" ref="pm_DEC_pos_RA_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError2D.correlations2_1" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations2_1.value" dmtype="real" ref="pm_DEC_pos_RA_corr" />
 											</INSTANCE>
-											<INSTANCE dmrole="mango:CorrelatedError2D.correlations22" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations22.value" dmtype="real" ref="pm_DEC_pos_DEC_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError2D.correlations2_2" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations2_2.value" dmtype="real" ref="pm_DEC_pos_DEC_corr" />
 											</INSTANCE>
 										</INSTANCE>
 
 										<INSTANCE dmrole="mango:CorrelatedError.coupledErrors" dmtype="mango:CorrelatedError1D">
 											<ATTRIBUTE dmrole="mango:CorrelatedError1D.ucd" dmtype="ivoa:string" value="spect.dopplerVeloc" />
-											<INSTANCE dmrole="mango:CorrelatedError1D.correlations11" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations11.value" dmtype="real" ref="RV_pos_RA_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError1D.correlations1_1" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations1_1.value" dmtype="real" ref="RV_pos_RA_corr" />
 											</INSTANCE>
-											<INSTANCE dmrole="mango:CorrelatedError1D.correlations12" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations12.value" dmtype="real" ref="RV_pos_DEC_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError1D.correlations1_2" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations1_2.value" dmtype="real" ref="RV_pos_DEC_corr" />
 											</INSTANCE>
 										</INSTANCE>
 
 										<INSTANCE dmrole="mango:CorrelatedError.coupledErrors" dmtype="mango:CorrelatedError1D">
 											<ATTRIBUTE dmrole="mango:CorrelatedError1D.ucd" dmtype="ivoa:string" value="pos.parallax" />
-											<INSTANCE dmrole="mango:CorrelatedError1D.correlations11" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations11.value" dmtype="real" ref="PARALLAX_pos_RA_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError1D.correlations1_1" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations1_1.value" dmtype="real" ref="PARALLAX_pos_RA_corr" />
 											</INSTANCE>
-											<INSTANCE dmrole="mango:CorrelatedError1D.correlations12" dmtype="ivoa:RealQuantity">
-												<ATTRIBUTE dmrole="mango:correlations12.value" dmtype="real" ref="PARALLAX_pos_DEC_corr" />
+											<INSTANCE dmrole="mango:CorrelatedError1D.correlations1_2" dmtype="ivoa:RealQuantity">
+												<ATTRIBUTE dmrole="mango:correlations1_2.value" dmtype="real" ref="PARALLAX_pos_DEC_corr" />
 											</INSTANCE>
 										</INSTANCE>
 
@@ -202,11 +202,11 @@
 
 												<INSTANCE dmrole="mango:CorrelatedError.coupledErrors" dmtype="mango:CorrelatedError1D">
 													<ATTRIBUTE dmrole="mango:CorrelatedError1D.ucd" dmtype="ivoa:string" value="pos.pm" />
-													<INSTANCE dmrole="mango:CorrelatedError1D.correlations11" dmtype="ivoa:RealQuantity">
-														<ATTRIBUTE dmrole="mango:correlations11.value" dmtype="real" ref="PARALLAX_pm_RA_corr" />
+													<INSTANCE dmrole="mango:CorrelatedError1D.correlations1_1" dmtype="ivoa:RealQuantity">
+														<ATTRIBUTE dmrole="mango:correlations1_1.value" dmtype="real" ref="PARALLAX_pm_RA_corr" />
 													</INSTANCE>
-													<INSTANCE dmrole="mango:CorrelatedError1D.correlations12" dmtype="ivoa:RealQuantity">
-														<ATTRIBUTE dmrole="mango:correlations12.value" dmtype="real" ref="PARALLAX_pm_DEC_corr" />
+													<INSTANCE dmrole="mango:CorrelatedError1D.correlations1_2" dmtype="ivoa:RealQuantity">
+														<ATTRIBUTE dmrole="mango:correlations1_2.value" dmtype="real" ref="PARALLAX_pm_DEC_corr" />
 													</INSTANCE>
 												</INSTANCE>
 
