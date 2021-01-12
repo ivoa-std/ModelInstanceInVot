@@ -81,7 +81,7 @@ class ProperMotionAppender:
         self.appender.set_ref_or_value("meas:Ellipse.posAngle", 
                                     "ivoa:RealQuantity.value", 
                                     "0.0")
-        self.appender.set_ref_or_value("meas:Ellipse.posAngles", 
+        self.appender.set_ref_or_value("meas:Ellipse.posAngle", 
                                     "ivoa:Quantity.unit", 
                                     "deg")
 
