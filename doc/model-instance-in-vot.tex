@@ -1148,6 +1148,23 @@ Shortcut for \texttt{ivoa:IntegerQuantity} class.
             ref="col_id" value="0"  unit="m/sec" />
 \end{lstlisting}
 
+\subsubsection{SC\_FIELD}
+Equivalent to \texttt{FIELDREF}.
+
+
+\begin{itemize}
+    \item Can only be used within an INSTANCE        
+    \item Using shorcuts requires units to be literals    
+    \item Both \texttt{@ref} and \texttt{@value} attribute work the same way as with \texttt{ATTRIBUTE}.
+    \item No \texttt{@dmtype},  it is set as ivoa:RealInteger by construction
+ \end{itemize}
+
+
+\begin{lstlisting}[caption={\texttt{ivoa:IntegerQuantity} example},style=XML,basicstyle=\small]
+
+<SC_FIELD dmrole="coords:PhysicalCoordinate.cval"  ref="col_id"/>
+\end{lstlisting}
+
 
 \appendix
 
