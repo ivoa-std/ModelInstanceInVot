@@ -10,7 +10,7 @@ from schema.validator.validator import Validator
 class TestRunner:
     validator = Validator(os.path.join(project_dir
                                    , "schema"
-                                   , "vodml_lite.xsd"))
+                                   , "model-instance-in-vot.xsd"))
     
     @staticmethod
     def testOK(mapping_sample, case_prefix):

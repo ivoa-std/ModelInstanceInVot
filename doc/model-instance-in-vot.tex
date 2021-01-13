@@ -235,12 +235,11 @@ In the following annotation snippets, the values of the XML elements attribute d
 
 The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the whole VOTable. Its stucture is given below.
 
-\begin{lstlisting}[caption={INSTANCE bloc example},style=XML]
+\begin{lstlisting}[caption={Complete mapping block example},style=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             version="1.4">
-   <MODEL_INSTANCE>
-     <MODELS>   ...  </MODELS>
+   <MODEL_INSTANCE name="MANGO" syntax="model-instance-in-vot"  uri="http://server.mango.vo-dml.xml">
      <GLOBALS>   ...  </GLOBALS>
 
       <TABLE\_MAPPING tableref=...>  ... </TABLE\_MAPPING tableref=...>
@@ -251,13 +250,12 @@ The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the
 </VOTABLE>
 \end{lstlisting}
 
-The mapping construction rules are the same whatever either model or data layout are.
+The mapping construction rules are independant from either model or data layout.
 
 \begin{itemize}
     \item The mapping is located in a \texttt{<MODEL\_INSTANCE>} block, child of \texttt{<VOTABLE>}.
     \item The mapping elements denote the model structure.
-    \item The \texttt{<MODEL\_INSTANCE>} block starts with the list of implemented models.
-    \item The model list is followed the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
+    \item The \texttt{<MODEL\_INSTANCE>} block starts the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
     \item The \texttt{<GLOBALS>} block is followed a sequence of \texttt{<TABLE\_MAPPING>}.
     \item There is one \texttt{<TABLE\_MAPPING>} per mapped \texttt{<TABLE>}.
 \end{itemize}
@@ -275,38 +273,55 @@ The mapping construction rules are the same whatever either model or data layout
 % MODELS
 %
 
-\subsubsection{MODELS}
+\subsubsection{<MODEL\_INSTANCE>}
 
-The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. 
+The  \texttt{MODEL\_INSTANCE}  encompasses the mapping block. 
+This reference to a specific model is informative. There no obligation to have a tight coupling between a mapping block and a specific model. The use of the model referenced  \texttt{MODEL\_INSTANCE}  is left at the discretion of the client. The client can just look for interesting quantities without regards on a particular model or on the opposite build a model instance by merging a vo-dml model serialization with the mapping block.
 
 
-\begin{itemize}
-    \item The model list is informative, it is not requested to achieve the parsing.
-    \item The model list can be left empty.
-    \item Models referenced in \texttt{MODELS} are not necessary VO standards, but they must be accessible by a VODML URI
-\end{itemize}
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @name  & 
+            Name of the mapped model (informal).  This attribute must be left empty  \\
+       \hline 
+            @syntax  & 
+            Syntax used for the mapping. The default syntax  is this proposed in this document\texttt{@syntax=model-instance-in-vot} . This attribute must be left empty when present.\\
+       \hline 
+            @uri  & 
+            Uri of the vo-dml serialization of the mapped model. \\
+       \hline 
+     \end{tabulary}
+     \caption{\texttt{MODEL\_INSTANCE} attributes} 
+     \label{tbl:model-att}
+ \end{table}
 
-\begin{lstlisting}[caption={GLOBALS block example},style=XML]
-<MODELS>
-    <MODEL>
-        <NAME>ivoa</NAME>
-        <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml
-        </URL>
-    </MODEL>
-    <MODEL>
-        <NAME>coords</NAME>
-        <URL>http://www.ivoa.net/xml/STC_coords-v1.0.vo-dml.xml
-    </URL>
-    </MODEL>
-    <MODEL>
-        <NAME>meas</NAME>
-        <URL>http://www.ivoa.net/xml/STC_meas-v1.0.vo-dml.xml
-        </URL>
-    </MODEL>
-</MODELS>
-\end{lstlisting}
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|J|}
+    \hline 
+        \textbf{@name} &        
+        \textbf{@syntax} &       
+        \textbf{@uri} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        OPT &           
+        OPT &   
+        Always mandatory\\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{MODEL\_INSTANCE}} 
+     \label{tbl:model-pattern}
+ \end{table}
+\FloatBarrier
 
- \texttt{MODELS},  {MODEL},  {NAME} and {URL}  have no attributes. 
  \FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

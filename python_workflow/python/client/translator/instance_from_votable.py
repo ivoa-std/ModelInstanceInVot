@@ -44,7 +44,7 @@ class InstanceFromVotable:
         '''
         validator = Validator(os.path.join(project_dir
                                    , "schema"
-                                   , "vodml_lite.xsd"))
+                                   , "model-instance-in-vot.xsd"))
         if validator.validate_string(self.vodml_block, verbose=True) is True:
             logger.info("MODEL_INSTANCE block is valid")
             self.json_block = xmltodict.parse(self.vodml_block)            

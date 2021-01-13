@@ -23,7 +23,7 @@ base_path = os.path.dirname(os.path.realpath(__file__))
 
 validator = Validator(os.path.join(project_dir
                                    , "schema"
-                                   , "vodml_lite.xsd"))
+                                   , "model-instance-in-vot.xsd"))
 
 
 # Open a file
