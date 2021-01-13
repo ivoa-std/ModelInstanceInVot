@@ -17,7 +17,11 @@ class TestVodmlInstance(unittest.TestCase):
 
     
     def test_1(self):
+<<<<<<< HEAD
         self.maxDiff = None        
+=======
+        
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         #print(DictUtils.get_pretty_json(self.vodml_instance.json_view))
         self.assertDictEqual(self.vodml_instance.json_view
                              , DictUtils.read_dict_from_file(self.json_ref_path)

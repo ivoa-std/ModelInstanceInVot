@@ -7,7 +7,11 @@ import json
 from copy import deepcopy
 from client.inst_builder import logger
 from utils.dict_utils import DictUtils
+<<<<<<< HEAD
 from client.translator.json_tools import JsonTools
+=======
+
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 class JsonMappingBuilder():
     '''
     classdocs
@@ -35,7 +39,11 @@ class JsonMappingBuilder():
         templates = {}
         keys = []
         for k, v in  root_element.items():
+<<<<<<< HEAD
             if k not in ['MODELS', 'GLOBALS'] and k.startswith("@") is False:
+=======
+            if k not in ['MODELS', 'GLOBALS']:
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
                 templates[k] = v
                 keys.append(k)
         logger.info("Put all TABLE_MAPPING{} in a global TABLE_MAPPING[]")
@@ -57,7 +65,11 @@ class JsonMappingBuilder():
                     self.retour["node"][k] = v
             else:
                 break
+<<<<<<< HEAD
            
+=======
+            
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
             
     def revert_compositions(self, name, dmrole=None, dmtype=None):
         logger.info("reverting compositions %s - ('%s':[{role ...} ...] -> 'role':[...])", name, name)
@@ -66,15 +78,87 @@ class JsonMappingBuilder():
         while True:
             self.retour = None
             self._revert_composition(root_element, name, dmrole, dmtype)
+<<<<<<< HEAD
+=======
+            #print("==========")
+            #print(DictUtils.get_pretty_json(self.retour))
+            #print("==========")
+            #sys.exit()
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
             if self.retour is not None:
                 self.retour["node"].pop(name)
 
                 for ele in self.retour["newcontent"]:
                     for k, v in ele.items():
+<<<<<<< HEAD
                         self.retour["node"][k] = JsonTools.remove_key(v, "INSTANCE")
             else:
                 break
                        
+=======
+                        self.retour["node"][k] = v
+            else:
+                break
+            
+    def revert_sets_xxxx(self, name, default_key=None):
+        logger.info("reverting sets %s", name)
+        root_element = self.json['MODEL_INSTANCE']
+        while True:
+            self.retour = None
+            self._revert_set(root_element, name, default_key)
+            if self.retour is not None:
+                self.retour["node"].pop(name)
+                for k, v in self.retour["newcontent"].items():
+                    self.retour["node"][k] = v
+            else:
+                break
+            
+    def revert_array_2bethrown(self):
+        # Give TABLE_ROW_TEMPLATEs the same role as its container
+        logger.info("reverting TABLE_ROW_TEMPLATEs")
+        root_element = self.json['MODEL_INSTANCE']
+        while True:
+            self.retour = None
+
+            self._revert_set(root_element, 'TABLE_ROW_TEMPLATE', None)
+            if self.retour is not None:
+                print("============== ")
+                array_container = self.retour["node"]
+                array_node = array_container['TABLE_ROW_TEMPLATE']
+                array_role = array_node['INSTANCE']["@dmrole"]
+                array_container['TABLE_ROW_TEMPLATE'] = {array_role: [array_node['INSTANCE']]}
+            else:
+                break
+    
+    def _revert_set_2bethrown(self, root_element, name, default_key):
+        print("aaaa")
+        if isinstance(root_element, list):
+            for idx, _ in enumerate(root_element):
+                if self.retour is None:
+                    self._revert_set(root_element[idx], name, default_key)
+        elif isinstance(root_element, dict):
+            for k, v in root_element.items():
+                if k == name:
+                    if isinstance(v, list):
+                        raise Exception(name + " cannot be a list")
+                    elif isinstance(v, dict):  
+                        # the elememt may have been reverted in a precedent pass
+                        # It can not be reserved twice
+                        try:
+                            print("bbbbbbbbbbb ")
+                            print(DictUtils.get_pretty_json(v))
+                            newcontent = {}
+                            new_key = self._get_key_for_element(v["INSTANCE"], default_key)
+                            newcontent[new_key] = deepcopy(v["INSTANCE"])
+                            self.retour = {'node': root_element, "newcontent": newcontent}
+                        except:
+                            import traceback
+                            traceback.print_exc()
+                            pass
+                if self.retour is None:
+                    self._revert_set(v, name, default_key)
+       
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
     def _revert_subelement(self, root_element, name, dmrole, dmtype):
         if isinstance(root_element, list):
             for idx, _ in enumerate(root_element):
@@ -126,7 +210,11 @@ class JsonMappingBuilder():
                             for ele in v:
                                 new_ele  = deepcopy(ele)
                                 #self._drop_role_if_needed(new_ele)
+<<<<<<< HEAD
                                 self._add_value_if_needed(new_ele)    
+=======
+                                self._add_value_if_needed(new_ele)                            
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
                                 new_array.append(new_ele)
                             newcontent[former_key] = new_array
 
@@ -151,6 +239,10 @@ class JsonMappingBuilder():
         elif isinstance(root_element, dict):
             for k, v in root_element.items():
                 if k == name:
+<<<<<<< HEAD
+=======
+                    #print(k)
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 
                     if isinstance(v, list):
                         newcontent = []
@@ -159,13 +251,22 @@ class JsonMappingBuilder():
                             ele_cp = deepcopy(ele)
                             self._drop_role_if_needed(ele_cp)
                             if ele_cp:
+<<<<<<< HEAD
+=======
+                                #print("Append 1" + new_key)
+                                #print(DictUtils.get_pretty_json(ele_cp))
+                                #print("===========")
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
                                 newcontent.append({new_key: [ele_cp]})
                             else :
                                 #print("Append 1 empty" )
                                 newcontent.append({new_key: []})
                         self.retour = {'node': root_element, "newcontent": newcontent}
                     elif isinstance(v, dict):  
+<<<<<<< HEAD
 
+=======
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
                         newcontent = []
                         ele_cp = deepcopy(v)
                         new_key = self._get_key_for_element(ele_cp)

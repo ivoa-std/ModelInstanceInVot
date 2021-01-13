@@ -36,7 +36,11 @@ class TestInstance(unittest.TestCase):
         builder.revert_elements("INSTANCE")
         builder.revert_elements("ATTRIBUTE")
         
+<<<<<<< HEAD
         #print(builder.json["MODEL_INSTANCE"])
+=======
+        #print(DictUtils.get_pretty_json(builder.json))
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         self.assertDictEqual(builder.json["MODEL_INSTANCE"]
                              , DictUtils.read_dict_from_file(json_ref_path)["MODEL_INSTANCE"]
                              , "=======")

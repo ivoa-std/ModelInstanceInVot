@@ -95,6 +95,10 @@ class TableIterator(object):
         if row is not None:
             retour = []
             indexes = self.column_mapping.get_indexes()
+<<<<<<< HEAD
+=======
+            print(indexes)
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
             for index in indexes:
                 val = row[index]
                 if isinstance(val, bytes) is True:

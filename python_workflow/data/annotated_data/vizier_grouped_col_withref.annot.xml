@@ -2,7 +2,27 @@
 <VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
   xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
+<<<<<<< HEAD
 <MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
+=======
+<MODEL_INSTANCE>
+  <MODELS>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+  </MODELS>
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
   <GLOBALS>
     <INSTANCE ID="StatusFrame_QRVFLAG" dmrole="" dmtype="cab_msd:STCStatusSys">
       <COLLECTION size="5" dmrole="cab_msd:STCStatusSys.statusLabel">
@@ -36,7 +56,11 @@
           <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="recno"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
+<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#radial velocity"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="spect.dopplerVeloc;pos.heliocentric"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Radial velocity, derived from the shift of some spectral feature in Heliocentric position coordinate (solar system bodies)"/>
@@ -67,7 +91,11 @@
                 <INSTANCE dmref="_rv_quality" dmrole="mango:Parameter.associatedParameters"/>              
               </COLLECTION>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE ID="_plate_number" dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE ID="_plate_number" dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#Number.of.plates"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.number"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Number of plates used for radial velocity "/>
@@ -89,7 +117,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE ID="_observatory" dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE ID="_observatory" dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#observatory"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.ref;pos.frame "/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="the observatories contributing to the mean radial velocity  "/>
@@ -111,7 +143,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE ID="_rv_quality" dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE ID="_rv_quality" dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#quality_flag"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.code.qual"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value=" Quality of radial velocity "/>

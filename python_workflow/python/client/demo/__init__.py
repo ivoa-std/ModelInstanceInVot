@@ -17,4 +17,8 @@ LoggerSetup.set_debug_level()
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 #Config.__read_config__(config_file)
+<<<<<<< HEAD
 logger.info("client.demo package intialized")
+=======
+logger.info("client.demo package intialized")
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6

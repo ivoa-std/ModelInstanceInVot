@@ -1,4 +1,20 @@
+<<<<<<< HEAD
 <MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
+=======
+<MODEL_INSTANCE>
+	<MODELS>
+		<MODEL>
+			<NAME>ivoa</NAME>
+			<URL>http://www.ivoa.net/xml/VODML/20180519/IVOA-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+		<MODEL>
+			<NAME>coords</NAME>
+			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+		</MODEL>
+	</MODELS>
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 	<GLOBALS>
 		<DATATYPE dmtype="coords:Handedness">
 			<ENUM>

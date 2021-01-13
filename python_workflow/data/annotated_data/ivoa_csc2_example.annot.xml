@@ -1,7 +1,27 @@
 <?xml version='1.0'?>
 <VOTABLE version="1.4"
  xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+<<<<<<< HEAD
 <MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
+=======
+<MODEL_INSTANCE>
+  <MODELS>
+    <MODEL>
+      <NAME>ivoa</NAME>
+      <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>coords</NAME>
+      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+    <MODEL>
+      <NAME>meas</NAME>
+      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
+			</URL>
+    </MODEL>
+  </MODELS>
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
   <GLOBALS>
     <INSTANCE ID="SpaceFrame_Galactic" dmtype="coords:SpaceFrame">
       <INSTANCE dmrole="coords:SpaceFrame.refPosition" dmtype="coords:StdRefLocation">
@@ -54,7 +74,11 @@
           <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="col0"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
+<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#position.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Corrected position"/>
@@ -81,7 +105,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Aperture-corrected detection net energy flux inferred from the source region aperture, calculated by counting X-ray events; ACIS broad (0.5-7.0 keV) energy band"/>
@@ -101,7 +129,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardnessratio.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="ACIS hard - soft energy band hardness ratio"/>
@@ -121,7 +153,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardnessratio.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="ACIS medium - soft energy band hardness ratio"/>
@@ -141,7 +177,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
+<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
+=======
+            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardnessratio.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="ACIS medium - soft energy band hardness ratio"/>

@@ -8,7 +8,10 @@ import json
 
 from product_annoter.mapper import logger
 from product_annoter.mapper.lonlat_position_appender import LonLatPositionAppender  
+<<<<<<< HEAD
 from product_annoter.mapper.lonlat_position_ellerr_appender import LonLatPositionEllErrAppender 
+=======
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 from product_annoter.mapper.status_appender import StatusAppender  
 from product_annoter.mapper.votable_merger import VOTableMerger
 from product_annoter.mapper.identifier_appender import IdentifierAppender
@@ -75,11 +78,15 @@ class ProductMapper(object):
         for measure in self.mapping_config["parameters"]:
             appender = None
            
+<<<<<<< HEAD
             if measure["measure"] == "LonLatSkyPositionEllErr":
                 logger.info("Position found")
                 #FAIT 
                 appender = LonLatPositionEllErrAppender(self.output_mapping_path, self.component_path)
             elif measure["measure"] == "LonLatSkyPosition":
+=======
+            if measure["measure"] == "LonLatSkyPosition":
+>>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
                 logger.info("Position found")
                 #FAIT 
                 appender = LonLatPositionAppender(self.output_mapping_path, self.component_path)
