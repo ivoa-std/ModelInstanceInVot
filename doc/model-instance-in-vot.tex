@@ -235,20 +235,11 @@ In the following annotation snippets, the values of the XML elements attribute d
 
 The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the whole VOTable. Its stucture is given below.
 
-<<<<<<< HEAD
 \begin{lstlisting}[caption={Complete mapping block example},style=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             version="1.4">
    <MODEL_INSTANCE name="MANGO" syntax="model-instance-in-vot"  uri="http://server.mango.vo-dml.xml">
-=======
-\begin{lstlisting}[caption={INSTANCE bloc example},style=XML]
-<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-            version="1.4">
-   <MODEL_INSTANCE>
-     <MODELS>   ...  </MODELS>
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
      <GLOBALS>   ...  </GLOBALS>
 
       <TABLE\_MAPPING tableref=...>  ... </TABLE\_MAPPING tableref=...>
@@ -259,21 +250,12 @@ The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the
 </VOTABLE>
 \end{lstlisting}
 
-<<<<<<< HEAD
 The mapping construction rules are independant from either model or data layout.
-=======
-The mapping construction rules are the same whatever either model or data layout are.
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 
 \begin{itemize}
     \item The mapping is located in a \texttt{<MODEL\_INSTANCE>} block, child of \texttt{<VOTABLE>}.
     \item The mapping elements denote the model structure.
-<<<<<<< HEAD
     \item The \texttt{<MODEL\_INSTANCE>} block starts the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
-=======
-    \item The \texttt{<MODEL\_INSTANCE>} block starts with the list of implemented models.
-    \item The model list is followed the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
     \item The \texttt{<GLOBALS>} block is followed a sequence of \texttt{<TABLE\_MAPPING>}.
     \item There is one \texttt{<TABLE\_MAPPING>} per mapped \texttt{<TABLE>}.
 \end{itemize}
@@ -291,7 +273,6 @@ The mapping construction rules are the same whatever either model or data layout
 % MODELS
 %
 
-<<<<<<< HEAD
 \subsubsection{<MODEL\_INSTANCE>}
 
 The  \texttt{MODEL\_INSTANCE}  encompasses the mapping block. 
@@ -341,40 +322,6 @@ This reference to a specific model is informative. There no obligation to have a
  \end{table}
 \FloatBarrier
 
-=======
-\subsubsection{MODELS}
-
-The  \texttt{MODELS}  blocks contains the list of the models mapped in the block. 
-
-
-\begin{itemize}
-    \item The model list is informative, it is not requested to achieve the parsing.
-    \item The model list can be left empty.
-    \item Models referenced in \texttt{MODELS} are not necessary VO standards, but they must be accessible by a VODML URI
-\end{itemize}
-
-\begin{lstlisting}[caption={GLOBALS block example},style=XML]
-<MODELS>
-    <MODEL>
-        <NAME>ivoa</NAME>
-        <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml
-        </URL>
-    </MODEL>
-    <MODEL>
-        <NAME>coords</NAME>
-        <URL>http://www.ivoa.net/xml/STC_coords-v1.0.vo-dml.xml
-    </URL>
-    </MODEL>
-    <MODEL>
-        <NAME>meas</NAME>
-        <URL>http://www.ivoa.net/xml/STC_meas-v1.0.vo-dml.xml
-        </URL>
-    </MODEL>
-</MODELS>
-\end{lstlisting}
-
- \texttt{MODELS},  {MODEL},  {NAME} and {URL}  have no attributes. 
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
  \FloatBarrier
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1201,7 +1148,6 @@ Shortcut for \texttt{ivoa:IntegerQuantity} class.
             ref="col_id" value="0"  unit="m/sec" />
 \end{lstlisting}
 
-<<<<<<< HEAD
 \subsubsection{SC\_FIELD}
 Equivalent to \texttt{FIELDREF}.
 
@@ -1219,8 +1165,6 @@ Equivalent to \texttt{FIELDREF}.
 <SC_FIELD dmrole="coords:PhysicalCoordinate.cval"  ref="col_id"/>
 \end{lstlisting}
 
-=======
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 
 \appendix
 

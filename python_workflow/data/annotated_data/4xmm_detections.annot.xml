@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
-<<<<<<< HEAD
 <MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
-=======
-<MODEL_INSTANCE>
-  <MODELS>
-    <MODEL>
-      <NAME>ivoa</NAME>
-      <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
-    </MODEL>
-    <MODEL>
-      <NAME>coords</NAME>
-      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
-			</URL>
-    </MODEL>
-    <MODEL>
-      <NAME>meas</NAME>
-      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
-			</URL>
-    </MODEL>
-  </MODELS>
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
   <GLOBALS>
     <INSTANCE ID="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
       <INSTANCE dmrole="coords:SpaceFrame.refPosition" dmtype="coords:StdRefLocation">
@@ -126,11 +106,7 @@
           <ATTRIBUTE dmrole="mango:MangoObject.identifier" dmtype="ivoa:string" ref="namesaada"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.associatedData"/>
           <COLLECTION size="-1" dmrole="mango:MangoObject.parameters">
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#postion.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="pos"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Corrected position"/>
@@ -157,11 +133,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 1 0.2-0.5KeV (cameras merged)"/>
@@ -181,11 +153,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 0.5-1KeV (cameras merged)"/>
@@ -205,11 +173,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 1-2KeV (cameras merged)"/>
@@ -229,11 +193,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 2-4.5KeV (cameras merged)"/>
@@ -253,11 +213,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#flux.corrected"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Flux in Energy band 2 4.5-12KeV (cameras merged)"/>
@@ -277,11 +233,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 1 and 2 (cameras merged)"/>
@@ -301,11 +253,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 2 and 3 (cameras merged)"/>
@@ -325,11 +273,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 3 and 4 (cameras merged)"/>
@@ -349,11 +293,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#hardness_ration.computed"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="phot.flux"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Hardness Ratio in Energy band 4 and 5 (cameras merged)"/>
@@ -373,11 +313,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#observation.duration"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="time.duration;obs.exposure"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="PN exposure time in Energy band 1 0.2-0.5KeV"/>
@@ -399,11 +335,7 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#observation.starttime"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="time;obs.start"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Observation time"/>
@@ -429,19 +361,11 @@
                 </INSTANCE>
               </INSTANCE>
             </INSTANCE>
-<<<<<<< HEAD
             <INSTANCE dmrole="mango:MangoObject.parameters" dmtype="mango:Parameter">
               <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#quality_flag"/>
               <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.code.qual"/>
               <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Summary quality flag"/>
               <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:stcextend.Flag">
-=======
-            <INSTANCE dmrole="mango:Parameter.measure" dmtype="mango:Parameter">
-              <ATTRIBUTE dmrole="mango:Parameter.semantic" dmtype="ivoa:string" value="#quality_flag"/>
-              <ATTRIBUTE dmrole="mango:Parameter.ucd" dmtype="ivoa:string" value="meta.code.qual"/>
-              <ATTRIBUTE dmrole="mango:Parameter.description" dmtype="ivoa:string" value="Summary quality flag"/>
-              <INSTANCE dmrole="mango:Parameter.measure" dmtype="meas:GenericMeasure">
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
                 <INSTANCE dmrole="mango:stcextend.Flag.coord" dmtype="mango:stcextend.FlagCoord">
                   <ATTRIBUTE dmrole="mango:stcextend.FlagCoord.coord" dmtype="ivoa:integer" ref="_sum_flag_394"/>
                   <INSTANCE dmrole="coords:Coordinate.coordSys" dmref="StatusFrame_DETFLAG"/>

@@ -3,27 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
 	xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
-<<<<<<< HEAD
 	<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
-=======
-	<MODEL_INSTANCE>
-		<MODELS>
-			<MODEL>
-				<NAME>ivoa</NAME>
-				<URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
-			</MODEL>
-			<MODEL>
-				<NAME>coords</NAME>
-				<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
-				</URL>
-			</MODEL>
-			<MODEL>
-				<NAME>meas</NAME>
-				<URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
-				</URL>
-			</MODEL>
-		</MODELS>
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 		<GLOBALS>
 			<INSTANCE ID="SpaceSys_ICRS_Spherical"
 				dmtype="coords:SpaceSys">
@@ -125,11 +105,7 @@
 							dmrole="mango:MangoObject.associatedData" />
 						<COLLECTION size="-1"
 							dmrole="mango:MangoObject.parameters">
-<<<<<<< HEAD
 							<INSTANCE dmrole="mango:MangoObject.parameters"
-=======
-							<INSTANCE dmrole="mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 								dmtype="mango:Parameter">
 								<ATTRIBUTE dmrole="mango:Parameter.semantic"
 									dmtype="ivoa:string" value="#position" />
@@ -161,11 +137,7 @@
 									</INSTANCE>
 								</INSTANCE>
 							</INSTANCE>
-<<<<<<< HEAD
 							<INSTANCE dmrole="mango:MangoObject.parameters"
-=======
-							<INSTANCE dmrole="mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 								dmtype="mango:Parameter">
 								<ATTRIBUTE dmrole="mango:Parameter.semantic"
 									dmtype="ivoa:string" value="#uat/propermotion" />
@@ -204,11 +176,7 @@
 									</INSTANCE>
 								</INSTANCE>
 							</INSTANCE>
-<<<<<<< HEAD
 							<INSTANCE dmrole="mango:MangoObject.parameters"
-=======
-							<INSTANCE dmrole="mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 								dmtype="mango:Parameter">
 								<ATTRIBUTE dmrole="mango:Parameter.semantic"
 									dmtype="ivoa:string" value="#uat/magnitude" />
@@ -236,11 +204,7 @@
 									</INSTANCE>
 								</INSTANCE>
 							</INSTANCE>
-<<<<<<< HEAD
 							<INSTANCE dmrole="mango:MangoObject.parameters"
-=======
-							<INSTANCE dmrole="mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 								dmtype="mango:Parameter">
 								<ATTRIBUTE dmrole="mango:Parameter.semantic"
 									dmtype="ivoa:string" value="#uat/magnitude" />
@@ -268,11 +232,7 @@
 									</INSTANCE>
 								</INSTANCE>
 							</INSTANCE>
-<<<<<<< HEAD
 							<INSTANCE dmrole="mango:MangoObject.parameters"
-=======
-							<INSTANCE dmrole="mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 								dmtype="mango:Parameter">
 								<ATTRIBUTE dmrole="mango:Parameter.semantic"
 									dmtype="ivoa:string" value="#uat/magnitude" />
@@ -300,11 +260,7 @@
 									</INSTANCE>
 								</INSTANCE>
 							</INSTANCE>
-<<<<<<< HEAD
 							<INSTANCE dmrole="mango:MangoObject.parameters"
-=======
-							<INSTANCE dmrole="mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 								dmtype="mango:Parameter">
 								<ATTRIBUTE dmrole="mango:Parameter.semantic"
 									dmtype="ivoa:string" value="#uat/parallax" />

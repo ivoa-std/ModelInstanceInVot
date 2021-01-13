@@ -112,11 +112,7 @@ class ParameterAppender:
         
         logger.info("Adding parameter dmtype=%s", self.block_xyz.attrib["dmtype"])
         param_block = deepcopy(self.block_xyz)
-<<<<<<< HEAD
         param_block.attrib["dmrole"] = "mango:MangoObject.parameters"
-=======
-        param_block.attrib["dmrole"] = "mango:Parameter.measure"
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         parameters_block.append(param_block)
 
     def set_ref_or_value(self, host_role, value_role, value_or_ref, rank=None):

@@ -32,10 +32,6 @@ class TestArray(unittest.TestCase):
       
         builder = JsonMappingBuilder(json_dict=instanceFromVotable.json_block)
         #builder.revert_array()
-<<<<<<< HEAD
-=======
-
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         builder.revert_compositions("COLLECTION")
         builder.revert_templates()
         builder.revert_elements("INSTANCE")

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "@tableref": "Results",
   "meas:Measure.errors": [
@@ -41,54 +40,6 @@
           }
         ]
       }
-=======
- {
-  "@tableref": "Results",
-  "meas:Measure.errors": [
-    {
-      "INSTANCE": [
-        {
-          "@dmrole": "meas:Error.statError",
-          "@dmtype": "meas:Symmetrical",
-          "INSTANCE": {
-            "@dmrole": "meas:Symmetrical.radius",
-            "@dmtype": "ivoa:RealQuantity",
-            "ATTRIBUTE": [
-              {
-                "@dmrole": "ivoa:RealQuantity.value",
-                "@dmtype": "ivoa:real",
-                "@ref": "_poserr_148"
-              },
-              {
-                "@dmrole": "ivoa:Quantity.unit",
-                "@dmtype": "ivoa:Unit",
-                "@value": "arcsec"
-              }
-            ]
-          }
-        },
-        {
-          "@dmrole": "meas:Error.sysError",
-          "@dmtype": "meas:Symmetrical",
-          "INSTANCE": {
-            "@dmrole": "meas:Symmetrical.radius",
-            "@dmtype": "ivoa:RealQuantity",
-            "ATTRIBUTE": [
-              {
-                "@dmrole": "ivoa:RealQuantity.value",
-                "@dmtype": "ivoa:real",
-                "@ref": "_syserrcc_152"
-              },
-              {
-                "@dmrole": "ivoa:Quantity.unit",
-                "@dmtype": "ivoa:Unit",
-                "@value": "arcsec"
-              }
-            ]
-          }
-        }
-      ]
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
     }
   ]
 }

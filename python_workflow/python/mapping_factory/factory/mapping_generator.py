@@ -389,11 +389,7 @@ class MappingGenerator:
                     sc_flag = "(" + CONST.TSUBTYPE  + " " + vodml_object_type.vodmlid + ")" if  CONST.TSUBTYPE != "" else ""
                     vodml_object_type = self.object_types[class_id]
                     dmtype = " dmtype='" + sc_flag + vodml_object_type.vodmlid + "'"
-<<<<<<< HEAD
                     self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)   
-=======
-                    self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)   
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 
                     if vodml_object_type.abstract == True:
                         self.mapped_abstract_classes.append(vodml_object_type.vodmlid)
@@ -407,11 +403,7 @@ class MappingGenerator:
                     #type = ""
                 else:
                     self.mapped_abstract_classes.append(vodml_object_type.vodmlid)
-<<<<<<< HEAD
                 self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)     
-=======
-                self.get_single_oject_mapping(vodml_object_type,vodml_id,  type + " " + am)     
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         else :
             dmtype = " dmtype='"  + vodml_object_type.vodmlid + "'" if CONST.WITH_TYPES else ""
             self.get_single_oject_mapping(vodml_object_type,vodml_id,  dmtype + " " + am)     
@@ -516,12 +508,8 @@ class MappingGenerator:
     def generate_mapping(self):
         logger.info("root object is " + self.root_object_id)
         root_object_type = self.object_types[self.root_object_id]
-<<<<<<< HEAD
         self.append_xml("<MODEL_INSTANCE  name='MANGO' syntax='ModelInstanceInVot' >")
         """
-=======
-        self.append_xml("<MODEL_INSTANCE>")
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         self.append_xml("<MODELS>")
         for k,v in self.imports.items():
             self.append_xml("<MODEL>")
@@ -529,10 +517,7 @@ class MappingGenerator:
             self.append_xml("<URL>" + v + "</URL>")
             self.append_xml("</MODEL>")
         self.append_xml("</MODELS>")
-<<<<<<< HEAD
         """
-=======
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         self.append_xml("<GLOBALS>")
         self.generate_enumtypes_mapping()
 

@@ -8,12 +8,7 @@ import xmltodict
 
 from schema.validator.validator import Validator
 from client.translator.json_mapping_builder import JsonMappingBuilder
-<<<<<<< HEAD
 from client.translator import logger, project_dir
-=======
-from client.translator import logger, data_dir, project_dir
-from utils.dict_utils import DictUtils
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
 
 class InstanceFromVotable:
     '''
@@ -36,11 +31,7 @@ class InstanceFromVotable:
         '''
         logger.info("extract vodml block from %s", self.votable_path)
         with open(self.votable_path) as xml_file:
-<<<<<<< HEAD
             self.vodml_block =re.search(r'<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot"[ ]*>((.|\n)*?)</MODEL_INSTANCE>', xml_file.read()).group() 
-=======
-            self.vodml_block =re.search(r'<MODEL_INSTANCE>((.|\n)*?)</MODEL_INSTANCE>', xml_file.read()).group() 
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
     
         if self.vodml_block is None :
             raise Exception("No vodml block found")
@@ -53,18 +44,10 @@ class InstanceFromVotable:
         '''
         validator = Validator(os.path.join(project_dir
                                    , "schema"
-<<<<<<< HEAD
                                    , "model-instance-in-vot.xsd"))
         if validator.validate_string(self.vodml_block, verbose=True) is True:
             logger.info("MODEL_INSTANCE block is valid")
             self.json_block = xmltodict.parse(self.vodml_block)            
-=======
-                                   , "vodml_lite.xsd"))
-        if validator.validate_string(self.vodml_block, verbose=True) is True:
-            logger.info("MODEL_INSTANCE block is valid")
-            self.json_block = xmltodict.parse(self.vodml_block)
-            
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         else:
             logger.error("MODEL_INSTANCE block is not valid")
             raise Exception("MODEL_INSTANCE block is not valid")
@@ -87,10 +70,6 @@ class InstanceFromVotable:
         builder.revert_elements("MODEL")
 
         self.json_vodml_block = builder.json
-<<<<<<< HEAD
-=======
-        print(DictUtils.get_pretty_json(self.json_vodml_block))
->>>>>>> c6c40861f6a199997c4732e96b2f6e5300362ef6
         logger.info("JSON MODEL_INSTANCE block built")
         
     """
