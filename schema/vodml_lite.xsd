@@ -110,8 +110,10 @@
 					maxOccurs="unbounded" />
 				<xs:element ref="SC_REALQUANTITY" minOccurs="0"
 					maxOccurs="unbounded" />
-				<xs:element ref="SC_INTQUANTITY" minOccurs="0"
-					maxOccurs="unbounded" />
+                <xs:element ref="SC_INTQUANTITY" minOccurs="0"
+                    maxOccurs="unbounded" />
+                <xs:element ref="SC_FIELD" minOccurs="0"
+                    maxOccurs="unbounded" />
 			</xs:all>
 			<xs:attribute type="xs:string" name="dmref" />
 			<xs:attribute type="xs:string" name="dmrole" />
@@ -242,21 +244,29 @@
 		</xs:complexType>
 	</xs:element>
 	<!-- Shortcut -->
-	<xs:element name="SC_INTQUANTITY">
-		<xs:complexType>
-			<xs:attribute type="xs:string" name="dmrole" />
-			<xs:attribute type="xs:string" name="ref" />
-			<xs:attribute type="xs:string" name="value" />
-			<xs:attribute type="xs:string" name="unit" />
-			<xs:assert
-				test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" />
-			<xs:assert test="if (@ref) then (@ref != '') else true()  " />
-			<xs:assert
-				test="if (@value) then (@value != '') else true()  " />
-			<xs:assert test="@dmrole != ''  " />
-			<xs:assert test="@unit  " />
-		</xs:complexType>
-	</xs:element>
+    <xs:element name="SC_INTQUANTITY">
+        <xs:complexType>
+            <xs:attribute type="xs:string" name="dmrole" />
+            <xs:attribute type="xs:string" name="ref" />
+            <xs:attribute type="xs:string" name="value" />
+            <xs:attribute type="xs:string" name="unit" />
+            <xs:assert
+                test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" />
+            <xs:assert test="if (@ref) then (@ref != '') else true()  " />
+            <xs:assert
+                test="if (@value) then (@value != '') else true()  " />
+            <xs:assert test="@dmrole != ''  " />
+            <xs:assert test="@unit  " />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="SC_FIELD">
+        <xs:complexType>
+            <xs:attribute type="xs:string" name="dmrole" use="required"/>
+            <xs:attribute type="xs:string" name="ref" use="required"/>
+            <xs:assert test="@dmrole != ''  " />
+            <xs:assert test="@ref != ''  " />
+        </xs:complexType>
+    </xs:element>
 
 
 </xs:schema>
