@@ -38,7 +38,8 @@ vodml*.pdf
 draft-background.*
 # Maven 
 target/
-*.synctex
+*.synctex*
+
 # eclipse project file
 .settings/
 .classpath
