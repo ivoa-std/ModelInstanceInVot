@@ -20,9 +20,11 @@
 					maxOccurs="unbounded" />
 			</xs:sequence>
             <xs:attribute type="xs:string" name="name" use="required"/>
+            <xs:attribute type="xs:string" name="syntax" use="required"/>
             <xs:attribute type="xs:string" name="uri"/>
             <xs:assert test="@name != ''  " />
             <xs:assert test="if (@uri) then (@uri != '') else true()  " />
+            <xs:assert test="if (@syntax) then (@syntax != '') else true()  " />
    		</xs:complexType>
 	</xs:element>
 
