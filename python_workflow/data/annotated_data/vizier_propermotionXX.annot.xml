@@ -2,9 +2,7 @@
 <VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
   xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
-<MODEL_INSTANCE>
-  <MODELS>
-  </MODELS>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
   <GLOBALS>
   </GLOBALS>
   <TABLE_MAPPING tableref="Results">

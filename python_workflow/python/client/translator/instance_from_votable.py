@@ -31,7 +31,7 @@ class InstanceFromVotable:
         '''
         logger.info("extract vodml block from %s", self.votable_path)
         with open(self.votable_path) as xml_file:
-            self.vodml_block =re.search(r'<MODEL_INSTANCE>((.|\n)*?)</MODEL_INSTANCE>', xml_file.read()).group() 
+            self.vodml_block =re.search(r'<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot"[ ]*>((.|\n)*?)</MODEL_INSTANCE>', xml_file.read()).group() 
     
         if self.vodml_block is None :
             raise Exception("No vodml block found")

@@ -47,7 +47,9 @@ class JoinIterator(object):
             parsed_table=self.parsed_table,
             json_inst_dict={
                 "MODEL_INSTANCE": {
-                    "MODELS":{},
+                    "@name": "MANGO",
+                    "@syntax": "ModelInstInVot",
+                   # "MODELS":{},
                     "GLOBALS":{},
                     "TABLE_MAPPING": {
                         self.foreign_table: {

@@ -75,6 +75,7 @@
                 "@dmrole": "meas:Error.statError",
                 "@dmtype": "meas:Ellipse",
                 "COLLECTION": {
+                  "@dmrole": "meas:Ellipse.semiAxes",
                   "@size": "2",
                   "INSTANCE": [
                     {

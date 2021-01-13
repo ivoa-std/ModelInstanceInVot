@@ -1,5 +1,4 @@
-<MODEL_INSTANCE>
-	<MODELS/>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
 	<GLOBALS />
 	<TABLE_MAPPING tableref="Results">
 		<COLLECTION dmrole="root">

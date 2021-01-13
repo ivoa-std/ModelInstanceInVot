@@ -35,7 +35,7 @@ class JsonMappingBuilder():
         templates = {}
         keys = []
         for k, v in  root_element.items():
-            if k not in ['MODELS', 'GLOBALS']:
+            if k not in ['MODELS', 'GLOBALS'] and k.startswith("@") is False:
                 templates[k] = v
                 keys.append(k)
         logger.info("Put all TABLE_MAPPING{} in a global TABLE_MAPPING[]")

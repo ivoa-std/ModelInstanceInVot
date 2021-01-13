@@ -19,6 +19,7 @@ class TestInstance(unittest.TestCase):
 
 
     def test_1(self):
+        self.maxDiff =  None
         data_path = os.path.dirname(os.path.realpath(__file__))
         votable_path = os.path.join(data_path, "./data/test_composition.xml")
         json_ref_path = os.path.join(data_path, "./data/test_composition_1.json")

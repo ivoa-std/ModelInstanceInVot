@@ -2,23 +2,7 @@
 <VOTABLE version="1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
   xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://www.ivoa.net/xml/VOTable/v1.3">
-<MODEL_INSTANCE>
-  <MODELS>
-    <MODEL>
-      <NAME>ivoa</NAME>
-      <URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
-    </MODEL>
-    <MODEL>
-      <NAME>coords</NAME>
-      <URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
-			</URL>
-    </MODEL>
-    <MODEL>
-      <NAME>meas</NAME>
-      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
-			</URL>
-    </MODEL>
-  </MODELS>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
   <GLOBALS>
     <INSTANCE ID="SpaceSys_ICRS_Spherical" dmtype="coords:SpaceSys">
       <INSTANCE dmrole="coords:PhysicalCoordSys.coordSpace" dmtype="coords:SphericalCoordSpace">

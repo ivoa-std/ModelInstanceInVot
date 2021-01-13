@@ -1,20 +1,4 @@
-<MODEL_INSTANCE>
-	<MODELS>
-		<MODEL>
-			<NAME>ivoa</NAME>
-			<URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
-		</MODEL>
-		<MODEL>
-			<NAME>coords</NAME>
-			<URL>https://volute.g-vo.org/svn/trunk/projects/dm/STC/Coords/vo-dml/STC_coords-v1.0.vo-dml.xml
-			</URL>
-		</MODEL>
-		<MODEL>
-			<NAME>meas</NAME>
-			<URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml
-			</URL>
-		</MODEL>
-	</MODELS>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
 	<GLOBALS />
 	<TABLE_MAPPING tableref='Results'>
 		<INSTANCE dmrole="root" dmtype="mango:stcextend.Flag">

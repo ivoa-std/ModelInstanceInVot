@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MODEL_INSTANCE>
-  <MODELS>
-    <MODEL>
-      <NAME>meas</NAME>
-      <URL>http://volute.g-vo.org/svn/trunk/projects/dm/STC/Meas/vo-dml/STC_meas-v1.0.vo-dml.xml</URL>
-    </MODEL>
-  </MODELS>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
   <GLOBALS/>
   <TABLE_MAPPING tableref="fgdgfddf">
   	<INSTANCE  ID="id"  dmrole="role">

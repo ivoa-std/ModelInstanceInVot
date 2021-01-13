@@ -51,17 +51,7 @@
 -out=FITS
 -out=XSAlink
 </INFO>
-	<MODEL_INSTANCE>
-		<MODELS>
-			<MODEL>
-				<NAME>ivoa</NAME>
-				<URL>http://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml</URL>
-			</MODEL>
-			<MODEL>
-				<NAME>voprov</NAME>
-				<URL>http://www.ivoa.net/xml/VODML/20191125/Provenance-v1.vo-dml.xml</URL>
-			</MODEL>
-		</MODELS>
+	<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
 		<GLOBALS>
 		</GLOBALS>
 		<TABLE_MAPPING tableref="B_xmm_xmmlog">

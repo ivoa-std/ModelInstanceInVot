@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MODEL_INSTANCE>
-  <MODELS>
-  </MODELS>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
   <GLOBALS/>
   <TABLE_MAPPING tableref="fgdgfddf">
   </TABLE_MAPPING>

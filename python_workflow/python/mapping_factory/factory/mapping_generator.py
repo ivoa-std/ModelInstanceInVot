@@ -508,7 +508,8 @@ class MappingGenerator:
     def generate_mapping(self):
         logger.info("root object is " + self.root_object_id)
         root_object_type = self.object_types[self.root_object_id]
-        self.append_xml("<MODEL_INSTANCE>")
+        self.append_xml("<MODEL_INSTANCE  name='MANGO' syntax='ModelInstanceInVot' >")
+        """
         self.append_xml("<MODELS>")
         for k,v in self.imports.items():
             self.append_xml("<MODEL>")
@@ -516,6 +517,7 @@ class MappingGenerator:
             self.append_xml("<URL>" + v + "</URL>")
             self.append_xml("</MODEL>")
         self.append_xml("</MODELS>")
+        """
         self.append_xml("<GLOBALS>")
         self.generate_enumtypes_mapping()
 

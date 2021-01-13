@@ -7,14 +7,6 @@
 	<xs:element name="MODEL_INSTANCE">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="MODELS">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element ref="MODEL" minOccurs="0"
-								maxOccurs="unbounded" />
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
 				<xs:element ref="GLOBALS" minOccurs="1" maxOccurs="1" />
 				<xs:element ref="TABLE_MAPPING" minOccurs="0"
 					maxOccurs="unbounded" />

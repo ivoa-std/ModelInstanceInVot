@@ -1,5 +1,4 @@
-<MODEL_INSTANCE>
-  <MODELS/>
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
   <GLOBALS>
     <DATATYPE dmtype="SKA_MeasurementSet:external.ASDM.PolarizationType">
       <ENUM>

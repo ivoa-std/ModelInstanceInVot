@@ -1,5 +1,7 @@
 {
 	"MODEL_INSTANCE": {
+        "@name": "MANGO",
+        "@syntax": "ModelInstanceInVot",
 		"GLOBALS": {
 			"PhotFrame_EB1": {
 				"@ID": "PhotFrame_EB1",
