@@ -200,8 +200,8 @@
 					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
 				</xs:choice>
 			</xs:sequence>
-			<xs:attribute type="xs:string" name="ref" />
-			<xs:assert test="(./@ref  and @ref != '')" />
+            <xs:attribute type="xs:string" name="ref" />
+            <xs:assert test="(./@ref  and @ref != '')" />
 		</xs:complexType>
 	</xs:element>
 
