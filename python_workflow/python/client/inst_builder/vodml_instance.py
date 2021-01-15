@@ -18,7 +18,7 @@ class VodmlInstance(object):
     def __init__(self, votable_path):
         #
         # One table_mapper per TABLE_MAPPING
-        # table name taken as keys
+        # table ID or name taken as keys
         #
         self.table_mappers = {}
         self.votable_path = votable_path   

@@ -14,6 +14,8 @@ from client.inst_builder.json_block_extractor import JsonBlockExtractor
 from client.inst_builder.att_utils import AttUtils
 
 from copy import deepcopy
+from client.inst_builder.groupby_processor import GroupByProcessor
+from utils.dict_utils import DictUtils
 
 class TableMapper(object):
     '''
@@ -55,6 +57,27 @@ class TableMapper(object):
         # key = foreign table name value = TableIterator
         self.join_iterators = {}
         self.join = None
+        # replace groupby with a suite of collection (one for each different key value
+        self._process_groupby()
+        
+    def _process_groupby(self):
+        """
+        Replace the GROUPBY block with a sequence of collections, filtering each one one group value
+        The dmrole of these generated collections is string representation of the group value 
+        The dmrole of the collection enclosed in each virtual collection is the concatenation 
+        of the original role with the group value. This is requested to avoid duplicated keys in the table iterators
+        """
+        if "GROUPBY" in self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name].keys():
+            gbkey = self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name]["GROUPBY"]["@ref"]
+            groupby_processor = GroupByProcessor(self.table_name, 
+                                                 gbkey, 
+                                                 self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name], 
+                                                 self.table)
+            ungrouped_mapping_block = groupby_processor.build_group_mapping()
+            for key in ungrouped_mapping_block.keys():
+                logger.info("add a virtual collection with dmrole=%s", key)
+                self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name][key] = ungrouped_mapping_block[key]
+            self.json['MODEL_INSTANCE']['TABLE_MAPPING'][self.table_name].pop("GROUPBY")
         
     def _set_header_values(self, root_element):
         """
