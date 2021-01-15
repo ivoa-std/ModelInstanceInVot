@@ -21,7 +21,6 @@
             #1}
     }%
     \vspace{2pt}
-
 }
 
 \newcommand{\note}[1]{%
@@ -34,6 +33,9 @@
     \textcolor{red}{{\sffamily Comment:} \emph{#1}}%
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% XML syntax coloration and formatting
+%
 \definecolor{todocolor}{rgb}{1,1,0.8}
 \definecolor{darkred}{rgb}{0.6,0,0}
 \definecolor{rose}{rgb}{1.0,0.88,0.88}
@@ -66,6 +68,10 @@
     captionpos=b,
     basicstyle=\small\ttfamily
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document core
+%
 \author{François Bonnarel}
 \author{Gilles Landais}
 \author{Laurent Michel}
@@ -110,7 +116,7 @@ This documentary role facilitates the communication between the stack-holders an
 
 At data level, interoperability consists in arranging searched data in a way that a client can understand them without taking care of their origin. So that, the same code can process and compare data coming from different sources.  That way to arrange data is given by the model.
 
-This is not done by default with VOtables because VOTables are containers. The VOTable schema cannot say how data are mapped on a given model or whether they match any model at all. This is not an issue for simple protocol responses (ref) because the VOTable structure is defined by the protocol itself. This is however a big issue for VOTables containing native data such as Vizier  or TAP query responses.
+This is not done by default with VOtables because VOTables are containers \citep{2019ivoa.spec.1021O}. The VOTable schema cannot say how data are mapped on a given model or whether they match any model at all. This is not an issue for simple protocol responses (ref) because the VOTable structure is defined by the protocol itself. This is however a big issue for VOTables containing native data such as Vizier  or TAP query responses.
 
 The challenge here is to bind native data with a given model in a way that a model aware software can see them as model instances while maintaining the possibility to access them in their original forms.
 
@@ -118,7 +124,7 @@ This is partially done with UTypes which may connect FIELDs or PARAMs with model
 
 %Fb : "This is just because UTypes have been invented at a period when there was no standard way to formally describe  models." Actually it's more complex than that. As long as the model instances are flat or simple trees (charcaterisation) utypes may work. When you have some loops (like in complex Provenace queries) utypes are not enough to map the structure of instances (corrected LM)
 
-The landscape has dramatically changed in 2016 when VODML (ref) became a recommendation. VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
+The landscape has dramatically changed in 2016 when VODML \citep{2018ivoa.spec.0910L} became a recommendation. VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
 %FB: if we have the reference we don't need "which is a rec since é016" (fixed LM)
 In VODML, model leaves are no longer identified by a simple string like UTypes do but by a certain role played in a given location in the model hierarchy.
 The consequence is that any annotation mechanism based on VODML will preserve the model hierarchy to save the role played by any components. In this context, it might be easy to re-construct model instances from the annotations. 
@@ -127,14 +133,14 @@ The consequence is that any annotation mechanism based on VODML will preserve th
 
 The main concept of this standard is to insert on the  top of the VOTable an XML block compliying with the model structures and containing references to the actual data.
 In such a way that a model-aware client only has to make a copy of that structure and to resolve the references  to build an instance. More generic model-unaware clients can just ignore the mapping block. 
-This approach, proposed by (GL and OL), allows a perfect restitution of the model from the annotation, a round-trip validation. It follows a real ORM schema actually.
+This approach, proposed by \cite{wd:wdmapping}, allows a perfect restitution of the model from the annotation, a round-trip validation. It follows a real ORM schema actually.
 Our approach is a bit different. From our use case perspective (see below), clients do not need  to care about the difference between data types and object types or between relations and compositions or some other finesses. They need to be able to reconstruct a browable data hierarchy. The can be done by assembling key/vakues pairs, tuples and arrays. This way to serialize complex data is used with a great success by most of the Web applications working with JSON/YAML messages. 
 Our bet is that the loss of certain features of the model will allow significant gain in readability, and thus in reliability, while facilitating the work of annotation. 
 The proposed syntax renders the data hierarchy with three elements sibling to the JSON concepts (ATTRIBUTE as key/vakue pair, INSANCE as tuple and COLLECTIONS as arrays). In addition to this, some other elements have been added to guide the parse. 
 The connection with the data is made with element attributes in order to keep the structure of the XML elements independant from the data layout.
 
-These ideas were first tested first in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI. 
-Then, the syntax has been refined to be used to validate the Mango model on real data.
+These ideas were first tested first in the framework of the TDIG on VOTABLEs containing time series provided by different missions such as Gaia or ZWICKI \citep{talk:lmlite}. 
+Then, the syntax has been refined to be used to validate the Mango (in press) model on real data.
 
 
 \lstset{language=XML}
@@ -166,9 +172,8 @@ IVOA architecture \citep{note:VOARCH}.
 
 \subsubsection{Client Side}
 
-The mapping is self consistent. Its role is to give the client all information it needs to reconstruct a datastructure compliant with the model. 
+The mapping must be able to provide clients with self-consistant information needed to reconstruct datastructures compliant with the mapped model. 
 A model-aware client must be able to do this without implementing model-specific  code.  
-%The mapping syntax is independant of the model. The structure of the mapped model is given by the arrangement of the mapping elements, not by the elements themselves
 
 \textbf{Identifying the nature of the content of a VOTable}:  A client can check the annotation block of a VOTable to decide how to process it. For instance, it can detect that the VOTable contains a Provenance instance  and then invoke a specific viewer. 
 
@@ -176,17 +181,16 @@ A model-aware client must be able to do this without implementing model-specific
 
 \textbf{Data set comparison}: A client wants to compare different data set s (e.g. Xmatch, plot). The annotation provides a homogeneous data representation that allows to put them together in a consistent way. 
 
-\textbf{Data set export}: A client wants to export (e.g. with SAMP) a model instance in a convenient format (e.g. json). The JSON model instance can be buit from the annotation block and exported to a another party.
+\textbf{Data set export}: A client wants to export (e.g. with SAMP) a model instance in a convenient format (e.g. json). The exportable model instance can be built from the annotation block.
 
 \subsubsection{Server Side}
 The server use cases are to make possible the realization of those of the clients  for a reasonable cost. The annotation process can represent a significant extra work for the curator team that must be limited as much as possible. To do so the mapping syntax is designed to facilitate the use of templates and components.
-
-3 server types that could annotate data have been identified:
+The difficulty of annotating data depends on the service type: 3 have been identified and ranked by growing cost:
 \begin{enumerate}
    \item \textbf{Mission data provider}: the data annotation can be set once forever for each data product at the design phase.
    \item \textbf{Archival data provider}: The data annotation must be done for each archived datat set. 
-           The curator has a little control, on the data format and he/she has to do his best to match data with the model(s).
-           In this case, it must be possible limit the annotation on a subset of data.
+           The curator has a little control on the data format and he/she has to do his best to match data with the model(s).
+           In this case, it must be possible to limit the annotation on a subset of data.
    \item \textbf{TAP data provider}: In case of TAP services, the annotation process is in charge of the TAP server that must dynamically match queried data with model quantities, and this for each specific query.
 \end{enumerate}
 
@@ -199,13 +203,13 @@ Support of requirement 3) is still an experimental feature at the time this spec
 \begin{itemize}
 \item Shy Annotations: The data mapping must not affect the operation of existing clients.
 
-\item Faithful Annotations: The structure of the annotation must be faithful to any VODML compliant model. 
+\item Faithful Annotations: The structure of the annotation must be faithful to the mapped model, whatever it is as long as it is VODML compliant. 
 
 
 \item Different Usage Levels 
 \begin{itemize}
-   \item The data mapping must be easily ignored by the client.
-   \item The data mapping must allow clients to easily detect the model on which data are mapped.
+   \item The data mapping should be easily overlooked by the customer
+   \item The data mapping must allow clients to easily detect the model on which data are mapped if there is one.
    \item The data mapping must allow clients to easily get the general metadata (e.g. coordinate systems).
    \item The data mapping must allow clients to get full model instances for each table row.
 \end{itemize}
@@ -218,9 +222,9 @@ Support of requirement 3) is still an experimental feature at the time this spec
 
 \item Complex Data Mapping 
 \begin{itemize}
-   \item The mapping syntax must able to annotate data spread over several tables.
+   \item The mapping syntax must be able to annotate data spread over several tables.
    \item The mapping syntax must be able to filter data rows that have to be instanciated.
-   \item The mapping syntax must be able to group data rows in an set of instances.
+ % Not sure we keep it  \item The mapping syntax must be able to group data rows in an set of instances.
 \end{itemize}
 \end{itemize}
 
@@ -229,17 +233,19 @@ Support of requirement 3) is still an experimental feature at the time this spec
 
 
 The syntax rules specified in this standard allow to build consistent annotations for any model. However, they do not prevent to do foolish things in the same way that a programming language grammar does not protect people against writing irrelevant software.
-In the following annotation snippets, the values of the XML elements attribute do not refer toi any particular model or VOTable. They have been choosen to help readers to figure out their meanings.
+In the following annotation snippets, the values of the XML elements attribute do not refer to any particular model or VOTable. They have been choosen to help readers to figure out their meanings.
 
 \subsection{Mapping Block Structure}
 
-The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the whole VOTable. Its stucture is given below.
+The mapping block must be the first child of \texttt{VOTABLE}. Its scope is the whole VOTable. Its stucture is given below.
 
 \begin{lstlisting}[caption={Complete mapping block example},style=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
             version="1.4">
-   <MODEL_INSTANCE name="MANGO" syntax="model-instance-in-vot"  uri="http://server.mango.vo-dml.xml">
+   <MODEL_INSTANCE name="MANGO" 
+              syntax="model-instance-in-vot"  
+             uri="http://server.mango.vo-dml.xml">
      <GLOBALS>   ...  </GLOBALS>
 
       <TABLE\_MAPPING tableref=...>  ... </TABLE\_MAPPING tableref=...>
@@ -250,12 +256,12 @@ The mapping block muts be the direct child of \texttt{VOTABLE}. Its scope is the
 </VOTABLE>
 \end{lstlisting}
 
-The mapping construction rules are independant from either model or data layout.
+The mapping construction rules are independant from any model or data layout either.
 
 \begin{itemize}
     \item The mapping is located in a \texttt{<MODEL\_INSTANCE>} block, child of \texttt{<VOTABLE>}.
     \item The mapping elements denote the model structure.
-    \item The \texttt{<MODEL\_INSTANCE>} block starts the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
+    \item The first child of \texttt{<MODEL\_INSTANCE>} must be the \texttt{<GLOBALS>} block containing data shared by the whole mapping.    
     \item The \texttt{<GLOBALS>} block is followed a sequence of \texttt{<TABLE\_MAPPING>}.
     \item There is one \texttt{<TABLE\_MAPPING>} per mapped \texttt{<TABLE>}.
 \end{itemize}
@@ -273,11 +279,10 @@ The mapping construction rules are independant from either model or data layout.
 % MODELS
 %
 
-\subsubsection{<MODEL\_INSTANCE>}
+\subsubsection{MODEL\_INSTANCE}
 
-The  \texttt{MODEL\_INSTANCE}  encompasses the mapping block. 
-This reference to a specific model is informative. There no obligation to have a tight coupling between a mapping block and a specific model. The use of the model referenced  \texttt{MODEL\_INSTANCE}  is left at the discretion of the client. The client can just look for interesting quantities without regards on a particular model or on the opposite build a model instance by merging a vo-dml model serialization with the mapping block.
-
+The  \texttt{MODEL\_INSTANCE}  element encompasses the mapping block. 
+This element can refer or not to a specific model. There no obligation to have a tight coupling between a mapping block and a specific model. The use of the model referenced  \texttt{MODEL\_INSTANCE}  is left at the discretion of the client. The client can just look for interesting quantities without regards on a particular model or on the opposite build a model instance by merging the vo-dml model serialization which URL is given here, with the mapping block.
 
 \begin{table}[!htbp]
 \small
@@ -419,13 +424,12 @@ This reference to a specific model is informative. There no obligation to have a
            \texttt{INSTANCE}    & 
            Mapping of an object or a data type.  \\              
        \hline  
-            \texttt{TABLE\_ROW\_TEMPLATE}    &  
-            One instance must be built for each table row. 
-             \newline The structure of those instances is given by the TABLE\_ROW\_TEMPLATE children \\              
-       \hline  
              \texttt{COLLECTION}    &  
              Mapping of an object collection \\       
-       \hline 
+        \hline  
+            \texttt{GROUPBY}    &  
+            One object collection for each group of rows. \\
+      \hline 
      \end{tabulary}
      \caption{Valid \texttt{TABLE\_MAPPING} children} 
      \label{tbl:templ-children}
@@ -478,9 +482,7 @@ This reference to a specific model is informative. There no obligation to have a
 
 \subsubsection{INSTANCE}
 
-Mapping for either object types or a datatype instances.
-
-\TODO{ put a better rexample}
+Mapping for either object types or non primitive datatypes instances.
 
 \begin{lstlisting}[caption={INSTANCE block example},style=XML]
 <INSTANCE dmrole="ds:Dataset.dataID" dmtype="ds:DataID">
@@ -528,9 +530,14 @@ Mapping for either object types or a datatype instances.
        \hline 
             \textbf{Attribute} &  
             \textbf{Role}\\
-       \hline  
+       \hline  \hline
             @dmrole    & 
-            VODML role.  \newline Can be empty if located in GLOBALS or in TABLE\_ROW\_INSTANCE \\
+            VODML role.  \newline Can be empty if located in GLOBALS or in TABLE\_ROW\_INSTANCE 
+                                   \newline  \texttt{INSTANCE} being child of open ended \texttt{COLLECTIONs} 
+                                   take the role of the parent collection. This is due to the fact no specific role can be assigned to open-ended collection items. 
+                                   \newline  The role  \texttt{dmrol=root} can be used to tell the parser whic class has to be instanciated first.
+
+                                   \\
        \hline  
             @dmtype & 
             VODML type of the instance.  \newline Must never be empty \\
@@ -1110,9 +1117,8 @@ dmtype="ivoa:RealQuantity">
 </INSTANCE>
 \end{lstlisting}
 
+This element being part  of the VODML standard, it canm be replaced with a compact element named shortcut.
 
-
-This block maps a structure that is part of the VODML standards, therefore we can alias it with a compact element.
 
 \subsubsection{SC\_REALQUANTITY}
 Shortcut for \texttt{ivoa:RealQuantity} class.
@@ -1120,7 +1126,7 @@ Shortcut for \texttt{ivoa:RealQuantity} class.
 \begin{itemize}
     \item Can only be used within an INSTANCE      
     \item Using shorcuts requires units to be literals   
-    \item Both \texttt{@ref} and \texttt{@value} attribute work the same way as with \texttt{ATTRIBUTE}
+    \item Both \texttt{@ref} and \texttt{@value} attributes work the same way as with \texttt{ATTRIBUTE}
     \item No \texttt{@dmtype},  it is set as ivoa:RealInteger by construction
  \end{itemize}
 
@@ -1137,7 +1143,7 @@ Shortcut for \texttt{ivoa:IntegerQuantity} class.
 \begin{itemize}
     \item Can only be used within an INSTANCE        
     \item Using shorcuts requires units to be literals    
-    \item Both \texttt{@ref} and \texttt{@value} attribute work the same way as with \texttt{ATTRIBUTE}.
+    \item Both \texttt{@ref} and \texttt{@value} attributes work the same way as with \texttt{ATTRIBUTE}.
     \item No \texttt{@dmtype},  it is set as ivoa:RealInteger by construction
  \end{itemize}
 
@@ -1177,7 +1183,7 @@ No previous versions yet.
 
 % NOTE: IVOA recommendations must be cited from docrepo rather than ivoabib
 % (REC entries there are for legacy documents only)
-\bibliography{ivoatex/ivoabib,ivoatex/docrepo}
+\bibliography{ivoatex/ivoabib,ivoatex/docrepo, model-instance-in-vot}
 
 
 \end{document}
