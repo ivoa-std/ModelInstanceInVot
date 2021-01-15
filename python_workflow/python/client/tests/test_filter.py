@@ -13,6 +13,7 @@ if file_path not in sys.path:
 
 from client.translator.json_mapping_builder import JsonMappingBuilder
 from client.translator.instance_from_votable import InstanceFromVotable
+from client.inst_builder.vodml_instance import VodmlInstance
 from client.tests import logger
 from utils.dict_utils import DictUtils
 
@@ -21,11 +22,9 @@ class TestInstance(unittest.TestCase):
 
     def test_1(self):
         self.maxDiff = None
-        data_path = os.path.dirname(os.path.realpath(__file__))
-        votable_path = os.path.join(data_path, "./data/test_filter.xml")
-        json_ref_path = os.path.join(data_path, "./data/test_filter_1.json")
-        logger.info("extract vodml block from %s", votable_path)
-        instanceFromVotable = InstanceFromVotable(votable_path)
+
+        logger.info("extract vodml block from %s", self.votable_path)
+        instanceFromVotable = InstanceFromVotable(self.votable_path)
         
         instanceFromVotable._extract_vodml_block()
         instanceFromVotable._validate_vodml_block()
@@ -38,8 +37,32 @@ class TestInstance(unittest.TestCase):
         builder.revert_elements("INSTANCE")
         builder.revert_elements("ATTRIBUTE")
         self.assertDictEqual(json.loads(json.dumps(builder.json))
-                             , DictUtils.read_dict_from_file(json_ref_path)
+                             , DictUtils.read_dict_from_file(self.json_ref_path)
                              , "=======")
+        
+    def test_22(self):
+        if self.populated is False:
+            self.vodml_instance.populate_templates()
+            self.vodml_instance.connect_join_iterators()
+            self.populated = True
+        table_mapper = self.vodml_instance.table_mappers["Results"]
+        full_dict = table_mapper.get_full_instance()
+
+        #
+        # print(DictUtils.get_pretty_json(full_dict))
+        self.assertDictEqual(full_dict, DictUtils.read_dict_from_file(self.json_ref_path_inst), "")
+
+        
+    def setUp(self):
+        self.data_path = os.path.dirname(os.path.realpath(__file__))
+        self.votable_path = os.path.join(self.data_path, "./data/test_filter.xml")
+        self.json_ref_path = os.path.join(self.data_path, "./data/test_filter_1.json")
+        self.json_ref_path_inst = os.path.join(self.data_path, "./data/test_filter_instance.json")
+
+        logger.info("processing %s", self.votable_path)
+        self.populated = False
+        self.vodml_instance = VodmlInstance(self.votable_path)
+
         
 
 if __name__ == "__main__":
