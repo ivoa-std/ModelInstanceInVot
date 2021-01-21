@@ -63,7 +63,7 @@ class PositionAppender:
                             json_measure_descriptor["errors"]["systematic"]["latitude"], 
                             json_measure_descriptor["errors"]["systematic"]["unit"] 
                             ) 
-        else:
+        elif "random" in json_measure_descriptor["errors"].keys():
             self.set_errors(json_measure_descriptor["errors"]["random"]["longitude"],
                             json_measure_descriptor["errors"]["random"]["latitude"], 
                             json_measure_descriptor["errors"]["random"]["unit"], 

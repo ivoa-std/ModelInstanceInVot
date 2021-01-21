@@ -1,4 +1,4 @@
-<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
+<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot">
   <GLOBALS>
     <INSTANCE ID="StatusFrame_QRVFLAG" dmrole="" dmtype="cab_msd:STCStatusSys">
       <COLLECTION size="5" dmrole="cab_msd:STCStatusSys.statusLabel">
