@@ -829,11 +829,11 @@ This element indicates that one element must be added to the host \texttt{COLLEC
 %
 
 \subsubsection{FILTER}
-This element filters the table rows that are to mapped. 
+This element filters the table rows that are to be mapped. 
 
 \begin{itemize}
    \item The filtering condition is based on the equality of a column value with the filter value.
-   \item The mapping specification does not specify the way to deal with data types.
+   \item The mapping syntax does not specify the way to deal with data types.
 \end{itemize}
 
 In the example below::
@@ -1030,16 +1030,53 @@ In the example below:
 \end{itemize}
 
 \begin{lstlisting}[caption={GROUPBY examples},style=XML]
-<COLLECTION dmrole="test.lightcurves">
+<TABLE_MAPPING tableref="Results">
     <GROUPBY ref="filter_name" dmrole="test.lightcurve">
         <INSTANCE  dmtype="test:photometric.point">
                    <ATTRIBUTE dmrole="test:photometric.point.time" 
                                 dmtype="ivoa:real"  ref="_num_148" />
                    <ATTRIBUTE dmrole="test:photometric.point.mag" 
                                 dmtype="ivoa:real"  ref="_num_149" />
+        </INSTANCE>
     </GROUPBY>
-</COLLECTION>
+</TABLE_MAPPING>
 \end{lstlisting}
+
+If we suppose that the data table have photometric points for 3 filters (R,G,V), the above statement is equivalent to the following one.
+
+\begin{lstlisting}[caption={GROUPBY examples},style=XML]
+<TABLE_MAPPING tableref="Results">
+    <COLLECTION  dmrole="test.lightcurve">
+          <FILTER  ref="filter_name" value="R"/>
+          <INSTANCE  dmtype="test:photometric.point">
+                   <ATTRIBUTE dmrole="test:photometric.point.time" 
+                                dmtype="ivoa:real"  ref="_num_148" />
+                   <ATTRIBUTE dmrole="test:photometric.point.mag" 
+                                dmtype="ivoa:real"  ref="_num_149" />
+         </INSTANCE>
+   </COLLECTION>
+    <COLLECTION  dmrole="test.lightcurve">
+          <FILTER  ref="filter_name" value="G"/>
+          <INSTANCE  dmtype="test:photometric.point">
+                   <ATTRIBUTE dmrole="test:photometric.point.time" 
+                                dmtype="ivoa:real"  ref="_num_148" />
+                   <ATTRIBUTE dmrole="test:photometric.point.mag" 
+                                dmtype="ivoa:real"  ref="_num_149" />
+         </INSTANCE>
+   </COLLECTION>
+    <COLLECTION  dmrole="test.lightcurve">
+          <FILTER  ref="filter_name" value="V"/>
+          <INSTANCE  dmtype="test:photometric.point">
+                   <ATTRIBUTE dmrole="test:photometric.point.time" 
+                                dmtype="ivoa:real"  ref="_num_148" />
+                   <ATTRIBUTE dmrole="test:photometric.point.mag" 
+                                dmtype="ivoa:real"  ref="_num_149" />
+         </INSTANCE>
+   </COLLECTION>
+</TABLE_MAPPING>
+\end{lstlisting}
+
+
 
 \begin{table}[hbtp]
 \small
