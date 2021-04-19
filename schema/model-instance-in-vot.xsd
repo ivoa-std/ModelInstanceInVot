@@ -118,13 +118,12 @@
 			<xs:attribute type="xs:string" name="dmtype" />
 			<xs:attribute type="xs:string" name="ID" />
 			<xs:assert
-				test="(./@dmref and ./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole and not (./@dmref) and not (./@ID)) or (./@dmtype and ./@ID )" />
+				test="(./@dmref and ./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole and not (./@dmref) ) or (./@dmtype and ./@ID )" />
 			<xs:assert
 				test="if (@dmref) then ( @dmref != '') else true()  " />
 			<xs:assert
 				test="if (@dmtype) then ( @dmtype != '') else true()  " />
 			<xs:assert test="if (@ID) then ( @ID != '') else true()  " />
-			<xs:assert test="if (@ID) then (@ID != '') else true()  " />
 		</xs:complexType>
 	</xs:element>
 
