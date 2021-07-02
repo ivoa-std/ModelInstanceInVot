@@ -22,7 +22,6 @@
                 <LITERAL dmrole="PolStateEnum.PP" name="PP" />
                 <LITERAL dmrole="PolStateEnum.PA" name="PA" />
             </ENUM>
-		
 		</DATA_TYPE>
 	</GLOBALS>
 	<TEMPLATES tableref="fgdgfddf" />
