@@ -13,7 +13,7 @@
     <GLOBALS>
       <COLLECTION ID="_CoordinateSystems" dmrole="" >
         <INSTANCE ID="_timesys" dmrole="" dmtype="coords:TimeSys">
-          <PRIMARYKEY dmtype="ivoa:string" value="TCB"/>
+          <PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
           <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:TimeFrame">
             <ATTRIBUTE dmrole="coords:TimeFrame.timescale" dmtype="ivoa:string" value="TCB" />
             <INSTANCE dmrole="coords:TimeFrame.refPosition" dmtype="coords:StdRefLocation">
@@ -22,14 +22,14 @@
           </INSTANCE>
         </INSTANCE>
         <INSTANCE ID="_spacesys1" dmrole="" dmtype="coords:SpaceSys">
-          <PRIMARYKEY dmtype="ivoa:string" value="ICRS"/>
+          <PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
           <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:SpaceFrame">
             <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" value="ICRS"/>
             <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="coords:Epoch" value="J2015.5"/>
           </INSTANCE>
         </INSTANCE>
         <INSTANCE ID="_photsys_G" dmtype="mango:coordinates.PhotometryCoordSys">
-          <PRIMARYKEY dmtype="ivoa:string" value="G"/>
+          <PRIMARY_KEY dmtype="ivoa:string" value="G"/>
           <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="mango:coordinates.PhotFilter">
             <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.G"/>
             <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" dmtype="ivoa:RealQuantity" value="2.49524e-9"/>
@@ -40,7 +40,7 @@
           </INSTANCE>
         </INSTANCE>
         <INSTANCE ID="_photsys_RP" dmrole="" dmtype="mango:coordinates.PhotometryCoordSys">
-          <PRIMARYKEY dmtype="ivoa:string" value="RP"/>
+          <PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
           <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="mango:coordinates.PhotFilter">
             <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Grp"/>
             <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" dmtype="ivoa:RealQuantity" value="1.29363e-9"/>
@@ -51,7 +51,7 @@
           </INSTANCE>
         </INSTANCE>
         <INSTANCE ID="_photsys_BP" dmrole="" dmtype="mango:coordinates.PhotometryCoordSys">
-          <PRIMARYKEY dmtype="ivoa:string" value="BP"/>
+          <PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
           <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="mango:coordinates.PhotFilter">
             <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
             <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" dmtype="ivoa:RealQuantity" value="4.03528e-9"/>
@@ -66,7 +66,7 @@
     <GLOBALS>
       <COLLECTION ID="_Datasets">
         <INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
-          <PRIMARYKEY dmtype="ivoa:string" value="5813181197970338560"/>
+          <PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
           <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES"/>
           <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series"/>
           <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1"/>
@@ -80,12 +80,12 @@
     <TEMPLATES tableref="_PKTable">
       <INSTANCE ID="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
         <REFERENCE dmrole="cube:DataProduct.dataset" tableref="_Datasets">
-          <FOREIGNKEY ref="_pksrcid"/>
+          <FOREIGN_KEY ref="_pksrcid"/>
         </REFERENCE>
         <COLLECTION dmrole="cube:SparseCube.data">
           <JOIN tableref="Results" dmref="_ts_data">
-            <FILTER foreignkey="_srcid" primarykey="_pksrcid" />
-            <FILTER foreignkey="_band" primarykey="_pkband"  />
+            <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
+            <WHERE foreignkey="_band" primarykey="_pkband"  />
           </JOIN>
         </COLLECTION>
       </INSTANCE>
@@ -108,7 +108,7 @@
               <INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
                 <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" ref="_mag"/>
                 <REFERENCE dmrole="coords:Coordinate.coordSys" tableref="_CoordinateSystems">
-                  <FOREIGNKEY ref="_band"/>
+                  <FOREIGN_KEY ref="_band"/>
                 </REFERENCE>
               </INSTANCE>
             </INSTANCE>
@@ -119,7 +119,7 @@
               <INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
                 <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" ref="_flux"/>
                 <REFERENCE dmrole="coords:Coordinate.coordSys" tableref="_CoordinateSystems">
-                  <FOREIGNKEY ref="_band"/>
+                  <FOREIGN_KEY ref="_band"/>
                 </REFERENCE>
               </INSTANCE>
               <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">

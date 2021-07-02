@@ -15,7 +15,7 @@
 		<GLOBALS ID="_frames">
 			<!-- GAIA G Photometric filter definition -->
 			<INSTANCE ID="PhotFrame_gaiaG" dmrole="" dmtype="mango:stcextend.PhotFilter">
-				<PRIMARYKEY dmtype="ivoa:string" value="G" />
+				<PRIMARY_KEY dmtype="ivoa:string" value="G" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.G" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="2.49524e-9" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Vega" />
@@ -26,7 +26,7 @@
 
 			<!-- GAIA RP Photometric filter definition -->
 			<INSTANCE ID="PhotFrame_gaiaRP" dmrole="" dmtype="mango:stcextend.PhotFilter">
-				<PRIMARYKEY dmtype="ivoa:string" value="RP" />
+				<PRIMARY_KEY dmtype="ivoa:string" value="RP" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Grp" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="1.29363e-9" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.magnitudeSystem" dmtype="ivoa:string" value="Vega" />
@@ -37,7 +37,7 @@
 
 			<!-- GAIA BP Photometric filter definition -->
 			<INSTANCE ID="PhotFrame_gaiaBP" dmrole="" dmtype="mango:stcextend.PhotFilter">
-				<PRIMARYKEY dmtype="ivoa:string" value="BP" />
+				<PRIMARY_KEY dmtype="ivoa:string" value="BP" />
 
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp" />
 				<ATTRIBUTE dmrole="mango:stcextend.PhotFilter.zeroPointFlux" dmtype="ivoa:real" value="4.03528e-9" />
@@ -70,7 +70,7 @@
 
 		<GLOBALS ID="_Dataset">
 			<INSTANCE dmtype="ds:experiment.ObsDataset" ID="_ds1">
-				<PRIMARYKEY dmtype="ivoa:string" value="5813181197970338560" />
+				<PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560" />
 				<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" value="TIMESERIES" dmtype="ds:dataset.DataProductType" />
 				<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" value="GAIA Time Series" dmtype="ivoa:string" />
 				<ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" value="1" dmtype="ivoa:integer" />
@@ -84,11 +84,10 @@
 				<REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
 				<COLLECTION dmrole="cube:SparseCube.data">
 					<JOIN tableref="Results" dmref="_cube1_data">
-						<FILTER ref="source_id" value="5813181197970338560" />
-						<FILTER ref="band" value="G" />
+						<WHERE ref="source_id" value="5813181197970338560" />
+						<WHERE ref="band" value="G" />
 					</JOIN>
 				</COLLECTION>
-				<EXTINSTANCES>_ts_data</EXTINSTANCES>
 			</INSTANCE>
 
 			<!-- Cube for source 5813181197970338560 in filter BP -->
@@ -96,11 +95,10 @@
 				<REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
 				<COLLECTION dmrole="cube:SparseCube.data">
 					<JOIN tableref="Results" dmref="_cube1_data">
-						<FILTER ref="source_id" value="5813181197970338560" />
-						<FILTER ref="band" value="BP" />
+						<WHERE ref="source_id" value="5813181197970338560" />
+						<WHERE ref="band" value="BP" />
 					</JOIN>
 				</COLLECTION>
-				<EXTINSTANCES>_ts_data</EXTINSTANCES>
 			</INSTANCE>
 
 			<!-- Cube for source 5813181197970338560 in filter GP -->
@@ -108,11 +106,10 @@
 				<REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
 				<COLLECTION dmrole="cube:SparseCube.data">
 					<JOIN tableref="Results" dmref="_cube1_data">
-						<FILTER foreignkey="source_id" value="5813181197970338560" />
-						<FILTER foreignkey="band" value="GP" />
+						<WHERE foreignkey="source_id" value="5813181197970338560" />
+						<WHERE foreignkey="band" value="GP" />
 					</JOIN>
 				</COLLECTION>
-				<EXTINSTANCES>_ts_data</EXTINSTANCES>
 			</INSTANCE>
 		</GLOBALS>
 
@@ -137,7 +134,7 @@
 								<ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:realQuantity" ref="_band" />
 								<!-- static reference on a child of the element with ID=_frames and with a primary key matching the value of the field _band -->
 								<REFERENCE dmrole="coords:Coordinate.coordSys" tableref="_frames">
-									<FOREIGNKEY ref="_band" />
+									<FOREIGN_KEY ref="_band" />
 								</REFERENCE>
 							</INSTANCE>
 						</INSTANCE>
@@ -150,7 +147,7 @@
 								<ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:realQuantity" ref="_flux" />
 								<!-- static reference on a child of the element with ID=_frames and with a primary key matching the value of the field _band -->
 								<REFERENCE dmrole="coords:Coordinate.coordSys" tableref="_frames">
-									<FOREIGNKEY ref="_band" />
+									<FOREIGN_KEY ref="_band" />
 								</REFERENCE>
 							</INSTANCE>
 							<INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
