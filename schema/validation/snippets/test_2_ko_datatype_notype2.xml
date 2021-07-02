@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VODML>
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+		<DATA_TYPE>
+		    <ENUM>
+                <LITERAL dmrole="PolStateEnum.I" name="I" />
+                <LITERAL dmrole="PolStateEnum.Q" name="Q" />
+                <LITERAL dmrole="PolStateEnum.U" name="U" />
+                <LITERAL dmrole="PolStateEnum.V" name="V" />
+                <LITERAL dmrole="PolStateEnum.RR" name="RR" />
+                <LITERAL dmrole="PolStateEnum.LL" name="LL" />
+                <LITERAL dmrole="PolStateEnum.RL" name="RL" />
+                <LITERAL dmrole="PolStateEnum.LR" name="LR" />
+                <LITERAL dmrole="PolStateEnum.XX" name="XX" />
+                <LITERAL dmrole="PolStateEnum.YY" name="YY" />
+                <LITERAL dmrole="PolStateEnum.XY" name="XY" />
+                <LITERAL dmrole="PolStateEnum.YX" name="YX" />
+                <LITERAL dmrole="PolStateEnum.PF" name="PF" />
+                <LITERAL dmrole="PolStateEnum.PP" name="PP" />
+                <LITERAL dmrole="PolStateEnum.PA" name="PA" />
+            </ENUM>
+		
+		</DATA_TYPE>
+	</GLOBALS>
+	<TEMPLATES tableref="fgdgfddf" />
+</VODML>
+
+
+
