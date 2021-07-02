@@ -13,10 +13,10 @@ mapping_sample = FileUtils.get_datadir()
 class Test(unittest.TestCase):
 
     def testOK(self):
-        self.assertTrue(TestRunner.testOK(mapping_sample, "test_2"), "file should be valid")
+        self.assertTrue(TestRunner.testOK(mapping_sample, "test_3"), "file should be valid")
 
     def testKO(self):
-        self.assertTrue(TestRunner.testKO(mapping_sample, "test_2"), "file shouldn't be valid")
+        self.assertTrue(TestRunner.testKO(mapping_sample, "test_3"), "file shouldn't be valid")
 
 
 if __name__ == "__main__":

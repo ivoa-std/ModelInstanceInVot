@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VODML>
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+
+
+		<COLLECTION dmrole="">
+			<INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
+				<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
+				<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series" />
+				<ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1" />
+			</INSTANCE>
+			<COLLECTION dmrole="role2">
+				<INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
+					<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
+					<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series" />
+					<ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1" />
+				</INSTANCE>
+			</COLLECTION>
+
+		</COLLECTION>
+
+	</GLOBALS>
+</VODML>
+
+
+
