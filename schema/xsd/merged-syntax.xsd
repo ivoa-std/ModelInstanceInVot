@@ -25,9 +25,6 @@
 					<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="1" />
 				</xs:sequence>
 				<xs:sequence>
-					<xs:element ref="GROUPBY" minOccurs="0" maxOccurs="1" />
-				</xs:sequence>
-				<xs:sequence>
 					<xs:element ref="INSTANCE" maxOccurs="unbounded" />
 				</xs:sequence>
 			</xs:choice>
@@ -51,9 +48,11 @@
 	<xs:element name="GLOBALS">
 		<xs:complexType>
 			<xs:all>
-				<xs:element ref="INSTANCE" minOccurs="0"
-					maxOccurs="unbounded" />
-				<xs:element ref="DATATYPE" minOccurs="0"
+                <xs:element ref="INSTANCE" minOccurs="0"
+                    maxOccurs="unbounded" />
+                <xs:element ref="COLLECTION" minOccurs="0"
+                    maxOccurs="unbounded" />
+				<xs:element ref="DATA_TYPE" minOccurs="0"
 					maxOccurs="unbounded" />
 			</xs:all>
 		</xs:complexType>
@@ -61,7 +60,7 @@
 
 	<!-- Mapping of primitive data types: Must be in globals, only ENUM supported 
 		yet -->
-	<xs:element name="DATATYPE">
+	<xs:element name="DATA_TYPE">
 		<xs:complexType>
 			<xs:all>
 				<xs:element ref="ENUM" minOccurs="1" maxOccurs="1" />
@@ -102,14 +101,11 @@
 				<xs:element ref="INSTANCE" minOccurs="0"
 					maxOccurs="unbounded" />
 			</xs:all>
-			<xs:attribute type="xs:string" name="dmref" />
 			<xs:attribute type="xs:string" name="dmrole" />
 			<xs:attribute type="xs:string" name="dmtype" />
 			<xs:attribute type="xs:string" name="ID" />
 			<xs:assert
-				test="(./@dmref and ./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole and not (./@dmref) ) or (./@dmtype and ./@ID )" />
-			<xs:assert
-				test="if (@dmref) then ( @dmref != '') else true()  " />
+				test="(./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole ) or (./@dmtype and ./@ID )" />
 			<xs:assert
 				test="if (@dmtype) then ( @dmtype != '') else true()  " />
 			<xs:assert test="if (@ID) then ( @ID != '') else true()  " />
@@ -135,82 +131,56 @@
 	<!-- Data list mapping block -->
 	<xs:element name="COLLECTION">
 		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="1">
-				<xs:element ref="INSTANCE" maxOccurs="unbounded" />
-				<xs:element ref="COLLECTION" maxOccurs="unbounded" />
-				<xs:element ref="TABLE_ROW_TEMPLATE" minOccurs="0"
-					maxOccurs="unbounded" />
-				<xs:element ref="JOIN" minOccurs="0"
-					maxOccurs="unbounded" />
-			</xs:choice>
+			<xs:all>
+				<xs:element ref="INSTANCE" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="JOIN" minOccurs="0" maxOccurs="1" />
+			</xs:all>
 			<xs:attribute type="xs:string" name="dmrole" />
 			<xs:attribute type="xs:string" name="size" />
-			<xs:assert test="@dmrole != '' " />
+            <xs:attribute type="xs:string" name="ID" />
+			<xs:assert test="./@dmrole" />
+            <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
+            <xs:assert test="not(@ID) and @dmrole != '' or  @ID != ''" />
+			
 			<xs:assert
-				test="(count(./TABLE_ROW_TEMPLATE) lt 2 and count(./JOIN) eq 0 and count(./INSTANCE) eq 0  and count(./COLLECTION) eq 0) or (count(./TABLE_ROW_TEMPLATE) eq 0 and count(./JOIN) lt 2  and count(./INSTANCE) eq 0 and count(./COLLECTION) eq 0) or (count(./TABLE_ROW_TEMPLATE) eq 0 and count(./JOIN) eq 0)" />
+				test="((count(./JOIN) eq 1 and count(./INSTANCE) eq 0 and count(./COLLECTION) eq 0)  or count(./JOIN) eq 0)" />
 		</xs:complexType>
 	</xs:element>
-
-	<!-- One instance must be created for each selected table row -->
-	<xs:element name="TABLE_ROW_TEMPLATE">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice>
-					<xs:element ref="FILTER" minOccurs="0" maxOccurs="1" />
-				</xs:choice>
-				<xs:choice>
-					<xs:element ref="INSTANCE" minOccurs="1" maxOccurs="1" />
-					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
-				</xs:choice>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
-
-	<!-- Select table rows with value of the column @ref = @value -->
-	<xs:element name="FILTER">
-		<xs:complexType>
-			<xs:attribute type="xs:string" name="ref" />
-			<xs:attribute type="xs:string" name="value" />
-			<xs:assert
-				test="(./@ref and ./@value and @ref != '' and @value != '')" />
-		</xs:complexType>
-	</xs:element>
-
-	<!-- Group table rows by the content of the column @ref -->
-	<xs:element name="GROUPBY">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:choice>
-					<xs:element ref="FILTER" minOccurs="0" maxOccurs="1" />
-				</xs:choice>
-				<xs:choice>
-					<xs:element ref="INSTANCE" minOccurs="1" maxOccurs="1" />
-					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
-				</xs:choice>
-			</xs:sequence>
-            <xs:attribute type="xs:string" name="ref" />
-            <xs:assert test="(./@ref  and @ref != '')" />
-		</xs:complexType>
-	</xs:element>
-
 
 	<!-- Join with another table One instance created for joined row of the 
 		secondary table -->
 	<xs:element name="JOIN">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:choice>
-					<xs:element ref="INSTANCE" minOccurs="1" maxOccurs="1" />
-					<xs:element ref="COLLECTION" minOccurs="1" maxOccurs="1" />
-				</xs:choice>
+     			<xs:element ref="WHERE" minOccurs="1" maxOccurs="unbounded" />
 			</xs:sequence>
 			<xs:attribute type="xs:string" name="tableref" />
-			<xs:attribute type="xs:string" name="primary" />
-			<xs:attribute type="xs:string" name="foreign" />
+			<xs:attribute type="xs:string" name="dmref" />
 			<xs:assert test="(./@tableref and @tableref != '' )" />
-			<xs:assert test="(./@primary and @primary != '' )" />
-			<xs:assert test="(./@foreign and @foreign != '' )" />
+			<xs:assert test="(./@dmref and @dmref != '' )" />
 		</xs:complexType>
 	</xs:element>
+	
+	<!-- Select table rows with value of the column @ref = @value -->
+    <xs:element name="WHERE">
+        <xs:complexType>
+            <xs:attribute type="xs:string" name="foreignkey" />
+            <xs:attribute type="xs:string" name="primarykey" />
+            <xs:attribute type="xs:string" name="ref" />
+            <xs:attribute type="xs:string" name="value" />
+            <xs:assert
+                test="((./@foreignkey and ./@primarykey and not(@ref) and not(@value)) or (not(./@foreignkey) and not(./@primarykey) and @ref and @value))" />
+            <xs:assert
+                test="if (./@ref) then  @ref != '' else true()" />
+            <xs:assert
+                test="if (./@value) then  @value != '' else true()" />
+            <xs:assert
+                test="if (./@foreignkey) then  @foreignkey != '' else true()" />
+            <xs:assert
+                test="if (./@primarykey) then  @primarykey != '' else true()" />
+        </xs:complexType>
+    </xs:element>
+	
 
 </xs:schema>

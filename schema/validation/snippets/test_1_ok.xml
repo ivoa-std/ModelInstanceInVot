@@ -2,6 +2,7 @@
 
 <VODML>
   <MODEL name="model" />
+  <MODEL name="model" url="http://aaaaaa" />
   <GLOBALS/>
   <TEMPLATES tableref="fgdgfddf"/>
 </VODML>
