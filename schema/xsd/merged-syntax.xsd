@@ -1,65 +1,58 @@
 <!-- XML Schema for the VODML lite mapping L. Michel 06/2020 -->
 <!-- MIVOT schema for the record -->
-<xs:schema attributeFormDefault="unqualified"
-	elementFormDefault="qualified" version="1.1"
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" version="1.1"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
 	<!-- Top level structure of the mapping block -->
 	<xs:element name="VODML">
 		<xs:complexType>
 			<xs:sequence>
-                <xs:element ref="MODEL" minOccurs="1" maxOccurs="unbounded" />
-                <xs:element ref="GLOBALS" minOccurs="1" maxOccurs="1" />
-				<xs:element ref="TEMPLATES" minOccurs="0"
-					maxOccurs="unbounded" />
+				<xs:element ref="MODEL" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element ref="GLOBALS" minOccurs="1" maxOccurs="1" />
+				<xs:element ref="TEMPLATES" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
-   		</xs:complexType>
+		</xs:complexType>
 	</xs:element>
 
 
 	<!-- Mapping of the data contained in a particular table -->
 	<xs:element name="TEMPLATES">
 		<xs:complexType>
-			<xs:choice>
-				<xs:sequence>
-					<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="1" />
-				</xs:sequence>
-				<xs:sequence>
-					<xs:element ref="INSTANCE" maxOccurs="unbounded" />
-				</xs:sequence>
-			</xs:choice>
-			<xs:attribute type="xs:string" name="tableref"
-				use="required" />
+			<xs:sequence>
+				<xs:element ref="WHERE" minOccurs="0" maxOccurs="unbounded" />
+				<xs:choice>
+					<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="unbounded" />
+					<xs:element ref="INSTANCE" minOccurs="0" maxOccurs="unbounded" />
+				</xs:choice>
+			</xs:sequence>
+
+			<xs:attribute type="xs:string" name="tableref" use="required" />
 			<xs:assert test="@tableref != ''" />
 		</xs:complexType>
 	</xs:element>
 
 	<!-- Declaration of one used model -->
-    <xs:element name="MODEL">
-        <xs:complexType>
-            <xs:attribute type="xs:string" name="name" />
-            <xs:attribute type="xs:string" name="url" />
-            <xs:assert test="@name != ''" />
-            <xs:assert test="if (@url) then (@url != '') else true()  " />
-        </xs:complexType>
-    </xs:element>
+	<xs:element name="MODEL">
+		<xs:complexType>
+			<xs:attribute type="xs:string" name="name" />
+			<xs:attribute type="xs:string" name="url" />
+			<xs:assert test="@name != ''" />
+			<xs:assert test="if (@url) then (@url != '') else true()  " />
+		</xs:complexType>
+	</xs:element>
 
 	<!-- Mapping of the data that have a global scope (e.g. frames) -->
 	<xs:element name="GLOBALS">
 		<xs:complexType>
 			<xs:all>
-                <xs:element ref="INSTANCE" minOccurs="0"
-                    maxOccurs="unbounded" />
-                <xs:element ref="COLLECTION" minOccurs="0"
-                    maxOccurs="unbounded" />
-				<xs:element ref="DATA_TYPE" minOccurs="0"
-					maxOccurs="unbounded" />
+				<xs:element ref="INSTANCE" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="DATA_TYPE" minOccurs="0" maxOccurs="unbounded" />
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Mapping of primitive data types: Must be in globals, only ENUM supported 
-		yet -->
+	<!-- Mapping of primitive data types: Must be in globals, only ENUM supported yet -->
 	<xs:element name="DATA_TYPE">
 		<xs:complexType>
 			<xs:all>
@@ -74,8 +67,7 @@
 	<xs:element name="ENUM">
 		<xs:complexType>
 			<xs:all>
-				<xs:element ref="LITERAL" minOccurs="1"
-					maxOccurs="unbounded" />
+				<xs:element ref="LITERAL" minOccurs="1" maxOccurs="unbounded" />
 			</xs:all>
 		</xs:complexType>
 	</xs:element>
@@ -92,22 +84,24 @@
 
 	<!-- Mapping of either a Datatype or an Objecttype -->
 	<xs:element name="INSTANCE">
+
 		<xs:complexType>
-			<xs:all>
-				<xs:element ref="ATTRIBUTE" minOccurs="0"
-					maxOccurs="unbounded" />
-				<xs:element ref="COLLECTION" minOccurs="0"
-					maxOccurs="unbounded" />
-				<xs:element ref="INSTANCE" minOccurs="0"
-					maxOccurs="unbounded" />
-			</xs:all>
-			<xs:attribute type="xs:string" name="dmrole" />
-			<xs:attribute type="xs:string" name="dmtype" />
+			<xs:sequence>
+				<xs:choice maxOccurs="1">
+					<xs:element ref="PRIMARY_KEY" minOccurs="0" />
+				</xs:choice>
+				<xs:choice maxOccurs="unbounded">
+                    <xs:element ref="REFERENCE" minOccurs="0" />
+                    <xs:element ref="ATTRIBUTE" minOccurs="0" />
+					<xs:element ref="INSTANCE" minOccurs="0" />
+					<xs:element ref="COLLECTION" minOccurs="0" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute type="xs:string" name="dmrole" use="required"/>
+			<xs:attribute type="xs:string" name="dmtype" use="required"/>
 			<xs:attribute type="xs:string" name="ID" />
-			<xs:assert
-				test="(./@dmrole and not (./@dmtype) and not (./@ID)) or (./@dmtype and ./@dmrole ) or (./@dmtype and ./@ID )" />
-			<xs:assert
-				test="if (@dmtype) then ( @dmtype != '') else true()  " />
+            <xs:assert test="(not(./@ID) and  @dmrole != '') or @ID != ''  " />
+            <xs:assert test=" @dmtype != '' " />
 			<xs:assert test="if (@ID) then ( @ID != '') else true()  " />
 		</xs:complexType>
 	</xs:element>
@@ -115,15 +109,12 @@
 	<!-- Atomic attribute -->
 	<xs:element name="ATTRIBUTE">
 		<xs:complexType>
-			<xs:attribute type="xs:string" name="dmrole" />
-			<xs:attribute type="xs:string" name="dmtype" />
+			<xs:attribute type="xs:string" name="dmrole"  use="required"/>
+			<xs:attribute type="xs:string" name="dmtype"  use="required" />
 			<xs:attribute type="xs:string" name="ref" />
 			<xs:attribute type="xs:string" name="value" />
-			<xs:assert
-				test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" />
+			<xs:assert test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" />
 			<xs:assert test="if (@ref) then (@ref != '') else true()  " />
-			<xs:assert
-				test="if (@value) then (@value != '') else true()  " />
 			<xs:assert test="@dmrole != '' and @dmtype != ''  " />
 		</xs:complexType>
 	</xs:element>
@@ -132,55 +123,86 @@
 	<xs:element name="COLLECTION">
 		<xs:complexType>
 			<xs:all>
+			    <xs:element ref="REFERENCE" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="INSTANCE" minOccurs="0" maxOccurs="unbounded" />
+				<xs:element ref="ATTRIBUTE" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="JOIN" minOccurs="0" maxOccurs="1" />
 			</xs:all>
-			<xs:attribute type="xs:string" name="dmrole" />
+			<xs:attribute type="xs:string" name="dmrole" use="required" />
 			<xs:attribute type="xs:string" name="size" />
-            <xs:attribute type="xs:string" name="ID" />
+			<xs:attribute type="xs:string" name="ID" />
 			<xs:assert test="./@dmrole" />
-            <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
-            <xs:assert test="not(@ID) and @dmrole != '' or  @ID != ''" />
-			
+			<xs:assert test="if (@ID) then ( @ID != '') else true()  " />
+			<xs:assert test="not(@ID) and @dmrole != '' or  @ID != ''" />
+
 			<xs:assert
-				test="((count(./JOIN) eq 1 and count(./INSTANCE) eq 0 and count(./COLLECTION) eq 0)  or count(./JOIN) eq 0)" />
+				test="((count(./JOIN) eq 1 and count(./INSTANCE) eq 0 and count(./COLLECTION) eq 0 and count(./REFERENCE) eq 0)  or count(./JOIN) eq 0)" />
 		</xs:complexType>
 	</xs:element>
 
-	<!-- Join with another table One instance created for joined row of the 
-		secondary table -->
+
+    <xs:element name="REFERENCE">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="FOREIGN_KEY" minOccurs="0" maxOccurs="1" />
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="dmrole" use="required"/>
+            <xs:attribute type="xs:string" name="tableref" />
+            <xs:attribute type="xs:string" name="dmref" />
+            <xs:assert test="if (./@tableref) then  @tableref != '' else true()" />
+            <xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
+            <xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />
+            <xs:assert
+                test="((count(./FOREIGN_KEY) eq 1 and ./@tableref and not(./@dmref))  or (count(./FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
+            
+        </xs:complexType>
+    </xs:element>
+
+	<!-- Join with another table One instance created for joined row of the secondary table -->
 	<xs:element name="JOIN">
 		<xs:complexType>
 			<xs:sequence>
-     			<xs:element ref="WHERE" minOccurs="1" maxOccurs="unbounded" />
+				<xs:element ref="WHERE" minOccurs="0" maxOccurs="unbounded" />
 			</xs:sequence>
 			<xs:attribute type="xs:string" name="tableref" />
 			<xs:attribute type="xs:string" name="dmref" />
-			<xs:assert test="(./@tableref and @tableref != '' )" />
-			<xs:assert test="(./@dmref and @dmref != '' )" />
+			<xs:assert test="if (./@tableref) then  @tableref != '' else true()" />
+			<xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
+			<xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />
 		</xs:complexType>
 	</xs:element>
-	
+
 	<!-- Select table rows with value of the column @ref = @value -->
-    <xs:element name="WHERE">
+	<xs:element name="WHERE">
+		<xs:complexType>
+			<xs:attribute type="xs:string" name="foreignkey" />
+			<xs:attribute type="xs:string" name="primarykey" />
+			<xs:attribute type="xs:string" name="value" />
+			<xs:assert
+				test="(./@foreignkey and ./@primarykey and not(@value)) or (./@foreignkey and not(./@primarykey) and @value)" />
+			<xs:assert test="if (./@foreignkey) then  @foreignkey != '' else true()" />
+			<xs:assert test="if (./@primarykey) then  @primarykey != '' else true()" />
+		</xs:complexType>
+	</xs:element>
+
+    <xs:element name="PRIMARY_KEY">
         <xs:complexType>
-            <xs:attribute type="xs:string" name="foreignkey" />
-            <xs:attribute type="xs:string" name="primarykey" />
             <xs:attribute type="xs:string" name="ref" />
+            <xs:attribute type="xs:string" name="dmtype" />
             <xs:attribute type="xs:string" name="value" />
-            <xs:assert
-                test="((./@foreignkey and ./@primarykey and not(@ref) and not(@value)) or (not(./@foreignkey) and not(./@primarykey) and @ref and @value))" />
-            <xs:assert
-                test="if (./@ref) then  @ref != '' else true()" />
-            <xs:assert
-                test="if (./@value) then  @value != '' else true()" />
-            <xs:assert
-                test="if (./@foreignkey) then  @foreignkey != '' else true()" />
-            <xs:assert
-                test="if (./@primarykey) then  @primarykey != '' else true()" />
+            <xs:assert test="./@ref  or ./@value " />
+            <xs:assert test="@dmtype != '' " />
+            <xs:assert test="if (./@ref) then  @ref != '' else true()" />
         </xs:complexType>
     </xs:element>
-	
+    
+    <xs:element name="FOREIGN_KEY">
+        <xs:complexType>
+            <xs:attribute type="xs:string" name="ref" use="required"/>
+            <xs:assert test="@ref != ''" />
+        </xs:complexType>
+    </xs:element>
+
 
 </xs:schema>
