@@ -1,0 +1,24 @@
+<VODML>
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+		<COLLECTION ID="_Datasets" dmrole="">
+			<JOIN tableref="aaaaa" />
+		</COLLECTION>
+		<COLLECTION ID="_Datasets" dmrole="">
+			<JOIN dmref="aaaaa" />
+		</COLLECTION>
+		<COLLECTION ID="_Datasets" dmrole="">
+			<JOIN dmref="aaaaa">
+				<WHERE foreignkey="eee" value="ssss" />
+			</JOIN>
+		</COLLECTION>
+		<COLLECTION ID="_Datasets" dmrole="">
+			<JOIN dmref="aaaaa">
+				<WHERE foreignkey="eee" value="ssss" />
+				<WHERE foreignkey="fff" value="tttt" />
+			</JOIN>
+		</COLLECTION>
+
+	</GLOBALS>
+</VODML>

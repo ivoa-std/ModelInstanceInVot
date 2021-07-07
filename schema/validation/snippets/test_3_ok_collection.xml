@@ -36,14 +36,23 @@
 
 
 			<COLLECTION dmrole="role">
-				<JOIN tableref="Results" dmref="_ts_data">
+				<JOIN tableref="Results" >
 					<WHERE foreignkey="_srcid" primarykey="_pksrcid" />
 					<WHERE foreignkey="_band" primarykey="_pkband" />
 				</JOIN>
 			</COLLECTION>
 		</COLLECTION>
 		
-		<COLLECTION ID="_Datasets" dmrole="">
+        <COLLECTION ID="_Datasets" dmrole="">
+        </COLLECTION>
+        
+        <COLLECTION ID="_Datasets" dmrole="">
+            <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
+            <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series" />
+        </COLLECTION>
+        
+        <COLLECTION ID="_Datasets" dmrole="">
+            <REFERENCE dmrole="ds:dataset.Dataset.dataProductType" dmref="rrrrrr" />
         </COLLECTION>
 		
 	</GLOBALS>

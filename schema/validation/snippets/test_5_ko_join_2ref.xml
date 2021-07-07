@@ -1,0 +1,10 @@
+<VODML>
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+		<COLLECTION ID="_Datasets" dmrole="">
+			<JOIN tableref="aaaaa" dmref="dddd"/>
+		</COLLECTION>
+
+	</GLOBALS>
+</VODML>
