@@ -21,7 +21,6 @@
 			<xs:sequence>
 				<xs:element ref="WHERE" minOccurs="0" maxOccurs="unbounded" />
 				<xs:choice>
-					<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="unbounded" />
 					<xs:element ref="INSTANCE" minOccurs="0" maxOccurs="unbounded" />
 				</xs:choice>
 			</xs:sequence>
@@ -47,38 +46,7 @@
 			<xs:all>
 				<xs:element ref="INSTANCE" minOccurs="0" maxOccurs="unbounded" />
 				<xs:element ref="COLLECTION" minOccurs="0" maxOccurs="unbounded" />
-				<xs:element ref="DATA_TYPE" minOccurs="0" maxOccurs="unbounded" />
 			</xs:all>
-		</xs:complexType>
-	</xs:element>
-
-	<!-- Mapping of primitive data types: Must be in globals, only ENUM supported yet -->
-	<xs:element name="DATA_TYPE">
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="ENUM" minOccurs="1" maxOccurs="1" />
-			</xs:all>
-			<xs:attribute type="xs:string" name="dmtype" />
-			<xs:assert test="(./@dmtype  and @dmtype != '')" />
-		</xs:complexType>
-	</xs:element>
-
-	<!-- enum of literals, used by DATATYPE -->
-	<xs:element name="ENUM">
-		<xs:complexType>
-			<xs:all>
-				<xs:element ref="LITERAL" minOccurs="1" maxOccurs="unbounded" />
-			</xs:all>
-		</xs:complexType>
-	</xs:element>
-
-	<!-- literal , used by ENUM -->
-	<xs:element name="LITERAL">
-		<xs:complexType>
-			<xs:attribute type="xs:string" name="dmrole" />
-			<xs:attribute type="xs:string" name="name" />
-			<xs:assert test="(./@dmrole  and @dmrole != '')" />
-			<xs:assert test="(./@name  and @name != '')" />
 		</xs:complexType>
 	</xs:element>
 
@@ -180,7 +148,7 @@
 			<xs:attribute type="xs:string" name="primarykey" />
 			<xs:attribute type="xs:string" name="value" />
 			<xs:assert
-				test="(./@foreignkey and ./@primarykey and not(@value)) or (./@foreignkey and not(./@primarykey) and @value)" />
+				test="(./@foreignkey and ./@primarykey and not(@value)) or (./@foreignkey and not(./@primarykey) and @value)  or (not(./@foreignkey) and ./@primarykey and @value)" />
 			<xs:assert test="if (./@foreignkey) then  @foreignkey != '' else true()" />
 			<xs:assert test="if (./@primarykey) then  @primarykey != '' else true()" />
 		</xs:complexType>
