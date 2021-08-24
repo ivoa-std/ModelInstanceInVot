@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VODML>
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS />
+    <TEMPLATES tableref="fgdgfddf">
+        <WHERE primarykey="sssss"/>
+        <WHERE primarykey="sssss" value="ssss" />
+        <INSTANCE dmrole="aaaa" dmtype="fffff">
+            <REFERENCE dmrole="aaaa" dmref="fffff" />
+            <REFERENCE dmrole="aaaa" tableref="fffff">
+                <FOREIGN_KEY ref="zzzzz" />
+            </REFERENCE>
+        </INSTANCE>
+     </TEMPLATES>
+</VODML>

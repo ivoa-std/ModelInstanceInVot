@@ -38,13 +38,17 @@ vodml*.pdf
 draft-background.*
 # Maven 
 target/
+*.synctex*
 
 # eclipse project file
 .settings/
 .classpath
 .project
 .pydevproject
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 # OS
 .DS_Store
 
@@ -53,4 +57,6 @@ target/
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
+
+.pydevproject
 

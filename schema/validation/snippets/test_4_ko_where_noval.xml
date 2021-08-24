@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VODML>
+  <MODEL name="model" />
+  <MODEL name="model" url="http://aaaaaa" />
+  <GLOBALS/>
+  <TEMPLATES tableref="fgdgfddf">
+      <WHERE foreignkey="aaa" />
+  </TEMPLATES>
+</VODML>
