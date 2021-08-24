@@ -1,0 +1,11 @@
+copy
+json
+numpy
+unittest
+urllib
+xmltodict
+logging
+astropy>=4.0
+lxml
+xmlschema>=1.1.2
+

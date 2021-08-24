@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VODML>
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS />
+	<TEMPLATES tableref="fgdgfddf">
+
+        <INSTANCE ID="eeee" dmtype="">
+            <INSTANCE dmrole="aaaa" dmtype="fffff" />
+            <COLLECTION dmrole="aaaa">
+                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            </COLLECTION>
+        </INSTANCE>
+	</TEMPLATES>
+</VODML>
