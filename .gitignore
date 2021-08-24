@@ -43,6 +43,7 @@ target/
 .settings/
 .classpath
 .project
+.pydevproject
 
 # OS
 .DS_Store
