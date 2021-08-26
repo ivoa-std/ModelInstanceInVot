@@ -53,6 +53,7 @@ class TestVOTableRunner:
                     passed += 1
                 else:
                     logger.info("failed")
+                    
                 logger.info("Validate {} against merged-syntax.xsd".format(sample_file))
                 if TestVOTableRunner.vodml_validator.validate_file(file_path , verbose=False) is True:
                     logger.info("passed")
