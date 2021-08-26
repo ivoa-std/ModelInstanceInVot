@@ -30,7 +30,7 @@ class TestVOTableRunner:
                 logger.info("passed")
                 logger.info("Validate {} against merged-syntax.xsd".format(sample_file))
                 if TestVOTableRunner.vodml_validator.validate_file(file_path, verbose=False) is False:
-                    TestVOTableRunner.validator.vodml_validator(file_path, verbose=True)
+                    TestVOTableRunner.vodml_validator.validate_file(file_path, verbose=True)
                     logger.error(sample_file + " is not valid, it should be")
                     return  False                
                 logger.info("passed")
