@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VOTABLE version="1.4"
+	xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+	xmlns:dm="https://raw.githubusercontent.com/ivoa-std/ModelInstanceInVot/master/schema/xsd/merged-syntax.xsd"
+
+	>
+	<RESOURCE type="meta">
+		<dm:VODML>
+			<dm:MODEL name="model" />
+			<dm:MODEL name="model" url="http://aaaaaa" />
+			<dm:GLOBALS />
+			<dm:TEMPLATES tableref="fgdgfddf">
+				<dm:INSTANCE dmrole="aaaa" dmtype="fffff">
+					<dm:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee" />
+					<dm:ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee" />
+					<dm:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa"
+						ref="eeee" />
+				</dm:INSTANCE>
+			</dm:TEMPLATES>
+		</dm:VODML>
+	</RESOURCE>
+</VOTABLE>
+
+
