@@ -5,6 +5,7 @@ GL 2021-07-23: Refactoring towards using type definitions rather than global ele
   Following VOTable v 1.11 refactoring from 23-May-2006 
 LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
 -->
+
 <!-- ======================= -->
 <xs:schema attributeFormDefault="unqualified" 
            elementFormDefault="qualified" 
