@@ -1,0 +1,82 @@
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @ID & 
+            ID of the mapping element  \\
+        \hline 
+            @dmrole & 
+            Role of the instance in the DM \\
+        \hline 
+            @dmtype & 
+            Class name \\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{INSTANCE} attributes} 
+     \label{tbl:instance-att}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|J|}
+    \hline 
+        \textbf{@ID} &
+        \textbf{@dmrole} &
+        \textbf{@dmtype} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        NO &           
+        MAND &           
+        The instance, usually located in \texttt{GLOBALS}, has no role. It can be referenced by a \texttt{REFERENCE}  \\
+    \hline   
+        OPT &           
+        MAND &           
+        MAND &           
+        The element maps a instance playing a role in the model. @ID can also be set in that case. \\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
+     \label{tbl:instance-pattern}
+ \end{table}
+
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c |c |c|J|}
+    \hline 
+        \textbf{Element} &
+        \textbf{Position} &
+        \textbf{Cardinality} &
+        \\
+    \hline      \hline  
+        \texttt{REFERENCE}  &        
+        Any &           
+        0-* &
+         Object attribute as a reference to either a class or a collection instance.\\
+    \hline    
+        \texttt{INSTANCE} &           
+        Any &           
+        0-* &
+         Object attribute as a class instance. \\
+    \hline    
+        \texttt{ATTRIBUTE} &           
+        Any &           
+        0-* &
+       Object attribute as a simple attribute. \\
+    \hline    
+        \texttt{COLLECTION} &           
+        Any &           
+        0-* &
+         Object attribute  as a collection.\\
+    \hline 
+\end{tabulary}
+     \caption{Allowed children for \texttt{INSTANCE}} 
+     \label{tbl:instance-chilren}
+ \end{table}

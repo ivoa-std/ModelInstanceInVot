@@ -1,0 +1,46 @@
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @ref& 
+            ID of the FIELD used as primary key \\
+        \hline 
+            @dmtype & 
+            Type of the key \\
+        \hline 
+            @value & 
+            Literal key value. Used when the key relates to a \texttt{COLLECTION in the \texttt{GLOBALS}} \\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{PRIMARY\_KEY} attributes} 
+     \label{tbl:primarykey-att}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|J|}
+    \hline 
+        \textbf{@ref} &
+        \textbf{@dmtype} &
+        \textbf{@value} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        MAND &           
+        NO &           
+        The FIELD referenced by @ref is a primary key. This pattern is used within a \texttt{TEMPLATES} \\
+    \hline     
+        NO &           
+        MAND &           
+        MAND &           
+        @value gives the key value. This pattern is used to set a primary key to a \texttt{COLLECTION}\\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{PRIMARY\_KEY}}
+     \label{tbl:primarykey-pattern}
+\end{table}
