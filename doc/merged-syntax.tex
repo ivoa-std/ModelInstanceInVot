@@ -149,20 +149,50 @@ IVOA architecture \citep{note:VOARCH}.
 \section{Syntax}
 \includegraphics[width=\textwidth]{merged-syntax-summary.png}
 
+\subsection{Mapping Block Scope}
+The mapping block must be isolated in a VOTable RESOURCE with \texttt{type="meta"}. This RESOURCE must be the first child of a RESOURCE \texttt{type="results"}. The scope of the mapping block is the whole content of that resource.
+
+The \texttt{dm-mapping} name space isolate VOTable elements from mapping elements.
+
+A  VOTable RESOURCE {type="results"} must contain at most one mapping block.
+ 
+\begin{lstlisting}[caption={Mapping block in a VOTable},style=XML,basicstyle=\small]
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     version="1.3">
+  <RESOURCE type="results">
+    <RESOURCE type="meta">
+      <dm-mapping:VODML 
+       xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        ...
+        <dm-mapping:GLOBALS> ...  </dm-mapping:GLOBALS>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+        ...
+      </dm-mapping:VODML>
+    </RESOURCE>
+    <RESOURCE type="results">
+      <TABLE name="Results">
+      ....
+      </TABLE>
+    </RESOURCE>
+  </RESOURCE>
+</VOTABLE>
+
+\end{lstlisting}
+
+
 \subsection{Mapping Block Structure}
 
 \begin{lstlisting}[caption={Complete mapping block example},style=XML,basicstyle=\small]
-<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-            version="1.4">
-   <VODML>
-        <MODEL>   ...  </MODEL>
-        <GLOBALS>   ...  </GLOBALS>
-        <TEMPLATES>   ...  </TEMPLATES>
+   <dm-mapping:VODML>
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        <dm-mapping:GLOBALS>   ...  </dm-mapping:GLOBALS>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
        . ..
-    </VODML>
-    ...
-</VOTABLE>
+    </dm-mapping:VODML>
 \end{lstlisting}
 
 

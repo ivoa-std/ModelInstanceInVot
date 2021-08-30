@@ -1,3 +1,16 @@
+Some annotations may map the Resource contents to instances or collections of data model
+types that are global in the mapping scope, possibly because such instances are refer-
+enced by other intances that annotate specific tables. More generally, some
+annotations will define instances that are completely defined in terms of
+constant value, i.e. they are not represented in tabular form. Rather, they
+are completely and directly represented by an XML element.
+Such instances should be included in the GLOBALS element.
+GLOBALS must only contain direct representations of instances, i.e.
+INSTANCE elements that do not refer to any FIELD directly. 
+This rule is not enforces via the XSD schema 
+Also, GLOBALS should not contain any INSTANCEs with REFERENCEs to
+indirect INSTANCEs.
+
 \begin{table}[!htbp]
 \small
 \centering

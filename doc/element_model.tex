@@ -1,3 +1,9 @@
+A VOTable can provide serializations for an arbitrary number of data model
+types. In order to declare which models are represented in the file, data
+providers must declare them through the MODEL elements.
+Only models that are used in the file must be declared. A model is
+used if at least one element in the mapping block refer to it. In other terms, only models that define vodml-ids used in the
+annotation must be declared.
 \begin{table}[!htbp]
 \small
 \centering
