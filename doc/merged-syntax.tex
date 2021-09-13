@@ -149,299 +149,102 @@ IVOA architecture \citep{note:VOARCH}.
 \section{Syntax}
 \includegraphics[width=\textwidth]{merged-syntax-summary.png}
 
+\subsection{Mapping Block Scope}
+The mapping block must be isolated in a VOTable RESOURCE with \texttt{type="meta"}. This RESOURCE must be the first child of a RESOURCE \texttt{type="results"}. The scope of the mapping block is the whole content of that resource.
+
+The \texttt{dm-mapping} name space isolate VOTable elements from mapping elements.
+
+A  VOTable RESOURCE {type="results"} must contain at most one mapping block.
+ 
+\begin{lstlisting}[caption={Mapping block in a VOTable},style=XML,basicstyle=\small]
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     version="1.3">
+  <RESOURCE type="results">
+    <RESOURCE type="meta">
+      <dm-mapping:VODML 
+       xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        ...
+        <dm-mapping:GLOBALS> ...  </dm-mapping:GLOBALS>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+        ...
+      </dm-mapping:VODML>
+    </RESOURCE>
+    <RESOURCE type="results">
+      <TABLE name="Results">
+      ....
+      </TABLE>
+    </RESOURCE>
+  </RESOURCE>
+</VOTABLE>
+
+\end{lstlisting}
+
+
 \subsection{Mapping Block Structure}
 
-\begin{lstlisting}[caption={Complete mapping block example},style=XML,basicstyle=\tiny]
-<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-            version="1.4">
-   <VODML>
-        <MODEL>   ...  </MODEL>
-        <GLOBALS>   ...  </GLOBALS>
-        <TEMPLATES>   ...  </TEMPLATES>
+\begin{lstlisting}[caption={Complete mapping block example},style=XML,basicstyle=\small]
+   <dm-mapping:VODML>
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        <dm-mapping:GLOBALS>   ...  </dm-mapping:GLOBALS>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
        . ..
-    </VODML>
-    ...
-</VOTABLE>
+    </dm-mapping:VODML>
 \end{lstlisting}
 
 
 \subsection{Syntax}
 
+\subsubsection{VODML}
+\input{element_vodml.tex}
+\FloatBarrier
+ 
 \subsubsection{MODEL}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @name  & 
-            Name of the mapped model (informal).  This attribute must be left empty  \\
-       \hline 
-            @url & 
-            Url of the vo-dml serialization of the model. \\
-       \hline 
-     \end{tabulary}
-     \caption{\texttt{MODEL} attributes} 
-     \label{tbl:model-att}
- \end{table}
-
+\input{element_model.tex}
 \FloatBarrier
 
 \subsubsection{GLOBALS}
-
+\input{element_globals.tex}
 \FloatBarrier
 
 \subsubsection{TEMPLATES}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @tableref & 
-            ID of the mapped table  \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{TEMPLATES} attributes} 
-     \label{tbl:templates-att}
- \end{table}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}
-    \hline 
-        \textbf{@tableref} &
-        \textbf{Pattern}\\
-    \hline      \hline  
-        OPT &           
-        Always mandatory\\
-   \hline 
-\end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{TEMPLATES}} 
-     \label{tbl:templates-pattern}
- \end{table}
- 
+\input{element_templates.tex}
 \FloatBarrier
 
 \subsubsection{COLLECTION}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @ID & 
-            ID of the mapping element  \\
-        \hline 
-            @dmrole & 
-            Role of the collection in the DM \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{COLLECTION} attributes} 
-     \label{tbl:collection-att}
- \end{table}
- 
+\input{element_collection.tex}
 \FloatBarrier
 
 \subsubsection{INSTANCE}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @ID & 
-            ID of the mapping element  \\
-        \hline 
-            @dmrole & 
-            Role of the instance in the DM \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{INSTANCE} attributes} 
-     \label{tbl:instance-att}
- \end{table}
-
-
+\input{element_instance.tex}
 \FloatBarrier
 
 \subsubsection{ATTRIBUTE}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @dmrole & 
-            Role of the attribute \\
-        \hline 
-            @dmtype & 
-            Type of the attribute \\
-        \hline 
-            @ref & 
-            --- \\
-        \hline 
-            @value& 
-            --- \\
-        \hline 
-            @unit & 
-            --- \\
-        \hline 
-            @arrayindex& 
-            --- \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{ATTRIBUTE} attributes} 
-     \label{tbl:attribute-att}
- \end{table}
-
-
-
+\input{element_attribute.tex}
 \FloatBarrier
 
 \subsubsection{REFERENCE}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @dmrole & 
-            Role of the referenced instance in the DM \\
-        \hline 
-            @tableref& 
-            ---- \\
-        \hline 
-            @dmref & 
-            ---- \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{REFERENCE} attributes} 
-     \label{tbl:reference-att}
- \end{table}
-
-
+\input{element_reference.tex}
 \FloatBarrier
 
 \subsubsection{JOIN}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-             @tableref& 
-            ---- \\
-        \hline 
-            @dmref & 
-            ---- \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{JOIN} attributes} 
-     \label{tbl:join-att}
- \end{table}
-
-
-
+\input{element_join.tex}
 \FloatBarrier
 
 \subsubsection{WHERE}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-             @primarykey& 
-            ---- \\
-        \hline 
-            @foreignkey & 
-            ---- \\
-        \hline 
-            @value & 
-            ---- \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{WHERE} attributes} 
-     \label{tbl:where-att}
- \end{table}
-
-
+\input{element_where.tex}
 \FloatBarrier
 
 \subsubsection{PRIMARY\_KEY}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-             @ref& 
-            ---- \\
-        \hline 
-            @dmtype & 
-            ---- \\
-        \hline 
-            @value & 
-            ---- \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{PRIMARY\_KEY} attributes} 
-     \label{tbl:primarykey-att}
- \end{table}
-
-
+\input{element_primary_key.tex}
 \FloatBarrier
 
 \subsubsection{FOREIGN\_KEY}
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-             @ref& 
-            ---- \\
-     \end{tabulary}
-     \caption{\texttt{FOREIGN\_KEY} attributes} 
-     \label{tbl:foreignkey-att}
- \end{table}
-
+\input{element_foreign_key.tex}
 \FloatBarrier
-
-
-
 
 \section{Changes from Previous Versions}
 

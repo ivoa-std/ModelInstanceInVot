@@ -1,51 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<VODML>
-	<MODEL name="model" />
-	<MODEL name="model" url="http://aaaaaa" />
-	<GLOBALS />
-	<TEMPLATES tableref="fgdgfddf">
-        <INSTANCE dmrole="aaaa" dmtype="fffff"></INSTANCE>
-        
-        <INSTANCE ID="aaaa" dmrole="" dmtype="fffff"></INSTANCE>
-        
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-        </INSTANCE>
-        
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <REFERENCE dmrole="aaaa" dmref="fffff"/>
-        </INSTANCE>
-        
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            <INSTANCE dmrole="aaaa" dmtype="fffff" />
-        </INSTANCE>
-        
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <COLLECTION dmrole="aaaa">
-                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            </COLLECTION>
-        </INSTANCE>
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <INSTANCE dmrole="aaaa" dmtype="fffff" />
-            <COLLECTION dmrole="aaaa">
-                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            </COLLECTION>
-            <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            
-        </INSTANCE>
+			<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <PRIMARY_KEY dmtype="fffff" value="tttt" />
-            <INSTANCE dmrole="aaaa" dmtype="fffff" />
-            <COLLECTION dmrole="aaaa">
-                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-                <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            </COLLECTION>
-        </INSTANCE>
-	</TEMPLATES>
-</VODML>
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff"></dm-mapping:INSTANCE>
+        
+        <dm-mapping:INSTANCE ID="aaaa" dmrole="" dmtype="fffff"></dm-mapping:INSTANCE>
+        
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+        </dm-mapping:INSTANCE>
+        
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
+        </dm-mapping:INSTANCE>
+        
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+        </dm-mapping:INSTANCE>
+        
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:COLLECTION dmrole="aaaa">
+                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            </dm-mapping:COLLECTION>
+        </dm-mapping:INSTANCE>
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+            <dm-mapping:COLLECTION dmrole="aaaa">
+                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            </dm-mapping:COLLECTION>
+            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            
+        </dm-mapping:INSTANCE>
+
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+            <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+            <dm-mapping:COLLECTION dmrole="aaaa">
+                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+            </dm-mapping:COLLECTION>
+        </dm-mapping:INSTANCE>
+	</dm-mapping:TEMPLATES>
+</dm-mapping:VODML>

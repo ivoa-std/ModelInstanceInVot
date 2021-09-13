@@ -1,24 +1,26 @@
-<VODML>
-	<MODEL name="model" />
-	<MODEL name="model" url="http://aaaaaa" />
-	<GLOBALS>
-		<COLLECTION ID="_Datasets" dmrole="">
-			<JOIN tableref="aaaaa" />
-		</COLLECTION>
-		<COLLECTION ID="_Datasets" dmrole="">
-			<JOIN dmref="aaaaa" />
-		</COLLECTION>
-		<COLLECTION ID="_Datasets" dmrole="">
-			<JOIN dmref="aaaaa">
-				<WHERE foreignkey="eee" value="ssss" />
-			</JOIN>
-		</COLLECTION>
-		<COLLECTION ID="_Datasets" dmrole="">
-			<JOIN dmref="aaaaa">
-				<WHERE foreignkey="eee" value="ssss" />
-				<WHERE foreignkey="fff" value="tttt" />
-			</JOIN>
-		</COLLECTION>
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
-	</GLOBALS>
-</VODML>
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS>
+		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+			<dm-mapping:JOIN tableref="aaaaa" />
+		</dm-mapping:COLLECTION>
+		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+			<dm-mapping:JOIN dmref="aaaaa" />
+		</dm-mapping:COLLECTION>
+		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+			<dm-mapping:JOIN dmref="aaaaa">
+				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
+			</dm-mapping:JOIN>
+		</dm-mapping:COLLECTION>
+		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+			<dm-mapping:JOIN dmref="aaaaa">
+				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
+				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
+			</dm-mapping:JOIN>
+		</dm-mapping:COLLECTION>
+
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>

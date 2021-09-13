@@ -1,0 +1,57 @@
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @tableref & 
+            ID of the mapped table.  \\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{TEMPLATES} attributes} 
+     \label{tbl:templates-att}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}
+    \hline 
+        \textbf{@tableref} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        OPT &           
+        If @tableref is not present, \texttt{TEMPLATES} maps the first \texttt{TABLE} of the \texttt{RESOURCE}\\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{TEMPLATES}} 
+     \label{tbl:templates-pattern}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c |c |c|J|}
+    \hline 
+        \textbf{Element} &
+        \textbf{Position} &
+        \textbf{Cardinality} &
+        \\
+    \hline      \hline  
+        \texttt{WHERE}  &        
+        1 &           
+        0-* &
+        The mapping must be applied to the rows matching the \texttt{WHERE} condition only\\
+    \hline    
+        \texttt{INSTANCE} &           
+        2 &           
+        0-* &
+        Mapped class instances\\
+    \hline 
+\end{tabulary}
+     \caption{Allowed children for \texttt{TEMPLATES}} 
+     \label{tbl:templates-chilren}
+ \end{table}

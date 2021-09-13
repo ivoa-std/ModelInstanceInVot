@@ -45,6 +45,7 @@ target/
 .classpath
 .project
 .pydevproject
+
 # OS
 .DS_Store
 
@@ -53,6 +54,4 @@ target/
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
-
-.pydevproject
 

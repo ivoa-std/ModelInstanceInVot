@@ -1,0 +1,46 @@
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @primarykey& 
+            FIELD identifier of the primary key column \\
+        \hline 
+            @foreignkey & 
+            FIELD identifier of the foreign key column \\
+        \hline 
+            @value & 
+            Literal value the  @primarykey cell must match with\\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{WHERE} attributes} 
+     \label{tbl:where-att}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|J|}
+    \hline 
+        \textbf{@primarykey} &
+        \textbf{@foreignkey} &
+        \textbf{@value} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        MAND &           
+        NO &           
+        2 tables join criteria: @primarykey = @foreignkey \\
+    \hline     
+        MAND &           
+        NO &           
+        MAND &           
+        Simple join criteria: @primarykey = @value \\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{WHERE}}
+     \label{tbl:where-pattern}
+\end{table}

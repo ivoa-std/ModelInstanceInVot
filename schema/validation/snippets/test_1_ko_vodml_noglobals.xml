@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MODEL_INSTANCE name="MANGO" syntax="ModelInstanceInVot" >
-  <TABLE_MAPPING tableref="fgdgfddf">
-  </TABLE_MAPPING>
-</MODEL_INSTANCE>
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+	<dm-mapping:TABLE_MAPPING tableref="fgdgfddf">
+	</dm-mapping:TABLE_MAPPING>
+</dm-mapping:VODML>
