@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<VODML>
-	<MODEL name="model" />
-	<MODEL name="model" url="http://aaaaaa" />
-	<GLOBALS />
-     <TEMPLATES tableref="fgdgfddf">
-        <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <REFERENCE dmrole="aaaa" dmref="fffff" />
-            <REFERENCE dmrole="aaaa" tableref="fffff">
-                <FOREIGN_KEY ref="zzzzz" />
-            </REFERENCE>
-        </INSTANCE>
-        <WHERE primarykey="sssss" value="ssss" />
-    </TEMPLATES>
-</VODML>
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:REFERENCE dmrole="aaaa"
+				dmref="fffff" />
+			<dm-mapping:REFERENCE dmrole="aaaa"
+				tableref="fffff">
+				<dm-mapping:FOREIGN_KEY ref="zzzzz" />
+			</dm-mapping:REFERENCE>
+		</dm-mapping:INSTANCE>
+		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
+	</dm-mapping:TEMPLATES>
+</dm-mapping:VODML>

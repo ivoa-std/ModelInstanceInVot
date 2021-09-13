@@ -1,33 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<VODML>
-	<MODEL name="model" />
-	<MODEL name="model" url="http://aaaaaa" />
-	<GLOBALS>
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS>
 
 
-		<COLLECTION dmrole="role">
-			<JOIN tableref="Results" dmref="_ts_data">
-				<WHERE foreignkey="_srcid" primarykey="_pksrcid" />
-				<WHERE foreignkey="_band" primarykey="_pkband" />
-			</JOIN>
-			<INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
-				<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
-				<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series" />
-				<ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1" />
-			</INSTANCE>
-			<COLLECTION dmrole="role2">
-				<INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
-					<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
-					<ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series" />
-					<ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1" />
-				</INSTANCE>
-			</COLLECTION>
+		<dm-mapping:COLLECTION dmrole="role">
+			<dm-mapping:JOIN tableref="Results" dmref="_ts_data">
+				<dm-mapping:WHERE foreignkey="_srcid"
+					primarykey="_pksrcid" />
+				<dm-mapping:WHERE foreignkey="_band"
+					primarykey="_pkband" />
+			</dm-mapping:JOIN>
+			<dm-mapping:INSTANCE ID="_ds1" dmrole=""
+				dmtype="ds:experiment.ObsDataset">
+				<dm-mapping:ATTRIBUTE
+					dmrole="ds:dataset.Dataset.dataProductType"
+					dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
+				<dm-mapping:ATTRIBUTE
+					dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string"
+					value="GAIA Time Series" />
+				<dm-mapping:ATTRIBUTE
+					dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer"
+					value="1" />
+			</dm-mapping:INSTANCE>
+			<dm-mapping:COLLECTION dmrole="role2">
+				<dm-mapping:INSTANCE ID="_ds1" dmrole=""
+					dmtype="ds:experiment.ObsDataset">
+					<dm-mapping:ATTRIBUTE
+						dmrole="ds:dataset.Dataset.dataProductType"
+						dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
+					<dm-mapping:ATTRIBUTE
+						dmrole="ds:dataset.Dataset.dataProductSubtype"
+						dmtype="ivoa:string" value="GAIA Time Series" />
+					<dm-mapping:ATTRIBUTE
+						dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer"
+						value="1" />
+				</dm-mapping:INSTANCE>
+			</dm-mapping:COLLECTION>
 
-		</COLLECTION>
+		</dm-mapping:COLLECTION>
 
-	</GLOBALS>
-</VODML>
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>
 
 
 

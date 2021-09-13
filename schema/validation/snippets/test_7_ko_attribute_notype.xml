@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<VODML>
-	<MODEL name="model" />
-	<MODEL name="model" url="http://aaaaaa" />
-	<GLOBALS />
-	<TEMPLATES tableref="fgdgfddf">
-         <INSTANCE dmrole="aaaa" dmtype="fffff">
-            <ATTRIBUTE dmrole="aaaa" ref="eeee"/>
-            <ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee"/>
-        </INSTANCE>
-	</TEMPLATES>
-</VODML>
+			<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+         <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+            <dm-mapping:ATTRIBUTE dmrole="aaaa" ref="eeee"/>
+            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee"/>
+        </dm-mapping:INSTANCE>
+	</dm-mapping:TEMPLATES>
+</dm-mapping:VODML>

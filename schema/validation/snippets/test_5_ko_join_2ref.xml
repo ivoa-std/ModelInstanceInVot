@@ -1,10 +1,13 @@
-<VODML>
-	<MODEL name="model" />
-	<MODEL name="model" url="http://aaaaaa" />
-	<GLOBALS>
-		<COLLECTION ID="_Datasets" dmrole="">
-			<JOIN tableref="aaaaa" dmref="dddd"/>
-		</COLLECTION>
 
-	</GLOBALS>
-</VODML>
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS>
+		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+			<dm-mapping:JOIN tableref="aaaaa" dmref="dddd" />
+		</dm-mapping:COLLECTION>
+
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>

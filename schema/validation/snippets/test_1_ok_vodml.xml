@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<VODML>
-  <MODEL name="model" />
-  <MODEL name="model" url="http://aaaaaa" />
-  <GLOBALS/>
-  <TEMPLATES tableref="fgdgfddf"/>
-</VODML>
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf" />
+</dm-mapping:VODML>
