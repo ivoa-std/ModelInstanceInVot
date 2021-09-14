@@ -1,0 +1,84 @@
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @ID & 
+            ID of the \texttt{COLLECTION} element, must be unique within the mapping block. Must not be left empty.\\
+        \hline 
+            @dmrole & 
+            Role of the collection in the DM. Must not be empty if present \\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{COLLECTION} attributes} 
+     \label{tbl:collection-att}
+ \end{table}
+
+
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|J|}
+    \hline 
+        \textbf{@ID} &
+        \textbf{@dmrole} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        NO &           
+        The collection, usually located in \texttt{GLOBALS}, has no role. It can be referenced by a \texttt{REFERENCE}  \\
+    \hline   
+        OPT &           
+        MAND &           
+        The element maps a collection playing a role in the model. @ID can also be set in that case. \\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{COLLECTION}} 
+     \label{tbl:collection-pattern}
+ \end{table}
+
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c |c |c|J|}
+    \hline 
+        \textbf{Element} &
+        \textbf{Position} &
+        \textbf{Cardinality} &
+        \\
+    \hline      \hline  
+        \texttt{REFERENCE}  &        
+        Any &           
+        0-* &
+        Collection item as a reference to either a class or a collection instance. No \texttt{JOIN} allowed if present\\
+    \hline    
+        \texttt{INSTANCE} &           
+        Any &           
+        0-* &
+        Collection item as a class instance. No \texttt{JOIN} allowed if present\\
+    \hline    
+        \texttt{ATTRIBUTE} &           
+        Any &           
+        0-* &
+        Collection item as a simple attribute. No \texttt{JOIN} allowed if present\\
+    \hline    
+        \texttt{COLLECTION} &           
+        Any &           
+        0-* &
+        Collection item as a collection. No \texttt{JOIN} allowed if present\\
+    \hline    
+        \texttt{JOIN} &           
+        1 &           
+        0-1 &
+        The \texttt{COLLECTION} must be populated by a join operation. In this case \texttt{JOIN} must be the unique child of \texttt{COLLECTION} \\
+    \hline 
+\end{tabulary}
+     \caption{Allowed children for \texttt{COLLECTION}} 
+     \label{tbl:collection-chilren}
+ \end{table}

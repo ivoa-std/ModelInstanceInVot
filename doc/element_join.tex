@@ -1,0 +1,61 @@
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+             @tableref& 
+            Reference of the table to be joined with. \\
+        \hline 
+            @dmref & 
+            Reference of the \texttt{COLLECTION} (in \texttt{GLOBALS} to be joined with. \\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{JOIN} attributes} 
+     \label{tbl:join-att}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|J|}
+    \hline 
+        \textbf{@tableref} &
+        \textbf{@dmref} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        NO &           
+        The join is done against the table identified by @tableref \\
+    \hline   
+        NO &           
+        MAND &           
+        The join is done against the \texttt{COLLECTION} identified by @rmref \\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{JOIN}}
+     \label{tbl:join-pattern}
+\end{table}
+
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c |c |c|J|}
+    \hline 
+        \textbf{Element} &
+        \textbf{Position} &
+        \textbf{Cardinality} &
+        \\
+    \hline      \hline  
+        \texttt{WHERE}  &        
+        1 &           
+        0-* &
+         Join condition\\
+    \hline 
+\end{tabulary}
+     \caption{Allowed children for \texttt{JOIN}} 
+     \label{tbl:join-chilren}
+ \end{table}

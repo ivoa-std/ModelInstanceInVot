@@ -1,0 +1,58 @@
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|J|}       
+       \hline 
+            \textbf{Attribute} & 
+            \textbf {Role}\\
+       \hline         \hline  
+            @dmrole & 
+            Role of the attribute in the DM\\
+        \hline 
+            @dmtype & 
+            Type of the attribute in the DM\\
+        \hline 
+            @ref & 
+            Reference of the \texttt{FIELD} or \texttt{PARAM} that has to be sued to set the \texttt{ATTRIBUTE} value.\\
+        \hline 
+            @value& 
+            Default \texttt{ATTRIBUTE} value. This value is taken if there is no @ref attribue or if @ref cannot be resolved.\\
+        \hline 
+            @unit & 
+            \texttt{ATTRIBUTE} unit. This is the unit in which the native value must be converted to be complient with the model. This attribute is always optional.\\
+        \hline 
+            @arrayindex & 
+            Index of the native value to be taken to set the \texttt{ATTRIBUTE}. Must be ignored if the native value is a single value. An error must be risen if @arrayindex is out of range.This attribute is always optional.\\
+        \hline 
+     \end{tabulary}
+     \caption{\texttt{ATTRIBUTE} attributes} 
+     \label{tbl:attribute-att}
+ \end{table}
+
+\begin{table}[!htbp]
+\small
+\centering
+\begin{tabulary}{\linewidth}{|c|c|c|c|J|}
+    \hline 
+        \textbf{@dmrole} &
+        \textbf{@dmtype} &
+        \textbf{@ref} &
+        \textbf{@value} &
+        \textbf{Pattern}\\
+    \hline      \hline  
+        MAND &           
+        MAND &           
+        MAND &           
+        OPT &           
+        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by @ref. The @ref can not be resolved and @value is present, @value must taken as \texttt{ATTRIBUTE} value\\
+    \hline   
+        MAND &           
+        MAND &           
+        NO &           
+        MAND &           
+        The \texttt{ATTRIBUTE} value must be set with @value\\
+   \hline 
+\end{tabulary}
+     \caption{Valid attribute patterns for  \texttt{ATTRIBUTE}} 
+     \label{tbl:attribute-pattern}
+ \end{table}
