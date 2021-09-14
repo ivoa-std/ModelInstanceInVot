@@ -105,7 +105,9 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
     <xs:assert test="not(@ID) and @dmrole != '' or  @ID != ''" />
 
+    <!-- 
     <xs:assert test="((count(./dm-mapping:JOIN) eq 1 and count(./dm-mapping:INSTANCE) eq 0 and count(./dm-mapping:COLLECTION) eq 0 and count(./dm-mapping:REFERENCE) eq 0)  or count(./dm-mapping:JOIN) eq 0)" />
+    -->
   </xs:complexType>
 
   <xs:complexType name="Reference">
