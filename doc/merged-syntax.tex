@@ -46,7 +46,6 @@
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
 
 \lstset{
-  basicstyle=\ttfamily,
   columns=fullflexible,
   showstringspaces=false,
   commentstyle=\color{gray}\upshape
@@ -76,6 +75,7 @@
 \author{Gilles Landais}
 \author{Laurent Michel}
 \author{Jesus Salgado}
+\author{Gerard Lemson}
 
 \editor{Laurent Michel}
 \editor{Mark Cresitello Dittmar}
@@ -139,15 +139,112 @@ IVOA architecture \citep{note:VOARCH}.
 
 ???? and so on, LaTeX as you know and love it. ????
 
-\section{Use Cases and Requirement}
+\section{Use Cases and Requirements}
 
 \subsection{Use Cases}
 
-\subsection{Requirement}
+\subsection{Requirements}
 
 
 \section{Syntax}
 \includegraphics[width=\textwidth]{merged-syntax-summary.png}
+
+\subsection{Mapping Block Scope}
+The mapping block must be isolated in a VOTable RESOURCE with \texttt{type="meta"}. This RESOURCE must be the first child of a RESOURCE \texttt{type="results"}. The scope of the mapping block is the whole content of that resource.
+
+The \texttt{dm-mapping} name space isolate VOTable elements from mapping elements.
+
+A  VOTable RESOURCE {type="results"} must contain at most one mapping block.
+ 
+\begin{lstlisting}[caption={Mapping block in a VOTable},style=XML,basicstyle=\small]
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     version="1.3">
+  <RESOURCE type="results">
+    <RESOURCE type="meta">
+      <dm-mapping:VODML 
+       xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        ...
+        <dm-mapping:GLOBALS> ...  </dm-mapping:GLOBALS>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+        ...
+      </dm-mapping:VODML>
+    </RESOURCE>
+    <RESOURCE type="results">
+      <TABLE name="Results">
+      ....
+      </TABLE>
+    </RESOURCE>
+  </RESOURCE>
+</VOTABLE>
+
+\end{lstlisting}
+
+
+\subsection{Mapping Block Structure}
+
+\begin{lstlisting}[caption={Complete mapping block example},style=XML,basicstyle=\small]
+   <dm-mapping:VODML>
+        <dm-mapping:MODEL>   ...  <dm-mapping:/MODEL>
+        <dm-mapping:GLOBALS>   ...  </dm-mapping:GLOBALS>
+        <dm-mapping:TEMPLATES>   ...  </dm-mapping:TEMPLATES>
+       . ..
+    </dm-mapping:VODML>
+\end{lstlisting}
+
+
+\subsection{Syntax}
+
+\subsubsection{VODML}
+\input{element_vodml.tex}
+\FloatBarrier
+ 
+\subsubsection{MODEL}
+\input{element_model.tex}
+\FloatBarrier
+
+\subsubsection{GLOBALS}
+\input{element_globals.tex}
+\FloatBarrier
+
+\subsubsection{TEMPLATES}
+\input{element_templates.tex}
+\FloatBarrier
+
+\subsubsection{COLLECTION}
+\input{element_collection.tex}
+\FloatBarrier
+
+\subsubsection{INSTANCE}
+\input{element_instance.tex}
+\FloatBarrier
+
+\subsubsection{ATTRIBUTE}
+\input{element_attribute.tex}
+\FloatBarrier
+
+\subsubsection{REFERENCE}
+\input{element_reference.tex}
+\FloatBarrier
+
+\subsubsection{JOIN}
+\input{element_join.tex}
+\FloatBarrier
+
+\subsubsection{WHERE}
+\input{element_where.tex}
+\FloatBarrier
+
+\subsubsection{PRIMARY\_KEY}
+\input{element_primary_key.tex}
+\FloatBarrier
+
+\subsubsection{FOREIGN\_KEY}
+\input{element_foreign_key.tex}
+\FloatBarrier
 
 \section{Changes from Previous Versions}
 
