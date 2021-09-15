@@ -14,7 +14,8 @@ class TestRunner:
                                    , "merged-syntax.xsd"))
     
     @staticmethod
-    def testOK(mapping_sample, case_prefix):
+    def regarde_si_OK(mapping_sample, case_prefix):
+        # Sorry for the French naming, so that I'm sure pytest won't take as a fixture
         files = os.listdir(mapping_sample)
         ok_prefix = case_prefix + "_ok"
 
@@ -29,7 +30,7 @@ class TestRunner:
         return True
     
     @staticmethod
-    def testKO(mapping_sample, case_prefix):
+    def regarde_si_KO(mapping_sample, case_prefix):
  
         ko_prefix = case_prefix + "_ko"
         files = os.listdir(mapping_sample)
