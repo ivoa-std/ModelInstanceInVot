@@ -18,7 +18,6 @@ class Test(unittest.TestCase):
     def testKO(self):
         self.assertTrue(TestVOTableRunner.regarde_si_KO(mapping_sample, "test_rich_instance_1"), "file shouldn't be valid")
 
-
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

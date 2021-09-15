@@ -38,8 +38,7 @@ class TestVOTableRunner:
         return True
     
     @staticmethod
-    def regarde_si_KO(mapping_sample, case_prefix):
- 
+    def regarde_si_KO(mapping_sample, case_prefix): 
         ko_prefix = case_prefix + "_ko"
         files = os.listdir(mapping_sample)
 
