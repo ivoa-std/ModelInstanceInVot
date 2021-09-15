@@ -15,7 +15,7 @@ class TestVOTableRunner:
     vodml_validator = Validator(os.path.join(FileUtils.get_schemadir()
                                    , "merged-syntax.xsd"))
     @staticmethod
-    def testOK(mapping_sample, case_prefix):
+    def regarde_si_OK(mapping_sample, case_prefix):
         files = os.listdir(mapping_sample)
         ok_prefix = case_prefix + "_ok"
 
@@ -38,8 +38,7 @@ class TestVOTableRunner:
         return True
     
     @staticmethod
-    def testKO(mapping_sample, case_prefix):
- 
+    def regarde_si_KO(mapping_sample, case_prefix): 
         ko_prefix = case_prefix + "_ko"
         files = os.listdir(mapping_sample)
 
