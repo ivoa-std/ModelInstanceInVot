@@ -3,10 +3,15 @@
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:WHERE primarykey="" foreignekey="zzzz" />
+
+		<!-- Test Case 10.10: foreignkey value must not be empty -->
+		<dm-mapping:WHERE primarykey="ssss" foreignkey="" />
+
+		<!-- required in TEMPLATES -->
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+
 	</dm-mapping:TEMPLATES>
+
 </dm-mapping:VODML>

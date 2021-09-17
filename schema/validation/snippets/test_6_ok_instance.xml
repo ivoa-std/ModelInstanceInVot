@@ -1,52 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-			<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<!-- NOTE: TEMPLATES node allows multiple INSTANCE nodes.                         -->
+<!--       We take advantage of this to test several valid cases in the same file -->
 
-	<dm-mapping:MODEL name="model" />
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff"></dm-mapping:INSTANCE>
-        
-        <dm-mapping:INSTANCE ID="aaaa" dmrole="" dmtype="fffff"></dm-mapping:INSTANCE>
-        
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-        </dm-mapping:INSTANCE>
-        
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
-        </dm-mapping:INSTANCE>
-        
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
-        </dm-mapping:INSTANCE>
-        
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:COLLECTION dmrole="aaaa">
-                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            </dm-mapping:COLLECTION>
-        </dm-mapping:INSTANCE>
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
-            <dm-mapping:COLLECTION dmrole="aaaa">
-                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            </dm-mapping:COLLECTION>
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            
-        </dm-mapping:INSTANCE>
 
-        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-            <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
-            <dm-mapping:COLLECTION dmrole="aaaa">
-                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-                <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            </dm-mapping:COLLECTION>
-        </dm-mapping:INSTANCE>
+		<!-- Test Case 5.2: ID optional. -->
+		<!-- Test Case 5.x: All subelements optional  -->
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+
+		<!-- Test Case 5.3: with ID, dmrole optional. -->
+		<dm-mapping:INSTANCE ID="aaaa" dmtype="fffff" />
+
+		<!-- Test Case 5.6: with ID, dmrole may be empty. -->
+		<dm-mapping:INSTANCE ID="aaaa" dmrole="" dmtype="fffff" />
+
+		<!-- Test Case 5.8: with PRIMARY_KEY. -->
+		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+		</dm-mapping:INSTANCE>
+
+		<!-- Test Case 5.9: with ATTRIBUTE. -->
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+		</dm-mapping:INSTANCE>
+		
+		<!-- Test Case 5.10: with INSTANCE. -->
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		</dm-mapping:INSTANCE>
+        
+		<!-- Test Case 5.11: with REFERENCE. -->
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
+		</dm-mapping:INSTANCE>
+        
+		<!-- Test Case 5.12: with COLLECTION. -->
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:COLLECTION dmrole="aaaa" />
+		</dm-mapping:INSTANCE>
+
+		<!-- Test Case 5.1: with all subnodes. -->
+		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+			<dm-mapping:COLLECTION dmrole="aaaa"/>
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+			<dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
+		</dm-mapping:INSTANCE>
+
+		<!-- Test Case 5.14: with multiple PRIMARY_KEYs. -->
+		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+			<!-- BUG: currenly allows only 1 PRIMARY_KEY per INSTANCE 
+			dm-mapping:PRIMARY_KEY dmtype="ggggg" value="uuuu" />
+			-->
+			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+			<dm-mapping:COLLECTION dmrole="aaaa"/>
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+			<dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
+			<dm-mapping:COLLECTION dmrole="aaaa"/>
+			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+			<dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+		</dm-mapping:INSTANCE>
+
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>

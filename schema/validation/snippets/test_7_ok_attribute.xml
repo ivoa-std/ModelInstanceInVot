@@ -1,15 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-			<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<!-- NOTE: INSTANCE node allows multiple ATTRIBUTE subnodes.                      -->
+<!--       We take advantage of this to test several valid cases in the same file -->
 
-	<dm-mapping:MODEL name="model" />
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-         <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee"/>
-            <dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee"/>
-        </dm-mapping:INSTANCE>
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+
+			<!-- Test Case 7.1:  ATTRIBUTE with value -->
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
+
+			<!-- Test Case 7.2:  ATTRIBUTE with ref -->
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee"/>
+
+			<!-- Test Case 7.3:  ATTRIBUTE with both (value provides default) -->
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee"/>
+
+			<!-- Test Case 7.5:  ATTRIBUTE with value and unit -->
+			<!-- BUG: unit attribute not included in schema 
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee" unit="keV"/>
+			-->
+
+			<!-- Test Case 7.6:  ATTRIBUTE with ref and unit -->
+			<!-- BUG: unit attribute not included in schema 
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee" unit="keV"/>
+			-->
+			
+			<!-- Test Case 7.14:  ATTRIBUTE with empty value -->
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value=""/>
+			
+		</dm-mapping:INSTANCE>
+
+		<dm-mapping:INSTANCE dmrole="adhoc:Target.pos" dmtype="adhoc:Position">
+			<!-- Test Case 7.7:  ATTRIBUTE with ref and arrayindex -->
+			<!--    The value of the ATTRIBUTE is pulled from an array PARAM/FIELD VOTable element. -->
+			<!--    arrayindex indicates which index of the target array to use as the value.       -->
+			<!-- BUG: arrayindex attribute not included in schema 
+			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.longitude" dmtype="ivoa:real" ref="_eqpos" arrayindex="0"/>
+			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.latitude" dmtype="ivoa:real" ref="_eqpos" arrayindex="1"/>
+			-->
+		</dm-mapping:INSTANCE>
+		
 	</dm-mapping:TEMPLATES>
+
 </dm-mapping:VODML>

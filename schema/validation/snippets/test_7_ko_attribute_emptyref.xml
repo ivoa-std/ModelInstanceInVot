@@ -3,13 +3,13 @@
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
-			<dm-mapping:ATTRIBUTE dmrole="aaaa"
-				dmtype="fffff" value="aaa" ref="" />
+
+			<!-- Test Case 7.13: ref must not be empty -->
+			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="ffff" ref=""/>
+
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>

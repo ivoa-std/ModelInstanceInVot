@@ -3,19 +3,11 @@
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 
-		<dm-mapping:INSTANCE ID="eeee">
-			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
-			<dm-mapping:COLLECTION dmrole="aaaa">
-				<dm-mapping:ATTRIBUTE dmrole="aaaa"
-					dmtype="fffff" value="eeee" />
-				<dm-mapping:ATTRIBUTE dmrole="aaaa"
-					dmtype="fffff" value="eeee" />
-			</dm-mapping:COLLECTION>
-		</dm-mapping:INSTANCE>
+		<!-- Test Case 5.4: dmtype required. -->
+		<dm-mapping:INSTANCE ID="eeee" dmrole="aaaa"/>
+
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>

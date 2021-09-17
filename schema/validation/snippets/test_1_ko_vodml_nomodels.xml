@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Test Case 1.5: MODEL required -->
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
-	<dm-mapping:GLOBALS>
-	</dm-mapping:GLOBALS>
-	<dm-mapping:TABLE_MAPPING tableref="fgdgfddf">
-	</dm-mapping:TABLE_MAPPING>
+
+
 </dm-mapping:VODML>

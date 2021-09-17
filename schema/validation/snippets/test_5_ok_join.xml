@@ -1,22 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- NOTE: JOIN is child of COLLECTION.                                           -->
+<!--       A bug in the current schema (20210916) prevents multiple JOINs         -->
+<!--       So, here we use a separate COLLECTION for each case.                   -->
+<!--                                                                              -->
+<!--       We take advantage of this to test several valid cases in the same file -->
+
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
-			<dm-mapping:JOIN tableref="aaaaa" />
-		</dm-mapping:COLLECTION>
-		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+		<dm-mapping:COLLECTION dmrole="abc">
+			<!-- Test Case 9.1: using dmref -->
 			<dm-mapping:JOIN dmref="aaaaa" />
 		</dm-mapping:COLLECTION>
-		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
+		
+		<dm-mapping:COLLECTION dmrole="abc">
+			<!-- Test Case 9.2: using tableref -->
+			<dm-mapping:JOIN tableref="aaaaa" />
+		</dm-mapping:COLLECTION>
+		
+		<dm-mapping:COLLECTION dmrole="abc">
+			<!-- Test Case 9.5: using dmref + WHERE -->
 			<dm-mapping:JOIN dmref="aaaaa">
 				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
 			</dm-mapping:JOIN>
 		</dm-mapping:COLLECTION>
-		<dm-mapping:COLLECTION ID="_Datasets" dmrole="">
-			<dm-mapping:JOIN dmref="aaaaa">
+		
+		<dm-mapping:COLLECTION dmrole="abc">
+			<!-- Test Case 9.6: using tableref + WHERE (multiple) -->
+			<dm-mapping:JOIN tableref="aaaaa">
 				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
 				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
 			</dm-mapping:JOIN>

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Test Case 1.2: TEMPLATES optional -->
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
-	<dm-mapping:MODEL name="model" />
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS />
+
 </dm-mapping:VODML>
