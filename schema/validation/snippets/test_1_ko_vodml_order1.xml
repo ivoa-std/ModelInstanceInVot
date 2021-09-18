@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- Test Case 1.6: MODEL subnode must be first -->
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
+	<dm-mapping:GLOBALS />
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
+	<dm-mapping:TEMPLATES tableref="fgdgfddf" />
 
-		<!-- Test Case 8.5: with no ID, dmrole must not be blank -->
-		<dm-mapping:COLLECTION dmrole="" />
-
-	</dm-mapping:GLOBALS>
-	
 </dm-mapping:VODML>
-
-
-

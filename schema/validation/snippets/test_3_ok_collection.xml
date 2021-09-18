@@ -45,7 +45,7 @@
 			<dm-mapping:COLLECTION dmrole="def"/>
 		</dm-mapping:COLLECTION>
 
-		<!-- Test Case 8.12: COLLECTION of multiple (ATTRIBUTE|REFERENCE) subnodes, random order -->
+		<!-- Test Case 8.11: COLLECTION of multiple (ATTRIBUTE|REFERENCE) subnodes, random order -->
 		<!--   Q: what should 'dmrole' of subnodes be (empty or same or random)? -->
 		<!--   Q: should these be allowed in combination?                        -->
 		<dm-mapping:COLLECTION dmrole="role">
