@@ -31,18 +31,18 @@
 |1.10           | - multiple GLOBALS nodes                      | :heavy_multiplication_x: | :white_check_mark: |
 |1.11           | - includes other node                         | :heavy_multiplication_x: | :red_circle:       |
 |**MODEL**      |                                               |                          |                    |
-|2.1            | - name + url (standard syntax)                | :heavy_check_mark:       | :red_circle:       |
-|2.2            | - name only                                   | :heavy_check_mark:       | :red_circle:       |
-|2.3            | - empty (missing name)                        | :heavy_multiplication_x: | :red_circle:       |
-|2.4            | - name=empty                                  | :heavy_multiplication_x: | :red_circle:       |
-|2.5            | - url=empty                                   | :heavy_multiplication_x: | :red_circle:       |
+|2.1            | - name + url (standard syntax)                | :heavy_check_mark:       | :white_check_mark: |
+|2.2            | - name only                                   | :heavy_check_mark:       | :white_check_mark: |
+|2.3            | - empty (missing name)                        | :heavy_multiplication_x: | :white_check_mark: |
+|2.4            | - name=empty                                  | :heavy_multiplication_x: | :white_check_mark: |
+|2.5            | - url=empty                                   | :heavy_multiplication_x: | :white_check_mark: |
 |**GLOBALS**    |                                               |                          |                    |
-|3.1            | - COLLECTION + INSTANCE                       | :heavy_check_mark:       | :red_circle:       |
-|3.2            | - COLLECTION only                             | :heavy_check_mark:       | :red_circle:       |
-|3.3            | - INSTANCE only                               | :heavy_check_mark:       | :red_circle:       |
-|3.4            | - multiple subnodes (C,I), random order       | :heavy_check_mark:       | :red_circle:       |
-|3.5            | - empty, no subnodes                          | :heavy_check_mark:       | :red_circle:       |
-|3.6            | - includes other node                         | :heavy_multiplication_x: | :red_circle:       |
+|3.1            | - COLLECTION + INSTANCE                       | :heavy_check_mark:       | :white_check_mark: |
+|3.2            | - COLLECTION only                             | :heavy_check_mark:       | :white_check_mark: |
+|3.3            | - INSTANCE only                               | :heavy_check_mark:       | :white_check_mark: |
+|3.4            | - multiple subnodes (C,I), random order       | :heavy_check_mark:       | :white_check_mark: |
+|3.5            | - empty, no subnodes                          | :heavy_check_mark:       | :white_check_mark: |
+|3.6            | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
 |**TEMPLATES**  |                                               |                          |                    |
 |4.1            | - INSTANCE only; WHERE optional               | :heavy_check_mark:       | :white_check_mark: |
 |4.2            | - WHERE + INSTANCE                            | :heavy_check_mark:       | :white_check_mark: |
