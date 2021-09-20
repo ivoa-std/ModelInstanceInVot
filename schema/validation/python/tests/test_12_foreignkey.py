@@ -1,5 +1,5 @@
 '''
-Created on 2021/09/18
+Created on 2021/09/17
 
 @author: laurentmichel
 '''
@@ -13,10 +13,10 @@ mapping_sample = FileUtils.get_datadir()
 class Test(unittest.TestCase):
 
     def testOK(self):
-        self.assertTrue(TestRunner.regarde_si_OK(mapping_sample, "test_13"), "file should be valid")
+        self.assertTrue(TestRunner.regarde_si_OK(mapping_sample, "test_12"), "file should be valid")
 
     def testKO(self):
-        self.assertTrue(TestRunner.regarde_si_KO(mapping_sample, "test_13"), "file shouldn't be valid")
+        self.assertTrue(TestRunner.regarde_si_KO(mapping_sample, "test_12"), "file shouldn't be valid")
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@
 
 # Annotation Syntax Test Plan #
 
-| Case          | Description                                   | Valid?                   | Implemented?       |
+| Case          | Description                                   | Valid?<br> :heavy_check_mark: = expected valid<br> :heavy_multiplication_x: = expected invalid | Implemented? <br> :white_check_mark: = implemented <br> :red_circle: = not implemented <br> :x: = test fails  |
 |:---           |:---                                           |:----                     |:----               | 
 |**VODML**      |                                               |                          |                    |
 |1.1            | - MODEL + GLOBALS + TEMPLATES                 | :heavy_check_mark:       | :white_check_mark: |
@@ -46,7 +46,7 @@
 |**TEMPLATES**  |                                               |                          |                    |
 |4.1            | - INSTANCE only; WHERE optional               | :heavy_check_mark:       | :white_check_mark: |
 |4.2            | - WHERE + INSTANCE                            | :heavy_check_mark:       | :white_check_mark: |
-|4.3            | - WHERE only; INSTANCE required               | :heavy_multiplication_x: | :white_check_mark: |
+|4.3            | - WHERE only; INSTANCE required               | :heavy_multiplication_x: | :white_check_mark: :x: |
 |4.4            | - INSTANCE + WHERE (order)                    | :heavy_multiplication_x: | :white_check_mark: |
 |4.5            | - multiple WHERE                              | :heavy_check_mark:       | :white_check_mark: |
 |4.6            | - multiple INSTANCE                           | :heavy_check_mark:       | :white_check_mark: |
@@ -124,7 +124,7 @@
 |9.7            | - empty dmref                                 | :heavy_multiplication_x: | :white_check_mark: |
 |9.8            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |**WHERE**      |                                               |                          |                    |
-|10.1           | - primarykey only                             | :heavy_check_mark:       | :white_check_mark: |
+|10.1           | - primarykey only                             | :heavy_multiplication_x: | :white_check_mark: |
 |10.2           | - primarykey + foreignkey                     | :heavy_check_mark:       | :white_check_mark: |
 |10.3           | - primarykey + value                          | :heavy_check_mark:       | :white_check_mark: |
 |10.4           | - foreignkey + value                          | :heavy_check_mark:       | :white_check_mark: |

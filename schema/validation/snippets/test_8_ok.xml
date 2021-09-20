@@ -47,6 +47,8 @@
 
 		<!-- Test Case 8.11: COLLECTION of multiple (ATTRIBUTE|REFERENCE) subnodes, random order -->
 		<!--   Q: what should 'dmrole' of subnodes be (empty or same or random)? -->
+		<!--   A: content should not have a specified dmrole (is on container), however
+		          most of the allowed contents do not generally allow empty/missing dmrole -->
 		<!--   Q: should these be allowed in combination?                        -->
 		<dm-mapping:COLLECTION dmrole="role">
 			<dm-mapping:REFERENCE dmrole="A" dmref="_ref1" />
@@ -57,7 +59,6 @@
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.12: COLLECTION of multiple (INSTANCE|JOIN|COLLECTION) subnodes, random order -->
-		<!--   Q: what should 'dmrole' of subnodes be (empty or same or random)? -->
 		<dm-mapping:COLLECTION dmrole="role">
 			<dm-mapping:INSTANCE dmrole="A" dmtype="ds:experiment.ObsDataset" />
 			<dm-mapping:COLLECTION dmrole="B">
