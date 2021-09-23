@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+
+	<!-- Test Case 3.4: allows multiple instances of each subnode, in any order -->
+	<dm-mapping:GLOBALS >
+		<dm-mapping:COLLECTION dmrole="aaaaa" />
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmrole="bbbb" dmtype="fffff" />
+		<dm-mapping:COLLECTION dmrole="aaaaa" />
+		<dm-mapping:COLLECTION dmrole="bbbb" />
+		<dm-mapping:INSTANCE dmrole="cccc" dmtype="fffff" />
+	</dm-mapping:GLOBALS>
+
+</dm-mapping:VODML>

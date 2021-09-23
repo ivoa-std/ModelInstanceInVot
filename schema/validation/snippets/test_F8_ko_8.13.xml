@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS>
+
+	        <!-- Test Case 8.13: mixed subnode sets -->
+	        <!--   * allow (A,R) or (I,J,C) only    -->
+		<dm-mapping:COLLECTION dmrole="role">
+			<dm-mapping:ATTRIBUTE dmrole="A.b" dmtype="model:elem" value="foo" />
+			<dm-mapping:INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset" />
+		</dm-mapping:COLLECTION>
+
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>
+
+
+

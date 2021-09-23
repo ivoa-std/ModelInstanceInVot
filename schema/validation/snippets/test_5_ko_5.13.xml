@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+
+		<!-- Test Case 5.13: PRIMARY_KEY subnode not first. -->
+		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
+			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+			<dm-mapping:COLLECTION dmrole="aaaa"/>
+		</dm-mapping:INSTANCE>
+	</dm-mapping:TEMPLATES>
+</dm-mapping:VODML>

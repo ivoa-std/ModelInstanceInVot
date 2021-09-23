@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Test Case 1.9: allow multiple TEMPLATES subnodes -->
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf" />
+	<dm-mapping:TEMPLATES tableref="dgjovds4" />
+	<dm-mapping:TEMPLATES tableref="s95dv8ed" />
+
+</dm-mapping:VODML>
