@@ -50,7 +50,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
   <xs:complexType name="Templates">
     <xs:sequence>
       <xs:element name="WHERE" type="dm-mapping:Where" minOccurs="0" maxOccurs="unbounded" /> 
-      <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="1" maxOccurs="unbounded" />
     </xs:sequence>
     <xs:attribute type="xs:string" name="tableref" />
     <xs:assert test="if (@tableref) then (@tableref != '') else true()  " />
@@ -102,8 +102,8 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="size" />  
     <xs:attribute type="xs:string" name="ID" />
     <xs:assert test="./@dmrole" />
+    <xs:assert test="(not(@ID) and @dmrole != '') or  @ID != ''" />
     <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
-    <xs:assert test="not(@ID) and @dmrole != '' or  @ID != ''" />
 
     <!-- 
     <xs:assert test="((count(./dm-mapping:JOIN) eq 1 and count(./dm-mapping:INSTANCE) eq 0 and count(./dm-mapping:COLLECTION) eq 0 and count(./dm-mapping:REFERENCE) eq 0)  or count(./dm-mapping:JOIN) eq 0)" />
@@ -118,6 +118,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="tableref" />
     <xs:attribute type="xs:string" name="dmref" />
     <xs:assert test="if (./@tableref) then  @tableref != '' else true()" />
+    <xs:assert test="./@dmrole and  @dmrole != ''" />
     <xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
     <xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />    
     <xs:assert test="((count(dm-mapping:FOREIGN_KEY) eq 1 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
@@ -152,6 +153,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="./@ref  or ./@value " />
     <xs:assert test="@dmtype != '' " />
     <xs:assert test="if (./@ref) then  @ref != '' else true()" />
+    <xs:assert test="(./@value and not(./@ref)) or (not(./@value) and ./@ref)" />
   </xs:complexType>
 
   <xs:complexType name="ForeignKey">

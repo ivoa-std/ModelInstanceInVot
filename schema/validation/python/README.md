@@ -46,7 +46,7 @@
 |**TEMPLATES**  |                                               |                          |                    |
 |4.1            | - INSTANCE only; WHERE optional               | :heavy_check_mark:       | :white_check_mark: |
 |4.2            | - WHERE + INSTANCE                            | :heavy_check_mark:       | :white_check_mark: |
-|4.3            | - WHERE only; INSTANCE required               | :heavy_multiplication_x: | :white_check_mark: :x: |
+|4.3            | - WHERE only; INSTANCE required               | :heavy_multiplication_x: | :white_check_mark: |
 |4.4            | - INSTANCE + WHERE (order)                    | :heavy_multiplication_x: | :white_check_mark: |
 |4.5            | - multiple WHERE                              | :heavy_check_mark:       | :white_check_mark: |
 |4.6            | - multiple INSTANCE                           | :heavy_check_mark:       | :white_check_mark: |
@@ -81,7 +81,7 @@
 |6.6            | - tableref must have FOREIGN_KEY              | :heavy_multiplication_x: | :white_check_mark: |
 |6.7            | - dmref must NOT have FOREIGN_KEY             | :heavy_multiplication_x: | :white_check_mark: |
 |6.8            | - multiple FOREIGN_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: :x: |
-|6.9            | - empty dmrole                                | :heavy_multiplication_x: | :white_check_mark: :x: |
+|6.9            | - empty dmrole                                | :heavy_multiplication_x: | :white_check_mark: |
 |6.10           | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |6.11           | - empty dmref                                 | :heavy_multiplication_x: | :white_check_mark: |
 |**ATTRIBUTE**  |                                               |                          |                    |
@@ -113,7 +113,7 @@
 |8.10           | - dmrole + COLLECTION                         | :heavy_check_mark:       | :white_check_mark: |
 |8.11           | - dmrole + multiple (A,R), random order       | :heavy_check_mark:       | :white_check_mark: |
 |8.12           | - dmrole + multiple (I,J,C), random order     | :heavy_check_mark:       | :white_check_mark: :x: |
-|8.13           | - dmrole + ATTRIBUTE + INSTANCE (mixed set)   | :heavy_multiplication_x: | :white_check_mark: :x: |
+|8.13           | - dmrole + ATTRIBUTE + INSTANCE (mixed set)   | :heavy_multiplication_x: | :white_check_mark: |
 |**JOIN**       |                                               |                          |                    |
 |9.1            | - dmref                                       | :heavy_check_mark:       | :white_check_mark: |
 |9.2            | - tableref                                    | :heavy_check_mark:       | :white_check_mark: |
@@ -138,7 +138,7 @@
 |**PRIMARY_KEY**|                                               |                          |                    |
 |11.1           | - dmtype + ref                                | :heavy_check_mark:       | :white_check_mark: |
 |11.2           | - dmtype + value                              | :heavy_check_mark:       | :white_check_mark: |
-|11.3           | - dmtype only  (must have one or other)       | :heavy_multiplication_x: | :white_check_mark: :x: |
+|11.3           | - dmtype only  (must have one or other)       | :heavy_multiplication_x: | :white_check_mark: |
 |11.4           | - dmtype + ref + value (not both)             | :heavy_multiplication_x: | :white_check_mark: :x: |
 |11.5           | - missing dmtype                              | :heavy_multiplication_x: | :white_check_mark: |
 |11.6           | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
