@@ -153,6 +153,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="./@ref  or ./@value " />
     <xs:assert test="@dmtype != '' " />
     <xs:assert test="if (./@ref) then  @ref != '' else true()" />
+    <xs:assert test="(./@value and not(./@ref)) or (not(./@value) and ./@ref)" />
   </xs:complexType>
 
   <xs:complexType name="ForeignKey">

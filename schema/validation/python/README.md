@@ -113,7 +113,7 @@
 |8.10           | - dmrole + COLLECTION                         | :heavy_check_mark:       | :white_check_mark: |
 |8.11           | - dmrole + multiple (A,R), random order       | :heavy_check_mark:       | :white_check_mark: |
 |8.12           | - dmrole + multiple (I,J,C), random order     | :heavy_check_mark:       | :white_check_mark: :x: |
-|8.13           | - dmrole + ATTRIBUTE + INSTANCE (mixed set)   | :heavy_multiplication_x: | :white_check_mark: :x: |
+|8.13           | - dmrole + ATTRIBUTE + INSTANCE (mixed set)   | :heavy_multiplication_x: | :white_check_mark: |
 |**JOIN**       |                                               |                          |                    |
 |9.1            | - dmref                                       | :heavy_check_mark:       | :white_check_mark: |
 |9.2            | - tableref                                    | :heavy_check_mark:       | :white_check_mark: |
@@ -138,7 +138,7 @@
 |**PRIMARY_KEY**|                                               |                          |                    |
 |11.1           | - dmtype + ref                                | :heavy_check_mark:       | :white_check_mark: |
 |11.2           | - dmtype + value                              | :heavy_check_mark:       | :white_check_mark: |
-|11.3           | - dmtype only  (must have one or other)       | :heavy_multiplication_x: | :white_check_mark: :x: |
+|11.3           | - dmtype only  (must have one or other)       | :heavy_multiplication_x: | :white_check_mark: |
 |11.4           | - dmtype + ref + value (not both)             | :heavy_multiplication_x: | :white_check_mark: :x: |
 |11.5           | - missing dmtype                              | :heavy_multiplication_x: | :white_check_mark: |
 |11.6           | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
