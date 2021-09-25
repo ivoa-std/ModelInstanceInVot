@@ -4,6 +4,7 @@
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+    <dm-mapping:GLOBALS />
 
 	<!-- Test Case 4.9: tableref must not be empty -->
 	<dm-mapping:TEMPLATES tableref="">

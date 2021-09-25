@@ -60,7 +60,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
   <!-- Mapping of either a Datatype or an Objecttype -->
   <xs:complexType name="Instance">
     <xs:sequence>
-      <xs:choice maxOccurs="1">
+      <xs:choice maxOccurs="unbounded">
         <xs:element name="PRIMARY_KEY" type="dm-mapping:PrimaryKey" minOccurs="0" />
       </xs:choice> <!-- can this now be an xs:all -->
       <xs:choice maxOccurs="unbounded">
@@ -84,8 +84,11 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="dmtype" use="required" />
     <xs:attribute type="xs:string" name="ref" />
     <xs:attribute type="xs:string" name="value" />
+    <xs:attribute type="xs:string" name="unit" />
+    <xs:attribute type="xs:string" name="arrayindex" />
     <xs:assert test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" /> 
     <xs:assert test="if (@ref) then (@ref != '') else true()  " />  
+    <xs:assert test="if (@arrayindex) then (@arrayindex >= '0') else true()  " />  
     <xs:assert test="@dmrole != '' and @dmtype != ''  " />  
   </xs:complexType>
 
@@ -96,7 +99,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
       <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="ATTRIBUTE" type="dm-mapping:Attribute" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" maxOccurs="1" />
+      <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" maxOccurs="unbounded" />
     </xs:all>
     <xs:attribute type="xs:string" name="dmrole" use="required" />
     <xs:attribute type="xs:string" name="size" />  
@@ -112,7 +115,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
 
   <xs:complexType name="Reference">
     <xs:sequence>
-      <xs:element name="FOREIGN_KEY" type="dm-mapping:ForeignKey" minOccurs="0" maxOccurs="1" />
+      <xs:element name="FOREIGN_KEY" type="dm-mapping:ForeignKey" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
     <xs:attribute type="xs:string" name="dmrole" use="required" />
     <xs:attribute type="xs:string" name="tableref" />
@@ -121,7 +124,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="./@dmrole and  @dmrole != ''" />
     <xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
     <xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />    
-    <xs:assert test="((count(dm-mapping:FOREIGN_KEY) eq 1 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
+    <xs:assert test="((count(dm-mapping:FOREIGN_KEY) > 0 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
   </xs:complexType>
 
   <!-- Join with another table One instance created for joined row of the secondary table -->
