@@ -69,7 +69,7 @@
 |5.11           | - with REFERENCE                              | :heavy_check_mark:       | :white_check_mark: |
 |5.12           | - with COLLECTION                             | :heavy_check_mark:       | :white_check_mark: |
 |5.13           | - PRIMARY_KEY not first                       | :heavy_multiplication_x: | :white_check_mark: |
-|5.14           | - multiple PRIMARY_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.14           | - multiple PRIMARY_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: |
 |5.15           | - multiple subnodes (A,I,R,C), random order   | :heavy_check_mark:       | :white_check_mark: |
 |5.16           | - includes other node                         | :heavy_multiplication_x: | :red_circle:       |
 |**REFERENCE**  |                                               |                          |                    |

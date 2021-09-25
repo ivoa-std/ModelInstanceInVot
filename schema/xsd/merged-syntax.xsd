@@ -60,7 +60,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
   <!-- Mapping of either a Datatype or an Objecttype -->
   <xs:complexType name="Instance">
     <xs:sequence>
-      <xs:choice maxOccurs="1">
+      <xs:choice maxOccurs="unbounded">
         <xs:element name="PRIMARY_KEY" type="dm-mapping:PrimaryKey" minOccurs="0" />
       </xs:choice> <!-- can this now be an xs:all -->
       <xs:choice maxOccurs="unbounded">
