@@ -112,7 +112,7 @@
 |8.9            | - dmrole + JOIN                               | :heavy_check_mark:       | :white_check_mark: |
 |8.10           | - dmrole + COLLECTION                         | :heavy_check_mark:       | :white_check_mark: |
 |8.11           | - dmrole + multiple (A,R), random order       | :heavy_check_mark:       | :white_check_mark: |
-|8.12           | - dmrole + multiple (I,J,C), random order     | :heavy_check_mark:       | :white_check_mark: :x: |
+|8.12           | - dmrole + multiple (I,J,C), random order     | :heavy_check_mark:       | :white_check_mark: |
 |8.13           | - dmrole + ATTRIBUTE + INSTANCE (mixed set)   | :heavy_multiplication_x: | :white_check_mark: |
 |**JOIN**       |                                               |                          |                    |
 |9.1            | - dmref                                       | :heavy_check_mark:       | :white_check_mark: |

@@ -99,7 +99,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
       <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="ATTRIBUTE" type="dm-mapping:Attribute" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" maxOccurs="1" />
+      <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" maxOccurs="unbounded" />
     </xs:all>
     <xs:attribute type="xs:string" name="dmrole" use="required" />
     <xs:attribute type="xs:string" name="size" />  
