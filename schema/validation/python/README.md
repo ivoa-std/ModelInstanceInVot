@@ -99,7 +99,7 @@
 |7.12           | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
 |7.13           | - empty ref                                   | :heavy_multiplication_x: | :white_check_mark: |
 |7.14           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
-|7.15           | - arrayindex value < 0                        | :heavy_multiplication_x: | :red_circle:       |
+|7.15           | - arrayindex value < 0                        | :heavy_multiplication_x: | :white_check_mark: |
 |**COLLECTION** |                                               |                          |                    |
 |8.1            | - ID + dmrole only (empty collection)         | :heavy_check_mark:       | :white_check_mark: |
 |8.2            | - dmrole only; ID optional                    | :heavy_check_mark:       | :white_check_mark: |
