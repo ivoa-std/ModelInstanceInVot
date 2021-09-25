@@ -50,7 +50,7 @@
 |4.4            | - INSTANCE + WHERE (order)                    | :heavy_multiplication_x: | :white_check_mark: |
 |4.5            | - multiple WHERE                              | :heavy_check_mark:       | :white_check_mark: |
 |4.6            | - multiple INSTANCE                           | :heavy_check_mark:       | :white_check_mark: |
-|4.7            | - includes other node                         | :heavy_multiplication_x: | :red_circle:       |
+|4.7            | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
 |4.8            | - missing tableref                            | :heavy_multiplication_x: | :white_check_mark: :x: |
 |4.9            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |**INSTANCE**   |                                               |                          |                    |
