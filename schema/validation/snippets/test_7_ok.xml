@@ -34,10 +34,8 @@
 			<!-- Test Case 7.7:  ATTRIBUTE with ref and arrayindex -->
 			<!--    The value of the ATTRIBUTE is pulled from an array PARAM/FIELD VOTable element. -->
 			<!--    arrayindex indicates which index of the target array to use as the value.       -->
-			<!-- BUG: arrayindex attribute not included in schema 
 			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.longitude" dmtype="ivoa:real" ref="_eqpos" arrayindex="0"/>
 			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.latitude" dmtype="ivoa:real" ref="_eqpos" arrayindex="1"/>
-			-->
 		</dm-mapping:INSTANCE>
 		
 	</dm-mapping:TEMPLATES>

@@ -85,6 +85,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="ref" />
     <xs:attribute type="xs:string" name="value" />
     <xs:attribute type="xs:string" name="unit" />
+    <xs:attribute type="xs:string" name="arrayindex" />
     <xs:assert test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" /> 
     <xs:assert test="if (@ref) then (@ref != '') else true()  " />  
     <xs:assert test="@dmrole != '' and @dmtype != ''  " />  
