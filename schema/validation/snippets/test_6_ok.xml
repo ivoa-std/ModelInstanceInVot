@@ -19,13 +19,13 @@
 			</dm-mapping:REFERENCE>
 
 			<!-- Test Case 6.8:  REFERENCE with tableref and multiple FOREIGN_KEYs -->
-			<!-- BUG: should allow >1 FOREIGN_KEYs
+			<!-- should allow >1 FOREIGN_KEYs -->
 			<dm-mapping:REFERENCE dmrole="aaaa" tableref="fffff">
 				<dm-mapping:FOREIGN_KEY ref="zzzzz" />
 				<dm-mapping:FOREIGN_KEY ref="zzzz1" />
 				<dm-mapping:FOREIGN_KEY ref="zzzz2" />
 			</dm-mapping:REFERENCE>
-			-->
+			
 			
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>

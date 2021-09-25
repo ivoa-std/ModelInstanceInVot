@@ -112,7 +112,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
 
   <xs:complexType name="Reference">
     <xs:sequence>
-      <xs:element name="FOREIGN_KEY" type="dm-mapping:ForeignKey" minOccurs="0" maxOccurs="1" />
+      <xs:element name="FOREIGN_KEY" type="dm-mapping:ForeignKey" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
     <xs:attribute type="xs:string" name="dmrole" use="required" />
     <xs:attribute type="xs:string" name="tableref" />
@@ -121,7 +121,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="./@dmrole and  @dmrole != ''" />
     <xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
     <xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />    
-    <xs:assert test="((count(dm-mapping:FOREIGN_KEY) eq 1 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
+    <xs:assert test="((count(dm-mapping:FOREIGN_KEY) > 0 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
   </xs:complexType>
 
   <!-- Join with another table One instance created for joined row of the secondary table -->

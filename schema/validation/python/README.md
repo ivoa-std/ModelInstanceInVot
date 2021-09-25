@@ -80,7 +80,7 @@
 |6.5            | - missing dmrole                              | :heavy_multiplication_x: | :white_check_mark: |
 |6.6            | - tableref must have FOREIGN_KEY              | :heavy_multiplication_x: | :white_check_mark: |
 |6.7            | - dmref must NOT have FOREIGN_KEY             | :heavy_multiplication_x: | :white_check_mark: |
-|6.8            | - multiple FOREIGN_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: :x: |
+|6.8            | - multiple FOREIGN_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: |
 |6.9            | - empty dmrole                                | :heavy_multiplication_x: | :white_check_mark: |
 |6.10           | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |6.11           | - empty dmref                                 | :heavy_multiplication_x: | :white_check_mark: |
