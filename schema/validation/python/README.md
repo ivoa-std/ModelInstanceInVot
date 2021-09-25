@@ -71,7 +71,7 @@
 |5.13           | - PRIMARY_KEY not first                       | :heavy_multiplication_x: | :white_check_mark: |
 |5.14           | - multiple PRIMARY_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: |
 |5.15           | - multiple subnodes (A,I,R,C), random order   | :heavy_check_mark:       | :white_check_mark: |
-|5.16           | - includes other node                         | :heavy_multiplication_x: | :red_circle:       |
+|5.16           | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
 |**REFERENCE**  |                                               |                          |                    |
 |6.1            | - dmrole + dmref                              | :heavy_check_mark:       | :white_check_mark: |
 |6.2            | - dmrole + tableref + FOREIGN_KEY             | :heavy_check_mark:       | :white_check_mark: |
