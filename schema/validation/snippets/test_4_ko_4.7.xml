@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- NOTE: VODML node allows multiple TEMPLATES nodes.                            -->
+<!--       We take advantage of this to test several valid cases in the same file -->
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+    <dm-mapping:GLOBALS />
+	
+	<!-- Test Case 4.7: other node -->
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
+		<dm-mapping:WHERE primarykey="ttttt" value="tttt" />
+        <dm-mapping:BANDOL dmrole="aaaa" dmtype="fffff"/>
+        <dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff"/>
+	</dm-mapping:TEMPLATES>
+	
+</dm-mapping:VODML>
