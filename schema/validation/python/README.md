@@ -89,8 +89,8 @@
 |7.2            | - dmrole + dmtype + ref                       | :heavy_check_mark:       | :white_check_mark: |
 |7.3            | - dmrole + dmtype + ref + value               | :heavy_check_mark:       | :white_check_mark: |
 |7.4            | - dmrole + dmtype (must have one, or both)    | :heavy_multiplication_x: | :white_check_mark: |
-|7.5            | - dmrole + dmtype + value + unit              | :heavy_check_mark:       | :white_check_mark: :x: |
-|7.6            | - dmrole + dmtype + ref + unit                | :heavy_check_mark:       | :white_check_mark: :x: |
+|7.5            | - dmrole + dmtype + value + unit              | :heavy_check_mark:       | :white_check_mark: |
+|7.6            | - dmrole + dmtype + ref + unit                | :heavy_check_mark:       | :white_check_mark: |
 |7.7            | - dmrole + dmtype + ref + arrayindex          | :heavy_check_mark:       | :white_check_mark: :x: |
 |7.8            | - dmrole + dmtype + value + arrayindex        | :heavy_multiplication_x: | :white_check_mark: :x: |
 |7.9            | - missing dmrole                              | :heavy_multiplication_x: | :white_check_mark: |

@@ -20,14 +20,10 @@
 			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee"/>
 
 			<!-- Test Case 7.5:  ATTRIBUTE with value and unit -->
-			<!-- BUG: unit attribute not included in schema 
 			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee" unit="keV"/>
-			-->
 
 			<!-- Test Case 7.6:  ATTRIBUTE with ref and unit -->
-			<!-- BUG: unit attribute not included in schema 
 			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee" unit="keV"/>
-			-->
 			
 			<!-- Test Case 7.14:  ATTRIBUTE with empty value -->
 			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value=""/>
