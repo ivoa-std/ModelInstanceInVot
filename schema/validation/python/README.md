@@ -29,7 +29,7 @@
 |1.8            | - multiple MODEL nodes                        | :heavy_check_mark:       | :white_check_mark: |
 |1.9            | - multiple TEMPLATES nodes                    | :heavy_check_mark:       | :white_check_mark: |
 |1.10           | - multiple GLOBALS nodes                      | :heavy_multiplication_x: | :white_check_mark: |
-|1.11           | - includes other node                         | :heavy_multiplication_x: | :red_circle:       |
+|1.11           | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
 |**MODEL**      |                                               |                          |                    |
 |2.1            | - name + url (standard syntax)                | :heavy_check_mark:       | :white_check_mark: |
 |2.2            | - name only                                   | :heavy_check_mark:       | :white_check_mark: |
