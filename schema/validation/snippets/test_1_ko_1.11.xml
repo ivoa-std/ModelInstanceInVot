@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Test Case 1.10: only 1 GLOBALS subnode allowed. -->
+<!-- Test Case 1.11: only 1 bad node in VODML. -->
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
