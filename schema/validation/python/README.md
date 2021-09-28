@@ -139,10 +139,10 @@
 |11.1           | - dmtype + ref                                | :heavy_check_mark:       | :white_check_mark: |
 |11.2           | - dmtype + value                              | :heavy_check_mark:       | :white_check_mark: |
 |11.3           | - dmtype only  (must have one or other)       | :heavy_multiplication_x: | :white_check_mark: |
-|11.4           | - dmtype + ref + value (not both)             | :heavy_multiplication_x: | :white_check_mark: :x: |
+|11.4           | - dmtype + ref + value (not both)             | :heavy_multiplication_x: | :white_check_mark: |
 |11.5           | - missing dmtype                              | :heavy_multiplication_x: | :white_check_mark: |
 |11.6           | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
-|11.7           | - empty ref                                   | :heavy_multiplication_x: | :white_check_mark: :x: |
+|11.7           | - empty ref                                   | :heavy_multiplication_x: | :white_check_mark: |
 |11.8           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
 |**FOREIGN_KEY**|                                               |                          |                    |
 |12.1           | - ref                                         | :heavy_check_mark:       | :white_check_mark: |
