@@ -7,6 +7,7 @@
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+    <dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 
 		<!-- Test Case 5.2: ID optional. -->
@@ -56,9 +57,9 @@
 		<!-- Test Case 5.14: with multiple PRIMARY_KEYs. -->
 		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
 			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-			<!-- BUG: currenly allows only 1 PRIMARY_KEY per INSTANCE 
-			dm-mapping:PRIMARY_KEY dmtype="ggggg" value="uuuu" />
-			-->
+			<!-- currenly allows only 1 PRIMARY_KEY per INSTANCE  -->
+			<dm-mapping:PRIMARY_KEY dmtype="ggggg" value="uuuu" />
+
 			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
 			<dm-mapping:COLLECTION dmrole="aaaa"/>
 			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>

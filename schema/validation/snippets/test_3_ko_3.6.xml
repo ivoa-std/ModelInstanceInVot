@@ -7,7 +7,9 @@
 
 	<!-- Test Case 3.6: unexpected subnode -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION dmrole="aaaaa" />
+		<dm-mapping:COLLECTION dmrole="aaaaa">
+		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		</dm-mapping:COLLECTION>
 		<dm-mapping:REFERENCE dmrole="aaaa" ref="_zzz" />
 		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
 	</dm-mapping:GLOBALS>

@@ -7,11 +7,17 @@
 
 	<!-- Test Case 3.4: allows multiple instances of each subnode, in any order -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION dmrole="aaaaa" />
+				<dm-mapping:COLLECTION dmrole="aaaaa">
+		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		</dm-mapping:COLLECTION>
 		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
 		<dm-mapping:INSTANCE dmrole="bbbb" dmtype="fffff" />
-		<dm-mapping:COLLECTION dmrole="aaaaa" />
-		<dm-mapping:COLLECTION dmrole="bbbb" />
+				<dm-mapping:COLLECTION dmrole="aaaaa">
+		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		</dm-mapping:COLLECTION>
+				<dm-mapping:COLLECTION dmrole="aaaaa">
+		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		</dm-mapping:COLLECTION>
 		<dm-mapping:INSTANCE dmrole="cccc" dmtype="fffff" />
 	</dm-mapping:GLOBALS>
 
