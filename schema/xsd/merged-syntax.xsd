@@ -95,21 +95,24 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
 
   <!-- Data list mapping block -->
   <xs:complexType name="Collection"> 
-    <xs:all>
-      <xs:element name="REFERENCE" type="dm-mapping:Reference" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="ATTRIBUTE" type="dm-mapping:Attribute" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" maxOccurs="unbounded" />
-    </xs:all>
+    <xs:choice maxOccurs="unbounded">
+      <xs:element name="REFERENCE" type="dm-mapping:Reference" minOccurs="0"  />
+      <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="0"  />
+      <xs:element name="ATTRIBUTE" type="dm-mapping:Attribute" minOccurs="0"  />
+      <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0"  />
+      <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" />
+    </xs:choice>
     <xs:attribute type="xs:string" name="dmrole" use="required" />
     <xs:attribute type="xs:string" name="size" />  
     <xs:attribute type="xs:string" name="ID" />
-    <xs:assert test="./@dmrole" />
     <xs:assert test="(not(@ID) and @dmrole != '') or  @ID != ''" />
     <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
-
-    <!-- 
+    <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:REFERENCE) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:REFERENCE) = 0"/>
+    <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:INSTANCE) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:INSTANCE) = 0"/>
+    <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:JOIN) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:JOIN) = 0"/>
+    <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:COLLECTION) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:COLLECTION) = 0"/>
+    
+     <!-- 
     <xs:assert test="((count(./dm-mapping:JOIN) eq 1 and count(./dm-mapping:INSTANCE) eq 0 and count(./dm-mapping:COLLECTION) eq 0 and count(./dm-mapping:REFERENCE) eq 0)  or count(./dm-mapping:JOIN) eq 0)" />
     -->
   </xs:complexType>
