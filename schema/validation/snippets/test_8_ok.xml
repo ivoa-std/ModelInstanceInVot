@@ -52,10 +52,7 @@
 		<!--   Q: should these be allowed in combination?                        -->
 		<dm-mapping:COLLECTION dmrole="role">
 			<dm-mapping:REFERENCE dmrole="A" dmref="_ref1" />
-			<dm-mapping:ATTRIBUTE dmrole="A" dmtype="model:elem" value="foo" />
 			<dm-mapping:REFERENCE dmrole="A" dmref="_ref2" />
-			<dm-mapping:ATTRIBUTE dmrole="A" dmtype="model:elem" value="fop" />
-			<dm-mapping:ATTRIBUTE dmrole="A" dmtype="model:elem" value="foq" />
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.12: COLLECTION of multiple (INSTANCE|JOIN|COLLECTION) subnodes, random order -->
@@ -71,16 +68,15 @@
 			<dm-mapping:JOIN tableref="MoreResults" />
 			<!-- allow multiple JOIN nodes.. to build a COLLECTION of instances from different tables -->
 			<dm-mapping:JOIN tableref="EvenMoreResults" />
-				        
+		</dm-mapping:COLLECTION>  
+		      
 		<!-- Test Case 8.13: mixed subnode sets -->
 	    <!--   * allow (A,R) or (I,J,C) only    -->
 		<dm-mapping:COLLECTION dmrole="role">
 			<dm-mapping:ATTRIBUTE dmrole="A.b" dmtype="model:elem" value="foo" />
-			<dm-mapping:INSTANCE ID="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset" />
 		</dm-mapping:COLLECTION>
 			
-		</dm-mapping:COLLECTION>
-
+		
 	</dm-mapping:GLOBALS>
 	
 </dm-mapping:VODML>

@@ -11,7 +11,9 @@
 		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
 			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
 			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-			<dm-mapping:COLLECTION dmrole="aaaa"/>
+				<dm-mapping:COLLECTION dmrole="aaaaa">
+		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		</dm-mapping:COLLECTION>
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>
