@@ -69,9 +69,8 @@
 			</dm-mapping:COLLECTION>
 			<dm-mapping:INSTANCE dmrole="D" dmtype="ds:experiment.ObsDataset" />
 			<dm-mapping:JOIN tableref="MoreResults" />
-			<!-- BUG: should allow multiple JOIN nodes.. to build a COLLECTION of instances from different tables
+			<!-- allow multiple JOIN nodes.. to build a COLLECTION of instances from different tables -->
 			<dm-mapping:JOIN tableref="EvenMoreResults" />
-			-->
 				        
 		<!-- Test Case 8.13: mixed subnode sets -->
 	    <!--   * allow (A,R) or (I,J,C) only    -->
@@ -81,7 +80,7 @@
 		</dm-mapping:COLLECTION>
 			
 		</dm-mapping:COLLECTION>
-
+		
 	</dm-mapping:GLOBALS>
 	
 </dm-mapping:VODML>
