@@ -3,6 +3,23 @@
 <!-- NOTE: GLOBALS node allows multiple COLLECTION sub-nodes.                     -->
 <!--       We take advantage of this to test several valid cases in the same file -->
 
+<!--
+    The COLLECTION element is used for multple purposes, each having a limited 
+    subset of elements for its content. 
+     1) Array attribute (multiplicity > 1).
+        COLLECTION contains the array as a set of ATTRIBUTE nodes
+        The dmrole of the COLLECTION is inherited by its contents.
+     2) Reference relation with multiplicity > 1
+        COLLECTION contains the set of REFERENCEs
+        The dmrole of the COLLECTION is inherited by its contents.
+     3) Composition relation with multiplicity > 1
+        COLLECTION contains the set of INSTANCEs, either direct INSTANCE or through JOIN
+     4) Proxy for TABLE; grouping of common INSTANCES for selection by PRIMARY/FOREIGN key.
+        COLLECTION contains the set of INSTANCES to be selected from.
+        COLLECTION MUST have an ID, used as the tableref in the corresponding REFERENCEs
+        COLLECTION has no specified dmrole (is empty)
+-->
+
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
