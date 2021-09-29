@@ -55,9 +55,9 @@
 		</dm-mapping:INSTANCE>
 
 		<!-- Test Case 5.14: with multiple PRIMARY_KEYs. -->
+		<!-- Test Case 5.15: with multiple (A,I,R,C) subnodes in random order. -->
 		<dm-mapping:INSTANCE ID="_ref1" dmrole="aaaa" dmtype="fffff">
 			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-			<!-- currenly allows only 1 PRIMARY_KEY per INSTANCE  -->
 			<dm-mapping:PRIMARY_KEY dmtype="ggggg" value="uuuu" />
 
 			<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />

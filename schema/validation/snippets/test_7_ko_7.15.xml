@@ -6,9 +6,10 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 		<dm-mapping:INSTANCE dmrole="adhoc:Target.pos" dmtype="adhoc:Position">
-			<!-- Test Case 7.8:  ATTRIBUTE with value and arrayindex -->
-			<!--    The arrayindex attribute only to be combined with ref  -->
-			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.longitude" dmtype="ivoa:real" value="77.339" arrayindex="-2"/>
+	    
+			<!-- Test Case 7.15: invalid arrayindex value (< 0) -->
+			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.longitude" dmtype="ivoa:real" ref="fffeee" arrayindex="-2"/>
+
 		</dm-mapping:INSTANCE>
 		
 	</dm-mapping:TEMPLATES>
