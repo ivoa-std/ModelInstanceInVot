@@ -7,10 +7,10 @@
 
 	<!-- Test Case 3.1: basic instance, all subnodes -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION dmrole="aaaaa">
-		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		<dm-mapping:COLLECTION ID="sadas" dmrole="">
+		    <dm-mapping:ATTRIBUTE dmtype="dmtype" value="aa" />
 		</dm-mapping:COLLECTION>
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE ID="ssdfsfds" dmrole="" dmtype="fffff" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

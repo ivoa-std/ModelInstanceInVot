@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- NOTE: JOIN is child of COLLECTION.                                           -->
+
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
+	<dm-mapping:MODEL name="model" />
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-
-		<!-- Test Case 8.5: No role for COLLECTION/INSTANCE-->
 		<dm-mapping:COLLECTION dmrole="">
-            <dm-mapping:INSTANCE dmrole="a.f"/>
-        </dm-mapping:COLLECTION>
 
+			<!-- Test Case 9.9: tableref must come with a dmref -->
+			<dm-mapping:JOIN tableref="dsadasd" />
+			
+		</dm-mapping:COLLECTION>
 	</dm-mapping:GLOBALS>
-	
 </dm-mapping:VODML>
-
-
-

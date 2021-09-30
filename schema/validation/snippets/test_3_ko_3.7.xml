@@ -5,11 +5,9 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.2: INSTANCE optional -->
+	<!-- Test Case 3.7: GLOBALS/INSTANCE with a @dmrole -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION ID="adaas" dmrole="">
-		    <dm-mapping:ATTRIBUTE dmtype="dmtype" value="aa" />
-		</dm-mapping:COLLECTION>
+		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

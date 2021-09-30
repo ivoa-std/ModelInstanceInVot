@@ -28,38 +28,38 @@
 	        <!-- Test Note 8: All subnodes are optional, with 2 sets which may be combined under 1 COLLECTION. -->
 	  
 	        <!-- Test Case 8.1: empty COLLECTION -->
-		<dm-mapping:COLLECTION ID="_ds1" dmrole="abc" />
+		<dm-mapping:COLLECTION ID="_ds1"  />
 
 		<!-- Test Case 8.2: ID optional, dmrole must not be blank -->
-		<dm-mapping:COLLECTION dmrole="role" />
+		<dm-mapping:COLLECTION ID="_ds1.5" />
 
 		<!-- Test Case 8.5: with ID, dmrole may be blank -->
-		<dm-mapping:COLLECTION ID="_ds2" dmrole="" />
+		<dm-mapping:COLLECTION ID="_ds2"  />
 
 		<!-- Test Case 8.6: COLLECTION of ATTRIBUTE -->
-		<dm-mapping:COLLECTION dmrole="A.b">
-			<dm-mapping:ATTRIBUTE dmrole="A.b" dmtype="model:elem" value="foo" />
+		<dm-mapping:COLLECTION ID="_ds3" >
+			<dm-mapping:ATTRIBUTE dmtype="model:elem" value="foo" />
 		</dm-mapping:COLLECTION>
 		
 		<!-- Test Case 8.7: COLLECTION of REFERENCE -->
-		<dm-mapping:COLLECTION dmrole="abc">
-			<dm-mapping:REFERENCE dmrole="A" dmref="_ref1" />
+		<dm-mapping:COLLECTION ID="_ds4">
+			<dm-mapping:REFERENCE dmref="_ref1" />
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.8: COLLECTION of INSTANCE -->
-		<dm-mapping:COLLECTION ID="_ds3" dmrole="abc">
-			<dm-mapping:INSTANCE dmrole="A" dmtype="ds:experiment.ObsDataset" />
+		<dm-mapping:COLLECTION ID="_ds3" dmrole="">
+			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" />
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.9: COLLECTION of JOIN -->
-		<dm-mapping:COLLECTION dmrole="abc">
+		<dm-mapping:COLLECTION ID="_ds4">
 			<dm-mapping:JOIN tableref="Results" />
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.10: COLLECTION of COLLECTION -->
 		<!--   Q: what is COLLECTION of COLLECTION for again? -->
-		<dm-mapping:COLLECTION dmrole="acb">
-			<dm-mapping:COLLECTION dmrole="def"/>
+		<dm-mapping:COLLECTION ID="acb">
+			<dm-mapping:COLLECTION dmrole=""/>
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.11: COLLECTION of multiple (ATTRIBUTE|REFERENCE) subnodes, random order -->
@@ -67,21 +67,21 @@
 		<!--   A: content should not have a specified dmrole (is on container), however
 		          most of the allowed contents do not generally allow empty/missing dmrole -->
 		<!--   Q: should these be allowed in combination?                        -->
-		<dm-mapping:COLLECTION dmrole="role">
-			<dm-mapping:REFERENCE dmrole="A" dmref="_ref1" />
-			<dm-mapping:REFERENCE dmrole="A" dmref="_ref2" />
+		<dm-mapping:COLLECTION ID="id">
+			<dm-mapping:REFERENCE dmrole="" dmref="_ref1" />
+			<dm-mapping:REFERENCE dmrole="" dmref="_ref2" />
 		</dm-mapping:COLLECTION>
 
 		<!-- Test Case 8.12: COLLECTION of multiple (INSTANCE|JOIN|COLLECTION) subnodes, random order -->
-		<dm-mapping:COLLECTION dmrole="role">
-			<dm-mapping:INSTANCE dmrole="A" dmtype="ds:experiment.ObsDataset" />
-			<dm-mapping:COLLECTION dmrole="B">
-				<dm-mapping:INSTANCE dmrole="B.a" dmtype="ds:experiment.ObsDataset" />
+		<dm-mapping:COLLECTION ID="id">
+			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" />
+			<dm-mapping:COLLECTION dmrole="">
+				<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" />
 			</dm-mapping:COLLECTION>
-			<dm-mapping:COLLECTION dmrole="C">
+			<dm-mapping:COLLECTION dmrole="">
 				<dm-mapping:JOIN tableref="Results" />
 			</dm-mapping:COLLECTION>
-			<dm-mapping:INSTANCE dmrole="D" dmtype="ds:experiment.ObsDataset" />
+			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" />
 			<dm-mapping:JOIN tableref="MoreResults" />
 			<!-- allow multiple JOIN nodes.. to build a COLLECTION of instances from different tables -->
 			<dm-mapping:JOIN tableref="EvenMoreResults" />
@@ -89,8 +89,8 @@
 		      
 		<!-- Test Case 8.13: mixed subnode sets -->
 	    <!--   * allow (A,R) or (I,J,C) only    -->
-		<dm-mapping:COLLECTION dmrole="role">
-			<dm-mapping:ATTRIBUTE dmrole="A.b" dmtype="model:elem" value="foo" />
+		<dm-mapping:COLLECTION ID="id">
+			<dm-mapping:ATTRIBUTE  dmtype="model:elem" value="foo" />
 		</dm-mapping:COLLECTION>
 			
 		

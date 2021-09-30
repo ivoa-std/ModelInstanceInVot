@@ -6,7 +6,7 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
 
-		<!-- Test Case 8.5: No role for COLLECTION/INSTANCE-->
+        <!-- Test Case 8.6: No role for COLLECTION/ATTRIBUTE-->
 		<dm-mapping:COLLECTION dmrole="">
             <dm-mapping:INSTANCE dmrole="a.f"/>
         </dm-mapping:COLLECTION>
