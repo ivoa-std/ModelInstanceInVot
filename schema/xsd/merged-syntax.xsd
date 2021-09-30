@@ -86,7 +86,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
 
   <!-- Atomic attribute -->
   <xs:complexType name="Attribute">
-    <xs:attribute type="xs:string" name="dmrole" use="required" />
+    <xs:attribute type="xs:string" name="dmrole" use="optional" />
     <xs:attribute type="xs:string" name="dmtype" use="required" />
     <xs:attribute type="xs:string" name="ref" />
     <xs:attribute type="xs:string" name="value" />
@@ -96,7 +96,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="(not(./@ref) and ./@value) or (not(./@value) and ./@ref) or (./@value and ./@ref)" /> 
     <xs:assert test="if (@ref) then (@ref != '') else true()  " />  
     <xs:assert test="if (@arrayindex) then (@arrayindex >= '0') else true()  " />  
-    <xs:assert test="@dmrole != '' and @dmtype != ''  " />  
+    <xs:assert test="@dmtype != ''  " />  
   </xs:complexType>
 
   <!-- Data list mapping block -->
@@ -111,12 +111,15 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="dmrole" use="optional" />
     <xs:attribute type="xs:string" name="size" />  
     <xs:attribute type="xs:string" name="ID" />
-    <xs:assert test="(not(@ID) and @dmrole != '') or  @ID != ''" />
     <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
     <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:REFERENCE) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:REFERENCE) = 0"/>
     <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:INSTANCE) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:INSTANCE) = 0"/>
     <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:JOIN) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:JOIN) = 0"/>
     <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and count(dm-mapping:COLLECTION) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and count(dm-mapping:COLLECTION) = 0"/>
+    <xs:assert test="count (dm-mapping:INSTANCE[@dmrole != '']) eq 0"/>
+    <xs:assert test="count (dm-mapping:ATTRIBUTE[@dmrole != '']) eq 0"/>
+    <xs:assert test="count (dm-mapping:COLLECTION[@dmrole != '']) eq 0"/>
+    <xs:assert test="count (dm-mapping:REFERENCE[@dmrole != '']) eq 0"/>
     
      <!-- 
     <xs:assert test="((count(./dm-mapping:JOIN) eq 1 and count(./dm-mapping:INSTANCE) eq 0 and count(./dm-mapping:COLLECTION) eq 0 and count(./dm-mapping:REFERENCE) eq 0)  or count(./dm-mapping:JOIN) eq 0)" />
@@ -127,11 +130,10 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:sequence>
       <xs:element name="FOREIGN_KEY" type="dm-mapping:ForeignKey" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
-    <xs:attribute type="xs:string" name="dmrole" use="required" />
+    <xs:attribute type="xs:string" name="dmrole" use="optional" />
     <xs:attribute type="xs:string" name="tableref" />
     <xs:attribute type="xs:string" name="dmref" />
     <xs:assert test="if (./@tableref) then  @tableref != '' else true()" />
-    <xs:assert test="./@dmrole and  @dmrole != ''" />
     <xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
     <xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />    
     <xs:assert test="((count(dm-mapping:FOREIGN_KEY) > 0 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
