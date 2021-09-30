@@ -44,5 +44,7 @@
             </dm-mapping:JOIN>
         </dm-mapping:COLLECTION>
 
+  
+
 	</dm-mapping:GLOBALS>
 </dm-mapping:VODML>
