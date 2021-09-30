@@ -58,7 +58,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     </xs:sequence>
     <xs:attribute type="xs:string" name="tableref" />
     <xs:assert test="if (@tableref) then (@tableref != '') else true()  " />
-    <xs:assert test="every $child in ./dm-mapping:INSTANCE satisfies  $child/@dmrole != '' "/>
+    <xs:assert test="every $child in ./dm-mapping:INSTANCE satisfies  $child/@dmrole != '' or $child/@ID != '' "/>
     
   </xs:complexType>
 
