@@ -7,7 +7,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION dmrole="abc">
+		<dm-mapping:COLLECTION dmrole="">
 			<!-- Test Case 9.3: must have dmref or tableref -->
 			<dm-mapping:JOIN />
 		</dm-mapping:COLLECTION>

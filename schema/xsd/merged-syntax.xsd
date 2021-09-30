@@ -154,7 +154,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="dmref" />
     <xs:assert test="if (./@tableref) then  @tableref != '' else true()" />
     <xs:assert test="if (./@dmref) then  @dmref != '' else true()" />
-    <xs:assert test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />
+    <xs:assert test="((./@tableref) and (./@dmref)) or not(./@tableref)" />
   </xs:complexType>
 
   <!-- Select table rows with value of the column @ref = @value -->
