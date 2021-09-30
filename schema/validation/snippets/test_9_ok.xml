@@ -28,13 +28,23 @@
 			</dm-mapping:JOIN>
 		</dm-mapping:COLLECTION>
 		
-		<dm-mapping:COLLECTION   ID="id" dmrole="">
-			<!-- Test Case 9.6: using tableref + WHERE (multiple) -->
-			<dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa">
-				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
-				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
-			</dm-mapping:JOIN>
-		</dm-mapping:COLLECTION>
+        <dm-mapping:COLLECTION   ID="id" dmrole="">
+            <!-- Test Case 9.6: using tableref + dmref + WHERE (multiple) -->
+            <dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa">
+                <dm-mapping:WHERE foreignkey="eee" value="ssss" />
+                <dm-mapping:WHERE foreignkey="fff" value="tttt" />
+            </dm-mapping:JOIN>
+        </dm-mapping:COLLECTION>
+        
+        <dm-mapping:COLLECTION   ID="id" dmrole="">
+            <!-- Test Case 9.6bis: using tableref + WHERE (multiple) -->
+            <dm-mapping:JOIN tableref="aaaaa" >
+                <dm-mapping:WHERE foreignkey="eee" value="ssss" />
+                <dm-mapping:WHERE foreignkey="fff" value="tttt" />
+            </dm-mapping:JOIN>
+        </dm-mapping:COLLECTION>
+
+  
 
 	</dm-mapping:GLOBALS>
 </dm-mapping:VODML>
