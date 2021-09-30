@@ -11,26 +11,26 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION dmrole="abc">
+		<dm-mapping:COLLECTION ID="id" dmrole="">
 			<!-- Test Case 9.1: using dmref -->
 			<dm-mapping:JOIN dmref="aaaaa" />
 		</dm-mapping:COLLECTION>
 		
-		<dm-mapping:COLLECTION dmrole="abc">
+		<dm-mapping:COLLECTION  ID="id" dmrole="">
 			<!-- Test Case 9.2: using tableref -->
-			<dm-mapping:JOIN tableref="aaaaa" />
+			<dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa"/>
 		</dm-mapping:COLLECTION>
 		
-		<dm-mapping:COLLECTION dmrole="abc">
+		<dm-mapping:COLLECTION  ID="id"  dmrole="">
 			<!-- Test Case 9.5: using dmref + WHERE -->
 			<dm-mapping:JOIN dmref="aaaaa">
 				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
 			</dm-mapping:JOIN>
 		</dm-mapping:COLLECTION>
 		
-		<dm-mapping:COLLECTION dmrole="abc">
+		<dm-mapping:COLLECTION   ID="id" dmrole="">
 			<!-- Test Case 9.6: using tableref + WHERE (multiple) -->
-			<dm-mapping:JOIN tableref="aaaaa">
+			<dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa">
 				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
 				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
 			</dm-mapping:JOIN>
