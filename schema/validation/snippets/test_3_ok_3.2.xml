@@ -8,7 +8,7 @@
 	<!-- Test Case 3.2: INSTANCE optional -->
 	<dm-mapping:GLOBALS >
 		<dm-mapping:COLLECTION ID="adaas" dmrole="">
-		    <dm-mapping:ATTRIBUTE dmrole="dmrole" dmtype="dmtype" value="aa" />
+		    <dm-mapping:ATTRIBUTE dmtype="dmtype" value="aa" />
 		</dm-mapping:COLLECTION>
 	</dm-mapping:GLOBALS>
 

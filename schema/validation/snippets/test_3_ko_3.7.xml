@@ -5,7 +5,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.3: COLLECTION optional -->
+	<!-- Test Case 3.7: GLOBALS/INSTANCE with a @dmrole -->
 	<dm-mapping:GLOBALS >
 		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
 	</dm-mapping:GLOBALS>

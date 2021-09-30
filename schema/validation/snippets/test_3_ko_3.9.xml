@@ -4,7 +4,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.8: @role in GLOBALS children -->
+	<!-- Test Case 3.9: @role in GLOBALS children -->
 	<dm-mapping:GLOBALS>
         <dm-mapping:COLLECTION ID="asdasdas" dmrole="dfgdfd"/>
  	</dm-mapping:GLOBALS>
