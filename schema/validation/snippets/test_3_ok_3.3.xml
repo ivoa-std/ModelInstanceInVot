@@ -7,7 +7,7 @@
 
 	<!-- Test Case 3.3: COLLECTION optional -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE ID="sss" dmrole="" dmtype="fffff" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

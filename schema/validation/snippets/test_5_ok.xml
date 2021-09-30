@@ -69,6 +69,14 @@
 			<dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff"/>
 			<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee"/>
 		</dm-mapping:INSTANCE>
+		
+        <dm-mapping:INSTANCE dmrole="parent" dmtype="fffff">
+		    <dm-mapping:COLLECTION dmrole="items">
+		        <dm-mapping:INSTANCE dmrole="" dmtype="fffff">
+                    <dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+               </dm-mapping:INSTANCE>
+		    </dm-mapping:COLLECTION>
+		</dm-mapping:INSTANCE>
 
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>

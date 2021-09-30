@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+
+	<!-- Test Case 3.8: @role in GLOBALS children -->
+	<dm-mapping:GLOBALS>
+        <dm-mapping:COLLECTION ID="asdasdas" dmrole="dfgdfd"/>
+ 	</dm-mapping:GLOBALS>
+
+</dm-mapping:VODML>

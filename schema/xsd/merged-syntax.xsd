@@ -44,6 +44,10 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
       <xs:element name="INSTANCE" type="dm-mapping:Instance" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0" maxOccurs="unbounded" />
     </xs:all>
+    <xs:assert test="count (dm-mapping:INSTANCE[@dmrole != '']) eq 0"/>
+    <xs:assert test="every $child in ./dm-mapping:INSTANCE satisfies  $child/@ID != '' "/>
+    <xs:assert test="count (dm-mapping:COLLECTION[@dmrole != '']) eq 0"/>
+    <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies  $child/@ID != '' "/>
   </xs:complexType>
 
   <!-- Mapping of the data contained in a particular table -->
@@ -73,7 +77,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:attribute type="xs:string" name="dmrole" use="optional" /> 
     <xs:attribute type="xs:string" name="dmtype" use="required" /> 
     <xs:attribute type="xs:string" name="ID" />  
-    <xs:assert test="(not(./@ID) and  @dmrole != '') or @ID != ''  " />
+    <!-- xs:assert test="(not(./@ID) and  @dmrole != '') or @ID != ''  " /> -->
     <xs:assert test=" @dmtype != '' " />
     <xs:assert test="if (@ID) then ( @ID != '') else true()  " />
   </xs:complexType>
@@ -102,7 +106,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
       <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0"  />
       <xs:element name="JOIN" type="dm-mapping:Join" minOccurs="0" />
     </xs:choice>
-    <xs:attribute type="xs:string" name="dmrole" use="required" />
+    <xs:attribute type="xs:string" name="dmrole" use="optional" />
     <xs:attribute type="xs:string" name="size" />  
     <xs:attribute type="xs:string" name="ID" />
     <xs:assert test="(not(@ID) and @dmrole != '') or  @ID != ''" />
