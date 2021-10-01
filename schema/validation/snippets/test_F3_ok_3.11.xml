@@ -5,9 +5,9 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.7: GLOBALS/INSTANCE with a @dmrole -->
+	<!-- Test Case 3.11: INSTANCE under GLOBALS, ID optional -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmrole="" dmtype="ddddd" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

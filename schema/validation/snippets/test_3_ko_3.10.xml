@@ -4,9 +4,9 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.8: no @ID in GLOBALS children -->
+	<!-- Test Case 3.10: COLLECTION under GLOBALS must have ID -->
 	<dm-mapping:GLOBALS>
-        <dm-mapping:COLLECTION  dmrole=""/>
+		<dm-mapping:COLLECTION  dmrole=""/>
  	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

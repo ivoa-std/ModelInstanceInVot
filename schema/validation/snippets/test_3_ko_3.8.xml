@@ -5,9 +5,9 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.3: COLLECTION optional -->
+	<!-- Test Case 3.8: INSTANCE under GLOBALS must have empty or no dmrole. -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE ID="_ds" dmrole="" dmtype="ddddd" />
+		<dm-mapping:INSTANCE ID="_ds" dmrole="aaaa" dmtype="ddddd" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

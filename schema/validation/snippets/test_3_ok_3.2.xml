@@ -7,8 +7,9 @@
 
 	<!-- Test Case 3.2: INSTANCE optional -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION ID="adaas" dmrole="">
-		    <dm-mapping:ATTRIBUTE dmtype="dmtype" value="aa" />
+		<dm-mapping:COLLECTION ID="_coordsys" dmrole="" >
+			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="fffff" />
+			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="ggggg" />
 		</dm-mapping:COLLECTION>
 	</dm-mapping:GLOBALS>
 

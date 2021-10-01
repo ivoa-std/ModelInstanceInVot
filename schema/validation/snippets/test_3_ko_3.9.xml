@@ -4,9 +4,9 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.9: @role in GLOBALS children -->
+	<!-- Test Case 3.9: COLLECTION under GLOBALS must have empty or no dmrole. -->
 	<dm-mapping:GLOBALS>
-        <dm-mapping:COLLECTION ID="asdasdas" dmrole="dfgdfd"/>
+		<dm-mapping:COLLECTION ID="asdasdas" dmrole="dfgdfd"/>
  	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>
