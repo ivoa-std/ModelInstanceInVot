@@ -1,6 +1,20 @@
 VO-DML structured types are annotated by using the INSTANCE
 element. Note that there is no difference, from a schema point of view,
-between **ObjectType**s and **DataType**.
+between \texttt{ObjectTypes} and \texttt{DataType}.
+
+ \begin{lstlisting}[caption={INSTANCE child of GLOBALS},style=XML,basicstyle=\small]
+<dm-mapping:INSTANCE ID="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
+	<dm-mapping:INSTANCE dmrole="coords:SpaceFrame.refPosition"
+                                 dmtype="coords:StdRefLocation">
+		<dm-mapping:ATTRIBUTE dmrole="coords:StdRefLocation.position" 
+		                          dmtype="ivoa:string"  value="NoSet" />
+	</dm-mapping:INSTANCE>
+	<dm-mapping:ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" 
+	                          dmtype="ivoa:string" value="ICRS" />
+	<dm-mapping:ATTRIBUTE dmrole="coords:SpaceFrame.equinox" 
+	                          dmtype="coords:Epoch"	value="2015" />
+</dm-mapping:INSTANCE>
+\end{lstlisting}
 
 \begin{table}[!htbp]
 \small
@@ -11,10 +25,10 @@ between **ObjectType**s and **DataType**.
             \textbf {Role}\\
        \hline         \hline  
             @ID & 
-            ID of the mapping element  \\
+            Element ID, MUST be unique within the mapping block  \\
         \hline 
             @dmrole & 
-            Role of the instance in the DM \\
+            INSTANCE role in the DM \\
         \hline 
             @dmtype & 
             Class name \\
@@ -35,14 +49,14 @@ between **ObjectType**s and **DataType**.
         \textbf{Pattern}\\
     \hline      \hline  
         MAND &           
-        NO &           
+        NO or EMPTY&           
         MAND &           
-        The instance, usually located in \texttt{GLOBALS}, has no role. It can be referenced by a \texttt{REFERENCE}  \\
+        MUST be applied when the  \texttt{INSTANCE} is child of \texttt{GLOBALS}. The element has no role because it is not embedded in a model mapping block. It must be referable by a \texttt{REFERENCE}  \\
     \hline   
         OPT &           
         MAND &           
         MAND &           
-        The element maps a instance playing a role in the model. @ID can also be set in that case. \\
+        MUST be applied in any other location. It may be referable a \texttt{REFERENCE} . \\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
@@ -60,10 +74,15 @@ between **ObjectType**s and **DataType**.
         \textbf{Cardinality} &
         \\
     \hline      \hline  
+        \texttt{PRIMARY\_KEY}  &        
+        First &           
+        0-* &
+        Primary key to be used to in a JOIN context.\\
+    \hline    
         \texttt{REFERENCE}  &        
         Any &           
         0-* &
-         Object attribute as a reference to either a class or a collection instance.\\
+         Object attribute as a reference to either another INSTANCE or a COLLECTION.\\
     \hline    
         \texttt{INSTANCE} &           
         Any &           
@@ -84,3 +103,5 @@ between **ObjectType**s and **DataType**.
      \caption{Allowed children for \texttt{INSTANCE}} 
      \label{tbl:instance-chilren}
  \end{table}
+ 
+ 
