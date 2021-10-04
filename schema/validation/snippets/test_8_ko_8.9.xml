@@ -6,10 +6,10 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
 
-        <!-- Test Case 8.6: No role for COLLECTION/ATTRIBUTE-->
-		<dm-mapping:COLLECTION dmrole="">
-            <dm-mapping:INSTANCE dmrole="a.f"/>
-        </dm-mapping:COLLECTION>
+		<!-- Test Case 8.9: COLLECTION under GLOBALS; with invalid child -->
+		<dm-mapping:COLLECTION ID="asdasdas">
+			<dm-mapping:BOGUS dmrole="a.f"/>
+		</dm-mapping:COLLECTION>
 
 	</dm-mapping:GLOBALS>
 	

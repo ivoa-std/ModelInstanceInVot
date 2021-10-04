@@ -6,8 +6,6 @@
 
 	<!-- Test Case 3.7: GLOBALS children may have empty of no dmrole -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION ID="_www" dmrole=""/>
-		<dm-mapping:COLLECTION ID="_xxx"/>
 		<dm-mapping:INSTANCE ID="_yyy" dmrole="" dmtype="sdsdfs"/>
 		<dm-mapping:INSTANCE ID="_zzz" dmtype="sdsdfs"/>
 	</dm-mapping:GLOBALS>

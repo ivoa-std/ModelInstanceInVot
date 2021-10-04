@@ -45,8 +45,6 @@
 |3.6            | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
 |3.7            | - children may have empty or no dmrole        | :heavy_check_mark:       | :white_check_mark: |
 |3.8            | - INSTANCE child with non-empty dmrole        | :heavy_multiplication_x: | :white_check_mark: |
-|3.9            | - COLLECTION child with non-empty dmrole      | :heavy_multiplication_x: | :white_check_mark: |
-|3.10           | - COLLECTION child must have ID               | :heavy_multiplication_x: | :white_check_mark: |
 |3.11           | - INSTANCE child may have no ID               | :heavy_check_mark:       | :white_check_mark: :x: |
 |**TEMPLATES**  |                                               |                          |                    |
 |4.1            | - INSTANCE only; WHERE optional               | :heavy_check_mark:       | :white_check_mark: |
@@ -106,19 +104,32 @@
 |7.14           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
 |7.15           | - arrayindex value < 0                        | :heavy_multiplication_x: | :white_check_mark: |
 |**COLLECTION** |                                               |                          |                    |
-|8.1            | - ID + dmrole only (empty collection)         | :heavy_check_mark:       | :white_check_mark: |
-|8.2            | - dmrole only; ID optional                    | :heavy_check_mark:       | :white_check_mark: |
-|8.3            | - ID only; dmrole required                    | :heavy_multiplication_x: | :white_check_mark: |
-|8.4            | - empty ID                                    | :heavy_multiplication_x: | :white_check_mark: |
-|8.5            | - empty dmrole                                | :heavy_check_mark:       | :white_check_mark: |
-|8.6            | - dmrole + ATTRIBUTE                          | :heavy_check_mark:       | :white_check_mark: |
-|8.7            | - dmrole + REFERENCE                          | :heavy_check_mark:       | :white_check_mark: |
-|8.8            | - dmrole + INSTANCE                           | :heavy_check_mark:       | :white_check_mark: |
-|8.9            | - dmrole + JOIN                               | :heavy_check_mark:       | :white_check_mark: |
-|8.10           | - dmrole + COLLECTION                         | :heavy_check_mark:       | :white_check_mark: |
-|8.11           | - dmrole + multiple (A,R), random order       | :heavy_check_mark:       | :white_check_mark: |
-|8.12           | - dmrole + multiple (I,J,C), random order     | :heavy_check_mark:       | :white_check_mark: |
-|8.13           | - dmrole + ATTRIBUTE + INSTANCE (mixed set)   | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Under GLOBALS**                             |                          |                    |
+|8.1            | - ID, no dmrole                               | :heavy_check_mark:       | :white_check_mark: |
+|8.2            | - no ID, no dmrole                            | :heavy_multiplication_x: | :white_check_mark: |
+|8.3            | - empty ID, no dmrole                         | :heavy_multiplication_x: | :white_check_mark: |
+|8.4            | - ID, empty dmrole                            | :heavy_check_mark:       | :white_check_mark: |
+|8.5            | - ID, dmrole                                  | :heavy_multiplication_x: | :white_check_mark: |
+|8.6            | - no children (empty collection)              | :heavy_check_mark:       | :white_check_mark: |
+|8.7            | - with INSTANCE children                      | :heavy_check_mark:       | :white_check_mark: |
+|8.8            | - with non-INSTANCE children (A,R,J)          | :heavy_multiplication_x: | :white_check_mark: :x: |
+|8.9            | - with other child node                       | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Under INSTANCE**                            |                          |                    |
+|8.10           | - ID + dmrole                                 | :heavy_multiplication_x: | :white_check_mark: :x: |
+|8.11           | - empty ID, dmrole                            | :heavy_multiplication_x: | :white_check_mark: |
+|8.12           | - no ID, no dmrole                            | :heavy_multiplication_x: | :white_check_mark: |
+|8.13           | - no ID, empty dmrole                         | :heavy_multiplication_x: | :white_check_mark: |
+|8.14           | - no ID, dmrole                               | :heavy_check_mark:       | :white_check_mark: |
+|8.15           | - no children (empty collection)              | :heavy_check_mark:       | :white_check_mark: |
+|8.16           | - dmrole + ATTRIBUTE                          | :heavy_check_mark:       | :white_check_mark: |
+|8.17           | - dmrole + REFERENCE                          | :heavy_check_mark:       | :white_check_mark: |
+|8.18           | - dmrole + INSTANCE                           | :heavy_check_mark:       | :white_check_mark: |
+|8.19           | - dmrole + JOIN                               | :heavy_check_mark:       | :white_check_mark: |
+|8.20           | - dmrole + INSTANCE  + JOIN                   | :heavy_check_mark:       | :white_check_mark: |
+|8.21           | - dmrole + ATTRIBUTE + (R,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
+|8.22           | - dmrole + REFERENCE + (A,I,J)                | :heavy_multiplication_x: | :white_check_mark: :x: |
+|8.23           | - dmrole + INSTANCE + (A,R)                   | :heavy_multiplication_x: | :white_check_mark: |
+|8.24           | - dmrole + other (not A,R,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
 |**JOIN**       |                                               |                          |                    |
 |9.1            | - dmref                                       | :heavy_check_mark:       | :white_check_mark: |
 |9.2            | - tableref                                    | :heavy_check_mark:       | :white_check_mark: |

@@ -5,15 +5,12 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
+		<dm-mapping:INSTANCE ID="_aaa" dmtype="model:thing">
 
-        <!-- Test Case 8.7: No role for COLLECTION/REFERENCE-->
-		<dm-mapping:COLLECTION dmrole="">
-            <dm-mapping:REFERENCE dmrole="a.f"/>
-        </dm-mapping:COLLECTION>
+			<!-- Test Case 8.10: COLLECTION under INSTANCE, must not have ID -->
+			<dm-mapping:COLLECTION ID="_zzz" dmrole="model:thing.a"/>
+
+		</dm-mapping:INSTANCE>
 
 	</dm-mapping:GLOBALS>
-	
 </dm-mapping:VODML>
-
-
-

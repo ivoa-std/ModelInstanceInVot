@@ -5,12 +5,12 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
+		<dm-mapping:INSTANCE ID="_aaa" dmtype="model:thing">
 
-		<!-- Test Case 8.3: COLLECTION under GLOBALS, ID must not be empty -->
-		<dm-mapping:COLLECTION ID="" />
+			<!-- Test Case 8.11: COLLECTION under INSTANCE, must not have ID (even empty) -->
+			<dm-mapping:COLLECTION ID="" dmrole="model:thing.a"/>
+
+		</dm-mapping:INSTANCE>
 
 	</dm-mapping:GLOBALS>
 </dm-mapping:VODML>
-
-
-
