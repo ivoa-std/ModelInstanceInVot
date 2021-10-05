@@ -45,7 +45,9 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
       <xs:element name="COLLECTION" type="dm-mapping:Collection" minOccurs="0" maxOccurs="unbounded" />
     </xs:all>
     <xs:assert test="count (dm-mapping:INSTANCE[@dmrole != '']) eq 0"/>
-    <xs:assert test="every $child in ./dm-mapping:INSTANCE satisfies  $child/@ID != '' "/>
+    <!-- 
+     <xs:assert test="every $child in ./dm-mapping:INSTANCE satisfies  $child/@ID != '' "/>
+     -->
     <xs:assert test="count (dm-mapping:COLLECTION[@dmrole != '']) eq 0"/>
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies  $child/@ID != '' "/>
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies (count($child/dm-mapping:INSTANCE) gt 0 and count($child/dm-mapping:INSTANCE/dm-mapping:PRIMARY_KEY) eq 1) or count($child/dm-mapping:INSTANCE) eq 0 "/>
