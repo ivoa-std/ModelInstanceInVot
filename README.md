@@ -1,10 +1,8 @@
 # Syntax proposal to map VOTable data on VO Model
 
-This proposal has been designed in parallel with the development of MANGO, the model for source data.  
- 
-The objective is to provide a standard that allows to map VOTable data on any VO-DML compliant model. 
+This proposal is the merge of both annotations proposals tha have been exercised durin the DM workshop held in 2021.
 
-The mapping syntax can be used with any other model serialized in VO-DML
+The objective is to provide a standard that allows to map VOTable data on any VO-DML compliant model. 
 
 ### Doc Preview
 
@@ -29,11 +27,6 @@ An PDF [Preview](https://github.com/ivoa-std/ModelInstanceInVot/releases/downloa
 
 - `doc` : standard document
 - `schema`: XML schema for the mapping syntax (XSD1.1)
-- [python_workflow](https://github.com/ivoa/modelinstanceinvot-code): code sample for exercising the mapping syntax
-    - Mapping component builder 
-    - Example of automatic annotation processor
-    - Annotation validation
-    - Annotated table processing
 
 # Licence
 
