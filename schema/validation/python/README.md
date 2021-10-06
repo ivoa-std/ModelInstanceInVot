@@ -43,9 +43,6 @@
 |3.4            | - multiple subnodes (C,I), random order       | :heavy_check_mark:       | :white_check_mark: |
 |3.5            | - empty, no subnodes                          | :heavy_check_mark:       | :white_check_mark: |
 |3.6            | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
-|3.7            | - children may have empty or no dmrole        | :heavy_check_mark:       | :white_check_mark: |
-|3.8            | - INSTANCE child with non-empty dmrole        | :heavy_multiplication_x: | :white_check_mark: |
-|3.11           | - INSTANCE child may have no ID               | :heavy_check_mark:       | :white_check_mark: :x: |
 |**TEMPLATES**  |                                               |                          |                    |
 |4.1            | - INSTANCE only; WHERE optional               | :heavy_check_mark:       | :white_check_mark: |
 |4.2            | - WHERE + INSTANCE                            | :heavy_check_mark:       | :white_check_mark: |
@@ -58,8 +55,8 @@
 |4.9            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |**INSTANCE**   |                                               |                          |                    |
 |-------------- | **Child of GLOBALS**                          |                          |                    |
-|5.1            | - ID       + dmrole       + dmtype            : :heavy_multiplication_x: | :white_check_mark: |
-|5.2            | - no ID    + dmrole       + dmtype            : :heavy_multiplication_x: | :white_check_mark: |
+|5.1            | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.2            | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
 |5.3            | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.4            | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
 |5.5            | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
