@@ -30,12 +30,14 @@
 |1.9            | - multiple TEMPLATES nodes                    | :heavy_check_mark:       | :white_check_mark: |
 |1.10           | - multiple GLOBALS nodes                      | :heavy_multiplication_x: | :white_check_mark: |
 |1.11           | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**MODEL**      |                                               |                          |                    |
 |2.1            | - name + url (standard syntax)                | :heavy_check_mark:       | :white_check_mark: |
 |2.2            | - name only                                   | :heavy_check_mark:       | :white_check_mark: |
 |2.3            | - empty (missing name)                        | :heavy_multiplication_x: | :white_check_mark: |
 |2.4            | - name=empty                                  | :heavy_multiplication_x: | :white_check_mark: |
 |2.5            | - url=empty                                   | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**GLOBALS**    |                                               |                          |                    |
 |3.1            | - COLLECTION + INSTANCE                       | :heavy_check_mark:       | :white_check_mark: |
 |3.2            | - COLLECTION only                             | :heavy_check_mark:       | :white_check_mark: |
@@ -43,6 +45,7 @@
 |3.4            | - multiple subnodes (C,I), random order       | :heavy_check_mark:       | :white_check_mark: |
 |3.5            | - empty, no subnodes                          | :heavy_check_mark:       | :white_check_mark: |
 |3.6            | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**TEMPLATES**  |                                               |                          |                    |
 |4.1            | - INSTANCE only; WHERE optional               | :heavy_check_mark:       | :white_check_mark: |
 |4.2            | - WHERE + INSTANCE                            | :heavy_check_mark:       | :white_check_mark: |
@@ -53,6 +56,7 @@
 |4.7            | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
 |4.8            | - missing tableref (conditionally optional)   | :heavy_check_mark:       | :white_check_mark: |
 |4.9            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**INSTANCE**   |                                               |                          |                    |
 |-------------- | **Child of GLOBALS**                          |                          |                    |
 |5.1            | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
@@ -117,17 +121,24 @@
 |5.59           | - contains subnode other than (PK,A,I,R,C)    | :heavy_multiplication_x: | :white_check_mark: |
 |               |                                               |                          |                    |
 |**REFERENCE**  |                                               |                          |                    |
-|6.1            | - dmrole + dmref                              | :heavy_check_mark:       | :white_check_mark: |
-|6.2            | - dmrole + tableref + FOREIGN_KEY             | :heavy_check_mark:       | :white_check_mark: |
-|6.3            | - dmrole only (must have one or other)        | :heavy_multiplication_x: | :white_check_mark: |
-|6.4            | - dmrole + dmref + tableref (not both)        | :heavy_multiplication_x: | :white_check_mark: |
-|6.5            | - missing dmrole                              | :heavy_multiplication_x: | :white_check_mark: |
-|6.6            | - tableref must have FOREIGN_KEY              | :heavy_multiplication_x: | :white_check_mark: |
-|6.7            | - dmref must NOT have FOREIGN_KEY             | :heavy_multiplication_x: | :white_check_mark: |
-|6.8            | - multiple FOREIGN_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: |
-|6.9            | - empty dmrole                                | :heavy_multiplication_x: | :white_check_mark: |
-|6.10           | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
-|6.11           | - empty dmref                                 | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of INSTANCE**                         |                          |                    |
+|6.5            | - no dmrole + dmref                           | :heavy_multiplication_x: | :white_check_mark: |
+|6.9            | - empty dmrole + dmref                        | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of COLLECTION**, as list of references|                          |                    |
+|6.12           | - no dmrole + dmref                           | :heavy_check_mark:       | :white_check_mark: |
+|6.13           | - empty dmrole + dmref                        | :heavy_check_mark:       | :white_check_mark: |
+|6.14           | - dmrole + dmref                              | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **any Usage**                                 |                          |                    |
+|6.1            | - valid dmrole + dmref                        | :heavy_check_mark:       | :white_check_mark: |
+|6.2            | - valid dmrole + tableref + FOREIGN_KEY       | :heavy_check_mark:       | :white_check_mark: |
+|6.3            | - valid dmrole + no dmref + no tableref       | :heavy_multiplication_x: | :white_check_mark: |
+|6.4            | - valid dmrole + dmref + tableref             | :heavy_multiplication_x: | :white_check_mark: |
+|6.6            | - valid dmrole + tableref + no FOREIGN_KEY    | :heavy_multiplication_x: | :white_check_mark: |
+|6.7            | - valid dmrole + dmref + FOREIGN_KEY          | :heavy_multiplication_x: | :white_check_mark: |
+|6.8            | - valid dmrole + tableref + mult. FOREIGN_KEYs| :heavy_check_mark:       | :white_check_mark: |
+|6.10           | - valid dmrole + empty tableref + FOREIGN_KEY | :heavy_multiplication_x: | :white_check_mark: |
+|6.11           | - valid dmrole + empty dmref                  | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**ATTRIBUTE**  |                                               |                          |                    |
 |7.1            | - dmrole + dmtype + value                     | :heavy_check_mark:       | :white_check_mark: |
 |7.2            | - dmrole + dmtype + ref                       | :heavy_check_mark:       | :white_check_mark: |
@@ -144,6 +155,7 @@
 |7.13           | - empty ref                                   | :heavy_multiplication_x: | :white_check_mark: |
 |7.14           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
 |7.15           | - arrayindex value < 0                        | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**COLLECTION** |                                               |                          |                    |
 |-------------- | **Child of GLOBALS**                          |                          |                    |
 |8.1            | - ID, no dmrole                               | :heavy_check_mark:       | :white_check_mark: |
@@ -171,6 +183,7 @@
 |8.22           | - dmrole + REFERENCE + (A,I,J)                | :heavy_multiplication_x: | :white_check_mark: :x: |
 |8.23           | - dmrole + INSTANCE + (A,R)                   | :heavy_multiplication_x: | :white_check_mark: |
 |8.24           | - dmrole + other (not A,R,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**JOIN**       |                                               |                          |                    |
 |9.1            | - dmref                                       | :heavy_check_mark:       | :white_check_mark: |
 |9.2            | - tableref                                    | :heavy_check_mark:       | :white_check_mark: |
@@ -180,6 +193,7 @@
 |9.6            | - tableref + WHERE                            | :heavy_check_mark:       | :white_check_mark: |
 |9.7            | - empty dmref                                 | :heavy_multiplication_x: | :white_check_mark: |
 |9.8            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**WHERE**      |                                               |                          |                    |
 |10.1           | - primarykey only                             | :heavy_multiplication_x: | :white_check_mark: |
 |10.2           | - primarykey + foreignkey                     | :heavy_check_mark:       | :white_check_mark: |
@@ -192,6 +206,7 @@
 |10.9           | - empty primarykey                            | :heavy_multiplication_x: | :white_check_mark: |
 |10.10          | - empty foreignkey                            | :heavy_multiplication_x: | :white_check_mark: |
 |10.11          | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
+|               |                                               |                          |                    |
 |**PRIMARY_KEY**|                                               |                          |                    |
 |11.1           | - dmtype + ref                                | :heavy_check_mark:       | :white_check_mark: |
 |11.2           | - dmtype + value                              | :heavy_check_mark:       | :white_check_mark: |
@@ -201,6 +216,7 @@
 |11.6           | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
 |11.7           | - empty ref                                   | :heavy_multiplication_x: | :white_check_mark: |
 |11.8           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
+|               |                                               |                          |                    |
 |**FOREIGN_KEY**|                                               |                          |                    |
 |12.1           | - ref                                         | :heavy_check_mark:       | :white_check_mark: |
 |12.2           | - missing ref                                 | :heavy_multiplication_x: | :white_check_mark: |
