@@ -4,11 +4,11 @@
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-    <dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+	<!-- Usage 2: Child of TEMPLATES  -->
 
-		<!-- Test Case 5.5: ID must not be empty. -->
-		<dm-mapping:INSTANCE ID="" dmrole="aaaa" dmtype="fffff" />
+		<!-- Test Case 5.10: ID + dmrole + dmtype; must have no or empty dmrole. -->
+		<dm-mapping:INSTANCE ID="_xyz" dmrole="model:Apple.seed" dmtype="model:thing" />
 
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>

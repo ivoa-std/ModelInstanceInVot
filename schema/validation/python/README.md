@@ -17,7 +17,7 @@
 # Annotation Syntax Test Plan #
 
 | Case          | Description                                   | Valid?<br> :heavy_check_mark: = expected valid<br> :heavy_multiplication_x: = expected invalid | Implemented? <br> :white_check_mark: = implemented <br> :red_circle: = not implemented <br> :x: = test fails  |
-|:---           |:---                                           |:----                     |:----               | 
+|:---           |:---                                           |:----                     |:----               |
 |**VODML**      |                                               |                          |                    |
 |1.1            | - MODEL + GLOBALS + TEMPLATES                 | :heavy_check_mark:       | :white_check_mark: |
 |1.2            | - MODEL + GLOBALS; TEMPLATES optional         | :heavy_check_mark:       | :white_check_mark: |
@@ -57,24 +57,68 @@
 |4.8            | - missing tableref (conditionally optional)   | :heavy_check_mark:       | :white_check_mark: |
 |4.9            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |**INSTANCE**   |                                               |                          |                    |
-|5.1            | - ID + dmrole + dmtype + PK + A + I + R + C   | :heavy_check_mark:       | :white_check_mark: |
-|5.2            | - dmrole + dmtype only; ID & subnodes optional| :heavy_check_mark:       | :white_check_mark: |
-|5.3            | - ID + dmtype; dmrole optional with ID        | :heavy_multiplication_x: | :white_check_mark: |
-|5.3a           | - dmtype only; dmrole required without ID     | :heavy_multiplication_x: | :white_check_mark: |
-|5.4            | - ID + dmrole; dmtype required                | :heavy_multiplication_x: | :white_check_mark: |
-|5.5            | - empty ID                                    | :heavy_multiplication_x: | :white_check_mark: |
-|5.6            | - ID + empty dmrole                           | :heavy_check_mark:       | :white_check_mark: |
-|5.6a           | - empty dmrole w/out ID                       | :heavy_multiplication_x: | :white_check_mark: |
-|5.7            | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
-|5.8            | - with PRIMARY_KEY                            | :heavy_check_mark:       | :white_check_mark: |
-|5.9            | - with ATTRIBUTE                              | :heavy_check_mark:       | :white_check_mark: |
-|5.10           | - with INSTANCE                               | :heavy_check_mark:       | :white_check_mark: |
-|5.11           | - with REFERENCE                              | :heavy_check_mark:       | :white_check_mark: |
-|5.12           | - with COLLECTION                             | :heavy_check_mark:       | :white_check_mark: |
-|5.13           | - PRIMARY_KEY not first                       | :heavy_multiplication_x: | :white_check_mark: |
-|5.14           | - multiple PRIMARY_KEY nodes                  | :heavy_check_mark:       | :white_check_mark: |
-|5.15           | - multiple subnodes (A,I,R,C), random order   | :heavy_check_mark:       | :white_check_mark: |
-|5.16           | - includes other node                         | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of GLOBALS**                          |                          |                    |
+|5.1            | - ID       + dmrole       + dmtype            : :heavy_multiplication_x: | :white_check_mark: |
+|5.2            | - no ID    + dmrole       + dmtype            : :heavy_multiplication_x: | :white_check_mark: |
+|5.3            | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.4            | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.5            | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.6            | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.7            | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|5.8            | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
+|5.9            | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of TEMPLATES**                        |                          |                    |
+|5.10           | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: :x: |
+|5.11           | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: :x: |
+|5.12           | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.13           | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.14           | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.15           | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.16           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.17           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
+|5.18           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of COLLECTION**, for ORM selection    |                          |                    |
+|5.20           | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.21           | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.22           | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.23           | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.24           | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.25           | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.26           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|5.27           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
+|5.28           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|5.29           | - no PRIMARY_KEY                              | :heavy_multiplication_x: | :white_check_mark: :x: |
+|-------------- | **Child of COLLECTION**, as array/list        |                          |                    |
+|5.30           | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.31           | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.32           | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.33           | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.34           | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.35           | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.36           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|5.37           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
+|5.38           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of INSTANCE**                         |                          |                    |
+|5.40           | - ID       + dmrole       + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.41           | - no ID    + dmrole       + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.42           | - ID       + empty dmrole + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.43           | - no ID    + empty dmrole + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.44           | - ID       + no dmrole    + dmtype            | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.45           | - no ID    + no dmrole    + dmtype            | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.46           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.47           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.48           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|-------------- | **Content**                                   |                          |                    |
+|5.50           | - no children                                 | :heavy_check_mark:       | :white_check_mark: |
+|5.51           | - with PRIMARY_KEY as first                   | :heavy_check_mark:       | :white_check_mark: |
+|5.53           | - with ATTRIBUTE                              | :heavy_check_mark:       | :white_check_mark: |
+|5.54           | - with INSTANCE                               | :heavy_check_mark:       | :white_check_mark: |
+|5.55           | - with REFERENCE                              | :heavy_check_mark:       | :white_check_mark: |
+|5.56           | - with COLLECTION                             | :heavy_check_mark:       | :white_check_mark: |
+|5.57           | - PRIMARY_KEY not first                       | :heavy_multiplication_x: | :white_check_mark: |
+|5.58           | - multiple subnodes (A,I,R,C), random order   | :heavy_check_mark:       | :white_check_mark: |
+|5.59           | - contains subnode other than (PK,A,I,R,C)    | :heavy_multiplication_x: | :white_check_mark: |
+|               |                                               |                          |                    |
 |**REFERENCE**  |                                               |                          |                    |
 |6.1            | - dmrole + dmref                              | :heavy_check_mark:       | :white_check_mark: |
 |6.2            | - dmrole + tableref + FOREIGN_KEY             | :heavy_check_mark:       | :white_check_mark: |
@@ -104,7 +148,7 @@
 |7.14           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
 |7.15           | - arrayindex value < 0                        | :heavy_multiplication_x: | :white_check_mark: |
 |**COLLECTION** |                                               |                          |                    |
-|-------------- | **Under GLOBALS**                             |                          |                    |
+|-------------- | **Child of GLOBALS**                          |                          |                    |
 |8.1            | - ID, no dmrole                               | :heavy_check_mark:       | :white_check_mark: |
 |8.2            | - no ID, no dmrole                            | :heavy_multiplication_x: | :white_check_mark: |
 |8.3            | - empty ID, no dmrole                         | :heavy_multiplication_x: | :white_check_mark: |
@@ -114,7 +158,7 @@
 |8.7            | - with INSTANCE children                      | :heavy_check_mark:       | :white_check_mark: |
 |8.8            | - with non-INSTANCE children (A,R,J)          | :heavy_multiplication_x: | :white_check_mark: :x: |
 |8.9            | - with other child node                       | :heavy_multiplication_x: | :white_check_mark: |
-|-------------- | **Under INSTANCE**                            |                          |                    |
+|-------------- | **Child of INSTANCE**                         |                          |                    |
 |8.10           | - ID + dmrole                                 | :heavy_multiplication_x: | :white_check_mark: :x: |
 |8.11           | - empty ID, dmrole                            | :heavy_multiplication_x: | :white_check_mark: |
 |8.12           | - no ID, no dmrole                            | :heavy_multiplication_x: | :white_check_mark: |

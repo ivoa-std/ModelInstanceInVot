@@ -1,0 +1,18 @@
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS >
+		<dm-mapping:INSTANCE ID="_xyz" dmrole="" dmtype="model:thing" >
+			<dm-mapping:COLLECTION dmrole="model.thing.c">
+			<!-- Usage 4: Child of COLLECTION, as array/list element -->
+
+				<!-- Test Case 5.31: no ID + dmrole + dmtype; must have no or empty dmrole. -->
+				<dm-mapping:INSTANCE dmrole="model:thing.c" dmtype="model:alpha" />
+				<dm-mapping:INSTANCE dmrole="model:thing.c" dmtype="model:alpha" />
+				
+			</dm-mapping:COLLECTION>
+
+		</dm-mapping:INSTANCE>
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>
