@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- NOTE: TEMPLATES node allows multiple INSTANCE nodes. -->
+<!-- We take advantage of this to test several valid cases in the same file -->
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS>
+
+		<dm-mapping:COLLECTION ID="identifier">
+			<dm-mapping:INSTANCE ID="identifier"
+				dmtype="fffff">
+				<dm-mapping:PRIMARY_KEY dmtype="fffff"
+					value="tttt" />
+			</dm-mapping:INSTANCE>
+		</dm-mapping:COLLECTION>
+
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>
