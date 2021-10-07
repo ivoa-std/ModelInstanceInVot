@@ -140,21 +140,30 @@
 |6.11           | - valid dmrole + empty dmref                  | :heavy_multiplication_x: | :white_check_mark: |
 |               |                                               |                          |                    |
 |**ATTRIBUTE**  |                                               |                          |                    |
-|7.1            | - dmrole + dmtype + value                     | :heavy_check_mark:       | :white_check_mark: |
+|-------------- | **Child of INSTANCE**                         |                          |                    |
 |7.2            | - dmrole + dmtype + ref                       | :heavy_check_mark:       | :white_check_mark: |
-|7.3            | - dmrole + dmtype + ref + value               | :heavy_check_mark:       | :white_check_mark: |
-|7.4            | - dmrole + dmtype (must have one, or both)    | :heavy_multiplication_x: | :white_check_mark: |
-|7.5            | - dmrole + dmtype + value + unit              | :heavy_check_mark:       | :white_check_mark: |
-|7.6            | - dmrole + dmtype + ref + unit                | :heavy_check_mark:       | :white_check_mark: |
-|7.7            | - dmrole + dmtype + ref + arrayindex          | :heavy_check_mark:       | :white_check_mark: |
-|7.8            | - dmrole + dmtype + value + arrayindex        | :heavy_multiplication_x: | :white_check_mark: |
-|7.9            | - missing dmrole                              | :heavy_multiplication_x: | :white_check_mark: |
-|7.10           | - missing dmtype                              | :heavy_multiplication_x: | :white_check_mark: |
-|7.11           | - empty dmrole                                | :heavy_multiplication_x: | :white_check_mark: |
-|7.12           | - empty dmtype                                | :heavy_multiplication_x: | :white_check_mark: |
-|7.13           | - empty ref                                   | :heavy_multiplication_x: | :white_check_mark: |
-|7.14           | - empty value                                 | :heavy_check_mark:       | :white_check_mark: |
-|7.15           | - arrayindex value < 0                        | :heavy_multiplication_x: | :white_check_mark: |
+|7.11           | - empty dmrole + dmtype + ref                 | :heavy_multiplication_x: | :white_check_mark: |
+|7.9            | - no dmrole + dmtype + value                  | :heavy_multiplication_x: | :white_check_mark: |
+|-------------- | **Child of COLLECTION**, as array             |                          |                    |
+|7.16           | - dmrole + dmtype + ref                       | :heavy_multiplication_x: | :white_check_mark: |
+|7.17           | - empty dmrole + dmtype + ref                 | :heavy_check_mark:       | :white_check_mark: |
+|7.18           | - no dmrole + dmtype + value                  | :heavy_check_mark:       | :white_check_mark: |
+|-------------- | **any Usage**                                 |                          |                    |
+|7.10           | - valid dmrole + no dmtype + (value|ref)      | :heavy_multiplication_x: | :white_check_mark: |
+|7.12           | - valid dmrole + empty dmtype + (value|ref)   | :heavy_multiplication_x: | :white_check_mark: |
+|7.4            | - valid dmrole + dmtype + no (value|ref)      | :heavy_multiplication_x: | :white_check_mark: |
+|7.13           | - valid dmrole + dmtype + empty ref           | :heavy_multiplication_x: | :white_check_mark: |
+|7.6            | - valid dmrole + dmtype + ref + unit          | :heavy_check_mark:       | :white_check_mark: |
+|7.19           | - valid dmrole + dmtype + ref + empty unit    | :heavy_check_mark:       | :white_check_mark: |
+|7.7            | - valid dmrole + dmtype + ref + arrayindex    | :heavy_check_mark:       | :white_check_mark: |
+|7.15           | - valid dmrole + dmtype + ref + (arrayindex < 0)    | :heavy_multiplication_x: | :white_check_mark: |
+|7.1            | - valid dmrole + dmtype + value               | :heavy_check_mark:       | :white_check_mark: |
+|7.14           | - valid dmrole + dmtype + empty value         | :heavy_check_mark:       | :white_check_mark: |
+|7.5            | - valid dmrole + dmtype + value + unit        | :heavy_check_mark:       | :white_check_mark: |
+|7.20           | - valid dmrole + dmtype + value + empty unit  | :heavy_check_mark:       | :white_check_mark: |
+|7.8            | - valid dmrole + dmtype + value + arrayindex  | :heavy_multiplication_x: | :white_check_mark: |
+|7.3            | - valid dmrole + dmtype + ref + value         | :heavy_check_mark:       | :white_check_mark: |
+|7.21           | - valid dmrole + dmtype + ref + value + arrayindex  | :heavy_check_mark:       | :white_check_mark: |
 |               |                                               |                          |                    |
 |**COLLECTION** |                                               |                          |                    |
 |-------------- | **Child of GLOBALS**                          |                          |                    |

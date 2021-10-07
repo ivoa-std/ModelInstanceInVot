@@ -5,11 +5,12 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmrole="adhoc:Target.pos" dmtype="adhoc:Position">
-			<!-- Test Case 7.8:  ATTRIBUTE with value and arrayindex -->
-			<!--    The arrayindex attribute only to be combined with ref  -->
-			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.longitude" dmtype="ivoa:real" value="77.339" arrayindex="0"/>
-			<dm-mapping:ATTRIBUTE dmrole="adhoc.Position.latitude" dmtype="ivoa:real" value="44.123" arrayindex="1"/>
+		<dm-mapping:INSTANCE ID="_thing1" dmtype="model:Thing">
+		<!-- Usage 1: Child of INSTANCE -->
+
+			<!-- Test Case 7.8: valid dmrole + dmtype + value + arrayindex; arrayindex only assoc. with ref. -->
+			<dm-mapping:ATTRIBUTE dmrole="model:Thing.x" dmtype="ivoa:real" value="77.339" arrayindex="0"/>
+			<dm-mapping:ATTRIBUTE dmrole="model:Thing.y" dmtype="ivoa:real" value="44.123" arrayindex="1"/>
 		</dm-mapping:INSTANCE>
 		
 	</dm-mapping:TEMPLATES>
