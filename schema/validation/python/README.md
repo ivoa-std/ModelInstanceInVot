@@ -149,9 +149,9 @@
 |7.17           | - empty dmrole + dmtype + ref                 | :heavy_check_mark:       | :white_check_mark: |
 |7.18           | - no dmrole + dmtype + value                  | :heavy_check_mark:       | :white_check_mark: |
 |-------------- | **any Usage**                                 |                          |                    |
-|7.10           | - valid dmrole + no dmtype + (value|ref)      | :heavy_multiplication_x: | :white_check_mark: |
-|7.12           | - valid dmrole + empty dmtype + (value|ref)   | :heavy_multiplication_x: | :white_check_mark: |
-|7.4            | - valid dmrole + dmtype + no (value|ref)      | :heavy_multiplication_x: | :white_check_mark: |
+|7.10           | - valid dmrole + no dmtype + (value or ref)   | :heavy_multiplication_x: | :white_check_mark: |
+|7.12           | - valid dmrole + empty dmtype + (value or ref)| :heavy_multiplication_x: | :white_check_mark: |
+|7.4            | - valid dmrole + dmtype + no (value or ref)   | :heavy_multiplication_x: | :white_check_mark: |
 |7.13           | - valid dmrole + dmtype + empty ref           | :heavy_multiplication_x: | :white_check_mark: |
 |7.6            | - valid dmrole + dmtype + ref + unit          | :heavy_check_mark:       | :white_check_mark: |
 |7.19           | - valid dmrole + dmtype + ref + empty unit    | :heavy_check_mark:       | :white_check_mark: |
