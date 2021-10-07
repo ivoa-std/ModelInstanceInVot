@@ -5,11 +5,15 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 
-	<!-- Test Case 3.2: INSTANCE optional -->
+	<!-- Test Case 3.2: with COLLECTION only; INSTANCE optional -->
 	<dm-mapping:GLOBALS >
 		<dm-mapping:COLLECTION ID="_coordsys" dmrole="" >
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="fffff" />
-			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="ggggg" />
+			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="model:TimeSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</dm-mapping:INSTANCE>
+			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="model:SpaceSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
 	</dm-mapping:GLOBALS>
 

@@ -39,9 +39,11 @@
 	        <!-- Test Case 8.4: ID + empty dmrole; if present, dmrole must be empty -->
 		<dm-mapping:COLLECTION ID="_yyy" dmrole="" />
 
-		<!-- Test Case 8.7: COLLECTION of INSTANCE -->
+		<!-- Test Case 8.7: COLLECTION of INSTANCE, for ORM selection -->
 		<dm-mapping:COLLECTION ID="_zzz" dmrole="">
-			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" />
+			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
+			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
 
 		<!-- The following test COLLECTION under INSTANCE -->

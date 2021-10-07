@@ -9,8 +9,11 @@
 		<dm-mapping:COLLECTION ID="_coordsys" >
 		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
 			
-			<!-- Test Case 5.29: no PRIMARY_KEY; must have PRIMARY_KEY -->
-			<dm-mapping:INSTANCE ID="_timesys"  dmtype="model:TimeSys" />
+			<!-- Test Case 5.29: no PRIMARY_KEY; must have PRIMARY_KEY in this context -->
+			<!-- * each child must have at least 1 (all must have the same set in practice) -->
+			<dm-mapping:INSTANCE ID="_timesys"  dmtype="model:TimeSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</dm-mapping:INSTANCE>
 			<dm-mapping:INSTANCE ID="_spacecys" dmtype="model:SpaceSys" />
 			
 		</dm-mapping:COLLECTION>

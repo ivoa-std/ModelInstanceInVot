@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<!-- 
+  The GLOBALS node contains singleton instances which may or may not be referenced by other INSTANCES.
+  There are 2 allowed children:
+    1) COLLECTION
+       A COLLECTION under GLOBALS serves as a proxy for TABLE, grouping common INSTANCES which
+       options for selection using the ORM elements PRIMARY/FOREIGN_KEY.
+    2) INSTANCE
+       Singleton instances, these may be referenced by other instances, but do not play a direct role within any instance.
+-->
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
@@ -8,9 +16,14 @@
 	<!-- Test Case 3.1: all subnodes -->
 	<dm-mapping:GLOBALS >
 		<dm-mapping:COLLECTION ID="_coordsys" dmrole="" >
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="fffff" />
-			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="ggggg" />
+			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="model:TimeSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</dm-mapping:INSTANCE>
+			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="model:SpaceSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
+		
 		<dm-mapping:INSTANCE ID="_ds" dmrole="" dmtype="ddddd" />
 	</dm-mapping:GLOBALS>
 

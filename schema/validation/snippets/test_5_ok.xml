@@ -118,16 +118,13 @@
 		</dm-mapping:INSTANCE>
 		
 		<!-- Test Case 5.4: no ID + empty dmrole + dmtype; ID optional, must have no or empty dmrole. -->
-		<!-- FAIL: currently requires non-empty ID on all INSTANCE children of GLOBALS
 		<dm-mapping:INSTANCE dmrole="" dmtype="model:thing" />
-		-->
+
 		<!-- Test Case 5.5: ID + no dmrole + dmtype; ID optional, must have no or empty dmrole. -->
 		<dm-mapping:INSTANCE ID="_xyz" dmtype="model:thing" />
 
 		<!-- Test Case 5.6: no ID + no dmrole + dmtype; ID optional, must have no or empty dmrole. -->
-		<!-- FAIL: currently requires non-empty ID on all INSTANCE children of GLOBALS
 		<dm-mapping:INSTANCE dmtype="model:thing" />
-		-->
 
 	</dm-mapping:GLOBALS>
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">

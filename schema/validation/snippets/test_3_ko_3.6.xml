@@ -7,10 +7,6 @@
 
 	<!-- Test Case 3.6: unexpected subnode -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION ID="_coordsys" dmrole="" >
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="fffff" />
-			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="ggggg" />
-		</dm-mapping:COLLECTION>
 		<dm-mapping:REFERENCE ID="_mistake" dmrole="" ref="_zzz" />
 		<dm-mapping:INSTANCE ID="_ds" dmrole="" dmtype="ddddd" />
 	</dm-mapping:GLOBALS>

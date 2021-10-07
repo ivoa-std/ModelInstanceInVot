@@ -62,9 +62,9 @@
 |5.1            | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
 |5.2            | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
 |5.3            | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
-|5.4            | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.4            | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.5            | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
-|5.6            | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
+|5.6            | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.7            | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
 |5.8            | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
 |5.9            | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
@@ -88,7 +88,7 @@
 |5.26           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
 |5.27           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
 |5.28           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
-|5.29           | - no PRIMARY_KEY                              | :heavy_multiplication_x: | :white_check_mark: :x: |
+|5.29           | - no PRIMARY_KEY                              | :heavy_multiplication_x: | :white_check_mark: |
 |-------------- | **Child of COLLECTION**, as array/list        |                          |                    |
 |5.30           | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
 |5.31           | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
@@ -189,7 +189,7 @@
 |8.19           | - dmrole + JOIN                               | :heavy_check_mark:       | :white_check_mark: |
 |8.20           | - dmrole + INSTANCE  + JOIN                   | :heavy_check_mark:       | :white_check_mark: |
 |8.21           | - dmrole + ATTRIBUTE + (R,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
-|8.22           | - dmrole + REFERENCE + (A,I,J)                | :heavy_multiplication_x: | :white_check_mark: :x: |
+|8.22           | - dmrole + REFERENCE + (A,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
 |8.23           | - dmrole + INSTANCE + (A,R)                   | :heavy_multiplication_x: | :white_check_mark: |
 |8.24           | - dmrole + other (not A,R,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
 |               |                                               |                          |                    |
