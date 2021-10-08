@@ -69,8 +69,8 @@
 |5.8            | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
 |5.9            | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
 |-------------- | **Child of TEMPLATES**                        |                          |                    |
-|5.10           | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: :x: |
-|5.11           | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: :x: |
+|5.10           | - ID       + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.11           | - no ID    + dmrole       + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
 |5.12           | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.13           | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
 |5.14           | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
