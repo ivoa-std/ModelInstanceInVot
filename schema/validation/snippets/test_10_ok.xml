@@ -23,7 +23,7 @@
 		<dm-mapping:WHERE primarykey="sssss" value="" />
 
 		<!-- required in TEMPLATES -->
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmtype="fffff" />
 
 	</dm-mapping:TEMPLATES>
 

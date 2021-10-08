@@ -11,17 +11,17 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+		<dm-mapping:INSTANCE  dmtype="fffff">
 			<!-- Test Case 11.1: dmtype + ref -->
 			<dm-mapping:PRIMARY_KEY dmtype="fffff" ref="zzzz" />
 		</dm-mapping:INSTANCE>
 
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+		<dm-mapping:INSTANCE dmtype="fffff">
 			<!-- Test Case 11.2: dmtype + value -->
 			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
 		</dm-mapping:INSTANCE>
 
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+		<dm-mapping:INSTANCE  dmtype="fffff">
 			<!-- Test Case 11.8: empty value -->
 			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="" />
 		</dm-mapping:INSTANCE>
