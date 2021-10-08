@@ -8,7 +8,7 @@
 
 	<!-- Test Case 4.4: WHERE node(s) must be first. -->
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmrole="" dmtype="model:Thing" />
 		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
 	</dm-mapping:TEMPLATES>
 
