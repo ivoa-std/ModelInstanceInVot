@@ -13,10 +13,10 @@ mapping_sample = FileUtils.get_datadir()
 class Test(unittest.TestCase):
 
     def testOK(self):
-        self.assertTrue(TestVOTableRunner.regarde_si_OK(mapping_sample, "test_rich_instance_1"), "file should be valid")
+        self.assertTrue(TestVOTableRunner.regarde_si_OK(mapping_sample, "test_rich_instance"), "file should be valid")
 
     def testKO(self):
-        self.assertTrue(TestVOTableRunner.regarde_si_KO(mapping_sample, "test_rich_instance_1"), "file shouldn't be valid")
+        self.assertTrue(TestVOTableRunner.regarde_si_KO(mapping_sample, "test_rich_instance"), "file shouldn't be valid")
 
 if __name__ == "__main__":
     # import sys;sys.argv = ['', 'Test.testName']

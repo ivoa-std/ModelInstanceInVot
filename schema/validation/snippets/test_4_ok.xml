@@ -10,27 +10,27 @@
 
 	<!-- Test Case 4.1: with INSTANCE only; WHERE optional -->
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE  dmtype="fffff" />
 	</dm-mapping:TEMPLATES>
 	
 	<!-- Test Case 4.2: with WHERE and INSTANCE -->
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE  dmtype="fffff" />
 	</dm-mapping:TEMPLATES>
 	
 	<!-- Test Case 4.5: multiple WHERE nodes -->
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
 		<dm-mapping:WHERE primarykey="ttttt" value="tttt" />
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff"/>
+		<dm-mapping:INSTANCE  dmtype="fffff"/>
 	</dm-mapping:TEMPLATES>
 	
 	<!-- Test Case 4.6: multiple INSTANCE nodes -->
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff"/>
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff"/>
+		<dm-mapping:INSTANCE  dmtype="fffff"/>
+		<dm-mapping:INSTANCE  dmtype="fffff"/>
 	</dm-mapping:TEMPLATES>
 
 </dm-mapping:VODML>
