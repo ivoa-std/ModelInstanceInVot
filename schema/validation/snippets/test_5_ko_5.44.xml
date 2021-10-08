@@ -6,7 +6,7 @@
 	<dm-mapping:MODEL name="model" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 
-		<dm-mapping:INSTANCE dmrole="bug" dmtype="model:thing">
+		<dm-mapping:INSTANCE dmtype="model:thing">
 		<!-- Usage 5: Child of INSTANCE  -->
 		
 			<!-- Test Case 5.44: ID + no dmrole + dmtype; (must have non-empty dmrole) -->
