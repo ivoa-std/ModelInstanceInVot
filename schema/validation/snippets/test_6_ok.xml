@@ -25,7 +25,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+		<dm-mapping:INSTANCE  dmtype="fffff">
 		<!-- Usage 1: Child of INSTANCE -->
 
 			<!-- Test Case 6.1:  REFERENCE with dmref -->

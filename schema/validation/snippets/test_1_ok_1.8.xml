@@ -9,7 +9,7 @@
 	<dm-mapping:MODEL name="model3" url="http://cccccc" />
 	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="s95dv8ed">
-		<dm-mapping:INSTANCE dmtype="zzzzz" dmrole="eeeee">
+		<dm-mapping:INSTANCE dmtype="zzzzz">
 			<dm-mapping:REFERENCE dmref="aaa" dmrole="zzzz" />
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>

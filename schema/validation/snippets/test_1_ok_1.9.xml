@@ -7,17 +7,17 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmtype="zzzzz" dmrole="eeeee">
+		<dm-mapping:INSTANCE  dmtype="eeeee">
 			<dm-mapping:REFERENCE dmref="aaa" dmrole="qqq"/>
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>
 	<dm-mapping:TEMPLATES tableref="dgjovds4">
-		<dm-mapping:INSTANCE dmtype="zzzzz" dmrole="eeeee">
+		<dm-mapping:INSTANCE  dmtype="eeeee">
 			<dm-mapping:REFERENCE dmref="aaa" dmrole="zzzz"/>
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>
 	<dm-mapping:TEMPLATES tableref="s95dv8ed">
-		<dm-mapping:INSTANCE dmtype="zzzzz" dmrole="eeeee">
+		<dm-mapping:INSTANCE  dmtype="eeeee">
 			<dm-mapping:REFERENCE dmref="aaa" dmrole="zzzz"/>
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>

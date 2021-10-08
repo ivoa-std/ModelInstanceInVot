@@ -6,9 +6,6 @@
 	<dm-mapping:MODEL name="model" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 
-		<!-- BUG: INSTANCE child of TEMPLATES currently must have non-empty ID or dmrole, which is incorrect.
-		<dm-mapping:INSTANCE dmtype="model:thing">
-		-->
 		<dm-mapping:INSTANCE dmrole="bug" dmtype="model:thing">
 		<!-- Usage 5: Child of INSTANCE  -->
 		
