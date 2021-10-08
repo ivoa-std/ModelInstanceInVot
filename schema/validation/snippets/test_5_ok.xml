@@ -136,9 +136,9 @@
 		<dm-mapping:INSTANCE ID="aaaa" dmrole="" dmtype="fffff" />
 
 		<!-- Test Case 5.13: no ID + empty dmrole + dmtype; ID optional, must have no or empty dmrole -->
-		<!-- FAIL: currently requires non-empty ID or dmrole on all INSTANCE children of TEMPLATES
+		<!-- FAIL: currently requires non-empty ID or dmrole on all INSTANCE children of TEMPLATES Schema fixed-->
 		<dm-mapping:INSTANCE dmrole="" dmtype="fffff" />
-		-->
+		
 
 		<!-- Test Case 5.14: ID + no dmrole + dmtype; ID optional, must have no or empty dmrole. -->
 		<dm-mapping:INSTANCE ID="aaaa" dmtype="fffff" />
