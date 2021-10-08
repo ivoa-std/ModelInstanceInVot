@@ -4,16 +4,11 @@
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
+	<dm-mapping:GLOBALS >
+	<!-- Usage 1: Child of GLOBALS -->
 
-        <!-- Test Case 8.7: No role for COLLECTION/REFERENCE-->
-		<dm-mapping:COLLECTION dmrole="">
-            <dm-mapping:REFERENCE dmrole="a.f"/>
-        </dm-mapping:COLLECTION>
+		<!-- Test Case 5.9: valid ID + valid dmrole + empty dmtype; dmtype must not be empty -->
+		<dm-mapping:INSTANCE ID="_xyz" dmtype="" />
 
 	</dm-mapping:GLOBALS>
-	
 </dm-mapping:VODML>
-
-
-

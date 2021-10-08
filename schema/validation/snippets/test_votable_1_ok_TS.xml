@@ -94,7 +94,7 @@
         <dm-mapping:TEMPLATES tableref="Results">
           <dm-mapping:INSTANCE ID="_ts_data" dmrole="" dmtype="cube:NDPoint">
             <dm-mapping:COLLECTION dmrole="cube:NDPoint.observable">
-              <dm-mapping:INSTANCE dmrole="cube:NDPoint.observable" dmtype="cube:Observable">
+              <dm-mapping:INSTANCE dmtype="cube:Observable">
                 <dm-mapping:ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="False"/>
                 <dm-mapping:INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:Time">
                   <dm-mapping:INSTANCE dmrole="meas:Time.coord" dmtype="coords:MJD">
@@ -103,7 +103,7 @@
                   </dm-mapping:INSTANCE>
                 </dm-mapping:INSTANCE>
               </dm-mapping:INSTANCE>
-              <dm-mapping:INSTANCE dmrole="cube:NDPoint.observable" dmtype="cube:Observable">
+              <dm-mapping:INSTANCE dmtype="cube:Observable">
                 <dm-mapping:ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
                 <dm-mapping:INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
                   <dm-mapping:INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
@@ -114,7 +114,7 @@
                   </dm-mapping:INSTANCE>
                 </dm-mapping:INSTANCE>
               </dm-mapping:INSTANCE>
-              <dm-mapping:INSTANCE dmrole="cube:NDPoint.observable" dmtype="cube:Observable">
+              <dm-mapping:INSTANCE dmtype="cube:Observable">
                 <dm-mapping:ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
                 <dm-mapping:INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
                   <dm-mapping:INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">

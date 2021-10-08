@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+
+	<!-- Test Case 8.5: COLLECTION under GLOBALS must have empty or no dmrole. -->
 	<dm-mapping:GLOBALS>
+		<dm-mapping:COLLECTION ID="asdasdas" dmrole="dfgdfd"/>
+ 	</dm-mapping:GLOBALS>
 
-		<!-- Test Case 8.5: No role for COLLECTION/INSTANCE-->
-		<dm-mapping:COLLECTION dmrole="">
-            <dm-mapping:INSTANCE dmrole="a.f"/>
-        </dm-mapping:COLLECTION>
-
-	</dm-mapping:GLOBALS>
-	
 </dm-mapping:VODML>
-
-
-
