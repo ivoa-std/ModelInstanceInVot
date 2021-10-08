@@ -136,7 +136,6 @@
 		<dm-mapping:INSTANCE ID="aaaa" dmrole="" dmtype="fffff" />
 
 		<!-- Test Case 5.13: no ID + empty dmrole + dmtype; ID optional, must have no or empty dmrole -->
-		<!-- FAIL: currently requires non-empty ID or dmrole on all INSTANCE children of TEMPLATES Schema fixed-->
 		<dm-mapping:INSTANCE dmrole="" dmtype="fffff" />
 		
 
@@ -144,9 +143,8 @@
 		<dm-mapping:INSTANCE ID="aaaa" dmtype="fffff" />
 
 		<!-- Test Case 5.15: no ID + no dmrole + dmtype; ID optional, must have no or empty dmrole -->
-		<!-- FAIL: currently requires non-empty ID or dmrole on all INSTANCE children of TEMPLATES
 		<dm-mapping:INSTANCE dmtype="fffff" />
-		-->
+		
 
 		<!-- Test Case 5.53: with ATTRIBUTE; zero or more A|I|R|C, any order -->
 		<dm-mapping:INSTANCE ID="aaaa" dmtype="model:thing">

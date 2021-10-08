@@ -74,8 +74,8 @@
 |5.12           | - ID       + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.13           | - no ID    + empty dmrole + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.14           | - ID       + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
-|5.15           | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: :x: |
-|5.16           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.15           | - no ID    + no dmrole    + dmtype            | :heavy_check_mark:       | :white_check_mark: |
+|5.16           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
 |5.17           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
 |5.18           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
 |-------------- | **Child of COLLECTION**, for ORM selection    |                          |                    |
@@ -104,11 +104,11 @@
 |5.41           | - no ID    + dmrole       + dmtype            | :heavy_check_mark:       | :white_check_mark: |
 |5.42           | - ID       + empty dmrole + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
 |5.43           | - no ID    + empty dmrole + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
-|5.44           | - ID       + no dmrole    + dmtype            | :heavy_multiplication_x: | :white_check_mark: :bug: |
-|5.45           | - no ID    + no dmrole    + dmtype            | :heavy_multiplication_x: | :white_check_mark: :bug: |
-|5.46           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: :bug: |
-|5.47           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: :bug: |
-|5.48           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: :bug: |
+|5.44           | - ID       + no dmrole    + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.45           | - no ID    + no dmrole    + dmtype            | :heavy_multiplication_x: | :white_check_mark: |
+|5.46           | - empty ID + valid dmrole + valid dmtype      | :heavy_multiplication_x: | :white_check_mark: |
+|5.47           | - valid ID + valid dmrole + no dmtype         | :heavy_multiplication_x: | :white_check_mark: |
+|5.48           | - valid ID + valid dmrole + empty dmtype      | :heavy_multiplication_x: | :white_check_mark: |
 |-------------- | **Content**                                   |                          |                    |
 |5.50           | - no children                                 | :heavy_check_mark:       | :white_check_mark: |
 |5.51           | - with PRIMARY_KEY as first                   | :heavy_check_mark:       | :white_check_mark: |
