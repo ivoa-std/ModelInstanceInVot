@@ -8,7 +8,7 @@
 	<!-- Usage 2: Child of TEMPLATES  -->
 
 		<!-- Test Case 5.16: empty ID + valid dmrole + valid dmtype; If present ID must not be empty. -->
-		<dm-mapping:INSTANCE ID="" dmrole="bug" dmtype="model:thing"/>
+		<dm-mapping:INSTANCE ID="" dmtype="model:thing"/>
 
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>
