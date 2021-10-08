@@ -6,8 +6,9 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
 		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+		<!-- Usage 1: Child of INSTANCE -->
 
-			<!-- Test Case 6.5:  dmrole required -->
+			<!-- Test Case 6.5:  no dmrole + dmref; must have non-empty dmrole in this context -->
 			<dm-mapping:REFERENCE dmref="fffff" />
 			
 		</dm-mapping:INSTANCE>

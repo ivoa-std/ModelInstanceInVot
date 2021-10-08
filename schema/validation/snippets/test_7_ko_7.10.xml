@@ -5,10 +5,11 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff">
+		<dm-mapping:INSTANCE ID="_thing1" dmtype="model:Thing">
+		<!-- Usage 1: Child of INSTANCE -->
 
-			<!-- Test Case 7.10:  ATTRIBUTE - dmtype required -->
-			<dm-mapping:ATTRIBUTE dmrole="aaaa" ref="eeee"/>
+			<!-- Test Case 7.10: valid dmrole + no dmtype + value; must have non-empty dmtype. -->
+			<dm-mapping:ATTRIBUTE dmrole="model:Thing.a" value="eeee"/>
 
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>
