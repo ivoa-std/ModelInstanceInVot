@@ -10,7 +10,7 @@
 		<!-- Usage 5: Child of INSTANCE  -->
 		
 			<!-- Test Case 5.48: valid ID + valid dmrole + empty dmtype; dmtype must not be empty -->
-			<dm-mapping:INSTANCE dmrole="model.thing.a" dmtype="" />
+			<dm-mapping:INSTANCE ID="id" dmrole="model.thing.a" dmtype="" />
 			
 		</dm-mapping:INSTANCE>
 		
