@@ -8,7 +8,7 @@
 	<!-- Usage 2: Child of TEMPLATES  -->
 
 		<!-- Test Case 5.17: valid ID + valid dmrole + no dmtype; must have dmtype -->
-		<dm-mapping:INSTANCE ID="eeee" dmrole="aaaa"/>
+		<dm-mapping:INSTANCE ID="eeee" dmrole=""/>
 
 	</dm-mapping:TEMPLATES>
 </dm-mapping:VODML>

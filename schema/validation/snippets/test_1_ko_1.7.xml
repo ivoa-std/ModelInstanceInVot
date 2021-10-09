@@ -5,7 +5,9 @@
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:TEMPLATES tableref="fgdgfddf" />
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+		<dm-mapping:INSTANCE dmtype="model:Thing"/>
+	</dm-mapping:TEMPLATES>
 	<dm-mapping:GLOBALS />
 
 </dm-mapping:VODML>
