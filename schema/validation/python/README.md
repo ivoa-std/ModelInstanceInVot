@@ -194,12 +194,13 @@
 |8.24           | - dmrole + other (not A,R,I,J)                | :heavy_multiplication_x: | :white_check_mark: |
 |               |                                               |                          |                    |
 |**JOIN**       |                                               |                          |                    |
-|9.1            | - dmref                                       | :heavy_check_mark:       | :white_check_mark: |
-|9.2            | - tableref                                    | :heavy_check_mark:       | :white_check_mark: |
-|9.3            | - empty (must have one or other)              | :heavy_multiplication_x: | :white_check_mark: |
-|9.4            | - dmref + tableref (not both)                 | :heavy_multiplication_x: | :white_check_mark: |
-|9.5            | - dmref + WHERE                               | :heavy_check_mark:       | :white_check_mark: |
-|9.6            | - tableref + WHERE                            | :heavy_check_mark:       | :white_check_mark: |
+|9.1            | - dmref + no tableref                         | :heavy_check_mark:       | :white_check_mark: |
+|9.2            | - no dmref + tableref                         | :heavy_multiplication_x: | :white_check_mark: |
+|9.3            | - no dmref + no tableref                      | :heavy_multiplication_x: | :white_check_mark: |
+|9.4            | - dmref + tableref                            | :heavy_check_mark:       | :white_check_mark: |
+|9.5            | - dmref + no tableref + WHERE                 | :heavy_check_mark:       | :white_check_mark: |
+|9.6            | - dmref + tableref + WHERE                    | :heavy_check_mark:       | :white_check_mark: |
+|9.6b           | - no dmref + tableref + WHERE                 | :heavy_check_mark:       | :white_check_mark: |
 |9.7            | - empty dmref                                 | :heavy_multiplication_x: | :white_check_mark: |
 |9.8            | - empty tableref                              | :heavy_multiplication_x: | :white_check_mark: |
 |               |                                               |                          |                    |
