@@ -10,7 +10,7 @@
 		<dm-mapping:WHERE foreignkey="aaa" />
 
 		<!-- required in TEMPLATES -->
-		<dm-mapping:INSTANCE dmrole="aaaa" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmtype="model:Thing" />
 
 	</dm-mapping:TEMPLATES>
 
