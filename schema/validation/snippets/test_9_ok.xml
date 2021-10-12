@@ -12,39 +12,37 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
 		<dm-mapping:COLLECTION ID="id" dmrole="">
-			<!-- Test Case 9.1: using dmref -->
+			<!-- Test Case 9.1: dmref + no tableref; ok if only 1 table. -->
 			<dm-mapping:JOIN dmref="aaaaa" />
 		</dm-mapping:COLLECTION>
 		
 		<dm-mapping:COLLECTION  ID="id" dmrole="">
-			<!-- Test Case 9.2: using tableref -->
-			<dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa"/>
+			<!-- Test Case 9.4: dmref + tableref -->
+			<dm-mapping:JOIN tableref="_table1" dmref="aaaaa"/>
 		</dm-mapping:COLLECTION>
 		
 		<dm-mapping:COLLECTION  ID="id"  dmrole="">
-			<!-- Test Case 9.5: using dmref + WHERE -->
+			<!-- Test Case 9.5: dmref + no tableref + WHERE -->
 			<dm-mapping:JOIN dmref="aaaaa">
 				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
 			</dm-mapping:JOIN>
 		</dm-mapping:COLLECTION>
 		
-        <dm-mapping:COLLECTION   ID="id" dmrole="">
-            <!-- Test Case 9.6: using tableref + dmref + WHERE (multiple) -->
-            <dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa">
-                <dm-mapping:WHERE foreignkey="eee" value="ssss" />
-                <dm-mapping:WHERE foreignkey="fff" value="tttt" />
-            </dm-mapping:JOIN>
-        </dm-mapping:COLLECTION>
-        
-        <dm-mapping:COLLECTION   ID="id" dmrole="">
-            <!-- Test Case 9.6bis: using tableref + WHERE (multiple) -->
-            <dm-mapping:JOIN tableref="aaaaa" >
-                <dm-mapping:WHERE foreignkey="eee" value="ssss" />
-                <dm-mapping:WHERE foreignkey="fff" value="tttt" />
-            </dm-mapping:JOIN>
-        </dm-mapping:COLLECTION>
-
-  
+		<dm-mapping:COLLECTION   ID="id" dmrole="">
+			<!-- Test Case 9.6: tableref + dmref + WHERE (multiple) -->
+			<dm-mapping:JOIN tableref="aaaaa" dmref="aaaaa">
+				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
+				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
+			</dm-mapping:JOIN>
+		</dm-mapping:COLLECTION>
+		
+		<dm-mapping:COLLECTION   ID="id" dmrole="">
+			<!-- Test Case 9.6b: tableref + no dmref + WHERE (multiple) -->
+			<dm-mapping:JOIN tableref="aaaaa" >
+				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
+				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
+			</dm-mapping:JOIN>
+		</dm-mapping:COLLECTION>
 
 	</dm-mapping:GLOBALS>
 </dm-mapping:VODML>
