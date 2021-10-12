@@ -10,7 +10,7 @@
 	<dm-mapping:GLOBALS>
 		<dm-mapping:COLLECTION ID="_stuff" dmrole="">
 
-			<!-- Test Case 9.9: tableref must come with a dmref -->
+			<!-- Test Case 9.2: no dmref + tableref must come with a dmref -->
 			<dm-mapping:JOIN tableref="dsadasd" />
 			
 		</dm-mapping:COLLECTION>

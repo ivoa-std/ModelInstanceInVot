@@ -9,6 +9,23 @@ from utils.test_runner import TestRunner
 
 mapping_sample = FileUtils.get_datadir()
  
+# Expected results
+expected = {
+            '6.1': 'VALID',
+            '6.2': 'VALID',
+            '6.3': '(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)',
+            '6.4': '(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)',
+            '6.5': 'every $child in ./dm-mapping:REFERENCE satisfies  $child/@dmrole != \'\'',
+            '6.6': '((count(dm-mapping:FOREIGN_KEY) &gt; 0 and ./@tableref and not(./@dmref))',
+            '6.7': '(count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))',
+            '6.8': 'VALID',
+            '6.9': 'every $child in ./dm-mapping:REFERENCE satisfies  $child/@dmrole != \'\'',
+            '6.10': 'if (./@tableref) then  @tableref != \'\'',
+            '6.11': 'if (./@dmref) then  @dmref != \'\'',
+            '6.12': 'VALID',
+            '6.13': 'VALID',
+            '6.14': 'count (dm-mapping:REFERENCE[@dmrole != \'\']) eq 0',
+            }
 
 class Test(unittest.TestCase):
 
@@ -16,7 +33,7 @@ class Test(unittest.TestCase):
         self.assertTrue(TestRunner.regarde_si_OK(mapping_sample, "test_6"), "file should be valid")
 
     def testKO(self):
-        self.assertTrue(TestRunner.regarde_si_KO(mapping_sample, "test_6"), "file shouldn't be valid")
+        self.assertTrue(TestRunner.regarde_si_KO(mapping_sample, "test_6", expected), "invalid file test failed.")
 
 
 if __name__ == "__main__":

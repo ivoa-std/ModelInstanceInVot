@@ -12,14 +12,19 @@ class Validator:
     def __init__(self, xsd_path):
         self.xmlschema = xmlschema.XMLSchema11(xsd_path)
 
-    def validate_file(self, xml_path: str, verbose=False) -> bool:
+    def validate_file(self, xml_path: str, verbose=False, expected_fail_msg=None) -> bool:
         if verbose is True:
             try :
                 self.xmlschema.validate(xml_path)
                 return True
             except Exception as e:
-                print(e)
-                return False
+                if expected_fail_msg is not None and expected_fail_msg in str(e):
+                    # Expected error
+                    return True
+                else:
+                    # Not Expected errror
+                    print(e)
+                    return False
         else :
             return self.xmlschema.is_valid(xml_path)
         
