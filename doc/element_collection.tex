@@ -1,84 +1,149 @@
+    COLLECTION is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
+
+    \begin{enumerate}
+    \item{As child of INSTANCE}
+      
+      The COLLECTION serves as a container for elements with multiplicity $>$ 1.\\
+      Examples of usage in this context would be:
+      \begin{itemize}
+        \item an array attribute
+        \item a reference relation with multiplicity $>$ 1
+        \item a composition relation with multiplicity $>$ 1
+      \end{itemize}
+      
+    \item{As child of GLOBALS}
+          
+      The COLLECTION serves as a proxy for TABLE, grouping common INSTANCES for selection by PRIMARY/FOREIGN\_KEY.
+      Examples of usage in this context would be:
+      \begin{itemize}
+        \item a set of photometry filters, which apply to various rows of a photometric data table, based on the value of the 'band' column.
+        \item a set of Dataset metadata instances, which apply to various rows of a photometric data table, based on the value of the 'band' column.
+      \end{itemize}
+          
+    \item{As child of COLLECTION}
+
+          The use-case for this is unclear
+        
+    \end{enumerate}
+   
+\begin{lstlisting}[frame=single,caption={Example of COLLECTION child of INSTANCE},style=XML,basicstyle=\tiny]
+<dm-mapping:INSTANCE dmtype="model:Thing">
+    <dm-mapping:COLLECTION dmrole="model:Thing.elems">
+        <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="100" />
+        <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="110" />
+    </dm-mapping:COLLECTION>
+</dm-mapping:INSTANCE>
+\end{lstlisting}   
+
+\begin{lstlisting}[frame=single,caption={Example of COLLECTION child of GLOBALS},style=XML,basicstyle=\tiny]
+<dm-mapping:GLOBALS>
+    <dm-mapping:COLLECTION ID="_filters" >
+        <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
+            <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
+            <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
+                                    value="GAIA/GAIA2r.Grp"/>
+        </dm-mapping:INSTANCE>
+        <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
+            <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
+            <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
+                                    value="GAIA/GAIA2r.Gbp"/>
+        </dm-mapping:INSTANCE>
+    </dm-mapping:COLLECTION>
+<dm-mapping:GLOBALS>
+\end{lstlisting}   
 
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @ID & 
-            ID of the \texttt{COLLECTION} element, must be unique within the mapping block. Must not be left empty.\\
-        \hline 
-            @dmrole & 
-            Role of the collection in the DM. Must not be empty if present \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{COLLECTION} attributes} 
-     \label{tbl:collection-att}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c|J|}       
+    \hline 
+         \textbf{Attribute} & 
+         \textbf {Role}\\
+    \hline
+    \hline  
+         @ID & 
+         Element ID, MUST be unique within the document.\\
+    \hline 
+         @dmrole & 
+         Role of the \texttt{COLLECTION} in the data model. \\
+    \hline 
+  \end{tabulary}
+  \caption{\texttt{COLLECTION} attributes} 
+  \label{tbl:collection-att}
  \end{table}
 
-
-
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|c|J|}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
-        \textbf{@ID} &
-        \textbf{@dmrole} &
-        \textbf{Pattern}\\
+      \textbf{Context} &
+      \textbf{@ID} &
+      \textbf{@dmrole} &
+      \textbf{Pattern}\\
     \hline      \hline  
-        MAND &           
-        NO &           
-        The collection, usually located in \texttt{GLOBALS}, has no role. It can be referenced by a \texttt{REFERENCE}  \\
+      1 &
+      OPT & 
+      MAND & 
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST not be empty.  If present, @ID MUST not be empty. \\
     \hline   
-        OPT &           
-        MAND &           
-        The element maps a collection playing a role in the model. @ID can also be set in that case. \\
-   \hline 
-\end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{COLLECTION}} 
-     \label{tbl:collection-pattern}
+      2 &
+      MAND & 
+      NO & 
+      The collection, has no role. MUST have non-empty ID to reference for ORM selection of contained \texttt{INSTANCE}. \\
+    \hline 
+  \end{tabulary}
+  \caption{Valid attribute patterns for \texttt{COLLECTION}} 
+  \label{tbl:collection-pattern}
  \end{table}
 
 
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c |c |c|J|}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
-        \textbf{Element} &
-        \textbf{Position} &
-        \textbf{Cardinality} &
-        \\
-    \hline      \hline  
-        \texttt{REFERENCE}  &        
-        Any &           
-        0-* &
-        Collection item as a reference to either a class or a collection instance. No \texttt{JOIN} allowed if present\\
-    \hline    
-        \texttt{INSTANCE} &           
-        Any &           
-        0-* &
-        Collection item as a class instance. No \texttt{JOIN} allowed if present\\
-    \hline    
-        \texttt{ATTRIBUTE} &           
-        Any &           
-        0-* &
-        Collection item as a simple attribute. No \texttt{JOIN} allowed if present\\
-    \hline    
-        \texttt{COLLECTION} &           
-        Any &           
-        0-* &
-        Collection item as a collection. No \texttt{JOIN} allowed if present\\
-    \hline    
-        \texttt{JOIN} &           
-        1 &           
-        0-1 &
-        The \texttt{COLLECTION} must be populated by a join operation. In this case \texttt{JOIN} must be the unique child of \texttt{COLLECTION} \\
+      \multicolumn{4}{|l|}{\textbf{Context: Child of INSTANCE}} \\
     \hline 
-\end{tabulary}
+      \textbf{Element} &
+      \textbf{Position} &
+      \textbf{Cardinality} &  \\
+    \hline
+    \hline  
+        \texttt{ATTRIBUTE} & 
+        Only & 
+        0-* & 
+        Collection of attributes.\\
+    \hline    
+        \texttt{REFERENCE} & 
+        Only & 
+        0-* & 
+        Collection of references.\\
+    \hline    
+        \texttt{INSTANCE} and/or \texttt{JOIN} & 
+        Any & 
+        0-* & 
+        Collection of instances.\\
+    \hline    
+        \texttt{COLLECTION} & 
+        Only & 
+        0-* & 
+        Collection of collections.\\
+    \hline    
+    \hline 
+      \multicolumn{4}{|l|}{\textbf{Context: Child of GLOBALS}} \\
+    \hline 
+      \textbf{Element} &
+      \textbf{Position} &
+      \textbf{Cardinality} &  \\
+    \hline
+    \hline    
+        \texttt{INSTANCE} & 
+        Only & 
+        0-* & 
+        Collection of related instances.\\
+    \hline 
+  \end{tabulary}
      \caption{Allowed children for \texttt{COLLECTION}} 
      \label{tbl:collection-chilren}
  \end{table}
