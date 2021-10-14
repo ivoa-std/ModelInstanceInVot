@@ -28,7 +28,7 @@ class Validator:
                       in str(e).replace("'", "").replace(" ", "").replace('"', '')):
                     return True
                 # When an error occurs on the lack of a required attribute, the message may change 
-                # From a validator version to another.
+                # From a validator to another.
                 # Here is a little hack to work this around.
                 elif expected_fail_msg.startswith("missing required attribute") is True:
                     e_msg = str(e)
