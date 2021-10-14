@@ -4,7 +4,7 @@ Created on 2021/07/01
 @author: laurentmichel
 '''
 
-import xmlschema
+import re, xmlschema
 
 
 class Validator:
@@ -27,8 +27,10 @@ class Validator:
                       and expected_fail_msg.replace("'", "").replace(" ", "").replace('"', '') 
                       in str(e).replace("'", "").replace(" ", "").replace('"', '')):
                     return True
+                # When an error occurs on the lack of a required attribute, the message may change 
+                # From a validator version to another.
+                # Here is a little hack to work this around.
                 elif expected_fail_msg.startswith("missing required attribute") is True:
-                    import re
                     e_msg = str(e)
                     att_name = re.search(r'^missing required attribute \'(.*)\'$', expected_fail_msg).group(1)
                     p = re.compile(r'failed validating .* with XsdAttributeGroup(.*' + att_name +'.*)')
