@@ -21,9 +21,23 @@ class Validator:
                 if expected_fail_msg is not None and expected_fail_msg in str(e):
                     # Expected error
                     return True
+                # The error message can differ from the expected one by some string layout that can 
+                # depends on the XSD processor e.g Xpath elements quoted or not
+                elif (expected_fail_msg is not None 
+                      and expected_fail_msg.replace("'", "").replace(" ", "").replace('"', '') 
+                      in str(e).replace("'", "").replace(" ", "").replace('"', '')):
+                    return True
+                elif expected_fail_msg.startswith("missing required attribute") is True:
+                    import re
+                    e_msg = str(e)
+                    att_name = re.search(r'^missing required attribute \'(.*)\'$', expected_fail_msg).group(1)
+                    p = re.compile(r'failed validating .* with XsdAttributeGroup(.*' + att_name +'.*)')
+                    if p.match(e_msg) is None:
+                        return False
+                    return True
                 else:
                     # Not Expected errror
-                    print(e)
+                    print("Failure reason: {}".format(e))
                     return False
         else :
             return self.xmlschema.is_valid(xml_path)
