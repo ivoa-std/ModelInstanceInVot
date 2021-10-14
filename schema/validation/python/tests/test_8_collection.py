@@ -20,7 +20,7 @@ expected = {
             '8.7': 'VALID',
             '8.8': 'VALID',
             '8.9': 'Unexpected child with tag \'dm-mapping:BOGUS\' at position 1.',
-            '8.10': 'VALID',
+            '8.10': 'every $child in ./dm-mapping:COLLECTION satisfies not($child/@ID) or $child/@ID = \'\'',
             '8.11': 'if (@ID) then ( @ID != \'\')',
             '8.12': 'every $child in ./dm-mapping:COLLECTION satisfies  $child/@dmrole != \'\'',
             '8.13': 'every $child in ./dm-mapping:COLLECTION satisfies  $child/@dmrole != \'\'',
