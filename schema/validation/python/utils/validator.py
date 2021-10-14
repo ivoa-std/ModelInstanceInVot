@@ -18,29 +18,36 @@ class Validator:
                 self.xmlschema.validate(xml_path)
                 return True
             except Exception as e:
-                if expected_fail_msg is not None and expected_fail_msg in str(e):
-                    # Expected error
-                    return True
-                # The error message can differ from the expected one by some string layout that can 
-                # depends on the XSD processor e.g Xpath elements quoted or not
-                elif (expected_fail_msg is not None 
-                      and expected_fail_msg.replace("'", "").replace(" ", "").replace('"', '') 
-                      in str(e).replace("'", "").replace(" ", "").replace('"', '')):
-                    return True
-                # When an error occurs on the lack of a required attribute, the message may change 
-                # From a validator to another.
-                # Here is a little hack to work this around.
-                elif expected_fail_msg.startswith("missing required attribute") is True:
-                    e_msg = str(e)
-                    att_name = re.search(r'^missing required attribute \'(.*)\'$', expected_fail_msg).group(1)
-                    p = re.compile(r'failed validating .* with XsdAttributeGroup(.*' + att_name +'.*)')
-                    if p.match(e_msg) is None:
+                if expected_fail_msg is not None:
+                    if expected_fail_msg in str(e):
+                        # Expected error
+                        return True
+                    # The error message can differ from the expected one by some string layout that can 
+                    # depends on the XSD processor e.g Xpath elements quoted or not
+                    elif (expected_fail_msg is not None 
+                          and expected_fail_msg.replace("'", "").replace(" ", "").replace('"', '') 
+                          in str(e).replace("'", "").replace(" ", "").replace('"', '')):
+                        return True
+                    # When an error occurs on the lack of a required attribute, the message may change 
+                    # From a validator to another.
+                    # Here is a little hack to work this around.
+                    elif expected_fail_msg.startswith("missing required attribute") is True:
+                        e_msg = str(e)
+                        att_name = re.search(r'^missing required attribute \'(.*)\'$', expected_fail_msg).group(1)
+                        p = re.compile(r'failed validating .* with XsdAttributeGroup(.*' + att_name +'.*)')
+                        if p.match(e_msg) is None:
+                            print("Failure message: \n{}".format(e))
+                            print("Expected reason: {}".format(expected_fail_msg))
+    
+                            return False
+                        return True
+                    else:
+                        print("Failure message: \n{}".format(e))
+
                         return False
-                    return True
-                else:
-                    # Not Expected errror
-                    print("Failure reason: {}".format(e))
-                    return False
+                # Not Expected errror
+                print("Failure reason: {}".format(e))
+                return False
         else :
             return self.xmlschema.is_valid(xml_path)
         
