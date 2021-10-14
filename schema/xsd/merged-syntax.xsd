@@ -51,6 +51,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies (count($child/dm-mapping:INSTANCE) gt 0 and count($child/dm-mapping:INSTANCE/dm-mapping:PRIMARY_KEY) eq 1) or count($child/dm-mapping:INSTANCE) eq 0 "/>
     -->
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:INSTANCE satisfies ( count($grandchild/dm-mapping:PRIMARY_KEY) gt 0 ) )"/>
+    <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies count($child/dm-mapping:ATTRIBUTE) = 0"/>
   </xs:complexType>
 
   <!-- Mapping of the data contained in a particular table -->
