@@ -47,10 +47,8 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="count (dm-mapping:INSTANCE[@dmrole != '']) eq 0"/>
     <xs:assert test="count (dm-mapping:COLLECTION[@dmrole != '']) eq 0"/>
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies  $child/@ID != '' "/>
-    <!-- original rule for PK requirement in this context 
-    <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies (count($child/dm-mapping:INSTANCE) gt 0 and count($child/dm-mapping:INSTANCE/dm-mapping:PRIMARY_KEY) eq 1) or count($child/dm-mapping:INSTANCE) eq 0 "/>
-    -->
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:INSTANCE satisfies ( count($grandchild/dm-mapping:PRIMARY_KEY) gt 0 ) )"/>
+    <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@tableref)))"/>
     <xs:assert test="every $child in ./dm-mapping:COLLECTION satisfies count($child/dm-mapping:ATTRIBUTE) = 0"/>
   </xs:complexType>
 
@@ -141,7 +139,7 @@ LM 2021-08-25: add VOtable import, prefix prefixes with dm-mapping
     <xs:assert test="count (dm-mapping:ATTRIBUTE[@dmrole != '']) eq 0"/>
     <xs:assert test="count (dm-mapping:COLLECTION[@dmrole != '']) eq 0"/>
     <xs:assert test="count (dm-mapping:REFERENCE[@dmrole != '']) eq 0"/>
-    
+        
   </xs:complexType>
 
   <xs:complexType name="Reference">
