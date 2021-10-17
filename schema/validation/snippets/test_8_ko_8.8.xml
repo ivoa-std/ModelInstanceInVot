@@ -7,7 +7,7 @@
 	<dm-mapping:GLOBALS>
 
 		<!-- Test Case 8.8: COLLECTION under GLOBALS, contains other than INSTANCE. -->
-		<dm-mapping:COLLECTION ID="_bad" >
+		<dm-mapping:COLLECTION dmid="_bad" >
 				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="foo" />
 				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="bar" />
 		</dm-mapping:COLLECTION>

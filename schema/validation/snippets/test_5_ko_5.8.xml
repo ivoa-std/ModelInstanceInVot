@@ -7,8 +7,8 @@
 	<dm-mapping:GLOBALS >
 	<!-- Usage 1: Child of GLOBALS -->
 
-		<!-- Test Case 5.8: valid ID + valid dmrole + no dmtype; must have dmtype -->
-		<dm-mapping:INSTANCE ID="_xyz" />
+		<!-- Test Case 5.8: valid dmid + valid dmrole + no dmtype; must have dmtype -->
+		<dm-mapping:INSTANCE dmid="_xyz" />
 
 	</dm-mapping:GLOBALS>
 </dm-mapping:VODML>

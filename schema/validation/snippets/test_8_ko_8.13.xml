@@ -5,7 +5,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-		<dm-mapping:INSTANCE ID="_aaa" dmtype="model:thing">
+		<dm-mapping:INSTANCE dmid="_aaa" dmtype="model:thing">
 
 			<!-- Test Case 8.13: COLLECTION under INSTANCE, dmrole must not be empty. -->
 			<dm-mapping:COLLECTION dmrole=""/>

@@ -3,7 +3,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE ID="_thing1" dmtype="model:Thing">
+		<dm-mapping:INSTANCE dmid="_thing1" dmtype="model:Thing">
 			<dm-mapping:COLLECTION dmrole="model:Thing.arrayAttribute1">
 			<!-- Usage 2: Child of COLLECTION -->
 			

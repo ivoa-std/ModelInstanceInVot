@@ -8,7 +8,7 @@
 		<dm-mapping:INSTANCE dmtype="model:thing">
 		<!-- Usage 5: Child of INSTANCE  -->
 		
-			<!-- Test Case 5.45: no ID + no dmrole + dmtype; (must have non-empty dmrole) -->
+			<!-- Test Case 5.45: no dmid + no dmrole + dmtype; (must have non-empty dmrole) -->
 			<dm-mapping:INSTANCE dmtype="model:foo" />
 			
 		</dm-mapping:INSTANCE>

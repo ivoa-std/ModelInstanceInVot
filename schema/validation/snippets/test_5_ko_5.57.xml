@@ -6,15 +6,15 @@
 	<dm-mapping:MODEL name="model" />
 	<dm-mapping:GLOBALS >
 	
-		<dm-mapping:COLLECTION ID="_coordsys" >
+		<dm-mapping:COLLECTION dmid="_coordsys" >
 		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
 			
 			<!-- Test Case 5.57: with PRIMARY_KEY not first  -->
-			<dm-mapping:INSTANCE ID="_timesys" dmtype="model:TimeSys" >
+			<dm-mapping:INSTANCE dmid="_timesys" dmtype="model:TimeSys" >
 				<dm-mapping:ATTRIBUTE dmrole="model:TimeSys.a" dmtype="ivoa:string" value="blah" />
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
 			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE ID="_spacecys" dmtype="model:SpaceSys" >
+			<dm-mapping:INSTANCE dmid="_spacecys" dmtype="model:SpaceSys" >
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
 				<dm-mapping:ATTRIBUTE dmrole="model:SpaceSys.a" dmtype="ivoa:string" value="blah" />
 			</dm-mapping:INSTANCE>

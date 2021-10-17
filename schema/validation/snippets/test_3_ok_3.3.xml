@@ -7,7 +7,7 @@
 
 	<!-- Test Case 3.3: with INSTANCE only; COLLECTION optional -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE ID="_ds" dmrole="" dmtype="model:Thing" />
+		<dm-mapping:INSTANCE dmid="_ds" dmrole="" dmtype="model:Thing" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

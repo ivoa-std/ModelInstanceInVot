@@ -3,13 +3,13 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE ID="_xyz" dmrole="" dmtype="model:thing" >
+		<dm-mapping:INSTANCE dmid="_xyz" dmrole="" dmtype="model:thing" >
 			<dm-mapping:COLLECTION dmrole="model.thing.c">
 			<!-- Usage 4: Child of COLLECTION, as array/list element -->
 
-				<!-- Test Case 5.36: empty ID + valid dmrole + valid dmtype; If present, ID must not be empty. -->
-				<dm-mapping:INSTANCE ID="" dmrole="" dmtype="model:alpha" />
-				<dm-mapping:INSTANCE ID="" dmrole="" dmtype="model:alpha" />
+				<!-- Test Case 5.36: empty dmid + valid dmrole + valid dmtype; If present, dmid must not be empty. -->
+				<dm-mapping:INSTANCE dmid="" dmrole="" dmtype="model:alpha" />
+				<dm-mapping:INSTANCE dmid="" dmrole="" dmtype="model:alpha" />
 				
 			</dm-mapping:COLLECTION>
 

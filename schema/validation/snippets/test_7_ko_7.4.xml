@@ -5,7 +5,7 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE ID="_thing1" dmtype="model:Thing">
+		<dm-mapping:INSTANCE dmid="_thing1" dmtype="model:Thing">
 		<!-- Usage 1: Child of INSTANCE -->
 
 			<!-- Test Case 7.4: valid dmrole + dmtype; must have one or both of (value, ref) -->

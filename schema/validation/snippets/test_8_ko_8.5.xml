@@ -6,7 +6,7 @@
 
 	<!-- Test Case 8.5: COLLECTION under GLOBALS must have empty or no dmrole. -->
 	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION ID="asdasdas" dmrole="dfgdfd"/>
+		<dm-mapping:COLLECTION dmid="asdasdas" dmrole="dfgdfd"/>
  	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>
