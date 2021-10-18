@@ -13,7 +13,7 @@ mapping_sample = FileUtils.get_datadir()
 expected = {
             '9.1': 'VALID',                                    # missing tableref (ok if only 1 table?)
             '9.2': '(./@tableref) and (./@dmref)',             # missing dmref
-            '9.3': 'exception string',                         # empty - must have dmref or tableref
+            '9.3': 'every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@tableref)))', # empty - must have dmref or tableref
             '9.4': 'VALID',                                    # dmref + tableref
             '9.5': 'VALID',                                    # dmref + no tableref + WHERE
             '9.6': 'VALID',                                    # no dmref + tableref + WHERE
