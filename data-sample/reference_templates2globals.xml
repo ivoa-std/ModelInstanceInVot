@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+	<RESOURCE type="results">
+		<RESOURCE type="meta">
+			<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+				<dm-mapping:MODEL name="mango"
+					url="file:/Users/sao/Documents/IVOA/GitHub/ivoa-dm-examples/tmp/Mango-v1.0.vo-dml.xml" />
+				<dm-mapping:MODEL name="cube"
+					url="https://volute.g-vo.org/svn/trunk/projects/dm/Cube/vo-dml/Cube-1.0.vo-dml.xml" />
+				<dm-mapping:MODEL name="ds"
+					url="https://volute.g-vo.org/svn/trunk/projects/dm/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml" />
+				<dm-mapping:MODEL name="meas" url="https://www.ivoa.net/xml/Meas/20200908/Meas-v1.0.vo-dml.xml" />
+				<dm-mapping:MODEL name="coords" url="https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml" />
+				<dm-mapping:MODEL name="ivoa" url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+
+				<dm-mapping:GLOBALS>
+
+					<dm-mapping:COLLECTION dmid="_Datasets" dmrole="">
+						<dm-mapping:INSTANCE dmid="_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
+							<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560" />
+							<dm-mapping:ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType"
+								dmtype="ds:dataset.DataProductType" value="TIMESERIES" />
+							<dm-mapping:ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string"
+								value="GAIA Time Series" />
+							<dm-mapping:ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1" />
+							<dm-mapping:REFERENCE dmrole="ds:experiment.ObsDataset.target" dmref="_tg1" />
+						</dm-mapping:INSTANCE>
+					</dm-mapping:COLLECTION>
+					<dm-mapping:INSTANCE dmid="_tg1" dmrole="" dmtype="ds:experiment.Target">
+						<dm-mapping:ATTRIBUTE dmrole="ds:experiment.BaseTarget.name" dmtype="ivoa:string"
+							value="5813181197970338560" />
+					</dm-mapping:INSTANCE>
+				</dm-mapping:GLOBALS>
+
+				<dm-mapping:TEMPLATES tableref="_PKTable">
+					<dm-mapping:INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+						<dm-mapping:REFERENCE dmrole="cube:DataProduct.dataset" tableref="_Datasets">
+							<dm-mapping:FOREIGN_KEY ref="_pksrcid" />
+						</dm-mapping:REFERENCE>
+					</dm-mapping:INSTANCE>
+				</dm-mapping:TEMPLATES>
+			</dm-mapping:VODML>
+		</RESOURCE>
+
+		<TABLE ID="_PKTable">
+			<FIELD ID="_pksrcid" datatype="char" arraysize="*" name="pksrcid">
+				<DESCRIPTION>Source ID</DESCRIPTION>
+			</FIELD>
+			<FIELD ID="_pkband" name="pkband" datatype="char" arraysize="*">
+				<DESCRIPTION>Photometric Band</DESCRIPTION>
+			</FIELD>
+			<DATA>
+				<TABLEDATA>
+					<TR>
+						<TD>5813181197970338560</TD>
+						<TD>G</TD>
+					</TR>
+					<TR>
+						<TD>5813181197970338560</TD>
+						<TD>BP</TD>
+					</TR>
+					<TR>
+						<TD>5813181197970338560</TD>
+						<TD>RP</TD>
+					</TR>
+				</TABLEDATA>
+			</DATA>
+		</TABLE>
+
+	</RESOURCE>
+</VOTABLE>

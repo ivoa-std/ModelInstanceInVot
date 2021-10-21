@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    13.2 duplicated GLOBALS/COLLECTION/INSTANCEID 
+    13.2 duplicated GLOBALS/COLLECTION/INSTANCEdmid 
 -->
 <dm-mapping:VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
@@ -8,20 +8,18 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS >
 
-		<dm-mapping:COLLECTION ID="_id" dmrole="" >
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="model:TimeSys" >
+		<dm-mapping:COLLECTION dmid="_id" dmrole="" >
+			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
 			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
-		<dm-mapping:COLLECTION ID="_other_id" >
-		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
+		<dm-mapping:COLLECTION dmid="_other_id" >
 
-			<!-- Test Case 5.52: with multiplie PRIMARY_KEY; allow zero or more. -->
-			<dm-mapping:INSTANCE ID="_sameid" dmtype="ds:experiment.ObsDataset">
+			<dm-mapping:INSTANCE dmid="_sameid" dmtype="ds:experiment.ObsDataset">
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="VEGA"/>
 			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE ID="_sameid" dmtype="ds:experiment.ObsDataset">
+			<dm-mapping:INSTANCE dmid="_sameid" dmtype="ds:experiment.ObsDataset">
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181545327453273"/>
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="SIRIUS"/>
 			</dm-mapping:INSTANCE>

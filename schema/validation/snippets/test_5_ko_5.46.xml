@@ -8,8 +8,8 @@
 		<dm-mapping:INSTANCE dmtype="model:thing">
 		<!-- Usage 5: Child of INSTANCE  -->
 		
-			<!-- Test Case 5.46: empty ID + valid dmrole + valid dmtype; If present, ID must not be empty. -->
-			<dm-mapping:INSTANCE ID="" dmrole="model.thing.a" dmtype="model:foo" />
+			<!-- Test Case 5.46: empty dmid + valid dmrole + valid dmtype; If present, dmid must not be empty. -->
+			<dm-mapping:INSTANCE dmid="" dmrole="model.thing.a" dmtype="model:foo" />
 			
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>

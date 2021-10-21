@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 13.5 TEMPLATES/INSTANCE@ID duplicated in GLOBALS/COLLECTION@ID -->
+<!-- 13.5 TEMPLATES/INSTANCE@dmid duplicated in GLOBALS/COLLECTION@dmid -->
 <dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION ID="_sameid" dmrole="">
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="model:TimeSys">
+		<dm-mapping:COLLECTION dmid="_sameid" dmrole="">
+			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys">
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB" />
 			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
 
 	</dm-mapping:GLOBALS>
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE ID="_sameid" dmrole="" dmtype="model:thing">
+		<dm-mapping:INSTANCE dmid="_sameid" dmrole="" dmtype="model:thing">
 			<dm-mapping:COLLECTION dmrole="model:thing.items">
 				<dm-mapping:INSTANCE dmrole="" dmtype="fffff">
 					<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />

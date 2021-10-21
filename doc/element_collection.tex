@@ -37,7 +37,7 @@
 
 \begin{lstlisting}[frame=single,caption={Example of COLLECTION child of GLOBALS},style=XML,basicstyle=\tiny]
 <dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION ID="_filters" >
+    <dm-mapping:COLLECTION dmid="_filters" >
         <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
             <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
             <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
@@ -61,8 +61,8 @@
          \textbf {Role}\\
     \hline
     \hline  
-         @ID & 
-         Element ID, MUST be unique within the document.\\
+         @dmid & 
+         Element dmid, MUST be unique within the document.\\
     \hline 
          @dmrole & 
          Role of the \texttt{COLLECTION} in the data model. \\
@@ -85,12 +85,12 @@
       1 &
       OPT & 
       MAND & 
-      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST not be empty.  If present, @ID MUST not be empty. \\
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST not be empty.  If present, @dmid MUST not be empty. \\
     \hline   
       2 &
       MAND & 
       NO & 
-      The collection, has no role. MUST have non-empty ID to reference for ORM selection of contained \texttt{INSTANCE}. \\
+      The collection, has no role. MUST have non-empty dmid to reference for ORM selection of contained \texttt{INSTANCE}. \\
     \hline 
   \end{tabulary}
   \caption{Valid attribute patterns for \texttt{COLLECTION}} 

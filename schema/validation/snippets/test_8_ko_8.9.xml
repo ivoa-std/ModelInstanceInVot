@@ -7,7 +7,7 @@
 	<dm-mapping:GLOBALS>
 
 		<!-- Test Case 8.9: COLLECTION under GLOBALS; with invalid child -->
-		<dm-mapping:COLLECTION ID="asdasdas">
+		<dm-mapping:COLLECTION dmid="asdasdas">
 			<dm-mapping:BOGUS dmrole="a.f"/>
 		</dm-mapping:COLLECTION>
 

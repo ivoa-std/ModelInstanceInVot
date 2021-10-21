@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 13.4 TEMPLATES/INSTANCE@ID duplicated in GLOBALS/INSTANCE@ID -->
+<!-- 13.4 TEMPLATES/INSTANCE@dmid duplicated in GLOBALS/INSTANCE@dmid -->
 <dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-        <dm-mapping:INSTANCE ID="_ref2"  dmtype="model:thing">
+        <dm-mapping:INSTANCE dmid="_ref2"  dmtype="model:thing">
         </dm-mapping:INSTANCE>
 
 	</dm-mapping:GLOBALS>
 	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE ID="_ref2" dmrole="" dmtype="model:thing">
+		<dm-mapping:INSTANCE dmid="_ref2" dmrole="" dmtype="model:thing">
 			<dm-mapping:COLLECTION dmrole="model:thing.items">
 				<dm-mapping:INSTANCE dmrole="" dmtype="fffff">
 					<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />

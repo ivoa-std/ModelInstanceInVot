@@ -8,7 +8,7 @@
 		<dm-mapping:INSTANCE dmtype="model:thing">
 		<!-- Usage 5: Child of INSTANCE  -->
 		
-			<!-- Test Case 5.47: valid ID + valid dmrole + no dmtype; must have dmtype -->
+			<!-- Test Case 5.47: valid dmid + valid dmrole + no dmtype; must have dmtype -->
 			<dm-mapping:INSTANCE dmrole="model.thing.a" />
 			
 		</dm-mapping:INSTANCE>

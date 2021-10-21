@@ -4,7 +4,7 @@
    The INSTANCE element defines a complex ObjectType or DataType.
    
 \begin{lstlisting}[frame=single,caption={Example of INSTANCE child of GLOBALS},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE ID="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
+<dm-mapping:INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
 	<dm-mapping:INSTANCE dmrole="coords:SpaceFrame.refPosition"
                                  dmtype="coords:StdRefLocation">
 		<dm-mapping:ATTRIBUTE dmrole="coords:StdRefLocation.position" 
@@ -26,8 +26,8 @@
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            @ID & 
-            Element ID, MUST be unique within the mapping block  \\
+            @dmid & 
+            Element dmid, MUST be unique within the mapping block  \\
         \hline 
             @dmrole & 
             INSTANCE role in the DM \\
@@ -40,7 +40,7 @@
      \label{tbl:instance-att}
  \end{table}   
     It may be a child of several other elements, and the requirements on
-    the content (especially ID and dmrole), may differ depending on
+    the content (especially dmid and dmrole), may differ depending on
     the usage:
     
 \begin{itemize}
@@ -48,7 +48,7 @@
    In this case the INSTANCE is a single stand-alone instance which
    may or may not be referenced by other INSTANCEs.
   \begin{itemize}
-     \item must have ID, as possible target of REFERENCE.ref
+     \item must have dmid, as possible target of REFERENCE.ref
      \item must have no or empty \texttt{dmrole}
   \end{itemize}  
   
@@ -56,7 +56,7 @@
   In this case, the INSTANCE is a template for instances which
   are generated once per row of the associated table.  
   \begin{itemize}
-     \item may have ID, as target of JOIN.dmref
+     \item may have dmid, as target of JOIN.dmref
      \item must have no or empty dmrole \texttt{dmrole}
   \end{itemize}  
   
@@ -68,14 +68,14 @@
            allowed within the GLOBALS environment. In this case:             
            \begin{itemize}
              \item must contain at least one PRIMARY\_KEY sub-element
-             \item must have ID, as possible target of REFERENCE.ref
+             \item must have dmid, as possible target of REFERENCE.ref
              \item must have no or empty dmrole
            \end{itemize}
 
      \item Elements INSTANCE are collection cells with multiplicity > 1
           Each one has:             
            \begin{itemize}
-             \item must have ID, as possible target of REFERENCE.ref. 
+             \item must have dmid, as possible target of REFERENCE.ref. 
                    this pattern is             
                    only allowed if within the GLOBALS environment
              \item must have no or empty dmrole
@@ -85,13 +85,13 @@
            a complex ObjectType or DataType playing a role in the parent
            INSTANCE.     
            \begin{itemize}
-             \item must not have ID (may not be referenced) ??
+             \item must not have dmid (may not be referenced) ??
              \item must have non-empty dmrole
            \end{itemize}
            
      \item any INSTANCE:     
            \begin{itemize}
-             \item if ID is present, it must not be empty
+             \item if dmid is present, it must not be empty
              \item must have non-empty dmtype
            \end{itemize}
     \end{itemize}  
@@ -150,7 +150,7 @@ between \texttt{ObjectTypes} and \texttt{DataType}.
 
 
  \begin{lstlisting}[frame=single,caption={INSTANCE child of GLOBALS},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE ID="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
+<dm-mapping:INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
 	<dm-mapping:INSTANCE dmrole="coords:SpaceFrame.refPosition"
                                  dmtype="coords:StdRefLocation">
 		<dm-mapping:ATTRIBUTE dmrole="coords:StdRefLocation.position" 
@@ -172,8 +172,8 @@ between \texttt{ObjectTypes} and \texttt{DataType}.
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            @ID & 
-            Element ID, MUST be unique within the mapping block  \\
+            @dmid & 
+            Element dmid, MUST be unique within the mapping block  \\
         \hline 
             @dmrole & 
             INSTANCE role in the DM \\
@@ -191,7 +191,7 @@ between \texttt{ObjectTypes} and \texttt{DataType}.
 \centering
 \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
-        \textbf{@ID} &
+        \textbf{@dmid} &
         \textbf{@dmrole} &
         \textbf{@dmtype} &
         \textbf{Pattern}\\
