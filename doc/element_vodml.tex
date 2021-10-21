@@ -1,27 +1,39 @@
-Top level mapping element.
+The VODML element is the top level container for the mapping eleements for a single VOTable RESOURCE.
+
+\begin{lstlisting}[frame=single,caption={Example VODML mapping block},style=XML,basicstyle=\tiny]
+<dm-mapping:VODML>
+  <dm-mapping:MODEL>  ...  </dm-mapping:MODEL>
+  <dm-mapping:GLOBALS>  ...  </dm-mapping:GLOBALS>
+  <dm-mapping:TEMPLATES>  ...  </dm-mapping:TEMPLATES>
+   ...
+</dm-mapping:VODML>
+\end{lstlisting}
 
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c |c |c|}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c |c |c|}
     \hline 
         \textbf{Element} &
         \textbf{Position} &
         \textbf{Cardinality}\\
-    \hline      \hline  
-        \texttt{MODEL} &           
-        1 &           
-        1-*\\
-    \hline    
-        \texttt{GLOBALS} &           
-        2 &           
-        0-*\\
+    \hline
     \hline  
-        \texttt{TEMPLATES} &           
-        3 &           
-        0-*\\
-   \hline 
-\end{tabulary}
-     \caption{Allowed children for \texttt{VODLM}} 
-     \label{tbl:vodml-chilren}
- \end{table}
+      \texttt{MODEL} &           
+      1 &           
+      1-*\\
+    \hline    
+      \texttt{GLOBALS} &           
+      2 &           
+      0-*\\
+    \hline  
+      \texttt{TEMPLATES} &           
+      3 &           
+      0-*\\
+    \hline 
+  \end{tabulary}
+    \caption{Allowed children for \texttt{VODML}} 
+    \label{tbl:vodml-children}
+\end{table}
+
+
