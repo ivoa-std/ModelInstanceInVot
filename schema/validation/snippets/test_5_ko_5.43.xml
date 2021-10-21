@@ -3,10 +3,10 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE ID="_xyz" dmrole="" dmtype="model:thing" >
+		<dm-mapping:INSTANCE dmid="_xyz" dmrole="" dmtype="model:thing" >
 		<!-- Usage 5: Child of INSTANCE -->
 
-			<!-- Test Case 5.43: no ID + empty dmrole + dmtype; must have non-empty dmrole. -->
+			<!-- Test Case 5.43: no dmid + empty dmrole + dmtype; must have non-empty dmrole. -->
 			<dm-mapping:INSTANCE dmrole="" dmtype="model:foo" />
 			
 		</dm-mapping:INSTANCE>

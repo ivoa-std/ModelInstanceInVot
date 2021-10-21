@@ -4,7 +4,7 @@
 
      1) Child of INSTANCE
         In this case, the COLLECTION serves as a container for elements with multiplicity > 1.
-        * COLLECTION MUST NOT have ID, and so may not be referenced.
+        * COLLECTION MUST NOT have dmid, and so may not be referenced.
         * COLLECTION MUST have non-empty dmrole, which applies to each of the child subnodes
         The folowing content sets are allowed:
           a) COLLECTION of ATTRIBUTE for an array attribute.
@@ -16,7 +16,7 @@
         In this case, the COLLECTION serves as a proxy for TABLE; grouping of common INSTANCES for selection by PRIMARY/FOREIGN_KEY.
           * COLLECTION contains the set of INSTANCEs to be selected from.
             (INSTANCE is the only option which allows a PRIMARY_KEY)
-          * COLLECTION MUST have an ID, used as the tableref in the corresponding REFERENCEs [Test 3.10]
+          * COLLECTION MUST have an dmid, used as the tableref in the corresponding REFERENCEs [Test 3.10]
           * COLLECTION has no specified dmrole (ie: must be empty or missing) [Test 3.9]
 
      3) Child of COLLECTION
@@ -32,22 +32,22 @@
 		<!-- NOTE: GLOBALS node allows multiple COLLECTION sub-nodes.                     -->
 		<!--       We take advantage of this to test several valid cases in the same file -->
 	  
-	        <!-- Test Case 8.1: ID, no dmrole -->
+	        <!-- Test Case 8.1: dmid, no dmrole -->
 	        <!-- Test Case 8.6: no children (empty COLLECTION) -->
-		<dm-mapping:COLLECTION ID="_xxx"  />
+		<dm-mapping:COLLECTION dmid="_xxx"  />
 
-	        <!-- Test Case 8.4: ID + empty dmrole; if present, dmrole must be empty -->
-		<dm-mapping:COLLECTION ID="_yyy" dmrole="" />
+	        <!-- Test Case 8.4: dmid + empty dmrole; if present, dmrole must be empty -->
+		<dm-mapping:COLLECTION dmid="_yyy" dmrole="" />
 
 		<!-- Test Case 8.7: COLLECTION of INSTANCE, for ORM selection -->
-		<dm-mapping:COLLECTION ID="_zzz" dmrole="">
+		<dm-mapping:COLLECTION dmid="_zzz" dmrole="">
 			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" >
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
 			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
 
 		<!-- The following test COLLECTION under INSTANCE -->
-		<dm-mapping:INSTANCE ID="_aaa" dmtype="model:thing">
+		<dm-mapping:INSTANCE dmid="_aaa" dmtype="model:thing">
 			<!-- NOTE: INSTANCE node allows multiple COLLECTION sub-nodes.                    -->
 			<!--       We take advantage of this to test several valid cases in the same file -->
 

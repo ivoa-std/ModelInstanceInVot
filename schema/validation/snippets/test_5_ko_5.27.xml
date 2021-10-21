@@ -6,11 +6,11 @@
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS >
 
-		<dm-mapping:COLLECTION ID="_coordsys" dmrole="" >
+		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
 		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
 
-			<!-- Test Case 5.27: valid ID + valid dmrole + no dmtype; must have dmtype -->
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" >
+			<!-- Test Case 5.27: valid dmid + valid dmrole + no dmtype; must have dmtype -->
+			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" >
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
 			</dm-mapping:INSTANCE>
 			

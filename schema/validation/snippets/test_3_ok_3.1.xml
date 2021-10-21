@@ -15,16 +15,16 @@
 
 	<!-- Test Case 3.1: all subnodes -->
 	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION ID="_coordsys" dmrole="" >
-			<dm-mapping:INSTANCE ID="_timesys" dmrole="" dmtype="model:TimeSys" >
+		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
+			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
 			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE ID="_spacesys" dmrole="" dmtype="model:SpaceSys" >
+			<dm-mapping:INSTANCE dmid="_spacesys" dmrole="" dmtype="model:SpaceSys" >
 				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
 			</dm-mapping:INSTANCE>
 		</dm-mapping:COLLECTION>
 		
-		<dm-mapping:INSTANCE ID="_ds" dmrole="" dmtype="ddddd" />
+		<dm-mapping:INSTANCE dmid="_ds" dmrole="" dmtype="ddddd" />
 	</dm-mapping:GLOBALS>
 
 </dm-mapping:VODML>

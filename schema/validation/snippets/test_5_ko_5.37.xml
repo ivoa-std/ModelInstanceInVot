@@ -3,11 +3,11 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS >
-		<dm-mapping:INSTANCE ID="_xyz" dmrole="" dmtype="model:thing" >
+		<dm-mapping:INSTANCE dmid="_xyz" dmrole="" dmtype="model:thing" >
 			<dm-mapping:COLLECTION dmrole="model.thing.c">
 			<!-- Usage 4: Child of COLLECTION, as array/list element -->
 
-				<!-- Test Case 5.37: valid ID + valid dmrole + no dmtype; must have dmtype -->
+				<!-- Test Case 5.37: valid dmid + valid dmrole + no dmtype; must have dmtype -->
 				<dm-mapping:INSTANCE dmrole="" />
 				<dm-mapping:INSTANCE dmrole="" dmtype="model:alpha" />
 				

@@ -5,10 +5,10 @@
 
 	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
 	<dm-mapping:GLOBALS>
-		<dm-mapping:INSTANCE ID="_aaa" dmtype="model:thing">
+		<dm-mapping:INSTANCE dmid="_aaa" dmtype="model:thing">
 
-			<!-- Test Case 8.11: COLLECTION under INSTANCE, must not have ID (even empty) -->
-			<dm-mapping:COLLECTION ID="" dmrole="model:thing.a"/>
+			<!-- Test Case 8.11: COLLECTION under INSTANCE, must not have dmid (even empty) -->
+			<dm-mapping:COLLECTION dmid="" dmrole="model:thing.a"/>
 
 		</dm-mapping:INSTANCE>
 

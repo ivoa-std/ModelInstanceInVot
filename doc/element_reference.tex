@@ -11,10 +11,10 @@ Complex pattern that must be detailed later in a specific section
             Role of the referenced instance or collection in the DM \\
         \hline 
             @tableref& 
-            ID of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
+            dmid of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
         \hline 
             @dmref & 
-            ID of the referenced instance or collection\\
+            dmid of the referenced instance or collection\\
         \hline 
      \end{tabulary}
      \caption{\texttt{REFERENCE} attributes} 
@@ -34,7 +34,7 @@ Complex pattern that must be detailed later in a specific section
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern. @tableref gives the ID of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the \texttt{FOREIGN\_KEY} pattern. @tableref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           
