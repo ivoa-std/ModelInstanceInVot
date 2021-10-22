@@ -1,34 +1,60 @@
-Some annotations may map the Resource contents to instances or collections of data model
-types that are global in the mapping scope, possibly because such instances are refer-
-enced by other intances that annotate specific tables. More generally, some
-annotations will define instances that are completely defined in terms of
-constant value, i.e. they are not represented in tabular form. Rather, they
-are completely and directly represented by an XML element.
-Such instances should be included in the GLOBALS element.
-GLOBALS must only contain direct representations of instances, i.e.
-INSTANCE elements that do not refer to any FIELD directly. 
-This rule is not enforces via the XSD schema 
-Also, GLOBALS should not contain any INSTANCEs with REFERENCEs to
-indirect INSTANCEs.
+The \texttt{GLOBALS} block holds singular data model instances, and is not associated 
+with a VOTable \texttt{TABLE}.
+
+The contained instances have a global scope, and may be
+referenced by other instances anywhere in the mapping block.  \texttt{INSTANCE} attributes
+within the \texttt{GLOBALS} scope may only refer to VOTable \texttt{PARAMS} or contain
+explicit values, they MUST NOT refer to VOTable \texttt{FIELDS}.  Note: This rule is not enforced
+via the XSD schema which is restricted to the mapping block only.
+
+Related instances may be grouped within a \texttt{COLLECTION} block to enable selection
+via the ORM elements provided in this syntax.  See \texttt{COLLECTION} for more details.
+
+\begin{lstlisting}[frame=single,caption={Example \texttt{GLOBALS} block},style=XML,basicstyle=\tiny]
+<dm-mapping:VODML>
+  <dm-mapping:MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
+  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+  <dm-mapping:GLOBALS>
+    <!-- a collection of coordinate systems -->
+    <dm-mapping:COLLECTION dmid="\_CoordinateSystems" >
+      <dm-mapping:INSTANCE dmid="\_timesys" dmtype="sample:TimeSys">
+         ...
+      </dm-mapping:INSTANCE>
+      <dm-mapping:INSTANCE dmid="\_spacesys" dmtype="sample:SpaceSys">
+         ...
+      </dm-mapping:INSTANCE>
+    </dm-mapping:COLLECTION>
+
+    <!-- a singular, stand-alone instance -->
+    <dm-mapping:INSTANCE dmtype="sample:Thing">
+      <dm-mapping:ATTRIBUTE dmrole="sample:Thing.name" dmtype="ivoa:string" value="MyThing"/>
+      <dm-mapping:ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="\_date"/>
+      ...
+    </dm-mapping:INSTANCE>
+  </dm-mapping:GLOBALS>
+</dm-mapping:VODML>
+\end{lstlisting}
+
 
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c |c |c|}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c |c |c|}
     \hline 
         \textbf{Element} &
         \textbf{Position} &
         \textbf{Cardinality}\\
-    \hline      \hline  
-        \texttt{INSTANCE}          
-        Any &           
+    \hline
+    \hline
+        \texttt{INSTANCE} &
+        Any &
         0-*\\
-    \hline    
-        \texttt{COLLECTION} &           
-        Any &           
+    \hline
+        \texttt{COLLECTION} &
+        Any &
         0-*\\
-    \hline 
-\end{tabulary}
-     \caption{Allowed children for \texttt{GLOBALS}} 
-     \label{tbl:globals-chilren}
+    \hline
+  \end{tabulary}
+  \caption{Allowed children for \texttt{GLOBALS}} 
+  \label{tbl:globals-children}
  \end{table}
