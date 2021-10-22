@@ -4,30 +4,41 @@ providers must declare them through the MODEL elements.
 Only models that are used in the file must be declared. A model is
 used if at least one element in the mapping block refer to it. In other terms, only models that define vodml-ids used in the
 annotation must be declared.
+
+\begin{lstlisting}[frame=single,caption={Example MODEL mapping block},style=XML,basicstyle=\tiny]
+<dm-mapping:VODML>
+  <dm-mapping:MODEL name="sample-ext"
+                     url="https://www.myorg.net/models/SampleExt-v1.0.vo-dml.xml" />
+  <dm-mapping:MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
+  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+</dm-mapping:VODML>
+\end{lstlisting}
+
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @name  & 
-            Name of the mapped model (informal).  This attribute cannot be left empty  \\
-       \hline 
-            @url & 
-            Url of the vo-dml serialization of the model. This attribute cannot be left empty if present.\\
-       \hline 
-     \end{tabulary}
-     \caption{\texttt{MODEL} attributes} 
-     \label{tbl:model-att}
- \end{table}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c|J|}       
+    \hline 
+         \textbf{Attribute} & 
+         \textbf {Role}\\
+    \hline
+    \hline  
+         @name  & 
+         Name of the mapped model as declared in the VODML/XML model serialization.  This attribute MUST not be empty and forms the prefix used in dmrole/dmtype tags of elements from that model.  \\
+    \hline 
+         @url & 
+         URL to the vo-dml serialization of the model. If present, this attribute MUST not be empty.\\
+    \hline 
+  \end{tabulary}
+  \caption{\texttt{MODEL} attributes} 
+  \label{tbl:model-att}
+\end{table}
 
 
 \begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c |c |J|}
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c |c |J|}
     \hline 
         \textbf{@name} &
         \textbf{@url} &
@@ -36,8 +47,8 @@ annotation must be declared.
         MAND &           
         OPT &           
         Unique attribute pattern supported by \texttt{MODEL}\\
-   \hline 
-\end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{MODEL}} 
-     \label{tbl:model-pattern}
- \end{table}
+    \hline 
+  \end{tabulary}
+  \caption{Valid attribute patterns for  \texttt{MODEL}} 
+  \label{tbl:model-pattern}
+\end{table}
