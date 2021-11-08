@@ -78,6 +78,8 @@
 			test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@tableref)))" />
 		<xs:assert
 			test="every $child in ./dm-mapping:COLLECTION satisfies count($child/dm-mapping:ATTRIBUTE) = 0" />
+		<xs:assert
+			test="every $child in .//dm-mapping:ATTRIBUTE satisfies (not($child/@ref) or $child/@ref = '')" />
 	</xs:complexType>
 
 	<!-- Mapping of the data contained in a particular table -->
