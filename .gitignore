@@ -45,6 +45,7 @@ target/
 .classpath
 .project
 .pydevproject
+.pytest_cache
 
 # OS
 .DS_Store
