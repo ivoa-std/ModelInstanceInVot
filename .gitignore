@@ -39,6 +39,7 @@ draft-background.*
 # Maven 
 target/
 *.synctex*
+*.pdf
 
 # eclipse project file
 .settings/
