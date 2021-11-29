@@ -113,24 +113,7 @@ infrastructure that enable VO applications.
 
 \pagebreak
 \section{Introduction}
-
-The first purpose of a model is to provide,  for a particular domain, a formal description of the relevant quantities and of the way they are connected together .
-This documentary role facilitates the communication between the stack-holders and thus the design of interoperability protocols. 
-
-At data level, interoperability consists in arranging searched data in a way that a client can understand them without taking care of their origin. So that, the same code can process and compare data coming from different sources.  That way to arrange data is given by the model.
-
-This is not done by default with VOtables because VOTables are containers \citep{2019ivoa.spec.1021O}. The VOTable schema cannot say how data are mapped on a given model or whether they match any model at all. This is not an issue for simple protocol responses (ref) because the VOTable structure is defined by the protocol itself. This is however a big issue for VOTables containing native data such as Vizier  or TAP query responses.
-
-The challenge here is to bind native data with a given model in a way that a model aware software can see them as model instances while maintaining the possibility to access them in their original forms.
-
-This is partially done with UTypes which may connect FIELDs or PARAMs with model leaves in the case of simple tree-views of the model. Unfortunately, there is nos unique  way to build and parse UTypes in the context of complex models. This occurs when e.g the same class is used in different location of the model or when the model contains loops. It is also not possible to refer data from different tables with  UTypes.
-
-The landscape has dramatically changed in 2016 when VODML \citep{2018ivoa.spec.0910L} became a recommendation. VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
-In VODML, model leaves are no longer identified by a simple string like UTypes do but by a certain role played in a given location in the model hierarchy.
-The consequence is that any annotation mechanism based on VODML will preserve the model hierarchy to save the role played by any components. In this context, it might be easy to re-construct model instances from the annotations. 
-
-The main concept of this standard is to insert on the  top of a VOTable resource an XML block compliying with the model structures and containing references to the actual data.
-In such a way that a model-aware client only has to make a copy of that structure and to resolve the references  to build an instance. More generic model-unaware clients can just ignore the mapping block. 
+\input{introduction}
 
 \subsection{Role within the VO Architecture}
 
@@ -156,7 +139,10 @@ the IVOA architecture \citep{2010ivoa.rept.1123A}.
 \section{Use Cases and Requirements}
 
 \subsection{Use Cases}
+\input{use_cases}
+
 \subsection{Requirements}
+\input{requirements}
 
 % use XML formatting for listings
 \lstset{language=XML}
