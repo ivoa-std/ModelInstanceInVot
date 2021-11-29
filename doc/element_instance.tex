@@ -1,7 +1,62 @@
+The INSTANCE element defines a complex ObjectType or DataType.
+It may be a child of several other elements, and the requirements on
+the content (especially dmid and dmrole), may differ depending on
+the usage:
 
-\textbf{Mark proposal (as interpreted by LM}
 
-   The INSTANCE element defines a complex ObjectType or DataType.
+\begin{enumerate}
+\item Child of \texttt{GLOBALS}
+
+   In this case the INSTANCE is a single stand-alone instance which
+   may or may not be referenced by other INSTANCEs. This pattern is typically use for 
+   shared object e.g. space frames, or for head object of science product models e.g. Time Series
+  \begin{itemize}
+     \item May have dmid, as possible target of REFERENCE.ref
+     \item must have no or empty \texttt{dmrole}
+  \end{itemize}  
+     
+\item Child of TEMPLATES:
+  In this case, the INSTANCE is a template for instances which
+  are generated once per row of the associated table.  
+  \begin{itemize}
+     \item may have dmid, as target of JOIN.dmref
+     \item must have no or empty dmrole \texttt{dmrole}
+  \end{itemize}  
+
+\item Child of COLLECTION:
+  There are 2 uses for this pattern.  
+  \begin{itemize}
+     \item each member INSTANCE is a target for selection using
+           the PRIMARY/FOREIGN\_KEY elements. This pattern is only 
+           allowed within the GLOBALS environment. In this case:             
+           \begin{itemize}
+             \item must contain at least one PRIMARY\_KEY sub-element
+             \item may have dmid, as possible target of REFERENCE.ref
+             \item must have no or empty dmrole
+           \end{itemize}
+
+     \item Elements INSTANCE are collection cells with multiplicity > 1
+          Each one has:             
+           \begin{itemize}
+             \item must have no or empty dmrole
+           \end{itemize}
+  \end{itemize}  
+    
+\item Child of INSTANCE: 
+     In this case, each INSTANCE represents 
+     a complex ObjectType or DataType playing a role in the parent INSTANCE.     
+     \begin{itemize}
+        \item may have dmid
+        \item must have non-empty dmrole
+     \end{itemize}
+           
+\item any INSTANCE:     
+   \begin{itemize}
+        \item if dmid is present, it must not be empty
+        \item must have non-empty dmtype
+    \end{itemize}
+\end{enumerate}  
+    
    
 \begin{lstlisting}[frame=single,caption={Example of INSTANCE child of GLOBALS},style=XML,basicstyle=\tiny]
 <dm-mapping:INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
@@ -30,73 +85,17 @@
             Element dmid, MUST be unique within the mapping block  \\
         \hline 
             @dmrole & 
-            INSTANCE role in the DM \\
+            INSTANCE role played in the DM \\
         \hline 
             @dmtype & 
-            Class name \\
+            Class name in a model context\\
         \hline 
      \end{tabulary}
      \caption{\texttt{INSTANCE} attributes} 
      \label{tbl:instance-att}
  \end{table}   
-    It may be a child of several other elements, and the requirements on
-    the content (especially dmid and dmrole), may differ depending on
-    the usage:
-    
-\begin{itemize}
-\item Child of GLOBALS:
-   In this case the INSTANCE is a single stand-alone instance which
-   may or may not be referenced by other INSTANCEs.
-  \begin{itemize}
-     \item must have dmid, as possible target of REFERENCE.ref
-     \item must have no or empty \texttt{dmrole}
-  \end{itemize}  
-  
-\item Child of TEMPLATES:
-  In this case, the INSTANCE is a template for instances which
-  are generated once per row of the associated table.  
-  \begin{itemize}
-     \item may have dmid, as target of JOIN.dmref
-     \item must have no or empty dmrole \texttt{dmrole}
-  \end{itemize}  
-  
-\item Child of COLLECTION:
-  There are 2 uses for this pattern.  
-  \begin{itemize}
-     \item each member INSTANCE is a target for selection using
-           the PRIMARY/FOREIGN\_KEY elements. This pattern is only 
-           allowed within the GLOBALS environment. In this case:             
-           \begin{itemize}
-             \item must contain at least one PRIMARY\_KEY sub-element
-             \item must have dmid, as possible target of REFERENCE.ref
-             \item must have no or empty dmrole
-           \end{itemize}
+ 
 
-     \item Elements INSTANCE are collection cells with multiplicity > 1
-          Each one has:             
-           \begin{itemize}
-             \item must have dmid, as possible target of REFERENCE.ref. 
-                   this pattern is             
-                   only allowed if within the GLOBALS environment
-             \item must have no or empty dmrole
-           \end{itemize}
-    
-     \item Child of INSTANCE: In this case, each INSTANCE represents 
-           a complex ObjectType or DataType playing a role in the parent
-           INSTANCE.     
-           \begin{itemize}
-             \item must not have dmid (may not be referenced) ??
-             \item must have non-empty dmrole
-           \end{itemize}
-           
-     \item any INSTANCE:     
-           \begin{itemize}
-             \item if dmid is present, it must not be empty
-             \item must have non-empty dmtype
-           \end{itemize}
-    \end{itemize}  
-  
-\end{itemize}  
 
  
 \begin{table}[!htbp]
@@ -106,7 +105,7 @@
     \hline 
         \textbf{Element} &
         \textbf{Position} &
-        \textbf{Cardinality} &
+        \textbf{Occurs} &
         \\
     \hline      \hline  
         \texttt{PRIMARY\_KEY}  &        
@@ -137,55 +136,8 @@
 \end{tabulary}
      \caption{Allowed children for \texttt{INSTANCE}} 
      \label{tbl:instance-chilren}
- \end{table}
+\end{table}
  
-       
-\newpage
-\textbf{Original}
-
-
-VO-DML structured types are annotated by using the INSTANCE
-element. Note that there is no difference, from a schema point of view,
-between \texttt{ObjectTypes} and \texttt{DataType}.
-
-
- \begin{lstlisting}[frame=single,caption={INSTANCE child of GLOBALS},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
-	<dm-mapping:INSTANCE dmrole="coords:SpaceFrame.refPosition"
-                                 dmtype="coords:StdRefLocation">
-		<dm-mapping:ATTRIBUTE dmrole="coords:StdRefLocation.position" 
-		                          dmtype="ivoa:string"  value="NoSet" />
-	</dm-mapping:INSTANCE>
-	<dm-mapping:ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" 
-	                          dmtype="ivoa:string" value="ICRS" />
-	<dm-mapping:ATTRIBUTE dmrole="coords:SpaceFrame.equinox" 
-	                          dmtype="coords:Epoch"	value="2015" />
-</dm-mapping:INSTANCE>
-\end{lstlisting}
-
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c|J|}       
-       \hline 
-            \textbf{Attribute} & 
-            \textbf {Role}\\
-       \hline         \hline  
-            @dmid & 
-            Element dmid, MUST be unique within the mapping block  \\
-        \hline 
-            @dmrole & 
-            INSTANCE role in the DM \\
-        \hline 
-            @dmtype & 
-            Class name \\
-        \hline 
-     \end{tabulary}
-     \caption{\texttt{INSTANCE} attributes} 
-     \label{tbl:instance-att}
- \end{table}
-
 \begin{table}[!htbp]
 \small
 \centering
@@ -196,10 +148,10 @@ between \texttt{ObjectTypes} and \texttt{DataType}.
         \textbf{@dmtype} &
         \textbf{Pattern}\\
     \hline      \hline  
-        MAND &           
+        OPT &           
         NO or EMPTY&           
         MAND &           
-        MUST be applied when the  \texttt{INSTANCE} is child of \texttt{GLOBALS}. The element has no role because it is not embedded in a model mapping block. It must be referable by a \texttt{REFERENCE}  \\
+        MUST be applied when the  \texttt{INSTANCE} is child of \texttt{GLOBALS} or \texttt{TEMPLATES}. The element has no role because it is not embedded in a model mapping block. It must be referable by a \texttt{REFERENCE}  \\
     \hline   
         OPT &           
         MAND &           
@@ -209,47 +161,7 @@ between \texttt{ObjectTypes} and \texttt{DataType}.
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
      \label{tbl:instance-pattern}
- \end{table}
+ \end{table}       
+\newpage
 
-
-\begin{table}[!htbp]
-\small
-\centering
-\begin{tabulary}{\linewidth}{|c |c |c|J|}
-    \hline 
-        \textbf{Element} &
-        \textbf{Position} &
-        \textbf{Cardinality} &
-        \\
-    \hline      \hline  
-        \texttt{PRIMARY\_KEY}  &        
-        First &           
-        0-* &
-        Primary key to be used to in a JOIN context.\\
-    \hline    
-        \texttt{REFERENCE}  &        
-        Any &           
-        0-* &
-         Object attribute as a reference to either another INSTANCE or a COLLECTION.\\
-    \hline    
-        \texttt{INSTANCE} &           
-        Any &           
-        0-* &
-         Object attribute as a class instance. \\
-    \hline    
-        \texttt{ATTRIBUTE} &           
-        Any &           
-        0-* &
-       Object attribute as a simple attribute. \\
-    \hline    
-        \texttt{COLLECTION} &           
-        Any &           
-        0-* &
-         Object attribute  as a collection.\\
-    \hline 
-\end{tabulary}
-     \caption{Allowed children for \texttt{INSTANCE}} 
-     \label{tbl:instance-chilren}
- \end{table}
- 
  
