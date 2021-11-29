@@ -1,3 +1,14 @@
+The PRIMARY\_KEY element allows to set an identification key to an INSTANCE. The primary keys are only used in the context of REFERENCEs using FOREIGN\_KEY.
+A primary key can be either static or dynamic.
+
+\begin{itemize}
+    \item Static: the key value is given by the @value attribute.
+    \item Dynamic: the key value is given by the value of the field referenced by @ref. 
+    This pattern is only valid if the INSTANCE is within a TEMPLATES. 
+\end{itemize}
+
+the type of te key must always be specified by the @dmtype attribute. 
+
 \begin{table}[!htbp]
 \small
 \centering

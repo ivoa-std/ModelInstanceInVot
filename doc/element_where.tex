@@ -1,3 +1,30 @@
+The WHERE element is used to filter iteration outputs. Value are accepted when the key equals to the value. The mapping syntax does not specify the data types to be used to evaluate the expression. 
+There  are 2 different uses for this element:
+\begin{itemize}
+    \item As a child of TEMPLATES. Only the table rows satisfying the WHERE conditions will be mapped. 
+             With this pattern WHERE must have one @primarykey attribute and one @value attribute. 
+              @primarykey references the column (FIELD) to be checked. 
+             The WHERE condition is satisfied for the rows having @primarykey equals to @value
+    \item As a child of JOIN. Only the joined data items satisfying the WHERE conditions will be taken. 
+             With this pattern WHERE must have one @foreignkey attribute and one of @value either @primarykey attribute. 
+              @foreignkey references the column of the foreign collection to be checked. 
+             The WHERE condition is satisfied for the rows having @primarykey equals to either @value or @primarykey value.
+\end{itemize}
+
+\begin{lstlisting}[frame=single,caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped},style=XML,basicstyle=\tiny]
+<dm-mapping:TEMPLATES tableref="table">
+  <dm-mapping:WHERE primarykey="col1" value="val1" />
+  <dm-mapping:WHERE primarykey="col2" value="val2" />
+  <dm-mapping:INSTANCE  dmtype="type" />
+</dm-mapping:TEMPLATES>
+\end{lstlisting}
+
+\begin{lstlisting}[frame=single,caption={\texttt{WHERE} Example: the join is satisfied when the value of the ptc column  is equals to the ftc column of the foreign table },style=XML,basicstyle=\tiny]
+<dm-mapping:JOIN tableref="ft" >
+	<dm-mapping:WHERE foreignkey="ftc" primarykey="ptc" />
+</dm-mapping:JOIN>
+\end{lstlisting}
+
 \begin{table}[!htbp]
 \small
 \centering
