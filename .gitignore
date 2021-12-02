@@ -39,12 +39,14 @@ draft-background.*
 # Maven 
 target/
 *.synctex*
+*.pdf
 
 # eclipse project file
 .settings/
 .classpath
 .project
 .pydevproject
+.pytest_cache
 
 # OS
 .DS_Store
