@@ -1,0 +1,32 @@
+\begin {itemize}
+  \item Shy annotation: The model annotation come in a workflow that works very well for years, this is why the first requirement is to no break any existing stack-holder
+  \begin {itemize}
+    \item The annotation must not alter the VOTable content
+    \item The annotation block must be located in a way it can easily be skipped by non model-aware clients
+    \item The vocabulary used for the annotations must not overlap the the VOTable elements (names or attributes)    
+    \item The annotation schema must keep independant from the VOTable schéma
+  \end {itemize}
+  
+  \item Schema and validation:
+  \begin {itemize}
+    \item The annotation schema must keep independent from the VOTable schema
+    \item The evolution of the annotation schema must not impact the VOTable schema
+    \item The annotation syntax must be validated by standard tools usable in any langage
+  \end {itemize}
+  
+  \item Model agnostic:
+  \begin {itemize}
+    \item The annotation syntax must be able to map data on any VODML compliant model
+    \item The annotation syntax must allow client to use their own strategy to consume mapped data:
+      \begin {itemize}
+        \item just ignore the syntax
+        \item just pick some elements of interest 
+        \item just pick model meta-data and process data stream as usual
+        \item pick whole model instances
+      \end {itemize}
+  \end {itemize}
+  
+  
+  
+  
+\end {itemize}
