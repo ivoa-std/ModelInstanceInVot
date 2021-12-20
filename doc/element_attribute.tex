@@ -1,3 +1,49 @@
+
+The ATTRIBUTE element defines either a class attribute or a collection item, both set with atomic values.
+The requirements on
+the content (especially ref and dmrole), may differ depending on
+the usage:
+
+
+\begin{enumerate}
+\item Descendant of \texttt{GLOBALS}
+
+  In this case the ATTRIBUTE cannot refer to any table columns, it must have no or an empty @ref
+     
+\item Descendant of TEMPLATES:
+
+  In this case the ATTRIBUTE must be set with either a literal value of a particular row item.
+
+  \begin{itemize}
+     \item must have either a @ref, a @value or both 
+  \end{itemize}  
+
+\item Child of COLLECTION:
+    The ATTRIBUTE can be seen as a vector coordinate, 
+    it must have a no or an empty @dmrole
+    
+\item Child of INSTANCE: 
+    The ATTRIBUTE can be seen as a class attribute, 
+    it must have a @dmrole 
+           
+\item any other case:     
+    The ATTRIBUTE must always have @dmtype, 
+\end{enumerate}  
+    
+    
+\begin{lstlisting}[frame=single,caption={ATTRIBUTE examples},style=XML,basicstyle=\tiny]
+<dm-mapping:INSTANCE dmtype="model:Thing">
+    <dm-mapping:ATTRIBUTE dmrole="model:Thing.f" dmtype="model.Alpha" value="xyz"/>		
+    <dm-mapping:INSTANCE dmrole="model:Thing.pos" dmtype="adhoc:Position">
+        <dm-mapping:ATTRIBUTE dmrole="adhoc:Position.longitude" dmtype="ivoa:real" 
+                        ref="_eqpos" arrayindex="0"/>
+        <dm-mapping:ATTRIBUTE dmrole="adhoc:Position.latitude" dmtype="ivoa:real" 
+                        ref="_eqpos" arrayindex="1"/>
+    </dm-mapping:INSTANCE>
+</dm-mapping:INSTANCE>
+\end{lstlisting}  
+
+
 \begin{table}[!htbp]
 \small
 \centering
@@ -13,16 +59,23 @@
             Type of the attribute in the DM\\
         \hline 
             @ref & 
-            Reference of the \texttt{FIELD} or \texttt{PARAM} that has to be sued to set the \texttt{ATTRIBUTE} value.\\
+            Reference of the \texttt{FIELD} that has to be used to set the 
+            \texttt{ATTRIBUTE} value.\\
         \hline 
             @value& 
-            Default \texttt{ATTRIBUTE} value. This value is taken if there is no @ref attribue or if @ref cannot be resolved.\\
+            Default \texttt{ATTRIBUTE} value. This value is taken if there is no 
+            @ref attribue or if @ref cannot be resolved.\\
         \hline 
             @unit & 
-            \texttt{ATTRIBUTE} unit. This is the unit in which the native value must be converted to be complient with the model. This attribute is always optional.\\
+            \texttt{ATTRIBUTE} unit. This is the unit in which the native value must be 
+            converted to be complient with the model. This attribute is always optional.\\
         \hline 
             @arrayindex & 
-            Index of the native value to be taken to set the \texttt{ATTRIBUTE}. Must be ignored if the native value is a single value. An error must be risen if @arrayindex is out of range.This attribute is always optional.\\
+            Index of the native value to be taken to set the \texttt{ATTRIBUTE}. 
+            The value must be >= 0.
+            Must be ignored if the native value is a single value. 
+            An error must be risen if @arrayindex is out of range.
+            This attribute is always optional.\\
         \hline 
      \end{tabulary}
      \caption{\texttt{ATTRIBUTE} attributes} 
@@ -32,27 +85,35 @@
 \begin{table}[!htbp]
 \small
 \centering
-\begin{tabulary}{\linewidth}{|c|c|c|c|J|}
+\begin{tabulary}{\linewidth}{|c|c|c|c|c|J|}
     \hline 
         \textbf{@dmrole} &
         \textbf{@dmtype} &
         \textbf{@ref} &
         \textbf{@value} &
+        \textbf{@arrayindex} &
         \textbf{Pattern}\\
     \hline      \hline  
         MAND &           
         MAND &           
         MAND &           
         OPT &           
-        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by @ref. The @ref can not be resolved and @value is present, @value must taken as \texttt{ATTRIBUTE} value\\
+        OPT &   
+        1 \\
     \hline   
         MAND &           
         MAND &           
         NO &           
         MAND &           
-        The \texttt{ATTRIBUTE} value must be set with @value\\
+        OPT &   
+        2\\
    \hline 
 \end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{ATTRIBUTE}} 
+     \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (1) Valid in a TEMPLATES context.        
+        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by @ref.
+        The @ref can not be resolved and @value is present, @value must taken. (2) This pattern 
+        is valid in a any context.        
+        The \texttt{ATTRIBUTE} value must be set with @value
+        as \texttt{ATTRIBUTE} value} 
      \label{tbl:attribute-pattern}
  \end{table}

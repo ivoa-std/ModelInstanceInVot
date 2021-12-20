@@ -32,6 +32,7 @@ expected = {
             '7.19': 'VALID',
             '7.20': 'VALID',
             '7.21': 'VALID',
+            '7.22': "every $child in .//dm-mapping:ATTRIBUTE satisfies (not($child/@ref) or $child/@ref = '')",
             }
 
 class Test(unittest.TestCase):
