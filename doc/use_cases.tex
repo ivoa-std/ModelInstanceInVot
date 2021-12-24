@@ -41,3 +41,57 @@ There are intermediate levels for the model annotations usages that correspond t
     
 \end{itemize} 
 
+=======
+The aim of the mapping syntax is to enable services to associate a model view to searched data.
+Model views can be applied either to legacy data or 
+The usage of such model views can range for a simple enhancement of the meta-data up to representation of full model instances.
+\begin{itemize}
+  \item 
+\end{itemize} 
+
+
+Mapping legacy on a model
+
+data enhance column description
+
+Give the role of column groups
+
+Allows the map complex data structures on legacy data
+
+
+A step toward a better DM integration in the VO consists in enabling services to annotate
+legacy data by providing complete model
+views. This requires the server to operate a post-processing inserting into VOTables
+annotations that bind data columns with model leaves. .
+
+The mapping syntax allows to map data on any model compliant with VODML. 
+These annotations are built as leading XML blocks in VOTables. 
+Annotation blocks denote the model structure and contain references to the appropriate table
+FIELDs. Model-aware clients can build model instances just by reading the annotation
+block and by resolving the FIELD references to get the model leaf values. 
+
+The server must be able to automatically generate such annotations. For this, it
+must check that the selected columns match with the model definitions and thus can be
+mapped on that model. To operate the mapping, the server needs further information
+such as coordinate frames and data profile resources giving the binding between table
+columns and model leaves. A prototype (Louys et al. 2021) implementing this feature
+has been demonstrated 3.
+
+Allow VOTable to carry complete model instances
+
+TAP services can also be used to host model instances. In this case, we must not
+map data on a model anymore but we have to do a real object relational mapping.
+However, proposing a common ORM schema is not on the VO roadmap. The work
+around strategy is to propose one specific standard per model. This has been done first
+for ObsTAP (Tody et al. 2011) which flattens the ObsCore model on one table. This is
+also the case for ProvTAP 4 which proposes a relational view for Provenance (Servillat
+et al. 2020) data. A prototype (ProvHiPS) tracing the provenance of HST HiPS tiles
+has been implemented demonstrated. As the model mapping is defined by a standard,
+there is no need to add extra information to the TAP service. Both TAP\_SCHEMA
+content and meta-data defined in that standard provide all pieces of information needed
+to construct model instances from query results. There are however 2 major issues: 1)
+Provenance instances cannot be serialized in one single table; in order to solve this issue
+resulting VOTable documents must either contain multiple tables or provide a flattened
+view of the model itself (namely last step provenance) 2) The client must be able to tell
+the server it is searching Provenance instances.
+
