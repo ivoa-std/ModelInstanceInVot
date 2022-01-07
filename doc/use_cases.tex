@@ -1,97 +1,52 @@
-The meta-data currently supported by VOTables gives a very good description of the table field content. 
-There is however no satisfactory way to specify the exact role played by those quantities in a particular context.
-There is also no way to describe how different quantities or different data tables relate to each others.
-Utypes have been proposes to fill these gaps, but the lack of standard method to build them caused this approach to be abandoned.
-Actually, both role specifications and quantity associations are part of the modelling effort and what we need is a bridge between model leaves and data columns.
-This bridge or annotation block will provide a model view on data tables.
-Being inserted into the actual VOTable structure it would give clients the possibility to get a better  understanding of the data complexity data through that model view.
-This approach does not force clients to choose between a regular data processing and a full object approach.
-There are intermediate levels for the model annotations usages that correspond to concrete use cases and to which this standard provides an answer:
+The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
+There is however not suitable to specify the exact role played by a given quantities in a particular context yet.
+There is also no way to describe how different quantities or different data tables relate to each others either.
+Utypes have been proposes to fill these gaps, but the lack of standard method to build them caused this approach not to be used.
+Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables.
+This model view becomes essential to get a good  understanding of complex data.
+
+The mapping syntax allows to map data on any model compliant with VODML. 
+Annotation blocks denote the model structure and contain references to the appropriate table
+FIELDs. Model-aware clients can build model instances just by reading the annotation
+block and by resolving the FIELD references to get the model leaf values. 
+
+This give to the clients the possibility to get a better  understanding of the data complexity data through that model view.
+The annotation block is designed in a way that clients are not forced to choose between a regular data processing and a full object approach.
+There are intermediate levels of use that correspond to concrete use cases and are addressed by this standard.
+
+
 
 \begin{itemize}
-  \item Coordinate or calibration Systems: The recent modelling efforts (Coord and PhotDM) provide a very accurate description of coordinate frames or Photometric systems that need to be reproduced in VOTables.
+  \item Coordinate or calibration Systems: The recent modelling efforts (Coord and PhotDM) provide a very accurate description of coordinate frames or photometric systems that need to be serialised in VOTables:
   \begin{itemize}
-    \item to make the best of the dataset  clients may need to get an exact representation of these elements as they are modelled.
-    \item data set can contain the multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
-             quantities of the same nature but expressed in different systems (coord IRCS vs Gal). VOTable currently do not support the latest pattern.
+    \item Clients may need to get an accurate representation of the coordinate systems to make the best of many datasets  
+    \item Data set can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
+             quantities of the same nature but expressed in different systems (sky coordinates in IRCS vs Gal). VOTable currently do not support the latest pattern.
   \end{itemize} 
   
-  \item Some quantities can be made with multiple components that must be gather by the client to be properly used.
+  \item Some quantities can be made with multiple components (data columns) that must be gathered by the client to be properly used:
   \begin{itemize}
     \item value-error associations. 
     \item error quantities split in several columns (covariance matrices). 
     \item quantities with quality flags
-    \item positions with proper motions to compute error ellipses or position at a given epoch
+    \item positions with proper motions or parallax to compute error ellipses or positions at a given epoch
   \end{itemize} 
 
-  \item The above cases relate to the processing of individual datasets; the model annotations become even more important for cases where a good level of interoperability is required. 
-           This can be achieved by representing quantities by a data structure common for all datasets, whatever their origins. This is the purpose of the Meas model that proposes classes for 
-           any physical quantities and that can be rendered by the mapping syntax. Meas classes are not meant to be used as standalone elements but as parts of some host model (Cube Mango);
-           however the clients keep free to either process those host models as a whole or to chase individual components.
+  \item The above cases relate to the processing of individual datasets; the model annotations become even more important for cases where a good level of interoperability is required to match different datasets. 
+           This can be achieved having common data structures for all quantities of interest. This is the purpose of the Measure model that proposes classes for 
+           any physical quantities and that can be rendered by the mapping syntax. Measure classes are not meant to be used as standalone elements but as parts of host models (e.g. CubeDM, Mango);
+           however clients keep free to either process those host models as a whole or to chase individual components.
     \begin{itemize}
-      \item cross-matching is made easier if the processor gets a common and complete representation of the positions.
-      \item SED can be built with from fluxes extracted from different datasets but with the same representation.
+      \item Cross matching VOTables having all the same accurate description of e.g. the sky position is easier. 
+               This also improves the reliability of the process since the engine do not need to infer information that is not in the FIELD meta-data.
+      \item Building SEDs from datasets that have the same accurate photometry representation is straightforward.
    \end{itemize}          
 
   \item I some cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
       \item Extracting a TimeSeries instances to feed a software built upon classes generated from that model.
-      \item building model instances that can be serialised in another format e.g. json to ne share in another context than the VOTable processing e.g. SAMP
+      \item Building model instances that can be serialised in another format e.g. json to be share in another context than the VOTable processing e.g. SAMP
    \end{itemize}          
     
 \end{itemize} 
-
-=======
-The aim of the mapping syntax is to enable services to associate a model view to searched data.
-Model views can be applied either to legacy data or 
-The usage of such model views can range for a simple enhancement of the meta-data up to representation of full model instances.
-\begin{itemize}
-  \item 
-\end{itemize} 
-
-
-Mapping legacy on a model
-
-data enhance column description
-
-Give the role of column groups
-
-Allows the map complex data structures on legacy data
-
-
-A step toward a better DM integration in the VO consists in enabling services to annotate
-legacy data by providing complete model
-views. This requires the server to operate a post-processing inserting into VOTables
-annotations that bind data columns with model leaves. .
-
-The mapping syntax allows to map data on any model compliant with VODML. 
-These annotations are built as leading XML blocks in VOTables. 
-Annotation blocks denote the model structure and contain references to the appropriate table
-FIELDs. Model-aware clients can build model instances just by reading the annotation
-block and by resolving the FIELD references to get the model leaf values. 
-
-The server must be able to automatically generate such annotations. For this, it
-must check that the selected columns match with the model definitions and thus can be
-mapped on that model. To operate the mapping, the server needs further information
-such as coordinate frames and data profile resources giving the binding between table
-columns and model leaves. A prototype (Louys et al. 2021) implementing this feature
-has been demonstrated 3.
-
-Allow VOTable to carry complete model instances
-
-TAP services can also be used to host model instances. In this case, we must not
-map data on a model anymore but we have to do a real object relational mapping.
-However, proposing a common ORM schema is not on the VO roadmap. The work
-around strategy is to propose one specific standard per model. This has been done first
-for ObsTAP (Tody et al. 2011) which flattens the ObsCore model on one table. This is
-also the case for ProvTAP 4 which proposes a relational view for Provenance (Servillat
-et al. 2020) data. A prototype (ProvHiPS) tracing the provenance of HST HiPS tiles
-has been implemented demonstrated. As the model mapping is defined by a standard,
-there is no need to add extra information to the TAP service. Both TAP\_SCHEMA
-content and meta-data defined in that standard provide all pieces of information needed
-to construct model instances from query results. There are however 2 major issues: 1)
-Provenance instances cannot be serialized in one single table; in order to solve this issue
-resulting VOTable documents must either contain multiple tables or provide a flattened
-view of the model itself (namely last step provenance) 2) The client must be able to tell
-the server it is searching Provenance instances.
 
