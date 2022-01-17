@@ -1,18 +1,17 @@
-INSTANCE reference that can be used with the patterns as for INSTANCEs.
-There different uses for the REFERENCEs
+INSTANCE reference that can be used with the same patterns as for INSTANCEs.
+There are different uses for the REFERENCE:
 
 \begin{itemize}
-    \item Static reference: the element has a @dmref attribute with the identifier (@dmid attribute) of the referenced INSTANCE.
+    \item Static reference: the element has a @dmref attribute that matches the @dmid attribute of the referenced INSTANCE.
     \item Dynamic reference: The element has a @tableref attribute identifying the TEMPLATES or the GLOBALS/COLLECTION where to fetch the referenced object. 
-             In this case, REFERENCE must have one or more FOREIGN\_KEY children.
-             In this case, the REFERENCE must be within a TEMPLATES.
+             In this case, REFERENCE must be located in a TEMPLATES and it must have one or more FOREIGN\_KEY children.
 \end{itemize}
 
-\begin{lstlisting}[frame=single,caption={Simple \texttt{REFERENCE}, to be replaced with the INSTANCE with @dmid=\_target1 },style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Simple \texttt{REFERENCE}, to be replaced with the INSTANCE having @dmid=\_target1 },style=XML,basicstyle=\tiny]
 <dm-mapping:REFERENCE dmrole="_role" dmref="_target1" />
 \end{lstlisting}
 
-\begin{lstlisting}[frame=single,caption={Dynamic \texttt{REFERENCE}, to be replaced with the INSTANCE of the table of collection \_target1 and having a PRIMARY\_KEY matching the value of column  \_col1},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Dynamic \texttt{REFERENCE}, to be replaced with the INSTANCE of the table of collection \_target1 and having a PRIMARY\_KEY matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},style=XML,basicstyle=\tiny]
 <dm-mapping:REFERENCE dmrole="_role" tableref="_target1">
     <dm-mapping:FOREIGN_KEY ref="_col1" />
 </dm-mapping:REFERENCE>
@@ -43,6 +42,27 @@ There different uses for the REFERENCEs
 \begin{table}[!htbp]
 \small
 \centering
+\begin{tabulary}{\linewidth}{|c |c |c|J|}
+    \hline 
+        \textbf{Element} &
+        \textbf{Position} &
+        \textbf{Occurs} &
+        \\
+    \hline      \hline  
+        \texttt{FOREIGN\_KEY}  &        
+        First &           
+        0-* &
+        Foreign key to be used to resolve a dynamic reference.\\
+    \hline 
+\end{tabulary}
+     \caption{Allowed children for \texttt{REFERENCE}} 
+     \label{tbl:reference-chilren}
+\end{table}
+
+
+\begin{table}[!htbp]
+\small
+\centering
 \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
         \textbf{@dmrole} &
@@ -53,7 +73,7 @@ There different uses for the REFERENCEs
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern. @tableref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the \texttt{FOREIGN\_KEY} pattern,@tableref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           

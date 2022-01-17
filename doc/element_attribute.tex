@@ -12,7 +12,7 @@ the usage:
      
 \item Descendant of TEMPLATES:
 
-  In this case the ATTRIBUTE must be set with either a literal value of a particular row item.
+  In this case the ATTRIBUTE must be set with either a literal value of a particular row item.  If both @ref and @value are given, @ref must be resolved first and then @val mist be taken. 
 
   \begin{itemize}
      \item must have either a @ref, a @value or both 
@@ -26,8 +26,8 @@ the usage:
     The ATTRIBUTE can be seen as a class attribute, 
     it must have a @dmrole 
            
-\item any other case:     
-    The ATTRIBUTE must always have @dmtype, 
+\item Any case:     
+    The ATTRIBUTE must always have as non empty @dmtype.
 \end{enumerate}  
     
     
@@ -93,10 +93,11 @@ the usage:
         \textbf{@value} &
         \textbf{@arrayindex} &
         \textbf{Pattern}\\
-    \hline      \hline  
+    \hline     
+    \hline  
         MAND &           
         MAND &           
-        MAND &           
+        OPT &           
         OPT &           
         OPT &   
         1 \\
@@ -107,12 +108,19 @@ the usage:
         MAND &           
         OPT &   
         2\\
+    \hline  
+        NO &           
+        MAND &           
+        OPT &           
+        OPT &           
+        OPT &   
+        3 \\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (1) Valid in a TEMPLATES context.        
         The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by @ref.
-        The @ref can not be resolved and @value is present, @value must taken. (2) This pattern 
-        is valid in a any context.        
+        The @ref can not be resolved and @value is present, @value must taken. Either @ref of @value must be present or both (2) This pattern 
+        is valid in a any context.  (3) is vali in the context of a COLLECTION item.    
         The \texttt{ATTRIBUTE} value must be set with @value
         as \texttt{ATTRIBUTE} value} 
      \label{tbl:attribute-pattern}

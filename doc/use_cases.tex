@@ -1,48 +1,48 @@
 The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
-There is however not suitable to specify the exact role played by a given quantities in a particular context yet.
+There is however not suitable way to specify the exact role played by a given quantities in a particular context yet.
 There is also no way to describe how different quantities or different data tables relate to each others either.
-Utypes have been proposes to fill these gaps, but the lack of standard method to build them caused this approach not to be used.
+UTypes have been proposed to fill these gaps, but the lack of standard method to build them caused this approach not to be used.
 Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables.
-This model view becomes essential to get a good  understanding of complex data.
+This is essential to get a good  understanding of complex data.
 
 The mapping syntax allows to map data on any model compliant with VODML. 
-Annotation blocks denote the model structure and contain references to the appropriate table
-FIELDs. Model-aware clients can build model instances just by reading the annotation
-block and by resolving the FIELD references to get the model leaf values. 
+Annotation blocks denote the model structure and contain references to the appropriate
+FIELDs and PARAMs. Model-aware clients can build model instances just by reading the annotation
+block and by resolving the references to set the model leaf values. 
 
-This give to the clients the possibility to get a better  understanding of the data complexity data through that model view.
+Such a mechanism allows the client to get a better understanding of the data complexity.
 The annotation block is designed in a way that clients are not forced to choose between a regular data processing and a full object approach.
-There are intermediate levels of use that correspond to concrete use cases and are addressed by this standard.
+There are intermediate levels of use that correspond to concrete use cases that are addressed by this standard.
 
 
 
 \begin{itemize}
   \item Coordinate or calibration Systems: The recent modelling efforts (Coord and PhotDM) provide a very accurate description of coordinate frames or photometric systems that need to be serialised in VOTables:
   \begin{itemize}
-    \item Clients may need to get an accurate representation of the coordinate systems to make the best of many datasets  
-    \item Data set can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
+    \item Clients often need to get an accurate representation of the coordinate systems to make the best of many datasets  
+    \item Data sets can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
              quantities of the same nature but expressed in different systems (sky coordinates in IRCS vs Gal). VOTable currently do not support the latest pattern.
   \end{itemize} 
   
-  \item Some quantities can be made with multiple components (data columns) that must be gathered by the client to be properly used:
+  \item Quantities made with multiple components (data columns) that must be gathered by the client to be properly used:
   \begin{itemize}
-    \item value-error associations. 
+    \item value-error associations
     \item error quantities split in several columns (covariance matrices). 
     \item quantities with quality flags
-    \item positions with proper motions or parallax to compute error ellipses or positions at a given epoch
+    \item positions with proper motions and/or parallax to compute error ellipses or positions at a given epoch
   \end{itemize} 
 
   \item The above cases relate to the processing of individual datasets; the model annotations become even more important for cases where a good level of interoperability is required to match different datasets. 
-           This can be achieved having common data structures for all quantities of interest. This is the purpose of the Measure model that proposes classes for 
-           any physical quantities and that can be rendered by the mapping syntax. Measure classes are not meant to be used as standalone elements but as parts of host models (e.g. CubeDM, Mango);
+           This can be achieved by giving a common data structures for all quantities of interest. This is the purpose of e.g. Measure model that proposes classes for 
+           most of the physical quantities and that can be rendered by the mapping syntax. Measure classes are not meant to be used as standalone elements but as parts of host models (e.g. CubeDM, Mango);
            however clients keep free to either process those host models as a whole or to chase individual components.
     \begin{itemize}
       \item Cross matching VOTables having all the same accurate description of e.g. the sky position is easier. 
-               This also improves the reliability of the process since the engine do not need to infer information that is not in the FIELD meta-data.
+               This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
       \item Building SEDs from datasets that have the same accurate photometry representation is straightforward.
    \end{itemize}          
 
-  \item I some cases, we need to be able to extract complete model instances from VOTables.
+  \item I more advanced cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
       \item Extracting a TimeSeries instances to feed a software built upon classes generated from that model.
       \item Building model instances that can be serialised in another format e.g. json to be share in another context than the VOTable processing e.g. SAMP

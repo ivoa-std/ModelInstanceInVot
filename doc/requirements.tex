@@ -1,8 +1,8 @@
 \begin {itemize}
-  \item Shy annotation: model annotations come in a workflow that works very well for years, this is why the first requirement is to no break any existing stakholder.
+  \item Shy annotation: model annotations come in a workflow that works very well for years, this is why the first requirement is to not break any existing stakeholder.
   \begin {itemize}
-    \item The annotation must not alter the VOTable content.
-    \item The annotation block must be located in a way that it can easily be skipped by model-unaware clients.
+    \item Annotation must not alter the VOTable content.
+    \item Annotation blocks must be located in a way that it can easily be skipped by model-unaware clients.
     \item The vocabulary in the annotation name-space must not overlap the VOTable elements (names or attributes)    
   \end {itemize}
   
@@ -10,17 +10,19 @@
   \begin {itemize}
     \item The annotation schema must be independent from the VOTable schema.
     \item The evolution of the annotation schema must not impact the VOTable schema.
-    \item The annotation syntax must be validated with standard tools.
+    \item The evolution of the VOTable schema must not impact the annotation schema.
+    \item The annotation syntax must be validated with regular tools.
+    \item The validation does not check whether references can be resolved.  Handling such inconsistencies is in the charge of the client
   \end {itemize}
   
   \item Model agnostic:
   \begin {itemize}
     \item The annotation syntax must be able to map data on any VODML compliant model
-    \item The annotation syntax must allow client to use their own strategy to consume mapped data:
+    \item The annotation syntax must allow clientsto use their own strategy to consume mapped data:
       \begin {itemize}
         \item just ignore it
         \item just pick some elements of interest 
-        \item just pick model meta-data and process data stream as usual
+        \item just pick model meta-data and process the stream of data rows as usual
         \item pick whole model instances
       \end {itemize}
   \end {itemize}

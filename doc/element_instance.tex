@@ -31,8 +31,8 @@ the usage:
            allowed within the GLOBALS environment. In this case:             
            \begin{itemize}
              \item must contain at least one PRIMARY\_KEY sub-element
-             \item may have dmid, as possible target of REFERENCE.ref
-             \item must have no or empty dmrole
+             \item may have dmid, as possible target of REFERENCE
+             \item must have no or empty dmrole. VODML does set roles to particular collection items
            \end{itemize}
 
      \item Elements INSTANCE are collection cells with multiplicity > 1
@@ -151,7 +151,7 @@ the usage:
         OPT &           
         NO or EMPTY&           
         MAND &           
-        MUST be applied when the  \texttt{INSTANCE} is child of \texttt{GLOBALS} or \texttt{TEMPLATES}. The element has no role because it is not embedded in a model mapping block. It must be referable by a \texttt{REFERENCE}  \\
+        MUST be applied when the  \texttt{INSTANCE} is child of \texttt{GLOBALS} or \texttt{TEMPLATES}. The element has no role because it is not embedded in a model component. It must be referable by a \texttt{REFERENCE}  \\
     \hline   
         OPT &           
         MAND &           
