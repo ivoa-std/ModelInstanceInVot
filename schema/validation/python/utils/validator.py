@@ -19,6 +19,7 @@ class Validator:
                 self.xmlschema.validate(xml_path)
                 return True
             except Exception as e:
+                #print(e)
                 return self._errorMatchExpectedMessage(e, expected_fail_msg)
         else :
             return self.xmlschema.is_valid(xml_path)
