@@ -5,6 +5,7 @@
 	2021-08-25: add VOtable import, prefix prefixes with dm-mapping -->
 
 <!-- ======================= -->
+<!--  XSD sample http://users.polytech.unice.fr/~pfz/LANGDOC/COURS/EXEMPLES/XSD_DXS/chapter14.html -->
 <xs:schema attributeFormDefault="unqualified"
 	elementFormDefault="qualified" version="1.1"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
