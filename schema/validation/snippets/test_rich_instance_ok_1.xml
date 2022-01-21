@@ -23,7 +23,7 @@
 							<dm-mapping:INSTANCE dmrole="test.owner" dmtype="test.Owner">
 								<dm-mapping:ATTRIBUTE dmrole="test.owner.name" dmtype="string" value="Michel" />
 								<dm-mapping:ATTRIBUTE dmrole="test.owner.firstname" dmtype="string" value="Laurent" />
-								<dm-mapping:ATTRIBUTE dmrole="test.title" dmtype="string" ref="_title" />
+								<dm-mapping:ATTRIBUTE dmrole="test.title" dmtype="string" value="TITLE" />
 							</dm-mapping:INSTANCE>
 							<dm-mapping:COLLECTION dmrole="test.points">
 								<dm-mapping:JOIN dmref="_point" tableref="Results" />

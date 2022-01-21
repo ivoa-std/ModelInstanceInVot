@@ -20,15 +20,29 @@
 	<xs:element name="VODML">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="REPORT" type="dm-mapping:Report"
-					minOccurs="0" maxOccurs="1" />
+				<xs:element name="REPORT" 
+					minOccurs="0" maxOccurs="1">
+                    <xs:complexType mixed="true">
+                          <xs:attribute name="status" type="xs:string"
+                           use="required" />
+                          <xs:assert test="@status = 'OK' or @status = 'KO'" />
+                    </xs:complexType>
+				</xs:element>
 				<xs:element name="MODEL" type="dm-mapping:Model"
-					minOccurs="1" maxOccurs="unbounded" />
+					minOccurs="0" maxOccurs="unbounded" />
 				<xs:element name="GLOBALS" type="dm-mapping:Globals"
 					minOccurs="0" maxOccurs="1" />
 				<xs:element name="TEMPLATES" type="dm-mapping:Templates"
-					minOccurs="0" maxOccurs="unbounded" />
+					minOccurs="0" maxOccurs="unbounded" />					
 			</xs:sequence>
+         <xs:assert
+            test="if (dm-mapping:REPORT[@status] = 'OK') then (count(dm-mapping:MODEL) > 0) else true()" />
+         <xs:assert
+            test="if (dm-mapping:REPORT[@status] = 'KO') then (count(dm-mapping:MODEL) >= 0) else true()" />
+         <xs:assert
+            test="if (count(dm-mapping:MODEL) = 0) then (count(dm-mapping:REPORT) = 1) else true()" />
+         <xs:assert
+            test="if (count(dm-mapping:REPORT) = 0)  then  (count(dm-mapping:MODEL) > 0) else true()" />
 		</xs:complexType>
 
 		<!-- Make sure dmid is unique within the mapping block -->
@@ -38,18 +52,7 @@
 		</xs:unique>
 
 	</xs:element>
-
-	<!-- Annotation report -->
-	<xs:complexType name="Report">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="status" type="xs:string"
-					use="required" />
-				<xs:assert test="@status = 'OK' or @status = 'KO'" />
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
-
+         
 	<!-- Declaration of one used model -->
 	<xs:complexType name="Model">
 		<xs:attribute name="name" type="xs:string" />

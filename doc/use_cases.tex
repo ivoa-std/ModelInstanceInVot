@@ -42,11 +42,16 @@ There are intermediate levels of use that correspond to concrete use cases that 
       \item Building SEDs from datasets that have the same accurate photometry representation is straightforward.
    \end{itemize}          
 
-  \item I more advanced cases, we need to be able to extract complete model instances from VOTables.
+  \item In more advanced cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
       \item Extracting a TimeSeries instances to feed a software built upon classes generated from that model.
       \item Building model instances that can be serialised in another format e.g. json to be share in another context than the VOTable processing e.g. SAMP
-   \end{itemize}          
+   \end{itemize}         
+    
+   \item The mapping syntax can be used to annotate static science products such as e.g. time-series. It can also be used to annotate on the fly TAP responses.
+   As shown by (ref- Mireille ADASS) this process is not always possible because the model compliance of the searched data strongly depends on the executed query (missing searched columns, joins, data aggregation ...). 
+   However, clients connecting TAP services registered as delivering annotated data would expect to get annotation blocks in query responses even if the annotation process is not possible. 
+   This feature must be supported by the proposed syntax.
     
 \end{itemize} 
 
