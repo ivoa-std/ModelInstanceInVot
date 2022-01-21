@@ -19,6 +19,7 @@ class Validator:
                 self.xmlschema.validate(xml_path)
                 return True
             except Exception as e:
+                #print(e)
                 return self._errorMatchExpectedMessage(e, expected_fail_msg)
         else :
             return self.xmlschema.is_valid(xml_path)
@@ -42,7 +43,7 @@ class Validator:
         
         if expected_fail_msg in error_txt:
             # Expected error
-            logger.info("Validaton error as expected (%s)", expected_fail_msg)
+            logger.info("Validation error as expected (%s)", expected_fail_msg)
             return True
 
         if (expected_fail_msg.replace("'", "").replace(" ", "").replace('"', '') 

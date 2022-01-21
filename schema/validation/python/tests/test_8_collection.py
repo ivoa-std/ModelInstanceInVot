@@ -30,7 +30,7 @@ expected = {
             '8.17': 'VALID',
             '8.18': 'VALID',
             '8.19': 'VALID',
-            '8.20': 'VALID',
+            '8.20': 'assertion test if false',
             '8.21': 'count(dm-mapping:ATTRIBUTE) gt 0 and',
             '8.22': 'count(dm-mapping:REFERENCE) gt 0 and',
             '8.23': 'count(dm-mapping:ATTRIBUTE) gt 0 and',

@@ -1,5 +1,7 @@
     COLLECTION is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
-
+    
+    COLLECTION can be populated either by a static list of items (INSTANCE, ATTRIBUTE,..) or by one JOIN operation. Both mode modes cannot coexist.
+    
     \begin{enumerate}
     \item{As child of INSTANCE}
       
@@ -50,6 +52,15 @@
     </dm-mapping:COLLECTION>
 <dm-mapping:GLOBALS>
 \end{lstlisting}   
+
+\begin{lstlisting}[frame=single,caption={Example of COLLECTION populated with a JOIN},style=XML,basicstyle=\tiny]
+<dm-mapping:GLOBALS>
+    <dm-mapping:COLLECTION dmrole="_joined_dataj">
+        <dm-mapping:JOIN tableref="_someTable" dmref="_extInst"/>
+    </dm-mapping:COLLECTION>
+<dm-mapping:GLOBALS>
+\end{lstlisting}   
+
 
 \begin{table}[!htbp]
   \small
@@ -106,7 +117,7 @@
     \hline 
       \textbf{Element} &
       \textbf{Position} &
-      \textbf{Occurs} &  \\
+      \textbf{Occurs}  \\
     \hline
     \hline  
         \texttt{ATTRIBUTE} & 
@@ -126,8 +137,8 @@
     \hline    
         \texttt{JOIN} & 
         Any & 
-        0-* & 
-        Collection populated with a set of joined instances.\\
+        0-1 & 
+        Collection populated with a set of joined instances. No other child is supported in this case\\
     \hline    
         \texttt{COLLECTION} & 
         Only & 
@@ -146,6 +157,11 @@
         Only & 
         0-* & 
         Collection of related instances.\\
+    \hline    
+        \texttt{REFERENCE} & 
+        Only & 
+        0-* & 
+        Collection of related references.\\
     \hline 
   \end{tabulary}
      \caption{Allowed children for \texttt{COLLECTION}} 
