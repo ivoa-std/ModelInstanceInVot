@@ -59,24 +59,12 @@
 								<dm-mapping:WHERE primarykey="_poserr_148"
 									foreignkey="_foreign" />
 							</dm-mapping:JOIN>
-							<dm-mapping:INSTANCE dmtype="test:Detection">
-								<dm-mapping:ATTRIBUTE
-									dmrole="test:detection.num" dmtype="ivoa:real" ref="_num_148" />
-								<dm-mapping:ATTRIBUTE
-									dmrole="test:detection.id" dmtype="ivoa:real" ref="_foreign" />
-							</dm-mapping:INSTANCE>
 						</dm-mapping:COLLECTION>
 						<dm-mapping:COLLECTION dmrole="test.spectra">
 							<dm-mapping:JOIN tableref="Spectra">
 								<dm-mapping:WHERE primarykey="_poserr_148"
 									foreignkey="_foreign" />
 							</dm-mapping:JOIN>
-							<dm-mapping:INSTANCE dmtype="test:Detection">
-								<dm-mapping:ATTRIBUTE
-									dmrole="test:detection.num" dmtype="ivoa:string" ref="_spc_148" />
-								<dm-mapping:ATTRIBUTE
-									dmrole="test:detection.id" dmtype="ivoa:real" ref="_foreign" />
-							</dm-mapping:INSTANCE>
 						</dm-mapping:COLLECTION>
 					</dm-mapping:INSTANCE>
 				</dm-mapping:TEMPLATES>

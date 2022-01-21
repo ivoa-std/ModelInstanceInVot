@@ -78,15 +78,6 @@
 				<dm-mapping:JOIN tableref="_someTable" dmref="_extInst"/>
 			</dm-mapping:COLLECTION>
 
-			<!-- Test Case 8.20: COLLECTION of INSTANCE + JOIN (local and external instances) -->
-			<dm-mapping:COLLECTION dmrole="iiiiii">
-				<dm-mapping:INSTANCE dmtype="model:object" />
-				<dm-mapping:JOIN tableref="_someTable" dmref="_extInst1"/>
-				<dm-mapping:JOIN tableref="_someOtherTable" dmref="_extInst2"/>
-				<dm-mapping:INSTANCE dmtype="model:object" />
-				<dm-mapping:INSTANCE dmtype="model:object" />
-			</dm-mapping:COLLECTION>
-
 		</dm-mapping:INSTANCE>
 
 	</dm-mapping:GLOBALS>
