@@ -4,6 +4,7 @@
     \item Annotation must not alter the VOTable content.
     \item Annotation blocks must be located in a way that it can easily be skipped by model-unaware clients.
     \item The vocabulary in the annotation name-space must not overlap the VOTable elements (names or attributes)    
+    \item The annotation syntax must be able to inform the client about the status of the annotation process.
   \end {itemize}
   
   \item Schema and validation:
@@ -18,7 +19,7 @@
   \item Model agnostic:
   \begin {itemize}
     \item The annotation syntax must be able to map data on any VODML compliant model
-    \item The annotation syntax must allow clientsto use their own strategy to consume mapped data:
+    \item The annotation syntax must allow clients to use their own strategy to consume mapped data:
       \begin {itemize}
         \item just ignore it
         \item just pick some elements of interest 
