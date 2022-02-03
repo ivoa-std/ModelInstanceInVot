@@ -5,7 +5,7 @@ so that any client can understand it without taking care of its origin and thus 
 In other words, the more faithful the data representation is to the model, the better the interoperability is.
 The challenge for the VO is to build a compromise on the way to map various data on standard models.
 
-We could imagine to develop a new data container specific for that that purpose but any a solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
+We could imagine to develop a new data container specific for that  purpose but any solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
 The model mapping solution must be based on VOTables since VOTable  \citep{2019ivoa.spec.1021O} is the standard VO data container.
 Unfortunately, if the VOTables schema allows a very good description of tabular data, it is unable to render a data view that suits well a complex model.
 In the case of simple DAL protocols, this limitation has been worked around by specifying the meta-data that must be present in the query responses; the model mapping is therefore defined by the standard.
@@ -17,12 +17,14 @@ model instances while maintaining the possibility to access them in their origin
 
 This is partially done with UTypes which may connect FIELDs or PARAMs with model leaves in the case of tree-like models. 
 Unfortunately, there is no unique  way to build and parse UTypes in the context of complex models. 
-UTypes are not suited for patterns where e.g the same class is used in different location of the model or when the model contains loops. 
-UTypes do not allow cross-table references either.
+UTypes are no more unambuiguous for patterns where e.g the same class is used in different location of the model or when the model contains loops. 
+UTypes do not allow cross-table references either. 
+%(NFB: Humm. Why ? )
 
 The landscape has dramatically changed in 2016 when VODML \citep{2018ivoa.spec.0910L} became a recommendation. 
 VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
-In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
+In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.*
+%(NFB : Hum not sure of that. Long Utypes are well appropriate for roles of a data peice, but not to distinguish instances)
 As a consequence any annotation mechanism based on VODML and preserving the model hierarchy will be able  to provide a data representation faith to that model.
 
 The main concept of this standard is to insert in VOTable resources XML blocks complying with the 

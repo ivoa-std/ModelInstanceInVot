@@ -8,11 +8,13 @@ the usage:
 \begin{enumerate}
 \item Descendant of \texttt{GLOBALS}
 
-  In this case the ATTRIBUTE cannot refer to any table columns, it must have no or an empty @ref
+  In this case the ATTRIBUTE cannot refer to any table column, it must have no @ref xml attribute or an empty one %(FB: I don't understand this restriction. Could be a reference to an initial PARAM or TIMESYS/COOSYS ???)
      
 \item Descendant of TEMPLATES:
 
-  In this case the ATTRIBUTE must be set with either a literal value of a particular row item.  If both @ref and @value are given, @ref must be resolved first and then @val mist be taken. 
+  In this case the ATTRIBUTE must be set with either a literal value or a reference to a particular row item. %(FB is that what youn mean ?)
+  
+   If both @ref and @value are given, @ref must be resolved first and then @val must be taken. 
 
   \begin{itemize}
      \item must have either a @ref, a @value or both 
@@ -20,14 +22,14 @@ the usage:
 
 \item Child of COLLECTION:
     The ATTRIBUTE can be seen as a vector coordinate, 
-    it must have a no or an empty @dmrole
+    it must have  no @dmrole xml attribute or an empty one
     
 \item Child of INSTANCE: 
     The ATTRIBUTE can be seen as a class attribute, 
-    it must have a @dmrole 
+    it must have a @dmrole xml attribute
            
 \item Any case:     
-    The ATTRIBUTE must always have as non empty @dmtype.
+    The ATTRIBUTE must always have a non empty @dmtype xml attribute.
 \end{enumerate}  
     
     
@@ -119,8 +121,8 @@ the usage:
 \end{tabulary}
      \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (1) Valid in a TEMPLATES context.        
         The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by @ref.
-        The @ref can not be resolved and @value is present, @value must taken. Either @ref of @value must be present or both (2) This pattern 
-        is valid in a any context.  (3) is vali in the context of a COLLECTION item.    
+       If the @ref can not be resolved and @value is present, @value must be taken. Either @ref of @value must be present or both (2) This pattern 
+        is valid in a any context.  (3) is valid in the context of a COLLECTION item.    
         The \texttt{ATTRIBUTE} value must be set with @value
         as \texttt{ATTRIBUTE} value} 
      \label{tbl:attribute-pattern}

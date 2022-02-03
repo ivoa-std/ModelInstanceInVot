@@ -3,7 +3,8 @@ There are different uses for the REFERENCE:
 
 \begin{itemize}
     \item Static reference: the element has a @dmref attribute that matches the @dmid attribute of the referenced INSTANCE.
-    \item Dynamic reference: The element has a @tableref attribute identifying the TEMPLATES or the GLOBALS/COLLECTION where to fetch the referenced object. 
+    \item Dynamic reference: The element has a @tableref attribute identifying \it{the TEMPLATES or the GLOBALS/COLLECTION where to fetch the referenced object looks strange and wrong to me????} the table where to fetch the referenced column. 
+    %(FB : I am confused. If it is reference to a COLLECTION or a TEMPLATE why is it called tableref ?)
              In this case, REFERENCE must be located in a TEMPLATES and it must have one or more FOREIGN\_KEY children. 
              If the referenced table contains several INSTANCE with a PRIMARY\_KEY, the first one must be taken by default.
 \end{itemize}

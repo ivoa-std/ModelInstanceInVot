@@ -1,6 +1,7 @@
     COLLECTION is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
     
-    COLLECTION can be populated either by a static list of items (INSTANCE, ATTRIBUTE,..) or by one JOIN operation. Both mode modes cannot coexist.
+    COLLECTION can be populated either by a static list of items (INSTANCE, ATTRIBUTE,..) or by one JOIN operation. Both  modes cannot coexist.
+    %(FB is "operation the right term in this xml context ?)
     
     \begin{enumerate}
     \item{As child of INSTANCE}
@@ -16,6 +17,7 @@
     \item{As child of GLOBALS}
           
       The COLLECTION serves as a proxy for TABLE, grouping common INSTANCES for selection by PRIMARY/FOREIGN\_KEY.
+      %(FB: why a "proxy for TABLE" ? this means that this is the same IF of groupping several things (such as FIELDS or INSTANCES ?). And why PRIMARY KEY/FOREIGN_KEY ? I cannot see that in th schema. maybe INSTANCES containing PRIMAR_KEY for selection by FOREIGN_KEY ?
       Examples of usage in this context would be:
       \begin{itemize}
         \item a set of photometry filters, which apply to various rows of a photometric data table, based on the value of the 'band' column.
@@ -60,6 +62,7 @@
     </dm-mapping:COLLECTION>
 <dm-mapping:GLOBALS>
 \end{lstlisting}   
+%(FB I don't understand this. Is that a natutal join ? Maybe we should say that ?)
 
 
 \begin{table}[!htbp]
@@ -72,7 +75,7 @@
     \hline
     \hline  
          @dmid & 
-         Element dmid, MUST be unique within the document.\\
+         Element datamodel id, MUST be unique within the document.\\
     \hline 
          @dmrole & 
          Role of the \texttt{COLLECTION} in the data model. \\
@@ -95,7 +98,7 @@
       1 &
       OPT & 
       MAND & 
-      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST not be empty.  If present, @dmid MUST not be empty. \\
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST  be not empty.  If present, @dmid MUST  be not empty. \\
     \hline   
       2 &
       MAND & 
