@@ -2,7 +2,6 @@ The JOIN element allows to populate a COLLECTION with INSTANCEs from another col
 The foreign collection can either be a static element (GLOBALS/COLLECTION) or a collection of INSTANCES resulting from the iteration over a TEMPLATES.
 
 The JOIN element must contain attributes identifying the foreign collection  (@tableref and/or @dmref). 
-%(FB : why call it tableref if it is pointing to a collection ?)
 It can have WHERE children stating the join condition.
 
 It must be child of a COLLECTION that has not other children element than INSTANCE. A COLLECTION cannot host more than 1 JOIN.
