@@ -19,12 +19,10 @@ This is partially done with UTypes which may connect FIELDs or PARAMs with model
 Unfortunately, there is no unique  way to build and parse UTypes in the context of complex models. 
 UTypes are no more unambuiguous for patterns where e.g the same class is used in different location of the model or when the model contains loops. 
 UTypes do not allow cross-table references either. 
-%(NFB: Humm. Why ? )
 
 The landscape has dramatically changed in 2016 when VODML \citep{2018ivoa.spec.0910L} became a recommendation. 
 VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
-In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.*
-%(NFB : Hum not sure of that. Long Utypes are well appropriate for roles of a data peice, but not to distinguish instances)
+In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
 As a consequence any annotation mechanism based on VODML and preserving the model hierarchy will be able  to provide a data representation faith to that model.
 
 The main concept of this standard is to insert in VOTable resources XML blocks complying with the 
