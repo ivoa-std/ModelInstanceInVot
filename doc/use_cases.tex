@@ -33,9 +33,9 @@ There are intermediate levels of use that correspond to concrete use cases that 
     \item positions with proper motions and/or parallax to compute error ellipses or positions at a given epoch
   \end{itemize} 
 
-  \item The above cases relate to the processing of individual datasets; %(NFB : I don't understand why we are talking of datasets here. What kind of datasets are we talking about ? Rows in the table ? measurements ? )
+  \item The above cases relate to the processing of individual datasets; 
   
-  the model annotations become even more important for cases where a good level of interoperability is required to match different datasets. %(NFB : same question as above )
+  the model annotations become even more important for cases where a good level of interoperability is required to match different datasets. 
            This can be achieved by giving  common data structures for all quantities of interest. This is the purpose of e.g. Measure model which proposes classes for 
            most of the physical quantities and can be rendered by the mapping syntax. Measure classes are not meant to be used as standalone elements but as parts of host models (e.g. CubeDM, Mango);
            however clients keep free to either process those host models as a whole or to chase individual components.
