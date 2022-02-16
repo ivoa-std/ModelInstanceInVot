@@ -24,7 +24,7 @@ JOIN may have 2 uses:
        
   \item Join with COLLECTION data:
        \begin{itemize}
-         \item must have no @tableref attribute, because referencing a table in this case is irrelevant.
+         \item must have no @tableref nor @sourceref attribute, because referencing a table or a TEMPLATES in this case is irrelevant.
          \item must have a @dmref attribute to identify the COLLECTION to be joined with. This COLLECTION must be a GLOBALS child.
        \end{itemize}
        The mapping of the enclosing COLLECTION items can be either implicit or explicit:
@@ -48,9 +48,8 @@ JOIN may have 2 uses:
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-             @tableref& 
-            Reference of the table to be joined with. \\
-            %(FB : again is it really a table. see above ?)
+             @sourceref& 
+            Reference of the TEMPLATES to be joined with. \\
         \hline 
             @dmref & 
             Reference of the \texttt{COLLECTION} (in \texttt{GLOBALS} to be joined with. \\
@@ -71,12 +70,11 @@ JOIN may have 2 uses:
     \hline      \hline  
         MAND &           
         NO &           
-        The join is done against the table identified by @tableref \\
-         %(FB: a table ? ?)    
+        The join is done against the TEMPLATES identified by @sourceref \\  
     \hline   
         NO &           
         MAND &           
-        The join is done against the \texttt{COLLECTION} identified by @rmref \\
+        The join is done against the \texttt{COLLECTION} identified by @dmref \\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{JOIN}}
