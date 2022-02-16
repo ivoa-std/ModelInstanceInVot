@@ -57,11 +57,10 @@
 \begin{lstlisting}[frame=single,caption={Example of COLLECTION populated with a JOIN},style=XML,basicstyle=\tiny]
 <dm-mapping:GLOBALS>
     <dm-mapping:COLLECTION dmrole="_joined_dataj">
-        <dm-mapping:JOIN tableref="_someTable" dmref="_extInst"/>
+        <dm-mapping:JOIN sourceref="_someTemplates" dmref="_extInst"/>
     </dm-mapping:COLLECTION>
 <dm-mapping:GLOBALS>
 \end{lstlisting}   
-%(FB I don't understand this. Is that a natutal join ? Maybe we should say that ?)
 
 
 \begin{table}[!htbp]
