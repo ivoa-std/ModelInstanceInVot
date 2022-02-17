@@ -30,7 +30,7 @@ There are different uses for the REFERENCE:
             @dmrole & 
             Role of the referenced instance or collection in the DM \\
         \hline 
-            @sourceref& 
+            @tableref& 
             dmid of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
         \hline 
             @dmref & 
@@ -58,7 +58,7 @@ There are different uses for the REFERENCE:
     \hline 
 \end{tabulary}
      \caption{Allowed children for \texttt{REFERENCE}} 
-     \label{tbl:reference-chilren}
+     \label{tbl:reference-children}
 \end{table}
 
 
@@ -68,14 +68,14 @@ There are different uses for the REFERENCE:
 \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
         \textbf{@dmrole} &
-        \textbf{@sourceref} &
+        \textbf{@tableref} &
         \textbf{@dmref} &
         \textbf{Pattern}\\
     \hline      \hline  
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern,@sourceref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the \texttt{FOREIGN\_KEY} pattern,@tableref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           
