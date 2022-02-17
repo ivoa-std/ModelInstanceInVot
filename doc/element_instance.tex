@@ -8,19 +8,19 @@ the usage:
 \item Child of \texttt{GLOBALS}
 
    In this case the INSTANCE is a single stand-alone instance which
-   may or may not be referenced by other INSTANCEs. This pattern is typically use for 
+   may or may not be referenced by other INSTANCEs. This pattern is typically used for 
    shared object e.g. space frames, or for head object of science product models e.g. Time Series
   \begin{itemize}
-     \item May have dmid, as possible target of REFERENCE.ref
-     \item must have no or empty \texttt{dmrole}
+     \item May have dmid attribute, as possible target of REFERENCE.ref
+     \item must have no  \texttt{dmrole} attribute or an empty one
   \end{itemize}  
      
 \item Child of TEMPLATES:
   In this case, the INSTANCE is a template for instances which
   are generated once per row of the associated table.  
   \begin{itemize}
-     \item may have dmid, as target of JOIN.dmref
-     \item must have no or empty dmrole \texttt{dmrole}
+     \item may have dmid attribute, as target of JOIN.dmref
+     \item must have no  \texttt{dmrole} attribute or an empty one
   \end{itemize}  
 
 \item Child of COLLECTION:
@@ -31,14 +31,14 @@ the usage:
            allowed within the GLOBALS environment. In this case:             
            \begin{itemize}
              \item must contain at least one PRIMARY\_KEY sub-element
-             \item may have dmid, as possible target of REFERENCE
-             \item must have no or empty dmrole. VODML does set roles to particular collection items
+             \item may have a dmid attribute, as possible target of REFERENCE
+             \item must have no  dmrole attribute or an empty one. VODML does set roles to particular collection items
            \end{itemize}
 
      \item Elements INSTANCE are collection cells with multiplicity > 1
-          Each one has:             
+          Each one :             
            \begin{itemize}
-             \item must have no or empty dmrole
+             \item must have no dmrole attribute or an empty one
            \end{itemize}
   \end{itemize}  
     
@@ -46,14 +46,14 @@ the usage:
      In this case, each INSTANCE represents 
      a complex ObjectType or DataType playing a role in the parent INSTANCE.     
      \begin{itemize}
-        \item may have dmid
-        \item must have non-empty dmrole
+        \item may have dmid attribute
+        \item must have non-empty dmrole attribute
      \end{itemize}
            
 \item any INSTANCE:     
    \begin{itemize}
-        \item if dmid is present, it must not be empty
-        \item must have non-empty dmtype
+        \item if dmid attribute is present, it must not be empty
+        \item must have non-empty dmtype attribute
     \end{itemize}
 \end{enumerate}  
     

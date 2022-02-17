@@ -3,7 +3,8 @@ There are different uses for the REFERENCE:
 
 \begin{itemize}
     \item Static reference: the element has a @dmref attribute that matches the @dmid attribute of the referenced INSTANCE.
-    \item Dynamic reference: The element has a @tableref attribute identifying the TEMPLATES or the GLOBALS/COLLECTION where to fetch the referenced object. 
+    \item Dynamic reference: The element has a @tableref attribute identifying  the table where to fetch the referenced column. 
+    
              In this case, REFERENCE must be located in a TEMPLATES and it must have one or more FOREIGN\_KEY children. 
              If the referenced table contains several INSTANCE with a PRIMARY\_KEY, the first one must be taken by default.
 \end{itemize}
@@ -57,7 +58,7 @@ There are different uses for the REFERENCE:
     \hline 
 \end{tabulary}
      \caption{Allowed children for \texttt{REFERENCE}} 
-     \label{tbl:reference-chilren}
+     \label{tbl:reference-children}
 \end{table}
 
 

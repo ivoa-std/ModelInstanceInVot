@@ -1,6 +1,6 @@
     COLLECTION is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
     
-    COLLECTION can be populated either by a static list of items (INSTANCE, ATTRIBUTE,..) or by one JOIN operation. Both mode modes cannot coexist.
+    COLLECTION can be populated either by a static list of items (INSTANCE, ATTRIBUTE,..) or by joining to another COLLECTION (using the JOIN element). Both  modes cannot coexist.
     
     \begin{enumerate}
     \item{As child of INSTANCE}
@@ -56,7 +56,7 @@
 \begin{lstlisting}[frame=single,caption={Example of COLLECTION populated with a JOIN},style=XML,basicstyle=\tiny]
 <dm-mapping:GLOBALS>
     <dm-mapping:COLLECTION dmrole="_joined_dataj">
-        <dm-mapping:JOIN tableref="_someTable" dmref="_extInst"/>
+        <dm-mapping:JOIN tableref="_someTemplates" dmref="_extInst"/>
     </dm-mapping:COLLECTION>
 <dm-mapping:GLOBALS>
 \end{lstlisting}   
@@ -72,7 +72,7 @@
     \hline
     \hline  
          @dmid & 
-         Element dmid, MUST be unique within the document.\\
+         Element datamodel id, MUST be unique within the document.\\
     \hline 
          @dmrole & 
          Role of the \texttt{COLLECTION} in the data model. \\
@@ -95,7 +95,7 @@
       1 &
       OPT & 
       MAND & 
-      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST not be empty.  If present, @dmid MUST not be empty. \\
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST  be not empty.  If present, @dmid MUST  be not empty. \\
     \hline   
       2 &
       MAND & 

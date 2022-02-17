@@ -6,10 +6,9 @@ There  are 2 different uses for this element:
               @primarykey references the column (FIELD) to be checked. 
              The WHERE condition is satisfied for the rows having @primarykey equals to @value
     \item As a child of JOIN. Only the joined data items satisfying the WHERE conditions will be taken. 
-             With this pattern WHERE must have one @foreignkey attribute and one of @value either @primarykey attribute. 
+             With this pattern WHERE must have one @foreignkey attribute and one of either @value or @primarykey attribute. 
               @foreignkey references the column of the foreign collection to be checked. 
-             The WHERE condition is satisfied for the rows having @primarykey equals to either @value or @primarykey value.
-\end{itemize}
+             The WHERE condition is satisfied for the rows having @foreignkey equals to either @value or @primarykey value.
 
 \begin{lstlisting}[frame=single,caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped},style=XML,basicstyle=\tiny]
 <dm-mapping:TEMPLATES tableref="table">

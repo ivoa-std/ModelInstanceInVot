@@ -1,8 +1,9 @@
 The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
-There is however not suitable way to specify the exact role played by a given quantities in a particular context yet.
-There is also no way to describe how different quantities or different data tables relate to each others either.
-UTypes have been proposed to fill these gaps, but the lack of standard method to build them caused this approach not to be used.
-Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables.
+There is however not suitable way to specify the exact role played by a given quantity in a particular context yet.
+(%NFB : is that a role problem ?)
+There is also no way to describe how different quantities or different data tables relate to each other either.
+UTypes have been proposed to fill these gaps, but the difficulyty to define a standard method to build them in the general case of non-hierachical models caused this approach not to be used.
+Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables. (%NFB Hummm. Is that only for leaves ? Or also for higher levels ?)
 This is essential to get a good  understanding of complex data.
 
 The mapping syntax allows to map data on any model compliant with VODML. 
@@ -21,10 +22,10 @@ There are intermediate levels of use that correspond to concrete use cases that 
   \begin{itemize}
     \item Clients often need to get an accurate representation of the coordinate systems to make the best of many datasets  
     \item Data sets can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
-             quantities of the same nature but expressed in different systems (sky coordinates in IRCS vs Gal). VOTable currently do not support the latest pattern.
+             quantities of the same nature but expressed in different systems (sky coordinates in ICRS vs Gal). %NFB different COOSYS can be set in reference from the FIELDS. But COOSYS is limited. I think it's the real argument.
   \end{itemize} 
   
-  \item Quantities made with multiple components (data columns) that must be gathered by the client to be properly used:
+  \item Quantities made with "multiple components (data columns) that must be gathered by the client to be properly used:
   \begin{itemize}
     \item value-error associations
     \item error quantities split in several columns (covariance matrices). 
@@ -32,20 +33,22 @@ There are intermediate levels of use that correspond to concrete use cases that 
     \item positions with proper motions and/or parallax to compute error ellipses or positions at a given epoch
   \end{itemize} 
 
-  \item The above cases relate to the processing of individual datasets; the model annotations become even more important for cases where a good level of interoperability is required to match different datasets. 
-           This can be achieved by giving a common data structures for all quantities of interest. This is the purpose of e.g. Measure model that proposes classes for 
-           most of the physical quantities and that can be rendered by the mapping syntax. Measure classes are not meant to be used as standalone elements but as parts of host models (e.g. CubeDM, Mango);
+  \item The above cases relate to the processing of individual datasets; 
+  
+  the model annotations become even more important for cases where a good level of interoperability is required to match different datasets. 
+           This can be achieved by giving  common data structures for all quantities of interest. This is the purpose of e.g. Measure model which proposes classes for 
+           most of the physical quantities and can be rendered by the mapping syntax. Measure classes are not meant to be used as standalone elements but as parts of host models (e.g. CubeDM, Mango);
            however clients keep free to either process those host models as a whole or to chase individual components.
     \begin{itemize}
-      \item Cross matching VOTables having all the same accurate description of e.g. the sky position is easier. 
+      \item Cross matching VOTables having all the same accurate description of e.g. the sky position is easier. %(FB : what does that mean "accurate description" ? Space Frame ? unit ? ) 
                This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
       \item Building SEDs from datasets that have the same accurate photometry representation is straightforward.
    \end{itemize}          
 
   \item In more advanced cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
-      \item Extracting a TimeSeries instances to feed a software built upon classes generated from that model.
-      \item Building model instances that can be serialised in another format e.g. json to be share in another context than the VOTable processing e.g. SAMP
+      \item Extracting  TimeSeries instances to feed a software built upon classes generated from that model.
+      \item Building model instances that can be serialised in another format (e.g. json) in order to be shared in another context than the VOTable processing (e.g. via SAMP).
    \end{itemize}         
     
    \item The mapping syntax can be used to annotate static science products such as e.g. time-series. It can also be used to annotate on the fly TAP responses.
