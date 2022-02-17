@@ -16,7 +16,6 @@
     \item{As child of GLOBALS}
           
       The COLLECTION serves as a proxy for TABLE, grouping common INSTANCES for selection by PRIMARY/FOREIGN\_KEY.
-     
       Examples of usage in this context would be:
       \begin{itemize}
         \item a set of photometry filters, which apply to various rows of a photometric data table, based on the value of the 'band' column.
@@ -57,7 +56,7 @@
 \begin{lstlisting}[frame=single,caption={Example of COLLECTION populated with a JOIN},style=XML,basicstyle=\tiny]
 <dm-mapping:GLOBALS>
     <dm-mapping:COLLECTION dmrole="_joined_dataj">
-        <dm-mapping:JOIN sourceref="_someTemplates" dmref="_extInst"/>
+        <dm-mapping:JOIN tableref="_someTemplates" dmref="_extInst"/>
     </dm-mapping:COLLECTION>
 <dm-mapping:GLOBALS>
 \end{lstlisting}   
