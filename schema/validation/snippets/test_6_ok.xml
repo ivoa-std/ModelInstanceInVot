@@ -31,13 +31,13 @@
 			<!-- Test Case 6.1:  REFERENCE with dmref -->
 			<dm-mapping:REFERENCE dmrole="aaaa" dmref="fffff" />
 			
-			<!-- Test Case 6.2:  REFERENCE with tableref and FOREIGN_KEY -->
-			<dm-mapping:REFERENCE dmrole="aaaa" tableref="fffff">
+			<!-- Test Case 6.2:  REFERENCE with sourceref and FOREIGN_KEY -->
+			<dm-mapping:REFERENCE dmrole="aaaa" sourceref="fffff">
 				<dm-mapping:FOREIGN_KEY ref="zzzzz" />
 			</dm-mapping:REFERENCE>
 
-			<!-- Test Case 6.8:  REFERENCE with tableref and multiple FOREIGN_KEYs -->
-			<dm-mapping:REFERENCE dmrole="aaaa" tableref="fffff">
+			<!-- Test Case 6.8:  REFERENCE with sourceref and multiple FOREIGN_KEYs -->
+			<dm-mapping:REFERENCE dmrole="aaaa" sourceref="fffff">
 				<dm-mapping:FOREIGN_KEY ref="zzzzz" />
 				<dm-mapping:FOREIGN_KEY ref="zzzz1" />
 				<dm-mapping:FOREIGN_KEY ref="zzzz2" />
