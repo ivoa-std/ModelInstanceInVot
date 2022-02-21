@@ -1,10 +1,4 @@
-The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
-There is however not suitable way to specify the exact role played by a given quantity in a particular context yet.
-(%NFB : is that a role problem ?)
-There is also no way to describe how different quantities or different data tables relate to each other either.
-UTypes have been proposed to fill these gaps, but the difficulyty to define a standard method to build them in the general case of non-hierachical models caused this approach not to be used.
-Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables. (%NFB Hummm. Is that only for leaves ? Or also for higher levels ?)
-This is essential to get a good  understanding of complex data.
+
 
 The mapping syntax allows to map data on any model compliant with VODML. 
 Annotation blocks denote the model structure and contain references to the appropriate
@@ -18,7 +12,7 @@ There are intermediate levels of use that correspond to concrete use cases that 
 
 
 \begin{itemize}
-  \item Coordinate or calibration Systems: The recent modelling efforts (Coord and PhotDM) provide a very accurate description of coordinate frames or photometric systems that need to be serialised in VOTables:
+  \item Coordinate or calibration Systems: The recent modelling efforts (Coords and PhotDM) provide a very accurate description of coordinate frames or photometric systems that need to be serialised in VOTables:
   \begin{itemize}
     \item Clients often need to get an accurate representation of the coordinate systems to make the best of many datasets  
     \item Data sets can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
