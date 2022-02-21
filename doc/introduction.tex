@@ -5,7 +5,7 @@ so that any client can understand it without taking care of its origin and thus 
 In other words, the more faithful the data representation is to the model, the better the interoperability is.
 The challenge for the VO is to build a compromise on the way to map various data on standard models.
 
-We could imagine to develop a new data container specific for that  purpose but any solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
+We could imagine to develop a new data container specific for that purpose but any solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
 The model mapping solution must be based on VOTables since VOTable  \citep{2019ivoa.spec.1021O} is the standard VO data container.
 Unfortunately, if the VOTables schema allows a very good description of tabular data, it is unable to render a data view that suits well a complex model.
 In the case of simple DAL protocols, this limitation has been worked around by specifying the meta-data that must be present in the query responses; the model mapping is therefore defined by the standard.
@@ -30,5 +30,14 @@ model structure and containing references to the actual data.
 These blocks are designed in such a way that a model-aware client only has to make a copy of that structure and to resolve the references  
 to build model instances. More generic model-unaware clients can just ignore them. 
 
+%MOVED from section2
+
+%The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
+%There is however not suitable way to specify the exact role played by a given quantity in a particular context yet.
+(%NFB : is that a role problem ?)
+%There is also no way to describe how different quantities or different data tables relate to each other either.
+%UTypes have been proposed to fill these gaps, but the difficulty to define a standard method to build them in the general case of non-hierachical models caused this approach not to be used.
+%Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables. (%NFB Hummm. Is that only for leaves ? Or also for higher levels ?)
+%This is essential to get a good  understanding of complex data.
 
 
