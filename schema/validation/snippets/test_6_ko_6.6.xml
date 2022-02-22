@@ -8,8 +8,8 @@
 		<dm-mapping:INSTANCE dmtype="fffff">
 		<!-- Usage 1: Child of INSTANCE -->
 
-			<!-- Test Case 6.6: valid dmrole + tableref + no FK;  with tableref, must have one or more FOREIGN_KEY -->
-			<dm-mapping:REFERENCE dmrole="aaaa" tableref="fffff" />
+			<!-- Test Case 6.6: valid dmrole + sourceref + no FK;  with sourceref, must have one or more FOREIGN_KEY -->
+			<dm-mapping:REFERENCE dmrole="aaaa" sourceref="fffff" />
 
 		</dm-mapping:INSTANCE>
 	</dm-mapping:TEMPLATES>
