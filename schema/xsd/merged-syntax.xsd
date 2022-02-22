@@ -234,16 +234,16 @@
 		</xs:sequence>
 		<xs:attribute type="xs:string" name="dmrole"
 			use="optional" />
-		<xs:attribute type="xs:string" name="tableref" />
+		<xs:attribute type="xs:string" name="sourceref" />
 		<xs:attribute type="xs:string" name="dmref" />
 		<xs:assert
-			test="if (./@tableref) then  @tableref != '' else true()" />
+			test="if (./@sourceref) then  @sourceref != '' else true()" />
 		<xs:assert
 			test="if (./@dmref) then  @dmref != '' else true()" />
 		<xs:assert
-			test="(./@dmref and not(./@tableref)) or (not(./@dmref) and ./@tableref)" />
+			test="(./@dmref and not(./@sourceref)) or (not(./@dmref) and ./@sourceref)" />
 		<xs:assert
-			test="((count(dm-mapping:FOREIGN_KEY) > 0 and ./@tableref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@tableref) and ./@dmref))" />
+			test="((count(dm-mapping:FOREIGN_KEY) > 0 and ./@sourceref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@sourceref) and ./@dmref))" />
 	</xs:complexType>
 
 	<!-- Join with another table One instance created for joined row of the 
