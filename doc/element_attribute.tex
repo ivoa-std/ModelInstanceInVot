@@ -8,27 +8,37 @@ the usage:
 \begin{enumerate}
 \item Descendant of \texttt{GLOBALS}
 
-  In this case the ATTRIBUTE cannot refer to any table column, it must have no @ref xml attribute or an empty one 
+In this case, the \texttt{ATTRIBUTE} must be specified by:
+  \begin{itemize} 
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM}, 
+      (not a VOTable \texttt{FIELD})
+      \item \texttt{@value} - a literal
+      \item  if both are provided; \texttt{@value} serves as the default 
+      if the reference cannot be resolved
+  \end{itemize}  
+
   
 \item Descendant of TEMPLATES:
 
-  In this case the ATTRIBUTE must be set with either a literal value or a reference to a particular row item. 
-   If both @ref and @value are given, @ref must be resolved first and then @val must be taken. 
-
-  \begin{itemize}
-     \item must have either a @ref, a @value or both 
+In this case, the \texttt{ATTRIBUTE} must be specified by:
+  \begin{itemize} 
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM} 
+      or \texttt{FIELD}
+      \item \texttt{@value} - a literal
+      \item if both are provided, \texttt{@value} serves as the default if 
+      the reference cannot be resolved
   \end{itemize}  
 
 \item Child of COLLECTION:
-    The ATTRIBUTE can be seen as a vector coordinate, 
-    it must have  no @dmrole xml attribute or an empty one
+    The \texttt{ATTRIBUTE} can be seen as a vector coordinate, 
+    it must have  no \texttt{@dmrole} xml attribute or an empty one
     
 \item Child of INSTANCE: 
-    The ATTRIBUTE can be seen as a class attribute, 
-    it must have a @dmrole xml attribute
+    The \texttt{ATTRIBUTE} can be seen as a class attribute, 
+    it must have a \texttt{@dmrole} xml attribute
            
 \item Any case:     
-    The ATTRIBUTE must always have a non empty @dmtype xml attribute.
+    The \texttt{ATTRIBUTE} must always have a non empty \texttt{@dmtype} xml attribute.
 \end{enumerate}  
     
     

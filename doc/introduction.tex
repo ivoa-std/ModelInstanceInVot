@@ -5,22 +5,37 @@ so that any client can understand it without taking care of its origin and thus 
 In other words, the more faithful the data representation is to the model, the better the interoperability is.
 The challenge for the VO is to build a compromise on the way to map various data on standard models.
 
-We could imagine to develop a new data container specific for that  purpose but any solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
+We could imagine to develop a new data container specific for that purpose but any solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
 The model mapping solution must be based on VOTables since VOTable  \citep{2019ivoa.spec.1021O} is the standard VO data container.
-Unfortunately, if the VOTables schema allows a very good description of tabular data, it is unable to render a data view that suits well a complex model.
+Unfortunately, if the VOTables schema allows a very good description of tabular data, it is unable to render data views that suit well a complex models.
 In the case of simple DAL protocols, this limitation has been worked around by specifying the meta-data that must be present in the query responses; the model mapping is therefore defined by the standard.
 This approach is no longer applicable for complex models such as CubeDM or Provenance for which the data tree may vary from an instance to another.
 
-The elements on which we have to build the standard are the following: the data content is a priori unknown (e.g. TAP responses), it has to be mapped on models that are not defined yet and the whole in a VOTable context.
-The standard must be able to bind native data with a model in a way that a model-aware software can see it as 
+tThe elements on which the standard must be designed are the following: the data content is a priori unknown (e.g. TAP response), it has to be mapped on models that are not defined yet and the whole in a VOTable context.
+The standard must allow to bind native data with a model in a way that a model-aware software can see it as 
 model instances while maintaining the possibility to access them in their original layout.
 
-This is partially done with UTypes which may connect FIELDs or PARAMs with model leaves in the case of tree-like models. 
-Unfortunately, there is no unique  way to build and parse UTypes in the context of complex models. 
-UTypes are no more unambuiguous for patterns where e.g the same class is used in different location of the model or when the model contains loops. 
-UTypes do not allow cross-table references either. 
+This is partially achieved with UTypes. 
+UTypes are path-like strings (m:a.b.c) identifying model leaves. There were no common way to build UTypes; each model (e.g. Characterization, Obscore)  came with their specific lists of UTypes. 
 
-The landscape has dramatically changed in 2016 when VODML \citep{2018ivoa.spec.0910L} became a recommendation. 
+In the VOTable context, UTypes are set as \texttt{FIELD} attributes, allowing so to connect particular columns to model leave. This mapping strategy fits very well with the VOTable schema. There is no need to introduce new XML elements. There are however major limitations that have been discussed many times:
+
+\begin{itemize}
+  \item UTypes are pointers from \texttt{FIELD} or \texttt{PARAM} towards the 
+  model structure. The is no possibility for one  \texttt{FIELD} or
+  \texttt{PARAM} to playing different roles.
+  \item not intended to be parsable, so only identifies what the leaf 
+  FIELD/PARAM is, not its context.
+  \item not reusable, the same element used in different contexts/models 
+  have different UTypes; which hinders interoperability
+  \item constrained to single-table serializations. All model elements must 
+  be contained within the same VOTable TABLE.
+  \item does not support annotating the VOTable content to multiple models 
+  (as TimeSeries or Catalog/Source )
+\end{itemize}
+
+The UType approach could have been develop to overcome these drawbacks, but it has been decided to move forward a solution closer to the VODML \citep{2018ivoa.spec.0910L} concepts. 
+
 VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
 In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
 As a consequence any annotation mechanism based on VODML and preserving the model hierarchy will be able  to provide a data representation faith to that model.
@@ -30,5 +45,14 @@ model structure and containing references to the actual data.
 These blocks are designed in such a way that a model-aware client only has to make a copy of that structure and to resolve the references  
 to build model instances. More generic model-unaware clients can just ignore them. 
 
+%MOVED from section2
+
+%The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
+%There is however not suitable way to specify the exact role played by a given quantity in a particular context yet.
+
+%There is also no way to describe how different quantities or different data tables relate to each other either.
+%UTypes have been proposed to fill these gaps, but the difficulty to define a standard method to build them in the general case of non-hierachical models caused this approach not to be used.
+%Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables. (%NFB Hummm. Is that only for leaves ? Or also for higher levels ?)
+%This is essential to get a good  understanding of complex data.
 
 
