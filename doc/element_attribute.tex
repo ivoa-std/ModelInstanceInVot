@@ -8,7 +8,15 @@ the usage:
 \begin{enumerate}
 \item Descendant of \texttt{GLOBALS}
 
-  In this case the ATTRIBUTE cannot refer to any table column, it must have no @ref xml attribute or an empty one 
+In this case, the \texttt{ATTRIBUTE} must be specified by:
+  \begin{itemize} 
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM}, 
+      (not a VOTable \texttt{FIELD})
+      \item } \texttt{@value} - a literal
+      \item  if both are provided; \texttt{@value} serves as the default 
+      if the reference cannot be resolved
+  \end{itemize}  
+
   
 \item Descendant of TEMPLATES:
 
