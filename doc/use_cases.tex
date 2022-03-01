@@ -1,25 +1,20 @@
 
-
-The mapping syntax allows to map data on any model compliant with VODML. 
-Annotation blocks denote the model structure and contain references to the appropriate
-FIELDs and PARAMs. Model-aware clients can build model instances just by reading the annotation
-block and by resolving the references to set the model leaf values. 
-
-Such a mechanism allows the client to get a better understanding of the data complexity.
-The annotation block is designed in a way that clients are not forced to choose between a regular data processing and a full object approach.
-There are intermediate levels of use that correspond to concrete use cases that are addressed by this standard.
-
-
+The utimate goal of this standard is to allow clients to get a better understanding of the data complexity whether it is legacy or set for a particular model. It is however important not to force clients to choose between a regular data processing and a full object approach.
+The design of the mapping syntax addresses the necessity of supporting intermediate levels of use that correspond to concrete use cases that.
 
 \begin{itemize}
-  \item Coordinate or calibration Systems: The recent modelling efforts (Coords and PhotDM) provide a very accurate description of coordinate frames or photometric systems that need to be serialised in VOTables:
+  \item The recent modelling efforts (Meas, Coords and PhotDM) provide very accurate descriptions of coordinate frames or photometric 
+        systems that need to be serialised in VOTables:
   \begin{itemize}
-    \item Clients often need to get an accurate representation of the coordinate systems to make the best of many datasets  
+    \item Clients often need to get such coordinate systems descriptions upon different axes to properly display many datasets. 
     \item Data sets can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
-             quantities of the same nature but expressed in different systems (sky coordinates in ICRS vs Gal). %NFB different COOSYS can be set in reference from the FIELDS. But COOSYS is limited. I think it's the real argument.
+          quantities of the same nature but expressed in different systems (sky coordinates in ICRS vs Gal). 
+          This is partially suported by the actual VOTable schema (TIMESYS, COOSYS) but any change in these ad-hoc mapping 
+          elements or the addition of any other elements (e.g. X-ray energy band) would require VOTable version upgrades. 
+          Using the mapping syntax diconnects the level of description of the different axes from the VOTable schema.           
   \end{itemize} 
   
-  \item Quantities made with "multiple components (data columns) that must be gathered by the client to be properly used:
+  \item Quantities made with multiple components (spread over multiple table columns) may need to be aggregated by the client to be used correctly:
   \begin{itemize}
     \item value-error associations
     \item error quantities split in several columns (covariance matrices). 
@@ -34,27 +29,32 @@ There are intermediate levels of use that correspond to concrete use cases that 
 
   This can be achieved by giving  common data structures for all 
   quantities of interest. This is the purpose of e.g. Measure model 
-  which proposes classes for most of the physical quantities and can 
+  which proposes classes for most of the physical quantities that can 
   be rendered by the mapping syntax. Measure classes are not meant to 
   be used as standalone elements but as parts of host models 
   (e.g. CubeDM, Mango);
   however clients keep free to either process those host models as a
   whole or to chase individual components.
     \begin{itemize}
-      \item Cross matching VOTables having all the same accurate description of e.g. the sky position is easier. %(FB : what does that mean "accurate description" ? Space Frame ? unit ? ) 
-               This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
-      \item Building SEDs from datasets that have the same accurate photometry representation is straightforward.
+      \item Cross matching VOTables always providing the same of e.g. the sky position is easier.
+            This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
+      \item Building SEDs from datasets that have the same photometric calibration representation is straightforward.
    \end{itemize}          
 
   \item In more advanced cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
       \item Extracting  TimeSeries instances to feed a software built upon classes generated from that model.
-      \item Building model instances that can be serialised in another format (e.g. json) in order to be shared in another context than the VOTable processing (e.g. via SAMP).
+      \item Building model instances that can be serialised in another format (e.g. json) in order to be shared in another context than 
+            the VOTable processing (e.g. via SAMP).
    \end{itemize}         
     
-   \item The mapping syntax can be used to annotate static science products such as e.g. time-series. It can also be used to annotate on the fly TAP responses.
-   As shown by (ref- Mireille ADASS) this process is not always possible because the model compliance of the searched data strongly depends on the executed query (missing searched columns, joins, data aggregation ...). 
-   However, clients connecting TAP services registered as delivering annotated data would expect to get annotation blocks in query responses even if the annotation process is not possible. 
+   \item The mapping syntax can be used to annotate static science products such as e.g. time-series. It can also be used to annotate 
+   on the fly TAP responses.
+   It is to be noted and as shown by (ref- https://doi.org/10.48550/arXiv.2201.01732 https://arxiv.org/abs/2201.01732) this process is not always 
+   possible because the model compliance of the searched data strongly depends 
+   on the executed query (missing searched columns, joins, data aggregation ...). 
+   However, clients connecting TAP services registered as delivering annotated data would expect to get annotation blocks in query responses even 
+   if the annotation process is not possible. 
    This feature must be supported by the proposed syntax.
     
 \end{itemize} 
