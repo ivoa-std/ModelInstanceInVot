@@ -1,0 +1,25 @@
+
+<dm-mapping:VODML>
+  <dm-mapping:GLOBALS>
+
+  </dm-mapping:GLOBALS>
+
+  <dm-mapping:TEMPLATES tableref="_PKTable">
+    <dm-mapping:INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+      <dm-mapping:COLLECTION dmrole="cube:SparseCube.data">
+        <dm-mapping:JOIN dmref="_ts_data">
+          <dm-mapping:WHERE foreignkey="_srcid" primarykey="_pksrcid" />
+          <dm-mapping:WHERE foreignkey="_band" primarykey="_pkband" />
+        </dm-mapping:JOIN>
+      </dm-mapping:COLLECTION>
+    </dm-mapping:INSTANCE>
+  </dm-mapping:TEMPLATES>
+
+  <dm-mapping:TEMPLATES tableref="Results">
+    <dm-mapping:INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
+      ....
+      ....
+    </dm-mapping:INSTANCE>
+  </dm-mapping:TEMPLATES>
+</dm-mapping:VODML>
+
