@@ -1,34 +1,33 @@
-The JOIN element allows to populate a COLLECTION with INSTANCEs from another collection, namely the foreign collection.
-The foreign collection can either be a static element (GLOBALS/COLLECTION) or a collection of INSTANCES resulting from the iteration over a TEMPLATES.
+The \texttt{JOIN} element allows to populate a \texttt{COLLECTION} with \texttt{INSTANCE}  from another collection, namely the foreign collection.
+The foreign collection can either be a static element  \texttt{GLOBALS} \texttt{COLLECTION}  or a collection of \texttt{INSTANCE}  resulting from the iteration over a \texttt{TEMPLATES} 
 
-The JOIN element must contain attributes identifying the foreign collection  (@sourceref  and/or @dmref). 
-It can have WHERE children stating the join condition and it must be the unique child of the host COLLECTION.
-
-JOIN may have 2 uses:
+The \texttt{JOIN} element must contain attributes identifying the foreign collection   \texttt{@sourceref}  and/or \texttt{@dmref} . 
+It can have \texttt{WHERE} children stating the join condition and it must be the unique child of the host \texttt{COLLECTION} 
+ \texttt{JOIN} may have 2 uses:
 
 \begin{itemize}
 
-    \item Join with TEMPLATES data:
+    \item Join with \texttt{TEMPLATES} data:
        \begin{itemize}
-         \item must have either a @sourceref attribute identifying the foreign TEMPLATES or a @dmref attribute identifying the foreign mapped INSTANCE or both.
+         \item must have either a \texttt{@sourceref} attribute identifying the foreign \texttt{TEMPLATES} or a \texttt{@dmref} attribute identifying the foreign mapped \texttt{INSTANCE} or both.
              \begin{itemize}
-               \item if only @sourceref is given, the host collection is populated with the INSTANCEs mapping the foreign table rows. 
+               \item if only \texttt{@sourceref} is given, the host collection is populated with the \texttt{INSTANCE}  mapping the foreign table rows. 
                         This pattern is only valid when the foreign TEMPLATEs has  one unique instance child.
-               \item if only @dmref, the host collection is populated with the INSTANCEs having the matching @dmid. In this case, 
-                        the client is in charge of locating the TEMPLATES containing that INSTANCE.
-               \item if both @sourceref and @dmref are given, it is assumed that the INSTANCE with @dmid matching @dmref is hosted by the TEMPLATEs matching @sourceref.
+               \item if only \texttt{@dmref}  the host collection is populated with the \texttt{INSTANCE}  having the matching \texttt{@dmid}  In this case, 
+                        the client is in charge of locating the \texttt{TEMPLATES} containing that \texttt{INSTANCE} 
+               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} is hosted by the TEMPLATEs matching \texttt{@sourceref} 
                         This over-statement may help the parser but it can carry inconsistencies. An error must be risen in this case.
              \end{itemize}
     \end{itemize}
   
-   \item Join with GLOBALS/COLLECTION data:
+   \item Join with \texttt{GLOBALS} \texttt{COLLECTION} data:
        \begin{itemize}
-         \item the foreign COLLECTION must be direct child of GLOBALS.
-         \item JOIN must have one @sourceref attribute identifying the foreign COLLECTION.
-         \item the host COLLECTION is populated with the foreign COLLECTION items eventually filtered by the WHERE condition.
-         \item the foreign COLLECTION must only have INSTANCEs (eventually REFERENCES) as children.
-         \item the foreign COLLECTION items are supposed to have all the same @dmtype, this rule is however out of the scope of the present standard.
-         \item If there are WHERE conditions, the foreign COLLECTION items must have PRIMARY\_KEYs
+         \item the foreign \texttt{COLLECTION} must be direct child of \texttt{GLOBALS} 
+         \item \texttt{JOIN} must have one \texttt{@sourceref} attribute identifying the foreign \texttt{COLLECTION} 
+         \item the host \texttt{COLLECTION} is populated with the foreign \texttt{COLLECTION} items eventually filtered by the \texttt{WHERE} condition.
+         \item the foreign \texttt{COLLECTION} must only have \texttt{INSTANCE}  (eventually \texttt{REFERENCE}) as children.
+         \item the foreign \texttt{COLLECTION} items are supposed to have all the same \texttt{@dmtype}  this rule is however out of the scope of the present standard.
+         \item If there are \texttt{WHERE} conditions, the foreign \texttt{COLLECTION} items must have \texttt{PRIMARY\_KEY} 
   \end{itemize}
 \end{itemize}
 
@@ -48,11 +47,11 @@ JOIN may have 2 uses:
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-             @sourceref & 
-            Reference of the TEMPLATES or COLLECTION to be joined with. \\
+             \texttt{@sourceref} & 
+            Reference of the \texttt{TEMPLATES} or \texttt{COLLECTION} to be joined with. \\
         \hline 
-            @dmref & 
-            Reference of the foreign \texttt{INSTANCE}s that will populate he host COLLECTION. \\
+            \texttt{@dmref} & 
+            Reference of the foreign \texttt{INSTANCE}s that will populate he host \texttt{COLLECTION}  \\
         \hline 
      \end{tabulary}
      \caption{\texttt{JOIN} attributes} 
@@ -70,11 +69,11 @@ JOIN may have 2 uses:
     \hline      \hline  
         MAND &           
         OPT &           
-        Join against the TEMPLATES or COLLECTION identified by @sourceref  \\  
+        Join against the \texttt{TEMPLATES} or \texttt{COLLECTION} identified by \texttt{@sourceref}  \\  
     \hline   
         OPT &           
         MAND &      
-        Host COLLECTION populated with \texttt{INSTANCE}  identified by @dmref \\
+        Host \texttt{COLLECTION} populated with \texttt{INSTANCE}  identified by \texttt{@dmref} \\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{JOIN}}

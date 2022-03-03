@@ -1,11 +1,11 @@
-    COLLECTION is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
+    \texttt{COLLECTION} is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
     
-    COLLECTION can be populated either by a static list of items (INSTANCE, ATTRIBUTE,..) or by joining to another COLLECTION (using the JOIN element). Both  modes cannot coexist.
+    \texttt{COLLECTION} can be populated either by a static list of items  \texttt{INSTANCE}  \texttt{ATTRIBUTE} ..) or by joining to another \texttt{COLLECTION} (using the \texttt{JOIN} element). Both  modes cannot coexist.
     
     \begin{enumerate}
     \item{As child of INSTANCE}
       
-      The COLLECTION serves as a container for elements with multiplicity $>$ 1.\\
+      The \texttt{COLLECTION} serves as a container for elements with multiplicity $>$ 1.\\
       Examples of usage in this context would be:
       \begin{itemize}
         \item an array attribute
@@ -15,7 +15,7 @@
       
     \item{As child of GLOBALS}
           
-      The COLLECTION serves as a proxy for TABLE, grouping common INSTANCES for selection by PRIMARY/FOREIGN\_KEY.
+      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by PRIMARY \texttt{FOREIGN\_KEY} 
       Examples of usage in this context would be:
       \begin{itemize}
         \item a set of photometry filters, which apply to various rows of a photometric data table, based on the value of the 'band' column.
@@ -27,7 +27,7 @@
         
     \end{enumerate}
    
-\begin{lstlisting}[frame=single,caption={Example of COLLECTION child of INSTANCE},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} child of INSTANCE},style=XML,basicstyle=\tiny]
 <dm-mapping:INSTANCE dmtype="model:Thing">
     <dm-mapping:COLLECTION dmrole="model:Thing.elems">
         <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="100" />
@@ -36,7 +36,7 @@
 </dm-mapping:INSTANCE>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of COLLECTION child of GLOBALS},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} child of GLOBALS},style=XML,basicstyle=\tiny]
 <dm-mapping:GLOBALS>
     <dm-mapping:COLLECTION dmid="_filters" >
         <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
@@ -53,7 +53,7 @@
 <dm-mapping:GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of COLLECTION populated with a JOIN},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} populated with a JOIN},style=XML,basicstyle=\tiny]
 <dm-mapping:GLOBALS>
     <dm-mapping:COLLECTION dmrole="_joined_dataj">
         <dm-mapping:JOIN tableref="_someTemplates" dmref="_extInst"/>
@@ -71,10 +71,10 @@
          \textbf {Role}\\
     \hline
     \hline  
-         @dmid & 
+         \texttt{@dmid} & 
          Element datamodel id, MUST be unique within the document.\\
     \hline 
-         @dmrole & 
+         \texttt{@dmrole} & 
          Role of the \texttt{COLLECTION} in the data model. \\
     \hline 
   \end{tabulary}
@@ -95,12 +95,12 @@
       1 &
       OPT & 
       MAND & 
-      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST  be not empty.  If present, @dmid MUST  be not empty. \\
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  \texttt{@dmrole} MUST  be not empty.  If present, \texttt{@dmid} MUST  be not empty. \\
     \hline   
       2 &
       MAND & 
       NO & 
-      The collection, has no role. MUST have non-empty dmid to reference for ORM selection of contained \texttt{INSTANCE}. This occurs when e.g. the COLLECTION is a GLOBALS child.\\
+      The collection, has no role. MUST have non-empty dmid to reference for ORM selection of contained \texttt{INSTANCE}. This occurs when e.g. the \texttt{COLLECTION} is a \texttt{GLOBALS} child.\\
     \hline 
   \end{tabulary}
   \caption{Valid attribute patterns for \texttt{COLLECTION}} 

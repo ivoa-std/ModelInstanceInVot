@@ -1,19 +1,19 @@
-INSTANCE reference that can be used with the same patterns as for INSTANCEs.
-There are different uses for the REFERENCE:
+INSTANCE reference that can be used with the same patterns as for \texttt{INSTANCE} .
+There are different uses for the \texttt{REFERENCE} 
 
 \begin{itemize}
-    \item Static reference: the element has a @dmref attribute that matches the @dmid attribute of the referenced INSTANCE.
-    \item Dynamic reference: The element has a @sourceref attribute identifying  the table where to fetch the referenced column. 
+    \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} attribute of the referenced \texttt{INSTANCE} 
+    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying  the table where to fetch the referenced column. 
     
-             In this case, REFERENCE must be located in a TEMPLATES and it must have one or more FOREIGN\_KEY children. 
-             If the referenced table contains several INSTANCE with a PRIMARY\_KEY, the first one must be taken by default.
+             In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one or more \texttt{FOREIGN\_KEY} children. 
+             If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first one must be taken by default.
 \end{itemize}
 
-\begin{lstlisting}[frame=single,caption={Simple \texttt{REFERENCE}, to be replaced with the INSTANCE having @dmid=\_target1 },style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1 },style=XML,basicstyle=\tiny]
 <dm-mapping:REFERENCE dmrole="_role" dmref="_target1" />
 \end{lstlisting}
 
-\begin{lstlisting}[frame=single,caption={Dynamic \texttt{REFERENCE}, to be replaced with the INSTANCE of the table of collection \_target1 and having a PRIMARY\_KEY matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[frame=single,caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \_target1 and having a \texttt{PRIMARY\_KEY} matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},style=XML,basicstyle=\tiny]
 <dm-mapping:REFERENCE dmrole="_role" sourceref="_target1">
     <dm-mapping:FOREIGN_KEY ref="_col1" />
 </dm-mapping:REFERENCE>
@@ -27,13 +27,13 @@ There are different uses for the REFERENCE:
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            @dmrole & 
+            \texttt{@dmrole} & 
             Role of the referenced instance or collection in the DM \\
         \hline 
-            @sourceref& 
+            \texttt{@sourceref}  &
             dmid of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
         \hline 
-            @dmref & 
+            \texttt{@dmref} & 
             dmid of the referenced instance or collection\\
         \hline 
      \end{tabulary}
@@ -75,7 +75,7 @@ There are different uses for the REFERENCE:
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern,@sourceref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the \texttt{FOREIGN\_KEY} pattern \texttt{@sourceref} gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           

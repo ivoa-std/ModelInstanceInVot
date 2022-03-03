@@ -31,14 +31,13 @@ When used as \texttt{FIELD} attributes, UTypes allow so to connect particular co
   \item UTypes constrain to single-table serializations. All model elements must 
   be contained within the same VOTable TABLE.
   \item UTypes does not support annotating the VOTable content to multiple models 
-  (as TimeSeries or Catalog/Source )
+  (as TimeSeries or Catalog/Source)
 \end{itemize}
 
-The UType approach could have been developed to overcome these drawbacks, but it has been decided to move forward a solution closer to the VODML \citep{2018ivoa.spec.0910L} concepts. 
-
-VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
-In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
-As a consequence, any annotation mechanism based on VODML and preserving the model hierarchy will be able  to provide a data representation faith to that model.
+The UType approach could have been developed to overcome these drawbacks, but it has been decided to move forward a solution closer to the \texttt{VODML} \citep{2018ivoa.spec.0910L} concepts. 
+ \texttt{VODML} is a meta-model that gives a standard way to express VO models and to make them machine-readable.
+In \texttt{VODML}  model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
+As a consequence, any annotation mechanism based on \texttt{VODML} and preserving the model hierarchy will be able  to provide a data representation faith to that model.
 
 The basis of VOMAS is to insert into the VOTable an XML block complying with the 
 model structure and containing references to the actual data.

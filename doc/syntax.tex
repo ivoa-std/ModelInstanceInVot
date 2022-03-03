@@ -1,5 +1,5 @@
 The syntax has been designed to use as less XML elements as possible and to rely on XML attributes to setup the element behavior in a particular context.
-As shown in \ref{tbl:syntax-ele} the mapping elements  can be grouped in 3 different scopes. There are only 3 elements for the models structure itself. We assume that any data hierarchy  can be represented a combination of collections (COLLECTION), tuples (INSTANCE) and simple values (ATTRIBUTE). The others elements are either set the mapping block structure or to connect data to each other.
+As shown in \ref{tbl:syntax-ele} the mapping elements  can be grouped in 3 different scopes. There are only 3 elements for the models structure itself. We assume that any data hierarchy  can be represented a combination of collections  \texttt{COLLECTION} , tuples  \texttt{INSTANCE}  and simple values  \texttt{ATTRIBUTE} . The others elements are either set the mapping block structure or to connect data to each other.
 
 \begin{table}[!htbp]
 \small
@@ -11,13 +11,13 @@ As shown in \ref{tbl:syntax-ele} the mapping elements  can be grouped in 3 diffe
        \hline         
        \hline  
              Data modeling tags & 
-             ATTRIBUTE INSTANCE COLLECTION \\
+             \texttt{ATTRIBUTE} \texttt{INSTANCE} \texttt{COLLECTION} \\
        \hline  
              Mapping block structre & 
-             VODML MODEL REPORT TEMPLATES GLOBALS \\
+             \texttt{VODML} \texttt{MODEL} \texttt{REPORT} \texttt{TEMPLATES} \texttt{GLOBALS} \\
        \hline  
              Data references and identification & 
-             REFERENCE JOIN  FOREIGN\_KEY PRIMARY\_KEY WHERE\\
+             \texttt{REFERENCE} \texttt{JOIN}  \texttt{FOREIGN\_KEY} \texttt{PRIMARY\_KEY} \texttt{WHERE} \\
        \hline
      \end{tabulary}
      \caption{Mapping elements grouped by scopes} 
@@ -25,7 +25,7 @@ As shown in \ref{tbl:syntax-ele} the mapping elements  can be grouped in 3 diffe
 \end{table}
 
 
-As shown in \ref{tbl:syntax-att} and following the VODML pattern, any model node is characterized by a role (@dmrole) and a type (@dmtype). All of the others attributes are used to bind data with either VOtable elements or others mapping elements.
+As shown in \ref{tbl:syntax-att} and following the \texttt{VODML} pattern, any model node is characterized by a role  \texttt{@dmrole}  and a type  \texttt{@dmtype} . All of the others attributes are used to bind data with either VOtable elements or others mapping elements.
  
 \begin{table}[!htbp]
 \small
@@ -37,19 +37,19 @@ As shown in \ref{tbl:syntax-att} and following the VODML pattern, any model node
        \hline         
        \hline  
              Model related & 
-             @name @uri \\
+             \texttt{@name} \texttt{@uri} \\
        \hline  
              Modeled node related & 
-             @dmrole @dmtype \\
+             \texttt{@dmrole} \texttt{@dmtype} \\
        \hline  
              Related to attribute values & 
-             @value @unit @arrayindex \\
+             \texttt{@value} \texttt{@unit} \texttt{@arrayindex} \\
        \hline  
              Related to VOTable elements & 
-             @tableref @ref\\
+             \texttt{@tableref} \texttt{@ref} \\
        \hline  
              Mapping element identification& 
-             @dmref @dmid @url @dmid @sourceref @primarykey @foreignkey\\
+             \texttt{@dmref} \texttt{@dmid} \texttt{@url} \texttt{@dmid} \texttt{@sourceref} \texttt{@primarykey} \texttt{@foreignkey} \\
        \hline
      \end{tabulary}
      \caption{Attributes of mapping elements grouped by scopes} 

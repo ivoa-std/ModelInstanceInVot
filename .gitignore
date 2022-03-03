@@ -40,7 +40,7 @@ draft-background.*
 target/
 *.synctex*
 *.pdf
-
+*.org
 # eclipse project file
 .settings/
 .classpath
