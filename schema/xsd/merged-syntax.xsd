@@ -79,7 +79,7 @@
 		<xs:assert
 			test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:INSTANCE satisfies ( count($grandchild/dm-mapping:PRIMARY_KEY) gt 0 ) )" />
 		<xs:assert
-			test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@tableref)))" />
+			test="every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@sourceref)))" />
 		<xs:assert
 			test="every $child in ./dm-mapping:COLLECTION satisfies count($child/dm-mapping:ATTRIBUTE) = 0" />
 		<xs:assert
@@ -246,21 +246,20 @@
 			test="((count(dm-mapping:FOREIGN_KEY) > 0 and ./@sourceref and not(./@dmref))  or (count(./dm-mapping:FOREIGN_KEY) eq 0 and not(./@sourceref) and ./@dmref))" />
 	</xs:complexType>
 
-	<!-- Join with another table One instance created for joined row of the 
-		secondary table -->
+	<!-- Join with another table. -->
 	<xs:complexType name="Join">
 		<xs:sequence>
 			<xs:element name="WHERE" type="dm-mapping:Where"
 				minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
-		<xs:attribute type="xs:string" name="tableref" />
+		<xs:attribute type="xs:string" name="sourceref" />
 		<xs:attribute type="xs:string" name="dmref" />
 		<xs:assert
-			test="if (./@tableref) then  @tableref != '' else true()" />
+			test="if (./@sourceref) then  @sourceref != '' else true()" />
 		<xs:assert
 			test="if (./@dmref) then  @dmref != '' else true()" />
 		<xs:assert
-			test="((./@tableref) and (./@dmref)) or not(./@tableref) or (count(dm-mapping:WHERE) > 0 and (./@tableref))" />
+			test="((./@sourceref) and (./@dmref)) or not(./@sourceref) or (count(dm-mapping:WHERE) > 0 and (./@sourceref))" />
 	</xs:complexType>
 
 	<!-- Select table rows with value of the column @ref = @value -->

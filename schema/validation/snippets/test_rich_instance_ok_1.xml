@@ -26,7 +26,7 @@
 								<dm-mapping:ATTRIBUTE dmrole="test.title" dmtype="string" value="TITLE" />
 							</dm-mapping:INSTANCE>
 							<dm-mapping:COLLECTION dmrole="test.points">
-								<dm-mapping:JOIN dmref="_point" tableref="Results" />
+								<dm-mapping:JOIN dmref="_point" sourceref="Results" />
 							</dm-mapping:COLLECTION>
 						</dm-mapping:INSTANCE>
 					</dm-mapping:INSTANCE>
@@ -36,12 +36,12 @@
 					<dm-mapping:INSTANCE dmid="_point" dmtype="Point">
 						<dm-mapping:ATTRIBUTE dmrole="test:detection.num" dmtype="ivoa:real" ref="_poserr_148" />
 						<dm-mapping:COLLECTION dmrole="test.detections">
-							<dm-mapping:JOIN tableref="OtherResults">
+							<dm-mapping:JOIN sourceref="OtherResults">
 								<dm-mapping:WHERE primarykey="_poserr_148" foreignkey="_foreign" />
 							</dm-mapping:JOIN>
 						</dm-mapping:COLLECTION>
 						<dm-mapping:COLLECTION dmrole="test.spectra">
-							<dm-mapping:JOIN tableref="Spectra">
+							<dm-mapping:JOIN sourceref="Spectra">
 								<dm-mapping:WHERE primarykey="_poserr_148" foreignkey="_foreign" />
 							</dm-mapping:JOIN>
 						</dm-mapping:COLLECTION>
