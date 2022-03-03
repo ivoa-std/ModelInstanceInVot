@@ -13,24 +13,28 @@ JOIN may have 2 uses:
        \begin{itemize}
          \item must have a @tableref attribute identifying the foreign TEMPLATES
          \item may have a @dmref attribute the identify an INSTANCE within the foreign TEMPLATES.
-       \end{itemize}
-       The mapping of the enclosing COLLECTION items can be either implicit or explicit:
-       \begin{itemize}
-         \item If it has no other children, it must be populated with the whole table rows.
-         \item Otherwise the item content is given by the enclosed INSTANCE. 
-                 The reference (@ref) contained in those INSTANCEs must refer to te field of the foreign table.
-       \end{itemize}
+         \item The mapping of the enclosing COLLECTION items can be either implicit or explicit:
+         \begin{itemize}
+             \item If it has no other children, it must be populated with the whole table rows. In this case the TEMPLATES must have one unique child 
+                      since we cannot have collection items made of multiple instances
+             \item Otherwise the item content is given by the enclosed INSTANCE which must be unique.
+                     The reference (@ref) contained in that INSTANCE must only refer to fields of the foreign table.
+         \end{itemize}
+  \end{itemize}
+
        
   \item Join with COLLECTION data:
        \begin{itemize}
          \item must have no @tableref attribute, referencing a table in this case is irrelevant.
          \item must have a @dmref attribute the identify the COLLECTION to be joined with. This COLLECTION must be GLOBALS child.
+         \item The mapping of the enclosing COLLECTION items can be either implicit or explicit:
+         \begin{itemize}
+             \item If it has no other children, it must be populated with the foreign collection items.
+             \item Otherwise the item content is given by the enclosed INSTANCEs. The reference (@ref) contained 
+                      in those INSTANCEs must refer to te field of the foreign table, we must not have such @ref if the foreign 
+                      collection is static
        \end{itemize}
-       The mapping of the enclosing COLLECTION items can be either implicit or explicit:
-       \begin{itemize}
-         \item If it has no other children, it must be populated with the foreign collection items.
-         \item Otherwise the item content is given by the enclosed INSTANCEs. The reference (@ref) contained in those INSTANCEs must refer to te field of the foreign table, we must not have such @ref if the foreign collection is static
-       \end{itemize}
+  \end{itemize}
            
 \end{itemize}
 
