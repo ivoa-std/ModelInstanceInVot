@@ -1,32 +1,57 @@
 
-The first purpose of a model is to provide, for a particular domain, a formal description of the relevant quantities and of the way they are connected together .
-This documentary role facilitates the communication between the stack-holders and thus the design of interoperability protocols. 
+The first purpose of a model is to provide, for a particular domain, a formal description of the quantities relevant to that domain and how they relate to each other.
+The second purpose is to facilitate the interoperability between  different stakeholders involved in the domain. The interoperability consists in arranging exchanged data 
+so that any client can understand it without taking care of its origin allowing the same code to process and compare data coming from different sources.  
+In other words, the more faithful the data representation is to the model, the better the interoperability is.
+The challenge for the VO is to design the best way to map various data on standard models while respecting to the existing frameworks.
 
-At data level, interoperability consists in arranging searched data in a way that a client can understand them without taking care of their origin. 
-So that, the same code can process and compare data coming from different sources.  
-This can be achieved when the data has the same representation, therefore when it is mapped on the same model.
+We could imagine to develop a new data container specific for that purpose but any solution that ignores the existing assets would be utterly useless and would have no chance of being accepted.
+The model mapping solution must be based on VOTables since VOTable  \citep{2019ivoa.spec.1021O} is the standard data container for the VO.
+Unfortunately, if the VOTables schema allows a very good description of tabular data, it is unable to render data views that suit well complex models.
+In the case of simple DAL protocols, this limitation has been worked around by specifying the meta-data that must be present in the query responses; the model mapping is therefore defined by the standard.
+This approach is no longer applicable for complex models such as CubeDM or Provenance for which the data tree may vary from an instance to another.
 
-VOTables cannot take this feature in charge they are containers \citep{2019ivoa.spec.1021O}. 
-The VOTable schema allows a fine grain description of the fields but it cannot show how data is mapped on a given model or whether it match any model at all. 
-This is not an issue for simple protocol responses (ref) because the VOTable structure is defined by the protocol itself. 
-This is might be a big issue for VOTables containing native data such as Vizier  or TAP query responses however.
+The basis on which the standard is designed is threefolds 1) the data content is a priori unknown (e.g. TAP response), it has 2) to be mapped on models that are not defined yet and 3) the whole in a VOTable context.
+It must allow to bind native data with a model in a way that model-aware software can see it as 
+model instances while maintaining the possibility to access them in their original layout.
 
-The challenge here is to bind native data with a model in a way that a model-aware software can see it as 
-model instances while maintaining the possibility to access them in their original shape.
+The VOTable schema has an XML attribute, UType, that partially meets this function. 
+UTypes are path-like strings (m:a.b.c) identifying model leaves. As there is no common rule to build UTypes; each model (e.g. Characterization, Obscore)  must come with its specific lists of UTypes. 
 
-This is partially done with UTypes which may connect FIELDs or PARAMs with model leaves in the case of tree-like models. 
-Unfortunately, there is nos unique  way to build and parse UTypes in the context of complex models. 
-UTypes are suited patterns where e.g the same class is used in different location of the model or when the model contains loops. 
-UTypes do not allow cross-table references either.
+When used as \texttt{FIELD} attributes, UTypes allow so to connect particular columns to model leave. This mapping method fits very well with the VOTable schema since it does not require any specific XML elements. It has however a number of limitations that have been discussed many times:
 
-The landscape has dramatically changed in 2016 when VODML \citep{2018ivoa.spec.0910L} became a recommendation. 
+\begin{itemize}
+  \item UTypes are pointers from \texttt{FIELD} or \texttt{PARAM} towards the 
+  model structure. The is no possibility for one  \texttt{FIELD} or
+  \texttt{PARAM} to play different roles.
+  \item UTypes are not intended to be parsable, so they only identifies what the leaf 
+  \texttt{FIELD}/\texttt{PARAM} is, not its context.
+  \item UTypes are not reusable, the same element used in different contexts/models 
+  have different UTypes; which hinders interoperability
+  \item UTypes constrain to single-table serializations. All model elements must 
+  be contained within the same VOTable TABLE.
+  \item UTypes does not support annotating the VOTable content to multiple models 
+  (as TimeSeries or Catalog/Source )
+\end{itemize}
+
+The UType approach could have been developed to overcome these drawbacks, but it has been decided to move forward a solution closer to the VODML \citep{2018ivoa.spec.0910L} concepts. 
+
 VODML is a meta-model that gives a standard way to express VO models and to make them machine-readable.
-In VODML, model leaves are no longer identified by a simple string like UTypes do but by a certain role played in a given location in the model hierarchy.
-As a consequence any annotation mechanism based on VODML and preserving the model hierarchy will be able  to provide a data representation faith to the model.
+In VODML, model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
+As a consequence, any annotation mechanism based on VODML and preserving the model hierarchy will be able  to provide a data representation faith to that model.
 
-The main concept of this standard is to insert in VOTable resources an XML block complying with the 
-model structures and containing references to the actual data.
-These blocks are designed in such a way that a model-aware client only has to make a copy of that structure and to resolve the references  
-to build model instances. More generic model-unaware clients can just ignore the mapping blocks. 
+The basis of VOMAS is to insert into the VOTable an XML block complying with the 
+model structure and containing references to the actual data.
+These blocks are designed in such a way that a model-aware client can build  model instances by copying that structure and by resolving the references. Model-unaware clients can just ignore them. 
+
+%MOVED from section2
+
+%The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
+%There is however not suitable way to specify the exact role played by a given quantity in a particular context yet.
+
+%There is also no way to describe how different quantities or different data tables relate to each other either.
+%UTypes have been proposed to fill these gaps, but the difficulty to define a standard method to build them in the general case of non-hierachical models caused this approach not to be used.
+%Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables. (%NFB Hummm. Is that only for leaves ? Or also for higher levels ?)
+%This is essential to get a good  understanding of complex data.
 
 

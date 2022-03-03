@@ -1,0 +1,30 @@
+The example below show how \texttt{GLOBALS} objects can be referenced from a  \texttt{TEMPLATES}. 
+
+\begin{lstlisting}[frame=single,caption={Dynamic reference example},style=XML,basicstyle=\tiny]
+<dm-mapping:GLOBALS>
+  <dm-mapping:COLLECTION dmid="_Filters">
+    <dm-mapping:INSTANCE dmtype="photdm:Filter">
+		<dm-mapping:PRIMARY_KEY  dmtype="ivoa:string" value="TCB" />
+		...
+	</dm-mapping:INSTANCE>
+	<dm-mapping:INSTANCE dmtype="photdm:Filter">
+		<dm-mapping:PRIMARY_KEY  dmtype="ivoa:string" value="B" />
+		...
+	</dm-mapping:INSTANCE>
+  </dm-mapping:COLLECTION>
+</dm-mapping:GLOBALS>
+
+<dm-mapping:TEMPLATES tableref="Results">
+  ....
+  <dm-mapping:REFERENCE	dmrole="model:Class.filter"	sourceref="_Filters">
+    <dm-mapping:FOREIGN_KEY ref="_band" />
+  </dm-mapping:REFERENCE>
+  ...
+</dm-mapping:TEMPLATES>
+
+\end{lstlisting}  
+
+In this example, each object mapped in the \texttt{TEMPLATES} references the filter for which the primary key equals to value of the \_band column.
+
+The \_Filters global \texttt{COLLECTION@dmid="\_Filters"} can be seen as a static data table being part of the mapping (not of the native data).
+

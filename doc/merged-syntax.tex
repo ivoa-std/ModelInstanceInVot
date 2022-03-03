@@ -88,9 +88,14 @@
 \begin{document}
 
 \begin{abstract}
-Vodml-instance-vot proposes a syntax to map VOTable data on any model serialized in VO-DML.
-Vodml-instance-vot annotations are grouped in a single XML block located in the VOTable head. The annotation block allows to easily reconstruct the model structure. It designed in a way that the block can be reused on different data sets in order to facilitate the annotation process.
-Vodml-instance-vot is enable to join data from different tables
+Vodml-instance-vot (TBD) proposes a syntax to map VOTable data on any model serialized in VO-DML.
+Vodml-instance-vot annotations are grouped in a single XML block located in the resource head. 
+The annotations operate as a bridge between the data and the model. 
+It can denote the way data are connected to each other as well as different tables can be joined together.
+It is also able to carry data or meta-data that are missing in the VOTable.
+The annotation block is made of bricks that facilitate both annotation process and model instance reconstruction. 
+it has been designed so as not to alter the original VOTable content, thus limiting its impact on legacy clients.
+
 \end{abstract}
 
 
@@ -159,7 +164,7 @@ The data model annotation will reside within the scope of a VOTABLE V1.1+
 
 The mapping block:
 \begin{itemize}
-\item MUST be contained in a VOTable RESOURCE with \texttt{type="meta"}.
+\item MUST be contained in a VOTable RESOURCE with \texttt{type="meta"}. This extra feature is consistent with VOTable xml schema RESOURCE type definition and doesn't require any modification in the xml schema.
 \item which MUST be the first child of a RESOURCE with \texttt{type="results"}.
 \item there MUST be no more than one mapping block per 'results' RESOURCE.
 \end{itemize}
@@ -190,13 +195,8 @@ The \texttt{dm-mapping} name space isolates VOTable elements from mapping elemen
 \pagebreak
 \section{Syntax}
 
-  \begin{figure}[h]
-    \begin{center}
-      \includegraphics[width=\textwidth]{merged-syntax-summary.png}
-      \caption{Annotation Syntax Summary}
-      \label{fig:summary}
-    \end{center}
-  \end{figure}
+\input{syntax.tex}
+
 
 \pagebreak
 \subsection{VODML}
@@ -253,13 +253,20 @@ The \texttt{dm-mapping} name space isolates VOTable elements from mapping elemen
 
 \pagebreak
 \section{Changes from Previous Versions}
+No previous versions yet.  
 
 \pagebreak
+
 \appendix 
+
 \section{TAP and the data models}
 \input{appendix_A.tex}
 
-No previous versions yet.  
+\section{Dynamic References}
+
+\input{appendix_B.tex}
+
+
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
 

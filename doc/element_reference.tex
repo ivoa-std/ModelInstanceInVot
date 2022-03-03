@@ -3,7 +3,8 @@ There are different uses for the REFERENCE:
 
 \begin{itemize}
     \item Static reference: the element has a @dmref attribute that matches the @dmid attribute of the referenced INSTANCE.
-    \item Dynamic reference: The element has a @tableref attribute identifying the TEMPLATES or the GLOBALS/COLLECTION where to fetch the referenced object. 
+    \item Dynamic reference: The element has a @sourceref attribute identifying  the table where to fetch the referenced column. 
+    
              In this case, REFERENCE must be located in a TEMPLATES and it must have one or more FOREIGN\_KEY children. 
              If the referenced table contains several INSTANCE with a PRIMARY\_KEY, the first one must be taken by default.
 \end{itemize}
@@ -13,7 +14,7 @@ There are different uses for the REFERENCE:
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single,caption={Dynamic \texttt{REFERENCE}, to be replaced with the INSTANCE of the table of collection \_target1 and having a PRIMARY\_KEY matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},style=XML,basicstyle=\tiny]
-<dm-mapping:REFERENCE dmrole="_role" tableref="_target1">
+<dm-mapping:REFERENCE dmrole="_role" sourceref="_target1">
     <dm-mapping:FOREIGN_KEY ref="_col1" />
 </dm-mapping:REFERENCE>
 \end{lstlisting}
@@ -29,7 +30,7 @@ There are different uses for the REFERENCE:
             @dmrole & 
             Role of the referenced instance or collection in the DM \\
         \hline 
-            @tableref& 
+            @sourceref& 
             dmid of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
         \hline 
             @dmref & 
@@ -57,7 +58,7 @@ There are different uses for the REFERENCE:
     \hline 
 \end{tabulary}
      \caption{Allowed children for \texttt{REFERENCE}} 
-     \label{tbl:reference-chilren}
+     \label{tbl:reference-children}
 \end{table}
 
 
@@ -67,14 +68,14 @@ There are different uses for the REFERENCE:
 \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
         \textbf{@dmrole} &
-        \textbf{@tableref} &
+        \textbf{@sourceref} &
         \textbf{@dmref} &
         \textbf{Pattern}\\
     \hline      \hline  
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern,@tableref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the \texttt{FOREIGN\_KEY} pattern,@sourceref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           
