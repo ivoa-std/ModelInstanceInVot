@@ -11,14 +11,14 @@ mapping_sample = FileUtils.get_datadir()
 
 # Expected results
 expected = {
-            '9.1': 'VALID',                                    # missing tableref (ok if only 1 table?)
-            '9.2': '(./@tableref) and (./@dmref)',             # missing dmref
-            '9.3': 'every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@tableref)))', # empty - must have dmref or tableref
-            '9.4': 'VALID',                                    # dmref + tableref
-            '9.5': 'VALID',                                    # dmref + no tableref + WHERE
-            '9.6': 'VALID',                                    # no dmref + tableref + WHERE
+            '9.1': 'VALID',                                    # missing sourceref (ok if only 1 table?)
+            '9.2': '(./@sourceref) and (./@dmref)',             # missing dmref
+            '9.3': 'every $child in ./dm-mapping:COLLECTION satisfies ( every $grandchild in $child/dm-mapping:JOIN satisfies (count($grandchild/@dmref) or count($grandchild/@sourceref)))', # empty - must have dmref or sourceref
+            '9.4': 'VALID',                                    # dmref + sourceref
+            '9.5': 'VALID',                                    # dmref + no sourceref + WHERE
+            '9.6': 'VALID',                                    # no dmref + sourceref + WHERE
             '9.7': 'if (./@dmref) then  @dmref != \'\'',       # dmref must not be empty
-            '9.8': 'if (./@tableref) then  @tableref != \'\'', # tableref must not be empty
+            '9.8': 'if (./@sourceref) then  @sourceref != \'\'', # sourceref must not be empty
             }
 
 class Test(unittest.TestCase):

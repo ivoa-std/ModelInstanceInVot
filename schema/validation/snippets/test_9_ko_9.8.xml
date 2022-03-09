@@ -10,8 +10,8 @@
 	<dm-mapping:GLOBALS>
 		<dm-mapping:COLLECTION dmid="_stuff" dmrole="">
 
-			<!-- Test Case 9.8: tableref must not be empty -->
-			<dm-mapping:JOIN tableref="" />
+			<!-- Test Case 9.8: sourceref must not be empty -->
+			<dm-mapping:JOIN sourceref="" />
 			
 		</dm-mapping:COLLECTION>
 	</dm-mapping:GLOBALS>

@@ -75,7 +75,7 @@
 
 			<!-- Test Case 8.19: COLLECTION of JOIN (collection of external instances) -->
 			<dm-mapping:COLLECTION dmrole="jjjjjj">
-				<dm-mapping:JOIN tableref="_someTable" dmref="_extInst"/>
+				<dm-mapping:JOIN sourceref="_someTable" dmref="_extInst"/>
 			</dm-mapping:COLLECTION>
 
 		</dm-mapping:INSTANCE>

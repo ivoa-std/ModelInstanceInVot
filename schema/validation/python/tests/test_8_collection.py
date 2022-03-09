@@ -30,7 +30,7 @@ expected = {
             '8.17': 'VALID',
             '8.18': 'VALID',
             '8.19': 'VALID',
-            '8.20': 'if (count(dm-mapping:JOIN) > 0 ) then (count(dm-mapping:INSTANCE) = 0) else true()',
+            '8.20': 'if (count(dm-mapping:JOIN) &gt; 0 ) then (count(dm-mapping:INSTANCE) = 0) else true()',
             '8.21': 'count(dm-mapping:ATTRIBUTE) gt 0 and',
             '8.22': 'count(dm-mapping:REFERENCE) gt 0 and',
             '8.23': 'count(dm-mapping:ATTRIBUTE) gt 0 and',

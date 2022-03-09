@@ -1,42 +1,41 @@
-The JOIN element allows to populate a COLLECTION with INSTANCEs from another collection, namely the foreign collection.
-The foreign collection can either be a static element (GLOBALS/COLLECTION) or a collection of INSTANCES resulting from the iteration over a TEMPLATES.
+The \texttt{JOIN} element allows to populate a \texttt{COLLECTION} with \texttt{INSTANCE}  from another collection, namely the foreign collection.
+The foreign collection can either be a static element  \texttt{GLOBALS} \texttt{COLLECTION}  or a collection of \texttt{INSTANCE}  resulting from the iteration over a \texttt{TEMPLATES} 
 
-The JOIN element must contain attributes identifying the foreign collection  (@tableref and/or @dmref). 
-It can have WHERE children stating the join condition.
-
-It must be child of a COLLECTION that has no other children element than INSTANCE. A COLLECTION cannot host more than 1 JOIN.
-
-JOIN may have 2 uses:
+The \texttt{JOIN} element must contain attributes identifying the foreign collection   \texttt{@sourceref}  and/or \texttt{@dmref} . 
+It can have \texttt{WHERE} children stating the join condition and it must be the unique child of the host \texttt{COLLECTION} 
+ \texttt{JOIN} may have 2 uses:
 
 \begin{itemize}
 
-  \item Join with TEMPLATES data:
+    \item Join with \texttt{TEMPLATES} data:
        \begin{itemize}
-         \item must have a @tableref attribute identifying the foreign TEMPLATES
-         \item may have a @dmref attribute to identify an INSTANCE within the foreign TEMPLATES.
-       \end{itemize}
-       The mapping of the enclosing COLLECTION items can be either implicit or explicit:
+         \item must have either a \texttt{@sourceref} attribute identifying the foreign \texttt{TEMPLATES} or a \texttt{@dmref} attribute identifying the foreign mapped \texttt{INSTANCE} or both.
+             \begin{itemize}
+               \item if only \texttt{@sourceref} is given, the host collection is populated with the \texttt{INSTANCE}  mapping the foreign table rows. 
+                        This pattern is only valid when the foreign TEMPLATEs has  one unique instance child.
+               \item if only \texttt{@dmref}  the host collection is populated with the \texttt{INSTANCE}  having the matching \texttt{@dmid}  In this case, 
+                        the client is in charge of locating the \texttt{TEMPLATES} containing that \texttt{INSTANCE} 
+               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} is hosted by the TEMPLATEs matching \texttt{@sourceref} 
+                        This over-statement may help the parser but it can carry inconsistencies. An error must be risen in this case.
+             \end{itemize}
+    \end{itemize}
+  
+   \item Join with \texttt{GLOBALS} \texttt{COLLECTION} data:
        \begin{itemize}
-         \item If it has no other children, it must be populated with the whole table rows.
-         \item Otherwise the item content is given by the enclosed INSTANCE. 
-                 The reference (@ref) contained in those INSTANCEs must refer to te field of the foreign table.
-       \end{itemize}
-       
-  \item Join with COLLECTION data:
-       \begin{itemize}
-         \item must have no @tableref attribute, because referencing a table or a TEMPLATES in this case is irrelevant.
-         \item must have a @dmref attribute to identify the COLLECTION to be joined with. This COLLECTION must be a GLOBALS child.
-       \end{itemize}
-       The mapping of the enclosing COLLECTION items can be either implicit or explicit:
-       \begin{itemize}
-         \item If it has no other children, it must be populated with the foreign collection items.
-         \item Otherwise the item content is given by the enclosed INSTANCEs. The reference (@ref) contained in those INSTANCEs must refer to the field of the foreign table, we must not have such @ref if the foreign collection is static
-       \end{itemize}
-           
+         \item the foreign \texttt{COLLECTION} must be direct child of \texttt{GLOBALS} 
+         \item \texttt{JOIN} must have one \texttt{@sourceref} attribute identifying the foreign \texttt{COLLECTION} 
+         \item the host \texttt{COLLECTION} is populated with the foreign \texttt{COLLECTION} items eventually filtered by the \texttt{WHERE} condition.
+         \item the foreign \texttt{COLLECTION} must only have \texttt{INSTANCE}  (eventually \texttt{REFERENCE}) as children.
+         \item the foreign \texttt{COLLECTION} items are supposed to have all the same \texttt{@dmtype}  this rule is however out of the scope of the present standard.
+         \item If there are \texttt{WHERE} conditions, the foreign \texttt{COLLECTION} items must have \texttt{PRIMARY\_KEY} 
+  \end{itemize}
 \end{itemize}
 
-\begin{lstlisting}[frame=single,caption={\texttt{JOIN} },style=XML,basicstyle=\tiny]
-
+\begin{lstlisting}[frame=single,label={lst:join},caption={\texttt{JOIN example whit 2 join conditions} },style=XML,basicstyle=\tiny]
+<dm-mapping:JOIN sourceref="Results" dmref="_ts_data">
+  <dm-mapping:WHERE foreignkey="_srcid" primarykey="_pksrcid" />
+  <dm-mapping:WHERE foreignkey="_band" primarykey="_pkband" />
+</dm-mapping:JOIN>
 \end{lstlisting}
 
 
@@ -48,11 +47,11 @@ JOIN may have 2 uses:
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-             @tableref& 
-            Reference of the TEMPLATES to be joined with. \\
+             \texttt{@sourceref} & 
+            Reference of the \texttt{TEMPLATES} or \texttt{COLLECTION} to be joined with. \\
         \hline 
-            @dmref & 
-            Reference of the \texttt{COLLECTION} (in \texttt{GLOBALS} to be joined with. \\
+            \texttt{@dmref} & 
+            Reference of the foreign \texttt{INSTANCE}s that will populate he host \texttt{COLLECTION}  \\
         \hline 
      \end{tabulary}
      \caption{\texttt{JOIN} attributes} 
@@ -64,17 +63,17 @@ JOIN may have 2 uses:
 \centering
 \begin{tabulary}{\linewidth}{|c|c|J|}
     \hline 
-        \textbf{@tableref} &
+        \textbf{@sourceref } &
         \textbf{@dmref} &
         \textbf{Pattern}\\
     \hline      \hline  
         MAND &           
-        NO &           
-        The join is done against the TEMPLATES identified by @tableref \\  
+        OPT &           
+        Join against the \texttt{TEMPLATES} or \texttt{COLLECTION} identified by \texttt{@sourceref}  \\  
     \hline   
-        NO &           
-        MAND &           
-        The join is done against the \texttt{COLLECTION} identified by @dmref \\
+        OPT &           
+        MAND &      
+        Host \texttt{COLLECTION} populated with \texttt{INSTANCE}  identified by \texttt{@dmref} \\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{JOIN}}
