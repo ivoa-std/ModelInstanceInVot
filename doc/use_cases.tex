@@ -1,15 +1,15 @@
 
 The utimate goal of this standard is to allow clients to get a better understanding of the data complexity whether it is legacy or set for a particular model. It is however important not to force clients to choose between a regular data processing and a full object approach.
-The design of the mapping syntax addresses the necessity of supporting intermediate levels of use that correspond to concrete use cases that.
+The design of the mapping syntax addresses the necessity of supporting intermediate levels of use that correspond to concrete use cases.
 
 \begin{itemize}
   \item The recent modelling efforts (Meas, Coords and PhotDM) provide very accurate descriptions of coordinate frames or photometric 
         systems that need to be serialised in VOTables:
   \begin{itemize}
-    \item Clients often need to get such coordinate systems descriptions upon different axes to properly display many datasets. 
-    \item Data sets can contain multiple quantities expressed in the same coordinate system (corrected position vs raw position) or 
+    \item Clients often need to get such coordinate systems descriptions upon different axes to properly display datasets. 
+    \item Data sets can contain different quantities expressed in the same coordinate system (corrected position vs raw position) or 
           quantities of the same nature but expressed in different systems (sky coordinates in ICRS vs Gal). 
-          This is partially suported by the actual VOTable schema (TIMESYS, COOSYS) but any change in these ad-hoc mapping 
+          This is partially supported by the actual VOTable schema (TIMESYS, COOSYS) but any change in these ad-hoc mapping 
           elements or the addition of any other elements (e.g. X-ray energy band) would require VOTable version upgrades. 
           Using the mapping syntax diconnects the level of description of the different axes from the VOTable schema.           
   \end{itemize} 
@@ -25,7 +25,7 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
   \item The above cases relate to the description of instances in a
   single VOTable. Model annotations become even more important in cases
   where interoperability is required, for example to identify and
-  reconcile common instances from multiple VOTables.
+  reconcile quantities from multiple VOTables.
 
   This can be achieved by giving  common data structures for all 
   quantities of interest. This is the purpose of e.g. Measure model 
@@ -36,7 +36,7 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
   however clients keep free to either process those host models as a
   whole or to chase individual components.
     \begin{itemize}
-      \item Cross matching VOTables always providing the same of e.g. the sky position is easier.
+      \item Cross matching VOTables providing all the same e.g. the sky position serialization is easier.
             This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
       \item Building SEDs from datasets that have the same photometric calibration representation is straightforward.
    \end{itemize}          
@@ -48,11 +48,11 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
             the VOTable processing (e.g. via SAMP).
    \end{itemize}         
     
-   \item The mapping syntax can be used to annotate static science products such as e.g. time-series. It can also be used to annotate 
+   \item VOMAS can be used to annotate static science products such as e.g. time-series. It can also be used to annotate 
    on the fly TAP responses.
-   It is to be noted and as shown by (ref- https://doi.org/10.48550/arXiv.2201.01732 https://arxiv.org/abs/2201.01732) this process is not always 
+   It is to be noted and as shown by (ref- https://doi.org/10.48550/arXiv.2201.01732) that this process is not always 
    possible because the model compliance of the searched data strongly depends 
-   on the executed query (missing searched columns, joins, data aggregation ...). 
+   on the query (missing searched columns, joins, data aggregation ...). 
    
     
 \end{itemize} 
