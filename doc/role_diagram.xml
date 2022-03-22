@@ -1,25 +1,29 @@
 <!--
 Document authors (ivoatex maintainers have different rules):
-
 * svn cp this file to role_diagram.xml, and then:
-
 * Remove all <rec> elements in there referring to standards not related
   to the current one,
-
 * change the tag name for the current one from rec to thisrec
-
 * make role_diagram.pdf
-
 For the time being, keep both role_diagram.pdf and role_diagram.svg as
 created by this in the VCS.  This helps document builds on machines
 with missing dependencies.
 -->
 
 <archdiag xmlns="http://ivoa.net/archdiag">
-	<!-- Apps: all over the place -->
-	<rec name="VOTable" x="270" y="325"/>
-	<thisrec name="Annotation" x="320" y="350"/>
 
-	<!-- Data Models: x=430..580, y=250..400 -->
-	<rec name="VODML" x="490" y="195"/>
+	<rec name="UCD" x="160" y="310"/>
+	<rec name="VOTable" x="350" y="420"/>
+	<rec name="CharDM" x="450" y="255"/>
+	<rec name="ProvDM" x="450" y="330"/>
+	<rec name="PhotDM" x="550" y="330"/>
+	<rec name="VOUnits" x="160" y="250"/>
+	<rec name="STC" x="550" y="230"/>
+	<rec name="UTypes" x="550" y="205"/>
+	<rec name="TAP" x="655" y="355"/>
+	<rec name="SSAP" x="655" y="230"/>
+	<rec name="SpectrumDM" x="550" y="180"/>
+        <thisrec name="Model Annotation" x="350" y="390"/>
+
+	<!-- TD -->
 </archdiag>
