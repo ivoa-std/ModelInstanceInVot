@@ -1,6 +1,6 @@
 The \texttt{INSTANCE} element defines a complex ObjectType or DataType.
 It may be a child of several other elements, and the requirements on
-the content (especially dmid and dmrole), may differ depending on
+the content (especially  \texttt{@dmid} and  \texttt{@dmrole} , may differ depending on
 the usage:
 
 
@@ -11,7 +11,7 @@ the usage:
    may or may not be referenced by other \texttt{INSTANCE} . This pattern is typically used for 
    shared object e.g. space frames, or for head object of science product models e.g. Time Series
   \begin{itemize}
-     \item May have dmid attribute, as possible target of \texttt{REFERENCE} ref
+     \item May have  \texttt{@dmid} attribute, as possible target of \texttt{REFERENCE} ref
      \item must have no  \texttt{dmrole} attribute or an empty one
   \end{itemize}  
      
@@ -19,7 +19,7 @@ the usage:
   In this case, the \texttt{INSTANCE} is a template for instances which
   are generated once per row of the associated table.  
   \begin{itemize}
-     \item may have dmid attribute, as target of \texttt{JOIN} dmref
+     \item may have  \texttt{@dmid} attribute, as target of \texttt{JOIN} dmref
      \item must have no  \texttt{dmrole} attribute or an empty one
   \end{itemize}  
 
@@ -31,13 +31,14 @@ the usage:
            allowed within the \texttt{GLOBALS} environment. In this case:             
            \begin{itemize}
              \item must contain at least one \texttt{PRIMARY\_KEY} sub-element
-             \item may have a dmid attribute, as possible target of \texttt{REFERENCE}              \item must have no  dmrole attribute or an empty one. \texttt{VODML} does set roles to particular collection items
+             \item may have a  \texttt{@dmid} attribute, as possible target of \texttt{REFERENCE}              
+             \item must have no  \texttt{@dmrole} attribute or an empty one. \texttt{VODML} does set roles to particular collection items
            \end{itemize}
 
      \item Elements \texttt{INSTANCE} are collection cells with multiplicity > 1
           Each one :             
            \begin{itemize}
-             \item must have no dmrole attribute or an empty one
+             \item must have no  \texttt{@dmrole} attribute or an empty one
            \end{itemize}
   \end{itemize}  
     
@@ -45,14 +46,14 @@ the usage:
      In this case, each \texttt{INSTANCE} represents 
      a complex ObjectType or DataType playing a role in the parent \texttt{INSTANCE}      
      \begin{itemize}
-        \item may have dmid attribute
-        \item must have non-empty dmrole attribute
+        \item may have  \texttt{@dmid} attribute
+        \item must have non-empty  \texttt{@dmrole} attribute
      \end{itemize}
            
 \item any \texttt{INSTANCE}      
    \begin{itemize}
-        \item if dmid attribute is present, it must not be empty
-        \item must have non-empty dmtype attribute
+        \item if  \texttt{@dmid} attribute is present, it must not be empty
+        \item must have non-empty  \texttt{@dmtype} attribute
     \end{itemize}
 \end{enumerate}  
     
@@ -81,7 +82,7 @@ the usage:
             \textbf {Role}\\
        \hline         \hline  
             \texttt{@dmid} & 
-            Element dmid, MUST be unique within the mapping block  \\
+            Element  \texttt{@dmid}  MUST be unique within the mapping block  \\
         \hline 
             \texttt{@dmrole} & 
             \texttt{INSTANCE} role played in the DM \\
