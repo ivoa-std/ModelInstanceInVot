@@ -21,7 +21,9 @@ for filename in dirs:
             shutil.copyfile(filename, filename_org
                         )
         with open(filename_org) as fr:
-            str = fr.read()
+            str = fr.read()            
+            str = re.sub(r"([a-z] )dm", '\\1 @dm', str)
+
             for keyword in keywords:
                 str = re.sub(r"[^\{:](" + keyword + ")[^\}]", ' BaSltexttt{\\1} ', str)
         
