@@ -1,4 +1,4 @@
-[![PDF-Preview](https://img.shields.io/badge/PDF-Preview-blue)](https://github.com/ivoa-std/MeasurementDM/releases/download/auto-pdf-preview/merged-syntax-draft.pdf)
+[![PDF-Preview](https://img.shields.io/badge/PDF-Preview-blue)](https://github.com/ivoa-std/ModelInstanceInVot/releases/download/auto-pdf-preview/merged-syntax-draft.pdf)
 # Syntax proposal to map VOTable data on VO Model
 
 This proposal is the merge of both annotations proposals tha have been exercised durin the DM workshop held in 2021.
