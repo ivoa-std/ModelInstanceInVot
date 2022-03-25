@@ -13,14 +13,14 @@ via the ORM elements provided in this syntax.  See \texttt{COLLECTION} for more 
 \begin{lstlisting}[frame=single,caption={Example \texttt{GLOBALS} block},style=XML,basicstyle=\tiny]
 <dm-mapping:VODML>
   <dm-mapping:MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml \texttt{VODML} IVOA-v1.vo-dml.xml" />
+  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.0.vo-dml.xml" />
   <dm-mapping:GLOBALS>
     <!-- a collection of coordinate systems -->
-    <dm-mapping:COLLECTION dmid="\_CoordinateSystems" >
-      <dm-mapping:INSTANCE dmid="\_timesys" dmtype="sample:TimeSys">
+    <dm-mapping:COLLECTION dmid="_CoordinateSystems" >
+      <dm-mapping:INSTANCE dmid="_timesys" dmtype="sample:TimeSys">
          ...
       </dm-mapping:INSTANCE>
-      <dm-mapping:INSTANCE dmid="\_spacesys" dmtype="sample:SpaceSys">
+      <dm-mapping:INSTANCE dmid="_spacesys" dmtype="sample:SpaceSys">
          ...
       </dm-mapping:INSTANCE>
     </dm-mapping:COLLECTION>
@@ -28,7 +28,7 @@ via the ORM elements provided in this syntax.  See \texttt{COLLECTION} for more 
     <!-- a singular, stand-alone instance -->
     <dm-mapping:INSTANCE dmtype="sample:Thing">
       <dm-mapping:ATTRIBUTE dmrole="sample:Thing.name" dmtype="ivoa:string" value="MyThing"/>
-      <dm-mapping:ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="\_date"/>
+      <dm-mapping:ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="_date"/>
       ...
     </dm-mapping:INSTANCE>
   </dm-mapping:GLOBALS>
