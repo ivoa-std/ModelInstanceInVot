@@ -13,7 +13,7 @@ class TestVOTableRunner:
     validator = Validator("http://www.ivoa.net/xml/VOTable/v1.3")
         
     vodml_validator = Validator(os.path.join(FileUtils.get_schemadir()
-                                   , "merged-syntax.xsd"))
+                                   , "mivot-v1.0.xsd"))
     @staticmethod
     def regarde_si_OK(mapping_sample, case_prefix):
         files = os.listdir(mapping_sample)
@@ -28,7 +28,7 @@ class TestVOTableRunner:
                     logger.error(sample_file + " is not valid, it should be")
                     return  False
                 logger.info("passed")
-                logger.info("Validate {} against merged-syntax.xsd".format(sample_file))
+                logger.info("Validate {} against mivot-v1.0.xsd".format(sample_file))
                 if TestVOTableRunner.vodml_validator.validate_file(file_path, verbose=False) is False:
                     TestVOTableRunner.vodml_validator.validate_file(file_path, verbose=True)
                     logger.error(sample_file + " is not valid, it should be")
@@ -53,7 +53,7 @@ class TestVOTableRunner:
                 else:
                     logger.info("failed")
                     
-                logger.info("Validate {} against merged-syntax.xsd".format(sample_file))
+                logger.info("Validate {} against mivot-v1.0.xsd".format(sample_file))
                 if TestVOTableRunner.vodml_validator.validate_file(file_path , verbose=False) is True:
                     logger.info("passed")
                     passed += 1

@@ -10,7 +10,7 @@ from utils.file_utils import FileUtils
 from utils import logger
 
 class TestRunner:
-    schemafile = os.path.join(FileUtils.get_schemadir(), "merged-syntax.xsd")
+    schemafile = os.path.join(FileUtils.get_schemadir(), "mivot-v1.0.xsd")
     validator = Validator(schemafile)
     
     @staticmethod
