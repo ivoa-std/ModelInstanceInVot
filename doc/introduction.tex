@@ -16,7 +16,7 @@ It must allow to bind native data with a model in a way that model-aware softwar
 model instances while maintaining the possibility to access them in their original layout.
 
 The VOTable schema support an XML attribute for this purpose (UType) that partially meets this function. 
-UTypes are path-like strings (m:a.b.c) identifying model leaves. As there is no common rule to build UTypes; each model (e.g. Characterization, Obscore)  must come with its specific lists of UTypes. 
+UTypes are path-like strings (\texttt{m:a.b.c}) identifying model leaves. As there is no common rule to build UTypes; each model (e.g. Characterization, Obscore)  must come with its specific lists of UTypes. 
 
 When used as \texttt{FIELD} attributes, UTypes allow to connect particular columns to model leave. This mapping method fits very well with the VOTable schema since it does not require any specific XML elements. It has however a number of limitations that have been discussed many times:
 
