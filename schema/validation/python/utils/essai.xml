@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<ArrayOfNumberOfCars xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/Api.CarWEB.Services.Cars">
+    <NumberOfCars>
+         <Number>417</Number>
+    </NumberOfCars>
+</ArrayOfNumberOfCars>
