@@ -1,26 +1,26 @@
 The example below show how \texttt{GLOBALS} objects can be referenced from a  \texttt{TEMPLATES}. 
 
 \begin{lstlisting}[frame=single,caption={Dynamic reference example},style=XML,basicstyle=\tiny]
-<dm-mapping:GLOBALS>
-  <dm-mapping:COLLECTION dmid="_Filters">
-    <dm-mapping:INSTANCE dmtype="photdm:Filter">
-		<dm-mapping:PRIMARY_KEY  dmtype="ivoa:string" value="TCB" />
+<GLOBALS>
+  <COLLECTION dmid="_Filters">
+    <INSTANCE dmtype="photdm:Filter">
+		<PRIMARY_KEY  dmtype="ivoa:string" value="TCB" />
 		...
-	</dm-mapping:INSTANCE>
-	<dm-mapping:INSTANCE dmtype="photdm:Filter">
-		<dm-mapping:PRIMARY_KEY  dmtype="ivoa:string" value="B" />
+	</INSTANCE>
+	<INSTANCE dmtype="photdm:Filter">
+		<PRIMARY_KEY  dmtype="ivoa:string" value="B" />
 		...
-	</dm-mapping:INSTANCE>
-  </dm-mapping:COLLECTION>
-</dm-mapping:GLOBALS>
+	</INSTANCE>
+  </COLLECTION>
+</GLOBALS>
 
-<dm-mapping:TEMPLATES tableref="Results">
+<TEMPLATES tableref="Results">
   ....
-  <dm-mapping:REFERENCE	dmrole="model:Class.filter"	sourceref="_Filters">
-    <dm-mapping:FOREIGN_KEY ref="_band" />
-  </dm-mapping:REFERENCE>
+  <REFERENCE	dmrole="model:Class.filter"	sourceref="_Filters">
+    <FOREIGN_KEY ref="_band" />
+  </REFERENCE>
   ...
-</dm-mapping:TEMPLATES>
+</TEMPLATES>
 
 \end{lstlisting}  
 

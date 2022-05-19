@@ -8,17 +8,17 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
 
 
 \begin{lstlisting}[frame=single,caption={Example of a \texttt{REPORT} element},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML
+<VODML
 	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
 	
-	<dm-mapping:REPORT status="KO">
+	<REPORT status="KO">
 	    The annotation process failed
-	</dm-mapping:REPORT>
+	</REPORT>
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<MODEL name="model" />
 	
-</dm-mapping:VODML>
+</VODML>
 \end{lstlisting}
 
 \begin{table}[!htbp]

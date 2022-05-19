@@ -6,12 +6,12 @@ used if at least one element in the mapping block refer to it. In other terms, o
 annotation must be declared.
 
 \begin{lstlisting}[frame=single,caption={Example \texttt{MODEL} mapping block},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
-  <dm-mapping:MODEL name="sample-ext"
+<VODML>
+  <MODEL name="sample-ext"
                      url="https://www.myorg.net/models/SampleExt-v1.0.vo-dml.xml" />
-  <dm-mapping:MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
-</dm-mapping:VODML>
+  <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
+  <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+</VODML>
 \end{lstlisting}
 
 \begin{table}[!htbp]

@@ -43,15 +43,15 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
     
     
 \begin{lstlisting}[frame=single,caption={ATTRIBUTE examples},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE dmtype="model:Thing">
-    <dm-mapping:ATTRIBUTE dmrole="model:Thing.f" dmtype="model.Alpha" value="xyz"/>		
-    <dm-mapping:INSTANCE dmrole="model:Thing.pos" dmtype="adhoc:Position">
-        <dm-mapping:ATTRIBUTE dmrole="adhoc:Position.longitude" dmtype="ivoa:real" 
+<INSTANCE dmtype="model:Thing">
+    <ATTRIBUTE dmrole="model:Thing.f" dmtype="model.Alpha" value="xyz"/>		
+    <INSTANCE dmrole="model:Thing.pos" dmtype="adhoc:Position">
+        <ATTRIBUTE dmrole="adhoc:Position.longitude" dmtype="ivoa:real" 
                         ref="_eqpos" arrayindex="0"/>
-        <dm-mapping:ATTRIBUTE dmrole="adhoc:Position.latitude" dmtype="ivoa:real" 
+        <ATTRIBUTE dmrole="adhoc:Position.latitude" dmtype="ivoa:real" 
                         ref="_eqpos" arrayindex="1"/>
-    </dm-mapping:INSTANCE>
-</dm-mapping:INSTANCE>
+    </INSTANCE>
+</INSTANCE>
 \end{lstlisting}  
 
 

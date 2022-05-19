@@ -6,91 +6,91 @@ In snippet \ref{app:join-pattern-1}, the \texttt{GLOBALS} collection having \tex
 \end{itemize}
 
 \begin{lstlisting}[frame=single,label={app:join-pattern-1},caption={Joining a global \texttt{COLLECTION} with a \texttt{TEMPLATES}  identified by a \texttt{@dmid} \texttt{@dmref} pair},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
+<VODML>
   ....
-  <dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION dmid="_SparseCubes">
-      <dm-mapping:INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
-        <dm-mapping:REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
+  <GLOBALS>
+    <COLLECTION dmid="_SparseCubes">
+      <INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+        <REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
         
-        <dm-mapping:COLLECTION dmrole="cube:SparseCube.data">
-          <dm-mapping:JOIN dmref="_ts_data">
-            <dm-mapping:WHERE value="G" primarykey="_band" />
-          </dm-mapping:JOIN>
-        </dm-mapping:COLLECTION>
+        <COLLECTION dmrole="cube:SparseCube.data">
+          <JOIN dmref="_ts_data">
+            <WHERE value="G" primarykey="_band" />
+          </JOIN>
+        </COLLECTION>
         
-      </dm-mapping:INSTANCE>
-    </dm-mapping:COLLECTION>
-  </dm-mapping:GLOBALS>
+      </INSTANCE>
+    </COLLECTION>
+  </GLOBALS>
 
-  <dm-mapping:TEMPLATES tableref="Results">
-    <dm-mapping:INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
+  <TEMPLATES tableref="Results">
+    <INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
       ....
       ....
-    </dm-mapping:INSTANCE>
-  </dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+    </INSTANCE>
+  </TEMPLATES>
+</VODML>
 \end{lstlisting}  
 
 Listing \ref{app:join-pattern-2} below shows up another way to map the same join but by using a \texttt{@sourceref}.
 
 \begin{lstlisting}[frame=single,label={app:join-pattern-2},caption={Joining a global \texttt{COLLECTION} with a \texttt{TEMPLATES}  identified by a @sourceref},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
+<VODML>
   ....
-  <dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION dmid="_SparseCubes">
-      <dm-mapping:INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
-        <dm-mapping:REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
+  <GLOBALS>
+    <COLLECTION dmid="_SparseCubes">
+      <INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+        <REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
         
-        <dm-mapping:COLLECTION dmrole="cube:SparseCube.data">
-          <dm-mapping:JOIN sourceref="Results">
-            <dm-mapping:WHERE value="G" primarykey="_band" />
-          </dm-mapping:JOIN>
-        </dm-mapping:COLLECTION>
+        <COLLECTION dmrole="cube:SparseCube.data">
+          <JOIN sourceref="Results">
+            <WHERE value="G" primarykey="_band" />
+          </JOIN>
+        </COLLECTION>
         
-      </dm-mapping:INSTANCE>
-    </dm-mapping:COLLECTION>
-  </dm-mapping:GLOBALS>
+      </INSTANCE>
+    </COLLECTION>
+  </GLOBALS>
 
-  <dm-mapping:TEMPLATES tableref="Results">
-    <dm-mapping:INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
+  <TEMPLATES tableref="Results">
+    <INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
       ....
       ....
-    </dm-mapping:INSTANCE>
-  </dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+    </INSTANCE>
+  </TEMPLATES>
+</VODML>
 \end{lstlisting}  
 
 This pattern works since the joined \texttt{@TEMPLATES} has only one child. 
 If it had more than one children, the mapped instances would have to be identified by  \texttt{@dmid \texttt{@dmref} pairs} as shown in listing \ref{app:join-pattern-3}
 
 \begin{lstlisting}[frame=single,label={app:join-pattern-3},caption={Joining a \texttt{TEMPLATES} with a global \texttt{COLLECTION} identified by both \texttt{@sourceref} and \texttt{@dmid} \texttt{@dmref} pairs},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
+<VODML>
   ....
-  <dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION dmid="_SparseCubes">
-      <dm-mapping:INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
-        <dm-mapping:REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
+  <GLOBALS>
+    <COLLECTION dmid="_SparseCubes">
+      <INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+        <REFERENCE dmrole="cube:DataProduct.dataset" dmref="_ds1" />
         
-        <dm-mapping:COLLECTION dmrole="cube:SparseCube.data">
-          <dm-mapping:JOIN sourceref="Results" dmref="_ts_data">
-            <dm-mapping:WHERE value="G" primarykey="_band" />
-          </dm-mapping:JOIN>
-        </dm-mapping:COLLECTION>
+        <COLLECTION dmrole="cube:SparseCube.data">
+          <JOIN sourceref="Results" dmref="_ts_data">
+            <WHERE value="G" primarykey="_band" />
+          </JOIN>
+        </COLLECTION>
         
-      </dm-mapping:INSTANCE>
-    </dm-mapping:COLLECTION>
-  </dm-mapping:GLOBALS>
+      </INSTANCE>
+    </COLLECTION>
+  </GLOBALS>
 
-  <dm-mapping:TEMPLATES tableref="Results">
-    <dm-mapping:INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
+  <TEMPLATES tableref="Results">
+    <INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
       ....
-    </dm-mapping:INSTANCE>
-    <dm-mapping:INSTANCE dmid="_other_data" dmtype="cube:OtherType">
+    </INSTANCE>
+    <INSTANCE dmid="_other_data" dmtype="cube:OtherType">
       ....
-    </dm-mapping:INSTANCE>
-  </dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+    </INSTANCE>
+  </TEMPLATES>
+</VODML>
 \end{lstlisting}  
 
 In the example \ref{app:join-pattern-4}, the collection having \texttt{cube:SparseCube.data} as role is populated with  instances of another \texttt{TEMPLATES}
@@ -101,30 +101,30 @@ In the example \ref{app:join-pattern-4}, the collection having \texttt{cube:Spar
 
 
 \begin{lstlisting}[frame=single,label={app:join-pattern-4},caption={Joining two \texttt{TEMPLATES} together with \texttt{@dmid} \texttt{@dmref} pairs},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
+<VODML>
   ....
-  <dm-mapping:GLOBALS>
+  <GLOBALS>
   ....
   ....
-  </dm-mapping:GLOBALS>
+  </GLOBALS>
 
-  <dm-mapping:TEMPLATES tableref="_PKTable">
-    <dm-mapping:INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
-      <dm-mapping:COLLECTION dmrole="cube:SparseCube.data">
-        <dm-mapping:JOIN dmref="_ts_data">
-          <dm-mapping:WHERE foreignkey="_srcid" primarykey="_pksrcid" />
-          <dm-mapping:WHERE foreignkey="_band" primarykey="_pkband" />
-        </dm-mapping:JOIN>
-      </dm-mapping:COLLECTION>
-    </dm-mapping:INSTANCE>
-  </dm-mapping:TEMPLATES>
+  <TEMPLATES tableref="_PKTable">
+    <INSTANCE dmid="_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+      <COLLECTION dmrole="cube:SparseCube.data">
+        <JOIN dmref="_ts_data">
+          <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
+          <WHERE foreignkey="_band" primarykey="_pkband" />
+        </JOIN>
+      </COLLECTION>
+    </INSTANCE>
+  </TEMPLATES>
 
-  <dm-mapping:TEMPLATES tableref="Results">
-    <dm-mapping:INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
+  <TEMPLATES tableref="Results">
+    <INSTANCE dmid="_ts_data" dmtype="cube:NDPoint">
       ....
       ....
-    </dm-mapping:INSTANCE>
-  </dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+    </INSTANCE>
+  </TEMPLATES>
+</VODML>
 \end{lstlisting}  
 

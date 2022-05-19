@@ -10,13 +10,13 @@ There are different uses for the \texttt{REFERENCE}
 \end{itemize}
 
 \begin{lstlisting}[frame=single,caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1 },style=XML,basicstyle=\tiny]
-<dm-mapping:REFERENCE dmrole="_role" dmref="_target1" />
+<REFERENCE dmrole="_role" dmref="_target1" />
 \end{lstlisting}
 
 \begin{lstlisting}[frame=single,caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \_target1 and having a \texttt{PRIMARY\_KEY} matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},style=XML,basicstyle=\tiny]
-<dm-mapping:REFERENCE dmrole="_role" sourceref="_target1">
-    <dm-mapping:FOREIGN_KEY ref="_col1" />
-</dm-mapping:REFERENCE>
+<REFERENCE dmrole="_role" sourceref="_target1">
+    <FOREIGN_KEY ref="_col1" />
+</REFERENCE>
 \end{lstlisting}
 
 \begin{table}[!htbp]
