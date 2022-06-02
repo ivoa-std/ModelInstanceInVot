@@ -42,7 +42,9 @@ jobs:
         test -f ${{ env.doc_name }}.bbl
         
     - name: work around permission issue
-      run: git config --global --add safe.directory /github/workspace
+      run: |
+          git config --global --add safe.directory /github/workspace
+          export GIT_CEILING_DIRECTORIES=/github/workspace 
          
     - name: Move the auto-pdf-preview tag
       uses: weareyipyip/walking-tag-action@v1
