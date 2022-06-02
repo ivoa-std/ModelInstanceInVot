@@ -44,29 +44,34 @@
 \definecolor{darkblue}{rgb}{0.0,0.0,0.6}
 \definecolor{maroon}{rgb}{0.5,0,0}
 \definecolor{cyan}{rgb}{0.0,0.6,0.6}
-
-\lstset{
-  columns=fullflexible,
-  showstringspaces=false,
-  commentstyle=\color{gray}\upshape
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{lightblue}{rgb}{0.0,0.0,0.9}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+ \lstloadlanguages{XML}
+ \lstdefinestyle{XML}{
+    captionpos=b,
+    basicstyle=\tiny
 }
 
+ \lstset{flexiblecolumns=true,
+            columns=fullflexible,
+            tagstyle=\ttfamily,
+            showstringspaces=False,
+            basicstyle=\tiny, 
+            captionpos=b,
+            frame=single,
+            commentstyle=\color{gray}\upshape}
 \lstdefinelanguage{XML}
 {
-  morestring=[b]",
-  morestring=[s]{>}{<},
-  morecomment=[s]{<?}{?>}, 
-  morecomment=[s]{<!--}{-->},
+  morestring=[s][\color{mauve}]{"}{"},
+  morestring=[s][\color{black}]{>}{<},
+  morecomment=[s][\color{gray}]{!--}{-->} ,
   stringstyle=\color{black},
-  identifierstyle=\color{darkblue},
-  keywordstyle=\color{maroon},
-  morekeywords={ref,utype,dmrole, dmtype, value}% list your attributes here
-}
+  identifierstyle=\color{lightblue},
+  keywordstyle=\color{darkgreen},
+  morekeywords={xmlns,xsi,status,name,url, ref,tableref,dmid,dmref,dmrole,dmtype,value }% list your attributes here
+   }
 
-\lstdefinestyle{XML}{
-    captionpos=b,
-    basicstyle=\small\ttfamily
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document core
@@ -100,7 +105,11 @@ it has been designed so as not to alter the original VOTable content, thus limit
 
 
 \section*{Acknowledgments}
-CDS/TDIG/SourceDM contributors
+We would like to thank all the people who have contributed to this standard, starting with the VODML authors who have introduced the concepts developed here.
+We would also like to thank all contributors of the source DM session that was held at Interop Paris 2019, as well as all members of the TDIG and the participants to the DM workshop we ran in Spring 2021 
+who helped us to refine our use-cases .
+Finally, we say a big thank you to the CDS members who spent time assessing the extent to which data annotation could improve services.
+This acknowledgement does not mention individuals, as the list would be too long, especially if the many interns who contributed to the realization of this project were included.
 
 \section*{Conformance-related definitions}
 
@@ -158,7 +167,7 @@ the IVOA architecture \citep{2010ivoa.rept.1123A}.
 \pagebreak
 \section{Relation to VOTable}
 
-The data model annotation will reside within the scope of a VOTABLE V1.1+ (TBCheck)
+The data model annotation will reside within the scope of a VOTABLE V1.1+.
 
 
 \noindent \textbf{Location}
@@ -174,14 +183,14 @@ The scope of the mapping block is the whole content of the 'results' RESOURCE. \
 
 \noindent \textbf{Namespace}
 
-The \texttt{dm-mapping} name space isolates VOTable elements from mapping elements, and MUST be defined on the mapping block. \newline
+The mapping element must be isolated from the VOTable elements by a name space set as an attribute of the \texttt{VODML} element.
 
-\begin{lstlisting}[frame=single,caption={Mapping block in a VOTable},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[caption={Mapping block in a VOTable},language=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
   <RESOURCE type="results">
     <RESOURCE type="meta">
-      <VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+      <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
         ...
       </VODML>
     </RESOURCE>
