@@ -6,7 +6,7 @@ defaults:
     working-directory: doc
 
 env:
-  doc_name: merged-syntax
+  doc_name: mivot
 
 on:
   push:
