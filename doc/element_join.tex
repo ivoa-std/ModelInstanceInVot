@@ -31,7 +31,7 @@ It can have \texttt{WHERE} children stating the join condition and it must be th
   \end{itemize}
 \end{itemize}
 
-\begin{lstlisting}[frame=single,label={lst:join},caption={\texttt{JOIN example whit 2 join conditions} },style=XML,basicstyle=\tiny]
+\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example whit 2 join conditions} },language=XML]
 <JOIN sourceref="Results" dmref="_ts_data">
   <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
   <WHERE foreignkey="_band" primarykey="_pkband" />

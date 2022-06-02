@@ -5,8 +5,8 @@ Only models that are used in the file must be declared. A model is
 used if at least one element in the mapping block refer to it. In other terms, only models that define vodml-ids used in the
 annotation must be declared.
 
-\begin{lstlisting}[frame=single,caption={Example \texttt{MODEL} mapping block},style=XML,basicstyle=\tiny]
-<VODML>
+\begin{lstlisting}[caption={Example \texttt{MODEL} mapping block},language=XML]
+<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
   <MODEL name="sample-ext"
                      url="https://www.myorg.net/models/SampleExt-v1.0.vo-dml.xml" />
   <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />

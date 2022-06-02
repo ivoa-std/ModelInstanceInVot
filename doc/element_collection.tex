@@ -27,7 +27,7 @@
         
     \end{enumerate}
    
-\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} child of INSTANCE},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of INSTANCE},language=XML]
 <INSTANCE dmtype="model:Thing">
     <COLLECTION dmrole="model:Thing.elems">
         <ATTRIBUTE dmtype="model:Foo" value="100" />
@@ -36,7 +36,7 @@
 </INSTANCE>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} child of GLOBALS},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of GLOBALS},language=XML]
 <GLOBALS>
     <COLLECTION dmid="_filters" >
         <INSTANCE dmtype="model:PhotometryFilter" >
@@ -53,7 +53,7 @@
 <GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} populated with a JOIN},style=XML,basicstyle=\tiny]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN},language=XML]
 <GLOBALS>
     <COLLECTION dmrole="_joined_dataj">
         <JOIN tableref="_someTemplates" dmref="_extInst"/>
