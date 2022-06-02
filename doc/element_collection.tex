@@ -27,38 +27,38 @@
         
     \end{enumerate}
    
-\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} child of INSTANCE},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE dmtype="model:Thing">
-    <dm-mapping:COLLECTION dmrole="model:Thing.elems">
-        <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="100" />
-        <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="110" />
-    </dm-mapping:COLLECTION>
-</dm-mapping:INSTANCE>
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of INSTANCE},language=XML]
+<INSTANCE dmtype="model:Thing">
+    <COLLECTION dmrole="model:Thing.elems">
+        <ATTRIBUTE dmtype="model:Foo" value="100" />
+        <ATTRIBUTE dmtype="model:Foo" value="110" />
+    </COLLECTION>
+</INSTANCE>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} child of GLOBALS},style=XML,basicstyle=\tiny]
-<dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION dmid="_filters" >
-        <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
-            <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
-            <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of GLOBALS},language=XML]
+<GLOBALS>
+    <COLLECTION dmid="_filters" >
+        <INSTANCE dmtype="model:PhotometryFilter" >
+            <PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
+            <ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
                                     value="GAIA/GAIA2r.Grp"/>
-        </dm-mapping:INSTANCE>
-        <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
-            <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
-            <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
+        </INSTANCE>
+        <INSTANCE dmtype="model:PhotometryFilter" >
+            <PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
+            <ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
                                     value="GAIA/GAIA2r.Gbp"/>
-        </dm-mapping:INSTANCE>
-    </dm-mapping:COLLECTION>
-<dm-mapping:GLOBALS>
+        </INSTANCE>
+    </COLLECTION>
+<GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of \texttt{COLLECTION} populated with a JOIN},style=XML,basicstyle=\tiny]
-<dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION dmrole="_joined_dataj">
-        <dm-mapping:JOIN tableref="_someTemplates" dmref="_extInst"/>
-    </dm-mapping:COLLECTION>
-<dm-mapping:GLOBALS>
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN},language=XML]
+<GLOBALS>
+    <COLLECTION dmrole="_joined_dataj">
+        <JOIN tableref="_someTemplates" dmref="_extInst"/>
+    </COLLECTION>
+<GLOBALS>
 \end{lstlisting}   
 
 

@@ -10,8 +10,12 @@ from utils import logger
 
 class Validator:
 
-    def __init__(self, xsd_path):
-        self.xmlschema = xmlschema.XMLSchema11(xsd_path)
+    def __init__(self, xsd_path, namespace=None):
+        logger.info("Using %s", xsd_path)
+        if namespace is not None:
+            self.xmlschema = xmlschema.XMLSchema11(xsd_path)    
+        else:
+            self.xmlschema = xmlschema.XMLSchema11(xsd_path)
 
     def validate_file(self, xml_path: str, verbose=False, expected_fail_msg=None) -> bool:
         if verbose is True:

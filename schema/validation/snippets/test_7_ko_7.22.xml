@@ -1,18 +1,18 @@
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
-		<dm-mapping:INSTANCE dmid="_thing1" dmtype="model:Thing">
-			<dm-mapping:COLLECTION dmrole="model:Thing.arrayAttribute1">
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+		<INSTANCE dmid="_thing1" dmtype="model:Thing">
+			<COLLECTION dmrole="model:Thing.arrayAttribute1">
 			<!-- Usage 2: Child of COLLECTION -->
 			
 				<!-- Test Case 7.22: Must have no @ref in GLOBALS. -->
-				<dm-mapping:ATTRIBUTE  dmtype="ivoa:real" ref="_param4"/>
-				<dm-mapping:ATTRIBUTE  dmtype="ivoa:real" ref="_param5"/>
-				<dm-mapping:ATTRIBUTE dmtype="ivoa:real" ref="_param6"/>
-			</dm-mapping:COLLECTION>
+				<ATTRIBUTE  dmtype="ivoa:real" ref="_param4"/>
+				<ATTRIBUTE  dmtype="ivoa:real" ref="_param5"/>
+				<ATTRIBUTE dmtype="ivoa:real" ref="_param6"/>
+			</COLLECTION>
 
-		</dm-mapping:INSTANCE>
-	</dm-mapping:GLOBALS>
-</dm-mapping:VODML>
+		</INSTANCE>
+	</GLOBALS>
+</VODML>

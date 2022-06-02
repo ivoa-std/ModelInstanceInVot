@@ -9,18 +9,18 @@ There  are 2 different uses for this element:
               \texttt{@foreignkey} references the column of the foreign collection to be checked. 
              The \texttt{WHERE} condition is satisfied for the rows having \texttt{@foreignkey} equals to either \texttt{@value} or \texttt{@primarykey} value.
 \end{itemize}
-\begin{lstlisting}[frame=single,caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped},style=XML,basicstyle=\tiny]
-<dm-mapping:TEMPLATES tableref="table">
-  <dm-mapping:WHERE primarykey="col1" value="val1" />
-  <dm-mapping:WHERE primarykey="col2" value="val2" />
-  <dm-mapping:INSTANCE  dmtype="type" />
-</dm-mapping:TEMPLATES>
+\begin{lstlisting}[caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped},language=XML]
+<TEMPLATES tableref="table">
+  <WHERE primarykey="col1" value="val1" />
+  <WHERE primarykey="col2" value="val2" />
+  <INSTANCE  dmtype="type" />
+</TEMPLATES>
 \end{lstlisting}
 
-\begin{lstlisting}[frame=single,caption={\texttt{WHERE} Example: the join is satisfied when the value of the ptc column  is equals to the ftc column of the foreign table },style=XML,basicstyle=\tiny]
-<dm-mapping:JOIN tableref="ft" >
-	<dm-mapping:WHERE foreignkey="ftc" primarykey="ptc" />
-</dm-mapping:JOIN>
+\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the ptc column  is equals to the ftc column of the foreign table },language=XML]
+<JOIN tableref="ft" >
+	<WHERE foreignkey="ftc" primarykey="ptc" />
+</JOIN>
 \end{lstlisting}
 
 \begin{table}[!htbp]

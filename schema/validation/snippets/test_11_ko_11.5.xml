@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmtype="fffff">
+	<MODEL name="model" url="http://aaaaaa" />
+	<TEMPLATES tableref="fgdgfddf">
+		<INSTANCE dmtype="fffff">
 
 			<!-- Test Case 11.5: dmtype required -->
-			<dm-mapping:PRIMARY_KEY value="tttt" />
+			<PRIMARY_KEY value="tttt" />
 
-		</dm-mapping:INSTANCE>
-	</dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+		</INSTANCE>
+	</TEMPLATES>
+</VODML>

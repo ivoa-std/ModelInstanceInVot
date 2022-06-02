@@ -3,28 +3,28 @@
 <!-- NOTE: TEMPLATES node allows multiple WHERE nodes.                            -->
 <!--       We take advantage of this to test several valid cases in the same file -->
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+	<MODEL name="model" url="http://aaaaaa" />
+	<TEMPLATES tableref="fgdgfddf">
 
 		<!-- Test Case 10.2: primarykey + foreignkey -->
-		<dm-mapping:WHERE foreignkey="sssss" primarykey="ssss" />
+		<WHERE foreignkey="sssss" primarykey="ssss" />
 		
 		<!-- Test Case 10.3: primarykey + value -->
-		<dm-mapping:WHERE primarykey="sssss" value="ssss" />
+		<WHERE primarykey="sssss" value="ssss" />
 
 		<!-- Test Case 10.4: foreignkey + value -->
-		<dm-mapping:WHERE foreignkey="sssss" value="ssss" />
+		<WHERE foreignkey="sssss" value="ssss" />
 
 		<!-- Test Case 10.11: empty value -->
-		<dm-mapping:WHERE foreignkey="sssss" value="" />
-		<dm-mapping:WHERE primarykey="sssss" value="" />
+		<WHERE foreignkey="sssss" value="" />
+		<WHERE primarykey="sssss" value="" />
 
 		<!-- required in TEMPLATES -->
-		<dm-mapping:INSTANCE dmtype="fffff" />
+		<INSTANCE dmtype="fffff" />
 
-	</dm-mapping:TEMPLATES>
+	</TEMPLATES>
 
-</dm-mapping:VODML>
+</VODML>

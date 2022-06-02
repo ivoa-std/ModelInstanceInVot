@@ -6,43 +6,43 @@
 <!--                                                                              -->
 <!--       We take advantage of this to test several valid cases in the same file -->
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
-
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION dmid="id1" dmrole="">
+<VODML
+    xmlns="http://www.ivoa.net/xml/merged-syntax">
+    <REPORT status="OK"></REPORT>
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+		<COLLECTION dmid="id1" dmrole="">
 			<!-- Test Case 9.1: dmref + no sourceref; ok if only 1 table. -->
-			<dm-mapping:JOIN dmref="aaaaa" />
-		</dm-mapping:COLLECTION>
+			<JOIN dmref="aaaaa" />
+		</COLLECTION>
 		
-		<dm-mapping:COLLECTION  dmid="id2" dmrole="">
+		<COLLECTION  dmid="id2" dmrole="">
 			<!-- Test Case 9.4: dmref + sourceref -->
-			<dm-mapping:JOIN sourceref="_table1" dmref="aaaaa"/>
-		</dm-mapping:COLLECTION>
+			<JOIN sourceref="_table1" dmref="aaaaa"/>
+		</COLLECTION>
 		
-		<dm-mapping:COLLECTION  dmid="id3"  dmrole="">
+		<COLLECTION  dmid="id3"  dmrole="">
 			<!-- Test Case 9.5: dmref + no sourceref + WHERE -->
-			<dm-mapping:JOIN dmref="aaaaa">
-				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
-			</dm-mapping:JOIN>
-		</dm-mapping:COLLECTION>
+			<JOIN dmref="aaaaa">
+				<WHERE foreignkey="eee" value="ssss" />
+			</JOIN>
+		</COLLECTION>
 		
-		<dm-mapping:COLLECTION   dmid="id4" dmrole="">
+		<COLLECTION   dmid="id4" dmrole="">
 			<!-- Test Case 9.6: sourceref + dmref + WHERE (multiple) -->
-			<dm-mapping:JOIN sourceref="aaaaa" dmref="aaaaa">
-				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
-				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
-			</dm-mapping:JOIN>
-		</dm-mapping:COLLECTION>
+			<JOIN sourceref="aaaaa" dmref="aaaaa">
+				<WHERE foreignkey="eee" value="ssss" />
+				<WHERE foreignkey="fff" value="tttt" />
+			</JOIN>
+		</COLLECTION>
 		
-		<dm-mapping:COLLECTION   dmid="id5" dmrole="">
+		<COLLECTION   dmid="id5" dmrole="">
 			<!-- Test Case 9.6b: sourceref + no dmref + WHERE (multiple) -->
-			<dm-mapping:JOIN sourceref="aaaaa" >
-				<dm-mapping:WHERE foreignkey="eee" value="ssss" />
-				<dm-mapping:WHERE foreignkey="fff" value="tttt" />
-			</dm-mapping:JOIN>
-		</dm-mapping:COLLECTION>
+			<JOIN sourceref="aaaaa" >
+				<WHERE foreignkey="eee" value="ssss" />
+				<WHERE foreignkey="fff" value="tttt" />
+			</JOIN>
+		</COLLECTION>
 
-	</dm-mapping:GLOBALS>
-</dm-mapping:VODML>
+	</GLOBALS>
+</VODML>

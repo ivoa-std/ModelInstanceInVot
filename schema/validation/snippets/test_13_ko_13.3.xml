@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 13.3 duplicated TEMPLATES/INSTANCE@dmid -->
-<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
 
-	</dm-mapping:GLOBALS>
-	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmid="_ref2" dmrole="" dmtype="model:thing">
-			<dm-mapping:COLLECTION dmrole="model:thing.items">
-				<dm-mapping:INSTANCE dmrole="" dmtype="fffff">
-					<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-				</dm-mapping:INSTANCE>
+	</GLOBALS>
+	<TEMPLATES tableref="fgdgfddf">
+		<INSTANCE dmid="_ref2" dmrole="" dmtype="model:thing">
+			<COLLECTION dmrole="model:thing.items">
+				<INSTANCE dmrole="" dmtype="fffff">
+					<PRIMARY_KEY dmtype="fffff" value="tttt" />
+				</INSTANCE>
 
-			</dm-mapping:COLLECTION>
-		</dm-mapping:INSTANCE>
-		<dm-mapping:INSTANCE dmid="_ref2" dmrole="" dmtype="model:thing">
-			<dm-mapping:COLLECTION dmrole="model:thing.items">
-				<dm-mapping:INSTANCE dmrole="" dmtype="fffff">
-					<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-				</dm-mapping:INSTANCE>
+			</COLLECTION>
+		</INSTANCE>
+		<INSTANCE dmid="_ref2" dmrole="" dmtype="model:thing">
+			<COLLECTION dmrole="model:thing.items">
+				<INSTANCE dmrole="" dmtype="fffff">
+					<PRIMARY_KEY dmtype="fffff" value="tttt" />
+				</INSTANCE>
 
-			</dm-mapping:COLLECTION>
-		</dm-mapping:INSTANCE>
-	</dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+			</COLLECTION>
+		</INSTANCE>
+	</TEMPLATES>
+</VODML>

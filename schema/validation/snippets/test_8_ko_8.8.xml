@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
 
 		<!-- Test Case 8.8: COLLECTION under GLOBALS, contains other than INSTANCE. -->
-		<dm-mapping:COLLECTION dmid="_bad" >
-				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="foo" />
-				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="bar" />
-		</dm-mapping:COLLECTION>
+		<COLLECTION dmid="_bad" >
+				<ATTRIBUTE dmtype="model:elem" value="foo" />
+				<ATTRIBUTE dmtype="model:elem" value="bar" />
+		</COLLECTION>
 
-	</dm-mapping:GLOBALS>
+	</GLOBALS>
 	      
-</dm-mapping:VODML>
+</VODML>

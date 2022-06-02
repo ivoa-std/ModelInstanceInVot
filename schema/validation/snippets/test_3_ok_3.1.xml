@@ -8,23 +8,23 @@
     2) INSTANCE
        Singleton instances, these may be referenced by other instances, but do not play a direct role within any instance.
 -->
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<MODEL name="model" url="http://aaaaaa" />
 
 	<!-- Test Case 3.1: all subnodes -->
-	<dm-mapping:GLOBALS >
-		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
-			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
-			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE dmid="_spacesys" dmrole="" dmtype="model:SpaceSys" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
-			</dm-mapping:INSTANCE>
-		</dm-mapping:COLLECTION>
+	<GLOBALS >
+		<COLLECTION dmid="_coordsys" dmrole="" >
+			<INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</INSTANCE>
+			<INSTANCE dmid="_spacesys" dmrole="" dmtype="model:SpaceSys" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+			</INSTANCE>
+		</COLLECTION>
 		
-		<dm-mapping:INSTANCE dmid="_ds" dmrole="" dmtype="ddddd" />
-	</dm-mapping:GLOBALS>
+		<INSTANCE dmid="_ds" dmrole="" dmtype="ddddd" />
+	</GLOBALS>
 
-</dm-mapping:VODML>
+</VODML>

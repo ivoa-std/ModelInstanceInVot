@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 	
 	<!-- Test Case 14.3: failing with a message -->
-	<dm-mapping:REPORT status="KO">
+	<REPORT status="KO">
 	The annotation process failed
-	</dm-mapping:REPORT>
+	</REPORT>
 	
-</dm-mapping:VODML>
+</VODML>

@@ -58,18 +58,18 @@ the usage:
 \end{enumerate}  
     
    
-\begin{lstlisting}[frame=single,caption={Example of \texttt{INSTANCE} child of GLOBALS},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
-	<dm-mapping:INSTANCE dmrole="coords:SpaceFrame.refPosition"
+\begin{lstlisting}[caption={Example of \texttt{INSTANCE} child of GLOBALS},language=XML]
+<INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
+	<INSTANCE dmrole="coords:SpaceFrame.refPosition"
                                  dmtype="coords:StdRefLocation">
-		<dm-mapping:ATTRIBUTE dmrole="coords:StdRefLocation.position" 
+		<ATTRIBUTE dmrole="coords:StdRefLocation.position" 
 		                          dmtype="ivoa:string"  value="NoSet" />
-	</dm-mapping:INSTANCE>
-	<dm-mapping:ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" 
+	</INSTANCE>
+	<ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" 
 	                          dmtype="ivoa:string" value="ICRS" />
-	<dm-mapping:ATTRIBUTE dmrole="coords:SpaceFrame.equinox" 
+	<ATTRIBUTE dmrole="coords:SpaceFrame.equinox" 
 	                          dmtype="coords:Epoch"	value="2015" />
-</dm-mapping:INSTANCE>
+</INSTANCE>
 \end{lstlisting}   
    
 

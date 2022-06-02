@@ -7,19 +7,36 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
 
 
 
-\begin{lstlisting}[frame=single,caption={Example of a \texttt{REPORT} element},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+\begin{lstlisting}[caption={\texttt{REPORT} example for an annotation failure},language=XML]
+<VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
 	
-	<dm-mapping:REPORT status="KO">
+	<REPORT status="KO">
 	    The annotation process failed
-	</dm-mapping:REPORT>
-
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:MODEL name="model" />
-	
-</dm-mapping:VODML>
+	</REPORT>
+	<!-- 
+	   No other annotation
+	  -->	
+</VODML>
 \end{lstlisting}
+
+\begin{lstlisting}[caption={\texttt{REPORT} example for an valid annotation},language=XML]
+<VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	
+	<REPORT status="OK">
+	    The annotation process succeed
+	</REPORT>
+
+	<MODEL name="model" url="http://aaaaaa" />
+	<MODEL name="model" />
+	
+	<GLOBALS>...</GLOBALS>
+	<TEMPLATES ...>
+	   ...
+	 </TEMPLATES>
+	
+</VODML>
+\end{lstlisting}
+
 
 \begin{table}[!htbp]
   \small

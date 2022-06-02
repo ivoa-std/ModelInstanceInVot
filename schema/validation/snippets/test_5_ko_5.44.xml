@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
-	<dm-mapping:TEMPLATES tableref="fgdgfddf">
-		<dm-mapping:INSTANCE dmtype="model:thing">
+	<MODEL name="model" />
+	<TEMPLATES tableref="fgdgfddf">
+		<INSTANCE dmtype="model:thing">
 		<!-- Usage 5: Child of INSTANCE  -->
 		
 			<!-- Test Case 5.44: dmid + no dmrole + dmtype; (must have non-empty dmrole) -->
-			<dm-mapping:INSTANCE dmid="_ssss" dmtype="model:foo" />
+			<INSTANCE dmid="_ssss" dmtype="model:foo" />
 			
-		</dm-mapping:INSTANCE>
-	</dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+		</INSTANCE>
+	</TEMPLATES>
+</VODML>

@@ -5,26 +5,26 @@
 <!-- NOTE: a bug in the schema currently (20210917) allows only 1 PRIMARY_KEY per -->
 <!--       instance, so these cases are implemented at that level.                -->
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+	<MODEL name="model" url="http://aaaaaa" />
+	<TEMPLATES tableref="fgdgfddf">
 
-		<dm-mapping:INSTANCE  dmtype="fffff">
+		<INSTANCE  dmtype="fffff">
 			<!-- Test Case 11.1: dmtype + ref -->
-			<dm-mapping:PRIMARY_KEY dmtype="fffff" ref="zzzz" />
-		</dm-mapping:INSTANCE>
+			<PRIMARY_KEY dmtype="fffff" ref="zzzz" />
+		</INSTANCE>
 
-		<dm-mapping:INSTANCE dmtype="fffff">
+		<INSTANCE dmtype="fffff">
 			<!-- Test Case 11.2: dmtype + value -->
-			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
-		</dm-mapping:INSTANCE>
+			<PRIMARY_KEY dmtype="fffff" value="tttt" />
+		</INSTANCE>
 
-		<dm-mapping:INSTANCE  dmtype="fffff">
+		<INSTANCE  dmtype="fffff">
 			<!-- Test Case 11.8: empty value -->
-			<dm-mapping:PRIMARY_KEY dmtype="fffff" value="" />
-		</dm-mapping:INSTANCE>
+			<PRIMARY_KEY dmtype="fffff" value="" />
+		</INSTANCE>
 
-	</dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+	</TEMPLATES>
+</VODML>

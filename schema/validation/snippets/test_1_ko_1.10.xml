@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Test Case 1.10: only 1 GLOBALS subnode allowed. -->
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
-	<dm-mapping:GLOBALS />
-	<dm-mapping:GLOBALS />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS />
+	<GLOBALS />
+	<GLOBALS />
 
-</dm-mapping:VODML>
+</VODML>

@@ -10,7 +10,7 @@ from utils.file_utils import FileUtils
 from utils import logger
 
 class TestRunner:
-    schemafile = os.path.join(FileUtils.get_schemadir(), "merged-syntax.xsd")
+    schemafile = os.path.join(FileUtils.get_schemadir(), "mivot-v1.0.xsd")
     validator = Validator(schemafile)
     
     @staticmethod
@@ -21,6 +21,7 @@ class TestRunner:
 
         for sample_file in files:
             if sample_file.startswith(ok_prefix) is True:
+                logger.info("checking that %s is OK", sample_file)
                 file_path = os.path.join(mapping_sample, sample_file)
                 if TestRunner.validator.validate_file(file_path, verbose=False) is False:
                     TestRunner.validator.validate_file(file_path, verbose=True)
@@ -37,6 +38,7 @@ class TestRunner:
 
         for sample_file in files:
             if sample_file.startswith(ko_prefix) is True:
+                logger.info("checking that %s is KO", sample_file)
                 file_path = os.path.join(mapping_sample, sample_file)
                 if TestRunner.validator.validate_file(file_path , verbose=False) is True:
                     # file is valid.. that's a problem.

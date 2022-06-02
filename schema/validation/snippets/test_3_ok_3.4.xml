@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<MODEL name="model" url="http://aaaaaa" />
 
 	<!-- Test Case 3.4: allows multiple instances of each subnode, in any order -->
-	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
-			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
-			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE dmid="_spacesys" dmrole="" dmtype="model:SpaceSys" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
-			</dm-mapping:INSTANCE>
-		</dm-mapping:COLLECTION>
-		<dm-mapping:INSTANCE dmid="sadasdas" dmrole="" dmtype="model:Alpha" />
-		<dm-mapping:INSTANCE dmid="sadasbff" dmrole="" dmtype="model:Beta" />
-		<dm-mapping:COLLECTION dmid="_filters" dmrole="" >
-			<dm-mapping:INSTANCE dmid="_Rfilter" dmrole="" dmtype="rrrrr" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
-			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE dmid="_Bfilter" dmrole="" dmtype="bbbbb" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
-			</dm-mapping:INSTANCE>
-		</dm-mapping:COLLECTION>
-		<dm-mapping:INSTANCE dmid="sadasdea" dmrole="" dmtype="model:Gamma" />
-	</dm-mapping:GLOBALS>
+	<GLOBALS>
+		<COLLECTION dmid="_coordsys" dmrole="" >
+			<INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</INSTANCE>
+			<INSTANCE dmid="_spacesys" dmrole="" dmtype="model:SpaceSys" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+			</INSTANCE>
+		</COLLECTION>
+		<INSTANCE dmid="sadasdas" dmrole="" dmtype="model:Alpha" />
+		<INSTANCE dmid="sadasbff" dmrole="" dmtype="model:Beta" />
+		<COLLECTION dmid="_filters" dmrole="" >
+			<INSTANCE dmid="_Rfilter" dmrole="" dmtype="rrrrr" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
+			</INSTANCE>
+			<INSTANCE dmid="_Bfilter" dmrole="" dmtype="bbbbb" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
+			</INSTANCE>
+		</COLLECTION>
+		<INSTANCE dmid="sadasdea" dmrole="" dmtype="model:Gamma" />
+	</GLOBALS>
 
-</dm-mapping:VODML>
+</VODML>

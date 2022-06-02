@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-    <dm-mapping:GLOBALS />
+	<MODEL name="model" url="http://aaaaaa" />
+    <GLOBALS />
 
 	<!-- Test Case 4.9: tableref must not be empty -->
-	<dm-mapping:TEMPLATES tableref="">
-		<dm-mapping:INSTANCE dmtype="model:Thing" />
-	</dm-mapping:TEMPLATES>
+	<TEMPLATES tableref="">
+		<INSTANCE dmtype="model:Thing" />
+	</TEMPLATES>
 
-</dm-mapping:VODML>
+</VODML>

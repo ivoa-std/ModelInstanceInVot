@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Test Case 1.1: basic content, all subnodes -->
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
-	<dm-mapping:TEMPLATES tableref="s95dv8ed">
-		<dm-mapping:INSTANCE dmtype="zzzzz" >
-			<dm-mapping:REFERENCE dmref="aaa" dmrole="zzzz"/>
-		</dm-mapping:INSTANCE>
-	</dm-mapping:TEMPLATES>
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS />
+	<TEMPLATES tableref="s95dv8ed">
+		<INSTANCE dmtype="zzzzz" >
+			<REFERENCE dmref="aaa" dmrole="zzzz"/>
+		</INSTANCE>
+	</TEMPLATES>
 
-</dm-mapping:VODML>
+</VODML>

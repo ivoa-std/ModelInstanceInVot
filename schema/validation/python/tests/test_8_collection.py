@@ -15,7 +15,7 @@ expected = {
             '8.2': 'every $child in ./dm-mapping:COLLECTION satisfies  $child/@dmid != \'\'',
             '8.3': 'every $child in ./dm-mapping:COLLECTION satisfies  $child/@dmid != \'\'',
             '8.4': 'VALID',
-            '8.5': 'dm-mapping:COLLECTION[@dmrole != \'\']) eq 0',
+            '8.5': 'COLLECTION[@dmrole != \'\']) eq 0',
             '8.6': 'VALID',
             '8.7': 'VALID',
             '8.8': 'every $child in ./dm-mapping:COLLECTION satisfies count($child/dm-mapping:ATTRIBUTE) = 0',
