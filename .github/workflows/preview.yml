@@ -43,7 +43,7 @@ jobs:
         
     - name: work around permission issue
       run: |
-          git config --global --add safe.directory "*" 
+          git config --global --add safe.directory /home/runner/work/ModelInstanceInVot
          
     - name: Move the auto-pdf-preview tag
       uses: weareyipyip/walking-tag-action@v1
