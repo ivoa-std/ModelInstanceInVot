@@ -4,10 +4,10 @@ Although no API definition is part of the standard, the experience we got when e
 
 
 \begin{itemize} 
-  \item Raw XML: The client resolves the reference and deliver an XML block corresponding to the searched model or model component. 
-          This implies the client to parse some XML but that parsing code relies on XPath strings that only refer to model elements (classes, roles, types...)
+  \item Raw XML: The client resolves the reference and deliver an XML block corresponding to the searched models or model components. 
+          This implies the client to parse some XML but that parsing code relies on XPath strings that only refer to MIVOT namespace elements.
   \item XML Wrapper class: The XPath strings mentioned above can be wrapped in generic objects providing accessors retrieving model nodes by selecting types or roles. 
-  \item Model classes: For the most popular models and especially for the models that provide reusable components (Meas/Coord, PhotDM) , the API can include objects instantiating model classes (e.g. Photometric filter) .
-  \item Automatic extraction of class instances of the common framework: One of the goal of the data annotation is to facilitate the connection between data and API code. This could be achieved with an API able to automatically build objects from the annotated data without asking the user to infer on meta data. Taking the Astropy example, a model-enable Python API should be able to build \texttt{Skycoord} instances in a transparent way.
+  \item Model classes: For the most popular models and especially for the models that provide reusable components (Meas/Coord, PhotDM) , the API can include objects instantiating model classes (e.g. Photometric filter).
+  \item Automatic extraction of class instances of common frameworks: One of the goal of the data annotation is to facilitate the connection between data and API code. This could be achieved with an API able to automatically build objects from the annotated data without asking the user to infer on meta data. Taking the Astropy example, a model-enable Python API should be able to build e.g. \texttt{Skycoord} instances in a transparent way.
  \end{itemize}
 
