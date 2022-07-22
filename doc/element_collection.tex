@@ -1,6 +1,6 @@
     \texttt{COLLECTION} is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
     
-    \texttt{COLLECTION} can be populated either by a static list of items  \texttt{INSTANCE}  \texttt{ATTRIBUTE} ..) or by joining to another \texttt{COLLECTION} (using the \texttt{JOIN} element). Both  modes cannot coexist.
+    \texttt{COLLECTION} can be populated either by a static list of items (\texttt{INSTANCE}, \texttt{ATTRIBUTE}, ..) or by joining to another \texttt{COLLECTION} (using the \texttt{JOIN} element). Both  modes cannot coexist.
     
     \begin{enumerate}
     \item{As child of INSTANCE}
@@ -23,6 +23,7 @@
       \end{itemize}
           
     \item{As child of COLLECTION}
+    
 	The collection contains a matrix of  atomic values
         
     \end{enumerate}
@@ -72,7 +73,7 @@
     \hline
     \hline  
          \texttt{@dmid} & 
-         Element datamodel id, MUST be unique within the document.\\
+         Datamodel element id, MUST be unique within the document.\\
     \hline 
          \texttt{@dmrole} & 
          Role of the \texttt{COLLECTION} in the data model. \\
@@ -88,14 +89,14 @@
   \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
       \textbf{Context} &
-      \textbf{@ID} &
+      \textbf{@dmid} &
       \textbf{@dmrole} &
       \textbf{Pattern}\\
     \hline      \hline  
       1 &
       OPT & 
       MAND & 
-      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  \texttt{@dmrole} MUST  be not empty.  If present, \texttt{@dmid} MUST  be not empty. \\
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  \texttt{@dmrole} MUST NOT be empty.  If present, \texttt{@dmid} MUST NOT be empty. \\
     \hline   
       2 &
       MAND & 

@@ -6,7 +6,7 @@ There are different uses for the \texttt{REFERENCE}
     \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying  the table where to fetch the referenced column. 
     
              In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one or more \texttt{FOREIGN\_KEY} children. 
-             If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first one must be taken by default.
+             If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first match must be taken by default.
 \end{itemize}
 
 \begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1 },language=XML]
@@ -31,10 +31,10 @@ There are different uses for the \texttt{REFERENCE}
             Role of the referenced instance or collection in the DM \\
         \hline 
             \texttt{@sourceref}  &
-            dmid of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
+            \texttt{@dmid} of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
         \hline 
             \texttt{@dmref} & 
-            dmid of the referenced instance or collection\\
+            \texttt{@dmid} of the referenced instance or collection\\
         \hline 
      \end{tabulary}
      \caption{\texttt{REFERENCE} attributes} 

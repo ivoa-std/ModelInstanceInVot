@@ -1,14 +1,22 @@
-The \texttt{WHERE} element is used to filter iteration outputs. Value are accepted when the key equals to the value. The mapping syntax does not specify the data types to be used to evaluate the expression. 
+The \texttt{WHERE} element is used to filter iteration outputs. Results are accepted when the key is equal to the specified \texttt{@value}. The mapping syntax does not specify the data types to be used to evaluate the expression. 
 There  are 2 different uses for this element:
-\begin{itemize}
-    \item As a child of \texttt{TEMPLATES}  Only the table rows satisfying the \texttt{WHERE} conditions will be mapped. 
-             With this pattern \texttt{WHERE} must have one \texttt{@primarykey} attribute and one \texttt{@value} attribute. 
-              \texttt{@primarykey} references the column (FIELD) to be checked. 
-             The \texttt{WHERE} condition is satisfied for the rows having \texttt{@primarykey} equals to \texttt{@value}     \item As a child of \texttt{JOIN}  Only the joined data items satisfying the \texttt{WHERE} conditions will be taken. 
-             With this pattern \texttt{WHERE} must have one \texttt{@foreignkey} attribute and one of either \texttt{@value} or \texttt{@primarykey} attribute. 
-              \texttt{@foreignkey} references the column of the foreign collection to be checked. 
-             The \texttt{WHERE} condition is satisfied for the rows having \texttt{@foreignkey} equals to either \texttt{@value} or \texttt{@primarykey} value.
-\end{itemize}
+\begin{enumerate}
+\item{As a child of \texttt{TEMPLATES}:}
+
+  Only the table rows satisfying the \texttt{WHERE} conditions will be mapped. 
+  With this pattern \texttt{WHERE} must have one \texttt{@primarykey} attribute and one \texttt{@value} attribute. 
+  \texttt{@primarykey} references the column (FIELD) to be checked. 
+  The \texttt{WHERE} condition is satisfied for the rows having \texttt{@primarykey} equals to \texttt{@value}
+             
+\item{As a child of \texttt{JOIN}:}
+      
+  Only the joined data items satisfying the \texttt{WHERE} conditions will be taken. 
+  With this pattern \texttt{WHERE} must have one \texttt{@foreignkey} attribute and one of either \texttt{@value} or \texttt{@primarykey} attribute. 
+  \texttt{@foreignkey} references the column of the foreign collection to be checked. 
+  The \texttt{WHERE} condition is satisfied for the rows having \texttt{@foreignkey} equals to either \texttt{@value} or \texttt{@primarykey} value.
+
+\end{enumerate}
+
 \begin{lstlisting}[caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped},language=XML]
 <TEMPLATES tableref="table">
   <WHERE primarykey="col1" value="val1" />
@@ -31,7 +39,7 @@ There  are 2 different uses for this element:
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            \texttt{@primarykey}  
+            \texttt{@primarykey} &
             FIELD identifier of the primary key column \\
         \hline 
             \texttt{@foreignkey} & 

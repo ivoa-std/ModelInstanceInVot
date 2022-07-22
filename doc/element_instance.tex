@@ -1,6 +1,6 @@
 The \texttt{INSTANCE} element defines a complex ObjectType or DataType.
 It may be a child of several other elements, and the requirements on
-the content (especially  \texttt{@dmid} and  \texttt{@dmrole} , may differ depending on
+the content, especially  \texttt{@dmid} and  \texttt{@dmrole} , may differ depending on
 the usage:
 
 
@@ -12,22 +12,24 @@ the usage:
    shared object e.g. space frames, or for head object of science product models e.g. Time Series
   \begin{itemize}
      \item May have  \texttt{@dmid} attribute, as possible target of \texttt{REFERENCE} ref
-     \item must have no  \texttt{dmrole} attribute or an empty one
+     \item must have no  \texttt{@dmrole} attribute or an empty one
   \end{itemize}  
      
-\item Child of \texttt{TEMPLATES} 
+\item Child of \texttt{TEMPLATES}
+
   In this case, the \texttt{INSTANCE} is a template for instances which
   are generated once per row of the associated table.  
   \begin{itemize}
-     \item may have  \texttt{@dmid} attribute, as target of \texttt{JOIN} dmref
-     \item must have no  \texttt{dmrole} attribute or an empty one
+     \item may have  \texttt{@dmid} attribute, as target of \texttt{JOIN} \texttt{@dmref}
+     \item must have no  \texttt{@dmrole} attribute or an empty one
   \end{itemize}  
 
-\item Child of \texttt{COLLECTION} 
+\item Child of \texttt{COLLECTION}
+
   There are 2 uses for this pattern.  
   \begin{itemize}
      \item each member \texttt{INSTANCE} is a target for selection using
-           the PRIMARY \texttt{FOREIGN\_KEY} elements. This pattern is only 
+           the \texttt{PRIMARY/FOREIGN\_KEY} elements. This pattern is only 
            allowed within the \texttt{GLOBALS} environment. In this case:             
            \begin{itemize}
              \item must contain at least one \texttt{PRIMARY\_KEY} sub-element
@@ -35,14 +37,15 @@ the usage:
              \item must have no  \texttt{@dmrole} attribute or an empty one. \texttt{VODML} does set roles to particular collection items
            \end{itemize}
 
-     \item Elements \texttt{INSTANCE} are collection cells with multiplicity > 1
+     \item each member \texttt{INSTANCE} is a cell of an element with multiplicity > 1.
           Each one :             
            \begin{itemize}
              \item must have no  \texttt{@dmrole} attribute or an empty one
            \end{itemize}
   \end{itemize}  
     
-\item Child of \texttt{INSTANCE}  
+\item Child of \texttt{INSTANCE}
+
      In this case, each \texttt{INSTANCE} represents 
      a complex ObjectType or DataType playing a role in the parent \texttt{INSTANCE}      
      \begin{itemize}
@@ -50,7 +53,8 @@ the usage:
         \item must have non-empty  \texttt{@dmrole} attribute
      \end{itemize}
            
-\item any \texttt{INSTANCE}      
+\item any \texttt{INSTANCE}
+
    \begin{itemize}
         \item if  \texttt{@dmid} attribute is present, it must not be empty
         \item must have non-empty  \texttt{@dmtype} attribute
@@ -58,7 +62,7 @@ the usage:
 \end{enumerate}  
     
    
-\begin{lstlisting}[caption={Example of \texttt{INSTANCE} child of GLOBALS},language=XML]
+\begin{lstlisting}[caption={Example of \texttt{INSTANCE} child of \texttt{INSTANCE}},language=XML]
 <INSTANCE dmid="SpaceFrame_ICRS" dmtype="coords:SpaceFrame">
 	<INSTANCE dmrole="coords:SpaceFrame.refPosition"
                                  dmtype="coords:StdRefLocation">
@@ -156,7 +160,7 @@ the usage:
         OPT &           
         MAND &           
         MAND &           
-        MUST be applied in any other location. It may be referable a \texttt{REFERENCE} . \\
+        MUST be applied in any other location. It may be referable by a \texttt{REFERENCE} . \\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{INSTANCE}} 
