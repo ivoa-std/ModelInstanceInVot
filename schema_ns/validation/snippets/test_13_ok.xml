@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    dmid must be unique within the mapping block
+    This test suit is derived from 5 with a correct dmid tuning
+-->
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS >
+
+		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
+			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</dm-mapping:INSTANCE>
+			
+			<!-- Test Case 5.23: no dmid + empty dmrole + dmtype; dmid optional, must have no or empty dmrole. -->
+			<dm-mapping:INSTANCE dmrole="" dmtype="model:SpaceSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+			</dm-mapping:INSTANCE>
+			
+			<!-- Test Case 5.24: dmid + no dmrole + dmtype; dmid optional, must have no or empty dmrole. -->
+			<dm-mapping:INSTANCE dmid="_photsys_BP" dmtype="model:PhotometrySys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
+			</dm-mapping:INSTANCE>
+			
+			<!-- Test Case 5.25: no dmid + no dmrole + dmtype; dmid optional, must have no or empty dmrole. -->
+			<dm-mapping:INSTANCE dmtype="model:PhotometrySys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
+			</dm-mapping:INSTANCE>
+			
+		</dm-mapping:COLLECTION>
+		<dm-mapping:COLLECTION dmid="_Datasets" >
+		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
+
+			<!-- Test Case 5.52: with multiplie PRIMARY_KEY; allow zero or more. -->
+			<dm-mapping:INSTANCE dmid="_ds1" dmtype="ds:experiment.ObsDataset">
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="VEGA"/>
+			</dm-mapping:INSTANCE>
+			<dm-mapping:INSTANCE dmid="_ds" dmtype="ds:experiment.ObsDataset">
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181545327453273"/>
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="SIRIUS"/>
+			</dm-mapping:INSTANCE>
+			
+		</dm-mapping:COLLECTION>
+
+		<dm-mapping:INSTANCE dmid="_xyz" dmrole="" dmtype="model:thing" >
+			<dm-mapping:INSTANCE dmid="_xxx" dmrole="model.thing.a" dmtype="model:foo" />
+
+			<dm-mapping:INSTANCE dmrole="model.thing.b" dmtype="model:bar" />
+
+			<dm-mapping:COLLECTION dmrole="model.thing.c">
+				<dm-mapping:INSTANCE dmid="_uiebb" dmrole="" dmtype="model:alpha" />
+				<dm-mapping:INSTANCE dmrole="" dmtype="model:alpha" />
+				<dm-mapping:INSTANCE dmid="_uiebd" dmtype="model:alpha" />
+				<dm-mapping:INSTANCE dmtype="model:alpha" />
+				
+			</dm-mapping:COLLECTION>
+
+		</dm-mapping:INSTANCE>
+		
+		<dm-mapping:INSTANCE dmrole="" dmtype="model:thing" />
+		<dm-mapping:INSTANCE dmid="_wxyz" dmtype="model:thing" />
+		<dm-mapping:INSTANCE dmtype="model:thing" />
+
+	</dm-mapping:GLOBALS>
+	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+		<dm-mapping:INSTANCE dmid="aaaa" dmrole="" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmrole="" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmid="bbbb" dmtype="fffff" />
+		<dm-mapping:INSTANCE dmtype="fffff" />
+		<dm-mapping:INSTANCE dmid="cccc" dmtype="model:thing">
+			<dm-mapping:ATTRIBUTE dmrole="model.thing.a" dmtype="model:foo" value="eeee"/>
+		</dm-mapping:INSTANCE>
+		
+		<dm-mapping:INSTANCE dmid="dddd" dmtype="model:thing">
+			<dm-mapping:INSTANCE dmrole="model:thing.b" dmtype="model:bar" />
+		</dm-mapping:INSTANCE>
+        
+		<dm-mapping:INSTANCE dmid="eeee" dmtype="model:thing">
+			<dm-mapping:REFERENCE dmrole="model.thing.c" dmref="_fffff"/>
+		</dm-mapping:INSTANCE>
+        
+		<dm-mapping:INSTANCE dmid="ffff" dmtype="model:thing">
+			<dm-mapping:COLLECTION dmrole="model:thing.d" />
+		</dm-mapping:INSTANCE>
+
+		<dm-mapping:INSTANCE dmid="_ref1" dmtype="model:thing">
+			<dm-mapping:INSTANCE   dmrole="model.thing.b" dmtype="model:bar" />
+			<dm-mapping:COLLECTION dmrole="model.thing.d"/>
+			<dm-mapping:ATTRIBUTE  dmrole="model.thing.a" dmtype="model.foo" value="eeee"/>
+			<dm-mapping:REFERENCE  dmrole="model.thing.c" dmref="_fffff"/>
+			<dm-mapping:COLLECTION dmrole="model.thing.e"/>
+			<dm-mapping:INSTANCE   dmrole="model.thing.f" dmtype="model:alpha" />
+			<dm-mapping:REFERENCE  dmrole="model.thing.g" dmref="_ggggg"/>
+			<dm-mapping:ATTRIBUTE  dmrole="model.thing.h" dmtype="model:beta" value="eeee"/>
+		</dm-mapping:INSTANCE>
+
+		<dm-mapping:INSTANCE dmid="_ref2" dmrole="" dmtype="model:thing">
+			<dm-mapping:COLLECTION dmrole="model:thing.items">
+				<dm-mapping:INSTANCE dmrole="" dmtype="fffff">
+					<dm-mapping:PRIMARY_KEY dmtype="fffff" value="tttt" />
+				</dm-mapping:INSTANCE>
+				
+			</dm-mapping:COLLECTION>
+		</dm-mapping:INSTANCE>
+
+	</dm-mapping:TEMPLATES>
+</dm-mapping:VODML>

@@ -1,4 +1,24 @@
-Complex pattern that must be detailed later in a specific section
+INSTANCE reference that can be used with the same patterns as for \texttt{INSTANCE} .
+There are different uses for the \texttt{REFERENCE} 
+
+\begin{itemize}
+    \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} attribute of the referenced \texttt{INSTANCE} 
+    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying  the table where to fetch the referenced column. 
+    
+             In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one or more \texttt{FOREIGN\_KEY} children. 
+             If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first one must be taken by default.
+\end{itemize}
+
+\begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1 },language=XML]
+<REFERENCE dmrole="_role" dmref="_target1" />
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \_target1 and having a \texttt{PRIMARY\_KEY} matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},language=XML]
+<REFERENCE dmrole="_role" sourceref="_target1">
+    <FOREIGN_KEY ref="_col1" />
+</REFERENCE>
+\end{lstlisting}
+
 \begin{table}[!htbp]
 \small
 \centering
@@ -7,13 +27,13 @@ Complex pattern that must be detailed later in a specific section
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            @dmrole & 
+            \texttt{@dmrole} & 
             Role of the referenced instance or collection in the DM \\
         \hline 
-            @tableref& 
+            \texttt{@sourceref}  &
             dmid of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
         \hline 
-            @dmref & 
+            \texttt{@dmref} & 
             dmid of the referenced instance or collection\\
         \hline 
      \end{tabulary}
@@ -24,17 +44,38 @@ Complex pattern that must be detailed later in a specific section
 \begin{table}[!htbp]
 \small
 \centering
+\begin{tabulary}{\linewidth}{|c |c |c|J|}
+    \hline 
+        \textbf{Element} &
+        \textbf{Position} &
+        \textbf{Occurs} &
+        \\
+    \hline      \hline  
+        \texttt{FOREIGN\_KEY}  &        
+        First &           
+        0-* &
+        Foreign key to be used to resolve a dynamic reference.\\
+    \hline 
+\end{tabulary}
+     \caption{Allowed children for \texttt{REFERENCE}} 
+     \label{tbl:reference-children}
+\end{table}
+
+
+\begin{table}[!htbp]
+\small
+\centering
 \begin{tabulary}{\linewidth}{|c|c|c|J|}
     \hline 
         \textbf{@dmrole} &
-        \textbf{@tableref} &
+        \textbf{@sourceref} &
         \textbf{@dmref} &
         \textbf{Pattern}\\
     \hline      \hline  
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern. @tableref gives the dmid of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the \texttt{FOREIGN\_KEY} pattern \texttt{@sourceref} gives the  \texttt{@dmid} of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           

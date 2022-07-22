@@ -1,3 +1,60 @@
+
+The \texttt{ATTRIBUTE} element defines either a class attribute or a collection item, both set with atomic values.
+The requirements on
+the content (especially ref and  \texttt{@dmrole}, may differ depending on
+the usage:
+
+
+\begin{enumerate}
+\item Descendant of \texttt{GLOBALS}
+
+In this case, the \texttt{ATTRIBUTE} must be specified by:
+  \begin{itemize} 
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM}, 
+      (not a VOTable \texttt{FIELD})
+      \item \texttt{@value} - a literal
+      \item  if both are provided; \texttt{@value} serves as the default 
+      if the reference cannot be resolved
+  \end{itemize}  
+
+  
+\item Descendant of \texttt{TEMPLATES} 
+
+In this case, the \texttt{ATTRIBUTE} must be specified by:
+  \begin{itemize} 
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM} 
+      or \texttt{FIELD}
+      \item \texttt{@value} - a literal
+      \item if both are provided, \texttt{@value} serves as the default if 
+      the reference cannot be resolved
+  \end{itemize}  
+
+\item Child of \texttt{COLLECTION} :
+    The \texttt{ATTRIBUTE} can be seen as a vector coordinate, 
+    it must have  no \texttt{@dmrole} xml attribute or an empty one
+    
+\item Child of \texttt{INSTANCE} :
+    The \texttt{ATTRIBUTE} can be seen as a class attribute, 
+    it must have a \texttt{@dmrole} xml attribute
+           
+\item Any case :     
+    The \texttt{ATTRIBUTE} must always have a non empty \texttt{@dmtype} xml attribute.
+\end{enumerate}  
+    
+    
+\begin{lstlisting}[caption={ATTRIBUTE examples},language=XML]
+<INSTANCE dmtype="model:Thing">
+    <ATTRIBUTE dmrole="model:Thing.f" dmtype="model.Alpha" value="xyz"/>		
+    <INSTANCE dmrole="model:Thing.pos" dmtype="adhoc:Position">
+        <ATTRIBUTE dmrole="adhoc:Position.longitude" dmtype="ivoa:real" 
+                        ref="_eqpos" arrayindex="0"/>
+        <ATTRIBUTE dmrole="adhoc:Position.latitude" dmtype="ivoa:real" 
+                        ref="_eqpos" arrayindex="1"/>
+    </INSTANCE>
+</INSTANCE>
+\end{lstlisting}  
+
+
 \begin{table}[!htbp]
 \small
 \centering
@@ -6,23 +63,30 @@
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            @dmrole & 
+            \texttt{@dmrole} & 
             Role of the attribute in the DM\\
         \hline 
-            @dmtype & 
+            \texttt{@dmtype} & 
             Type of the attribute in the DM\\
         \hline 
-            @ref & 
-            Reference of the \texttt{FIELD} or \texttt{PARAM} that has to be sued to set the \texttt{ATTRIBUTE} value.\\
+            \texttt{@ref} & 
+            Reference of the \texttt{FIELD} that has to be used to set the 
+            \texttt{ATTRIBUTE} value.\\
         \hline 
-            @value& 
-            Default \texttt{ATTRIBUTE} value. This value is taken if there is no @ref attribue or if @ref cannot be resolved.\\
+            \texttt{@value}  &
+            Default \texttt{ATTRIBUTE} value. This value is taken if there is no 
+            \texttt{@ref} attribue or if \texttt{@ref} cannot be resolved.\\
         \hline 
-            @unit & 
-            \texttt{ATTRIBUTE} unit. This is the unit in which the native value must be converted to be complient with the model. This attribute is always optional.\\
+            \texttt{@unit} & 
+            \texttt{ATTRIBUTE} unit. This is the unit in which the native value must be 
+            converted to be compliant with the model. This attribute is always optional.\\
         \hline 
-            @arrayindex & 
-            Index of the native value to be taken to set the \texttt{ATTRIBUTE}. Must be ignored if the native value is a single value. An error must be risen if @arrayindex is out of range.This attribute is always optional.\\
+            \texttt{@arrayindex} & 
+            Index of the native value to be taken to set the \texttt{ATTRIBUTE}. 
+            The value must be >= 0.
+            Must be ignored if the native value is a single value. 
+            An error must be risen if \texttt{@arrayindex} is out of range.
+            This attribute is always optional.\\
         \hline 
      \end{tabulary}
      \caption{\texttt{ATTRIBUTE} attributes} 
@@ -32,27 +96,42 @@
 \begin{table}[!htbp]
 \small
 \centering
-\begin{tabulary}{\linewidth}{|c|c|c|c|J|}
+\begin{tabulary}{\linewidth}{|c|c|c|c|c|J|}
     \hline 
         \textbf{@dmrole} &
         \textbf{@dmtype} &
         \textbf{@ref} &
         \textbf{@value} &
+        \textbf{@arrayindex} &
         \textbf{Pattern}\\
-    \hline      \hline  
-        MAND &           
+    \hline     
+    \hline  
         MAND &           
         MAND &           
         OPT &           
-        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by @ref. The @ref can not be resolved and @value is present, @value must taken as \texttt{ATTRIBUTE} value\\
+        OPT &           
+        OPT &   
+        1 \\
     \hline   
         MAND &           
         MAND &           
         NO &           
         MAND &           
-        The \texttt{ATTRIBUTE} value must be set with @value\\
+        OPT &   
+        2\\
+    \hline  
+        NO &           
+        MAND &           
+        OPT &           
+        OPT &           
+        OPT &   
+        3 \\
    \hline 
 \end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{ATTRIBUTE}} 
+     \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (1) Valid in a \texttt{TEMPLATES} context.        
+        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by \texttt{@ref} 
+       If the \texttt{@ref} can not be resolved and \texttt{@value} is present, \texttt{@value} must be taken. Either \texttt{@ref} or \texttt{@value} must be present or both (2) This pattern 
+        is valid in any context.  (3) is valid in the context of a \texttt{COLLECTION} item.    
+        The \texttt{ATTRIBUTE} value must be set with \texttt{@value}         as \texttt{ATTRIBUTE} value} 
      \label{tbl:attribute-pattern}
  \end{table}

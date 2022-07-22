@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The COLLECTION element is used for multple purposes, each having a limited subset of elements for its content. 
+
+     1) Child of INSTANCE
+        In this case, the COLLECTION serves as a container for elements with multiplicity > 1.
+        * COLLECTION MUST NOT have dmid, and so may not be referenced.
+        * COLLECTION MUST have non-empty dmrole, which applies to each of the child subnodes
+        The folowing content sets are allowed:
+          a) COLLECTION of ATTRIBUTE for an array attribute.
+          b) COLLECTION of REFERENCE for reference relation with multiplicity > 1
+          c) COLLECTION of INSTANCE and/or JOIN for composition relation with multiplicity > 1
+          * in each, the child ATTRIBUTE|REFERENCE|INSTANCE MUST have no or empty dmrole.
+
+     2) Child of GLOBALS
+        In this case, the COLLECTION serves as a proxy for TABLE; grouping of common INSTANCES for selection by PRIMARY/FOREIGN_KEY.
+          * COLLECTION contains the set of INSTANCEs to be selected from.
+            (INSTANCE is the only option which allows a PRIMARY_KEY)
+          * COLLECTION MUST have an dmid, used as the tableref in the corresponding REFERENCEs [Test 3.10]
+          * COLLECTION has no specified dmrole (ie: must be empty or missing) [Test 3.9]
+
+     3) Child of COLLECTION
+        The use-case for this is unclear
+
+-->
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS>
+		<!-- NOTE: GLOBALS node allows multiple COLLECTION sub-nodes.                     -->
+		<!--       We take advantage of this to test several valid cases in the same file -->
+	  
+	        <!-- Test Case 8.1: dmid, no dmrole -->
+	        <!-- Test Case 8.6: no children (empty COLLECTION) -->
+		<dm-mapping:COLLECTION dmid="_xxx"  />
+
+	        <!-- Test Case 8.4: dmid + empty dmrole; if present, dmrole must be empty -->
+		<dm-mapping:COLLECTION dmid="_yyy" dmrole="" />
+
+		<!-- Test Case 8.7: COLLECTION of INSTANCE, for ORM selection -->
+		<dm-mapping:COLLECTION dmid="_zzz" dmrole="">
+			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
+			</dm-mapping:INSTANCE>
+		</dm-mapping:COLLECTION>
+
+		<!-- The following test COLLECTION under INSTANCE -->
+		<dm-mapping:INSTANCE dmid="_aaa" dmtype="model:thing">
+			<!-- NOTE: INSTANCE node allows multiple COLLECTION sub-nodes.                    -->
+			<!--       We take advantage of this to test several valid cases in the same file -->
+
+			<!-- Test Case 8.14: dmrole must not be blank -->
+			<!-- Test Case 8.15: no children (empty COLLECTION) -->
+			<dm-mapping:COLLECTION dmrole="ffffff" />
+
+			<!-- Test Case 8.16: COLLECTION of ATTRIBUTE -->
+			<dm-mapping:COLLECTION dmrole="gggggg">
+				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="foo" />
+				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="bar" />
+			</dm-mapping:COLLECTION>
+		
+			<!-- Test Case 8.17: COLLECTION of REFERENCE -->
+			<dm-mapping:COLLECTION dmrole="hhhhhh">
+				<dm-mapping:REFERENCE dmref="_ref1" />
+				<dm-mapping:REFERENCE dmref="_ref2" />
+			</dm-mapping:COLLECTION>
+
+			<!-- Test Case 8.18: COLLECTION of INSTANCE -->
+			<dm-mapping:COLLECTION dmrole="iiiiii">
+				<dm-mapping:INSTANCE dmtype="model:object" />
+				<dm-mapping:INSTANCE dmtype="model:object" />
+			</dm-mapping:COLLECTION>
+
+			<!-- Test Case 8.19: COLLECTION of JOIN (collection of external instances) -->
+			<dm-mapping:COLLECTION dmrole="jjjjjj">
+				<dm-mapping:JOIN sourceref="_someTable" dmref="_extInst"/>
+			</dm-mapping:COLLECTION>
+
+		</dm-mapping:INSTANCE>
+
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>

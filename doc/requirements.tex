@@ -1,0 +1,37 @@
+\begin {itemize}
+  \item Shy annotation: model annotations come in a workflow which has been working very well for years, this is why the first requirement is to keep any existing stakeholder unbroken.
+  \begin {itemize}
+    \item Annotation must not alter the VOTable content.
+    \item Annotation blocks must be located in a way that it can easily be skipped by model-unaware clients.
+    \item The vocabulary in the annotation name-space must not overlap with the VOTable elements (names or attributes)    
+    \item The annotation syntax must be able to inform the client about the status of the annotation process.
+  \end {itemize}
+  
+  \item Schema and validation:
+  \begin {itemize}
+    \item The annotation schema must be independent from the VOTable schema.
+    \item The evolution of the annotation schema must not impact the VOTable schema.
+    \item The evolution of the VOTable schema must not impact the annotation schema.
+    \item The annotation syntax must be validated using the usual tools, i.e. without using specific compilers.
+    \item Validators are not meant to check whether references can be resolved. Clients are in charge of handling such inconsistencies.
+  \end {itemize}
+  
+  \item Model agnostic behavior:
+  \begin {itemize}
+    \item The annotation syntax must be able to map data on any \texttt{VODML} compliant model
+    \item The annotation syntax must allow clients to use their own strategy to consume mapped data:
+      \begin {itemize}
+        \item just ignore it
+        \item just pick some elements of interest 
+        \item just pick model meta-data and process the stream of data rows as usual
+        \item pick whole model instances
+      \end {itemize}
+  \end {itemize}
+  
+  \item On the fly annotation status:
+      \begin {itemize} 
+          \item Clients connecting TAP services registered as delivering annotated data must get VOTable with annotation blocks in any cases. 
+          \item Clients must be informed on the status of the annotation process.          
+       \end {itemize}
+
+\end {itemize}

@@ -24,70 +24,61 @@
 
 -->
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
 		<!-- NOTE: GLOBALS node allows multiple COLLECTION sub-nodes.                     -->
 		<!--       We take advantage of this to test several valid cases in the same file -->
 	  
 	        <!-- Test Case 8.1: dmid, no dmrole -->
 	        <!-- Test Case 8.6: no children (empty COLLECTION) -->
-		<dm-mapping:COLLECTION dmid="_xxx"  />
+		<COLLECTION dmid="_xxx"  />
 
 	        <!-- Test Case 8.4: dmid + empty dmrole; if present, dmrole must be empty -->
-		<dm-mapping:COLLECTION dmid="_yyy" dmrole="" />
+		<COLLECTION dmid="_yyy" dmrole="" />
 
 		<!-- Test Case 8.7: COLLECTION of INSTANCE, for ORM selection -->
-		<dm-mapping:COLLECTION dmid="_zzz" dmrole="">
-			<dm-mapping:INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
-			</dm-mapping:INSTANCE>
-		</dm-mapping:COLLECTION>
+		<COLLECTION dmid="_zzz" dmrole="">
+			<INSTANCE dmrole="" dmtype="ds:experiment.ObsDataset" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
+			</INSTANCE>
+		</COLLECTION>
 
 		<!-- The following test COLLECTION under INSTANCE -->
-		<dm-mapping:INSTANCE dmid="_aaa" dmtype="model:thing">
+		<INSTANCE dmid="_aaa" dmtype="model:thing">
 			<!-- NOTE: INSTANCE node allows multiple COLLECTION sub-nodes.                    -->
 			<!--       We take advantage of this to test several valid cases in the same file -->
 
 			<!-- Test Case 8.14: dmrole must not be blank -->
 			<!-- Test Case 8.15: no children (empty COLLECTION) -->
-			<dm-mapping:COLLECTION dmrole="ffffff" />
+			<COLLECTION dmrole="ffffff" />
 
 			<!-- Test Case 8.16: COLLECTION of ATTRIBUTE -->
-			<dm-mapping:COLLECTION dmrole="gggggg">
-				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="foo" />
-				<dm-mapping:ATTRIBUTE dmtype="model:elem" value="bar" />
-			</dm-mapping:COLLECTION>
+			<COLLECTION dmrole="gggggg">
+				<ATTRIBUTE dmtype="model:elem" value="foo" />
+				<ATTRIBUTE dmtype="model:elem" value="bar" />
+			</COLLECTION>
 		
 			<!-- Test Case 8.17: COLLECTION of REFERENCE -->
-			<dm-mapping:COLLECTION dmrole="hhhhhh">
-				<dm-mapping:REFERENCE dmref="_ref1" />
-				<dm-mapping:REFERENCE dmref="_ref2" />
-			</dm-mapping:COLLECTION>
+			<COLLECTION dmrole="hhhhhh">
+				<REFERENCE dmref="_ref1" />
+				<REFERENCE dmref="_ref2" />
+			</COLLECTION>
 
 			<!-- Test Case 8.18: COLLECTION of INSTANCE -->
-			<dm-mapping:COLLECTION dmrole="iiiiii">
-				<dm-mapping:INSTANCE dmtype="model:object" />
-				<dm-mapping:INSTANCE dmtype="model:object" />
-			</dm-mapping:COLLECTION>
+			<COLLECTION dmrole="iiiiii">
+				<INSTANCE dmtype="model:object" />
+				<INSTANCE dmtype="model:object" />
+			</COLLECTION>
 
 			<!-- Test Case 8.19: COLLECTION of JOIN (collection of external instances) -->
-			<dm-mapping:COLLECTION dmrole="jjjjjj">
-				<dm-mapping:JOIN tableref="_someTable" dmref="_extInst"/>
-			</dm-mapping:COLLECTION>
+			<COLLECTION dmrole="jjjjjj">
+				<JOIN sourceref="_someTable" dmref="_extInst"/>
+			</COLLECTION>
 
-			<!-- Test Case 8.20: COLLECTION of INSTANCE + JOIN (local and external instances) -->
-			<dm-mapping:COLLECTION dmrole="iiiiii">
-				<dm-mapping:INSTANCE dmtype="model:object" />
-				<dm-mapping:JOIN tableref="_someTable" dmref="_extInst1"/>
-				<dm-mapping:JOIN tableref="_someOtherTable" dmref="_extInst2"/>
-				<dm-mapping:INSTANCE dmtype="model:object" />
-				<dm-mapping:INSTANCE dmtype="model:object" />
-			</dm-mapping:COLLECTION>
+		</INSTANCE>
 
-		</dm-mapping:INSTANCE>
-
-	</dm-mapping:GLOBALS>
-</dm-mapping:VODML>
+	</GLOBALS>
+</VODML>

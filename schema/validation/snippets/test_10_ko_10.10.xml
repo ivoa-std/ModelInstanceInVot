@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:TEMPLATES tableref="fgdgfddf">
+	<MODEL name="model" url="http://aaaaaa" />
+	<TEMPLATES tableref="fgdgfddf">
 
 		<!-- Test Case 10.10: foreignkey value must not be empty -->
-		<dm-mapping:WHERE primarykey="ssss" foreignkey="" />
+		<WHERE primarykey="ssss" foreignkey="" />
 
 		<!-- required in TEMPLATES -->
-		<dm-mapping:INSTANCE dmtype="model:Thing" />
+		<INSTANCE dmtype="model:Thing" />
 
-	</dm-mapping:TEMPLATES>
+	</TEMPLATES>
 
-</dm-mapping:VODML>
+</VODML>

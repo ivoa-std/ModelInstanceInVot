@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
 
-		<dm-mapping:INSTANCE dmid="_aaa" dmtype="model:thing">
+		<INSTANCE dmid="_aaa" dmtype="model:thing">
 
 		        <!-- Test Case 8.24: COLLECTION of other -->
 	        	<!--   * allows (A), (R) or (I,J) only    -->
-			<dm-mapping:COLLECTION dmrole="iiiiii">
-				<dm-mapping:OTHER dmtype="model:object" />
-				<dm-mapping:OTHER dmtype="model:object" />
-			</dm-mapping:COLLECTION>
+			<COLLECTION dmrole="iiiiii">
+				<OTHER dmtype="model:object" />
+				<OTHER dmtype="model:object" />
+			</COLLECTION>
 			
-		</dm-mapping:INSTANCE>
+		</INSTANCE>
 
 		
-	</dm-mapping:GLOBALS>
-</dm-mapping:VODML>
+	</GLOBALS>
+</VODML>
 
 
 

@@ -2,19 +2,19 @@ The \texttt{TEMPLATES} block defines a template for deriving multiple data model
 one for each row of the associated VOTable \texttt{TABLE}.  A subset of the associated
 \texttt{TABLE} rows may be selected using the \texttt{WHERE} syntax element.
 
-\begin{lstlisting}[frame=single,caption={Example \texttt{TEMPLATES} block},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
-  <dm-mapping:MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
-  <dm-mapping:TEMPLATES tableref='Results'>
+\begin{lstlisting}[caption={Example \texttt{TEMPLATES} block},language=XML]
+<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
+  <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
+  <MODEL name="ivoa"   url="https://www.ivoa.net/xml/IVOA-v1.vo-dml.xml" />
+  <TEMPLATES tableref='Results'>
     <!-- instance template -->
-    <dm-mapping:INSTANCE dmtype="sample:Thing">
-      <dm-mapping:ATTRIBUTE dmrole="sample:Thing.name" dmtype="ivoa:string" ref="\_field1"/>
-      <dm-mapping:ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="\_field2"/>
+    <INSTANCE dmtype="sample:Thing">
+      <ATTRIBUTE dmrole="sample:Thing.name" dmtype="ivoa:string" ref="_field1"/>
+      <ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="_field2"/>
       ...
-    </dm-mapping:INSTANCE>
-  </dm-mapping:TEMPLATES>
-</dm-mapping:VODML>
+    </INSTANCE>
+  </TEMPLATES>
+</VODML>
 \end{lstlisting}
 
 \begin{table}[!htbp]
@@ -26,7 +26,7 @@ one for each row of the associated VOTable \texttt{TABLE}.  A subset of the asso
          \textbf {Role}\\
     \hline
     \hline  
-         @tableref & 
+         \texttt{@tableref} & 
          ID of the mapped VOTable \texttt{TABLE}.\\
     \hline 
   \end{tabulary}
@@ -44,7 +44,7 @@ one for each row of the associated VOTable \texttt{TABLE}.  A subset of the asso
     \hline
     \hline  
         OPT &           
-        If @tableref is not present, \texttt{TEMPLATES} maps the first \texttt{TABLE} of the \texttt{RESOURCE}\\
+        If \texttt{@tableref} is not present, \texttt{TEMPLATES} maps the first \texttt{TABLE} of the \texttt{RESOURCE}\\
     \hline 
   \end{tabulary}
   \caption{Valid attribute patterns for  \texttt{TEMPLATES}} 
@@ -58,7 +58,7 @@ one for each row of the associated VOTable \texttt{TABLE}.  A subset of the asso
     \hline 
         \textbf{Element} &
         \textbf{Position} &
-        \textbf{Cardinality} &
+        \textbf{Occurs} &
         \\
     \hline
     \hline  

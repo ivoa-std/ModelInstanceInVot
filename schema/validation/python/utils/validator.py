@@ -10,8 +10,12 @@ from utils import logger
 
 class Validator:
 
-    def __init__(self, xsd_path):
-        self.xmlschema = xmlschema.XMLSchema11(xsd_path)
+    def __init__(self, xsd_path, namespace=None):
+        logger.info("Using %s", xsd_path)
+        if namespace is not None:
+            self.xmlschema = xmlschema.XMLSchema11(xsd_path)    
+        else:
+            self.xmlschema = xmlschema.XMLSchema11(xsd_path)
 
     def validate_file(self, xml_path: str, verbose=False, expected_fail_msg=None) -> bool:
         if verbose is True:
@@ -19,6 +23,7 @@ class Validator:
                 self.xmlschema.validate(xml_path)
                 return True
             except Exception as e:
+                #print(e)
                 return self._errorMatchExpectedMessage(e, expected_fail_msg)
         else :
             return self.xmlschema.is_valid(xml_path)
@@ -42,7 +47,7 @@ class Validator:
         
         if expected_fail_msg in error_txt:
             # Expected error
-            logger.info("Validaton error as expected (%s)", expected_fail_msg)
+            logger.info("Validation error as expected (%s)", expected_fail_msg)
             return True
 
         if (expected_fail_msg.replace("'", "").replace(" ", "").replace('"', '') 

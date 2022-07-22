@@ -2,17 +2,17 @@
 
 <VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
 	<RESOURCE type="meta">
-		<dm-mapping:VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
-			<dm-mapping:MODEL name="model" />
-			<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-			<dm-mapping:GLOBALS />
-			<dm-mapping:TEMPLATES tableref="fgdgfddf">
-				<dm-mapping:INSTANCE dmtype="fffff">
-					<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee" />
-					<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee" />
-					<dm-mapping:ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee" />
-				</dm-mapping:INSTANCE>
-			</dm-mapping:TEMPLATES>
-		</dm-mapping:VODML>
+		<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
+			<MODEL name="model" />
+			<MODEL name="model" url="http://aaaaaa" />
+			<GLOBALS />
+			<TEMPLATES tableref="fgdgfddf">
+				<INSTANCE dmtype="fffff">
+					<ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="eeee" />
+					<ATTRIBUTE dmrole="aaaa" dmtype="fffff" ref="eeee" />
+					<ATTRIBUTE dmrole="aaaa" dmtype="fffff" value="aaa" ref="eeee" />
+				</INSTANCE>
+			</TEMPLATES>
+		</VODML>
 	</RESOURCE>
 </VOTABLE>

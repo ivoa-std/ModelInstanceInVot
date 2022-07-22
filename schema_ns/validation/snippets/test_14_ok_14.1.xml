@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+	
+	<!-- Test Case 14.1: succeed without message -->
+	<dm-mapping:REPORT status="OK" />
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:MODEL name="model" />
+	
+</dm-mapping:VODML>

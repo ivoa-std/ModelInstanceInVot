@@ -2,17 +2,17 @@
 
 <!-- NOTE: JOIN is child of COLLECTION.                                           -->
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS>
-		<dm-mapping:COLLECTION dmid="_stuff" dmrole="">
+	<MODEL name="model" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS>
+		<COLLECTION dmid="_stuff" dmrole="">
 
-			<!-- Test Case 9.2: no dmref + tableref must come with a dmref -->
-			<dm-mapping:JOIN tableref="dsadasd" />
+			<!-- Test Case 9.2: no dmref + sourceref must come with a dmref -->
+			<JOIN sourceref="dsadasd" />
 			
-		</dm-mapping:COLLECTION>
-	</dm-mapping:GLOBALS>
-</dm-mapping:VODML>
+		</COLLECTION>
+	</GLOBALS>
+</VODML>

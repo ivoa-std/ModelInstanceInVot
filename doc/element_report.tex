@@ -1,0 +1,57 @@
+Services providing annotated responses must use the \texttt{REPORT}  element to tell the client whether the annotation process succeeded or not.
+
+\begin{itemize}
+\item \texttt{REPORT} is not mandatory.
+\item It must be the first \texttt{VODML} child if present.
+\end{itemize}
+
+
+
+\begin{lstlisting}[caption={\texttt{REPORT} example for an annotation failure},language=XML]
+<VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	
+	<REPORT status="KO">
+	    The annotation process failed
+	</REPORT>
+	<!-- 
+	   No other annotation
+	  -->	
+</VODML>
+\end{lstlisting}
+
+\begin{lstlisting}[caption={\texttt{REPORT} example for an valid annotation},language=XML]
+<VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	
+	<REPORT status="OK">
+	    The annotation process succeed
+	</REPORT>
+
+	<MODEL name="model" url="http://aaaaaa" />
+	<MODEL name="model" />
+	
+	<GLOBALS>...</GLOBALS>
+	<TEMPLATES ...>
+	   ...
+	 </TEMPLATES>
+	
+</VODML>
+\end{lstlisting}
+
+
+\begin{table}[!htbp]
+  \small
+  \centering
+  \begin{tabulary}{\linewidth}{|c|J|}       
+    \hline 
+         \textbf{Attribute} & 
+         \textbf {Role}\\
+    \hline
+    \hline  
+         @status  & 
+        Status of the annotation process; must be either \texttt{OK} or \texttt{KO} \\
+    \hline 
+  \end{tabulary}
+  \caption{\texttt{REPORT} attributes} 
+  \label{tbl:report-att}
+\end{table}
+

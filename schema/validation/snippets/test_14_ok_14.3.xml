@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	
+	<!-- Test Case 14.3: failing with a message -->
+	<REPORT status="KO">
+	The annotation process failed
+	</REPORT>
+	
+</VODML>

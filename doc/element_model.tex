@@ -1,17 +1,17 @@
 A VOTable can provide serializations for an arbitrary number of data model
 types. In order to declare which models are represented in the file, data
-providers must declare them through the MODEL elements.
+providers must declare them through the \texttt{MODEL} elements.
 Only models that are used in the file must be declared. A model is
 used if at least one element in the mapping block refer to it. In other terms, only models that define vodml-ids used in the
 annotation must be declared.
 
-\begin{lstlisting}[frame=single,caption={Example MODEL mapping block},style=XML,basicstyle=\tiny]
-<dm-mapping:VODML>
-  <dm-mapping:MODEL name="sample-ext"
+\begin{lstlisting}[caption={Example \texttt{MODEL} mapping block},language=XML]
+<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
+  <MODEL name="sample-ext"
                      url="https://www.myorg.net/models/SampleExt-v1.0.vo-dml.xml" />
-  <dm-mapping:MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <dm-mapping:MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
-</dm-mapping:VODML>
+  <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
+  <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+</VODML>
 \end{lstlisting}
 
 \begin{table}[!htbp]
@@ -23,10 +23,10 @@ annotation must be declared.
          \textbf {Role}\\
     \hline
     \hline  
-         @name  & 
-         Name of the mapped model as declared in the VODML/XML model serialization.  This attribute MUST not be empty and forms the prefix used in dmrole/dmtype tags of elements from that model.  \\
+         \texttt{@name}  & 
+         Name of the mapped model as declared in the \texttt{VODML} XML model serialization.  This attribute MUST not be empty and forms the prefix used in  \texttt{@dmrole} dmtype tags of elements from that model.  \\
     \hline 
-         @url & 
+         \texttt{@url} & 
          URL to the vo-dml serialization of the model. If present, this attribute MUST not be empty.\\
     \hline 
   \end{tabulary}

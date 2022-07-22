@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Test Case 1.11: includes invalid subnode. -->
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS />
-	<dm-mapping:BEAUJOLAIS tableref="fgdgfddf" />
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS />
+	<BEAUJOLAIS tableref="fgdgfddf" />
 
-</dm-mapping:VODML>
+</VODML>

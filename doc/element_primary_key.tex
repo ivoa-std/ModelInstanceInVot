@@ -1,3 +1,14 @@
+The \texttt{PRIMARY\_KEY} element allows to set an identification key to an \texttt{INSTANCE}  The primary keys are only used in the context of \texttt{REFERENCE}  using \texttt{FOREIGN\_KEY} 
+A primary key can be either static or dynamic.
+
+\begin{itemize}
+    \item Static: the key value is given by the \texttt{@value} attribute.
+    \item Dynamic: the key value is given by the value of the field referenced by \texttt{@ref}  
+    This pattern is only valid if the \texttt{INSTANCE} is within a \texttt{TEMPLATES}  
+\end{itemize}
+
+the type of the key must always be specified by the \texttt{@dmtype} attribute. 
+
 \begin{table}[!htbp]
 \small
 \centering
@@ -6,13 +17,13 @@
             \textbf{Attribute} & 
             \textbf {Role}\\
        \hline         \hline  
-            @ref& 
+            \texttt{@ref}  
             ID of the FIELD used as primary key \\
         \hline 
-            @dmtype & 
+            \texttt{@dmtype} & 
             Type of the key \\
         \hline 
-            @value & 
+            \texttt{@value} & 
             Literal key value. Used when the key relates to a \texttt{COLLECTION in the \texttt{GLOBALS}} \\
         \hline 
      \end{tabulary}
@@ -33,12 +44,12 @@
         MAND &           
         MAND &           
         NO &           
-        The FIELD referenced by @ref is a primary key. This pattern is used within a \texttt{TEMPLATES} \\
+        The FIELD referenced by \texttt{@ref} is a primary key. This pattern is used within a \texttt{TEMPLATES} \\
     \hline     
         NO &           
         MAND &           
         MAND &           
-        @value gives the key value. This pattern is used to set a primary key to a \texttt{COLLECTION}\\
+        \texttt{@value} gives the key value. This pattern is used to set a primary key to a \texttt{COLLECTION}\\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{PRIMARY\_KEY}}

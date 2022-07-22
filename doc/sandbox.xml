@@ -1,0 +1,6 @@
+
+<dm-mapping:JOIN sourceref="Results" dmref="_ts_data">
+  <dm-mapping:WHERE foreignkey="_srcid" primarykey="_pksrcid" />
+  <dm-mapping:WHERE foreignkey="_band" primarykey="_pkband" />
+</dm-mapping:JOIN>
+

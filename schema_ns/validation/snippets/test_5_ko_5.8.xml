@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+	<dm-mapping:GLOBALS >
+	<!-- Usage 1: Child of GLOBALS -->
+
+		<!-- Test Case 5.8: valid dmid + valid dmrole + no dmtype; must have dmtype -->
+		<dm-mapping:INSTANCE dmid="_xyz" />
+
+	</dm-mapping:GLOBALS>
+</dm-mapping:VODML>

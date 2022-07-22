@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" />
-	<dm-mapping:GLOBALS >
+	<MODEL name="model" />
+	<GLOBALS >
 	
-		<dm-mapping:COLLECTION dmid="_coordsys" >
+		<COLLECTION dmid="_coordsys" >
 		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
 			
 			<!-- Test Case 5.57: with PRIMARY_KEY not first  -->
-			<dm-mapping:INSTANCE dmid="_timesys" dmtype="model:TimeSys" >
-				<dm-mapping:ATTRIBUTE dmrole="model:TimeSys.a" dmtype="ivoa:string" value="blah" />
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
-			</dm-mapping:INSTANCE>
-			<dm-mapping:INSTANCE dmid="_spacecys" dmtype="model:SpaceSys" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
-				<dm-mapping:ATTRIBUTE dmrole="model:SpaceSys.a" dmtype="ivoa:string" value="blah" />
-			</dm-mapping:INSTANCE>
+			<INSTANCE dmid="_timesys" dmtype="model:TimeSys" >
+				<ATTRIBUTE dmrole="model:TimeSys.a" dmtype="ivoa:string" value="blah" />
+				<PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</INSTANCE>
+			<INSTANCE dmid="_spacecys" dmtype="model:SpaceSys" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+				<ATTRIBUTE dmrole="model:SpaceSys.a" dmtype="ivoa:string" value="blah" />
+			</INSTANCE>
 			
-		</dm-mapping:COLLECTION>
+		</COLLECTION>
 
-	</dm-mapping:GLOBALS >
-</dm-mapping:VODML>
+	</GLOBALS >
+</VODML>

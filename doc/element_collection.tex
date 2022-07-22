@@ -1,9 +1,11 @@
-    COLLECTION is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
-
+    \texttt{COLLECTION} is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
+    
+    \texttt{COLLECTION} can be populated either by a static list of items  \texttt{INSTANCE}  \texttt{ATTRIBUTE} ..) or by joining to another \texttt{COLLECTION} (using the \texttt{JOIN} element). Both  modes cannot coexist.
+    
     \begin{enumerate}
     \item{As child of INSTANCE}
       
-      The COLLECTION serves as a container for elements with multiplicity $>$ 1.\\
+      The \texttt{COLLECTION} serves as a container for elements with multiplicity $>$ 1.\\
       Examples of usage in this context would be:
       \begin{itemize}
         \item an array attribute
@@ -13,44 +15,52 @@
       
     \item{As child of GLOBALS}
           
-      The COLLECTION serves as a proxy for TABLE, grouping common INSTANCES for selection by PRIMARY/FOREIGN\_KEY.
+      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by PRIMARY \texttt{FOREIGN\_KEY} 
       Examples of usage in this context would be:
       \begin{itemize}
         \item a set of photometry filters, which apply to various rows of a photometric data table, based on the value of the 'band' column.
-        \item a set of Dataset metadata instances, which apply to various rows of a photometric data table, based on the value of the 'band' column.
+        \item a set of Dataset metadata instances, which apply to various rows of a photometric data table, based on the value of the 'id' column.
       \end{itemize}
           
     \item{As child of COLLECTION}
-
-          The use-case for this is unclear
+	The collection contains a matrix of  atomic values
         
     \end{enumerate}
    
-\begin{lstlisting}[frame=single,caption={Example of COLLECTION child of INSTANCE},style=XML,basicstyle=\tiny]
-<dm-mapping:INSTANCE dmtype="model:Thing">
-    <dm-mapping:COLLECTION dmrole="model:Thing.elems">
-        <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="100" />
-        <dm-mapping:ATTRIBUTE dmtype="model:Foo" value="110" />
-    </dm-mapping:COLLECTION>
-</dm-mapping:INSTANCE>
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of INSTANCE},language=XML]
+<INSTANCE dmtype="model:Thing">
+    <COLLECTION dmrole="model:Thing.elems">
+        <ATTRIBUTE dmtype="model:Foo" value="100" />
+        <ATTRIBUTE dmtype="model:Foo" value="110" />
+    </COLLECTION>
+</INSTANCE>
 \end{lstlisting}   
 
-\begin{lstlisting}[frame=single,caption={Example of COLLECTION child of GLOBALS},style=XML,basicstyle=\tiny]
-<dm-mapping:GLOBALS>
-    <dm-mapping:COLLECTION dmid="_filters" >
-        <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
-            <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
-            <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of GLOBALS},language=XML]
+<GLOBALS>
+    <COLLECTION dmid="_filters" >
+        <INSTANCE dmtype="model:PhotometryFilter" >
+            <PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
+            <ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
                                     value="GAIA/GAIA2r.Grp"/>
-        </dm-mapping:INSTANCE>
-        <dm-mapping:INSTANCE dmtype="model:PhotometryFilter" >
-            <dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
-            <dm-mapping:ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
+        </INSTANCE>
+        <INSTANCE dmtype="model:PhotometryFilter" >
+            <PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
+            <ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
                                     value="GAIA/GAIA2r.Gbp"/>
-        </dm-mapping:INSTANCE>
-    </dm-mapping:COLLECTION>
-<dm-mapping:GLOBALS>
+        </INSTANCE>
+    </COLLECTION>
+<GLOBALS>
 \end{lstlisting}   
+
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN},language=XML]
+<GLOBALS>
+    <COLLECTION dmrole="_joined_dataj">
+        <JOIN tableref="_someTemplates" dmref="_extInst"/>
+    </COLLECTION>
+<GLOBALS>
+\end{lstlisting}   
+
 
 \begin{table}[!htbp]
   \small
@@ -61,10 +71,10 @@
          \textbf {Role}\\
     \hline
     \hline  
-         @dmid & 
-         Element dmid, MUST be unique within the document.\\
+         \texttt{@dmid} & 
+         Element datamodel id, MUST be unique within the document.\\
     \hline 
-         @dmrole & 
+         \texttt{@dmrole} & 
          Role of the \texttt{COLLECTION} in the data model. \\
     \hline 
   \end{tabulary}
@@ -85,12 +95,12 @@
       1 &
       OPT & 
       MAND & 
-      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  @dmrole MUST not be empty.  If present, @dmid MUST not be empty. \\
+      The element maps a collection playing a role in a modeled \texttt{INSTANCE}.  \texttt{@dmrole} MUST  be not empty.  If present, \texttt{@dmid} MUST  be not empty. \\
     \hline   
       2 &
       MAND & 
       NO & 
-      The collection, has no role. MUST have non-empty dmid to reference for ORM selection of contained \texttt{INSTANCE}. \\
+      The collection, has no role. MUST have non-empty  \texttt{@dmid} to reference for ORM selection of contained \texttt{INSTANCE}. This occurs when e.g. the \texttt{COLLECTION} is a \texttt{GLOBALS} child.\\
     \hline 
   \end{tabulary}
   \caption{Valid attribute patterns for \texttt{COLLECTION}} 
@@ -107,7 +117,7 @@
     \hline 
       \textbf{Element} &
       \textbf{Position} &
-      \textbf{Cardinality} &  \\
+      \textbf{Occurs}  \\
     \hline
     \hline  
         \texttt{ATTRIBUTE} & 
@@ -120,10 +130,15 @@
         0-* & 
         Collection of references.\\
     \hline    
-        \texttt{INSTANCE} and/or \texttt{JOIN} & 
+        \texttt{INSTANCE} & 
         Any & 
         0-* & 
         Collection of instances.\\
+    \hline    
+        \texttt{JOIN} & 
+        Any & 
+        0-1 & 
+        Collection populated with a set of joined instances. No other child is supported in this case\\
     \hline    
         \texttt{COLLECTION} & 
         Only & 
@@ -135,13 +150,18 @@
     \hline 
       \textbf{Element} &
       \textbf{Position} &
-      \textbf{Cardinality} &  \\
+      \textbf{Occurs} &  \\
     \hline
     \hline    
         \texttt{INSTANCE} & 
         Only & 
         0-* & 
         Collection of related instances.\\
+    \hline    
+        \texttt{REFERENCE} & 
+        Only & 
+        0-* & 
+        Collection of related references.\\
     \hline 
   \end{tabulary}
      \caption{Allowed children for \texttt{COLLECTION}} 

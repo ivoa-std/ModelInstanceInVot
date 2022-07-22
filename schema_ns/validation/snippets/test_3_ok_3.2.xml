@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dm-mapping:VODML
+	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+
+	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
+
+	<!-- Test Case 3.2: with COLLECTION only; INSTANCE optional -->
+	<dm-mapping:GLOBALS >
+		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
+			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="model:TimeSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</dm-mapping:INSTANCE>
+			<dm-mapping:INSTANCE dmid="_spacesys" dmrole="" dmtype="model:SpaceSys" >
+				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="ICRS"/>
+			</dm-mapping:INSTANCE>
+		</dm-mapping:COLLECTION>
+	</dm-mapping:GLOBALS>
+
+</dm-mapping:VODML>

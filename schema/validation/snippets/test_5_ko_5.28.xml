@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<dm-mapping:VODML
-	xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+<VODML
+	xmlns="http://www.ivoa.net/xml/merged-syntax">
 
-	<dm-mapping:MODEL name="model" url="http://aaaaaa" />
-	<dm-mapping:GLOBALS >
+	<MODEL name="model" url="http://aaaaaa" />
+	<GLOBALS >
 
-		<dm-mapping:COLLECTION dmid="_coordsys" dmrole="" >
+		<COLLECTION dmid="_coordsys" dmrole="" >
 		<!-- Usage 3: Child of COLLECTION, for ORM selection -->
 
 			<!-- Test Case 5.28: valid dmid + valid dmrole + empty dmtype; dmtype must not be empty. -->
-			<dm-mapping:INSTANCE dmid="_timesys" dmrole="" dmtype="" >
-				<dm-mapping:PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
-			</dm-mapping:INSTANCE>
+			<INSTANCE dmid="_timesys" dmrole="" dmtype="" >
+				<PRIMARY_KEY dmtype="ivoa:string" value="TCB"/>
+			</INSTANCE>
 			
-		</dm-mapping:COLLECTION>
+		</COLLECTION>
 
-	</dm-mapping:GLOBALS>
-</dm-mapping:VODML>
+	</GLOBALS>
+</VODML>
