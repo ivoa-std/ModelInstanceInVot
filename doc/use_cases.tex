@@ -11,13 +11,13 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
           quantities of the same nature but expressed in different systems (sky coordinates in ICRS vs Gal). 
           This is partially supported by the actual VOTable schema (TIMESYS, COOSYS) but any change in these ad-hoc mapping 
           elements or the addition of any other elements (e.g. X-ray energy band) would require VOTable version upgrades. 
-          Using the mapping syntax diconnects the level of description of the different axes from the VOTable schema.           
+          Using the mapping syntax disconnects the level of description of the different axes from the VOTable schema.           
   \end{itemize} 
   
   \item Quantities made with multiple components (spread over multiple table columns) may need to be aggregated by the client to be used correctly:
   \begin{itemize}
     \item value-error associations
-    \item error quantities split in several columns (covariance matrices). 
+    \item error quantities spread over several columns (covariance matrices). 
     \item quantities with quality flags
     \item positions with proper motions and/or parallax to compute error ellipses or positions at a given epoch
   \end{itemize} 
@@ -33,17 +33,17 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
   be rendered by the mapping syntax. Measure classes are not meant to 
   be used as standalone elements but as parts of host models 
   (e.g. CubeDM, Mango);
-  however clients keep free to either process those host models as a
+  however clients are free to either process those host models as a
   whole or to chase individual components.
     \begin{itemize}
-      \item Cross matching VOTables providing all the same e.g. the sky position serialization is easier.
+      \item Cross matching VOTables containing the same quantities, e.g. the sky position, is easier.
             This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
       \item Building SEDs from datasets that have the same photometric calibration representation is straightforward.
    \end{itemize}          
 
   \item In more advanced cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
-      \item Extracting  TimeSeries instances to feed a software built upon classes generated from that model.
+      \item Extracting  TimeSeries instances to feed into software built upon classes generated from that model.
       \item Building model instances that can be serialised in another format (e.g. json) in order to be shared in another context than 
             the VOTable processing (e.g. via SAMP).
    \end{itemize}         
