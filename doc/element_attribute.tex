@@ -81,8 +81,14 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
             \texttt{@ref} attribue or if \texttt{@ref} cannot be resolved.\\
         \hline 
             \texttt{@unit} & 
-            \texttt{ATTRIBUTE} unit. This is the unit in which the native value must be 
-            converted to be compliant with the model. This attribute is always optional.\\
+            \texttt{ATTRIBUTE} unit. Unit applicable to the attribute value which is given 
+            by either \texttt{@value} or \texttt{@ref}. \texttt{@unit} must always 
+            be compliant with VOUnit \citep{2014ivoa.spec.0523D}. 
+            If the attribute value is set by a resolved \texttt{@ref}, 
+            \texttt{@unit} must be compliant with the unit of the referenced
+            \texttt{FIELD} or \texttt{PARAM}. The inconsistency handling at 
+            this level is beyond the scope of this document. The client can 
+            deal with them at his own convenience.\\
         \hline 
             \texttt{@arrayindex} & 
             Index of the native value to be taken to set the \texttt{ATTRIBUTE}. 
