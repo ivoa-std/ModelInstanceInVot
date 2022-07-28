@@ -93,13 +93,18 @@
 \begin{document}
 
 \begin{abstract}
-mireille .toto.test 
-Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data on any model serialized in VO-DML.
-MIVOT annotations are grouped in a single XML block located in the resource head. 
-The annotations operate as a bridge between the data and the model. 
-It can denote the way data are connected to each other as well as different tables can be joined together.
-It is also able to carry data or meta-data that are missing in the VOTable.
-The annotation block is made of bricks that facilitate both annotation process and model instance reconstruction. 
+Model Instances in VOTables (MIVOT) defines a syntax to map the column metadata from the VOTable format to the various 
+data model elements (class, attributes, types, etc.) expressed in the standard Virtual Observatory Data Modeling Language (here after VO-DML).
+The data model elements used to interpret the data are conveyed in an independent annotation block in the MIVOT XML syntax.
+This annotation block is added as an extra resource element at the top of the VOTable document. 
+The MIVOT syntax allows to describe the basic data structures, but also to show bindings and relations between them in one single table. 
+It can also build up data model objects from joins operated on columns from different tables stored in the VOTable.
+%It can denote the way data are connected to each other as well as different tables can be joined together.
+%It is also able to carry data or meta-data that are missing in the VOTable.
+Missing metadata can also be provided using MIVOT, for instance by completing coordinate system information, links to reference vocabulary, etc.
+% to be confirmed 
+The annotation block is made of bricks that facilitate both the annotation process on the data provider's side. 
+These bricks are reused as well on the client side generate data model instances .
 it has been designed so as not to alter the original VOTable content, thus limiting its impact on legacy clients.
 
 \end{abstract}
