@@ -25,35 +25,19 @@ When used as \texttt{FIELD} attributes, UTypes allow one to connect particular c
    \item There is no possibility for one  \texttt{FIELD} or \texttt{PARAM} to play multiple roles.
   \item UTypes are not intended to be parsed, so they only identify which role is played by a \texttt{FIELD}/\texttt{PARAM}, in a restricted context. The same element used in different contexts or models have different UTypes; which hinders interoperability.
   \item UTypes constrain to single-table serializations. All model elements must 
-  be contained within the same VOTable TABLE.
-  % mir ??? not clear enough : prov dm has many tables with well defined utypes 
- 
+  be contained within the same VOTable TABLE. 
   \item UTypes do not support annotating the VOTable content towards multiple models 
-  (as TimeSeries or Catalog/Source for instance )
-  % the utype is data model dependent , ok, by construction but the annotation also , no? 
-  % not sure it is this an important point to mention here ?
+  (as TimeSeries or Catalog/Source for instance)
 \end{itemize}
 
 The UType approach could have been extended to overcome these drawbacks, but it has been decided to move forward a solution closer to the \texttt{VODML} \citep{2018ivoa.spec.0910L} concepts. 
-% mireille : A more general approach to provide a global data model description from the data model UML diagram was adopted.
- \texttt{VODML} is a meta-model that gives a standard way to express VO models and to provide a machine-readable description in an XML document.
+\texttt{VODML} is a meta-model that gives a standard way to express VO models as machine-readable XML document.
 In \texttt{VODML},  model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
-As a consequence, any annotation mechanism based on \texttt{VODML} and preserving the model hierarchy will be able  to provide a data representation faithful to that model.
-% this conclusion seems too quick to me here
+As a consequence, an annotation mechanism such as MIVOT, based on \texttt{VODML} and preserving the model hierarchy can easily provide data representations faithful to that model.
 
 The basis of MIVOT is to insert into the VOTable, an XML block complying with the 
 model structure and containing references to the actual data.
 These blocks are designed in such a way that a model-aware client can build  model instances by copying that structure and by resolving the references. 
-Other clients can just ignore them and rely on the FIELD/PARAM and GROUP structures provided with VOTable format. 
-
-%MOVED from section2
-
-%The meta-data currently supported by the  VOTable standard gives a very good description of the table field content. 
-%There is however not suitable way to specify the exact role played by a given quantity in a particular context yet.
-
-%There is also no way to describe how different quantities or different data tables relate to each other either.
-%UTypes have been proposed to fill these gaps, but the difficulty to define a standard method to build them in the general case of non-hierachical models caused this approach not to be used.
-%Actually, both role specifications and quantity associations are parts of the modelling effort and our need is a bridge between model leaves and data columns that allows users to get a model view on data tables. (%NFB Hummm. Is that only for leaves ? Or also for higher levels ?)
-%This is essential to get a good  understanding of complex data.
+Other clients can just ignore them and rely as usual on the FIELD/PARAM and GROUP structures.
 
 
