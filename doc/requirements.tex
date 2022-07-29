@@ -25,12 +25,14 @@
   \item Model agnostic behavior:
   \begin {itemize}
     \item The annotation syntax must be able to map data on any \texttt{VODML} compliant model
-    \item The annotation syntax must allow clients to use their own strategy to consume mapped data:
+    \item The annotation syntax must allow clients to use their own strategy to consume mapped data, so they could:
       \begin {itemize}
         \item just ignore it
-        \item just pick some elements of interest 
-        \item just pick model meta-data and process the stream of data rows as usual
-        \item pick whole model instances
+        \item pick some elements of interest 
+        \item pick model meta-data and process the stream of data rows as usual
+        \item pick whole model instances     %mir not sure I get this one :  is it 
+        build up complete model instances from the data ? 
+        %mir  I guess this is not all objects from the complete model...
       \end {itemize}
   \end {itemize}
   
