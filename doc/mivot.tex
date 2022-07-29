@@ -93,28 +93,28 @@
 \begin{document}
 
 \begin{abstract}
-Model Instances in VOTables (MIVOT) defines a syntax to map the column metadata from the VOTable format to the various 
-data model elements (class, attributes, types, etc.) of a standardized IVOA data model expressed in the standard Virtual Observatory Data Modeling Language (here after VO-DML).
-The data model elements used to interpret the data are conveyed in an independent annotation block in the MIVOT XML syntax.
-This annotation block is added as an extra resource element at the top of the VOTable document. 
-The MIVOT syntax allows to describe the data structure as classes, but also to show bindings and relations between them in one single table. 
-It can also build up data model objects from joins operated on columns from different tables stored in the VOTable.
-%It can denote the way data are connected to each other as well as different tables can be joined together.
-%It is also able to carry data or meta-data that are missing in the VOTable.
-Missing metadata can also be provided using MIVOT, for instance by completing coordinate system information, links to reference vocabulary, etc.
-% to be confirmed 
-The annotation block is made of bricks that facilitate both the annotation process on the data provider's side. 
-These bricks are reused as well on the client side in order to generate data model instances.
-The adopted design does not alter the original VOTable content, thus limiting its impact on legacy clients for backward compatibility.
+Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data to any model serizalized in VODML.
+The annotation operate as a bridge between the data and the model.
+It associates the column/param metadata from the VOTable to the 
+data model elements (class, attributes, types, etc.) of a standardized IVOA data model, expressed in the Virtual Observatory Data Modeling Language (here after VO-DML).
+It also carries VOTable data or metadata that are possibly missing.
 
+The data model elements are grouped in an independent annotation block complying with the MIVOT XML syntax.
+This annotation block is added as an extra resource element at the top of the VOTable result resource. 
+The MIVOT syntax allows to describe a data structure as a hierarchy of classes. It is also able to represent relations and composition between them.
+It can also build up data model objects by aggregating instances from different tables of the VOTable.
+Missing metadata can also be provided using MIVOT, for instance by completing coordinate system description, to provide curation tracing.
+The annotation block is made of re-usable bricks that facilitate the developement of tools on both client and server sides.
+The adopted design does not alter the original VOTable content. 
+The backward compatibility is preserved thanks to the limited impact of the annotations on legacy clients.
 \end{abstract}
 
 
 \section*{Acknowledgments}
-We would like to thank all the people who have contributed to this standard, starting with the authors of the VO Data Modeling Language  who have introduced the concepts developed here.
-We would also like to thank all contributors of the "Source Data Model" session held at the Paris Interop Meeting in  2019, as well as all members of the IVOA Time Domain Interest Group and the participants to the Data Model workshop we ran in Spring 2021, who helped us to refine our use-cases.
-Finally, we say a big thank you to the CDS members who spent time for assessing how such an annotation procedure could improve CDS  services for the VO.
-This acknowledgement does not mention individuals, as the list would be too long, not to mention the many interns who contributed to this project.
+We would like to thank all the people who have contributed to this standard, starting with the authors of the VO Data Modeling Language who have introduced the concepts developed here.
+We would also like to thank all contributors of the "Source Data Model" session held at the Paris Interop Meeting in 2019, as well as all members of the IVOA Time Domain Interest Group and the participants to the Data Model workshop we ran in Spring 2021. All helped us to refine our use-cases.
+Finally, we say a big thank you to the CDS members who spent time for assessing how such an annotation procedure could improve their VO services.
+This acknowledgement does not mention individuals, as the list would be too long, especially the many interns who contributed to this project.
 
 \section*{Conformance-related definitions}
 
@@ -266,14 +266,8 @@ The mapping element must be isolated from the VOTable elements by a name space s
 \input{element_foreign_key.tex}
 \FloatBarrier
 
-\section{MIVOT XSD standard document }
-This syntax is described in an XSD schema , with all XML tags definitions.
-This is part of this standard and available at \url{http://ivoa.net/XML/mivot.xsd}.
-% check the link for upload 
-This is used for the XML validation of the annotation blocks.
-
 \pagebreak
-\section{Mapping Block Validation}
+\section{Schema and Validation}
 \input{validation.tex}
 
 \pagebreak
