@@ -23,10 +23,7 @@ When used as \texttt{FIELD} attributes, UTypes allow one to connect particular c
   \item UTypes are labels attached to  a \texttt{FIELD} or \texttt{PARAM} that tells its role in the 
   model structure, typically a non cyclic graph. 
    \item There is no possibility for one  \texttt{FIELD} or \texttt{PARAM} to play multiple roles.
-  \item UTypes are not intended to be parsed, so they only identify which role corresponds to a \texttt{FIELD}/\texttt{PARAM} , the 'leaf'  element in the data model hierarchy.
-  It belongs to a restricted context : a class, a set of classes, a link to another class.
-  % ??? mireille: some rephrasing needed here 
-  %\item UTypes are not reusable, the same element used in different contexts or models have different UTypes; which hinders interoperability
+  \item UTypes are not intended to be parsed, so they only identify which role is played by a \texttt{FIELD}/\texttt{PARAM}, in a restricted context. The same element used in different contexts or models have different UTypes; which hinders interoperability.
   \item UTypes constrain to single-table serializations. All model elements must 
   be contained within the same VOTable TABLE.
   % mir ??? not clear enough : prov dm has many tables with well defined utypes 
