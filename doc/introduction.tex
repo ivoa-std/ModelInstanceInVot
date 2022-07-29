@@ -9,12 +9,10 @@ We could imagine to develop a new data container specific for that purpose but a
 The model mapping solution must be based on VOTables since VOTable  \citep{2019ivoa.spec.1021O} is the standard data container within the VO.
 Unfortunately, if the VOTable schema allows a very good description of tabular data, it is not well suited for rendering views of complex data models.
 In the case of simple DAL protocols, this limitation has been worked around by specifying the metadata that must be present in the query responses; the model mapping is thereby defined by the standard.
-This approach is no longer applicable for complex models such as Cube or Provenance data models for which the data tree may vary from one instance to another.
+This approach is no longer applicable for complex models such as Cube or Provenance for which the data tree may vary from one instance to another.
 
-The basis on which the standard is designed is threefold 1) the data content is apriori unknown (e.g. TAP response), 2) it has to be mapped on models that are not defined yet and 3) the data model metadata used for these serialized data must be fully contained within a VOTable context.
-%It must also allow to bind native data with a model in a way that model-aware software can see it as model instances while maintaining the possibility to access them in their original layout.
-The  standard should allow a model-aware software to create instances of objects described by the model by binding together native column data , and also warrant the direct access to table columns as planned in the original data serialization.
-
+The basis on which the standard is designed is threefold 1) the data content is apriori unknown (e.g. TAP response), 2) it has to be mapped on models that are not defined yet and 3) the mapping block must be fully integrated within a VOTable context.
+It must also allow to bind native data with a model in a way that model-aware software can see it as model instances while maintaining the possibility to access them in their original serialization.
 
 The VOTable schema supports an XML attribute for this purpose, a UType, that partially meets this function. 
 UTypes are path-like strings (\texttt{m:a.b.c}) identifying model leaves. As there is no common rule to build UTypes,  each data model (e.g. Characterization, Obscore)  must come with its specific lists of UTypes. 
