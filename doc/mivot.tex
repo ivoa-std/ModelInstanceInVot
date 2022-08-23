@@ -93,23 +93,28 @@
 \begin{document}
 
 \begin{abstract}
-Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data on any model serialized in VO-DML.
-MIVOT annotations are grouped in a single XML block located in the resource head. 
-The annotations operate as a bridge between the data and the model. 
-It can denote the way data are connected to each other as well as different tables can be joined together.
-It is also able to carry data or meta-data that are missing in the VOTable.
-The annotation block is made of bricks that facilitate both annotation process and model instance reconstruction. 
-it has been designed so as not to alter the original VOTable content, thus limiting its impact on legacy clients.
+Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data to any model serizalized in VODML.
+The annotation operates as a bridge between the data and the model.
+It associates the column/param metadata from the VOTable to the 
+data model elements (class, attributes, types, etc.) of a standardized IVOA data model, expressed in the Virtual Observatory Data Modeling Language (here after VO-DML).
+It also brings up VOTable data or metadata that were possibly missing in the table metadata.
 
+The data model elements are grouped in an independent annotation block complying with the MIVOT XML syntax.
+This annotation block is added as an extra resource element at the top of the VOTable result resource. 
+The MIVOT syntax allows to describe a data structure as a hierarchy of classes. It is also able to represent relations and composition between them.It can also build up data model objects by aggregating instances from different tables of the VOTable.
+
+Missing metadata can also be provided using MIVOT, for instance by completing coordinate system description, or by providing curation tracing.
+The annotation block is made of re-usable bricks that facilitate the developement of tools on both client and server sides.
+The adopted design does not alter the original VOTable content. 
+The backward compatibility is preserved thanks to the limited impact of the annotations on legacy clients.
 \end{abstract}
 
 
 \section*{Acknowledgments}
-We would like to thank all the people who have contributed to this standard, starting with the VODML authors who have introduced the concepts developed here.
-We would also like to thank all contributors of the source DM session that was held at Interop Paris 2019, as well as all members of the TDIG and the participants to the DM workshop we ran in Spring 2021 
-who helped us to refine our use-cases .
-Finally, we say a big thank you to the CDS members who spent time assessing the extent to which data annotation could improve services.
-This acknowledgement does not mention individuals, as the list would be too long, especially if the many interns who contributed to the realization of this project were included.
+We would like to thank all the people who have contributed to this standard, starting with the authors of the VO Data Modeling Language who have introduced the concepts developed here.
+We would also like to thank all contributors of the "Source Data Model" session held at the Paris Interop Meeting in 2019, as well as all members of the IVOA Time Domain Interest Group and the participants to the Data Model workshop we ran in Spring 2021. All helped us to refine our use-cases.
+Finally, we say a big thank you to the CDS members who spent time for assessing how such an annotation procedure could improve their VO services.
+This acknowledgement does not mention individuals, as the list would be too long, especially the many interns who contributed to this project.
 
 \section*{Conformance-related definitions}
 
@@ -261,8 +266,10 @@ The mapping element must be isolated from the VOTable elements by a name space s
 \input{element_foreign_key.tex}
 \FloatBarrier
 
+
+
 \pagebreak
-\section{Mapping Block Validation}
+\section{Schema and Validation}
 \input{validation.tex}
 
 \pagebreak

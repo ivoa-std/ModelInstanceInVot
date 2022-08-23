@@ -1,4 +1,6 @@
-The MIVOT standard comes with an XML schema conforming to XSD 1.1 \citep{std:xsd1.1} that enforces the syntax rules. 
+The MIVOT syntax is controlled by an XSD schema.
+This is part of this standard and available at \url{http://ivoa.net/XML/MIVOT/mivot-v1.0.xsd}.
+The XML schema conforms to XSD 1.1 \citep{std:xsd1.1} which enforces the syntax rules. 
 The following features are validated:
 
 \begin{itemize} 
@@ -8,10 +10,10 @@ The following features are validated:
   \item Element ordering in specific sequences
 \end{itemize}
 
-In addition to this basic check, XSD 1.1 allows for the refine the definition of the elements or attributes  patterns that are allowed or not:
+In addition to this basic check, XSD 1.1 asserts which patterns are allowed or forbidden:
 
 \begin{itemize} 
-  \item Which elements are mandatory, optional  or forbidden in the local context  (parent and children elements).
+  \item Which elements are mandatory, optional  or forbidden in the local context (parent and children elements).
   \item Which attributes are mandatory, optional  or forbidden in the context of the host element.
   \item Attribute value requirements according to the context of the host element.
 \end{itemize}
@@ -20,9 +22,9 @@ The scope of this schema-based validation is limited to the syntax however.
 The clients are still responsible for checking whether or not the attribute values are correct and for managing any semantic inconsistencies:
 
 \begin{itemize} 
-  \item References are resolvable
-  \item Units conform to any requirements of the mapped models
-  \item The mapping structure is faithful to the referenced models
+  \item Are references resolvable ?
+  \item Do units conform to any requirement of the mapped models ?
+  \item Is the mapping structure faithful to the referenced models?
 \end{itemize}
 
 

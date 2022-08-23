@@ -7,14 +7,14 @@ DOCNAME = mivot
 DOCVERSION = 1.0
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2022-06-02
+DOCDATE = 2022-08-28
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
-DOCTYPE = WD
+DOCTYPE = PR
 
 # An e-mail address of the person doing the submission to the document
 # repository (can be empty until a make upload is being made)
-AUTHOR_EMAIL=laurent.michel@atro.unistra.fr
+AUTHOR_EMAIL=laurent.michel@astro.unistra.fr
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
@@ -26,9 +26,9 @@ FIGURES = role_diagram.svg
 
 # List of PDF figures (figures that must be converted to pixel images to
 # work in web browsers).
-VECTORFIGURES = 
+VECTORFIGURES =
 
 # Additional files to distribute (e.g., CSS, schema files, examples...)
-AUX_FILES = 
+AUX_FILES = ../schema/xsd/mivot-v1.0.xsd
 
 include ivoatex/Makefile
