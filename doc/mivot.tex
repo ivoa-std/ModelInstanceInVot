@@ -94,16 +94,18 @@
 
 \begin{abstract}
 Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data to any model serizalized in VODML.
-The annotation operate as a bridge between the data and the model.
+
+The annotation operates as a bridge between the data and the model.
 It associates the column/param metadata from the VOTable to the 
 data model elements (class, attributes, types, etc.) of a standardized IVOA data model, expressed in the Virtual Observatory Data Modeling Language (here after VO-DML).
-It also carries VOTable data or metadata that are possibly missing.
+It also brings up VOTable data or metadata that were possibly missing in the table metadata.
 
 The data model elements are grouped in an independent annotation block complying with the MIVOT XML syntax.
 This annotation block is added as an extra resource element at the top of the VOTable result resource. 
-The MIVOT syntax allows to describe a data structure as a hierarchy of classes. It is also able to represent relations and composition between them.
-It can also build up data model objects by aggregating instances from different tables of the VOTable.
-Missing metadata can also be provided using MIVOT, for instance by completing coordinate system description, to provide curation tracing.
+The MIVOT syntax allows to describe a data structure as a hierarchy of classes. It is also able to represent relations and composition between them.It can also build up data model objects by aggregating instances from different tables of the VOTable.
+
+Missing metadata can also be provided using MIVOT, for instance by completing coordinate system description, or by providing curation tracing.
+
 The annotation block is made of re-usable bricks that facilitate the developement of tools on both client and server sides.
 The adopted design does not alter the original VOTable content. 
 The backward compatibility is preserved thanks to the limited impact of the annotations on legacy clients.
@@ -265,6 +267,8 @@ The mapping element must be isolated from the VOTable elements by a name space s
 \subsection{FOREIGN\_KEY}
 \input{element_foreign_key.tex}
 \FloatBarrier
+
+
 
 \pagebreak
 \section{Schema and Validation}

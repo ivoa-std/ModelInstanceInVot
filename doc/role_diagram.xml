@@ -40,7 +40,6 @@ of the various sections) to have the box centered.
 
   <!-- Apps: all over the place -->
   <rec name="VOTable" x="370" y="400" w="50"/>
-
   <!-- DAL: x=655, y=155..435 -->
 
   <!-- Data Models: x=430..580, y=250..400 -->
@@ -53,6 +52,7 @@ of the various sections) to have the box centered.
   <rec name="VOUnits" x="220" y="250" w="50"/>
   <rec name="UCD" x="220" y="310" w="32"/>
   <rec name="Vocabularies" x="200" y="335" w="73"/>
+
 
   <!-- TD -->
 </archdiag>

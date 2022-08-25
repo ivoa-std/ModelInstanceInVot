@@ -42,7 +42,6 @@
 
   
   <svg x="370" y="400"><rect height="18" x="0" y="0" width="50" class="rec"/><text class="doclabel" y="12.5" x="25">VOTable</text></svg>
-
   
 
   
@@ -55,6 +54,7 @@
   <svg x="220" y="250"><rect height="18" x="0" y="0" width="50" class="rec"/><text class="doclabel" y="12.5" x="25">VOUnits</text></svg>
   <svg x="220" y="310"><rect height="18" x="0" y="0" width="32" class="rec"/><text class="doclabel" y="12.5" x="16">UCD</text></svg>
   <svg x="200" y="335"><rect height="18" x="0" y="0" width="73" class="rec"/><text class="doclabel" y="12.5" x="36.5">Vocabularies</text></svg>
+
 
   
 </g></svg>
