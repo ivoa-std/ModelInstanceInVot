@@ -4,7 +4,6 @@ Created on 2021/07/01
 @author: laurentmichel
 '''
 import os
-import xmlschema
 from utils.validator import Validator
 from utils.file_utils import FileUtils
 from utils import logger
