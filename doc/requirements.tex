@@ -1,5 +1,10 @@
 \begin {itemize}
-  \item Shy annotation: model annotations enter into a workflow which has been working very well for years, this is why the first requirement is to keep any existing stakeholder unbroken.
+  \item Shy annotation 
+  
+  	Model annotations enter into a workflow which has been working very well for years. As a matter of fact, the first requirement is to keep 
+	%any existing stakeholder unbroken.  % mir stakeholders are the big projects : XMM, CDS, HEASARC, ESO , etc ...
+	legacy services operational without any change. Therefore: 
+	
   \begin {itemize}
     \item Annotation must not alter the VOTable content.
     \item Annotation blocks must be located in a way that it can easily be skipped by model-unaware clients.
@@ -9,29 +14,32 @@
   
   \item Schema and validation:
   \begin {itemize}
+     \item The content of the annotation block must be validated according to a specific schema.
     \item The annotation schema must be independent from the VOTable schema.
     \item The evolution of the annotation schema must not impact the VOTable schema.
     \item The evolution of the VOTable schema must not impact the annotation schema.
     \item The annotation syntax must be validated using the usual tools, i.e. without using specific compilers.
-    \item Validators are not meant to check whether references can be resolved. Clients are in charge of handling such inconsistencies.
+    \item Validators are not meant to check whether references can be resolved. Clients are in charge of handling possible inconsistencies.
   \end {itemize}
   
   \item Model agnostic behavior:
   \begin {itemize}
     \item The annotation syntax must be able to map data on any \texttt{VODML} compliant model
-    \item The annotation syntax must allow clients to use their own strategy to consume mapped data:
+    \item The annotation syntax must allow clients to use their own strategy to consume mapped data, so they could:
       \begin {itemize}
         \item just ignore it
-        \item just pick some elements of interest 
-        \item just pick model meta-data and process the stream of data rows as usual
-        \item pick whole model instances
+        \item pick some elements of interest 
+        \item pick model metadata and process the sequence of data rows as usual
+        \item pick instances of model components 
+        \item get instances of the whole model  
       \end {itemize}
   \end {itemize}
   
   \item On the fly annotation status:
       \begin {itemize} 
-          \item Clients connecting TAP services registered as delivering annotated data must get VOTable with annotation blocks in any cases. 
-          \item Clients must be informed on the status of the annotation process.          
+          \item Clients connecting TAP services registered as delivering annotated data must get VOTable with annotation blocks in any case. 
+          \item Clients must be informed on the execution status of the annotation process.     
+          \item Clients must be informed of the data model name and version used for the annotation  
        \end {itemize}
 
 \end {itemize}
