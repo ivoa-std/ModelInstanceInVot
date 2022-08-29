@@ -1,26 +1,27 @@
-The \texttt{JOIN} element populates a \texttt{COLLECTION} with \texttt{INSTANCE}  from another collection, namely the foreign collection.
+The \texttt{JOIN} element populates a \texttt{COLLECTION} with \texttt{INSTANCE}  elements from another collection, called hereafter the foreign collection.
 The foreign collection can either be a static element  \texttt{GLOBALS} \texttt{COLLECTION}  or a collection of \texttt{INSTANCE}  resulting from the iteration over a \texttt{TEMPLATES} 
 
-The \texttt{JOIN} element must contain attributes identifying the foreign collection   \texttt{@sourceref}  and/or \texttt{@dmref} . 
-It can have \texttt{WHERE} children stating the join condition and it must be the unique child of the host \texttt{COLLECTION} 
+The \texttt{JOIN} element must contain XML attributes identifying the foreign collection  like \texttt{@sourceref}  and/or \texttt{@dmref} . 
+It can have \texttt{WHERE} children elements stating the join condition and it must be the unique child of the host \texttt{COLLECTION} .
+
  \texttt{JOIN} may have 2 uses:
 
 \begin{itemize}
 
-    \item Join with \texttt{TEMPLATES} data:
+    \item \texttt{JOIN}  with \texttt{TEMPLATES} data:
        \begin{itemize}
          \item must have either a \texttt{@sourceref} attribute identifying the foreign \texttt{TEMPLATES} or a \texttt{@dmref} attribute identifying the foreign mapped \texttt{INSTANCE} or both.
              \begin{itemize}
                \item if only \texttt{@sourceref} is given, the host collection is populated with the \texttt{INSTANCE}  mapping the foreign table rows. 
                         This pattern is only valid when the foreign TEMPLATEs has  one unique instance child.
-               \item if only \texttt{@dmref}  the host collection is populated with the \texttt{INSTANCE}  having the matching \texttt{@dmid}  In this case, 
-                        the client is in charge of locating the \texttt{TEMPLATES} containing that \texttt{INSTANCE} 
-               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} is hosted by the TEMPLATEs matching \texttt{@sourceref} 
+               \item if only \texttt{@dmref} is given,  the host collection is populated with the \texttt{INSTANCE}  having the matching \texttt{@dmid}. In this case, 
+                        the client is in charge of locating the \texttt{TEMPLATES} containing that \texttt{INSTANCE}.
+               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} is hosted by the \texttt{TEMPLATES} matching \texttt{@sourceref}.
                         This over-statement may help the parser but it can carry inconsistencies. An error must be risen in this case.
              \end{itemize}
     \end{itemize}
   
-   \item Join with \texttt{GLOBALS} \texttt{COLLECTION} data:
+   \item \texttt{JOIN}  with \texttt{GLOBALS} 's \texttt{COLLECTION} data:
        \begin{itemize}
          \item the foreign \texttt{COLLECTION} must be direct child of \texttt{GLOBALS} 
          \item \texttt{JOIN} must have one \texttt{@sourceref} attribute identifying the foreign \texttt{COLLECTION} 
@@ -31,14 +32,14 @@ It can have \texttt{WHERE} children stating the join condition and it must be th
   \end{itemize}
 \end{itemize}
 
-\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example whit 2 join conditions} },language=XML]
+\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example with 2 join conditions} },language=XML]
 <JOIN sourceref="Results" dmref="_ts_data">
   <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
   <WHERE foreignkey="_band" primarykey="_pkband" />
 </JOIN>
 \end{lstlisting}
 
-
+%mir: same comment as previous sections : show attributes table first ???
 \begin{table}[!htbp]
 \small
 \centering
@@ -54,7 +55,7 @@ It can have \texttt{WHERE} children stating the join condition and it must be th
             Reference of the foreign \texttt{INSTANCE}s that will populate he host \texttt{COLLECTION}  \\
         \hline 
      \end{tabulary}
-     \caption{\texttt{JOIN} attributes} 
+     \caption{XML attributes for a \texttt{JOIN} element.} 
      \label{tbl:join-att}
  \end{table}
 

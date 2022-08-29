@@ -1,14 +1,14 @@
 The \texttt{GLOBALS} block holds singular data model instances, and is not associated 
-with a VOTable \texttt{TABLE}.
+with a particular VOTable \texttt{TABLE} element.
 
 The contained instances have a global scope, and may be
 referenced by other instances anywhere in the mapping block.  \texttt{INSTANCE} attributes
 within the \texttt{GLOBALS} scope may only refer to VOTable \texttt{PARAMS} or contain
-explicit values, they MUST NOT refer to VOTable \texttt{FIELDS}.  Note: This rule is not enforced
-via the XSD schema which is restricted to the mapping block only.
+explicit values, they MUST NOT refer to VOTable \texttt{FIELDS}.  \\ 
+Note: This rule is not enforced via the MIVOT XSD schema which is restricted to the control of the mapping block only.
 
 Related instances may be grouped within a \texttt{COLLECTION} block to enable selection
-via the ORM elements provided in this syntax.  See \texttt{COLLECTION} for more details.
+via the ORM elements provided in this syntax.  See \texttt{COLLECTION} subsection for more details.
 
 \begin{lstlisting}[caption={Example \texttt{GLOBALS} block},language=XML]
 <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
@@ -55,6 +55,6 @@ via the ORM elements provided in this syntax.  See \texttt{COLLECTION} for more 
         0-*\\
     \hline
   \end{tabulary}
-  \caption{Allowed children for \texttt{GLOBALS}} 
+  \caption{Allowed children elements for \texttt{GLOBALS}} 
   \label{tbl:globals-children}
  \end{table}

@@ -1,7 +1,7 @@
 
 The \texttt{ATTRIBUTE} element defines either a class attribute or a collection item, both set with atomic values.
 The requirements on
-the content (especially ref and  \texttt{@dmrole}, may differ depending on
+the content (especially \texttt{@ref} and  \texttt{@dmrole}, may differ depending on
 the usage:
 
 
@@ -31,17 +31,19 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
 
 \item Child of \texttt{COLLECTION} :
 
-    The \texttt{ATTRIBUTE} can be seen as a vector coordinate, 
-    it must have  no \texttt{@dmrole} xml attribute or an empty one
+    The \texttt{ATTRIBUTE} can be seen as a vector coordinate;  
+    %mir: I do not understand the image here .. what would this coordinates be ? 
+    %mir: properties of something? 
+    it must have  no \texttt{@dmrole} XML attribute or an empty one
     
 \item Child of \texttt{INSTANCE} :
 
-    The \texttt{ATTRIBUTE} can be seen as a class attribute, 
-    it must have a \texttt{@dmrole} xml attribute
+    The \texttt{ATTRIBUTE} can be seen as a class attribute;
+    it must have a \texttt{@dmrole} XML attribute
            
 \item Any case :
 
-    The \texttt{ATTRIBUTE} must always have a non empty \texttt{@dmtype} xml attribute.
+    The \texttt{ATTRIBUTE} must always have a non empty \texttt{@dmtype} XML attribute.
 \end{enumerate}  
     
     
@@ -98,9 +100,13 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
             This attribute is always optional.\\
         \hline 
      \end{tabulary}
-     \caption{\texttt{ATTRIBUTE} attributes} 
+     \caption{XML attributes for the \texttt{ATTRIBUTE} element.} 
      \label{tbl:attribute-att}
  \end{table}
+
+%mir : I cannot identify clearly the list of usage context . 
+%mir: numbers are changed w.r.to the previous list above. 
+%mir : should we use a, b, c in the Pattern columns? or ?
 
 \begin{table}[!htbp]
 \small

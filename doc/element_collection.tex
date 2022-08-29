@@ -1,6 +1,8 @@
     \texttt{COLLECTION} is a container element.  It is used in different contexts, each allowing a limited subset of elements for its content. 
     
-    \texttt{COLLECTION} can be populated either by a static list of items (\texttt{INSTANCE}, \texttt{ATTRIBUTE}, ..) or by joining to another \texttt{COLLECTION} (using the \texttt{JOIN} element). Both  modes cannot coexist.
+    \texttt{COLLECTION} can be populated either by a static list of items (\texttt{INSTANCE}, \texttt{ATTRIBUTE}, ..) or by   %joining to another \texttt{COLLECTION} (using the \texttt{JOIN} element).
+    creating a new COLLECTION object resulting from a join (defined by the \texttt{JOIN} element).
+     Both  modes cannot coexist, so we identify three different context of usage: 
     
     \begin{enumerate}
     \item{As child of INSTANCE}
@@ -15,7 +17,8 @@
       
     \item{As child of GLOBALS}
           
-      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by PRIMARY \texttt{FOREIGN\_KEY} 
+      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by PRIMARY \texttt{FOREIGN\_KEY}.
+      
       Examples of usage in this context would be:
       \begin{itemize}
         \item a set of photometry filters, which apply to various rows of a photometric data table, based on the value of the 'band' column.
@@ -24,7 +27,7 @@
           
     \item{As child of COLLECTION}
     
-	The collection contains a matrix of  atomic values
+	The collection contains a matrix of  atomic values.
         
     \end{enumerate}
    
@@ -61,7 +64,7 @@
     </COLLECTION>
 <GLOBALS>
 \end{lstlisting}   
-
+%mir : should we add a pointer to one of the git hub examples to be more explicit ? 
 
 \begin{table}[!htbp]
   \small
@@ -79,7 +82,7 @@
          Role of the \texttt{COLLECTION} in the data model. \\
     \hline 
   \end{tabulary}
-  \caption{\texttt{COLLECTION} attributes} 
+  \caption{\texttt{XML attributes for the COLLECTION} element.} 
   \label{tbl:collection-att}
  \end{table}
 
@@ -101,13 +104,13 @@
       2 &
       MAND & 
       NO & 
-      The collection, has no role. MUST have non-empty  \texttt{@dmid} to reference for ORM selection of contained \texttt{INSTANCE}. This occurs when e.g. the \texttt{COLLECTION} is a \texttt{GLOBALS} child.\\
+      The collection has no role. It MUST have non-empty  \texttt{@dmid} to reference for ORM selection of contained \texttt{INSTANCE}. This occurs when e.g. the \texttt{COLLECTION} element is a child element of  a \texttt{GLOBALS}\\
     \hline 
   \end{tabulary}
-  \caption{Valid attribute patterns for \texttt{COLLECTION}} 
+  \caption{Valid XML attribute patterns for \texttt{COLLECTION} in the various contexts listed above. } 
   \label{tbl:collection-pattern}
  \end{table}
-
+% mir explain Position  and what are Only , Any 
 
 \begin{table}[!htbp]
   \small
@@ -139,7 +142,7 @@
         \texttt{JOIN} & 
         Any & 
         0-1 & 
-        Collection populated with a set of joined instances. No other child is supported in this case\\
+        Collection populated with a set of joined instances. No other child is supported in this case.\\
     \hline    
         \texttt{COLLECTION} & 
         Only & 
