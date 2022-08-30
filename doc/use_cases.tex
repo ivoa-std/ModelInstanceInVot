@@ -1,9 +1,10 @@
 
-The utimate goal of this standard is to allow clients to get a better understanding of the data complexity whether it is legacy or set for a particular model. It is however important not to force clients to choose between a regular data processing and a full object approach.
+The ultimate goal of this standard is to allow clients to get a better understanding of the data complexity whether it is legacy or set for a particular model. It is however important not to force client developers  to choose between a regular table data extraction process and a full object oriented approach. Both ways should be allowed for the same data file.
+
 The design of the mapping syntax addresses the necessity of supporting intermediate levels of use that correspond to concrete use cases.
 
 \begin{itemize}
-  \item The recent modelling efforts (Meas, Coords and PhotDM) provide very accurate descriptions of coordinate frames or photometric 
+  \item The recent modeling efforts (Meas, Coords and PhotDM) provide very accurate descriptions of coordinate frames or photometric 
         systems that need to be serialised in VOTables:
   \begin{itemize}
     \item Clients often need to get such coordinate systems descriptions upon different axes to properly display datasets. 
@@ -32,13 +33,15 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
   which proposes classes for most of the physical quantities that can 
   be rendered by the mapping syntax. Measure classes are not meant to 
   be used as standalone elements but as parts of host models 
-  (e.g. CubeDM, Mango);
+  (e.g. Cube DM, MANGO DM);
   however clients are free to either process those host models as a
   whole or to chase individual components.
+  
+  With more precise information on coordinate systems in the annotation:
     \begin{itemize}
-      \item Cross matching VOTables containing the same quantities, e.g. the sky position, is easier.
-            This also improves the reliability of the process since the engine does not need to infer information that is not in the FIELD meta-data.
-      \item Building SEDs from datasets that have the same photometric calibration representation is straightforward.
+      \item Cross matching sources in VOTables containing the same quantities, e.g. the sky position, becomes easier.
+            The reliability of the process is improved since the engine does not need to infer information that is not present in the FIELD metadata.
+      \item Building SEDs from datasets that have the same photometric calibration representation becomes straightforward.
    \end{itemize}          
 
   \item In more advanced cases, we need to be able to extract complete model instances from VOTables.
@@ -49,10 +52,8 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
    \end{itemize}         
     
    \item MIVOT can be used to annotate static science products such as e.g. time-series. It can also be used to annotate 
-   on the fly TAP responses.
-   It is to be noted and as shown by \cite{2201.01732}  that this process is not always 
-   possible because the model compliance of the searched data strongly depends 
-   on the query (missing searched columns, joins, data aggregation ...). 
+    TAP responses on the fly, as shown by \cite{2201.01732}. Note that this process relies on the correct execution of the TAP query 
+    with respect to the data base content and may fail due to missing searched columns, illegal joins, or bad data aggregation, for instance. 
    %(ref- https://doi.org/10.48550/arXiv.2201.01732)
    
     
