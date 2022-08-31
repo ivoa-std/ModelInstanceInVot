@@ -1,7 +1,7 @@
 
 In listing \ref{app:join-pattern-1}, the \texttt{GLOBALS} collection having \texttt{cube:SparseCube.data} as role is populated with  instances of another \texttt{TEMPLATES} (or global \texttt{COLLECTION})
 \begin{itemize}
-  \item The joined \texttt{TEMPLATES} is this containing the  \texttt{INSTANCE \texttt{@dmid} \_ts\_data}
+  \item The joined \texttt{TEMPLATES} is the one containing the  \texttt{INSTANCE} whose \texttt{@dmid} equals "\_ts\_data"
   \item The joined items are those matching the condition  \texttt{ Results[\_band]='G'}
 \end{itemize}
 
@@ -32,9 +32,9 @@ In listing \ref{app:join-pattern-1}, the \texttt{GLOBALS} collection having \tex
 </VODML>
 \end{lstlisting}  
 
-Listing \ref{app:join-pattern-2} below shows up another way to map the same join but by using a \texttt{@sourceref}.
+Listing \ref{app:join-pattern-2} below shows another way to map the same join but by using a \texttt{@sourceref}.
 
-\begin{lstlisting}[label={app:join-pattern-2},caption={Joining a global \texttt{COLLECTION} with a \texttt{TEMPLATES}  identified by a @sourceref},language=XML]
+\begin{lstlisting}[label={app:join-pattern-2},caption={Joining a global \texttt{COLLECTION} with a \texttt{TEMPLATES}  identified by a \texttt{@sourceref} .},language=XML]
 <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
   ....
   <GLOBALS>
@@ -64,7 +64,7 @@ Listing \ref{app:join-pattern-2} below shows up another way to map the same join
 This pattern works since the joined \texttt{TEMPLATES} has only one child. 
 If it had more than one child, the mapped instances would have to be identified by \texttt{@dmid} \texttt{@dmref} pairs as shown in listing \ref{app:join-pattern-3}
 
-\begin{lstlisting}[label={app:join-pattern-3},caption={Joining a \texttt{TEMPLATES} with a global \texttt{COLLECTION} identified by both \texttt{@sourceref} and \texttt{@dmid} \texttt{@dmref} pairs},language=XML]
+\begin{lstlisting}[label={app:join-pattern-3},caption={Joining a \texttt{TEMPLATES} with a global \texttt{COLLECTION} identified by both \texttt{@sourceref} and \texttt{(@dmid,@dmref)} pairs.},language=XML]
 <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
   ....
   <GLOBALS>
@@ -100,7 +100,7 @@ In the example \ref{app:join-pattern-4}, the collection having \texttt{cube:Spar
 \end{itemize}
 
 
-\begin{lstlisting}[label={app:join-pattern-4},caption={Joining two \texttt{TEMPLATES} together with \texttt{@dmid} \texttt{@dmref} pairs},language=XML]
+\begin{lstlisting}[label={app:join-pattern-4},caption={Joining two \texttt{TEMPLATES} together with \texttt{(@dmid,@dmref)} pairs.},language=XML]
 <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
   ....
   <GLOBALS>

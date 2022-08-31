@@ -10,21 +10,24 @@ The following features are validated:
   \item Element ordering in specific sequences
 \end{itemize}
 
-In addition to this basic check, XSD 1.1 asserts which patterns are allowed or forbidden:
+In addition to this basic check, XSD 1.1 can express constraints on elements associations using \texttt{<xs:assert>} to tell which patterns are allowed or forbidden:
 
 \begin{itemize} 
   \item Which elements are mandatory, optional  or forbidden in the local context (parent and children elements).
   \item Which attributes are mandatory, optional  or forbidden in the context of the host element.
   \item Attribute value requirements according to the context of the host element.
+    % mir ??? \item Requirements on attributes's value in the context of the host element: expected range, etc...
+
 \end{itemize}
  
 The scope of this schema-based validation is limited to the syntax however. 
 The clients are still responsible for checking whether or not the attribute values are correct and for managing any semantic inconsistencies:
 
 \begin{itemize} 
-  \item Are references resolvable ?
-  \item Do units conform to any requirement of the mapped models ?
-  \item Is the mapping structure faithful to the referenced models?
+  \item Are references resolvable ? % mir Can references be resolved ?  
+  \item Do units conform to the requirements of the mapped models ?
+  \item Is the mapping structure faithful to the %referenced 
+  models involved?
 \end{itemize}
 
 
