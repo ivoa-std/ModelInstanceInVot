@@ -1,12 +1,14 @@
 
 The \texttt{ATTRIBUTE} element defines either a class attribute or a collection item, both set with atomic values.
 The requirements on
-the content (especially ref and  \texttt{@dmrole}, may differ depending on
+the content (especially \texttt{@ref} and  \texttt{@dmrole}, may differ depending on
 the usage:
 
 
 \begin{enumerate}
-\item Descendant of \texttt{GLOBALS}
+\item Child of \texttt{INSTANCE}
+ The \texttt{ATTRIBUTE} can be seen as a class attribute;
+    it must have a \texttt{@dmrole} XML attribute.
 
 In this case, the \texttt{ATTRIBUTE} must be specified by:
   \begin{itemize} 
@@ -18,7 +20,9 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
   \end{itemize}  
 
   
-\item Descendant of \texttt{TEMPLATES} 
+\item Child of \texttt{COLLECTION} 
+In this case the host \texttt{COLLECTION} can be seen as a vector and the \texttt{ATTRIBUTE} as one coordinate of the vector. 
+It must have  no \texttt{@dmrole} XML attribute or an empty one.
 
 In this case, the \texttt{ATTRIBUTE} must be specified by:
   \begin{itemize} 
@@ -28,24 +32,14 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
       \item if both are provided, \texttt{@value} serves as the default if 
       the reference cannot be resolved
   \end{itemize}  
-
-\item Child of \texttt{COLLECTION} :
-
-    The \texttt{ATTRIBUTE} can be seen as a vector coordinate, 
-    it must have  no \texttt{@dmrole} xml attribute or an empty one
-    
-\item Child of \texttt{INSTANCE} :
-
-    The \texttt{ATTRIBUTE} can be seen as a class attribute, 
-    it must have a \texttt{@dmrole} xml attribute
-           
+              
 \item Any case :
 
-    The \texttt{ATTRIBUTE} must always have a non empty \texttt{@dmtype} xml attribute.
+    The \texttt{ATTRIBUTE} must always have a non empty \texttt{@dmtype} XML attribute.
+    If the \texttt{ATTRIBUTE}  is located within a \texttt{GLOBALS}, its value must be set with  a  \texttt{@value} since the \texttt{GLOBALS} block is not connected with any data table.
 \end{enumerate}  
     
-    
-\begin{lstlisting}[caption={ATTRIBUTE examples},language=XML]
+\begin{lstlisting}[caption={\texttt{ATTRIBUTE} examples.},language=XML]
 <INSTANCE dmtype="model:Thing">
     <ATTRIBUTE dmrole="model:Thing.f" dmtype="model.Alpha" value="xyz"/>		
     <INSTANCE dmrole="model:Thing.pos" dmtype="adhoc:Position">
@@ -98,9 +92,13 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
             This attribute is always optional.\\
         \hline 
      \end{tabulary}
-     \caption{\texttt{ATTRIBUTE} attributes} 
+     \caption{XML attributes of  \texttt{ATTRIBUTE} .} 
      \label{tbl:attribute-att}
  \end{table}
+
+%mir : I cannot identify clearly the list of usage context . 
+%mir: numbers are changed w.r.to the previous list above. 
+%mir : should we use a, b, c in the Pattern columns? or ?
 
 \begin{table}[!htbp]
 \small
@@ -120,27 +118,27 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
         OPT &           
         OPT &           
         OPT &   
-        1 \\
+        (a)\\
     \hline   
         MAND &           
         MAND &           
         NO &           
         MAND &           
         OPT &   
-        2\\
+        (b)\\
     \hline  
         NO &           
         MAND &           
         OPT &           
         OPT &           
         OPT &   
-        3 \\
+        (c) \\
    \hline 
 \end{tabulary}
-     \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (1) Valid in a \texttt{TEMPLATES} context.        
+     \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (a) Valid in a \texttt{TEMPLATES} context.        
         The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by \texttt{@ref} 
-       If the \texttt{@ref} can not be resolved and \texttt{@value} is present, \texttt{@value} must be taken. Either \texttt{@ref} or \texttt{@value} must be present or both (2) This pattern 
-        is valid in any context.  (3) is valid in the context of a \texttt{COLLECTION} item.    
-        The \texttt{ATTRIBUTE} value must be set with \texttt{@value}         as \texttt{ATTRIBUTE} value} 
+       If the \texttt{@ref} can not be resolved and \texttt{@value} is present, \texttt{@value} must be taken. Either \texttt{@ref} or \texttt{@value} must be present or both. (b) This pattern 
+        is valid in any context.  (c) is valid in the context of a \texttt{COLLECTION} item.    
+        The \texttt{ATTRIBUTE} value must be set with \texttt{@value} as \texttt{ATTRIBUTE} value.} 
      \label{tbl:attribute-pattern}
  \end{table}
