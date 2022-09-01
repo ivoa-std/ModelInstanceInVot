@@ -6,7 +6,7 @@ There  are 2 different uses for this element:
   Only the table rows satisfying the \texttt{WHERE} conditions will be mapped. 
   With this pattern \texttt{WHERE} must have one \texttt{@primarykey} attribute and one \texttt{@value} attribute. 
   \texttt{@primarykey} references the column (FIELD) to be checked. 
-  The \texttt{WHERE} condition is satisfied for the rows having \texttt{@primarykey} equals to \texttt{@value}
+  The \texttt{WHERE} condition is satisfied for the rows having \texttt{@primarykey} equals to \texttt{@value}.
              
 \item{As a child of \texttt{JOIN}:}
       
@@ -17,7 +17,7 @@ There  are 2 different uses for this element:
 
 \end{enumerate}
 
-\begin{lstlisting}[caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped},language=XML]
+\begin{lstlisting}[caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped.},language=XML]
 <TEMPLATES tableref="table">
   <WHERE primarykey="col1" value="val1" />
   <WHERE primarykey="col2" value="val2" />
@@ -25,7 +25,7 @@ There  are 2 different uses for this element:
 </TEMPLATES>
 \end{lstlisting}
 
-\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the ptc column is equal to the ftc column of the foreign table. },language=XML]
+\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the 'ptc' column is equal to the 'ftc' column of the foreign table. },language=XML]
 <JOIN tableref="ft" >
 	<WHERE foreignkey="ftc" primarykey="ptc" />
 </JOIN>
@@ -49,7 +49,7 @@ There  are 2 different uses for this element:
             Literal value the  \texttt{@primarykey} cell must match with\\
         \hline 
      \end{tabulary}
-     \caption{\texttt{WHERE} attributes} 
+     \caption{\texttt{WHERE} attributes.} 
      \label{tbl:where-att}
  \end{table}
 
@@ -74,6 +74,6 @@ There  are 2 different uses for this element:
         Simple join criteria: \texttt{@primarykey} = \texttt{@value} \\
    \hline 
 \end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{WHERE}}
+     \caption{Valid attribute patterns for  \texttt{WHERE}.}
      \label{tbl:where-pattern}
 \end{table}

@@ -1,6 +1,6 @@
 The example below illustrates how \texttt{GLOBALS} objects can be referenced from a  \texttt{TEMPLATES}. 
 
-\begin{lstlisting}[caption={Dynamic reference example},language=XML]
+\begin{lstlisting}[caption={Dynamic reference example.},language=XML]
 <GLOBALS>
   <COLLECTION dmid="_Filters">
     <INSTANCE dmtype="photdm:Filter">
@@ -16,7 +16,7 @@ The example below illustrates how \texttt{GLOBALS} objects can be referenced fro
 
 <TEMPLATES tableref="Results">
   ....
-  <REFERENCE	dmrole="model:Class.filter"	sourceref="_Filters">
+  <REFERENCE dmrole="model:Class.filter" sourceref="_Filters">
     <FOREIGN_KEY ref="_band" />
   </REFERENCE>
   ...

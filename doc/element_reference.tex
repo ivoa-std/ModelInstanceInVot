@@ -9,11 +9,11 @@ There are different uses for the \texttt{REFERENCE}
              If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first match must be taken by default.
 \end{itemize}
 
-\begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1 },language=XML]
+\begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1.},language=XML]
 <REFERENCE dmrole="_role" dmref="_target1" />
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \_target1 and having a \texttt{PRIMARY\_KEY} matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES},language=XML]
+\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \_target1 and having a \texttt{PRIMARY\_KEY} matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES.},language=XML]
 <REFERENCE dmrole="_role" sourceref="_target1">
     <FOREIGN_KEY ref="_col1" />
 </REFERENCE>
@@ -37,7 +37,7 @@ There are different uses for the \texttt{REFERENCE}
             \texttt{@dmid} of the referenced instance or collection\\
         \hline 
      \end{tabulary}
-     \caption{\texttt{REFERENCE} attributes} 
+     \caption{\texttt{REFERENCE} attributes.} 
      \label{tbl:reference-att}
  \end{table}
 
@@ -57,7 +57,7 @@ There are different uses for the \texttt{REFERENCE}
         Foreign key to be used to resolve a dynamic reference.\\
     \hline 
 \end{tabulary}
-     \caption{Allowed children for \texttt{REFERENCE}} 
+     \caption{Allowed children for \texttt{REFERENCE}.} 
      \label{tbl:reference-children}
 \end{table}
 
@@ -83,7 +83,7 @@ There are different uses for the \texttt{REFERENCE}
         Simple reference to either an \texttt{INSTANCE} or \texttt{COLLECTION}, usually searched in the \texttt{GLOBALS}\\
    \hline 
 \end{tabulary}
-     \caption{Valid attribute patterns for  \texttt{REFERENCE}}
+     \caption{Valid attribute patterns for  \texttt{REFERENCE}.}
      \label{tbl:reference-pattern}
 \end{table}
 
