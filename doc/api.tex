@@ -2,12 +2,10 @@ The mapping syntax is pure XML. It can easily be processed by any XML package in
 Although no API definition is part of the standard, the experience we got when exercising the syntax allows us to identify 
 4 processing levels.
 
-
 \begin{enumerate} 
   \item Raw XML: The client resolves the reference and delivers an XML block corresponding to the searched models or model components. 
           This %implies  
-          impose the client to parse some XML using XPath strings that only refer to elements in the MIVOT namespace.
-          % mir The rest of the VOTable is checked by with the usual votable validation schema .
+          imposes the client to parse some XML using XPath strings that only refer to elements in the MIVOT namespace.
   \item XML Wrapper class: The XPath strings mentioned above can be wrapped in generic objects providing accessors retrieving model nodes by selecting types or roles. 
   \item Model classes: For the most popular models and especially for the models that provide reusable components (Meas/Coord, PhotDM), the API can include objects instantiating model classes (e.g. Photometric filter).
   \item Automatic extraction of class instances of common frameworks: One of the goal of the data annotation is to facilitate the connection between data and API code. This could be achieved with an API able to automatically build objects from the annotated data without asking the user to infer on meta data. Taking the Astropy example, a model-enable Python API should be able to build e.g. \texttt{Skycoord} instances in a transparent way and feed them with \texttt{FIELD} values from \texttt{TABLE} rows or from \texttt{PARAM}.
