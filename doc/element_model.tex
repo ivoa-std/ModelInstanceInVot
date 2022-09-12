@@ -5,13 +5,19 @@ Only models that are used in the file must be declared. A model is
 used if at least one element in the mapping block refers to it. In other terms, only models that define vodml-ids used in the
 annotation must be declared.
 
-\begin{lstlisting}[caption={Example \texttt{MODEL} mapping block.},language=XML]
-<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
-  <MODEL name="sample-ext"
-                     url="https://www.myorg.net/models/SampleExt-v1.0.vo-dml.xml" />
-  <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
-</VODML>
+\begin{lstlisting}[caption={Example \texttt{MODEL} mapping block. (see in context line \ref{MODEL_snippet}) },language=XML]
+<MODEL name="ivoa"   
+       url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+<MODEL name="mango"
+       url="file:/Users/sao/Documents/IVOA/GitHub/ivoa-dm-examples/tmp/Mango-v1.0.vo-dml.xml" />
+<MODEL name="cube"
+       url="https://volute.g-vo.org/svn/trunk/projects/dm/Cube/vo-dml/Cube-1.0.vo-dml.xml" />
+<MODEL name="ds"
+       url="https://volute.g-vo.org/svn/trunk/projects/dm/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml" />
+<MODEL name="meas"
+       url="https://www.ivoa.net/xml/Meas/20200908/Meas-v1.0.vo-dml.xml" />
+<MODEL name="coords"
+       url="https://www.ivoa.net/xml/STC/20200908/Coords-v1.0.vo-dml.xml" />
 \end{lstlisting}
 
 \begin{table}[!htbp]
