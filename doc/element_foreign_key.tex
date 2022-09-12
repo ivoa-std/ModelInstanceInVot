@@ -1,7 +1,7 @@
-FOREIGN\_KEY is only used within a \texttt{REFERENCE} located within a TEMPLATE.
+\texttt{FOREIGN\_KEY} is only used within a \texttt{REFERENCE} located within a \texttt{TEMPLATE}.
 It identifies the FIELD that must  match the primary key of the referenced collection.
 
-\begin{lstlisting}[caption={The \texttt{REFERENCE} is resolved by the \texttt{INSTANCE} of table \_CoordinateSystems that has a primary key equals to the value of the column  \_band},language=XML]
+\begin{lstlisting}[caption={The \texttt{REFERENCE} is resolved by the \texttt{INSTANCE} of table \_CoordinateSystems that has a primary key equals to the value of the column  \_band.},language=XML]
 <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="_CoordinateSystems">
       <FOREIGN_KEY ref="_band"/>
 </REFERENCE>
@@ -19,6 +19,6 @@ It identifies the FIELD that must  match the primary key of the referenced colle
              Identifier of the FIELD that must  match the primary key of the referenced collection \\
      \hline
      \end{tabulary}
-     \caption{\texttt{FOREIGN\_KEY} attributes} 
+     \caption{\texttt{FOREIGN\_KEY} attributes.} 
      \label{tbl:foreignkey-att}
  \end{table}
