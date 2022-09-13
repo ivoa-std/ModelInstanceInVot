@@ -16,24 +16,30 @@ The basis on which the standard is designed is threefold 1) the data content is 
 It must also allow to bind native data with a model in a way that model-aware software can see it as model instances while maintaining the possibility to access them in their original serialization.
 
 The VOTable schema supports an XML attribute for this purpose, a UType, that partially meets this function. 
-UTypes are path-like strings (\texttt{m:a.b.c}) identifying model leaves. As there is no common rule to build UTypes,  each data model (e.g. Characterization, Obscore)  must come with its specific lists of UTypes. 
+UTypes are path-like strings (\texttt{m:a.b.c}) identifying model leaves. 
+They are labels attached to a \texttt{FIELD} or \texttt{PARAM} that tells its role in the
+model structure, typically a non cyclic graph. 
+As there is no common rule to build UTypes,  each data model (e.g. Characterization, Obscore)  must come with its specific lists of UTypes. 
 
-When used as \texttt{FIELD} attributes, UTypes allow one to connect particular columns to model leaves. This mapping method fits very well with the VOTable schema since it does not require any specific XML elements. It has however a number of limitations that have been discussed many times:
+When used as \texttt{FIELD} attributes, UTypes allow one to connect particular columns to model leaves. This mapping method fits very well with the VOTable schema since it does not require any specific XML elements. 
+However, some UTypes features that could complicate the mapping process have been discussed many times:
 
 \begin{itemize}
-  \item UTypes are labels attached to  a \texttt{FIELD} or \texttt{PARAM} that tells its role in the 
-  model structure, typically a non cyclic graph. 
-   \item There is no possibility for one  \texttt{FIELD} or \texttt{PARAM} to play multiple roles.
-  \item UTypes are not intended to be parsed, so they only identify which role is played by a \texttt{FIELD}/\texttt{PARAM}, in a restricted context. The same element used in different contexts or models have different UTypes; which hinders interoperability.
-  \item UTypes constrain to single-table serializations. All model elements must 
-  be contained within the same VOTable TABLE. 
+  \item There is no possibility for one  \texttt{FIELD} or \texttt{PARAM} to play multiple roles.
+  \item UTypes are not intended to be parsed, so they only identify which role is played by a \texttt{FIELD}/\texttt{PARAM}, 
+  in a restricted context. The same element used in different contexts or models have different UTypes; which hinders interoperability.
+  \item UTypes constrain to single-table serializations. They do no allow to join data from different tables. 
   \item UTypes do not support annotating the VOTable content towards multiple models 
   (as TimeSeries or Catalog/Source for instance)
 \end{itemize}
 
-The UType approach could have been extended to overcome these drawbacks, but it has been decided to move forward a solution closer to the \texttt{VODML} \citep{2018ivoa.spec.0910L} concepts. 
+The UType approach could have been extended to overcome these limitations, but it has been decided to move forward a solution closer to the \texttt{VODML} \citep{2018ivoa.spec.0910L} concepts. 
 \texttt{VODML} is a meta-model that gives a standard way to express VO models as machine-readable XML document.
-In \texttt{VODML},  model leaves are no longer identified by simple strings like UTypes do, but by the role they play in a given location in the model hierarchy.
+In \texttt{VODML}, the role of model leaves are no longer given by simple strings like UTypes, but by the local role they play in the model hierarchy.
+
+
+
+
 As a consequence, an annotation mechanism such as MIVOT, based on \texttt{VODML} and preserving the model hierarchy can easily provide data representations faithful to that model.
 
 The basis of MIVOT is to insert into the VOTable, an XML block complying with the 
