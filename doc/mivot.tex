@@ -5,6 +5,7 @@
 \usepackage{tabulary}  % for nicer tables
 \usepackage{calc}
 \usepackage{placeins}
+\usepackage{listings}
 \setlength\extrarowheight{2pt}
 
 \newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
@@ -50,7 +51,7 @@
  \lstloadlanguages{XML}
  \lstdefinestyle{XML}{
     captionpos=b,
-    basicstyle=\footnotesize
+    basicstyle=\tiny
 }
 
  \lstset{flexiblecolumns=true,
@@ -76,6 +77,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document core
 %
+\author{Laurent Michel}
+\author{Mark Cresitello-Dittmar}
 \author{François Bonnarel}
 \author{Gilles Landais}
 \author{Mireille Louys}
@@ -90,10 +93,11 @@
 % \previousversion[????URL????]{????Concise Document Label????}
 \previousversion{This is the first public release}
        
+
 \begin{document}
 
 \begin{abstract}
-Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data to any model serialized in VODML.
+Model Instances in VOTables (MIVOT) defines a syntax to map VOTable data to any model serizalized in VODML.
 The annotation operates as a bridge between the data and the model.
 It associates the column/param metadata from the VOTable to the 
 data model elements (class, attributes, types, etc.) of a standardized IVOA data model, expressed in the Virtual Observatory Data Modeling Language (here after VO-DML).
@@ -114,8 +118,8 @@ The backward compatibility is preserved thanks to the limited impact of the anno
 \section*{Acknowledgments}
 We would like to thank all the people who have contributed to this standard, starting with the authors of the VO Data Modeling Language who have introduced the concepts developed here.
 We would also like to thank all contributors of the "Source Data Model" session held at the Paris Interop Meeting in 2019, as well as all members of the IVOA Time Domain Interest Group and the participants to the Data Model workshop we ran in Spring 2021. All helped us to refine our use-cases.
-We would like to acknowledge support from European Project ESCAPE, OV-France and funding agencies (CNRS-INSU).
-Finally, we say a big thank you to the CDS members who spent time for assessing how such an annotation procedure could improve their VO services.
+We would like the thank the both funding projects (European Project ESCAPE, OVFrance) and agencies (CNRS-INSU).
+Finally, we say a big thank you to all the colleagues who spent time for assessing how such an annotation procedure could improve their VO services.
 This acknowledgement does not mention individuals, as the list would be too long, especially the many interns who contributed to this project.
 
 \section*{Conformance-related definitions}
@@ -149,7 +153,7 @@ infrastructure that enable VO applications.
 % you must remove archdiag.svg from FIGURES in the Makefile.
 
 \includegraphics[width=0.9\textwidth]{role_diagram.pdf}
-\caption{Architecture diagram for this document.}
+\caption{Architecture diagram for this document}
 \label{fig:archdiag}
 \end{figure}
 
@@ -192,7 +196,7 @@ The scope of the mapping block is the whole content of the 'results' RESOURCE. \
 
 The mapping element must be isolated from the VOTable elements by a name space set as an attribute of the \texttt{VODML} element.
 
-\begin{lstlisting}[caption={Mapping block in a VOTable.},language=XML]
+\begin{lstlisting}[caption={Mapping block in a VOTable},language=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
   <RESOURCE type="results">
@@ -224,7 +228,7 @@ The mapping element must be isolated from the VOTable elements by a name space s
 \input{element_report.tex}
 \FloatBarrier
  
-\subsection{MODEL}
+\subsection{MODEL} \label{MODEL}
 \input{element_model.tex}
 \FloatBarrier
 
@@ -286,17 +290,16 @@ No previous versions yet.
 \appendix 
 
 \section{TAP and the data models}
-\label{appen_tap}
 \input{appendix_A.tex}
 
 \section{Dynamic References}
-\label{appen_dynref}
 \input{appendix_B.tex}
 
 \section{Join Examples}
-\label{appen_join}
 \input{appendix_C.tex}
 
+\section{Complete VOTable}
+\input{appendix_D.tex}
 
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
