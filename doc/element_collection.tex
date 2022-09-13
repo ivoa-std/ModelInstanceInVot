@@ -56,11 +56,31 @@
 \end{lstlisting}   
 
 \begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN. See Appendix..~\ref{appen_join}.},language=XML]
-<GLOBALS>
-    <COLLECTION dmrole="_joined_dataj">
+<TEMPLATES>
+    <INSTANCE dmtype="model:PhotometryFilter" >    
+      <COLLECTION dmrole="_joined_data">
         <JOIN tableref="_someTemplates" dmref="_extInst"/>
+      </COLLECTION>
+    </INSTANCE>
+    ...
+<TEMPLATES>
+\end{lstlisting}   
+
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} mapping a 2x2 matrix},language=XML]
+<TEMPLATES>
+  <INSTANCE dmtype="model:matrix_22">
+    <COLLECTION dmrole="model:matrix">
+    	<COLLECTION>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_11"/>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_12"/>
+    	</COLLECTION>
+    	<COLLECTION>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_21"/>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_22"/>
+    	</COLLECTION>
     </COLLECTION>
-<GLOBALS>
+  </INSTANCE>
+<TEMPLATES>
 \end{lstlisting}   
 
 \begin{table}[!htbp]
