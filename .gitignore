@@ -33,7 +33,7 @@
 *.fdb_latexmk
 *.fls
 *.gz
-*.pdf
+mivot.pdf
 *.zip
 *.html
 *.pyc
@@ -41,7 +41,6 @@ draft-background.*
 # Maven 
 target/
 *.synctex*
-*.pdf
 *.org
 # eclipse project file
 .settings/
