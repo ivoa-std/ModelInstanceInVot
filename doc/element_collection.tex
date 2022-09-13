@@ -15,7 +15,7 @@
       
     \item{As child of GLOBALS}
           
-      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by PRIMARY \texttt{FOREIGN\_KEY}.
+      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by \texttt{PRIMARY\_KEY}, \texttt{FOREIGN\_KEY} pairs.
       
       Examples of usage in this context would be:
       \begin{itemize}
@@ -57,7 +57,7 @@
 
 \begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN. See Appendix..~\ref{appen_join}.},language=XML]
 <TEMPLATES>
-    <INSTANCE dmtype="model:PhotometryFilter" >    
+    <INSTANCE dmtype="model:Foo" >    
       <COLLECTION dmrole="_joined_data">
         <JOIN tableref="_someTemplates" dmref="_extInst"/>
       </COLLECTION>
