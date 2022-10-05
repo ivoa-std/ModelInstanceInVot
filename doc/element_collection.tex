@@ -38,31 +38,42 @@
 </INSTANCE>
 \end{lstlisting}   
 
-\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of \texttt{GLOBALS}.},language=XML]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of \texttt{GLOBALS} (see in \ref{COLLECTION_snippet_1}).},language=XML]
 <GLOBALS>
-    <COLLECTION dmid="_filters" >
-        <INSTANCE dmtype="model:PhotometryFilter" >
-            <PRIMARY_KEY dmtype="ivoa:string" value="RP"/>
-            <ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
-                                    value="GAIA/GAIA2r.Grp"/>
+    <!--
+      Container for the datasets (one per timeseries)
+      -->
+    <COLLECTION dmid="IDDatasets" dmrole="">
+        <INSTANCE dmid="IDds1" dmtype="ds:experiment.ObsDataset">
+             <PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338560"/>
+             <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" 
+                        dmtype="ds:dataset.DataProductType" value="TIMESERIES"/>
+             <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" 
+                        dmtype="ivoa:string" value="GAIA Time Series"/>
+             <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" 
+                        dmtype="ivoa:integer" value="1"/>
+             <REFERENCE dmrole="ds:experiment.ObsDataset.target" dmref="IDtg1"/>
         </INSTANCE>
-        <INSTANCE dmtype="model:PhotometryFilter" >
-            <PRIMARY_KEY dmtype="ivoa:string" value="BP"/>
-            <ATTRIBUTE dmrole="model:PhotometryFilter.name" dmtype="ivoa:string"
-                                    value="GAIA/GAIA2r.Gbp"/>
+        
+        <INSTANCE dmid="IDds1" dmtype="ds:experiment.ObsDataset">
+             <PRIMARY_KEY dmtype="ivoa:string" value="5813181197970338561"/>
+              ...
         </INSTANCE>
     </COLLECTION>
 </GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN.},language=XML]
-<TEMPLATES>
-    <INSTANCE dmtype="model:Foo" >    
-      <COLLECTION dmrole="_joined_data">
-        <JOIN tableref="_someTemplates" dmref="_extInst"/>
-      </COLLECTION>
-    </INSTANCE>
-    ...
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN (see in \ref{COLLECTION_snippet_2}).},language=XML]
+<TEMPLATES tableref="IDPKTable">
+    <INSTANCE dmid="IDTimeSeries" dmrole="" dmtype="cube:SparseCube">
+        ....
+        <COLLECTION dmrole="cube:SparseCube.data">
+            <JOIN dmref="IDtsIDdata">
+                <WHERE foreignkey="IDsrcid" primarykey="IDpksrcid" />
+                <WHERE foreignkey="IDband" primarykey="IDpkband"  />
+            </JOIN>
+         </COLLECTION>
+     </INSTANCE>
 </TEMPLATES>
 \end{lstlisting}   
 

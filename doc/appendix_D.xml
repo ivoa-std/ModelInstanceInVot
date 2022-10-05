@@ -40,12 +40,12 @@
           <!--
               Container for the coordinate systems
             -->
-          <COLLECTION dmid="IDCoordinateSystems" dmrole="" >
+         <COLLECTION dmid="IDCoordinateSystems" dmrole="" >
             <!--
                 Time coordinate system
               -->
             <INSTANCE dmid="IDtimesys" dmrole="" dmtype="coords:TimeSys">
-              <PRIMARYIDKEY dmtype="ivoa:string" value="TCB"/>
+              <PRIMARY\_KEY dmtype="ivoa:string" value="TCB"/>
               <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:TimeFrame">
                 <ATTRIBUTE dmrole="coords:TimeFrame.timescale" dmtype="ivoa:string" value="TCB" />
                 <INSTANCE dmrole="coords:TimeFrame.refPosition" dmtype="coords:StdRefLocation">
@@ -57,7 +57,7 @@
                 Space coordinate system
               -->
             <INSTANCE dmid="IDspacesys1" dmrole="" dmtype="coords:SpaceSys">
-              <PRIMARYIDKEY dmtype="ivoa:string" value="ICRS"/>
+              <PRIMARY\_KEY dmtype="ivoa:string" value="ICRS"/>
               <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:SpaceFrame">
                 <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" value="ICRS"/>
                 <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="coords:Epoch" value="J2015.5"/>
@@ -68,7 +68,7 @@
                 We use a class of the first MANGO draft
               -->
             <INSTANCE dmid="IDphotsysIDG" dmtype="mango:coordinates.PhotometryCoordSys">
-              <PRIMARYIDKEY dmtype="ivoa:string" value="G"/>
+              <PRIMARY\_KEY dmtype="ivoa:string" value="G"/>
               <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="mango:coordinates.PhotFilter">
                 <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.G"/>
                 <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" dmtype="ivoa:RealQuantity" value="2.49524e-9"/>
@@ -79,7 +79,7 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmid="IDphotsysIDRP" dmrole="" dmtype="mango:coordinates.PhotometryCoordSys">
-              <PRIMARYIDKEY dmtype="ivoa:string" value="RP"/>
+              <PRIMARY\_KEY dmtype="ivoa:string" value="RP"/>
               <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="mango:coordinates.PhotFilter">
                 <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Grp"/>
                 <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" dmtype="ivoa:RealQuantity" value="1.29363e-9"/>
@@ -90,7 +90,7 @@
               </INSTANCE>
             </INSTANCE>
             <INSTANCE dmid="IDphotsysIDBP" dmrole="" dmtype="mango:coordinates.PhotometryCoordSys">
-              <PRIMARYIDKEY dmtype="ivoa:string" value="BP"/>
+              <PRIMARY\_KEY dmtype="ivoa:string" value="BP"/>
               <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="mango:coordinates.PhotFilter">
                 <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
                 <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" dmtype="ivoa:RealQuantity" value="4.03528e-9"/>
@@ -104,12 +104,13 @@
           <!--
               Container for the datasets (one per timeseries)
             -->
+          <!-- @\label{COLLECTION_snippet_1}@ back to @\ref{COLLECTION}@ -->
           <COLLECTION dmid="IDDatasets" dmrole="">
             <INSTANCE dmid="IDds1" dmrole="" dmtype="ds:experiment.ObsDataset">
               <!--
                   The primary keys of that collection items are set by the mapping 
                 -->
-              <PRIMARYIDKEY dmtype="ivoa:string" value="5813181197970338560"/>
+              <PRIMARY\_KEY dmtype="ivoa:string" value="5813181197970338560"/>
               <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" dmtype="ds:dataset.DataProductType" value="TIMESERIES"/>
               <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" dmtype="ivoa:string" value="GAIA Time Series"/>
               <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" dmtype="ivoa:integer" value="1"/>
@@ -130,19 +131,20 @@
          <TEMPLATES tableref="IDPKTable">
           <INSTANCE dmid="IDTimeSeries" dmrole="" dmtype="cube:SparseCube">
             <!--
-                The dataset object is the item of the COLLECTION@dmid=IDDatasets
+                The dataset object is the item of the COLLECTION[dmid=IDDatasets]
                 having a primary key matching the value of the column IDpksrcid for that particular row
               -->
             <REFERENCE dmrole="cube:DataProduct.dataset" sourceref="IDDatasets">
-              <FOREIGNIDKEY ref="IDpksrcid"/>
+              <FOREIGN\_KEY ref="IDpksrcid"/>
             </REFERENCE>
             <!--
-                Sparse cube data are given by the INSTANCE@dmid="IDtsIDdata"
+                Sparse cube data are given by the INSTANCE[dmid=IDtsIDdata]
                 These instances are located in the Results table (must be found by the client)
                 The matching row are identified by a double join condition
                     IDPKTable[IDpksrcid] = Results[IDsrcid]
                     IDPKTable[IDpkband] = Results[IDband]
               -->
+            <!-- @\label{COLLECTION_snippet_2}@ back to @\ref{COLLECTION}@ -->
             <COLLECTION dmrole="cube:SparseCube.data">
               <JOIN dmref="IDtsIDdata">
                 <WHERE foreignkey="IDsrcid" primarykey="IDpksrcid" />
@@ -164,7 +166,7 @@
                   <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:MJD">
                     <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" ref="IDobstime"/>
                     <!--
-                       The time coodinate is givel by the INSTANCE@dmid=IDtimesys
+                       The time coodinate is givel by the INSTANCE[dmid=IDtimesys]
                        This instance must be located by the client
                       -->
                     <REFERENCE dmrole="coords:Coordinate.coordSys" dmref="IDtimesys"/>
@@ -180,11 +182,11 @@
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mag"/>
                     </INSTANCE>
                     <!--
-                        The photometric system is given by the item of the COLLECTION@dmid=IDCoordinateSystems
+                        The photometric system is given by the item of the COLLECTION[dmid=IDCoordinateSystems]
                         having a primary key matching the value of the column IDband for that particular row
                       -->
                     <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="IDCoordinateSystems">
-                      <FOREIGNIDKEY ref="IDband"/>
+                      <FOREIGN\_KEY ref="IDband"/>
                     </REFERENCE>
                   </INSTANCE>
                 </INSTANCE>
@@ -198,11 +200,11 @@
                       <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
                     </INSTANCE>
                     <!--
-                        The photometric system is given by the item of the COLLECTION@dmid=IDCoordinateSystems
+                        The photometric system is given by the item of the COLLECTION[dmid=IDCoordinateSystems]
                         having a primary key matching the value of the column IDband for that particular row
                       -->
                     <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="IDCoordinateSystems">
-                      <FOREIGNIDKEY ref="IDband"/>
+                      <FOREIGN\_KEY ref="IDband"/>
                     </REFERENCE>
                   </INSTANCE>
                   <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
