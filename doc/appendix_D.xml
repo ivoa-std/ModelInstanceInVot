@@ -35,6 +35,7 @@
         <!--		
              place holder for singular data model instances not associated with a singular VOTabme TABLE
           -->
+        <!-- @\label{GLOBALS_snippet}@ back to @\ref{GLOBALS}@ -->
         <GLOBALS>
           <!--
               Container for the coordinate systems
@@ -126,7 +127,7 @@
         <!--
             Mapping of the rows of the table IDPKTable
           -->
-        <TEMPLATES tableref="IDPKTable">
+         <TEMPLATES tableref="IDPKTable">
           <INSTANCE dmid="IDTimeSeries" dmrole="" dmtype="cube:SparseCube">
             <!--
                 The dataset object is the item of the COLLECTION@dmid=IDDatasets
@@ -153,6 +154,7 @@
         <!--
             Mapping of the rows of the table Results
           -->
+        <!-- @\label{TEMPLATES_snippet}@ back to @\ref{TEMPLATES}@ -->
         <TEMPLATES tableref="Results">
           <INSTANCE dmid="IDtsIDdata" dmrole="" dmtype="cube:NDPoint">
             <COLLECTION dmrole="cube:NDPoint.observable">

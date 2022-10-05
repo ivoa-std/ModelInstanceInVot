@@ -2,17 +2,26 @@ The \texttt{TEMPLATES} block defines a template for deriving multiple data model
 one for each row of the associated VOTable \texttt{TABLE}.  A subset of the associated
 \texttt{TABLE} rows may be selected using the \texttt{WHERE} syntax element.
 
-\begin{lstlisting}[caption={Example \texttt{TEMPLATES} block.},language=XML]
+\begin{lstlisting}[caption={Example \texttt{TEMPLATES} block (see in \ref{TEMPLATES_snippet}).},language=XML]
 <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
-  <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <MODEL name="ivoa"   url="https://www.ivoa.net/xml/IVOA-v1.vo-dml.xml" />
-  <TEMPLATES tableref='Results'>
-    <!-- instance template -->
-    <INSTANCE dmtype="sample:Thing">
-      <ATTRIBUTE dmrole="sample:Thing.name" dmtype="ivoa:string" ref="_field1"/>
-      <ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="_field2"/>
-      ...
-    </INSTANCE>
+    ...
+    <GLOBALS>
+    ...
+    </GLOBALS>
+    <!--
+       Mapping of the rows of the table Results
+     -->  
+    <TEMPLATES tableref="Results">
+        <INSTANCE dmid="IDtsIDdata" dmrole="" dmtype="cube:NDPoint">
+            <COLLECTION dmrole="cube:NDPoint.observable">
+                <INSTANCE dmtype="cube:Observable">
+                    <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="False"/>
+                    ...
+                </INSTANCE>
+            </COLLECTION>
+            ...
+        </INSTANCE>
+    </TEMPLATES>
   </TEMPLATES>
 </VODML>
 \end{lstlisting}

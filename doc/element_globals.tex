@@ -10,29 +10,24 @@ Note: This rule is not enforced via the MIVOT XSD schema which is restricted to 
 Related instances may be grouped within a \texttt{COLLECTION} block to enable selection
 via the ORM elements provided in this syntax.  See \texttt{COLLECTION} subsection for more details.
 
-\begin{lstlisting}[caption={Example \texttt{GLOBALS} block.},language=XML]
-<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
-  <MODEL name="sample" url="https://www.ivoa.net/xml/DNE/Sample-v1.0.vo-dml.xml" />
-  <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.0.vo-dml.xml" />
-  <GLOBALS>
-    <!-- a collection of coordinate systems -->
-    <COLLECTION dmid="_CoordinateSystems" >
-      <INSTANCE dmid="_timesys" dmtype="sample:TimeSys">
-         ...
-      </INSTANCE>
-      <INSTANCE dmid="_spacesys" dmtype="sample:SpaceSys">
-         ...
-      </INSTANCE>
-    </COLLECTION>
-
-    <!-- a singular, stand-alone instance -->
-    <INSTANCE dmtype="sample:Thing">
-      <ATTRIBUTE dmrole="sample:Thing.name" dmtype="ivoa:string" value="MyThing"/>
-      <ATTRIBUTE dmrole="sample:Thing.date" dmtype="ivoa:string" ref="_date"/>
-      ...
-    </INSTANCE>
-  </GLOBALS>
-</VODML>
+\begin{lstlisting}[caption={Example \texttt{GLOBALS} block (see in \ref{GLOBALS_snippet}).},language=XML]
+<VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+    <REPORT status="OK">Mapping compiled by hand</REPORT>
+    <MODEL... />
+    <!--	             
+        place holder for singular data model instances not associated with a singular VOTabme TABLE
+     -->
+    <GLOBALS>
+        <!--
+          Container for the coordinate systems
+         -->
+        <COLLECTION dmid="IDCoordinateSystems" dmrole="" >
+           ...
+        </COLLECTION>
+        ...
+    </GLOBALS>
+    ...
+ </VODML>
 \end{lstlisting}
 
 
