@@ -23,6 +23,8 @@
     <RESOURCE type="meta">
       <VODML
         xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+        <!-- @\label{REPORT_snippet}@ back to @\ref{REPORT}@ -->
+        <REPORT status="OK">Mapping compiled by hand</REPORT>
         <!-- @\label{MODEL_snippet}@ back to @\ref{MODEL}@ -->
         <MODEL name="mango"  url="file:/Users/sao/Documents/IVOA/GitHub/ivoa-dm-examples/tmp/Mango-v1.0.vo-dml.xml" />
         <MODEL name="cube"   url="https://volute.g-vo.org/svn/trunk/projects/dm/Cube/vo-dml/Cube-1.0.vo-dml.xml" />

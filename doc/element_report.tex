@@ -5,7 +5,13 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
 \item It must be the first \texttt{VODML} child if present.
 \end{itemize}
 
-
+\begin{lstlisting}[caption={\texttt{REPORT} example for an valid annotation (see in \ref{REPORT_snippet}).},language=XML]
+ <VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+    <REPORT status="OK">Mapping compiled by hand</REPORT>
+	<!-- 
+	   other annotations
+	  -->	
+</VODML>
 
 \begin{lstlisting}[caption={\texttt{REPORT} example for an annotation failure.},language=XML]
 <VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
@@ -19,24 +25,7 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
 </VODML>
 \end{lstlisting}
 
-\begin{lstlisting}[caption={\texttt{REPORT} example for an valid annotation.},language=XML]
-<VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
-	
-	<REPORT status="OK">
-	    The annotation process succeed
-	</REPORT>
-
-	<MODEL name="model" url="http://aaaaaa" />
-	<MODEL name="model" />
-	
-	<GLOBALS>...</GLOBALS>
-	<TEMPLATES ...>
-	   ...
-	 </TEMPLATES>
-	
-</VODML>
 \end{lstlisting}
-
 
 \begin{table}[!htbp]
   \small
