@@ -15,7 +15,7 @@
       
     \item{As child of GLOBALS}
           
-      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by PRIMARY \texttt{FOREIGN\_KEY}.
+      The \texttt{COLLECTION} serves as a proxy for TABLE, grouping common \texttt{INSTANCE}  for selection by \texttt{PRIMARY\_KEY}, \texttt{FOREIGN\_KEY} pairs.
       
       Examples of usage in this context would be:
       \begin{itemize}
@@ -52,16 +52,36 @@
                                     value="GAIA/GAIA2r.Gbp"/>
         </INSTANCE>
     </COLLECTION>
-<GLOBALS>
+</GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN. See Appendix..~\ref{appen_join}.},language=XML]
-<GLOBALS>
-    <COLLECTION dmrole="_joined_dataj">
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN.},language=XML]
+<TEMPLATES>
+    <INSTANCE dmtype="model:Foo" >    
+      <COLLECTION dmrole="_joined_data">
         <JOIN tableref="_someTemplates" dmref="_extInst"/>
-    </COLLECTION>
-<GLOBALS>
+      </COLLECTION>
+    </INSTANCE>
+    ...
+</TEMPLATES>
 \end{lstlisting}   
+
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} mapping a 2x2 matrix.},language=XML]
+<TEMPLATES>
+  <INSTANCE dmtype="model:matrix_22">
+    <COLLECTION dmrole="model:matrix">
+    	<COLLECTION>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_11"/>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_12"/>
+    	</COLLECTION>
+    	<COLLECTION>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_21"/>
+        	<ATTRIBUTE dmtype="ivoa:real" ref="field_22"/>
+    	</COLLECTION>
+    </COLLECTION>
+  </INSTANCE>
+</TEMPLATES>
+\end{lstlisting}    
 
 \begin{table}[!htbp]
   \small
@@ -143,6 +163,9 @@
         \texttt{INSTANCE} & 0-* & Collection of related instances.\\
     \hline    
         \texttt{REFERENCE} & 0-* & Collection of related references.\\
+    \hline    
+        \texttt{JOIN} & 0-1 & Collection populated with a set of joined instances.\\
+                 &        & No other child is supported in this case.\\
     \hline  
   \end{tabulary}
      \caption{Allowed children for \texttt{COLLECTION}.} 

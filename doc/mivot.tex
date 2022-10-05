@@ -81,10 +81,9 @@
 \author{Mark Cresitello-Dittmar}
 \author{François Bonnarel}
 \author{Gilles Landais}
-\author{Mireille Louys}
-\author{Laurent Michel}
-\author{Jesus Salgado}
 \author{Gerard Lemson}
+\author{Mireille Louys}
+\author{Jesus Salgado}
 
 \editor{Laurent Michel}
 \editor{Mark Cresitello-Dittmar}
@@ -119,7 +118,11 @@ The backward compatibility is preserved thanks to the limited impact of the anno
 We would like to thank all the people who have contributed to this standard, starting with the authors of the VO Data Modeling Language who have introduced the concepts developed here.
 We would also like to thank all contributors of the "Source Data Model" session held at the Paris Interop Meeting in 2019, as well as all members of the IVOA Time Domain Interest Group and the participants to the Data Model workshop we ran in Spring 2021. All helped us to refine our use-cases.
 We would like the thank the both funding projects (European Project ESCAPE, OVFrance) and agencies (CNRS-INSU).
+<<<<<<< HEAD
 Finally, we say a big thank you to all colleagues who spent time for assessing how such an annotation procedure could improve their VO services.
+=======
+Finally, we say a big thank you to all the colleagues who spent time for assessing how such an annotation procedure could improve their VO services.
+>>>>>>> origin/master
 This acknowledgement does not mention individuals, as the list would be too long, especially the many interns who contributed to this project.
 
 \section*{Conformance-related definitions}
@@ -224,7 +227,7 @@ The mapping element must be isolated from the VOTable elements by a name space s
 \input{element_vodml.tex}
 \FloatBarrier
 
-\subsection{REPORT}
+\subsection{REPORT} \label{REPORT}
 \input{element_report.tex}
 \FloatBarrier
  
@@ -232,43 +235,43 @@ The mapping element must be isolated from the VOTable elements by a name space s
 \input{element_model.tex}
 \FloatBarrier
 
-\subsection{GLOBALS}
+\subsection{GLOBALS} \label{GLOBALS}
 \input{element_globals.tex}
 \FloatBarrier
 
-\subsection{TEMPLATES}
+\subsection{TEMPLATES}\label{TEMPLATES}
 \input{element_templates.tex}
 \FloatBarrier
 
-\subsection{COLLECTION}
+\subsection{COLLECTION} \label{COLLECTION}
 \input{element_collection.tex}
 \FloatBarrier
 
-\subsection{INSTANCE}
+\subsection{INSTANCE} \label{INSTANCE}
 \input{element_instance.tex}
 \FloatBarrier
 
-\subsection{ATTRIBUTE}
+\subsection{ATTRIBUTE} \label{ATTRIBUTE}
 \input{element_attribute.tex}
 \FloatBarrier
 
-\subsection{REFERENCE}
+\subsection{REFERENCE} \label{REFERENCE}
 \input{element_reference.tex}
 \FloatBarrier
 
-\subsection{JOIN}
+\subsection{JOIN} \label{JOIN}
 \input{element_join.tex}
 \FloatBarrier
 
-\subsection{WHERE}
+\subsection{WHERE} \label{WHERE}
 \input{element_where.tex}
 \FloatBarrier
 
-\subsection{PRIMARY\_KEY}
+\subsection{PRIMARY\_KEY} \label{PRIMARY_KEY}
 \input{element_primary_key.tex}
 \FloatBarrier
 
-\subsection{FOREIGN\_KEY}
+\subsection{FOREIGN\_KEY} \label{FOREIGN_KEY}
 \input{element_foreign_key.tex}
 \FloatBarrier
 
@@ -292,18 +295,17 @@ No previous versions yet.
 \section{TAP and the data models}
 \input{appendix_A.tex}
 
-\section{Dynamic References}
+\section{Dynamic References}\label{appen_dynref}
 \input{appendix_B.tex}
 
-\section{Join Examples}
+\section{Join Examples}\label{appen_join}
 \input{appendix_C.tex}
 
-\section{Complete VOTable}
+\section{Complete VOTable}\label{appen_votable}
 \input{appendix_D.tex}
 
 % these would be subsections "Changes from v. WD-..."
 % Use itemize environments.
-
 
 % NOTE: IVOA recommendations must be cited from docrepo rather than ivoabib
 % (REC entries there are for legacy documents only)
