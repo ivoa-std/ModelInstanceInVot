@@ -39,14 +39,14 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
     If the \texttt{ATTRIBUTE}  is located within a \texttt{GLOBALS}, its value must be set with  a  \texttt{@value} since the \texttt{GLOBALS} block is not connected with any data table.
 \end{enumerate}  
     
-\begin{lstlisting}[caption={\texttt{ATTRIBUTE} examples.},language=XML]
-<INSTANCE dmtype="model:Thing">
-    <ATTRIBUTE dmrole="model:Thing.f" dmtype="model.Alpha" value="xyz"/>		
-    <INSTANCE dmrole="model:Thing.pos" dmtype="adhoc:Position">
-        <ATTRIBUTE dmrole="adhoc:Position.longitude" dmtype="ivoa:real" 
-                        ref="_eqpos" arrayindex="0"/>
-        <ATTRIBUTE dmrole="adhoc:Position.latitude" dmtype="ivoa:real" 
-                        ref="_eqpos" arrayindex="1"/>
+\begin{lstlisting}[caption={\texttt{ATTRIBUTE} examples set with either a column reference or a static value (see \ref{ATTRIBUTE_snippet}).},language=XML]
+<INSTANCE dmtype="cube:Observable">
+    <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="False"/>
+    <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:Time"
+        <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:MJD"
+            <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" ref="IDobstime"/>
+            <REFERENCE dmrole="coords:Coordinate.coordSys" dmref="IDtimesys"/>
+        </INSTANCE>
     </INSTANCE>
 </INSTANCE>
 \end{lstlisting}  
