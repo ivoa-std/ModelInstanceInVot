@@ -33,7 +33,7 @@
 *.fdb_latexmk
 *.fls
 *.gz
-mivot.pdf
+mivot*.pdf
 *.zip
 *.html
 *.pyc
