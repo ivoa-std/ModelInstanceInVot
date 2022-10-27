@@ -39,7 +39,7 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
     If the \texttt{ATTRIBUTE}  is located within a \texttt{GLOBALS}, its value must be set with  a  \texttt{@value} since the \texttt{GLOBALS} block is not connected with any data table.
 \end{enumerate}  
     
-\begin{lstlisting}[caption={\texttt{ATTRIBUTE} examples set with either a column reference or a static value (see \ref{ATTRIBUTE_snippet}).},language=XML]
+\begin{lstlisting}[caption={Example of an \texttt{ATTRIBUTE} set with either a column reference or a static value (see \ref{ATTRIBUTE_snippet}). If the column reference cannot be resolved, the attribute will be set with its static value.},language=XML]
 <INSTANCE dmtype="cube:Observable">
     <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="False"/>
     <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:Time"
