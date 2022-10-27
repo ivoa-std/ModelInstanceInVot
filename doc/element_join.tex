@@ -32,10 +32,10 @@ It can have \texttt{WHERE} children elements stating the join condition and it m
   \end{itemize}
 \end{itemize}
 
-\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example with 2 join conditions.} },language=XML]
-<JOIN sourceref="Results" dmref="_ts_data">
-  <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
-  <WHERE foreignkey="_band" primarykey="_pkband" />
+\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example with 2 join conditions (see \ref{JOIN_snippet}).} },language=XML]
+<JOIN dmref="IDtsIDdata">
+    <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
+    <WHERE foreignkey="_band" primarykey="_pkband"  />
 </JOIN>
 \end{lstlisting}
 

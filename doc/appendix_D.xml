@@ -1,0 +1,487 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+   File:  GAIA Multi-band Time Series
+   
+   Original file submitted as a use-case example for validating/testing the 
+   models and annotation syntax at the DM Workshop 2021.
+      * https://github.com/ivoa/dm-usecases/blob/main/usecases/time-series/raw\_data/gaia_multiband.xml
+
+   This file annotates that file according to the merged syntax proposal
+   which resulted from the workshop effort.
+      - migrated by hand from the VODML-Mapping syntax example.
+
+   Notable Features:
+    + uses ORM mechanism to select the appropriate coordinate system for each Observable.
+    + uses JOIN to pull filtered set of records from the table to form the time series data.
+
+-->
+
+<VOTABLE version="1.4"
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+  <DESCRIPTION>
+  Epoch photometry. This table contains light curve data points. 
+  Each entry is a photometric flux-time pair for a given object, band and time. 
+  It follows the (evolving) VO convention for time series as much as possible. 
+  At the time of writing, a VO recommendation has not yet been released.
+  </DESCRIPTION>
+  <RESOURCE type="results">
+    <RESOURCE type="meta">
+      <VODML
+        xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+        <!-- @\label{REPORT_snippet}@ back to @\ref{REPORT}@ -->
+        <REPORT status="OK">Mapping compiled by hand</REPORT>
+        <!-- @\label{MODEL_snippet}@ back to @\ref{MODEL}@ -->
+        <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+        <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+        <MODEL name="mango"  url="https://github.com/ivoa-std/MANGO/blob/master/vo-dml/mango.vo-dml.xml" />
+        <MODEL name="cube"   url="https://github.com/ivoa-std/Cube/vo-dml/Cube-1.0.vo-dml.xml" />
+        <MODEL name="ds"     url="https://github.com/ivoa-std/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml" />
+        <MODEL name="coords" url="https://www.ivoa.net/xml/VODML/Coords-v1.vo-dml.xml" />
+        <MODEL name="meas"   url="https://www.ivoa.net/xml/VODML/Meas-v1.vo-dml.xml" />
+        <!--		
+             place holder for singular data model instances not associated with a singular V
+             OTable TABLE
+          -->
+        <!-- @\label{GLOBALS_snippet}@ back to @\ref{GLOBALS}@ -->
+        <GLOBALS>
+          <!--
+              Container for the coordinate systems
+            -->
+         <COLLECTION dmid="\_CoordinateSystems" dmrole="" >
+            <!--
+                Time coordinate system
+              -->
+            <!-- @\label{INSTANCE_snippet}@ back to @\ref{INSTANCE}@ -->
+            <INSTANCE dmid="\_timesys" dmrole="" dmtype="coords:TimeSys">
+              <PRIMARY\_KEY dmtype="ivoa:string" value="TCB"/>
+              <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:TimeFrame">
+                <ATTRIBUTE dmrole="coords:TimeFrame.timescale" dmtype="ivoa:string" value="TCB" />
+                <INSTANCE dmrole="coords:TimeFrame.refPosition" dmtype="coords:StdRefLocation">
+                  <ATTRIBUTE dmrole="coords:StdRefLocation.position" 
+                             dmtype="ivoa:string" value="BARYCENTER"/>
+                </INSTANCE>
+              </INSTANCE>
+            </INSTANCE>
+            <!--
+                Space coordinate system
+              -->
+            <INSTANCE dmid="\_spacesys1" dmrole="" dmtype="coords:SpaceSys">
+              <PRIMARY\_KEY dmtype="ivoa:string" value="ICRS"/>
+              <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:SpaceFrame">
+                <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" 
+                           dmtype="ivoa:string" value="ICRS"/>
+                <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" 
+                           dmtype="coords:Epoch" value="J2015.5"/>
+              </INSTANCE>
+            </INSTANCE>
+            <!--
+                Photometric coordinate system: At the time of writing, PhotDM was not available 
+                in VODML. 
+                We use a class of the first MANGO draft
+              -->
+            <INSTANCE dmid="\_photsys\_G" dmtype="mango:coordinates.PhotometryCoordSys">
+              <PRIMARY\_KEY dmtype="ivoa:string" value="G"/>
+              <INSTANCE dmrole="coords:PhysicalCoordSys.frame" 
+                        dmtype="mango:coordinates.PhotFilter">
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" 
+                        dmtype="ivoa:string" value="GAIA/GAIA2r.G"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" 
+                        dmtype="ivoa:RealQuantity" value="2.49524e-9"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.magnitudeSystem" 
+                        dmtype="ivoa:string" value="Vega"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.effectiveWavelength" 
+                        dmtype="ivoa:RealQuantity" value="6246.77"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.unit" 
+                        dmtype="ivoa:Unit" value="Angstrom" />
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.bandWidth" 
+                        dmtype="ivoa:real" value="4578.32"/>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmid="\_photsys\_RP" dmrole="" 
+                        dmtype="mango:coordinates.PhotometryCoordSys">
+              <PRIMARY\_KEY dmtype="ivoa:string" value="RP"/>
+              <INSTANCE dmrole="coords:PhysicalCoordSys.frame" 
+                        dmtype="mango:coordinates.PhotFilter">
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" 
+                           dmtype="ivoa:string" value="GAIA/GAIA2r.Grp"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" 
+                           dmtype="ivoa:RealQuantity" value="1.29363e-9"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.magnitudeSystem" 
+                           dmtype="ivoa:string" value="Vega"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.effectiveWavelength" 
+                           dmtype="ivoa:RealQuantity" value="7740.87"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.unit" 
+                           dmtype="ivoa:Unit" value="Angstrom"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.bandWidth" 
+                           dmtype="ivoa:real" value="2943.72"/>
+              </INSTANCE>
+            </INSTANCE>
+            <INSTANCE dmid="\_photsys\_BP" dmrole="" dmtype="mango:coordinates.PhotometryCoordSys">
+              <PRIMARY\_KEY dmtype="ivoa:string" value="BP"/>
+              <INSTANCE dmrole="coords:PhysicalCoordSys.frame" 
+                         dmtype="mango:coordinates.PhotFilter">
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.name" 
+                           dmtype="ivoa:string" value="GAIA/GAIA2r.Gbp"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.zeroPointFlux" 
+                           dmtype="ivoa:RealQuantity" value="4.03528e-9"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.magnitudeSystem" 
+                           dmtype="ivoa:string" value="Vega"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.effectiveWavelength" 
+                           dmtype="ivoa:RealQuantity" value="5278.58"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.unit" 
+                           dmtype="ivoa:Unit" value="Angstrom"/>
+                <ATTRIBUTE dmrole="mango:coordinates.PhotFilter.bandWidth" 
+                           dmtype="ivoa:real" value="2279.45"/>
+              </INSTANCE>
+            </INSTANCE>
+          </COLLECTION>
+          <!--
+              Container for the datasets (one per timeseries)
+            -->
+          <!-- @\label{COLLECTION_snippet_1}@ back to @\ref{COLLECTION}@ -->
+          <COLLECTION dmid="\_Datasets" dmrole="">
+            <INSTANCE dmid="\_ds1" dmrole="" dmtype="ds:experiment.ObsDataset">
+              <!--
+                  The primary keys of that collection items are set by the mapping 
+                -->
+              <!-- @\label{PRIMARY_KEY_snippet}@ back to @\ref{PRIMARY_KEY}@ -->
+              <PRIMARY\_KEY dmtype="ivoa:string" value="5813181197970338560"/>
+              <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" 
+                         dmtype="ds:dataset.DataProductType" value="TIMESERIES"/>
+              <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" 
+                         dmtype="ivoa:string" value="GAIA Time Series"/>
+              <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" 
+                         dmtype="ivoa:integer" value="1"/>
+              <!-- @\label{REFERENCE_snippet_1}@ back to @\ref{REFERENCE}@ -->
+              <REFERENCE dmrole="ds:experiment.ObsDataset.target" dmref="\_tg1"/>
+            </INSTANCE>
+          </COLLECTION>
+          <!--
+              Time series target
+              Value set as a literal by the mapping
+            -->
+          <INSTANCE dmid="\_tg1" dmrole="" dmtype="ds:experiment.Target">
+            <ATTRIBUTE dmrole="ds:experiment.BaseTarget.name" 
+                       dmtype="ivoa:string" value="5813181197970338560"/>
+          </INSTANCE>
+        </GLOBALS>
+        <!--
+            Mapping of the rows of the table \_PKTable
+          -->
+         <TEMPLATES tableref="\_PKTable">
+          <INSTANCE dmid="\_TimeSeries" dmrole="" dmtype="cube:SparseCube">
+            <!--
+                The dataset object is the item of the COLLECTION[dmid=\_Datasets]
+                having a primary key matching the value of the column \_pksrcid 
+                for that particular row
+              -->
+            <REFERENCE dmrole="cube:DataProduct.dataset" sourceref="\_Datasets">
+              <FOREIGN\_KEY ref="\_pksrcid"/>
+            </REFERENCE>
+            <!--
+                Sparse cube data are given by the INSTANCE[dmid=\_ts\_data]
+                These instances are located in the Results table (must be found by the client)
+                The matching row are identified by a double join condition
+                    \_PKTable[\_pksrcid] = Results[\_srcid]
+                    \_PKTable[\_pkband] = Results[\_band]
+              -->
+            <!-- @\label{COLLECTION_snippet_2}@ back to @\ref{COLLECTION}@ -->
+            <COLLECTION dmrole="cube:SparseCube.data">
+              <!-- @\label{JOIN_snippet}@ back to @\ref{JOIN}@ -->
+              <JOIN dmref="\_ts\_data">
+                <!-- @\label{WHERE_snippet}@ back to @\ref{WHERE}@ -->
+                <WHERE foreignkey="\_srcid" primarykey="\_pksrcid" />
+                <WHERE foreignkey="\_band" primarykey="\_pkband"  />
+              </JOIN>
+            </COLLECTION>
+          </INSTANCE>
+        </TEMPLATES>
+        <!--
+            Mapping of the rows of the table Results
+          -->
+        <!-- @\label{TEMPLATES_snippet}@ back to @\ref{TEMPLATES}@ -->
+        <TEMPLATES tableref="Results">
+          <INSTANCE dmid="\_ts\_data" dmrole="" dmtype="cube:NDPoint">
+            <COLLECTION dmrole="cube:NDPoint.observable">
+              <!-- @\label{ATTRIBUTE_snippet}@ back to @\ref{ATTRIBUTE}@ -->
+              <INSTANCE dmtype="cube:Observable">
+                <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="False"/>
+                <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:Time">
+                  <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:MJD">
+                    <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" ref="\_obstime"/>
+                    <!--
+                       The time coodinate is givel by the INSTANCE[dmid=\_timesys]
+                       This instance must be located by the client
+                      -->
+                    <REFERENCE dmrole="coords:Coordinate.coordSys" dmref="\_timesys"/>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+              <INSTANCE dmtype="cube:Observable">
+                <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
+                <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
+                  <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
+                    <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="\_mag"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mag"/>
+                    </INSTANCE>
+                    <!--
+                        The photometric system is given by the item of the 
+                        COLLECTION[dmid=\_CoordinateSystems] having a primary key matching 
+                        the value of the column \_band for that particular row
+                      -->
+                    <!-- @\label{REFERENCE_snippet_2}@ back to @\ref{REFERENCE}@ -->
+                    <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="\_CoordinateSystems">
+                      <!-- @\label{FOREIGN_KEY_snippet}@ back to @\ref{FOREIGN_KEY}@ -->
+                      <FOREIGN\_KEY ref="\_band"/>
+                    </REFERENCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+              <INSTANCE dmtype="cube:Observable">
+                <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
+                <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
+                  <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
+                    <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
+                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="\_flux"/>
+                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
+                    </INSTANCE>
+                    <!--
+                        The photometric system is given by the item of 
+                        the COLLECTION[dmid=\_CoordinateSystems] having a primary key matching 
+                        the value of the column \_band for that particular row
+                      -->
+                    <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="\_CoordinateSystems">
+                      <FOREIGN\_KEY ref="\_band"/>
+                    </REFERENCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                    <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                      <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
+                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" 
+                                   dmtype="ivoa:real" ref="\_fluxerr"/>
+                        <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
+                      </INSTANCE>
+                    </INSTANCE>
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+            </COLLECTION>
+          </INSTANCE>
+        </TEMPLATES>
+      </VODML>
+      <!--
+      mapping block end
+    -->
+    </RESOURCE>
+    <TABLE \_="\_PKTable">
+      <FIELD ID="\_pksrcid" datatype="char" arraysize="*" name="pksrcid">
+        <DESCRIPTION>Source \_</DESCRIPTION>
+      </FIELD>
+      <FIELD ID="\_pkband" name="pkband" datatype="char" arraysize="*">
+        <DESCRIPTION>Photometric Band</DESCRIPTION>
+      </FIELD>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>G</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>BP</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>RP</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+    <TABLE \_="Results">
+      <FIELD ID="\_srcid" datatype="char" arraysize="*" 
+              name="source\_id" utype="meta.id;meta.main">
+        <DESCRIPTION>Source Id.</DESCRIPTION>
+      </FIELD>
+      <FIELD datatype="long" name="transit\_id" ucd="meta.version">
+        <DESCRIPTION>Transit unique identifier.</DESCRIPTION>
+      </FIELD>
+      <FIELD ID="\_band" arraysize="*" datatype="char" 
+             name="band" ucd="instr.bandpass" utype="ssa:Data\_.Bandpass">
+        <DESCRIPTION>Photometric band. Values: G .</DESCRIPTION>
+      </FIELD>
+      <FIELD ID="\_obstime" datatype="double" name="time" ucd="time.epoch;VOX:Image\_MJDateObs" 
+             unit="d" utype="spec:Spectrum.Data.TimeAxis.Value">
+        <DESCRIPTION>Different times are defined for each band. </DESCRIPTION>
+      </FIELD>
+      <FIELD ID="\_mag" datatype="float" name="mag" ucd="phot.mag;em.opt" unit="mag">
+        <DESCRIPTION>Vega magnitude</DESCRIPTION>
+      </FIELD>
+      <FIELD ID="\_flux" datatype="float" name="flux" ucd="em.opt;phot.flux;stat.mean" 
+             unit="e-/s" utype="spec:Spectrum.Data.SpectralAxis.Value">
+        <DESCRIPTION>Band flux value for the transit. </DESCRIPTION>
+      </FIELD>
+      <FIELD ID="\_fluxerr" datatype="float" name="flux\_error" 
+             ucd="em.opt;phot.flux;stat.error" unit="e-/s">
+        <DESCRIPTION>Flux error.</DESCRIPTION>
+      </FIELD>
+      <FIELD datatype="float" name="flux\_over\_error" ucd="em.opt;phot.flux;stat.error">
+        <DESCRIPTION>Band flux divided by its error.</DESCRIPTION>
+      </FIELD>
+      <FIELD datatype="boolean" name="rejected\_by\_photometry" ucd="meta.code.status">
+        <DESCRIPTION>Rejected by DPAC photometry processing.</DESCRIPTION>
+      </FIELD>
+      <FIELD datatype="boolean" name="rejected\_by\_variability" ucd="meta.code.status">
+        <DESCRIPTION>Rejected by DPAC variability processing.</DESCRIPTION>
+      </FIELD>
+      <FIELD datatype="long" name="other\_flags" ucd="meta.code.status"></FIELD>
+      <FIELD datatype="long" name="solution\_id" ucd="meta.version">
+        <DESCRIPTION>Solution identifier. </DESCRIPTION>
+      </FIELD>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>17091923342681275</TD>
+            <TD>G</TD>
+            <TD>1705.9437360200984</TD>
+            <TD>15.216574774452164</TD>
+            <TD>15442.456273273616</TD>
+            <TD>44.151258712309364</TD>
+            <TD>349.76254</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>4097</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>17096015648964756</TD>
+            <TD>G</TD>
+            <TD>1706.0177100217386</TD>
+            <TD>14.767336693604877</TD>
+            <TD>23356.70699319823</TD>
+            <TD>33.53035403015752</TD>
+            <TD>696.584</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>4194817</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>19103616164443503</TD>
+            <TD>G</TD>
+            <TD>1742.3215763366886</TD>
+            <TD>15.278342999137502</TD>
+            <TD>14588.447956240941</TD>
+            <TD>15.054069973748831</TD>
+            <TD>969.07</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>1</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>19107708466271149</TD>
+            <TD>G</TD>
+            <TD>1742.3955784801215</TD>
+            <TD>14.799456395369246</TD>
+            <TD>22675.8581669284</TD>
+            <TD>36.37833986932219</TD>
+            <TD>623.33405</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>1</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>17091923342681275</TD>
+            <TD>BP</TD>
+            <TD>1705.9440504175118</TD>
+            <TD>15.64539174200359</TD>
+            <TD>7627.787250948564</TD>
+            <TD>111.47726591016318</TD>
+            <TD>68.4246</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>0</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>17096015648964756</TD>
+            <TD>BP</TD>
+            <TD>1706.0180527092407</TD>
+            <TD>14.945026143036898</TD>
+            <TD>14539.343967569965</TD>
+            <TD>145.0521624616696</TD>
+            <TD>100.23528</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>0</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>19103616164443503</TD>
+            <TD>BP</TD>
+            <TD>1742.3218911236327</TD>
+            <TD>15.530661923152225</TD>
+            <TD>8477.94313079077</TD>
+            <TD>91.74578776556334</TD>
+            <TD>92.40689</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>0</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>17091923342681275</TD>
+            <TD>RP</TD>
+            <TD>1705.9441391177577</TD>
+            <TD>14.76056670662418</TD>
+            <TD>10012.471954702154</TD>
+            <TD>101.25870322095649</TD>
+            <TD>98.88011</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>0</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>17096015648964756</TD>
+            <TD>RP</TD>
+            <TD>1706.018140557839</TD>
+            <TD>14.422572989291783</TD>
+            <TD>13669.064712119256</TD>
+            <TD>123.67648827643211</TD>
+            <TD>110.52274</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>0</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+          <TR>
+            <TD>5813181197970338560</TD>
+            <TD>19103616164443503</TD>
+            <TD>RP</TD>
+            <TD>1742.3219778490015</TD>
+            <TD>14.820081408614794</TD>
+            <TD>9478.408715049112</TD>
+            <TD>96.68089453665782</TD>
+            <TD>98.03807</TD>
+            <TD>F</TD>
+            <TD>F</TD>
+            <TD>0</TD>
+            <TD>369295551293819386</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+  </RESOURCE>
+</VOTABLE>

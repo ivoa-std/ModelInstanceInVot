@@ -17,17 +17,19 @@ There  are 2 different uses for this element:
 
 \end{enumerate}
 
-\begin{lstlisting}[caption={\texttt{WHERE} Example: only rows having val1 as col1 value and  val2 as col2 value are mapped.},language=XML]
+\begin{lstlisting}[caption={\texttt{WHERE} Example: only rows having \texttt{val1} as \texttt{col1} value and  \texttt{val2} as \texttt{col2} value must be mapped.},language=XML]
 <TEMPLATES tableref="table">
   <WHERE primarykey="col1" value="val1" />
   <WHERE primarykey="col2" value="val2" />
-  <INSTANCE  dmtype="type" />
+  <INSTANCE  dmtype="type">
+  ....
+  </INSTANCE>
 </TEMPLATES>
 \end{lstlisting}
 
-\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the 'ptc' column is equal to the 'ftc' column of the foreign table. },language=XML]
-<JOIN tableref="ft" >
-	<WHERE foreignkey="ftc" primarykey="ptc" />
+\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the \texttt{\_pksrcid} column is equal to the \texttt{\_srcid} column of the foreign table (see \ref{WHERE_snippet}). },language=XML]
+<JOIN dmref="_ts_data">
+    <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
 </JOIN>
 \end{lstlisting}
 

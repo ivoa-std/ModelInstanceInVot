@@ -9,14 +9,31 @@ There are different uses for the \texttt{REFERENCE}
              If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first match must be taken by default.
 \end{itemize}
 
-\begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid} \_target1.},language=XML]
-<REFERENCE dmrole="_role" dmref="_target1" />
+\begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid=\_tg1} (see \ref{REFERENCE_snippet_1}).},language=XML]
+<INSTANCE dmid="IDds1" dmrole="" dmtype="ds:experiment.ObsDataset">
+    <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductType" 
+               dmtype="ds:dataset.DataProductType" value="TIMESERIES"/>
+    <ATTRIBUTE dmrole="ds:dataset.Dataset.dataProductSubtype" 
+               dmtype="ivoa:string" value="GAIA Time Series"/>
+    <ATTRIBUTE dmrole="ds:experiment.ObsDataset.calibLevel" 
+               dmtype="ivoa:integer" value="1"/>
+    <REFERENCE dmrole="ds:experiment.ObsDataset.target" dmref="_tg1"/>
+</INSTANCE>
+
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \_target1 and having a \texttt{PRIMARY\_KEY} matching the value of column  \_col1. This pattern is valid in the context of a TEMPLATES.},language=XML]
-<REFERENCE dmrole="_role" sourceref="_target1">
-    <FOREIGN_KEY ref="_col1" />
-</REFERENCE>
+\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \texttt{\_CoordinateSystems} and having a \texttt{PRIMARY\_KEY} matching the value of the column  \texttt{\_band}. This pattern is valid in the context of a TEMPLATES (see \ref{REFERENCE_snippet_2}).},language=XML]
+<INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
+    ...
+    <!--
+        The photometric system is given by the item of the COLLECTION[dmid=IDCoordinateSystems]
+        having a primary key matching the value of the column IDband for that particular row
+     -->
+    <!-- @\label{REFERENCE_snippet}@ back to @\ref{REFERENCE}@ -->
+    <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="_CoordinateSystems">
+        <FOREIGN\_KEY ref="_band"/>
+    </REFERENCE>
+</INSTANCE>
 \end{lstlisting}
 
 See more examples in the Appendix \ref{appen_dynref}. 
