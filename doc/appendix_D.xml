@@ -277,7 +277,7 @@
       mapping block end
     -->
     </RESOURCE>
-    <TABLE \_="\_PKTable">
+    <TABLE  name="\_PKTable">
       <FIELD ID="\_pksrcid" datatype="char" arraysize="*" name="pksrcid">
         <DESCRIPTION>Source \_</DESCRIPTION>
       </FIELD>
@@ -301,7 +301,7 @@
         </TABLEDATA>
       </DATA>
     </TABLE>
-    <TABLE \_="Results">
+    <TABLE name="Results">
       <FIELD ID="\_srcid" datatype="char" arraysize="*" 
               name="source\_id" utype="meta.id;meta.main">
         <DESCRIPTION>Source Id.</DESCRIPTION>
