@@ -33,3 +33,14 @@ VECTORFIGURES =
 AUX_FILES = ../schema/xsd/mivot-v1.0.xsd
 
 include ivoatex/Makefile
+
+# Valid some XML snippets against both VOTable and MIVOT schemas
+valid_snippet:
+	# Install the Python validator
+	pip3 install git+https://github.com/ivoa/mivot-validator.git#egg=mivot-validator
+	# Remove the escaped _ required by latex to have links from and to the code block 
+	sed -e s/\\\\_/_/g appendix_D.xml  > nobackslash_appendix_D.xml
+	# validate
+	mivot-validate  nobackslash_appendix_D.xml
+	# clean up
+	rm nobackslash_appendix_D.xml
