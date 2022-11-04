@@ -18,7 +18,8 @@ AUTHOR_EMAIL=laurent.michel@astro.unistra.fr
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
-SOURCES = $(DOCNAME).tex role_diagram.pdf
+SOURCES = $(DOCNAME).tex role_diagram.pdf appendix*.tex element*tex\
+	introduction.tex syntax.tex api.tex validation.tex
 
 # List of image files to be included in submitted package (anything that
 # can be rendered directly by common web browsers)

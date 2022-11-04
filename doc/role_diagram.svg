@@ -45,7 +45,7 @@
   
 
   
-  <svg x="460" y="330"><rect height="18" x="0" y="0" width="152" class="prerec"/><text class="doclabel" y="12.5" x="76">Model Instances in VOTables</text></svg>
+  <svg x="460" y="330"><rect height="18" x="0" y="0" width="152" class="thisrec"/><text class="doclabel" y="12.5" x="76">Model Instances in VOTables</text></svg><svg x="460" y="330"><ellipse rx="91" ry="15" cx="76" cy="9" fill="none" stroke="red" stroke-width="3"/></svg>
   <svg x="512" y="250"><rect height="18" x="0" y="0" width="46" class="rec"/><text class="doclabel" y="12.5" x="23">VODML</text></svg>
 
   
