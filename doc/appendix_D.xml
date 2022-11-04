@@ -17,7 +17,10 @@
 -->
 
 <VOTABLE version="1.4"
-  xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 
+  	https://www.ivoa.net/xml/VOTable/v1.3">
   <DESCRIPTION>
   Epoch photometry. This table contains light curve data points. 
   Each entry is a photometric flux-time pair for a given object, band and time. 
@@ -27,7 +30,7 @@
   <RESOURCE type="results">
     <RESOURCE type="meta">
       <VODML
-        xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+        xmlns="http://www.ivoa.net/xml/merged-syntax" >
         <!-- @\label{REPORT_snippet}@ back to @\ref{REPORT}@ -->
         <REPORT status="OK">Mapping compiled by hand</REPORT>
         <!-- @\label{MODEL_snippet}@ back to @\ref{MODEL}@ -->
