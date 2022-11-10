@@ -17,7 +17,10 @@
 -->
 
 <VOTABLE version="1.4"
-  xmlns="http://www.ivoa.net/xml/VOTable/v1.3">
+  xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 
+    https://www.ivoa.net/xml/VOTable/v1.3">
   <DESCRIPTION>
   Epoch photometry. This table contains light curve data points. 
   Each entry is a photometric flux-time pair for a given object, band and time. 
@@ -27,7 +30,7 @@
   <RESOURCE type="results">
     <RESOURCE type="meta">
       <VODML
-        xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+        xmlns="http://www.ivoa.net/xml/merged-syntax" >
         <!-- @\label{REPORT_snippet}@ back to @\ref{REPORT}@ -->
         <REPORT status="OK">Mapping compiled by hand</REPORT>
         <!-- @\label{MODEL_snippet}@ back to @\ref{MODEL}@ -->
@@ -38,7 +41,7 @@
         <MODEL name="ds"     url="https://github.com/ivoa-std/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml" />
         <MODEL name="coords" url="https://www.ivoa.net/xml/VODML/Coords-v1.vo-dml.xml" />
         <MODEL name="meas"   url="https://www.ivoa.net/xml/VODML/Meas-v1.vo-dml.xml" />
-        <!--		
+        <!--        
              place holder for singular data model instances not associated with a singular V
              OTable TABLE
           -->
@@ -274,7 +277,7 @@
       mapping block end
     -->
     </RESOURCE>
-    <TABLE \_="\_PKTable">
+    <TABLE  name="\_PKTable">
       <FIELD ID="\_pksrcid" datatype="char" arraysize="*" name="pksrcid">
         <DESCRIPTION>Source \_</DESCRIPTION>
       </FIELD>
@@ -298,7 +301,7 @@
         </TABLEDATA>
       </DATA>
     </TABLE>
-    <TABLE \_="Results">
+    <TABLE name="Results">
       <FIELD ID="\_srcid" datatype="char" arraysize="*" 
               name="source\_id" utype="meta.id;meta.main">
         <DESCRIPTION>Source Id.</DESCRIPTION>
