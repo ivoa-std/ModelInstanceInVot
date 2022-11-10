@@ -28,7 +28,9 @@ All models that define vodml-ids used in the annotation must be declared.
     \hline
     \hline  
          \texttt{@name}  & 
-         Name of the mapped model as declared in the VO-DML/XML model serialization.  This attribute MUST not be empty and forms the prefix used in  \texttt{@dmrole}  \texttt{@dmtype} tags of elements from that model.  \\
+         Name of the mapped model as declared in the VO-DML/XML model serialization.  
+         This attribute MUST not be empty. 
+         Its value is used to prefix the values of both \texttt{@dmrole} and \texttt{@dmtype} attributes of elements from that model.  \\
     \hline 
          \texttt{@url} & 
          URL to the VO-DML/XML serialization of the model. If present, this attribute MUST not be empty.\\
