@@ -19,7 +19,7 @@
   <DESCRIPTION>Epoch photometry. This table contains light curve data points. Each entry is a photometric flux-time pair for a given object, band and time. It follows the (evolving) VO convention for time series as much as possible. At the time of writing, a VO recommendation has not yet been released.</DESCRIPTION>
   <RESOURCE type="results">
     <RESOURCE type="meta">
-      <VODML xmlns="http://www.ivoa.net/xml/merged-syntax" >
+      <VODML xmlns="http://www.ivoa.net/xml/mivot" >
           <REPORT status="OK">Hand made mapping</REPORT>
           <MODEL name="mango"  url="file:/Users/sao/Documents/IVOA/GitHub/ivoa-dm-examples/tmp/Mango-v1.0.vo-dml.xml" />
           <MODEL name="cube"   url="https://volute.g-vo.org/svn/trunk/projects/dm/Cube/vo-dml/Cube-1.0.vo-dml.xml" />

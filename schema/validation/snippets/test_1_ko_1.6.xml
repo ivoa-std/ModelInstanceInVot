@@ -2,7 +2,7 @@
 
 <!-- Test Case 1.6: MODEL subnode must be first -->
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 	<GLOBALS />
 	<MODEL name="model" url="http://aaaaaa" />

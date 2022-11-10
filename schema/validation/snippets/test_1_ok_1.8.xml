@@ -2,7 +2,7 @@
 
 <!-- Test Case 1.8: allows multiple MODEL subnodes -->
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 	<MODEL name="model1" url="http://aaaaaa" />
 	<MODEL name="model2" url="http://bbbbbb" />

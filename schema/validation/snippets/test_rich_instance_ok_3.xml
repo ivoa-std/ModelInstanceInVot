@@ -5,7 +5,7 @@
   <RESOURCE type="results">
     <RESOURCE type="meta">
 
-      <VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
+      <VODML xmlns="http://www.ivoa.net/xml/mivot">
         <MODEL name="test" />
 
         <GLOBALS>

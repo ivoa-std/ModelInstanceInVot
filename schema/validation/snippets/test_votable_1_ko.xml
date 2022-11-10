@@ -4,7 +4,7 @@
 	xmlns="http://www.ivoa.net/xml/VOTable/v1.3"    
 	>
 	<RESOURCE type="meta">
-		<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
+		<VODML xmlns="http://www.ivoa.net/xml/mivot">
 			<MODELS name="model" />
 			<MODEL name="model" url="http://aaaaaa" />
 			<GLOBALS />

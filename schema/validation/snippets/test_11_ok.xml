@@ -6,7 +6,7 @@
 <!--       instance, so these cases are implemented at that level.                -->
 
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 	<MODEL name="model" url="http://aaaaaa" />
 	<TEMPLATES tableref="fgdgfddf">

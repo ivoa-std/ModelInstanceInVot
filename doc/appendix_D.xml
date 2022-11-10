@@ -30,7 +30,7 @@
   <RESOURCE type="results">
     <RESOURCE type="meta">
       <VODML
-        xmlns="http://www.ivoa.net/xml/merged-syntax" >
+        xmlns="http://www.ivoa.net/xml/mivot" >
         <!-- @\label{REPORT_snippet}@ back to @\ref{REPORT}@ -->
         <REPORT status="OK">Mapping compiled by hand</REPORT>
         <!-- @\label{MODEL_snippet}@ back to @\ref{MODEL}@ -->

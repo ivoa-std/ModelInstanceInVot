@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- 13.5 TEMPLATES/INSTANCE@dmid duplicated in GLOBALS/COLLECTION@dmid -->
-<VODML xmlns="http://www.ivoa.net/xml/merged-syntax">
+<VODML xmlns="http://www.ivoa.net/xml/mivot">
 
 	<MODEL name="model" url="http://aaaaaa" />
 	<GLOBALS>
