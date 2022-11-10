@@ -38,7 +38,7 @@
          <xs:assert
             test="if (dm-mapping:REPORT[@status] = 'OK') then (count(dm-mapping:MODEL) > 0) else true()" />
          <xs:assert
-            test="if (dm-mapping:REPORT[@status] = 'KO') then (count(dm-mapping:MODEL) >= 0) else true()" />
+            test="if (dm-mapping:REPORT[@status] = 'FAILED') then (count(dm-mapping:MODEL) >= 0) else true()" />
          <xs:assert
             test="if (count(dm-mapping:MODEL) = 0) then (count(dm-mapping:REPORT) = 1) else true()" />
          <xs:assert
@@ -56,7 +56,7 @@
     <xs:complexType name="Report" mixed="true">
         <xs:attribute name="status" type="xs:string"
                       use="required" />
-        <xs:assert test="@status = 'OK' or @status = 'KO'" />
+        <xs:assert test="@status = 'OK' or @status = 'FAILED'" />
     </xs:complexType>
          
     <!-- Declaration of one used model -->

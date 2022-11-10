@@ -4,7 +4,7 @@
 	xmlns="http://www.ivoa.net/xml/mivot">
 	
 	<!-- Test Case 14.2: failing with a message -->
-	<REPORT status="KO">
+	<REPORT status="FAILED">
 	The annotation process failed
 	</REPORT>
 

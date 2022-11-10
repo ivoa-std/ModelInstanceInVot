@@ -17,7 +17,7 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
 \begin{lstlisting}[caption={\texttt{REPORT} example for an annotation failure.},language=XML]
 <VODML	xmlns="http://www.ivoa.net/xml/mivot">
 	
-	<REPORT status="KO">
+	<REPORT status="FAILED">
 	    Missing column for the declination, positions cannot be mapped.
 	</REPORT>
 	<!-- 
@@ -37,7 +37,7 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
     \hline
     \hline  
          @status  & 
-        Status of the annotation process; must be either \texttt{OK} or \texttt{KO} \\
+        Status of the annotation process; must be either \texttt{OK} or \texttt{FAILED} \\
     \hline 
   \end{tabulary}
   \caption{\texttt{REPORT} attributes.} 
