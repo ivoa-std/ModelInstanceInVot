@@ -8,8 +8,10 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
         systems that need to be serialised in VOTables:
   \begin{itemize}
     \item Clients often need to get such coordinate systems descriptions upon different axes to properly display datasets. 
-    \item Data sets can contain different quantities expressed in the same coordinate system (corrected position vs raw position) or 
-          quantities of the same nature but expressed in different systems (sky coordinates in ICRS vs Gal). 
+    \item Data sets can contain different quantities expressed in the
+    same coordinate system (corrected position vs.~raw position) or 
+          quantities of the same nature but expressed in different
+          systems (sky coordinates in ICRS vs.~Gal). 
           This is partially supported by the actual VOTable schema (TIMESYS, COOSYS) but any change in these ad-hoc mapping 
           elements or the addition of any other elements (e.g. definition of X-ray energy band) would require VOTable version upgrades. 
           Using the mapping syntax disconnects the level of description of the different axes from the VOTable schema.           
@@ -20,7 +22,7 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
     \item value-error associations
     \item error quantities spread over several columns (covariance matrices). 
     \item quantities with quality flags
-    \item positions with proper motions and/or parallax to compute error ellipses or positions at a given epoch
+    \item positions with proper motions and/or parallaxes to compute error ellipses or positions at a given epoch
   \end{itemize} 
 
   \item The above cases relate to the description of instances in a
@@ -33,13 +35,14 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
   which provides classes for most of the physical quantities that can 
   be rendered by the mapping syntax. Measure classes are not meant to 
   be used as standalone elements but as parts of host models 
-  (e.g. Cube DM, MANGO DM);
-  however clients are free to either process those host models as a
+  (e.g., Cube DM, MANGO DM);
+  however, clients are free to either process those host models as a
   whole or to chase individual components.
   
   With more precise information on coordinate systems in the annotation:
     \begin{itemize}
-      \item Cross matching sources in VOTables containing the same quantities, e.g. the sky position, becomes easier.
+      \item Cross matching sources in VOTables containing the same
+      quantities, e.g., the sky position, becomes easier.
             The reliability of the process is improved since the engine does not need to infer information that is not present in the FIELD metadata.
       \item Building SEDs from datasets that have the same photometric calibration representation becomes straightforward.
    \end{itemize}          
@@ -47,13 +50,14 @@ The design of the mapping syntax addresses the necessity of supporting intermedi
   \item In more advanced cases, we need to be able to extract complete model instances from VOTables.
     \begin{itemize}
       \item Extracting  TimeSeries instances to feed into software built upon classes generated from that model.
-      \item Building model instances that can be serialised in another format (e.g. json) in order to be shared in another context than 
+      \item Building model instances that can be serialised in another
+      format (e.g., json) in order to be shared in another context than 
             the VOTable processing (e.g. via SAMP).
    \end{itemize}         
     
    \item MIVOT can be used to annotate static science products such as e.g. time-series. It can also be used to annotate 
     TAP responses on the fly, as shown by \cite{2201.01732}. Note that this process relies on the correct execution of the TAP query 
-    with respect to the data base content and may fail due to missing searched columns, illegal joins, or bad data aggregation, for instance. 
+    with respect to the database content and may fail due to missing searched columns, illegal joins, or bad data aggregation, for instance. 
    %(ref- https://doi.org/10.48550/arXiv.2201.01732)
    
     

@@ -7,7 +7,7 @@ DOCNAME = mivot
 DOCVERSION = 1.0
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2022-10-05
+DOCDATE = 2022-11-04
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
 DOCTYPE = PR
@@ -18,7 +18,8 @@ AUTHOR_EMAIL=laurent.michel@astro.unistra.fr
 
 # Source files for the TeX document (but the main file must always
 # be called $(DOCNAME).tex
-SOURCES = $(DOCNAME).tex role_diagram.pdf
+SOURCES = $(DOCNAME).tex role_diagram.pdf appendix*.tex element*tex\
+	introduction.tex syntax.tex api.tex validation.tex
 
 # List of image files to be included in submitted package (anything that
 # can be rendered directly by common web browsers)
