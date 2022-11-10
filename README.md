@@ -24,6 +24,11 @@ The objective is to provide a standard that allows to map VOTable data on any VO
 - `doc` : standard document
 - `schema`: XML schema for the mapping syntax (XSD1.1)
 
+### Document build up (from doc directory)
+
+- Build the pdf: `make forcetex`
+- Valid XML snippets: `make  valid_snippet`
+
 # Licence
 
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
