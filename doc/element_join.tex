@@ -1,5 +1,5 @@
 The \texttt{JOIN} element populates a \texttt{COLLECTION} with \texttt{INSTANCE}  elements from another collection, called hereafter the foreign collection.
-The foreign collection can either be a static element  \texttt{GLOBALS} \texttt{COLLECTION}  or a collection of \texttt{INSTANCE}  resulting from the iteration over a \texttt{TEMPLATES}.
+The foreign collection can either be a static element  (\texttt{COLLECTION} child of \texttt{GLOBALS}) or a collection of \texttt{INSTANCE} elements resulting from the iteration over a \texttt{TEMPLATES}.
 
 The \texttt{JOIN} element must contain XML attributes identifying the foreign collection  like \texttt{@sourceref}  and/or \texttt{@dmref} . 
 It can have \texttt{WHERE} children elements stating the join condition and it must be the unique child of the host \texttt{COLLECTION} .
