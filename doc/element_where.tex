@@ -1,4 +1,10 @@
-The \texttt{WHERE} element is used to filter iteration outputs. Results are accepted when the key is equal to the specified \texttt{@value}. The mapping syntax does not specify the data types to be used to evaluate the expression. 
+The \texttt{WHERE} element is used to filter iteration outputs. 
+Results are accepted when the key is equal to the specified \texttt{@value}. 
+\begin{itemize}
+    \item The mapping syntax does not specify the data types to be used to evaluate the expression. 
+    \item The \texttt{WHERE} statement is false if at least one of the values used for the comparison is NULL.
+\end{itemize}
+
 There  are 2 different uses for this element:
 \begin{enumerate}
 \item{As a child of \texttt{TEMPLATES}:}
