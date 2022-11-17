@@ -3,8 +3,7 @@ There are different uses for the \texttt{REFERENCE}
 
 \begin{itemize}
     \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} attribute of the referenced \texttt{INSTANCE} 
-    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying  the table where to fetch the referenced column. 
-    
+    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying  the table where to fetch the referenced column.   
              In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one or more \texttt{FOREIGN\_KEY} children. 
              If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first match must be taken by default.
 \end{itemize}
@@ -22,7 +21,11 @@ There are different uses for the \texttt{REFERENCE}
 
 \end{lstlisting}
 
-\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} of the table of collection \texttt{\_CoordinateSystems} and having a \texttt{PRIMARY\_KEY} matching the value of the column  \texttt{\_band}. This pattern is valid in the context of a TEMPLATES (see line~\ref{REFERENCE_snippet_2).},language=XML]
+\begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, 
+                            to be replaced with the \texttt{INSTANCE} of the table of collection \texttt{\_CoordinateSystems} 
+                            and having a \texttt{PRIMARY\_KEY} matching the value of the column  \texttt{\_band}.
+                            This pattern is valid in the context of a TEMPLATES
+                            (see line~\ref{REFERENCE_snippet_2}).},language=XML]
 <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
     ...
     <!--
@@ -30,7 +33,7 @@ There are different uses for the \texttt{REFERENCE}
         having a primary key matching the value of the column IDband for that particular row
      -->
     <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="_CoordinateSystems">
-        <FOREIGN\_KEY ref="_band"/>
+        <FOREIGN_KEY ref="_band"/>
     </REFERENCE>
 </INSTANCE>
 \end{lstlisting}
