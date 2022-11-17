@@ -35,6 +35,7 @@
                 <xs:element name="TEMPLATES" type="dm-mapping:Templates"
                     minOccurs="0" maxOccurs="unbounded" />                  
             </xs:sequence>
+         <!--  MD proposal
          <xs:assert
             test="if (dm-mapping:REPORT[@status] = 'OK') then (count(dm-mapping:MODEL) > 0) else true()" />
          <xs:assert
@@ -43,6 +44,7 @@
             test="if (count(dm-mapping:MODEL) = 0) then (count(dm-mapping:REPORT) = 1) else true()" />
          <xs:assert
             test="if (count(dm-mapping:REPORT) = 0)  then  (count(dm-mapping:MODEL) > 0) else true()" />
+         -->
         </xs:complexType>
 
         <!-- Make sure dmid is unique within the mapping block -->
