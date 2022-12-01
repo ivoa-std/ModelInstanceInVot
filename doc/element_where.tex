@@ -1,7 +1,8 @@
 The \texttt{WHERE} element is used to filter iteration outputs. 
 Results are accepted when the key is equal to the specified \texttt{@value}. 
 \begin{itemize}
-    \item The mapping syntax does not specify the data types to be used to evaluate the expression. 
+    \item For now, we only define type-preserving comparisons; comparisons requiring type corrections will be 
+          defined in a future version of this standard and for now must raise an error. 
     \item The \texttt{WHERE} statement is false if at least one of the values used for the comparison is NULL.
 \end{itemize}
 

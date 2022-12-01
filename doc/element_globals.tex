@@ -1,16 +1,16 @@
 The \texttt{GLOBALS} block holds model instances or collections of model instances 
 that are not connected with any table column. 
 
-The instances contained in \texttt{GLOBALS} have a global scope, and may be
+The instances or collections contained in \texttt{GLOBALS} have a global scope. They can be
 referenced by other instances anywhere in the mapping block.  
-They must only contain
-explicit values, they must not refer to VOTable \texttt{FIELDS}.  \\ 
+They must only contain literal values.
+They must not refer to VOTable \texttt{FIELDS} or \texttt{PARAM} either.  \\ 
 
 Related instances may be grouped within \texttt{COLLECTION} blocks to enable selection
 via the MIVOT \texttt{JOIN} mechanism.  
 See \texttt{COLLECTION} subsection for more details.
 
-\begin{lstlisting}[caption={Example \texttt{GLOBALS} block (see line~\ref{GLOBALS_snippet} in Appendix A) which contains a collection of coordinate systems.},language=XML]
+\begin{lstlisting}[caption={Example \texttt{GLOBALS} block (see line~\ref{GLOBALS_snippet} in Appendix~\ref{appendix_A} ) which contains a collection of coordinate systems.},language=XML]
 <VODML xmlns:dm-mapping="http://www.ivoa.net/xml/mivot" >
     <REPORT status="OK">Mapping compiled by hand</REPORT>
     <MODEL... />

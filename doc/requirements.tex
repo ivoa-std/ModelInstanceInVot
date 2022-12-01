@@ -9,8 +9,8 @@
     \item Annotation must not alter the VOTable content.
     \item Annotation blocks must be located in a way that it can easily be skipped by model-unaware clients.
     \item The vocabulary in the annotation name-space must not overlap with the VOTable elements (names or attributes)    
-    \item The annotation syntax must be able to inform the client about the status of the annotation process.
-          It needs a place where we can stick error messages in case the annotation went wrong.
+    \item The annotation must provide an element for communicating success or failure of the annotation 
+          and possible diagnostics.
   \end {itemize}
   
   \item Schema and validation:
