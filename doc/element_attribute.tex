@@ -84,10 +84,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
             by either \texttt{@value} or \texttt{@ref}. \texttt{@unit} must always 
             be compliant with VOUnit \citep{2014ivoa.spec.0523D}. 
             If the attribute value is set by a resolved \texttt{@ref}, 
-            \texttt{@unit} must be compliant with the unit of the referenced
-            \texttt{FIELD} or \texttt{PARAM}. The inconsistency handling at 
-            this level is beyond the scope of this document. The client can 
-            deal with them at his own convenience.\\
+            \texttt{@unit} must be the VOUnit counterpart of the \texttt{FIELD} or \texttt{PARAM} unit;
+            an error must be risen otherwise.\\
         \hline 
             \texttt{@arrayindex} & 
             Index of the native value to be taken to set the \texttt{ATTRIBUTE}. 
