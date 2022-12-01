@@ -16,8 +16,8 @@ It can have \texttt{WHERE} children elements stating the join condition and it m
                         This pattern is only valid when the foreign TEMPLATEs has  one unique instance child.
                \item if only \texttt{@dmref} is given,  the host collection is populated with the \texttt{INSTANCE}  having the matching \texttt{@dmid}. In this case, 
                         the client is in charge of locating the \texttt{TEMPLATES} containing that \texttt{INSTANCE}.
-               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} is hosted by the \texttt{TEMPLATES} matching \texttt{@sourceref}.
-                        This over-statement may help the parser but it can carry inconsistencies. An error must be risen in this case.
+               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} 
+                        is hosted by the \texttt{TEMPLATES} matching \texttt{@sourceref}; an error must be risen otherwise.
              \end{itemize}
     \end{itemize}
   
