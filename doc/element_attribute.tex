@@ -73,7 +73,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
         \hline 
             \texttt{@ref} & 
             Reference or name of the \texttt{FIELD} or \texttt{PARAM} that has to be used to set the 
-            \texttt{ATTRIBUTE} value.\\
+            \texttt{ATTRIBUTE} value. In case of duplicate identifiers, which is possible with reference by name, 
+            the \texttt{FIELD} reference supercedes the \texttt{PARAM} one. \\
         \hline 
             \texttt{@value}  &
             Default \texttt{ATTRIBUTE} value. This value is taken if there is no 
