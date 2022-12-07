@@ -3,8 +3,8 @@ that are not connected with any table column.
 
 The instances or collections contained in \texttt{GLOBALS} have a global scope. They can be
 referenced by other instances anywhere in the mapping block.  
-They must only contain literal values.
-They must not refer to VOTable \texttt{FIELDS} or \texttt{PARAM} either.  \\ 
+They must only contain literal values or reference to \texttt{PARAM} elements.
+They must not refer to VOTable \texttt{FIELD} element.  \\ 
 
 Related instances may be grouped within \texttt{COLLECTION} blocks to enable selection
 via the MIVOT \texttt{JOIN} mechanism.  
