@@ -38,7 +38,7 @@
 </INSTANCE>
 \end{lstlisting}   
 
-\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of \texttt{GLOBALS} (see in \ref{COLLECTION_snippet_1}). It plays no role as a \texttt{GLOBALS} element.},language=XML]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} child of \texttt{GLOBALS} (see line~\ref{COLLECTION_snippet_1} in Appendix~\ref{appendix_A}). It plays no specific role as being part of the \texttt{GLOBALS} elements.},language=XML]
 <GLOBALS>
     <!--
       Container for the datasets (one per timeseries)
@@ -63,7 +63,7 @@
 </GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN (see in \ref{COLLECTION_snippet_2}).},language=XML]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN (see line~\ref{COLLECTION_snippet_2} in Appendix~\ref{appendix_A}).},language=XML]
 <TEMPLATES tableref="IDPKTable">
     <INSTANCE dmid="IDTimeSeries" dmrole="" dmtype="cube:SparseCube">
         ....
@@ -104,7 +104,7 @@
     \hline
     \hline  
          \texttt{@dmid} & 
-         Datamodel element id, MUST be unique within the document.\\
+         Datamodel element id, MUST be unique within the mapping block.\\
     \hline 
          \texttt{@dmrole} & 
          Role of the \texttt{COLLECTION} in the data model. \\

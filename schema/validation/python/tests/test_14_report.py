@@ -13,7 +13,7 @@ mapping_sample = FileUtils.get_datadir()
 expected = {
             '14.1': 'VALID',
             '14.2': 'VALID',
-            '14.3': "@status = 'OK' or @status = 'KO'"
+            '14.3': "@status = 'OK' or @status = 'FAILED'"
             }
 
 class Test(unittest.TestCase):

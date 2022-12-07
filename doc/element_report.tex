@@ -1,12 +1,13 @@
-Services providing annotated responses must use the \texttt{REPORT}  element to tell the client whether the annotation process succeeded or not.
+Services providing annotated responses must use the \texttt{REPORT}  element to tell the client whether 
+the annotation process succeeded or not. 
 
 \begin{itemize}
 \item \texttt{REPORT} is not mandatory.
 \item It must be the first \texttt{VODML} child if present.
 \end{itemize}
 
-\begin{lstlisting}[caption={\texttt{REPORT} example for an valid annotation (see in \ref{REPORT_snippet}).},language=XML]
- <VODML xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax" >
+\begin{lstlisting}[caption={\texttt{REPORT} example for an valid annotation (see line~\ref{REPORT_snippet} in Appendix~\ref{appendix_A}).},language=XML]
+ <VODML xmlns:dm-mapping="http://www.ivoa.net/xml/mivot" >
     <REPORT status="OK">Mapping compiled by hand</REPORT>
 	<!-- 
 	   other annotations
@@ -15,10 +16,10 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
 \end{lstlisting}
 
 \begin{lstlisting}[caption={\texttt{REPORT} example for an annotation failure.},language=XML]
-<VODML	xmlns="http://www.ivoa.net/xml/merged-syntax">
+<VODML	xmlns="http://www.ivoa.net/xml/mivot">
 	
-	<REPORT status="KO">
-	    The annotation process failed
+	<REPORT status="FAILED">
+	    Missing column for the declination, positions cannot be mapped.
 	</REPORT>
 	<!-- 
 	   No other annotation
@@ -37,7 +38,7 @@ Services providing annotated responses must use the \texttt{REPORT}  element to 
     \hline
     \hline  
          @status  & 
-        Status of the annotation process; must be either \texttt{OK} or \texttt{KO} \\
+        Status of the annotation process; must be either \texttt{OK} or \texttt{FAILED} \\
     \hline 
   \end{tabulary}
   \caption{\texttt{REPORT} attributes.} 

@@ -1,4 +1,11 @@
-The \texttt{WHERE} element is used to filter iteration outputs. Results are accepted when the key is equal to the specified \texttt{@value}. The mapping syntax does not specify the data types to be used to evaluate the expression. 
+The \texttt{WHERE} element is used to filter iteration outputs. 
+Results are accepted when the key is equal to the specified \texttt{@value}. 
+\begin{itemize}
+    \item For now, we only define type-preserving comparisons; comparisons requiring type corrections will be 
+          defined in a future version of this standard and for now must raise an error. 
+    \item The \texttt{WHERE} statement is false if at least one of the values used for the comparison is NULL.
+\end{itemize}
+
 There  are 2 different uses for this element:
 \begin{enumerate}
 \item{As a child of \texttt{TEMPLATES}:}
@@ -27,7 +34,9 @@ There  are 2 different uses for this element:
 </TEMPLATES>
 \end{lstlisting}
 
-\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the \texttt{\_pksrcid} column is equal to the \texttt{\_srcid} column of the foreign table (see \ref{WHERE_snippet}). },language=XML]
+\begin{lstlisting}[caption={\texttt{WHERE} Example: the join is satisfied when the value of the 
+                            \texttt{\_pksrcid} column is equal to the \texttt{\_srcid} column of the foreign table 
+                            (see line~\ref{WHERE_snippet}). },language=XML]
 <JOIN dmref="_ts_data">
     <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
 </JOIN>

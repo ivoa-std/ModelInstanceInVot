@@ -10,8 +10,8 @@
 <xs:schema attributeFormDefault="unqualified"
     elementFormDefault="qualified" version="1.1"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://www.ivoa.net/xml/merged-syntax"
-    xmlns:dm-mapping="http://www.ivoa.net/xml/merged-syntax">
+    targetNamespace="http://www.ivoa.net/xml/mivot"
+    xmlns:dm-mapping="http://www.ivoa.net/xml/mivot">
 
 
     <!-- Required to validate mapping block within a VOTable (LM 08/2021) -->
@@ -35,14 +35,16 @@
                 <xs:element name="TEMPLATES" type="dm-mapping:Templates"
                     minOccurs="0" maxOccurs="unbounded" />                  
             </xs:sequence>
+         <!--  MD proposal
          <xs:assert
             test="if (dm-mapping:REPORT[@status] = 'OK') then (count(dm-mapping:MODEL) > 0) else true()" />
          <xs:assert
-            test="if (dm-mapping:REPORT[@status] = 'KO') then (count(dm-mapping:MODEL) >= 0) else true()" />
+            test="if (dm-mapping:REPORT[@status] = 'FAILED') then (count(dm-mapping:MODEL) >= 0) else true()" />
          <xs:assert
             test="if (count(dm-mapping:MODEL) = 0) then (count(dm-mapping:REPORT) = 1) else true()" />
          <xs:assert
             test="if (count(dm-mapping:REPORT) = 0)  then  (count(dm-mapping:MODEL) > 0) else true()" />
+         -->
         </xs:complexType>
 
         <!-- Make sure dmid is unique within the mapping block -->
@@ -56,7 +58,7 @@
     <xs:complexType name="Report" mixed="true">
         <xs:attribute name="status" type="xs:string"
                       use="required" />
-        <xs:assert test="@status = 'OK' or @status = 'KO'" />
+        <xs:assert test="@status = 'OK' or @status = 'FAILED'" />
     </xs:complexType>
          
     <!-- Declaration of one used model -->

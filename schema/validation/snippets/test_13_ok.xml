@@ -4,7 +4,7 @@
     This test suit is derived from 5 with a correct dmid tuning
 -->
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 	<MODEL name="model" url="http://aaaaaa" />
 	<GLOBALS >

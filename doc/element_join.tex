@@ -1,5 +1,5 @@
 The \texttt{JOIN} element populates a \texttt{COLLECTION} with \texttt{INSTANCE}  elements from another collection, called hereafter the foreign collection.
-The foreign collection can either be a static element  \texttt{GLOBALS} \texttt{COLLECTION}  or a collection of \texttt{INSTANCE}  resulting from the iteration over a \texttt{TEMPLATES}.
+The foreign collection can either be a static element  (\texttt{COLLECTION} child of \texttt{GLOBALS}) or a collection of \texttt{INSTANCE} elements resulting from the iteration over a \texttt{TEMPLATES}.
 
 The \texttt{JOIN} element must contain XML attributes identifying the foreign collection  like \texttt{@sourceref}  and/or \texttt{@dmref} . 
 It can have \texttt{WHERE} children elements stating the join condition and it must be the unique child of the host \texttt{COLLECTION} .
@@ -16,8 +16,8 @@ It can have \texttt{WHERE} children elements stating the join condition and it m
                         This pattern is only valid when the foreign TEMPLATEs has  one unique instance child.
                \item if only \texttt{@dmref} is given,  the host collection is populated with the \texttt{INSTANCE}  having the matching \texttt{@dmid}. In this case, 
                         the client is in charge of locating the \texttt{TEMPLATES} containing that \texttt{INSTANCE}.
-               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} is hosted by the \texttt{TEMPLATES} matching \texttt{@sourceref}.
-                        This over-statement may help the parser but it can carry inconsistencies. An error must be risen in this case.
+               \item if both \texttt{@sourceref} and \texttt{@dmref} are given, it is assumed that the \texttt{INSTANCE} with \texttt{@dmid} matching \texttt{@dmref} 
+                        is hosted by the \texttt{TEMPLATES} matching \texttt{@sourceref}; an error must be risen otherwise.
              \end{itemize}
     \end{itemize}
   
@@ -32,7 +32,7 @@ It can have \texttt{WHERE} children elements stating the join condition and it m
   \end{itemize}
 \end{itemize}
 
-\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example with 2 join conditions (see \ref{JOIN_snippet}).} },language=XML]
+\begin{lstlisting}[label={lst:join},caption={\texttt{JOIN example with 2 join conditions (see line~\ref{JOIN_snippet} in Appendix~\ref{appendix_A}).} },language=XML]
 <JOIN dmref="IDtsIDdata">
     <WHERE foreignkey="_srcid" primarykey="_pksrcid" />
     <WHERE foreignkey="_band" primarykey="_pkband"  />

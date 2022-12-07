@@ -1,11 +1,12 @@
-This listing is issued from a Gaia light curve. It has been reworked out and mapped by hand 
-in a way to provide examples of mapping patterns applied to real data.
-The mapped models are the prototypes that were used in 2021 to develop the mapping syntax 
-and the associated tooling.
-
-Most of the XML snippets of the normative sections are taken out from this table. 
-In this case, links connecting the text with the relevant locations in the listing have been setup.
-
-The VOTabke below contains many comments explaining how mapping patterns must be interpreted.
-\lstinputlisting[caption={Gaia multiband example. Notice that due to a Latex tweak, all \_ characters are prefixed with a \textbackslash},language=XML,escapeinside={@}{@}]{appendix_D.xml}
+The aim of the mapping syntax is to enable services to associate a model view to searched data including legacy data.
+The usage of such model views can range for a simple enhancement of the metadata up to the representation of full model instances.
+A step toward a better DM integration in the VO consists in enabling services to annotate
+legacy data by providing complete model
+views. 
+To automatically generate model annotations, the server must check that the selected columns 
+match the model definitions and thus can be
+mapped on that model. To operate the mapping, the server needs further information
+such as coordinate frames and data profile resources giving the binding between table
+columns and model leaves. A prototype \citep{2201.01732} implementing this feature
+has been demonstrated at the ADASS conference in 2021.
 

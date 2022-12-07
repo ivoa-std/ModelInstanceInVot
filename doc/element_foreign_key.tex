@@ -1,7 +1,7 @@
 \texttt{FOREIGN\_KEY} is only used within a \texttt{REFERENCE} located within a \texttt{TEMPLATE}.
 It identifies the FIELD that must  match the primary key of the referenced collection.
 
-\begin{lstlisting}[caption={The \texttt{REFERENCE} is resolved by the \texttt{INSTANCE} of the table \texttt{\_CoordinateSystems} that has a primary key equals to the value of the column  \texttt{\_band} (see \ref{FOREIGN_KEY_snippet}).},language=XML]
+\begin{lstlisting}[caption={The \texttt{REFERENCE} is resolved by the \texttt{INSTANCE} of the table \texttt{\_CoordinateSystems} that has a primary key equals to the value of the column  \texttt{\_band} (see line~\ref{FOREIGN_KEY_snippet} in Appendix~\ref{appendix_A}).},language=XML]
 <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="_CoordinateSystems">
     <FOREIGN\_KEY ref="IDband"/>
 </REFERENCE>

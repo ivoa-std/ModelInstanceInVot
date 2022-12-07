@@ -1,11 +1,9 @@
 A VOTable can provide serializations for an arbitrary number of data model
 types. In order to declare which models are represented in the file, data
 providers must declare them through the \texttt{MODEL} elements.
-Only models that are used in the file must be declared. A model is
-used if at least one element in the mapping block refers to it. In other terms, only models that define vodml-ids used in the
-annotation must be declared.
+All models that define vodml-ids used in the annotation must be declared.
 
-\begin{lstlisting}[caption={Example \texttt{MODEL} mapping block. (see in context line \ref{MODEL_snippet}) },language=XML]
+\begin{lstlisting}[caption={Example \texttt{MODEL} mapping block. (see line~\ref{MODEL_snippet} in Appendix~\ref{appendix_A}) },language=XML]
 <MODEL name="ivoa"   
        url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
 <MODEL name="mango"
@@ -30,7 +28,9 @@ annotation must be declared.
     \hline
     \hline  
          \texttt{@name}  & 
-         Name of the mapped model as declared in the VO-DML/XML model serialization.  This attribute MUST not be empty and forms the prefix used in  \texttt{@dmrole}  \texttt{@dmtype} tags of elements from that model.  \\
+         Name of the mapped model as declared in the VO-DML/XML model serialization.  
+         This attribute MUST not be empty. 
+         Its value is used to prefix the values of both \texttt{@dmrole} and \texttt{@dmtype} attributes of elements from that model.  \\
     \hline 
          \texttt{@url} & 
          URL to the VO-DML/XML serialization of the model. If present, this attribute MUST not be empty.\\

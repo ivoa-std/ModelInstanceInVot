@@ -1,3 +1,5 @@
+\subsection{Overview}
+
 The syntax has been designed %to use as few XML elements as possible and to rely on XML attributes to setup the element behavior in a particular context.
 as a restricted but still complete set of XML elements. It relies on XML attributes to setup the element behavior in a particular context.
 As shown in table \ref{tbl:syntax-ele} the mapping elements  are used %can be grouped 
@@ -70,8 +72,17 @@ As shown in Table \ref{tbl:syntax-att} and following the \texttt{VODML} pattern,
   \end{figure}
 
 
-In the following normative subsections, all mapping patterns are illustrated with XML snippets. 
-These excerpts are out of the box, they refer to model elements or VOTable metadata that do not exist 
+\subsection{Reader's Guide}
+
+Each element subsection come with 2 or 3 tables: 1) one giving the role of each attribute, 
+2) one giving the allowed children elements (when relevant), 3) one telling when each attribute 
+is mandatory (MAND), optional (OPT) or prohibited (NO). 
+The content of these tables is a transcription of the XSD assertions.
+
+In the following normative subsections, all mapping patterns are illustrated with XML snippets.
+Most of these excerpts are taken out of a complete VOTable listed in appendix \ref{appendix_A}.
+The others are out of the box, they refer to model elements or VOTable metadata that do not exist 
 but that have been chosen to achieve better readability. 
 Readers can have a look at \url{https://github.com/ivoa-std/ModelInstanceInVot/tree/master/data-sample} 
 to inspect most of them in a context of real data.
+

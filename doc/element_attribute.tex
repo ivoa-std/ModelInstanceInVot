@@ -38,8 +38,13 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
     The \texttt{ATTRIBUTE} must always have a non-empty \texttt{@dmtype} XML attribute.
     If the \texttt{ATTRIBUTE}  is located within a \texttt{GLOBALS}, its value must be set with  a  \texttt{@value} since the \texttt{GLOBALS} block is not connected with any data table.
 \end{enumerate}  
+ 
+ MIVOT does not specify the way the handle NULL values. This remains in charge of the client implementation, 
+ not of the syntax. The role of syntax is to tell the client how to build model instances. 
+ If a \texttt{@ref} points onto a null \texttt{FIELD} value, the client has to set the corresponding model leaf 
+ as NULL as well, but the way it do it is very specific to both language and implementation choices.
     
-\begin{lstlisting}[caption={Example of an \texttt{ATTRIBUTE} set with either a column reference or a static value (see \ref{ATTRIBUTE_snippet}). If the column reference cannot be resolved, the attribute will be set with its static value.},language=XML]
+\begin{lstlisting}[caption={Example of an \texttt{ATTRIBUTE} set with either a column reference or a static value (see line~\ref{ATTRIBUTE_snippet} in Appendix~\ref{appendix_A}). If the column reference cannot be resolved, the attribute will be set with its static value.},language=XML]
 <INSTANCE dmtype="cube:Observable">
     <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="False"/>
     <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:Time"
@@ -67,8 +72,9 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
             Type of the attribute in the DM\\
         \hline 
             \texttt{@ref} & 
-            Reference of the \texttt{FIELD} or \texttt{PARAM} that has to be used to set the 
-            \texttt{ATTRIBUTE} value.\\
+            Reference or name of the \texttt{FIELD} or \texttt{PARAM} that has to be used to set the 
+            \texttt{ATTRIBUTE} value. In case of duplicate identifiers, which is possible with reference by name, 
+            the \texttt{FIELD} reference supercedes the \texttt{PARAM} one. \\
         \hline 
             \texttt{@value}  &
             Default \texttt{ATTRIBUTE} value. This value is taken if there is no 
@@ -79,10 +85,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
             by either \texttt{@value} or \texttt{@ref}. \texttt{@unit} must always 
             be compliant with VOUnit \citep{2014ivoa.spec.0523D}. 
             If the attribute value is set by a resolved \texttt{@ref}, 
-            \texttt{@unit} must be compliant with the unit of the referenced
-            \texttt{FIELD} or \texttt{PARAM}. The inconsistency handling at 
-            this level is beyond the scope of this document. The client can 
-            deal with them at his own convenience.\\
+            \texttt{@unit} must be the VOUnit counterpart of the \texttt{FIELD} or \texttt{PARAM} unit;
+            an error must be risen otherwise.\\
         \hline 
             \texttt{@arrayindex} & 
             Index of the native value to be taken to set the \texttt{ATTRIBUTE}. 

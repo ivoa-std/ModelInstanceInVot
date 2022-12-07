@@ -2,7 +2,7 @@
 
 <!-- Test Case 1.5: MODEL required -->
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 
 </VODML>

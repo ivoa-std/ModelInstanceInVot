@@ -4,7 +4,7 @@
 <!--       We take advantage of this to test several valid cases in the same file -->
 
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 	<MODEL name="model" url="http://aaaaaa" />
 	<TEMPLATES tableref="fgdgfddf">

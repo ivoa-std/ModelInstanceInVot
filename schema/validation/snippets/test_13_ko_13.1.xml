@@ -3,7 +3,7 @@
     13.1 duplicated GLOBALS/COLLECTION@dmid
 -->
 <VODML
-	xmlns="http://www.ivoa.net/xml/merged-syntax">
+	xmlns="http://www.ivoa.net/xml/mivot">
 
 	<MODEL name="model" url="http://aaaaaa" />
 	<GLOBALS >
