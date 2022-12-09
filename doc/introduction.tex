@@ -33,14 +33,14 @@ However, some UTypes features that could complicate the mapping process have bee
   (as TimeSeries or Catalog/Source for instance)
 \end{itemize}
 
-The UType approach could have been extended to overcome these limitations, but it has been decided to move forward a solution closer to the \texttt{VODML} \citep{2018ivoa.spec.0910L} concepts. 
-\texttt{VODML} is a meta-model that gives a standard way to express VO models as machine-readable XML document.
-In \texttt{VODML}, the role of model leaves are no longer given by simple strings like UTypes, but by the local role they play in the model hierarchy.
+The UType approach could have been extended to overcome these limitations, but it has been decided to move forward a solution closer to the VO-DML \citep{2018ivoa.spec.0910L} concepts. 
+VO-DML is a meta-model that gives a standard way to express VO models as machine-readable XML document.
+In VO-DML, the role of model leaves are no longer given by simple strings like UTypes, but by the local role they play in the model hierarchy.
 
 
 
 
-As a consequence, an annotation mechanism such as MIVOT, based on \texttt{VODML} and preserving the model hierarchy can easily provide data representations faithful to that model.
+As a consequence, an annotation mechanism such as MIVOT, based on VO-DML and preserving the model hierarchy can easily provide data representations faithful to that model.
 
 The basis of MIVOT is to insert into the VOTable, an XML block complying with the 
 model structure and containing references to the actual data.
