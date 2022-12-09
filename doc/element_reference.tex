@@ -1,11 +1,14 @@
-\texttt{INSTANCE} reference that can be used with the same patterns as for \texttt{INSTANCE} .
-There are different uses for the \texttt{REFERENCE} 
+The \texttt{REFERENCE} element provides a reference to an \texttt{INSTANCE} or \texttt{COLLECTION} serialized elsewhere in the mapping block.
+Reference can be used in the same contexts as \texttt{INSTANCE}.
+
+The different uses for the \texttt{REFERENCE} element are:
 
 \begin{itemize}
-    \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} attribute of the referenced \texttt{INSTANCE} 
-    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying  the table where to fetch the referenced column.   
+    \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} attribute of the referenced \texttt{INSTANCE} or \texttt{COLLECTION} 
+    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying the foreign collection (\texttt{TEMPLATES} or \texttt{COLLECTION}) 
+    containing the referenced \texttt{INSTANCE}.
              In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one or more \texttt{FOREIGN\_KEY} children. 
-             If the referenced table contains several \texttt{INSTANCE} with a \texttt{PRIMARY\_KEY}  the first match must be taken by default.
+             If the foreign collection has multiple \texttt{INSTANCE}-s with matching \texttt{PRIMARY\_KEY}-s, the first match must be taken by default.
 \end{itemize}
 
 \begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid=\_tg1} (see line~\ref{REFERENCE_snippet_1} in Appendix~\ref{appendix_A}).},language=XML]
@@ -22,7 +25,7 @@ There are different uses for the \texttt{REFERENCE}
 \end{lstlisting}
 
 \begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, 
-                            to be replaced with the \texttt{INSTANCE} of the table of collection \texttt{\_CoordinateSystems} 
+                            to be replaced with the \texttt{INSTANCE} of the collection \texttt{\_CoordinateSystems} 
                             and having a \texttt{PRIMARY\_KEY} matching the value of the column  \texttt{\_band}.
                             This pattern is valid in the context of a TEMPLATES
                             (see line~\ref{REFERENCE_snippet_2}).},language=XML]
@@ -49,13 +52,13 @@ See more examples in the Appendix \ref{appen_dynref}.
             \textbf {Role}\\
        \hline         \hline  
             \texttt{@dmrole} & 
-            Role of the referenced instance or collection in the DM \\
+            Role of the referenced \texttt{INSTANCE} or \texttt{COLLECTION} in the DM \\
         \hline 
             \texttt{@sourceref}  &
-            \texttt{@dmid} of the \texttt{COLLECTION} to be joined with in case of using a \texttt{FOREIGN\_KEY} \\
+            \texttt{@dmid} of the \texttt{COLLECTION} or \texttt{TEMPLATES} to be searched in dynamic reference case \\
         \hline 
             \texttt{@dmref} & 
-            \texttt{@dmid} of the referenced instance or collection\\
+            \texttt{@dmid} of the referenced \texttt{INSTANCE} or \texttt{COLLECTION}\\
         \hline 
      \end{tabulary}
      \caption{\texttt{REFERENCE} attributes.} 
@@ -96,12 +99,12 @@ See more examples in the Appendix \ref{appen_dynref}.
         MAND &           
         MAND &           
         NO &           
-        This is the \texttt{FOREIGN\_KEY} pattern \texttt{@sourceref} gives the  \texttt{@dmid} of the \texttt{COLLECTION} to be joined with. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the joined \texttt{COLLECTION} must have a \texttt{PRIMARY\_KEY}\\
+        This is the dynamic reference pattern, \texttt{@sourceref} gives the \texttt{@dmid} of the foreign collection to be searched. In this case \texttt{REFERENCE} must have at least one \texttt{FOREIGN\_KEY} child and the foreign collection must have a corresponding \texttt{PRIMARY\_KEY}\\
     \hline   
         MAND &           
         NO &           
         MAND &           
-        Simple reference to either an \texttt{INSTANCE} or \texttt{COLLECTION}, usually searched in the \texttt{GLOBALS}\\
+        Simple reference to either an \texttt{INSTANCE} or \texttt{COLLECTION}, usually located in the \texttt{GLOBALS}\\
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for  \texttt{REFERENCE}.}
