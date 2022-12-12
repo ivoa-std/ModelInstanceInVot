@@ -7,6 +7,7 @@ the usage:
 
 \begin{enumerate}
 \item Child of \texttt{INSTANCE}
+
  The \texttt{ATTRIBUTE} can be seen as a class attribute;
     it must have a \texttt{@dmrole} XML attribute.
 
@@ -19,7 +20,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
   \end{itemize}  
 
   
-\item Child of \texttt{COLLECTION} 
+\item Child of \texttt{COLLECTION}
+
 In this case the host \texttt{COLLECTION} can be seen as a vector and the \texttt{ATTRIBUTE} as one coordinate of the vector. 
 It must have  no \texttt{@dmrole} XML attribute or an empty one.
 
@@ -37,7 +39,7 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
     An \texttt{ATTRIBUTE} may only reference a VOTable \texttt{FIELD} within a \texttt{TEMPLATES} scope.
 \end{enumerate}  
  
- MIVOT does not specify the way the handle NULL values. This remains in charge of the client implementation, 
+ MIVOT does not specify the way to handle NULL values. This remains in charge of the client implementation, 
  not of the syntax. The role of syntax is to tell the client how to build model instances. 
  If a \texttt{@ref} points onto a null \texttt{FIELD} value, the client has to set the corresponding model leaf 
  as NULL as well, but the way it do it is very specific to both language and implementation choices.
