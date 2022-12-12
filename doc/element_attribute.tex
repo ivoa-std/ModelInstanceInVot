@@ -12,8 +12,7 @@ the usage:
 
 In this case, the \texttt{ATTRIBUTE} must be specified by:
   \begin{itemize} 
-      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM}, 
-      (not a VOTable \texttt{FIELD})
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM} or \texttt{FIELD}
       \item \texttt{@value} - a literal
       \item  if both are provided; \texttt{@value} serves as the default 
       if the reference cannot be resolved
@@ -26,8 +25,7 @@ It must have  no \texttt{@dmrole} XML attribute or an empty one.
 
 In this case, the \texttt{ATTRIBUTE} must be specified by:
   \begin{itemize} 
-      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM} 
-      or \texttt{FIELD}
+      \item \texttt{@ref} - reference to a VOTable \texttt{PARAM} or \texttt{FIELD}
       \item \texttt{@value} - a literal
       \item if both are provided, \texttt{@value} serves as the default if 
       the reference cannot be resolved
@@ -36,7 +34,7 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
 \item Any case :
 
     The \texttt{ATTRIBUTE} must always have a non-empty \texttt{@dmtype} XML attribute.
-    If the \texttt{ATTRIBUTE}  is located within a \texttt{GLOBALS}, its value must be set with  a  \texttt{@value} since the \texttt{GLOBALS} block is not connected with any data table.
+    An \texttt{ATTRIBUTE} may only reference a VOTable \texttt{FIELD} within a \texttt{TEMPLATES} scope.
 \end{enumerate}  
  
  MIVOT does not specify the way the handle NULL values. This remains in charge of the client implementation, 
@@ -140,8 +138,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
    \hline 
 \end{tabulary}
      \caption{Valid attribute patterns for \texttt{ATTRIBUTE}. (a) Valid in a \texttt{TEMPLATES} context.        
-        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by \texttt{@ref} 
-       If the \texttt{@ref} can not be resolved and \texttt{@value} is present, \texttt{@value} must be taken. Either \texttt{@ref} or \texttt{@value} must be present or both. (b) This pattern 
+        The \texttt{ATTRIBUTE} value must be set with the value of the element referenced by \texttt{@ref}. 
+        If the \texttt{@ref} can not be resolved and \texttt{@value} is present, \texttt{@value} must be taken. Either \texttt{@ref} or \texttt{@value} must be present or both. (b) This pattern 
         is valid in any context.  (c) is valid in the context of a \texttt{COLLECTION} item.    
         The \texttt{ATTRIBUTE} value must be set with \texttt{@value} as \texttt{ATTRIBUTE} value.} 
      \label{tbl:attribute-pattern}
