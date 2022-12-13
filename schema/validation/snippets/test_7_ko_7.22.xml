@@ -8,7 +8,7 @@
 			<!-- Usage 2: Child of COLLECTION -->
 			
 				<!-- Test Case 7.22: Must have no @ref in GLOBALS. -->
-				<ATTRIBUTE  dmtype="ivoa:real" ref="_param4"/>
+				<ATTRIBUTE  dmtype="ivoa:real" ref=""/>
 				<ATTRIBUTE  dmtype="ivoa:real" ref="_param5"/>
 				<ATTRIBUTE dmtype="ivoa:real" ref="_param6"/>
 			</COLLECTION>
