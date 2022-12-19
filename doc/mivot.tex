@@ -201,7 +201,7 @@ as an attribute of the \texttt{VODML} element.
 \begin{lstlisting}[caption={Mapping block in a VOTable},language=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.3">
-  <RESOURCE type="results">
+  <RESOURCE>
     <RESOURCE type="meta">
       <VODML xmlns="http://www.ivoa.net/xml/mivot">
         ...
@@ -292,6 +292,9 @@ as an attribute of the \texttt{VODML} element.
 \item June 2022 (MR \#124): The \texttt{dm-mapping:} prefix in MIVOT element has been dropped. 
 \item December 2022 (MR \#173): Allow \texttt{ATTRIBUTE} located in the \texttt{GLOBALS} block 
       to refer to VOTable \texttt{PARAM}. 
+\item December 2022 (MR \#174): More flexible location of the MIVOT block.
+      It must be enclosed in a \texttt{RESOURCE@type=meta} which must be 
+      enclosed in another \texttt{RESOURCE}.
 
 The latest can however be traced from GitHub.
 \end{itemize}
