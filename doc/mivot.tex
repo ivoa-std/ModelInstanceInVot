@@ -184,17 +184,19 @@ The data model annotation will reside within the scope of a VOTABLE V1.1+.
 
 The mapping block:
 \begin{itemize}
-\item MUST be contained in a VOTable RESOURCE with \texttt{type="meta"}. 
-      This extra feature is consistent with VOTable xml schema RESOURCE type definition and doesn't require any modification in the xml schema.
-\item which MUST be the first child of the RESOURCE containing the data to be annotated.
-\item there MUST be no more than one mapping block per 'results' RESOURCE.
+\item MUST be contained in a VOTable \texttt{RESOURCE} with \texttt{type="meta"}. 
+      This extra feature is consistent with VOTable xml schema \texttt{RESOURCE} type definition 
+      and doesn't require any modification in the xml schema.
+\item MUST be child of the \texttt{RESOURCE} containing the data to be annotated.
+\item MUST be unique in the \texttt{RESOURCE} containing the data to be annotated.
 \end{itemize}
 
-The scope of the mapping block is the whole content of the 'results' RESOURCE. \newline
+The scope of the mapping block is the whole content its parent \texttt{RESOURCE}. \newline
 
 \noindent \textbf{Namespace}
 
-The mapping element must be isolated from the VOTable elements by a name space set as an attribute of the \texttt{VODML} element.
+The mapping element must be isolated from the VOTable elements by a name space set 
+as an attribute of the \texttt{VODML} element.
 
 \begin{lstlisting}[caption={Mapping block in a VOTable},language=XML]
 <VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" 
