@@ -35,7 +35,6 @@
         <REPORT status="OK">Mapping compiled by hand</REPORT>
         <!-- @\label{MODEL_snippet}@ back to @\ref{MODEL}@ -->
         <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
-        <MODEL name="ivoa"   url="https://www.ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
         <MODEL name="mango"  url="https://github.com/ivoa-std/MANGO/blob/master/vo-dml/mango.vo-dml.xml" />
         <MODEL name="cube"   url="https://github.com/ivoa-std/Cube/vo-dml/Cube-1.0.vo-dml.xml" />
         <MODEL name="ds"     url="https://github.com/ivoa-std/DatasetMetadata/vo-dml/DatasetMetadata-1.0.vo-dml.xml" />
