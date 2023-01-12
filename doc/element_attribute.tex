@@ -36,7 +36,10 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
 \item Any case :
 
     The \texttt{ATTRIBUTE} must always have a non-empty \texttt{@dmtype} XML attribute.
-    An \texttt{ATTRIBUTE} may only reference a VOTable \texttt{FIELD} within a \texttt{TEMPLATES} scope.
+    An \texttt{ATTRIBUTE} with a \texttt{@ref} pointing on a \texttt{FIELD} must be located in the \texttt{TEMPLATES} element
+    mapping the table containing that field. \texttt{@ref} of \texttt{ATTRIBUTE}-s located in the \texttt{GLOBALS} block can only 
+    point at \texttt{PARAM} since the \texttt{GLOBALS} element does not map any data table.
+    
 \end{enumerate}  
  
  MIVOT does not specify the way to handle NULL values. This remains in charge of the client implementation, 
