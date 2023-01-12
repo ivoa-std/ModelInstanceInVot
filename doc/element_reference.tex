@@ -1,14 +1,22 @@
-The \texttt{REFERENCE} element provides a reference to an \texttt{INSTANCE} or \texttt{COLLECTION} serialized elsewhere in the mapping block.
+The \texttt{REFERENCE} element provides a reference to an \texttt{INSTANCE} or \texttt{COLLECTION} serialized 
+elsewhere in the mapping block.
 Reference can be used in the same contexts as \texttt{INSTANCE}.
 
 The different uses for the \texttt{REFERENCE} element are:
 
 \begin{itemize}
-    \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} attribute of the referenced \texttt{INSTANCE} or \texttt{COLLECTION} 
-    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying the foreign collection (\texttt{TEMPLATES} or \texttt{COLLECTION}) 
-    containing the referenced \texttt{INSTANCE}.
-             In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one or more \texttt{FOREIGN\_KEY} children. 
-             If the foreign collection has multiple \texttt{INSTANCE}-s with matching \texttt{PRIMARY\_KEY}-s, the first match must be taken by default.
+    \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} 
+          attribute of the referenced \texttt{INSTANCE} or \texttt{COLLECTION} 
+    \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying the foreign 
+          collection (\texttt{TEMPLATES} or \texttt{COLLECTION}) containing the referenced \texttt{INSTANCE}.
+          In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one 
+          or more \texttt{FOREIGN\_KEY} children. 
+          If the foreign collection has multiple \texttt{INSTANCE}-s with matching \texttt{PRIMARY\_KEY}-s, 
+          the first match must be taken by default.
+          If the \texttt{REFERENCE} has multiple \texttt{FOREIGN\_KEY}-s, they must evaluated 
+          against the target \texttt{PRIMARY\_KEY}-s in order of occurrence.
+          An error must be risen if the number of \texttt{FOREIGN\_KEY}-s does not match this of target 
+          \texttt{PRIMARY\_KEY}-s.
 \end{itemize}
 
 \begin{lstlisting}[caption={Simple \texttt{REFERENCE}, to be replaced with the \texttt{INSTANCE} having \texttt{@dmid=\_tg1} (see line~\ref{REFERENCE_snippet_1} in Appendix~\ref{appendix_A}).},language=XML]
@@ -26,9 +34,9 @@ The different uses for the \texttt{REFERENCE} element are:
 
 \begin{lstlisting}[caption={Dynamic \texttt{REFERENCE}, 
                             to be replaced with the \texttt{INSTANCE} of the collection \texttt{\_CoordinateSystems} 
-                            and having a \texttt{PRIMARY\_KEY} matching the value of the column  \texttt{\_band}.
+                            having a \texttt{PRIMARY\_KEY} matching the value of the column  \texttt{\_band}.
                             This pattern is valid in the context of a TEMPLATES
-                            (see line~\ref{REFERENCE_snippet_2}).},language=XML]
+                            (see line~\ref{REFERENCE_snippet_2} in Appendix~\ref{appendix_A}).},language=XML]
 <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
     ...
     <!--
@@ -41,7 +49,7 @@ The different uses for the \texttt{REFERENCE} element are:
 </INSTANCE>
 \end{lstlisting}
 
-See more examples in the Appendix \ref{appen_dynref}. 
+The operation of dynamic \texttt{REFERENCE}-s is detailed in Appendix \ref{appen_dynref}. 
 
 \begin{table}[!htbp]
 \small
