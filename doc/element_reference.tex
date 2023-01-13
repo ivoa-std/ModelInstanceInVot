@@ -8,7 +8,8 @@ The different uses for the \texttt{REFERENCE} element are:
     \item Static reference: the element has a \texttt{@dmref} attribute that matches the \texttt{@dmid} 
           attribute of the referenced \texttt{INSTANCE} or \texttt{COLLECTION} 
     \item Dynamic reference: The element has a \texttt{@sourceref} attribute identifying the foreign 
-          collection (\texttt{TEMPLATES} or \texttt{COLLECTION}) containing the referenced \texttt{INSTANCE}.
+          collection (\texttt{TEMPLATES} or \texttt{COLLECTION}) containing the referenced \texttt{INSTANCE}
+          which is identified by its \texttt{PRIMARY\_KEY}(s) children. 
           In this case, \texttt{REFERENCE} must be located in a \texttt{TEMPLATES} and it must have one 
           or more \texttt{FOREIGN\_KEY} children. 
           If the foreign collection has multiple \texttt{INSTANCE}-s with matching \texttt{PRIMARY\_KEY}-s, 
