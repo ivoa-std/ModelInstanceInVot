@@ -39,7 +39,7 @@
             </INSTANCE>
             <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" ref="@@@@@" value=""/>
             <!-- We define epoch as a primitive data type with the expected form "<type><year>" where type = "J" or "B" for Julian or Besselian respectively, and year is expressed as a decimal year.  e.g.: "B1950", "J2000.0" -->
-            <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="Epoch" ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="coords:Epoch" ref="@@@@@" value=""/>
             <ATTRIBUTE dmrole="coords:SpaceFrame.planetaryEphem" dmtype="ivoa:string" ref="@@@@@" value=""/>
          </INSTANCE>
       </INSTANCE>

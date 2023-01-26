@@ -7,10 +7,10 @@
       <!-- StdRefLocation taken as concrete type for RefLocation -->
       <INSTANCE dmrole="coords:SpaceFrame.refPosition" dmtype="coords:CustomRefLocation">
          <!-- A custom reference location in phase space (position and velocity).  Position and velocity are given as coordinates with an associated SpaceFrame.  An epoch MAY be provided to further refine the location." -->
-         <ATTRIBUTE dmrole="coords:CustomRefLocation.epoch" dmtype="coords.Epoch" ref="@@@@@" value=""/>
+         <ATTRIBUTE dmrole="coords:CustomRefLocation.epoch" dmtype="coords:Epoch" ref="@@@@@" value=""/>
       </INSTANCE>
       <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" value="FK4"/>
       <!-- We define epoch as a primitive data type with the expected form "<type><year>" where type = "J" or "B" for Julian or Besselian respectively, and year is expressed as a decimal year.  e.g.: "B1950", "J2000.0" -->
-      <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="Epoch" value="B1950"/>
+      <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="Coords:Epoch" value="B1950"/>
    </INSTANCE>
 </INSTANCE>

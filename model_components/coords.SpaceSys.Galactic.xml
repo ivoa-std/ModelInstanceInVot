@@ -7,7 +7,7 @@
       <!-- StdRefLocation taken as concrete type for RefLocation -->
       <INSTANCE dmrole="coords:SpaceFrame.refPosition" dmtype="coords:CustomRefLocation">
          <!-- A custom reference location in phase space (position and velocity).  Position and velocity are given as coordinates with an associated SpaceFrame.  An epoch MAY be provided to further refine the location." -->
-         <ATTRIBUTE dmrole="coords:CustomRefLocation.epoch" dmtype="coords.Epoch" ref="@@@@@" value=""/>
+         <ATTRIBUTE dmrole="coords:CustomRefLocation.epoch" dmtype="coords:Epoch" ref="@@@@@" value=""/>
       </INSTANCE>
       <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" value="Galactic"/>
    </INSTANCE>
