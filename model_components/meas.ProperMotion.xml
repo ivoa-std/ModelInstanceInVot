@@ -56,5 +56,5 @@
          <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
       </INSTANCE>
    </INSTANCE>
-   <ATTRIBUTE dmrole="meas:ProperMotion.cosLat_applied" dmtype="ivoa:boolean" unit="" ref="@@@@@" value=""/>
+   <ATTRIBUTE dmrole="meas:ProperMotion.cosLat_applied" dmtype="ivoa:boolean" unit="d" ref="@@@@@" value=""/>
 </INSTANCE>

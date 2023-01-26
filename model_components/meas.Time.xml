@@ -41,6 +41,6 @@
             </INSTANCE>
          </INSTANCE>
       </INSTANCE>
-      <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+      <ATTRIBUTE dmrole="coords:MJD.date" dmtype="ivoa:real" unit="d" ref="@@@@@" value=""/>
    </INSTANCE>
 </INSTANCE>

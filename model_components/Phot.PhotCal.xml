@@ -3,16 +3,16 @@
    <ATTRIBUTE dmrole="Phot:PhotCal.identifier" dmtype="ivoa:string" ref="@@@@@" value=""/>
    <INSTANCE dmrole="Phot:PhotCal.zeroPoint" dmtype="Phot:ZeroPoint">
       <!-- This class is used to characterize a zero point flux obtained during the calibration of a certain photometry filter on a certain photometric system configuration." -->
-      <ATTRIBUTE dmrole="Phot:ZeroPoint.type" dmtype="ivoa:integer" unit="" ref="@@@@@" value=""/>
-      <ATTRIBUTE dmrole="Phot:ZeroPoint.referenceMagnitudeValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-      <ATTRIBUTE dmrole="Phot:ZeroPoint.referenceMagnitudeError" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+      <ATTRIBUTE dmrole="Phot:ZeroPoint.type" dmtype="ivoa:integer" ref="@@@@@" value=""/>
+      <ATTRIBUTE dmrole="Phot:ZeroPoint.referenceMagnitudeValue" dmtype="ivoa:real" unit="mag" ref="@@@@@" value=""/>
+      <ATTRIBUTE dmrole="Phot:ZeroPoint.referenceMagnitudeError" dmtype="ivoa:real" unit="mag" ref="@@@@@" value=""/>
       <INSTANCE dmrole="Phot:ZeroPoint.flux" dmtype="Phot:Flux">
          <!-- This class is used to characterize the photometric calibration  Flux<&#8212;> Magnitude associated to the ZeroPoint used by a PhotCal instance.
 " -->
          <!-- Specialized string type derived from ivoa:string. UCD words belong to a controlled vocabulary. They are used as semantics tags for the content of table columns . See the UCD IVOA Recommendation.
  -->
          <ATTRIBUTE dmrole="Phot:Flux.ucd" dmtype="Phot:UCD" ref="@@@@@" value=""/>
-         <ATTRIBUTE dmrole="Phot:Flux.unitexpression" dmtype="ivoa:Unit" unit="" ref="@@@@@" value=""/>
+         <ATTRIBUTE dmrole="Phot:Flux.unitexpression" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
          <ATTRIBUTE dmrole="Phot:Flux.value" dmtype="ivoa:real"  ref="@@@@@" value=""/>
          <ATTRIBUTE dmrole="Phot:Flux.error" dmtype="ivoa:real"  ref="@@@@@" value=""/>
       </INSTANCE>
@@ -63,9 +63,9 @@ The transmission profile can be described by an external file and accessed throu
                <!-- This class is used to represent a point in the transmission function of a Filter.
 
 " -->
-               <ATTRIBUTE dmrole="Phot:TransmissionPoint.transmissionValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-               <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-               <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralErrorValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+               <ATTRIBUTE dmrole="Phot:TransmissionPoint.transmissionValue" dmtype="ivoa:real"  ref="@@@@@" value=""/>
+               <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralValue" dmtype="ivoa:real"  ref="@@@@@" value=""/>
+               <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralErrorValue" dmtype="ivoa:real"  ref="@@@@@" value=""/>
                <!-- Specialized string type derived from ivoa:string. UCD words belong to a controlled vocabulary. They are used as semantics tags for the content of table columns . See the UCD IVOA Recommendation.
  -->
                <ATTRIBUTE dmrole="Phot:TransmissionPoint.ucd" dmtype="Phot:UCD" ref="@@@@@" value=""/>

@@ -19,5 +19,5 @@
          </INSTANCE>
       </INSTANCE>
    </INSTANCE>
-   <ATTRIBUTE dmrole="coords:JD.date" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+   <ATTRIBUTE dmrole="coords:JD.date" dmtype="ivoa:real" unit="d" ref="@@@@@" value=""/>
 </INSTANCE>
