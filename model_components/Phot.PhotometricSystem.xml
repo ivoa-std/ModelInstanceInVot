@@ -29,10 +29,10 @@ It could be inserted in the ivoa: template data model for types in a next versio
             <!-- Specialized string type derived from ivoa:string. UCD words belong to a controlled vocabulary. They are used as semantics tags for the content of table columns . See the UCD IVOA Recommendation.
  -->
             <ATTRIBUTE dmrole="Phot:Bandwidth.ucd" dmtype="Phot:UCD" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="Phot:Bandwidth.unitexpression" dmtype="ivoa:Unit" unit="" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="Phot:Bandwidth.extent" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="Phot:Bandwidth.start" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="Phot:Bandwidth.stop" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="Phot:Bandwidth.unitexpression" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="Phot:Bandwidth.extent" dmtype="ivoa:real" ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="Phot:Bandwidth.start" dmtype="ivoa:real"  ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="Phot:Bandwidth.stop" dmtype="ivoa:real"  ref="@@@@@" value=""/>
          </INSTANCE>
          <INSTANCE dmrole="Phot:PhotometryFilter.transmissionCurve" dmtype="Phot:TransmissionCurve">
             <!-- A collection of points along the spectral axis to indicate how flux are transmitted by a filter. 
@@ -42,19 +42,19 @@ The transmission profile can be described by an external file and accessed throu
                   <!-- This class is used to represent a point in the transmission function of a Filter.
 
 " -->
-                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.transmissionValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
-                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralErrorValue" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.transmissionValue" dmtype="ivoa:real"  ref="@@@@@" value=""/>
+                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralValue" dmtype="ivoa:real"  ref="@@@@@" value=""/>
+                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.spectralErrorValue" dmtype="ivoa:real" ref="@@@@@" value=""/>
                   <!-- Specialized string type derived from ivoa:string. UCD words belong to a controlled vocabulary. They are used as semantics tags for the content of table columns . See the UCD IVOA Recommendation.
  -->
                   <ATTRIBUTE dmrole="Phot:TransmissionPoint.ucd" dmtype="Phot:UCD" ref="@@@@@" value=""/>
-                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.unit" dmtype="ivoa:Unit" unit="" ref="@@@@@" value=""/>
+                  <ATTRIBUTE dmrole="Phot:TransmissionPoint.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
                </INSTANCE>
             </COLLECTION>
             <INSTANCE dmrole="Phot:TransmissionCurve.access" dmtype="Phot:Access">
                <!-- Gathers all properties to access a resource : uri, format and size . 
 " -->
-               <ATTRIBUTE dmrole="Phot:Access.reference" dmtype="ivoa:anyURI" unit="" ref="@@@@@" value=""/>
+               <ATTRIBUTE dmrole="Phot:Access.reference" dmtype="ivoa:anyURI"  ref="@@@@@" value=""/>
                <ATTRIBUTE dmrole="Phot:Access.size" dmtype="ivoa:integer" unit="" ref="@@@@@" value=""/>
                <ATTRIBUTE dmrole="Phot:Access.format" dmtype="ivoa:string" ref="@@@@@" value=""/>
             </INSTANCE>
@@ -66,8 +66,8 @@ This class is used to characterize the spectral properties of a filter.
             <!-- Specialized string type derived from ivoa:string. UCD words belong to a controlled vocabulary. They are used as semantics tags for the content of table columns . See the UCD IVOA Recommendation.
  -->
             <ATTRIBUTE dmrole="Phot:SpectralLocation.ucd" dmtype="Phot:UCD" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="Phot:SpectralLocation.unitexpression" dmtype="ivoa:Unit" unit="" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="Phot:SpectralLocation.value" dmtype="ivoa:real" unit="" ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="Phot:SpectralLocation.unitexpression" dmtype="ivoa:Unit"  ref="@@@@@" value=""/>
+            <ATTRIBUTE dmrole="Phot:SpectralLocation.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
          </INSTANCE>
       </INSTANCE>
    </COLLECTION>
