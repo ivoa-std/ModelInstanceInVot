@@ -20,7 +20,7 @@
          </INSTANCE>
       </INSTANCE>
    </INSTANCE>
-   <INSTANCE dmrole="" dmtype="coords:LonLatPoint">
+   <INSTANCE dmrole="meas:Position.coord" dmtype="coords:LonLatPoint">
       <!-- A spatial coordinate in a Spherical coordinate space defining a Celestial position in Latitude and Longitude.  Any associated CoordSpace MUST conform to this description.  If no CoordSpace is provided, a Standard Spherical CoordSpace is assumed.  Values for unused/undefined dimensions need not be provided.
 
 " -->

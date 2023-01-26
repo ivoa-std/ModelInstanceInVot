@@ -20,7 +20,7 @@
          </INSTANCE>
       </INSTANCE>
    </INSTANCE>
-   <INSTANCE dmrole="" dmtype="coords:MJD">
+   <INSTANCE dmrole="meas:Time.coord" dmtype="coords:MJD">
       <!-- Extension of TimeInstant for time expressed in Modified Julian Days.  T(MJD) = T(JD) - 2400000.5." -->
       <!-- The Coordinate system can be pushed up to the GLOBALS and replaced here with <REFERENCE dmref="SOME_REF" dmrole="coords:Coordinate.coordSys" />">-->
       <INSTANCE dmid="PUT_AN_ID_HERE" dmrole="coords:Coordinate.coordSys" dmtype="coords:TimeSys">
