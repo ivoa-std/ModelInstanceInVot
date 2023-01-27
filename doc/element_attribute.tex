@@ -17,6 +17,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
       \item \texttt{@value} - a literal
       \item  if both are provided; \texttt{@value} serves as the default 
       if the reference cannot be resolved
+      \item if \texttt{@ref} cannot resolved and there is no \texttt{@value}, the client must consider that value as NULL. 
+            The definition of the NULL value depends of the software environment
   \end{itemize}  
 
   
@@ -31,6 +33,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
       \item \texttt{@value} - a literal
       \item if both are provided, \texttt{@value} serves as the default if 
       the reference cannot be resolved
+      \item if \texttt{@ref} cannot resolved and there is no \texttt{@value}, the client must consider that value as NULL. 
+            The definition of the NULL value depends of the software environment
   \end{itemize}  
               
 \item Any case :
