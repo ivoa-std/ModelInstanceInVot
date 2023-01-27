@@ -10,3 +10,8 @@ such as coordinate frames and data profile resources giving the binding between 
 columns and model leaves. A prototype \citep{2201.01732} implementing this feature
 has been demonstrated at the ADASS conference in 2021.
 
+This prototype underlined the lack of a query pattern able to tell users which columns must be selected to get a 
+complete model view on the table rows. The safest solution to get that view is to query all columns with \texttt{MAXREC=0}.
+This would give to the user a quick look on the table columns that are required to build instance of the model(s) of interest.
+This could also be handle by a registry extension a mentioned in Appendix E.
+
