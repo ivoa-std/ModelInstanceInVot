@@ -1,0 +1,24 @@
+MIVOT adds a new feature to the VOTable format which allows a new way to consume data. 
+The standard was designed so that this new functionality could be ignored by regular clients, 
+as services are not required to provide annotated data anyway. 
+This flexibility requires a standard way to declare the availability of annotated data. 
+The registration of this capability must be applicable to any service running any protocol 
+that possibly serves data as VOTables.
+
+In this context it is important to be able inform clients in advance that a service can deliver annotated data.
+We identified 2 ways to do this:
+\begin{itemize}
+    \item Defining a specific mime-type extension allowing clients to tell the server 
+          that annotated responses are accepted if available. 
+          This has been exercised with the XTapDB (\url{https://xcatdb.unistra.fr/xtapdb/}) service which understands 
+          the \texttt{application/mango} ad-hoc accepted mime type as a request for mapping the query results on the Mango data model 
+          (still a draft at the time of writing.). The limitation if this approach is that one mime-type has to 
+          be defined per model or if we do not want to specify any specific model, e.g. \texttt{mime-type:application/mivot}
+          clients will have to parse the VOTable to discover which models are mapped.
+    \item The other option is to define a new IVOA Registry capability (see VOResource, \cite{2018ivoa.spec.0625P}) that 
+    	  would list the mapped models and that could be appended to the service capabilities. 
+\end{itemize}
+
+It is to be noted that these 2 options can be mixed together.
+The definitions of both capability and mime type are out of the scope of this standard which is focused on the syntax.
+
