@@ -1,7 +1,8 @@
 <INSTANCE dmrole="" dmtype="Phot:PhotCal">
    <!-- A class to bind together all  photometic calibration reference information: a photometry filter, a certain magnitude system configuration and a certain zero point object." -->
    <ATTRIBUTE dmrole="Phot:PhotCal.identifier" dmtype="ivoa:string" ref="@@@@@" value=""/>
-   <INSTANCE dmrole="Phot:PhotCal.zeroPoint" dmtype="Phot:ZeroPoint">
+   <INSTANCE dmrole="Phot:PhotCal.zeroPoint" dmtype="Phot:AsinZeroPoint">
+      <ATTRIBUTE dmrole="Phot:AsinhZeroPoint.softeningParameter" dmtype="ivoa:real" ref="@@@@@" value=""/>
       <!-- This class is used to characterize a zero point flux obtained during the calibration of a certain photometry filter on a certain photometric system configuration." -->
       <ATTRIBUTE dmrole="Phot:ZeroPoint.type" dmtype="ivoa:integer" ref="@@@@@" value=""/>
       <ATTRIBUTE dmrole="Phot:ZeroPoint.referenceMagnitudeValue" dmtype="ivoa:real" unit="mag" ref="@@@@@" value=""/>
