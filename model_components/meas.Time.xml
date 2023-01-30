@@ -6,18 +6,12 @@
       <!-- Symmetrical taken as concrete type for Uncertainty -->
       <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
          <!-- Symmetrical uncertainty, constant in all dimensions and directions from the associated Coordinate.  ie: PlusMinus in 1D, circular in 2D, spherical in 3D." -->
-         <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-         </INSTANCE>
+         <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" ref="@@@@@" value="" unit=""/>
       </INSTANCE>
       <!-- Symmetrical taken as concrete type for Uncertainty -->
       <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
          <!-- Symmetrical uncertainty, constant in all dimensions and directions from the associated Coordinate.  ie: PlusMinus in 1D, circular in 2D, spherical in 3D." -->
-         <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-         </INSTANCE>
+         <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity"ref="@@@@@" value="" unit="" />
       </INSTANCE>
    </INSTANCE>
    <INSTANCE dmrole="meas:Time.coord" dmtype="coords:MJD">

@@ -6,19 +6,13 @@
       <!-- Symmetrical taken as concrete type for Uncertainty -->
       <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
          <!-- Symmetrical uncertainty, constant in all dimensions and directions from the associated Coordinate.  ie: PlusMinus in 1D, circular in 2D, spherical in 3D." -->
-         <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-         </INSTANCE>
+         <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity"ref="@@@@@" value="" unit="" />
       </INSTANCE>
       <!-- Symmetrical taken as concrete type for Uncertainty -->
       <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
          <!-- Symmetrical uncertainty, constant in all dimensions and directions from the associated Coordinate.  ie: PlusMinus in 1D, circular in 2D, spherical in 3D." -->
-         <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-            <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-            <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-         </INSTANCE>
-      </INSTANCE>
+         <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity"ref="@@@@@" value="" unit="" />
+       </INSTANCE>
    </INSTANCE>
    <INSTANCE dmrole="meas:ProperMotion.coord" dmtype="coords:LonLatPoint">
       <!-- A spatial coordinate in a Spherical coordinate space defining a Celestial position in Latitude and Longitude.  Any associated CoordSpace MUST conform to this description.  If no CoordSpace is provided, a Standard Spherical CoordSpace is assumed.  Values for unused/undefined dimensions need not be provided.
@@ -43,18 +37,9 @@
             <ATTRIBUTE dmrole="coords:SpaceFrame.planetaryEphem" dmtype="ivoa:string" ref="@@@@@" value=""/>
          </INSTANCE>
       </INSTANCE>
-      <INSTANCE dmrole="coords:LonLatPoint.lon" dmtype="ivoa:Quantity">
-         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-      </INSTANCE>
-      <INSTANCE dmrole="coords:LonLatPoint.lat" dmtype="ivoa:Quantity">
-         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-      </INSTANCE>
-      <INSTANCE dmrole="coords:LonLatPoint.dist" dmtype="ivoa:Quantity">
-         <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="@@@@@" value=""/>
-         <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" ref="@@@@@" value=""/>
-      </INSTANCE>
-   </INSTANCE>
+      <ATTRIBUTE dmrole="coords:LonLatPoint.lon" dmtype="ivoa:RealQuantity" ref="@@@@@" value="" unit="" />
+       <ATTRIBUTE dmrole="coords:LonLatPoint.lat" dmtype="ivoa:RealQuantity"ref="@@@@@" value="" unit="" />
+      <ATTRIBUTE dmrole="coords:LonLatPoint.dist" dmtype="ivoa:Quantity"ref="@@@@@" value="" unit="" >
+    </INSTANCE>
    <ATTRIBUTE dmrole="meas:ProperMotion.cosLat_applied" dmtype="ivoa:boolean" unit="d" ref="@@@@@" value=""/>
 </INSTANCE>
