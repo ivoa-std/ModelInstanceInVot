@@ -1,0 +1,5 @@
+<INSTANCE dmrole="" dmtype="meas:Asymmetrical1D">
+   <!-- Uncertainty with different extent in the positive and negative directions from the associated Coordinate." -->
+   <ATTRIBUTE dmrole="meas:Asymmetrical1D.plus" dmtype="ivoa:RealQuantity" value="" ref="@@@@@" unit=""/>
+   <ATTRIBUTE dmrole="meas:Asymmetrical1D.minus" dmtype="ivoa:RealQuantity" value="" ref="@@@@@" unit=""/>
+</INSTANCE>

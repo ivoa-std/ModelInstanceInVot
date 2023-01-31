@@ -1,0 +1,5 @@
+<INSTANCE dmrole="" dmtype="meas:Asymmetrical2D">
+   <!-- 2D Uncertainty with different extent in the positive and negative axis directions from the associated Coordinate.  i.e.: an offset rectangle." -->
+   <ATTRIBUTE dmrole="meas:Asymmetrical2D.plus" dmtype="ivoa:RealQuantity" ref="@@@@@" value="" unit=""/>
+    <ATTRIBUTE dmrole="meas:Asymmetrical2D.minus" dmtype="ivoa:RealQuantity" ref="@@@@@" value="" unit=""/>
+ </INSTANCE>

@@ -170,10 +170,8 @@
                 <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
                 <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
                   <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
-                    <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="IDmag"/>
-                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mag"/>
-                    </INSTANCE>
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity"  
+                               ref="IDmag" unit="mag" />
                     <!--
                         The photometric system is given by the item of the COLLECTION@dmid=IDCoordinateSystems
                         having a primary key matching the value of the column IDband for that particular row
@@ -188,11 +186,9 @@
                 <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
                 <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
                   <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
-                    <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="IDflux"/>
-                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
-                    </INSTANCE>
-                    <!--
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" 
+                               ref="IDflux" unit="e-/s" />
+                     <!--
                         The photometric system is given by the item of the COLLECTION@dmid=IDCoordinateSystems
                         having a primary key matching the value of the column IDband for that particular row
                       -->
@@ -202,11 +198,9 @@
                   </INSTANCE>
                   <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                     <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
-                      <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="IDfluxerr"/>
-                        <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
-                      </INSTANCE>
-                    </INSTANCE>
+                      <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" 
+                                  ref="IDfluxerr" unit="e-/s"/>
+                     </INSTANCE>
                   </INSTANCE>
                 </INSTANCE>
               </INSTANCE>

@@ -1,0 +1,22 @@
+<INSTANCE dmrole="" dmtype="meas:GenericMeasure">
+   <!-- The most generic Measure class.  This class may be used to represent data not covered by the specialized cases." -->
+   <ATTRIBUTE dmrole="meas:Measure.ucd" dmtype="ivoa:string" ref="@@@@@" value=""/>
+   <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+      <!-- The Error class uses the Uncertainty types to describe measurement errors from various sources." -->
+      <!-- Symmetrical taken as concrete type for Uncertainty -->
+      <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+         <!-- Symmetrical uncertainty, constant in all dimensions and directions from the associated Coordinate.  ie: PlusMinus in 1D, circular in 2D, spherical in 3D." -->
+         <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" unit="" />
+      </INSTANCE>
+      <!-- Symmetrical taken as concrete type for Uncertainty -->
+      <INSTANCE dmrole="meas:Error.sysError" dmtype="meas:Symmetrical">
+         <!-- Symmetrical uncertainty, constant in all dimensions and directions from the associated Coordinate.  ie: PlusMinus in 1D, circular in 2D, spherical in 3D." -->
+         <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" ref="@@@@@" value="" unit="" />
+      </INSTANCE>
+   </INSTANCE>
+   <INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
+      <!-- The most common type of coordinate value.  This type is appropriate for any data whose values can be described by an ivoa:Quantity (numeric, with unit)." -->
+      <!-- Put here a concrete INSTANCE of CoordSys or left blank -->
+      <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:Quantity" ref="@@@@@" value="" unit="" />
+   </INSTANCE>
+</INSTANCE>
