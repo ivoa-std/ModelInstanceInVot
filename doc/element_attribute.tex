@@ -51,7 +51,7 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
  MIVOT does not specify the way to handle NULL values. This remains in charge of the client implementation, 
  not of the syntax. The role of syntax is to tell the client how to build model instances. 
  If a \texttt{@ref} points onto a null \texttt{FIELD} value, the client has to set the corresponding model leaf 
- as NULL as well, but the way it do it is very specific to both language and implementation choices.
+ as NULL as well, but the way it does it is very specific to both language and implementation choices.
     
 \begin{lstlisting}[caption={Example of an \texttt{ATTRIBUTE} set with either a column reference or a static value (see line~\ref{ATTRIBUTE_snippet} in Appendix~\ref{appendix_A}). If the column reference cannot be resolved, the attribute will be set with its static value.},language=XML]
 <INSTANCE dmtype="cube:Observable">

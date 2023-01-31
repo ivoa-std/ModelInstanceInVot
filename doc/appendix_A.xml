@@ -223,11 +223,10 @@
                 <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
                 <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
                   <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
-                    <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="\_mag"/>
-                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="mag"/>
-                    </INSTANCE>
-                    <!--
+                   <!-- @\label{IVOA_snippet}@ back to @\ref{INSTANCE}@ -->
+                   <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" 
+                                  ref="\_mag" unit="mag"/>
+                     <!--
                         The photometric system is given by the item of the 
                         COLLECTION[dmid=\_CoordinateSystems] having a primary key matching 
                         the value of the column \_band for that particular row
@@ -244,11 +243,9 @@
                 <ATTRIBUTE dmrole="cube:DataAxis.dependent" dmtype="ivoa:boolean" value="True"/>
                 <INSTANCE dmrole="cube:MeasurementAxis.measure" dmtype="meas:GenericMeasure">
                   <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
-                    <INSTANCE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity">
-                      <ATTRIBUTE dmrole="ivoa:RealQuantity.value" dmtype="ivoa:real" ref="\_flux"/>
-                      <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
-                    </INSTANCE>
-                    <!--
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" 
+                               ref="\_flux" unit="e-/s" />
+                     <!--
                         The photometric system is given by the item of 
                         the COLLECTION[dmid=\_CoordinateSystems] having a primary key matching 
                         the value of the column \_band for that particular row
@@ -259,11 +256,8 @@
                   </INSTANCE>
                   <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
                     <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
-                      <INSTANCE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity">
-                        <ATTRIBUTE dmrole="ivoa:RealQuantity.value" 
-                                   dmtype="ivoa:real" ref="\_fluxerr"/>
-                        <ATTRIBUTE dmrole="ivoa:Quantity.unit" dmtype="ivoa:Unit" value="e-/s"/>
-                      </INSTANCE>
+                      <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" 
+                                 ref="\_fluxerr" unit="e-/s" />
                     </INSTANCE>
                   </INSTANCE>
                 </INSTANCE>
