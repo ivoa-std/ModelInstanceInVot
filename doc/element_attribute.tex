@@ -17,8 +17,8 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
       \item \texttt{@value} - a literal
       \item  if both are provided; \texttt{@value} serves as the default 
       if the reference cannot be resolved
-      \item if \texttt{@ref} cannot resolved and there is no \texttt{@value}, the client must consider that value as NULL. 
-            The definition of the NULL value depends of the software environment
+      \item if \texttt{@ref} cannot resolved and there is no \texttt{@value}, the client must consider that value as NULL
+            in its software context (language, inner model).
   \end{itemize}  
 
   
@@ -48,10 +48,9 @@ In this case, the \texttt{ATTRIBUTE} must be specified by:
     
 \end{enumerate}  
  
- MIVOT does not specify the way to handle NULL values. This remains in charge of the client implementation, 
- not of the syntax. The role of syntax is to tell the client how to build model instances. 
- If a \texttt{@ref} points onto a null \texttt{FIELD} value, the client has to set the corresponding model leaf 
- as NULL as well, but the way it does it is very specific to both language and implementation choices.
+ MIVOT does not specify the way to handle NULL values. This remains in charge of the client implementation. 
+ If a \texttt{@ref} points onto a NULL \texttt{FIELD} value (in the VOTable meaning), the client has to set the corresponding model leaf 
+ as NULL as well. The way for doing it is very specific to its software context (language, inner model).
     
 \begin{lstlisting}[caption={Example of an \texttt{ATTRIBUTE} set with either a column reference or a static value (see line~\ref{ATTRIBUTE_snippet} in Appendix~\ref{appendix_A}). If the column reference cannot be resolved, the attribute will be set with its static value.},language=XML]
 <INSTANCE dmtype="cube:Observable">
