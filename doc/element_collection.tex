@@ -29,7 +29,10 @@
         
     \end{enumerate}
    
-\begin{lstlisting}[caption={Example of a \texttt{COLLECTION} child of \texttt{INSTANCE}. It must have a role as an enclosing \texttt{INSTANCE} component.},language=XML]
+\begin{lstlisting}[caption={Example of a \texttt{COLLECTION} child of \texttt{INSTANCE}. 
+It must have a role as an enclosing \texttt{INSTANCE} component.
+In this example, the collection plays the role \texttt{model:Thing.elems} within the enclosing instance.
+The role is the actual VODMID of the corresponding VO-DML composition.},language=XML]
 <INSTANCE dmtype="model:Thing">
     <COLLECTION dmrole="model:Thing.elems">
         <ATTRIBUTE dmtype="model:Foo" value="100" />
