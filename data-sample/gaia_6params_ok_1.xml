@@ -1,0 +1,443 @@
+<?xml version='1.0' encoding='utf-8'?>
+<VOTABLE version="1.4" xmlns="http://www.ivoa.net/xml/VOTable/v1.3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.ivoa.net/xml/VOTable/v1.3 http://vo.ari.uni-heidelberg.de/docs/schemata/VOTable-1.4.xsd">
+  <DESCRIPTION>
+    This schema contains data re-published from the official
+    Gaia mirrors (such as ivo://uni-heidelberg.de/gaia/tap) either to
+    support combining its data with local tables (the various Xlite tables)
+    or to make the data more accessible to VO clients (e.g., epoch fluxes).
+
+    Other Gaia-related data is found in, among others, the gdr3mock,
+    gdr3spec, gedr3auto, gedr3dist, gedr3mock, and gedr3spur schemas.
+  </DESCRIPTION>
+  <INFO name="legal"
+    value="
+If you use public Gaia DR3 data in a paper, please take note of
+`ESAC's guide`_ on how to acknowledge and cite it.
+
+.. _ESAC's guide: https://gea.esac.esa.int/archive/documentation/GDR3/Miscellaneous/sec_credit_and_citation_instructions/"></INFO>
+  <RESOURCE type="results">
+    <INFO name="server" value="http://dc.zah.uni-heidelberg.de"></INFO>
+    <INFO name="sql_query"
+      value="SELECT gaia.dr3lite.source_id, gaia.dr3lite.ra, gaia.dr3lite.dec, gaia.dr3lite.ra_error, gaia.dr3lite.dec_error, gaia.dr3lite.pmra, gaia.dr3lite.pmdec, gaia.dr3lite.pmra_error, gaia.dr3lite.pmdec_error, gaia.dr3lite.parallax, gaia.dr3lite.parallax_error, gaia.dr3lite.radial_velocity, gaia.dr3lite.radial_velocity_error, gaia.dr3lite.source_id FROM gaia.dr3lite LIMIT 2"></INFO>
+    <INFO name="query"
+      value="SELECT  TOP 2  gaia.dr3lite.source_id,gaia.dr3lite.ra,gaia.dr3lite.dec,gaia.dr3lite.ra_error,gaia.dr3lite.dec_error,gaia.dr3lite.pmra,gaia.dr3lite.pmdec,gaia.dr3lite.pmra_error,gaia.dr3lite.pmdec_error,gaia.dr3lite.parallax,gaia.dr3lite.parallax_error,gaia.dr3lite.radial_velocity,gaia.dr3lite.radial_velocity_error,gaia.dr3lite.source_id
+FROM gaia.dr3lite
+"></INFO>
+    <INFO name="src_res" value="Contains traces from resource gaia/q3"> This schema contains data re-published from the official Gaia mirrors
+(such as ivo://uni-heidelberg.de/gaia/tap) either to support combining
+its data with local tables (the various Xlite tables) or to make the
+data more accessible to VO clients (e.g., epoch fluxes).
+
+Other Gaia-related data is found in, among others, the gdr3mock,
+gdr3spec, gedr3auto, gedr3dist, gedr3mock, and gedr3spur schemas.</INFO>
+    <INFO name="copyright" value="gaia/q3 copyright or license"> If you use public Gaia DR3 data in a paper, please take note of
+`ESAC's guide`_ on how to acknowledge and cite it.
+
+.. _ESAC's guide:
+https://gea.esac.esa.int/archive/documentation/GDR3/Miscellaneous/sec_credit_and_citation_instructions/</INFO>
+    <INFO name="src_table" value="Contains traces from table gaia.dr3lite"> This is gaia_source from the Gaia Data Release 3, stripped to just
+enough columns to enable basic science (but therefore a bit faster and
+simpler to deal with than the full gaia_source table).
+
+Note that on this server, there is also The gedr3dist.main, which
+gives distances computed by Bailer-Jones et al. Use these in
+preference to working with the raw parallaxes.
+
+This server also carries the gedr3mock schema containing a simulation
+of gaia_source based on a state-of-the-art galaxy model, computed by
+Rybizki et al.
+
+The full DR3 is available from numerous places in the VO (in
+particular from the TAP services ivo://uni-heidelberg.de/gaia/tap and
+ivo://esavo/gaia/tap).</INFO>
+    <INFO name="QUERY_STATUS" value="OK">Query successful</INFO>
+    <INFO name="citation" ucd="meta.bib" value="http://dc.zah.uni-heidelberg.de/tableinfo/gaia.dr3lite#ti-citing">For advice on how to cite the resource(s) that contributed to this result, see http://dc.zah.uni-heidelberg.de/tableinfo/gaia.dr3lite#ti-citing</INFO>
+    <INFO name="referenceURL" ucd="meta.ref.url" value="http://dc.zah.uni-heidelberg.de/tableinfo/gaia.dr3lite">More information on a resource that contributed to this data is found at http://dc.zah.uni-heidelberg.de/tableinfo/gaia.dr3lite</INFO>
+    <COOSYS ID="system" epoch="J2016.0" system="ICRS" />
+
+    <RESOURCE>
+      <VODML xmlns="http://www.ivoa.net/xml/mivot">
+        <REPORT status="OK">hand-made mapping</REPORT>
+
+        <MODEL name="meas" url="https://ivoa.net/xml/VODML/Meas-v1.vo-dml.xml" />
+        <MODEL name="coords" url="https://ivoa.net/xml/VODML/Coords-v1.0.vo-dml.xml" />
+        <MODEL name="ivoa" url="https://ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
+        <MODEL name="mango" url="https://ivoa.net/xml/VODML/mango.vo-dml.xml" />
+
+        <GLOBALS>
+
+          <INSTANCE dmid="_SpaceFrame_ICRS" dmtype="coords:SpaceSys">
+            <INSTANCE dmrole="coords:PhysicalCoordSys.frame" dmtype="coords:SpaceFrame">
+              <INSTANCE dmrole="coords:SpaceFrame.refPosition" dmtype="coords:StdRefLocation">
+                <ATTRIBUTE dmrole="coords:StdRefLocation.position" dmtype="ivoa:string" value="NoSet" />
+              </INSTANCE>
+              <ATTRIBUTE dmrole="coords:SpaceFrame.spaceRefFrame" dmtype="ivoa:string" value="ICRS" />
+              <ATTRIBUTE dmrole="coords:SpaceFrame.equinox" dmtype="coords:Epoch" value="2015.0" />
+            </INSTANCE>
+          </INSTANCE>
+
+        </GLOBALS>
+
+        <TEMPLATES>
+          <INSTANCE dmrole="" dmtype="mango:Source">
+            <!-- Root class of the model. MANGO instance are meant of be Source instances. A source has an identifier and two docks: 
+              one for the parameters and one for the associated data." -->
+            <ATTRIBUTE dmrole="mango:Source.identifier" dmtype="ivoa:string" ref="source_id" />
+              <COLLECTION dmrole="mango:Source.propertyDock">
+              <!-- Property enclosing a Position -->
+              <INSTANCE dmtype="mango:PhysicalProperty">
+
+                <INSTANCE dmrole="mango:Property.semantic" dmtype="mango:VocabularyTerm">
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.uri" dmtype="ivoa:string" value="" />
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.label" dmtype="ivoa:string" value="" />
+                </INSTANCE>
+                <ATTRIBUTE dmrole="mango:Property.description" dmtype="ivoa:string" value="Sky Position" />
+
+                <INSTANCE dmrole="mango:PhysicalProperty.measure" dmtype="meas:Position">
+                  <!-- Provides a complete description of a measured positional instant." -->
+                  <ATTRIBUTE dmrole="meas:Measure.ucd" dmtype="ivoa:string" value="pos.main" />
+                  <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                    <!-- The Error class uses the Uncertainty types to describe measurement errors from various sources." -->
+                    <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Asymmetrical2D">
+                      <COLLECTION dmrole="meas:Asymmetrical2D.plus">
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas" ref="ra_error" />
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas" ref="dec_error" />
+                      </COLLECTION>
+                      <COLLECTION dmrole="meas:Asymmetrical2D.minus">
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas" ref="ra_error" />
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas" ref="dec_error" />
+                      </COLLECTION>
+                    </INSTANCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:Position.coord" dmtype="coords:LonLatPoint">
+                    <!-- The Coordinate system can be pushed up to the GLOBALS -->
+                    <REFERENCE dmref="_SpaceFrame_ICRS" dmrole="coords:Coordinate.coordSys" />
+                    <ATTRIBUTE dmrole="coords:LonLatPoint.lon" dmtype="ivoa:RealQuantity" unit="deg" ref="ra" />
+                    <ATTRIBUTE dmrole="coords:LonLatPoint.lat" dmtype="ivoa:RealQuantity" unit="deg" ref="dec" />
+                  </INSTANCE>
+                </INSTANCE>
+
+                <COLLECTION dmrole="mango:Property.associatedProperties">
+                  <REFERENCE dmref="_PROPER_MOTION" />
+                  <REFERENCE dmref="_PARALLAX" />
+                  <REFERENCE dmref="_RADIAL_VELOCITY" />
+                </COLLECTION>
+
+              </INSTANCE>
+
+              <!-- Property enclosing a ProperMotion -->
+              <INSTANCE dmid="_PROPER_MOTION" dmtype="mango:PhysicalProperty">
+
+                <INSTANCE dmrole="mango:Property.semantic" dmtype="mango:VocabularyTerm">
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.uri" dmtype="ivoa:string" value="" />
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.label" dmtype="ivoa:string" value="" />
+                </INSTANCE>
+                <ATTRIBUTE dmrole="mango:Property.description" dmtype="ivoa:string" value="Sky Position" />
+
+                <INSTANCE dmrole="mango:PhysicalProperty.measure" dmtype="meas:ProperMotion">
+                  <!-- Provides a complete description of a measured positional instant. -->
+                  <ATTRIBUTE dmrole="meas:Measure.ucd" dmtype="ivoa:string" value="pos.pm;pos.eq" />
+                  <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                    <!-- The Error class uses the Uncertainty types to describe measurement errors from various sources." -->
+                    <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Asymmetrical2D">
+                      <COLLECTION dmrole="meas:Asymmetrical2D.plus">
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas/yr" ref="pmra_error" />
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas/yr" ref="pmdec_error" />
+                      </COLLECTION>
+                      <COLLECTION dmrole="meas:Asymmetrical2D.minus">
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas/yr" ref="pmra_error" />
+                        <ATTRIBUTE dmtype="ivoa:RealQuantity" unit="mas/yr" ref="pmdec_error" />
+                      </COLLECTION>
+                    </INSTANCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:ProperMotion.coord" dmtype="coords:LonLatPoint">
+                    <ATTRIBUTE dmrole="coords:LonLatPoint.lon" dmtype="ivoa:RealQuantity" unit="mas/yr" ref="pmra" />
+                    <ATTRIBUTE dmrole="coords:LonLatPoint.lat" dmtype="ivoa:RealQuantity" unit="mas/yr" ref="pmdec" />
+
+                  </INSTANCE>
+                  <ATTRIBUTE dmrole="meas:ProperMotion.cosLat_applied" dmtype="ivoa:boolean" value="true" />
+                </INSTANCE>
+              </INSTANCE>
+
+              <!-- Property enclosing a Parallax -->
+              <INSTANCE dmid="_PARALLAX" dmtype="mango:PhysicalProperty">
+
+                <INSTANCE dmrole="mango:Property.semantic" dmtype="mango:VocabularyTerm">
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.uri" dmtype="ivoa:string" value="" />
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.label" dmtype="ivoa:string" value="" />
+                </INSTANCE>
+                <ATTRIBUTE dmrole="mango:Property.description" dmtype="ivoa:string" value="Parallax" />
+
+                <INSTANCE dmrole="mango:PhysicalProperty.measure" dmtype="meas:GenericMeasure">
+                  <!-- Provides a complete description of a measured parallax " -->
+                  <ATTRIBUTE dmrole="meas:Measure.ucd" dmtype="ivoa:string" value="pos.parallax" />
+                  <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                    <!-- The Error class uses the Uncertainty types to describe measurement errors from various sources." -->
+                    <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                      <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" unit="mas"
+                        ref="parallax_error" />
+                    </INSTANCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" unit="mas"
+                      ref="parallax" />
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+
+              <!-- Property enclosing the radial velocity -->
+              <INSTANCE dmid="_RADIAL_VELOCITY" dmtype="mango:PhysicalProperty">
+
+                <INSTANCE dmrole="mango:Property.semantic" dmtype="mango:VocabularyTerm">
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.uri" dmtype="ivoa:string" value="" />
+                  <ATTRIBUTE dmrole="mango:VocabularyTerm.label" dmtype="ivoa:string" value="" />
+                </INSTANCE>
+                <ATTRIBUTE dmrole="mango:Property.description" dmtype="ivoa:string" value="Parallax" />
+
+                <INSTANCE dmrole="mango:PhysicalProperty.measure" dmtype="meas:GenericMeasure">
+                  <!-- Provides a complete description of a measured parallax " -->
+                  <ATTRIBUTE dmrole="meas:Measure.ucd" dmtype="ivoa:string" value="spect.dopplerVeloc.opt;em.opt.I" />
+                  <INSTANCE dmrole="meas:Measure.error" dmtype="meas:Error">
+                    <!-- The Error class uses the Uncertainty types to describe measurement errors from various sources." -->
+                    <INSTANCE dmrole="meas:Error.statError" dmtype="meas:Symmetrical">
+                      <ATTRIBUTE dmrole="meas:Symmetrical.radius" dmtype="ivoa:RealQuantity" unit="km/s"
+                        ref="radial_velocity_error" />
+                    </INSTANCE>
+                  </INSTANCE>
+                  <INSTANCE dmrole="meas:GenericMeasure.coord" dmtype="coords:PhysicalCoordinate">
+                    <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" unit="km/s"
+                      ref="radial_velocity" />
+                  </INSTANCE>
+                </INSTANCE>
+              </INSTANCE>
+
+            </COLLECTION>
+          </INSTANCE>
+        </TEMPLATES>
+      </VODML>
+    </RESOURCE>
+
+    <TABLE name="dr3lite">
+      <DESCRIPTION> This is gaia_source from the Gaia Data Release 3, stripped to just
+        enough columns to enable basic science (but therefore a bit faster and
+        simpler to deal with than the full gaia_source table).
+
+        Note that on this server, there is also The gedr3dist.main, which
+        gives distances computed by Bailer-Jones et al. Use these in
+        preference to working with the raw parallaxes.
+
+        This server also carries the gedr3mock schema containing a simulation
+        of gaia_source based on a state-of-the-art galaxy model, computed by
+        Rybizki et al.
+
+        The full DR3 is available from numerous places in the VO (in
+        particular from the TAP services ivo://uni-heidelberg.de/gaia/tap and
+        ivo://esavo/gaia/tap).
+      </DESCRIPTION>
+      <GROUP utype="stc:CatalogEntryLocation">
+        <PARAM arraysize="*" datatype="char" name="CoordFlavor" utype="stc:AstroCoordSystem.SpaceFrame.CoordFlavor"
+          value="SPHERICAL" />
+        <PARAM arraysize="*" datatype="char" name="coord_naxes"
+          utype="stc:AstroCoordSystem.SpaceFrame.CoordFlavor.coord_naxes" value="3" />
+        <PARAM arraysize="*" datatype="char" name="CoordRefFrame" utype="stc:AstroCoordSystem.SpaceFrame.CoordRefFrame"
+          value="ICRS" />
+        <PARAM arraysize="*" datatype="char" name="ReferencePosition"
+          utype="stc:AstroCoordSystem.SpaceFrame.ReferencePosition" value="BARYCENTER" />
+        <PARAM arraysize="*" datatype="char" name="Epoch" utype="stc:AstroCoords.Position3D.Epoch" value="2016.0" />
+        <PARAM arraysize="*" datatype="char" name="yearDef" utype="stc:AstroCoords.Position3D.Epoch.yearDef" value="J" />
+        <PARAM arraysize="*" datatype="char" name="URI" utype="stc:DataModel.URI"
+          value="http://www.ivoa.net/xml/STC/stc-v1.30.xsd" />
+        <FIELDref ref="ra_error" utype="stc:AstroCoords.Position3D.Error3.C1" />
+        <FIELDref ref="dec_error" utype="stc:AstroCoords.Position3D.Error3.C2" />
+        <FIELDref ref="parallax_error" utype="stc:AstroCoords.Position3D.Error3.C3" />
+        <FIELDref ref="ra" utype="stc:AstroCoords.Position3D.Value3.C1" />
+        <FIELDref ref="dec" utype="stc:AstroCoords.Position3D.Value3.C2" />
+        <FIELDref ref="parallax" utype="stc:AstroCoords.Position3D.Value3.C3" />
+        <FIELDref ref="pmra_error" utype="stc:AstroCoords.Velocity3D.Error3.C1" />
+        <FIELDref ref="pmdec_error" utype="stc:AstroCoords.Velocity3D.Error3.C2" />
+        <FIELDref ref="radial_velocity_error" utype="stc:AstroCoords.Velocity3D.Error3.C3" />
+        <FIELDref ref="pmra" utype="stc:AstroCoords.Velocity3D.Value3.C1" />
+        <FIELDref ref="pmdec" utype="stc:AstroCoords.Velocity3D.Value3.C2" />
+        <FIELDref ref="radial_velocity" utype="stc:AstroCoords.Velocity3D.Value3.C3" />
+      </GROUP>
+      <GROUP ID="ndtdhdaihgsa" name="note-id">
+        <DESCRIPTION>
+          For the contents of Gaia DR3,
+          the source ID consists of a 64-bit integer, least
+          significant bit = 1 and most significant bit = 64, comprising:
+
+          * a HEALPix index number (sky pixel) in bits 36 - 63; by definition the
+          smallest HEALPix index number is zero.
+          * a 3-bit Data Processing Centre code in bits 33 - 35; for example
+          MOD(source_id / 4294967296, 8) can be used to distinguish between
+          sources initialised via the Initial Gaia Source List by the Torino DPC
+          (code = 0) and sources otherwise detected and assigned by Gaia
+          observations (code &gt; 0)
+          * a 25-bit plus 7 bit sequence number within the HEALPix pixel in bits 1
+          to 32 split into:
+
+          * a 25 bit running number in bits 8 - 32; the running numbers are
+          defined to be positive, i.e. never zero (except in the case of forced
+          empty windows)
+          * a 7-bit component number in bits 1 - 7
+
+          This means that the HEALpix index level 12 of a given source is contained
+          in the most significant bits. HEALpix index of 12 and lower levels can
+          thus be retrieved as follows:
+
+          * HEALpix level 12 = source_id / 34359738368
+          * HEALpix level 11 = source_id / 137438953472
+          * HEALpix level 10 = source_id / 549755813888
+          * HEALpix level n = source_id / 2^35 * 4^(12 - level).
+        </DESCRIPTION>
+        <FIELDref ref="source_id" />
+        <FIELDref ref="source_id_" />
+      </GROUP>
+      <FIELD ID="source_id" datatype="long" name="source_id" ucd="meta.id;meta.main">
+        <DESCRIPTION>Gaia DR3 unique source identifier. Note that this *cannot* be matched against the DR1 or DR2 source_ids.
+        </DESCRIPTION>
+        <VALUES null="-1">
+          <MIN value="1511828647680"></MIN>
+          <MAX value="6917528993283204480"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="ra" datatype="double" name="ra" ref="system" ucd="pos.eq.ra;meta.main" unit="deg">
+        <DESCRIPTION>Barycentric Right Ascension in ICRS at epoch J2016.0</DESCRIPTION>
+        <VALUES>
+          <MIN value="1.6327128351173464e-06"></MIN>
+          <MAX value="359.9999839297149"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="dec" datatype="double" name="dec" ref="system" ucd="pos.eq.dec;meta.main" unit="deg">
+        <DESCRIPTION>Barycentric Declination in ICRS at epoch J2016.0</DESCRIPTION>
+        <VALUES>
+          <MIN value="-89.855906626967"></MIN>
+          <MAX value="89.8088601480769"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="ra_error" datatype="float" name="ra_error" ucd="stat.error;pos.eq.ra" unit="mas">
+        <DESCRIPTION>Standard error of ra (with cos δ applied).</DESCRIPTION>
+        <VALUES>
+          <MIN value="0.003892327"></MIN>
+          <MAX value="99.96757"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="dec_error" datatype="float" name="dec_error" ucd="stat.error;pos.eq.dec" unit="mas">
+        <DESCRIPTION>Standard error of dec</DESCRIPTION>
+        <VALUES>
+          <MIN value="0.0044713337"></MIN>
+          <MAX value="99.94789"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="pmra" datatype="float" name="pmra" ref="system" ucd="pos.pm;pos.eq.ra" unit="mas/yr">
+        <DESCRIPTION>Proper motion in right ascension of the source in ICRS at J2016.0. This is the tangent plane projection of
+          the proper motion vector in the direction of increasing right ascension.</DESCRIPTION>
+        <VALUES>
+          <MIN value="-2290.752"></MIN>
+          <MAX value="4002.6545"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="pmdec" datatype="float" name="pmdec" ref="system" ucd="pos.pm;pos.eq.dec" unit="mas/yr">
+        <DESCRIPTION>Proper motion in declination at J2016.0.</DESCRIPTION>
+        <VALUES>
+          <MIN value="-5817.8003"></MIN>
+          <MAX value="1707.6958"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="pmra_error" datatype="float" name="pmra_error" ucd="stat.error;pos.pm;pos.eq.ra" unit="mas/yr">
+        <DESCRIPTION>Standard error of pmra</DESCRIPTION>
+        <VALUES>
+          <MIN value="0.004197777"></MIN>
+          <MAX value="3.4274633"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="pmdec_error" datatype="float" name="pmdec_error" ucd="stat.error;pos.pm;pos.eq.dec" unit="mas/yr">
+        <DESCRIPTION>Standard error of pmdec</DESCRIPTION>
+        <VALUES>
+          <MIN value="0.005543075"></MIN>
+          <MAX value="3.4420853"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="parallax" datatype="float" name="parallax" ref="system" ucd="pos.parallax" unit="mas">
+        <DESCRIPTION>Absolute barycentric stellar parallax of the source at the reference epoch J2016.0. If looking for a
+          distance, consider joining with gedr3dist.main and using the distances from there.</DESCRIPTION>
+        <VALUES>
+          <MIN value="-187.0294"></MIN>
+          <MAX value="269.0573"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="parallax_error" datatype="float" name="parallax_error" ucd="stat.error;pos.parallax" unit="mas">
+        <DESCRIPTION>Standard error of parallax</DESCRIPTION>
+        <VALUES>
+          <MIN value="0.007283376"></MIN>
+          <MAX value="5.5755367"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="radial_velocity" datatype="float" name="radial_velocity" ref="system"
+        ucd="spect.dopplerVeloc.opt;em.opt.I" unit="km/s">
+        <DESCRIPTION>Spectroscopic radial velocity in the solar barycentric reference frame. For stars brighter than about 12
+          mag, this is the median of all single-epoch measurements. For fainter stars, RV estimation is from a co-added
+          spectrum.</DESCRIPTION>
+        <VALUES>
+          <MIN value="-861.1135"></MIN>
+          <MAX value="859.6903"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="radial_velocity_error" datatype="float" name="radial_velocity_error" ucd="stat.error;spect.dopplerVeloc"
+        unit="km/s">
+        <DESCRIPTION>Error in radial_velocity; this is the error of the median for bright stars. For faint stars, it is derived
+          from the cross-correlation function.</DESCRIPTION>
+        <VALUES>
+          <MIN value="0.1130009"></MIN>
+          <MAX value="39.996315"></MAX>
+        </VALUES>
+      </FIELD>
+      <FIELD ID="source_id_" datatype="long" name="source_id_" ucd="meta.id;meta.main">
+        <DESCRIPTION>Gaia DR3 unique source identifier. Note that this *cannot* be matched against the DR1 or DR2 source_ids.
+        </DESCRIPTION>
+        <VALUES null="-1">
+          <MIN value="1511828647680"></MIN>
+          <MAX value="6917528993283204480"></MAX>
+        </VALUES>
+      </FIELD>
+      <DATA>
+        <TABLEDATA>
+          <TR>
+            <TD>2165092154924732928</TD>
+            <TD>319.82640223047326</TD>
+            <TD>49.371803949190934</TD>
+            <TD>0.2979555</TD>
+            <TD>0.32333294</TD>
+            <TD>-1.9154019</TD>
+            <TD>-2.4814487</TD>
+            <TD>0.3971907</TD>
+            <TD>0.39485604</TD>
+            <TD>0.78724235</TD>
+            <TD>0.3715567</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>2165092154924732928</TD>
+          </TR>
+          <TR>
+            <TD>2165092159226514688</TD>
+            <TD>319.8317684883249</TD>
+            <TD>49.37350866387902</TD>
+            <TD>1.2931374</TD>
+            <TD>1.8252022</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>NaN</TD>
+            <TD>2165092159226514688</TD>
+          </TR>
+        </TABLEDATA>
+      </DATA>
+    </TABLE>
+  </RESOURCE>
+</VOTABLE>
