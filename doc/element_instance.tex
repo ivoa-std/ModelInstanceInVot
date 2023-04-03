@@ -87,12 +87,16 @@ and \texttt{ivoa:RealQuantity}) that bind values with units.
 As VODML encourages to use those types, MIVOT accept them to be serialized an single \texttt{ATTRIBUTE}-s
 instead of \texttt{INSTANCE}-s enclosing 2 individual attributes (one for the value and one for the unit).
 
-\begin{lstlisting}[caption={Example of complex data type (\texttt{ivoa:RealQuantity}) serialized as a single \texttt{ATTRIBUTE}  (see line~\ref{IVOA_snippet} in Appendix~\ref{appendix_A}).},language=XML]
+\begin{lstlisting}[caption={Example of complex data type (\texttt{ivoa:RealQuantity}) serialized 
+as a single \texttt{ATTRIBUTE}  (see line~\ref{IVOA_snippet} in Appendix~\ref{appendix_A}).
+The  attribute of type \texttt{ivoa:RealQuantity} is a shortcut for an 
+\texttt{INSTANCE[@dmtype=ivoa:RealQuantity]} which has 2 attributes (value and unit)
+},language=XML]
 <INSTANCE dmrole="meas:Measure.coord" dmtype="coords:PhysicalCoordinate">
     <ATTRIBUTE dmrole="coords:PhysicalCoordinate.cval" dmtype="ivoa:RealQuantity" 
-               ref="\_mag" unit="mag"/>
-    <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="\_CoordinateSystems">
-        <FOREIGN\_KEY ref="\_band"/>
+               ref="_mag" unit="mag"/>
+    <REFERENCE dmrole="coords:Coordinate.coordSys" sourceref="_CoordinateSystems">
+        <FOREIGN\_KEY ref="_band"/>
     </REFERENCE>
  </INSTANCE>
 \end{lstlisting}   

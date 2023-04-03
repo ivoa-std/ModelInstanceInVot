@@ -29,7 +29,10 @@
         
     \end{enumerate}
    
-\begin{lstlisting}[caption={Example of a \texttt{COLLECTION} child of \texttt{INSTANCE}. It must have a role as an enclosing \texttt{INSTANCE} component.},language=XML]
+\begin{lstlisting}[caption={Example of a \texttt{COLLECTION} child of \texttt{INSTANCE}. 
+It must have a role as an enclosing \texttt{INSTANCE} component.
+In this example, the collection plays the role \texttt{model:Thing.elems} within the enclosing instance.
+The role is the actual VODMID of the corresponding VO-DML composition.},language=XML]
 <INSTANCE dmtype="model:Thing">
     <COLLECTION dmrole="model:Thing.elems">
         <ATTRIBUTE dmtype="model:Foo" value="100" />
@@ -63,7 +66,12 @@
 </GLOBALS>
 \end{lstlisting}   
 
-\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN (see line~\ref{COLLECTION_snippet_2} in Appendix~\ref{appendix_A}).},language=XML]
+\begin{lstlisting}[caption={Example of \texttt{COLLECTION} populated with a JOIN 
+(see line~\ref{COLLECTION_snippet_2} in Appendix~\ref{appendix_A}).
+The collection will be populated with the rows of another collection of the MIVOT block 
+identified by \texttt{@dmid=IDtsIDdata}
+and that match both \texttt{WHERE} conditions.
+},language=XML]
 <TEMPLATES tableref="IDPKTable">
     <INSTANCE dmid="IDTimeSeries" dmrole="" dmtype="cube:SparseCube">
         ....
