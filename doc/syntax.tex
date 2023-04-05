@@ -30,7 +30,11 @@ in three different scopes. There are only three elements for the models structur
 
 
 As shown in Table \ref{tbl:syntax-att} and following the \texttt{VODML} pattern, any model node is characterized by a role  \texttt{@dmrole}  and a type  \texttt{@dmtype}.  All of the other attributes are used to bind data with either VOTable elements or other mapping elements.
- 
+
+The values of both \texttt{@dmrole} and \texttt{@dmtype} are constructed by taking the vodml-id 
+of the respective VO-DML elements and prefixing it with the canonical 
+short name of the model and a colon.
+
 \begin{table}[!htbp]
 \small
 \centering
