@@ -7,7 +7,7 @@ DOCNAME = mivot
 DOCVERSION = 1.0
 
 # Publication date, ISO format; update manually for "releases"
-DOCDATE = 2023-04-06
+DOCDATE = 2023-04-13
 
 # What is it you're writing: NOTE, WD, PR, REC, PEN, or EN
 DOCTYPE = PR
