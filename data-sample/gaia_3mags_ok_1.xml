@@ -71,10 +71,12 @@ ivo://esavo/gaia/tap).</INFO>
         List of the mapped models
         For now, the model works with the VODMLs stored locally  (URL are ignored)
          -->
-        <MODEL name="meas" url="https://ivoa.net/xml/VODML/Meas-v1.vo-dml.xml" />
+        <MODEL name="meas" url="https://ivoa.net/xml/VODML/Meas-v1.0.vo-dml.xml" />
         <MODEL name="coords" url="https://ivoa.net/xml/VODML/Coords-v1.0.vo-dml.xml" />
         <MODEL name="ivoa" url="https://ivoa.net/xml/VODML/IVOA-v1.vo-dml.xml" />
         <MODEL name="mango" url="https://ivoa.net/xml/VODML/mango.vo-dml.xml" />
+        <MODEL name="Phot" url="https://ivoa.net/xml/VODML/Phot-v1.1.vodml.xml" />
+
 
         <!-- The GLOBALS section contains object that do do not refer to particular data Typically: the coordinate frames or calibration 
           data -->
