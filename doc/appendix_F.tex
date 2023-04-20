@@ -1,26 +1,26 @@
-The VOMDL standard has been designed to provide machine readable serializations of data models. 
-This feature makes MIVOT working for any model.
-It is therefore strongly recommended to build annotations from VODML resources.
+The VOMDL standard has been designed to provide machine readable descriptions of data models. 
+This feature makes MIVOT working for any model element described in this language. 
+For serializing data model instances, it is therefore strongly recommended to base 
+the model annotations on VODML resources.
 
 IVOA models are released with the following resources:
 \begin{itemize}
-    \item The standard specification (pdf)
+    \item The standard specification (pdf text)
     \item The VODML specification (model-vx.y.vodml.xml)
-    \item An HTML representation of the model generated from the VODML file by a style sheet.    
+    \item An HTML representation of the model generated from the VODML file using a dedicated style sheet.    
 \end{itemize}
 
-Both PDF and HTML are accessible through the standard landing page
+Both PDF and HTML documents are accessible through the standard landing page
 on \url{https://ivoa.net/documents/index.html}.
-VODML files are accessible from \url{https://ivoa.net/xml/index.html}.
+VODML model description files are accessible from \url{https://ivoa.net/xml/index.html}.
 
 This document does not specify algorithms converting VODML objects 
-into MIVOT elements. However, the snippets below, based in a simple PhotDM class,
-illustrate the process.
+into MIVOT elements. However, the snippets in the following listing illustrate the translation process for a simple PhotDM class.
 
 \begin{lstlisting}[caption={VODML representation of the PhotDM class \texttt{Access}.
 This is an object type with 3 attributes, each one with a cardinality equal  to 1. 
-At this stage, we do not know whether attributes are typed with a complex types 
-or primitive types. This will come later on by going through their own VODML definitions.},language=XML]
+At this stage, we do not know whether attributes are typed complex or primitive type. 
+This will be completed later on by going through their own VODML definitions.},language=XML]
   <objectType>
     <vodml-id>Access</vodml-id>
     <name>Access</name>
@@ -65,13 +65,15 @@ or primitive types. This will come later on by going through their own VODML def
   </objectType>
 \end{lstlisting}  
 
-Basically the VODML to MIVOT translation obeys to the following rules:
+Basically the VODML to MIVOT translation obeys the following rules:
 \begin{itemize}
-    \item Both data and object types are converted into MIVOT \texttt{INSTANCE}s. 
-    \item VODML attributes with a cardinality equal to 1 and a primitive type 
-          are converted into MIVOT \texttt{ATTRIBUTE}s. 
-    \item VODML attributes with a cardinality greater than 1 are enclosed into MIVOT \texttt{COLLECTION}s. 
-    \item VODML compositions with a cardinality greater than 1 are enclosed into MIVOT \texttt{COLLECTION}s.     
+    \item an <objectType> is converted into a MIVOT \texttt{INSTANCE}. 
+    \item a built-in <datatype> defined in the model is converted as well into a MIVOT \texttt{INSTANCE}. 
+    \item an elementary <datatype> from ivoa: model is converted as an xml attribute \texttt{dmtype} into a MIVOT \texttt{ATTRIBUTE}. 
+    \item a VODML <attribute> with a cardinality equal to 1 and a primitive type 
+          is converted into a MIVOT \texttt{ATTRIBUTE}. 
+    \item a VODML <attribute> with a cardinality greater than 1 is enclosed into a MIVOT \texttt{COLLECTION}. 
+    \item a VODML <composition> with a cardinality greater than 1 is enclosed into a MIVOT \texttt{COLLECTION}.     
 \end{itemize} 
 
 \begin{lstlisting}[caption={MIVOT instanciation of the PhotDM class \texttt{Access}. 
@@ -79,8 +81,8 @@ VODML attributes are mapped as simple \texttt{ATTRIBUTE}s since their cardinalit
 1 and they have primitive types. In this example, automatically 
 generated, \texttt{ATTRIBUTE}s come with both \texttt{@ref} and \texttt{@value}. Using one, the other or both 
 depends on the actual data being annotated (see \ref{ATTRIBUTE}). 
-The cryptic  "@@@@@" labels are due to a trick of the annoter tool. They must be replaced with the 
- actual \texttt{FIELD} names for attributes that are set from field values.
+The cryptic  "@@@@@" label indicates a place holder. It must be replaced with the 
+ actual \texttt{FIELD} name of the TABLE column below matching the ATTRIBUTE values in the model.
 },language=XML]
       <INSTANCE dmrole="Phot:TransmissionCurve.access" dmtype="Phot:Access">
          <ATTRIBUTE dmrole="Phot:Access.reference" dmtype="ivoa:anyURI" ref="@@@@@" value=""/>
