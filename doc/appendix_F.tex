@@ -68,8 +68,8 @@ This will be completed later on by going through their own VODML definitions.},l
 Basically the VODML to MIVOT translation obeys the following rules:
 \begin{itemize}
     \item a VODML <objectType> or <dataType> is converted into a MIVOT \texttt{INSTANCE}. 
-    \item an elementary <datatype> from ivoa: model is converted as an xml attribute \texttt{dmtype} into a MIVOT \texttt{ATTRIBUTE}. 
-    **TO BE CHECKED 
+    \item The VODML <datatype> of the ivoa model element is taken to set the xml attribute \texttt{@dmtype} into a MIVOT \texttt{ATTRIBUTE} or \texttt{INSTANCE}. 
+    \item The VODML <vodml-id> of the ivoa model element is taken to set the xml attribute \texttt{@dmrole} into a MIVOT  \texttt{COLLECTION}, \texttt{ATTRIBUTE} or \texttt{INSTANCE}. 
     \item a VODML <attribute> with a cardinality equal to 1 and a primitive type 
           is converted into a MIVOT \texttt{ATTRIBUTE}. 
     \item a VODML <attribute> with a cardinality greater than 1 is enclosed into a MIVOT \texttt{COLLECTION}. 
