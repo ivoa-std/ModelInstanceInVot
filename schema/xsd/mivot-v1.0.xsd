@@ -190,17 +190,6 @@
         <xs:attribute type="xs:string" name="dmid" />
         <xs:assert
             test="if (@dmid) then ( @dmid != '') else true()  " />
-        <!-- LM ORIGINAL <xs:assert test="(count(dm-mapping:ATTRIBUTE) eq 0 and 
-            count(dm-mapping:REFERENCE) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 and 
-            count(dm-mapping:REFERENCE) = 0"/> <xs:assert test="(count(dm-mapping:ATTRIBUTE) 
-            eq 0 and count(dm-mapping:INSTANCE) >= 0) or count(dm-mapping:ATTRIBUTE) 
-            > 0 and count(dm-mapping:INSTANCE) = 0"/> <xs:assert test="(count(dm-mapping:ATTRIBUTE) 
-            eq 0 and count(dm-mapping:JOIN) >= 0) or count(dm-mapping:ATTRIBUTE) > 0 
-            and count(dm-mapping:JOIN) = 0"/> <xs:assert test="(count(dm-mapping:ATTRIBUTE) 
-            eq 0 and count(dm-mapping:COLLECTION) >= 0) or count(dm-mapping:ATTRIBUTE) 
-            > 0 and count(dm-mapping:COLLECTION) = 0"/> -->
-        <!-- collection of (attribute)||(reference)||(instance+join)||(collection) -->
-        <!-- - contains some redundancies, but will work if order of checks changes -->
         
         <xs:assert
             test="if (count(dm-mapping:JOIN) > 0 ) then (count(dm-mapping:REFERENCE) = 0) else true()" />
