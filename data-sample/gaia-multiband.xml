@@ -237,7 +237,7 @@
       </DATA>
     </TABLE>
     <TABLE ID="Results">
-      <FIELD ID="IDsrcid" datatype="char" arraysize="*" name="sourceIDid" utype="meta.id;meta.main">
+      <FIELD ID="IDsrcid" datatype="char" arraysize="*" name="sourceIDid" ucd="meta.id;meta.main">
         <DESCRIPTION>Source Id. A unique single numerical identifier of the source obtained from GaiaSource.</DESCRIPTION>
       </FIELD>
       <FIELD datatype="long" name="transitIDid" ucd="meta.version">
